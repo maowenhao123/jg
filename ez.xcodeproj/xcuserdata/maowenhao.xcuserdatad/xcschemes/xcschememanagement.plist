@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>cs.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>ez.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>zc copy 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>zc-iPad copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>zc.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>AA237D892143590C00BC47BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA67A01C1FAC150100B3611B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE58B9481DE58BF80033B300</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEDBEEA91988889A004787E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEDBEECA1988889A004787E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

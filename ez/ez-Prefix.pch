@@ -1,0 +1,294 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#define KEY_WINDOW  [[UIApplication sharedApplication] keyWindow]
+
+//----------------------ABOUT SYSTYM & VERSION 系统与版本 ----------------------------
+/** 是否为iOS8 */
+#define iOS8 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) ? YES : NO)
+
+/** 是否为iOS9 */
+#define iOS9 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) ? YES : NO)
+
+/** 是否为iOS10 */
+#define iOS10 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) ? YES : NO)
+/** 是否为iOS11 */
+#define iOS11 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) ? YES : NO)
+/** 是否为iOS12 */
+#define iOS12 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 12.0) ? YES : NO)
+
+/** 设备是否为iPhone 4/4S 分辨率320x480，像素640x960，@2x */
+#define iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+
+/** 设备是否为iPhone 5C/5/5S 分辨率320x568，像素640x1136，@2x */
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+
+/** 设备是否为iPhone 6 分辨率375x667，像素750x1334，@2x */
+//iPhone 6 iPhone 7 iPhone 8
+#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+
+/** 设备是否为iPhone 6 Plus 分辨率414x736，像素1242x2208，@3x */
+//iPhone 6P iPhone 7P iPhone 8P
+#define iPhone6P ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+/** 设备是否为iPhone X 分辨率375x812，像素1125x2436，@3x */
+//iPhone XS
+#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+/** 设备是否为iPhone XR 分辨率414x896，像素828x1792，@3x */
+#define iPhoneXR ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) : NO)
+
+/** 设备是否为iPhone XS MAX 分辨率414x896，像素1242x2688，@3x */
+#define iPhoneXSMax ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) : NO)
+
+//刘海屏手机
+#define IsBangIPhone iPhoneX || iPhoneXR || iPhoneXSMax
+
+//----------------------ABOUT SCREEN & SIZE 屏幕&尺寸 ----------------------------
+#define screenWidth   ([UIScreen mainScreen].bounds.size.width)
+#define screenHeight  ([UIScreen mainScreen].bounds.size.height)
+
+//statuBar的高度
+#define statusBarH [[UIApplication sharedApplication] statusBarFrame].size.height
+
+//navigationBar的高度
+#define navBarH 44
+
+//tabBar的高度
+//#else
+#define tabBarH ([[UIApplication sharedApplication] statusBarFrame].size.height > 20 ? 88:49)
+
+//默认cell高度
+#define YZCellH 45
+
+//文字离边框的间距
+#define YZMargin 15
+
+//----------------------ABOUT COLOR 颜色相关 ----------------------------
+#define YZColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+// rgb颜色转换（16进制->10进制）
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+//app主颜色
+#define YZBaseColor YZColor(203, 58, 53, 1) 
+//常用黑色字体颜色
+#define YZBlackTextColor YZColor(43, 43, 43, 1)
+//常用灰色字体颜色
+#define YZGrayTextColor YZColor(180, 180, 180, 1)
+//常用深灰色字体颜色
+#define YZDrayGrayTextColor YZColor(148, 148, 148, 1)
+//常用红色色字体颜色
+#define YZRedTextColor YZColor(237, 21, 57, 1)
+//竞彩足球浅灰色
+#define YZLightDrayColor YZColor(194, 194, 194, 1)
+//常用背景颜色
+#define YZBackgroundColor YZColor(246, 245, 250, 1)
+//常用灰色背景时线的颜色
+#define YZGrayLineColor YZColor(213, 213, 213, 1)
+//常用白色色时背景线的颜色
+#define YZWhiteLineColor YZColor(238, 238, 238, 1)
+//红球颜色
+#define YZRedBallColor YZColor(211, 41, 61, 1)
+//蓝球颜色
+#define YZBlueBallColor YZColor(19, 111, 226, 1)
+//竞彩详情红色
+#define YZMDRedColor YZColor(211, 52, 65, 1)
+//竞彩详情蓝色
+#define YZMDBlueColor YZColor(22, 145, 171, 1)
+//竞彩详情绿色
+#define YZMDGreenColor YZColor(94, 156, 49, 1)
+//统计字体灰色颜色
+#define YZChartGrayColor YZColor(125, 117, 110, 1)
+//统计字体浅灰色颜色
+#define YZChartLightGrayColor YZColor(175, 168, 162, 1)
+//统计字体浅灰色颜色
+#define YZChartBackgroundColor YZColor(244, 241, 235, 1)
+
+//字体大小
+//#define YZGetFontSize(pt) pt / 2.2639
+#define YZGetFontSize(pt) pt / 2 * screenWidth / 375
+
+//字符串是否为空
+#define YZStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
+//数组是否为空
+#define YZArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+//字典是否为空
+#define YZDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+/** 是否是空对象*/
+#define YZObjectIsEmpty(_object) (_object == nil || [_object isKindOfClass:[NSNull class]] || ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) || ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+
+//自定义Log
+#ifdef DEBUG
+#define YZLog(...) NSLog(__VA_ARGS__)
+#else
+#define YZLog(...)
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "MBProgressHUD+MJ.h"
+#import "MJRefresh.h"
+#import "YZUserDefaultTool.h"
+#import "YZBottomButton.h"
+#import "YZUser.h"
+#import "YZTool.h"
+#import "YZHttpTool.h"
+#import "UIBarButtonItem+YZ.h"
+#import "NSString+YZ.h"
+#import "UIView+SZ.h"
+#import "UIImage+YZ.h"
+#import "UITableView+YZ.h"
+#import <HyphenateLite/HyphenateLite.h>
+#import <HelpDeskLite/HelpDeskLite.h>
+#import "HelpDeskUI.h"
+#endif
+
+#define UserId [YZUserDefaultTool getObjectForKey:@"userId"]
+
+//动画时间
+#define animateDuration 0.2f
+
+#define text_paying @"正在支付,客官请稍后"
+#define text_sailStop @"当前期销售已停止"
+#define text_gettingCurrentTerm @"正在获取当前期次信息"
+
+#define waitingView_loadingData [MBProgressHUD showMessage:@"获取数据，客官请稍后..." toView:self.view];
+#define waitingView  [MBProgressHUD showMessage:@"客官请稍后" toView:self.view];
+#define ShowErrorView [MBProgressHUD showError:json[@"retDesc"]];
+#define SUCCESS [json[@"retCode"] isEqualToNumber:@(0)] && json
+
+//------------------------- 通知 ----------------------------
+#define TermIdChangedNote @"termIdChangedNotification"  //期号发生改变的通知
+#define RefreshRecordNote @"RefreshRecordNotification" //刷新订单的通知
+#define loginSuccessNote @"loginSuccessNotification"//登录成功的通知
+#define WeiXinRechargeSuccessNote @"WeiXinRechargeSuccessNotification"//微信支付 支付成功的通知
+#define AliPayRechargeSuccessNote @"AliPayRechargeSuccessNotification"//支付宝支付 支付成功的通知
+#define UPayRechargeSuccessNote @"UPayRechargeSuccessNotification"//银联支付 支付成功的通知
+#define HtmlRechargeSuccessNote @"HtmlRechargeSuccessNotification"//html支付 支付成功的通知
+#define RefreshCountdownNote @"RefreshCountdownNotification"//刷新倒计时的通知
+#define RefreshNotificationStatusNote @"RefreshNotificationStatusNotification"//刷新推送状态的通知
+#define WXHasNoBindNote @"WeixinHasNoBindNotification"//微信登录 微信没有绑定的通知
+#define WXHasBindNote @"WeixinHasBindNotification"//微信登录 微信已绑定的通知
+#define IntegralConversionSuccessNote @"IntegralConversionNotification"//登录成功的通知
+
+//11选5历史开奖设置通知
+#define currentQishu @"currentQishu"
+#define currentYilou @"currentYilou"
+#define currentTongji @"currentTongji"
+#define currentZhexian @"currentZhexian"
+#define currentHouliangwei @"currentHouliangwei"
+
+//URL
+#define baseH5Url @"http://s.51mcp.com"
+
+//------------------------- 第三方Id ----------------------------
+#if JG
+//------------------------- 九歌彩票 ----------------------------
+//微信
+#define WXAppIdOld @"wx803fd8073fa71108"
+#define WXAppSecretOld @"411bb478935d9cc6293029fd168b1c37"
+#define WXAppIdNew @"wx6c28ae885013eef1"
+#define WXAppSecretNew @"d8e863b944e775e00cfaf927355009eb"
+//极光
+#define JPushId @"346402e4962c03a20b1afbc1"
+#define UMengId @"581317544544cb74360009b1"
+//QQ
+#define QQAPPId @"1101043645"
+#define QQAppSecret @"Eyg2M9B8aXYQlac7"
+//新浪微博
+#define SinaAPPId @"45638824"
+#define SinaAppSecret @"de14021ffceaec0012e0ccc6f35e57c0"
+//环信
+#define CECAppKey @"1490171102061257#kefuchannelapp49141"
+#define CECTenantId @"68871"
+#define CECClientID @"YXA6U4KPIL-fEeeY6zkqX_FtKQ"
+#define CECClientSecret @"YXA6Apq1gCZL1pGTMlBs3V1fOk6nsww"
+#define CECIM @"kefuchannelimid_012090"
+////微信
+//#define WXAppId @"wx0b0d6b11d5c42a3b"
+//#define WXAppSecret @"b9a5c19825ab07946847f19e566f6e42"
+//极光
+//#define JPushId @"3cc7a7624d9be62e207e6e15"
+////友盟
+//#define UMengId @"58db67521c5dd0410a0001d5"
+////QQ
+//#define QQAPPId @"1106071186"
+//#define QQAppSecret @"Pa6W9fiCkpBNw1eo"
+//新浪微博
+//#define SinaAPPId @"2254215596"
+//#define SinaAppSecret @"fdbcf1bc607fd3c3216628382e8c23ab"
+
+//------------------------- 中彩啦 ----------------------------
+#elif ZC
+////微信
+//#define WXAppIdOld @"wx69cb6c29cc4a281f"
+//#define WXAppSecretOld @"ee68610d527dcf3e0b82a51f486d40e6"
+//
+//#define WXAppIdNew @"wxa62072532bc40982"
+//#define WXAppSecretNew @"36d382b5edacbd37705aad77338f8806"
+////极光
+//#define JPushId @"cd3b6ebf1b90b8836a554997"
+////友盟
+//#define UMengId @"5837f58f3eae252f8700019e"
+////QQ
+//#define QQAPPId @"101364405"
+//#define QQAppSecret @"322be2f869571091ff5c67414d611f68"
+////新浪微博
+//#define SinaAPPId @"1477364888"
+//#define SinaAppSecret @"7393ae25d46932c98c3d80c62eb9aa81"
+
+//微信
+#define WXAppIdOld @"wxdbc628a07b9c8b89"
+#define WXAppSecretOld @"312773564007871247f8966fdb449872"
+
+#define WXAppIdNew @"wxa62072532bc40982"
+#define WXAppSecretNew @"36d382b5edacbd37705aad77338f8806"
+//极光
+#define JPushId @"2fc0d62064c90883699c5c00"
+//友盟
+#define UMengId @"593a0ccb8f4a9d0555001784"
+//QQ
+#define QQAPPId @"101364405"
+#define QQAppSecret @"322be2f869571091ff5c67414d611f68"
+//新浪微博
+#define SinaAPPId @"1477364888"
+#define SinaAppSecret @"7393ae25d46932c98c3d80c62eb9aa81"
+//环信
+#define CECAppKey @"1490171102061257#kefuchannelapp49141"
+#define CECTenantId @"73270"
+#define CECClientID @"YXA6U4KPIL-fEeeY6zkqX_FtKQ"
+#define CECClientSecret @"YXA6Apq1gCZL1pGTMlBs3V1fOk6nsww"
+#define CECIM @"kefuchannelimid_030441"
+
+//------------------------- 财多多 ----------------------------
+#elif CS
+//微信
+#define WXAppIdOld @"wxdbc628a07b9c8b89"
+#define WXAppSecretOld @"312773564007871247f8966fdb449872"
+
+#define WXAppIdNew @"wxa62072532bc40982"
+#define WXAppSecretNew @"36d382b5edacbd37705aad77338f8806"
+//极光
+#define JPushId @"2f029f90fb3d9172bc916604"
+//友盟
+#define UMengId @"5bfcfd4db465f504b200009c"
+//QQ
+#define QQAPPId @"1108002026"
+#define QQAppSecret @"rEoiraeTfKJzSfmU"
+//新浪微博
+#define SinaAPPId @"1477364888"
+#define SinaAppSecret @"7393ae25d46932c98c3d80c62eb9aa81"
+//环信
+#define CECAppKey @"1409181129068592#kefuchannelapp61058"
+#define CECTenantId @"89904"
+#define CECClientID @"YXA6X5SX0PN_EeiNxw07luisBA"
+#define CECClientSecret @"YXA69TygCsH1sE_JTXQ8piRRBwMv2M8"
+#define CECIM @"kefuchannelimid_074140"
+
+#endif
+

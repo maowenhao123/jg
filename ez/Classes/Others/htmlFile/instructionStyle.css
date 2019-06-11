@@ -1,0 +1,20 @@
+/*------------11选5--------------*/
+.instr-box{ width:95%; margin:0 auto; margin-top:5px; border-radius:10px;box-shadow: 0px 3px 5px  #640b07; border:1px solid  #F00;}
+.instr-box h2{ font-size:16px; line-height:30px; padding-left:15px; color:#0f3e67;}
+.line{width:100%; border: thin solid #fde3de;}
+.content{ margin:10px;}
+.content p{ font-size:12px; color:#7a7a7a; line-height:25px; text-align:left;}
+.content p span{ font-size:14px; color:#f7756e;}
+.tab{ border-left:1px solid #CCC; border-bottom:1px solid #CCC; font-size:12px;}
+.tab tr td{ height:23px; border-right:1px solid #CCC; border-top:1px solid #CCC; text-align:center; line-height:25px;}
+.headtitle-txt{ color: #333; font-weight:bold;}
+.tab tr:nth-child(odd){background:#F4F4F4;}
+
+/*--------------双色球-----------*/
+.impt{ font-weight: bold;}
+.redcircle{width:13px; height:13px; background: -moz-linear-gradient(top, #fe4122, #771707); background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fe4122), color-stop(1, #771707));  -moz-border-radius: 50px;  -webkit-border-radius: 50px; border-radius: 50px; margin-top:5px;}
+.bulecircle{width:13px; height:13px; background: -moz-linear-gradient(top, #5fb9fe, #095997); background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #5fb9fe), color-stop(1, #095997));  -moz-border-radius: 50px;  -webkit-border-radius: 50px; border-radius: 50px; margin-top:5px;}
+.tab01 ul li{ float:left; padding:3px;}
+.odd{background:#F4F4F4;}
+.tab01{border-left:1px solid #CCC; border-bottom:1px solid #CCC; font-size:12px;}
+.tab01 tr td{ height:23px; border-right:1px solid #CCC; border-top:1px solid #CCC; text-align:center; line-height:25px;}

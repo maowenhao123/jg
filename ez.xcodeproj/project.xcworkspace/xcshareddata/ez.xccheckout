@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BBFB780E-AB73-46DB-82F5-6D8D7FC7C0DE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ez</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FDB0A5A69DD8C730D53E07D1F597F4A4C16B1726</key>
+		<string>ssh://192.168.11.27:10022/apple/app.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ez.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FDB0A5A69DD8C730D53E07D1F597F4A4C16B1726</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://192.168.11.27:10022/apple/app.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FDB0A5A69DD8C730D53E07D1F597F4A4C16B1726</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FDB0A5A69DD8C730D53E07D1F597F4A4C16B1726</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ezlottery</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,17 @@
+//
+//  YZFBMatchDetailStandingsTitleTableViewCell.h
+//  ez
+//
+//  Created by apple on 17/2/7.
+//  Copyright © 2017年 9ge. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface YZFBMatchDetailStandingsTitleTableViewCell : UITableViewCell
+
++ (YZFBMatchDetailStandingsTitleTableViewCell *)cellWithTableView:(UITableView *)tableView;
+
+@property (nonatomic, assign) BOOL isFuture;
+
+@end
