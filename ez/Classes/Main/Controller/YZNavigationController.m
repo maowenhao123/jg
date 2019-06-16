@@ -13,8 +13,10 @@
 #import "YZSelectBaseViewController.h"
 #import "YZKsViewController.h"
 #import "YZMessageViewController.h"
+#import "YZZCMineViewController.h"
+#import "YZCSMineViewController.h"
 
-@interface YZNavigationController ()
+@interface YZNavigationController ()<UINavigationControllerDelegate>
 
 @end
 
@@ -122,6 +124,12 @@
 #endif
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.delegate = self;
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if(self.tabBarController.viewControllers.count > 0)
@@ -165,6 +173,14 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"upDataHaveNewMessage" object:nil];
     }
     return vc;
+}
+
+#pragma mark - UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    BOOL hiddenNavBar = [viewController isKindOfClass:[YZZCMineViewController class]]
+                        || [viewController isKindOfClass:[YZCSMineViewController class]];
+    [navigationController setNavigationBarHidden:hiddenNavBar animated:YES];
 }
 
 @end
