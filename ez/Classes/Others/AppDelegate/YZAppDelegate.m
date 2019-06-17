@@ -7,6 +7,9 @@
 //
 
 #import <HyphenateLite/HyphenateLite.h>
+#import <UMSocialCore/UMSocialCore.h>
+#import <AlipaySDK/AlipaySDK.h>
+#import <TYRZSDK/TYRZSDK.h>
 #import "YZAppDelegate.h"
 #import "YZTabBarViewController.h"
 #import "YZNewFeatureViewController.h"
@@ -17,8 +20,6 @@
 #import "UMMobClick/MobClick.h"
 #import "YZThirdPartyStatus.h"
 #import "UPPaymentControl.h"
-#import <UMSocialCore/UMSocialCore.h>
-#import <AlipaySDK/AlipaySDK.h>
 #import "YZWinNumberViewController.h"
 #import "JSON.h"
 
@@ -42,6 +43,11 @@
     
     //删除userId，以重新登录
     [YZUserDefaultTool removeObjectForKey:@"userId"];
+    
+    //注册一键登录
+    [UASDKLogin.shareLogin registerAppId:@"300011846824" AppKey:@"FB51A74CF4629A6469F5512C3F9C017B"];
+    //是否打印日志
+    [UASDKLogin.shareLogin printConsoleEnable:YES];
     
     //微信注册
 #if JG
@@ -368,6 +374,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [YZStatusCacheTool deleteAllStatus];//删除数据
+}
+
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    
+}
+
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    
 }
 
 @end

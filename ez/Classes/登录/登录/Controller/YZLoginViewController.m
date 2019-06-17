@@ -9,6 +9,7 @@
 #define historyAccountViewY 119
 
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <TYRZSDK/TYRZSDK.h>
 #import "YZLoginViewController.h"
 #import "YZRegisterViewController.h"
 #import "YZSecretChangeViewController.h"
@@ -39,30 +40,6 @@
 @implementation YZLoginViewController
 
 #pragma mark - 控制器的生命周期
-#if JG
-#elif ZC
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
-}
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-}
-#elif CS
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
-}
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-}
-#endif
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -437,15 +414,7 @@
     
     CGFloat thirdPartyBtnWH = 38;
     CGFloat thirdPartyBtnY = thirdPartyView.height - 17 - thirdPartyBtnWH;
-    NSMutableArray *thirdPartyBtnImages = [NSMutableArray array];
-//    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {//如果安装微信
-        [thirdPartyBtnImages addObject:@"login_weixin_icon"];
-//    }
-//    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]]) {//如果安装QQ
-        [thirdPartyBtnImages addObject:@"login_qq_icon"];
-//    }
-    //微博
-    [thirdPartyBtnImages addObject:@"login_sina_icon"];
+    NSArray *thirdPartyBtnImages = @[@"phone_faster_login", @"login_weixin_icon", @"login_qq_icon", @"login_sina_icon"];
     CGFloat thirdPartyBtnPadding = (screenWidth - thirdPartyBtnWH * thirdPartyBtnImages.count) / (thirdPartyBtnImages.count + 1);
     if (thirdPartyBtnImages.count == 0) {
         thirdPartyView.hidden = YES;
@@ -459,6 +428,8 @@
             thirdPartyBtn.tag = 101;
         }else if ([thirdPartyBtnImages[i] isEqualToString:@"login_sina_icon"]) {
             thirdPartyBtn.tag = 103;
+        }else if ([thirdPartyBtnImages[i] isEqualToString:@"phone_faster_login"]) {
+            thirdPartyBtn.tag = 100;
         }
         [thirdPartyBtn setBackgroundImage:[UIImage imageNamed:thirdPartyBtnImages[i]] forState:UIControlStateNormal];
         [thirdPartyBtn addTarget:self action:@selector(thirdPartyBtnDidClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -516,6 +487,16 @@
     
 #pragma mark - 点击注册按钮
 -(void)registerPressed
+{
+    UACustomModel *model = [[UACustomModel alloc]init];
+    model.currentVC = self;
+    [UASDKLogin.shareLogin getAuthorizationWithModel:model complete:^(id  _Nonnull sender) {
+        NSLog(@"%@", sender);
+        
+    }];
+}
+
+- (void)gotoRegister
 {
     YZRegisterViewController *registerVc = [[YZRegisterViewController alloc] init];
     [self.navigationController pushViewController:registerVc animated:YES];
@@ -677,6 +658,10 @@
 #pragma mark - 第三方登录
 - (void)thirdPartyBtnDidClick:(UIButton *)btn
 {
+    if (btn.tag == 100) {//手机号一键登录
+        [self registerPressed];
+        return;
+    }
     //微信注册
 #if JG
     [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];

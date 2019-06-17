@@ -13,8 +13,6 @@
 #import "YZSelectBaseViewController.h"
 #import "YZKsViewController.h"
 #import "YZMessageViewController.h"
-#import "YZZCMineViewController.h"
-#import "YZCSMineViewController.h"
 
 @interface YZNavigationController ()<UINavigationControllerDelegate>
 
@@ -178,8 +176,7 @@
 #pragma mark - UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    BOOL hiddenNavBar = [viewController isKindOfClass:[YZZCMineViewController class]]
-                        || [viewController isKindOfClass:[YZCSMineViewController class]];
+    BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZCSMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]];
     [navigationController setNavigationBarHidden:hiddenNavBar animated:YES];
 }
 

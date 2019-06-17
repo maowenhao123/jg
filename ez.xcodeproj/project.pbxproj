@@ -1122,6 +1122,9 @@
 		AA32942D200357DE00CA77DA /* YZChangePhoneCardNoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32942B200357DE00CA77DA /* YZChangePhoneCardNoViewController.m */; };
 		AA329430200358FE00CA77DA /* YZBingingNewPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32942F200358FE00CA77DA /* YZBingingNewPhoneViewController.m */; };
 		AA329431200358FE00CA77DA /* YZBingingNewPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32942F200358FE00CA77DA /* YZBingingNewPhoneViewController.m */; };
+		AA34D5E622B7BB5400E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D5E522B7BB5400E305EB /* TYRZSDK.framework */; };
+		AA34D5E722B7BB5400E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D5E522B7BB5400E305EB /* TYRZSDK.framework */; };
+		AA34D5E822B7BB5400E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D5E522B7BB5400E305EB /* TYRZSDK.framework */; };
 		AA3657D021D224B9009BE71B /* YZActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3657CF21D224B9009BE71B /* YZActivityModel.m */; };
 		AA3657D121D224B9009BE71B /* YZActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3657CF21D224B9009BE71B /* YZActivityModel.m */; };
 		AA3657D221D224B9009BE71B /* YZActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3657CF21D224B9009BE71B /* YZActivityModel.m */; };
@@ -2584,6 +2587,7 @@
 		AA32942B200357DE00CA77DA /* YZChangePhoneCardNoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZChangePhoneCardNoViewController.m; sourceTree = "<group>"; };
 		AA32942E200358FE00CA77DA /* YZBingingNewPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZBingingNewPhoneViewController.h; sourceTree = "<group>"; };
 		AA32942F200358FE00CA77DA /* YZBingingNewPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZBingingNewPhoneViewController.m; sourceTree = "<group>"; };
+		AA34D5E522B7BB5400E305EB /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
 		AA3657CE21D224B9009BE71B /* YZActivityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZActivityModel.h; sourceTree = "<group>"; };
 		AA3657CF21D224B9009BE71B /* YZActivityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZActivityModel.m; sourceTree = "<group>"; };
 		AA3A9D3721DEF58A00F9147C /* HyphenateLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateLite.framework; sourceTree = "<group>"; };
@@ -3545,6 +3549,7 @@
 				AA237FF62143590C00BC47BB /* Foundation.framework in Frameworks */,
 				AA237FF72143590C00BC47BB /* UIKit.framework in Frameworks */,
 				AA237FF82143590C00BC47BB /* CoreText.framework in Frameworks */,
+				AA34D5E822B7BB5400E305EB /* TYRZSDK.framework in Frameworks */,
 				AA237FF92143590C00BC47BB /* QuartzCore.framework in Frameworks */,
 				AA237FFA2143590C00BC47BB /* CoreFoundation.framework in Frameworks */,
 				AA237FFB2143590C00BC47BB /* AVFoundation.framework in Frameworks */,
@@ -3604,6 +3609,7 @@
 				AA57887B22851CB9002292EA /* jcore-ios-2.0.0.a in Frameworks */,
 				AA67A24E1FAC150100B3611B /* libssl.a in Frameworks */,
 				AA67A24F1FAC150100B3611B /* MobileCoreServices.framework in Frameworks */,
+				AA34D5E622B7BB5400E305EB /* TYRZSDK.framework in Frameworks */,
 				AA67A2501FAC150100B3611B /* CoreLocation.framework in Frameworks */,
 				AA67A2551FAC150100B3611B /* AddressBook.framework in Frameworks */,
 				AA67A2561FAC150100B3611B /* libcrypto.a in Frameworks */,
@@ -3657,6 +3663,7 @@
 				AA57887C22851CB9002292EA /* jcore-ios-2.0.0.a in Frameworks */,
 				CE58BAA91DE58BF80033B300 /* libssl.a in Frameworks */,
 				CE58BAAA1DE58BF80033B300 /* MobileCoreServices.framework in Frameworks */,
+				AA34D5E722B7BB5400E305EB /* TYRZSDK.framework in Frameworks */,
 				CE58BAAB1DE58BF80033B300 /* CoreLocation.framework in Frameworks */,
 				CE58BAAE1DE58BF80033B300 /* AddressBook.framework in Frameworks */,
 				CE58BAAF1DE58BF80033B300 /* libcrypto.a in Frameworks */,
@@ -5102,6 +5109,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AA34D5E422B7BB4A00E305EB /* TYRZSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AA34D5E522B7BB5400E305EB /* TYRZSDK.framework */,
+			);
+			path = TYRZSDK;
+			sourceTree = "<group>";
+		};
 		AA74E0691FFE0A0C003B53AF /* 开奖 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5615,6 +5630,7 @@
 		AA74E7951FFE17DD003B53AF /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				AA34D5E422B7BB4A00E305EB /* TYRZSDK */,
 				AA74E7961FFE17DD003B53AF /* WXSDK */,
 				AA74E79D1FFE17DD003B53AF /* LLPaySDK_V2.6.4 */,
 				AA74E7A11FFE17DD003B53AF /* UPPaymentControl */,
@@ -9500,6 +9516,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -9573,6 +9590,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -9642,6 +9660,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -9711,6 +9730,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -9786,6 +9806,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -9859,6 +9880,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/ez/Classes/Others/Lib/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -9935,6 +9957,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/BaseFramework",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -9971,11 +9994,14 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4ae371d6-63b1-4a38-a3e2-ca3e8af21008";
-				PROVISIONING_PROFILE_SPECIFIER = zc_dev_29;
+				PROVISIONING_PROFILE_SPECIFIER = zc_dev_27;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -10011,6 +10037,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/BaseFramework",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -10044,7 +10071,10 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8520864a-34db-4c77-88b4-1bdbb12b15e7";
@@ -10083,6 +10113,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/BaseFramework",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM",
+					"$(PROJECT_DIR)/ez/Classes/Others/SDK/TYRZSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ez/ez-Prefix.pch";
@@ -10116,11 +10147,14 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cd768b6-a0d1-40b1-942a-27fcfe2227d0";
-				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_32;
+				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_27;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
