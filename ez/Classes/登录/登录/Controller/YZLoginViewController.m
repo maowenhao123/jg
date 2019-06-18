@@ -8,8 +8,17 @@
 
 #define historyAccountViewY 119
 
+#define IOS_CELLULAR    @"pdp_ip0"
+#define IOS_WIFI        @"en0"
+#define IOS_VPN         @"utun0"
+#define IP_ADDR_IPv4    @"ipv4"
+#define IP_ADDR_IPv6    @"ipv6"
+
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TYRZSDK/TYRZSDK.h>
+#import <ifaddrs.h>
+#import <arpa/inet.h>
+#import <net/if.h>
 #import "YZLoginViewController.h"
 #import "YZRegisterViewController.h"
 #import "YZSecretChangeViewController.h"
@@ -489,10 +498,23 @@
 -(void)registerPressed
 {
     UACustomModel *model = [[UACustomModel alloc]init];
-    model.currentVC = self;
-    [UASDKLogin.shareLogin getAuthorizationWithModel:model complete:^(id  _Nonnull sender) {
+    model.navReturnImg = [UIImage imageNamed:@"black_back_bar"];
+    model.navColor = [UIColor whiteColor];
+    model.navText = [[NSAttributedString alloc]initWithString:@"一键登录" attributes:@{NSForegroundColorAttributeName:YZBlackTextColor,NSFontAttributeName:[UIFont boldSystemFontOfSize:17]}];
+    [TYRZUILogin customUIWithParams:model customViews:^(UIView *customAreaView) {
+
+    }];
+    waitingView
+    [TYRZUILogin getAuthorizationWithController:self timeout:8000 complete:^(id sender) {
         NSLog(@"%@", sender);
-        
+        NSString *resultCode = sender[@"resultCode"];
+        if ([resultCode isEqualToString:@"103000"]) {
+            [self quickLoginWithToken:sender[@"token"]];
+        }else//失败去注册页面
+        {
+            [MBProgressHUD hideHUDForView:self.view];
+            [self gotoRegister];
+        }
     }];
 }
 
@@ -501,7 +523,39 @@
     YZRegisterViewController *registerVc = [[YZRegisterViewController alloc] init];
     [self.navigationController pushViewController:registerVc animated:YES];
 }
-    
+
+- (void)quickLoginWithToken:(NSString *)token
+{
+    //    openId = dn0Eo3MQ1jPfFtjXEdoKJbmntsbehAyE8xj2BWfEyYV83qtwhaIw;
+//    resultCode = 103000;
+//    token = STsid0000001560864555897OrOpX0KclJdxM0000fXSXLO4QokRwLAS;
+    NSString * imei = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString * IP = [self getIPAddress:NO];
+    if ([IP isEqualToString:@"0.0.0.0"]) {
+        IP = [self getIPAddress:YES];
+    }
+    NSDictionary *dict = @{
+                           @"cmd":@(10638),
+                           @"version": @"0.0.1",
+                           @"ip": IP,
+                           @"imei":imei,
+                           @"token": token
+                           };
+    [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
+        YZLog(@"json = %@",json);
+        [MBProgressHUD hideHUDForView:self.view];
+        if(SUCCESS)
+        {
+            
+        }else
+        {
+            ShowErrorView
+            [MBProgressHUD hideHUDForView:self.view];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view];
+    }];
+}
 #pragma mark - 点击忘记密码按钮
 -(void)ketbtnPressed
 {
@@ -797,5 +851,83 @@
         YZLog(@"账户error");
     }];
 }
+
+#pragma mark - 获取设备当前网络IP地址
+- (NSString *)getIPAddress:(BOOL)preferIPv4
+{
+    NSArray *searchArray = preferIPv4 ?
+    @[ IOS_VPN @"/" IP_ADDR_IPv4, IOS_VPN @"/" IP_ADDR_IPv6, IOS_WIFI @"/" IP_ADDR_IPv4, IOS_WIFI @"/" IP_ADDR_IPv6, IOS_CELLULAR @"/" IP_ADDR_IPv4, IOS_CELLULAR @"/" IP_ADDR_IPv6 ] :
+    @[ IOS_VPN @"/" IP_ADDR_IPv6, IOS_VPN @"/" IP_ADDR_IPv4, IOS_WIFI @"/" IP_ADDR_IPv6, IOS_WIFI @"/" IP_ADDR_IPv4, IOS_CELLULAR @"/" IP_ADDR_IPv6, IOS_CELLULAR @"/" IP_ADDR_IPv4 ] ;
+    NSDictionary *addresses = [self getIPAddresses];
+    NSLog(@"addresses: %@", addresses);
+    __block NSString *address;
+    [searchArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop)
+     {
+         address = addresses[key];
+         //筛选出IP地址格式
+         if([self isValidatIP:address]) *stop = YES;
+     } ];
+    return address ? address : @"0.0.0.0";
+}
+
+- (BOOL)isValidatIP:(NSString *)ipAddress {
+    if (ipAddress.length == 0) {
+        return NO;
+    }
+    NSString *urlRegEx = @"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+    NSError *error;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:urlRegEx options:0 error:&error];
+    if (regex != nil) {
+        NSTextCheckingResult *firstMatch=[regex firstMatchInString:ipAddress options:0 range:NSMakeRange(0, [ipAddress length])];
+        
+        if (firstMatch) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (NSDictionary *)getIPAddresses
+{
+    NSMutableDictionary *addresses = [NSMutableDictionary dictionaryWithCapacity:8];
+    // retrieve the current interfaces - returns 0 on success
+    struct ifaddrs *interfaces;
+    if(!getifaddrs(&interfaces)) {
+        // Loop through linked list of interfaces
+        struct ifaddrs *interface;
+        for(interface=interfaces; interface; interface=interface->ifa_next) {
+            if(!(interface->ifa_flags & IFF_UP) /* || (interface->ifa_flags & IFF_LOOPBACK) */ ) {
+                continue; // deeply nested code harder to read
+            }
+            const struct sockaddr_in *addr = (const struct sockaddr_in*)interface->ifa_addr;
+            char addrBuf[ MAX(INET_ADDRSTRLEN, INET6_ADDRSTRLEN) ];
+            if(addr && (addr->sin_family==AF_INET || addr->sin_family==AF_INET6)) {
+                NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
+                NSString *type;
+                if(addr->sin_family == AF_INET) {
+                    if(inet_ntop(AF_INET, &addr->sin_addr, addrBuf, INET_ADDRSTRLEN)) {
+                        type = IP_ADDR_IPv4;
+                    }
+                } else {
+                    const struct sockaddr_in6 *addr6 = (const struct sockaddr_in6*)interface->ifa_addr;
+                    if(inet_ntop(AF_INET6, &addr6->sin6_addr, addrBuf, INET6_ADDRSTRLEN)) {
+                        type = IP_ADDR_IPv6;
+                    }
+                }
+                if(type) {
+                    NSString *key = [NSString stringWithFormat:@"%@/%@", name, type];
+                    addresses[key] = [NSString stringWithUTF8String:addrBuf];
+                }
+            }
+        }
+        // Free memory
+        freeifaddrs(interfaces);
+    }
+    return [addresses count] ? addresses : nil;
+}
+
 
 @end

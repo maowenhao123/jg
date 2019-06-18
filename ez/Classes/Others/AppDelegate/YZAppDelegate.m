@@ -45,9 +45,7 @@
     [YZUserDefaultTool removeObjectForKey:@"userId"];
     
     //注册一键登录
-    [UASDKLogin.shareLogin registerAppId:@"300011846824" AppKey:@"FB51A74CF4629A6469F5512C3F9C017B"];
-    //是否打印日志
-    [UASDKLogin.shareLogin printConsoleEnable:YES];
+    [TYRZUILogin initializeWithAppId:@"300011887762" appKey:@"E7F678DC2555A94DE78653FE3BE916F1"];
     
     //微信注册
 #if JG
