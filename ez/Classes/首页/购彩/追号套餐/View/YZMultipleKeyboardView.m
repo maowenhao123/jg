@@ -107,7 +107,7 @@
         }
     }
     
-    contentView.height = CGRectGetMaxY(lastView.frame);
+    contentView.height = CGRectGetMaxY(lastView.frame) + [YZTool getSafeAreaBottom];
 }
 
 - (void)multipleButtonDidClick:(UIButton *)button

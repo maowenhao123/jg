@@ -11,8 +11,6 @@
 #define YZUserFile [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"user.data"]
 #define YZThirdPartyFile [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"thirdParty.data"]
 
-#define YZWeixinFile [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"weixin.data"]
-
 @implementation YZUserDefaultTool
 
 + (void)saveObject:(NSString *)object forKey:(NSString *)key
@@ -61,13 +59,5 @@
     YZThirdPartyStatus *thirdPartyStatus = [NSKeyedUnarchiver unarchiveObjectWithFile:YZThirdPartyFile];
     return thirdPartyStatus;
 }
-+ (void)saveWeixinStatus:(YZWeixinStatus *)weixinStatus
-{
-    [NSKeyedArchiver archiveRootObject:weixinStatus toFile:YZWeixinFile];
-}
-+ (YZWeixinStatus *)weixinStatus
-{
-    YZWeixinStatus *weixinStatus = [NSKeyedUnarchiver unarchiveObjectWithFile:YZWeixinFile];
-    return weixinStatus;
-}
+
 @end

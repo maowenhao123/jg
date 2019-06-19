@@ -69,7 +69,11 @@
 }
 - (void)back
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIViewController *controller = self;
+    while(controller.presentingViewController != nil){
+        controller = controller.presentingViewController;
+    }
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)setupChildViews
 {
@@ -186,7 +190,7 @@
     [registerbtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
     [registerbtn setTitle:@"注册" forState:UIControlStateNormal];
     registerbtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-    [registerbtn addTarget:self action:@selector(registerPressed) forControlEvents:UIControlEventTouchUpInside];
+    [registerbtn addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];
     registerbtn.layer.masksToBounds = YES;
     registerbtn.layer.cornerRadius = 3;
     registerbtn.layer.borderWidth = 0.8;
@@ -281,7 +285,7 @@
     //close
     UIButton * closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat closeButtonWH = 30;
-    closeButton.frame = CGRectMake(screenWidth - closeButtonWH - 10, statusBarH + 10, closeButtonWH, closeButtonWH);
+    closeButton.frame = CGRectMake(screenWidth - closeButtonWH - 15, statusBarH + 10, closeButtonWH, closeButtonWH);
     [closeButton setBackgroundImage:[UIImage imageNamed:@"login_close_icon"] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
@@ -363,7 +367,7 @@
     registerBtn.layer.cornerRadius = loginBtn.height / 2;
     registerBtn.layer.borderColor = YZBaseColor.CGColor;
     registerBtn.layer.borderWidth = 1;
-    [registerBtn addTarget:self action:@selector(registerPressed) forControlEvents:UIControlEventTouchUpInside];
+    [registerBtn addTarget:self action:@selector(quickLoginDidClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:registerBtn];
     lastView = registerBtn;
     
@@ -495,7 +499,7 @@
 }
     
 #pragma mark - 点击注册按钮
--(void)registerPressed
+-(void)quickLoginDidClick:(UIButton *)button
 {
     UACustomModel *model = [[UACustomModel alloc]init];
     model.navReturnImg = [UIImage imageNamed:@"black_back_bar"];
@@ -513,7 +517,12 @@
         }else//失败去注册页面
         {
             [MBProgressHUD hideHUDForView:self.view];
-            [self gotoRegister];
+            if ([button.currentTitle isEqualToString:@"注册"]) {
+                [self gotoRegister];
+            }else
+            {
+                [MBProgressHUD showError:sender[@"desc"]];
+            }
         }
     }];
 }
@@ -526,9 +535,6 @@
 
 - (void)quickLoginWithToken:(NSString *)token
 {
-    //    openId = dn0Eo3MQ1jPfFtjXEdoKJbmntsbehAyE8xj2BWfEyYV83qtwhaIw;
-//    resultCode = 103000;
-//    token = STsid0000001560864555897OrOpX0KclJdxM0000fXSXLO4QokRwLAS;
     NSString * imei = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString * IP = [self getIPAddress:NO];
     if ([IP isEqualToString:@"0.0.0.0"]) {
@@ -546,7 +552,17 @@
         [MBProgressHUD hideHUDForView:self.view];
         if(SUCCESS)
         {
-            
+            //保存用户信息
+            YZUser *user = [YZUser objectWithKeyValues:json];
+            [YZUserDefaultTool saveUser:user];
+            [YZUserDefaultTool saveObject:@"accountLogin" forKey:@"loginWay"];
+            //存储userId和userName
+            [YZUserDefaultTool saveObject:json[@"userId"] forKey:@"userId"];
+            //发送登录成功通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:loginSuccessNote object:nil];
+            [self loadUserInfo];
+            [YZTool setAlias];
+            [self back];
         }else
         {
             ShowErrorView
@@ -690,7 +706,6 @@
         if(autoLoginType == 2)
         {
             [YZUserDefaultTool saveObject:self.pwdTextField.text forKey:@"userPwd"];
-            YZLog(@"accountTextField = %@,pwdTextField = %@",self.accountTextField.text,self.pwdTextField.text);
         }else
         {
             [YZUserDefaultTool removeObjectForKey:@"userPwd"];
@@ -713,7 +728,7 @@
 - (void)thirdPartyBtnDidClick:(UIButton *)btn
 {
     if (btn.tag == 100) {//手机号一键登录
-        [self registerPressed];
+        [self quickLoginDidClick:btn];
         return;
     }
     //微信注册
@@ -823,7 +838,7 @@
             //发送登录成功通知
             [[NSNotificationCenter defaultCenter] postNotificationName:loginSuccessNote object:nil];
             [self loadUserInfo];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self back];
         }
     }else
     {

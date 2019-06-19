@@ -40,15 +40,16 @@
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [IQKeyboardManager sharedManager].toolbarDoneBarButtonItemText = @"完成";
-    
-    //删除userId，以重新登录
-    [YZUserDefaultTool removeObjectForKey:@"userId"];
-    
+
     //注册一键登录
-    [TYRZUILogin initializeWithAppId:@"300011887762" appKey:@"E7F678DC2555A94DE78653FE3BE916F1"];
-    
+    [TYRZUILogin initializeWithAppId:TYRZAPPId appKey:TYRZAPPKey];
     //微信注册
 #if JG
+    //删除userId，以重新登录
+    int autoLoginType = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"autoLogin"];
+    if (autoLoginType != 2) {
+        [YZUserDefaultTool removeObjectForKey:@"userId"];
+    }
     [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
 #elif ZC
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
@@ -115,10 +116,7 @@
     
     //开启网络监控
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    //自动登录
-    [self autoLogin];
-    
+   
     //获取分享活动数据
     [self getShareData];
     
@@ -139,96 +137,6 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     return YES;
-}
-#pragma mark - 自动登录
-- (void)autoLogin
-{
-    //是否自动登录
-    int autoLoginType = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"autoLogin"];
-    if (autoLoginType == 2) {
-        NSString * loginWay = [YZUserDefaultTool getObjectForKey:@"loginWay"];
-        YZThirdPartyStatus *thirdPartyStatus = [YZUserDefaultTool thirdPartyStatus];
-        BOOL haveThirdPartyData = thirdPartyStatus && [thirdPartyStatus isKindOfClass:[YZThirdPartyStatus class]] && thirdPartyStatus.platformType && !YZStringIsEmpty(thirdPartyStatus.uid) && !YZStringIsEmpty(thirdPartyStatus.openid);
-        BOOL haveAccountData = !YZStringIsEmpty([YZUserDefaultTool getObjectForKey:@"userName"]) && !YZStringIsEmpty([YZUserDefaultTool getObjectForKey:@"userPwd"]);
-        if ([loginWay isEqualToString:@"thirdPartyLogin"] && haveThirdPartyData) {//第三方登录
-            [self thirdPartyLogin];
-        }else if([loginWay isEqualToString:@"accountLogin"] && haveAccountData)
-        {
-            [self accountLogin];
-        }else
-        {
-            [YZTool setAlias];
-        }
-    }else
-    {
-        [YZTool setAlias];
-    }
-}
-- (void)thirdPartyLogin
-{
-    YZThirdPartyStatus *thirdPartyStatus = [YZUserDefaultTool thirdPartyStatus];
-    if (!thirdPartyStatus || ![thirdPartyStatus isKindOfClass:[YZThirdPartyStatus class]]) return;
-    if (!thirdPartyStatus.platformType || !thirdPartyStatus.uid || !thirdPartyStatus.openid) return;
-    NSString * paramJson;
-    NSNumber *type;
-    if (thirdPartyStatus.platformType == UMSocialPlatformType_WechatSession) {
-        paramJson = [@{@"uId":thirdPartyStatus.uid,@"openId":thirdPartyStatus.openid} JSONRepresentation];
-        type = @(2);
-    }else if (thirdPartyStatus.platformType == UMSocialPlatformType_QQ)
-    {
-        paramJson = [@{@"uId":thirdPartyStatus.uid,@"openId":thirdPartyStatus.openid} JSONRepresentation];
-        type = @(1);
-    }else if (thirdPartyStatus.platformType == UMSocialPlatformType_Sina)//微博登录只需uid
-    {
-        paramJson = [@{@"uId":thirdPartyStatus.uid} JSONRepresentation];
-        type = @(3);
-    }
-    NSString * imei = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSDictionary *dict = @{
-                           @"cmd":@(10630),
-                           @"type":type,
-                           @"param":paramJson,
-                           @"imei":imei
-                           };
-    [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
-        //检查账号密码返回数据
-        if(SUCCESS)
-        {
-            if ([json[@"bindStatus"] isEqualToNumber:@(1)]) {
-                //成功登录
-                [YZUserDefaultTool saveObject:json[@"userId"] forKey:@"userId"];
-                //发送登录成功通知
-                [[NSNotificationCenter defaultCenter] postNotificationName:loginSuccessNote object:nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"showVoucherLoginSuccessNote" object:nil];
-                [YZTool setAlias];
-            }
-        }
-    } failure:^(NSError *error) {
-         YZLog(@"自动登录error");
-    }];
-}
-- (void)accountLogin
-{
-    NSDictionary *dict = @{
-                           @"cmd":@(8004),
-                           @"userName":[YZUserDefaultTool getObjectForKey:@"userName"],
-                           @"password":[YZUserDefaultTool getObjectForKey:@"userPwd"],
-                           @"loginType":@(1)
-                           };
-    [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
-        //检查账号密码返回数据
-        if(SUCCESS)
-        {
-            //成功登录
-            [YZUserDefaultTool saveObject:json[@"userId"] forKey:@"userId"];
-            //发送登录成功通知
-            [[NSNotificationCenter defaultCenter] postNotificationName:loginSuccessNote object:nil];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"showVoucherLoginSuccessNote" object:nil];
-            [YZTool setAlias];
-        }
-    } failure:^(NSError *error) {
-        YZLog(@"自动登录error");
-    }];
 }
 #pragma mark - 获取分享活动数据
 - (void)getShareData {
