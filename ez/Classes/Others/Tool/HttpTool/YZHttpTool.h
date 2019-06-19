@@ -60,32 +60,32 @@ typedef enum : NSUInteger {
 //#define childChannel @"caidd_ios_taylor"
 //#endif
 
-//正式环境
-#define baseUrl @"http://www1.51mcp.com"
-#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
+////正式环境
+//#define baseUrl @"http://www1.51mcp.com"
+//#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
+//
+//#if JG
+//#define childChannel @"ios_0001"
+////#define childChannel @"ios_taylor"
+//#elif ZC
+//#define childChannel @"zc_ios_0001"
+//#elif CS
+//#define childChannel @"zc_ios"
+//#endif
+
+//测试环境
+//#define baseUrl @"http://t21.51mcp.com:8811"
+#define baseUrl @"http://c.ez1898.com"
+//#define baseUrl @"http://192.168.11.21:8299"
+#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
 
 #if JG
-#define childChannel @"ios_0001"
-//#define childChannel @"ios_taylor"
+#define childChannel @"ios_test"
 #elif ZC
-#define childChannel @"zc_ios_0001"
+#define childChannel @"zhongcai_ios"
 #elif CS
-#define childChannel @"zc_ios"
+#define childChannel @"zhongcai_ios"
 #endif
-
-////测试环境
-////#define baseUrl @"http://t21.51mcp.com:8811"
-//#define baseUrl @"http://c.ez1898.com"
-////#define baseUrl @"http://192.168.11.21:8299"
-//#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
-
-//#if JG
-//#define childChannel @"ios_test"
-//#elif ZC
-//#define childChannel @"zhongcai_ios"
-//#elif CS
-//#define childChannel @"zhongcai_ios"
-//#endif
 
 //ping 192.168.11.21
 #define BaseUrl(param) [NSString stringWithFormat:@"%@/%@", baseUrl, param]

@@ -19,6 +19,7 @@
 #import "YZOrderViewController.h"
 #import "YZLoadHtmlFileController.h"
 #import "YZContactCustomerServiceViewController.h"
+#import "YZShareViewController.h"
 #import "YZThirdPartyStatus.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+YZ.h"
@@ -148,9 +149,10 @@
     UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight - tabBarH)];
     self.scrollView = scrollView;
     [self.view addSubview:scrollView];
+    
     //背景
     UIImageView * backView = [[UIImageView alloc]init];
-    backView.frame = CGRectMake(0, 0, screenWidth, statusBarH + navBarH + 78);
+    backView.frame = CGRectMake(0, 0, screenWidth, statusBarH + navBarH + 78 * screenWidth / 375);
     if (iPhone5 || iPhone4)
     {
         backView.image = [UIImage imageNamed:@"mine_top_bg_zc_4"];
@@ -169,6 +171,14 @@
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mineBackViewClick)];
     [backView addGestureRecognizer:tap];
+    
+    //设置
+    UIButton * settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGFloat settingButtonWH = 55;
+    settingButton.frame = CGRectMake(screenWidth - settingButtonWH - 5, statusBarH, settingButtonWH, settingButtonWH);
+    [settingButton setImage:[UIImage imageNamed:@"11x5_setting"] forState:UIControlStateNormal];
+    [settingButton addTarget:self action:@selector(settingButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [backView addSubview:settingButton];
     
     //头像
     UIImageView *avatarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(YZMargin, statusBarH + 25, 50, 50)];
@@ -205,15 +215,6 @@
     phoneBindingLabel.textColor = YZColor(253, 165, 162, 1);
     phoneBindingLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
     [backView addSubview:phoneBindingLabel];
-  
-    //accessory
-    CGFloat accessoryW = 8;
-    CGFloat accessoryH = 11;
-    UIImageView * accessory = [[UIImageView alloc]init];
-    accessory.frame = CGRectMake(screenWidth - YZMargin - accessoryW, 0, accessoryW, accessoryH);
-    accessory.centerY = avatarImageView.centerY;
-    accessory.image = [UIImage imageNamed:@"mine_accessory_zc"];
-    [backView addSubview:accessory];
     
     //账户金额
     UIView * moneyDetailView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(backView.frame), screenWidth, 77)];
@@ -287,7 +288,7 @@
     }
     
     //我的服务
-    UIView * functionView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(walletView.frame) + 9, screenWidth, 190)];
+    UIView * functionView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(walletView.frame) + 9, screenWidth, 0)];
     functionView.backgroundColor = [UIColor whiteColor];
     [scrollView addSubview:functionView];
     
@@ -300,59 +301,37 @@
     [functionView addSubview:functionLabel];
     
     //功能按钮
-    CGFloat functionBtnY1 = 40;
-    CGFloat functionBtnY2 = 114;
     CGFloat functionBtnH = 70;
-    NSArray * buttonTitles = @[@"投注详情", @"资金明细", @"充值记录", @"提款记录", @"消息中心", @"购彩帮助", @"联系客服", @"设置"];
-    NSArray * buttonImageNames = @[@"mine_order_zc_icon", @"mine_money_zc_icon", @"mine_recharge_record_zc_icon", @"mine_withdrawal_record_zc_icon", @"mine_message_zc_icon", @"mine_help_zc_icon", @"mine_contact_service_zc_icon", @"mine_setting_zc_icon"];
-    for (int i = 0; i < 8; i++) {
+    NSMutableArray * buttonTitles = [NSMutableArray arrayWithArray:@[@"投注详情", @"资金明细", @"充值记录", @"提款记录", @"消息中心", @"购彩帮助", @"联系客服"]];
+    NSMutableArray * buttonImageNames = [NSMutableArray arrayWithArray:@[@"mine_order_zc_icon", @"mine_money_zc_icon", @"mine_recharge_record_zc_icon", @"mine_withdrawal_record_zc_icon", @"mine_message_zc_icon", @"mine_help_zc_icon", @"mine_contact_service_zc_icon"]];
+    BOOL share_open = [YZUserDefaultTool getIntForKey:@"share_open"];
+    if (share_open) {
+        [buttonTitles addObject:@"分享好友赚钱"];
+        [buttonImageNames addObject:@"mine_share_icon"];
+    }
+    for (int i = 0; i < buttonTitles.count; i++) {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag = i;
-        button.frame = CGRectMake(screenWidth / 4 * (i % 4), (i < 4 ? functionBtnY1 : functionBtnY2), screenWidth / 4, functionBtnH);
+        button.frame = CGRectMake(screenWidth / 4 * (i % 4), 40 + (i / 4) * (functionBtnH + 5), screenWidth / 4, functionBtnH);
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [button setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
         [button setImage:[UIImage imageNamed:buttonImageNames[i]] forState:UIControlStateNormal];
         [button setTitle:buttonTitles[i] forState:UIControlStateNormal];
+        if ([button.currentTitle isEqualToString:@"分享好友赚钱"]) {
+            [button setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        }else
+        {
+            [button setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+        }
         [button setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentUp imgTextDistance:10];//图片和文字的间距
         [button addTarget:self action:@selector(functionButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
         [functionView addSubview:button];
+        functionView.height = CGRectGetMaxY(button.frame) + 5;
     }
     
     scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(functionView.frame) + 10);
-//    [self test];
 }
-- (void)test
-{
-    NSDictionary *testDict = @{
-                               @"cmd":@(8026),
-                               @"gameId":@"T05"
-                               };
-    [[YZHttpTool shareInstance] postWithParams:testDict success:^(id json) {
-        YZLog(@"%@",json);
-        if (Jump) {//隐藏充值按钮
-            self.rechargeButton.hidden = YES;
-            self.withdrawalButton.x = 0;
-            self.withdrawalButton.width = screenWidth / 2;
-            self.voucheButton.x = screenWidth / 2;
-            self.voucheButton.width = screenWidth / 2;
-        }else
-        {
-            self.rechargeButton.hidden = NO;
-            self.rechargeButton.x = 0;
-            self.rechargeButton.width = screenWidth / 3;
-            self.withdrawalButton.x = screenWidth / 3;
-            self.withdrawalButton.width = screenWidth / 3;
-            self.voucheButton.x = screenWidth / 3 * 2;
-            self.voucheButton.width = screenWidth / 3;
-        }
-        [self.withdrawalButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-        [self.rechargeButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-        [self.voucheButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-    } failure:^(NSError *error) {
-        YZLog(@"getCurrentTermData - error = %@",error);
-    }];
-}
+
 #pragma mark - 设置数据
 - (void)setUser:(YZUser *)user
 {
@@ -440,11 +419,18 @@
     }
 }
 #pragma mark - 按钮点击
+- (void)settingButtonDidClick
+{
+    YZMineSettingViewController * settingVC = [[YZMineSettingViewController alloc]init];
+    [self.navigationController pushViewController:settingVC animated:YES];
+}
+
 - (void)mineBackViewClick
 {
     YZAccountInfoViewController * accountInfoVC = [[YZAccountInfoViewController alloc]init];
     [self.navigationController pushViewController:accountInfoVC animated:YES];
 }
+
 - (void)walletButtonDidClick:(UIButton *)button
 {
     if (button.tag == 1) {//提款
@@ -517,7 +503,7 @@
         [self.navigationController pushViewController:contactServiceVC animated:YES];
     }else if (button.tag == 7)
     {
-        YZMineSettingViewController * settingVC = [[YZMineSettingViewController alloc]init];
+        YZShareViewController * settingVC = [[YZShareViewController alloc]init];
         [self.navigationController pushViewController:settingVC animated:YES];
     }
 }

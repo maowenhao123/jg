@@ -99,24 +99,21 @@
     
     //按钮
     for (int i = 0; i < 2; i++) {
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        YZBottomButton * button = [YZBottomButton buttonWithType:UIButtonTypeCustom];
         button.tag = i;
         if (i == 0) {
             self.shareButton = button;
-            button.backgroundColor = YZRedBallColor;
             [button setTitle:@"邀请好友" forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }else
         {
             self.incomeButton = button;
-            button.backgroundColor = [UIColor whiteColor];
             [button setTitle:@"我的收益" forState:UIControlStateNormal];
-            [button setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+            [button setTitleColor:YZBaseColor forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor]] forState:UIControlStateNormal];//正常
+            [button setBackgroundImage:[UIImage ImageFromColor:YZColor(216, 216, 216, 1)] forState:UIControlStateHighlighted];//高亮
+            button.layer.borderColor = YZBaseColor.CGColor;
             button.layer.borderWidth = 1;
-            button.layer.borderColor = YZWhiteLineColor.CGColor;
         }
-        
-        button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [scrollView addSubview:button];
         
@@ -151,11 +148,11 @@
     CGSize size = [self.reminderLabel.attributedText boundingRectWithSize:CGSizeMake(screenWidth - YZMargin * 2, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.reminderLabel.frame = CGRectMake(YZMargin, CGRectGetMaxY(self.line.frame) + 7,  screenWidth - YZMargin * 2, size.height);
     
-    self.shareButton.frame = CGRectMake(0, CGRectGetMaxY(self.reminderLabel.frame) + 20, screenWidth, 40);
-    self.incomeButton.frame = CGRectMake(0, CGRectGetMaxY(self.reminderLabel.frame) + 20 + 50, screenWidth, 40);
+    self.shareButton.y = CGRectGetMaxY(self.reminderLabel.frame) + 20;
+    self.incomeButton.y = CGRectGetMaxY(self.shareButton.frame) + 20;
     self.scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(self.incomeButton.frame) + 10);
-
 }
+
 - (void)buttonClick:(UIButton *)button
 {
     if (button.tag == 0) {
@@ -166,6 +163,7 @@
         [self.navigationController pushViewController:incomeVC animated:YES];
     }
 }
+
 - (void)share
 {
     YZShareView * shareView = [[YZShareView alloc]init];
@@ -174,6 +172,7 @@
         [self shareImageToPlatformType:platformType];
     };
 }
+
 //分享图片
 - (void)shareImageToPlatformType:(UMSocialPlatformType)platformType
 {

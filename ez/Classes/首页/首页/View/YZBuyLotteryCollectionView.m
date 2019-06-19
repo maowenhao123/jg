@@ -188,7 +188,7 @@
     NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
                            @"seqId":seqId,
-                           @"version":@"0.0.3",
+                           @"version":@"0.0.5",
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getGameInfoList") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self];
@@ -402,6 +402,7 @@
     if (indexPath.section == 4)
     {
         YZBuyLotteryCellStatus * status = self.gameInfos[indexPath.row];
+        status.gameId = @"TT";
         YZGameIdViewController *destVc = (YZGameIdViewController *)[[[YZTool gameDestClassDict][status.gameId] alloc] initWithGameId:status.gameId];
         [self.viewController.navigationController pushViewController:destVc animated:YES];
     }else if (indexPath.section == 5)

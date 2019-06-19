@@ -29,7 +29,4 @@
 
 + (YZThirdPartyStatus *)thirdPartyStatus;//取出第三方所有信息
 
-+ (void)saveWeixinStatus:(YZWeixinStatus *)weixinStatus;//存储微信所有信息
-
-+ (YZWeixinStatus *)weixinStatus;//取出微信所有信息
 @end

@@ -177,6 +177,13 @@
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZCSMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]];
+#if JG
+    if ([viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]]) {
+        hiddenNavBar = NO;
+    }
+#elif ZC
+#elif CS
+#endif
     [navigationController setNavigationBarHidden:hiddenNavBar animated:YES];
 }
 
