@@ -1125,9 +1125,9 @@
 		AA34D61722B91E6700E305EB /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA34D61522B91E6600E305EB /* TYRZResource.bundle */; };
 		AA34D61822B91E6700E305EB /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA34D61522B91E6600E305EB /* TYRZResource.bundle */; };
 		AA34D61922B91E6700E305EB /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA34D61522B91E6600E305EB /* TYRZResource.bundle */; };
-		AA34D61A22B91E6700E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D61622B91E6700E305EB /* TYRZSDK.framework */; };
-		AA34D61B22B91E6700E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D61622B91E6700E305EB /* TYRZSDK.framework */; };
-		AA34D61C22B91E6700E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D61622B91E6700E305EB /* TYRZSDK.framework */; };
+		AA34D61E22BA72F300E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D61D22BA72F200E305EB /* TYRZSDK.framework */; };
+		AA34D61F22BA72F300E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D61D22BA72F200E305EB /* TYRZSDK.framework */; };
+		AA34D62022BA72F300E305EB /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA34D61D22BA72F200E305EB /* TYRZSDK.framework */; };
 		AA3657D021D224B9009BE71B /* YZActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3657CF21D224B9009BE71B /* YZActivityModel.m */; };
 		AA3657D121D224B9009BE71B /* YZActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3657CF21D224B9009BE71B /* YZActivityModel.m */; };
 		AA3657D221D224B9009BE71B /* YZActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3657CF21D224B9009BE71B /* YZActivityModel.m */; };
@@ -2591,7 +2591,7 @@
 		AA32942E200358FE00CA77DA /* YZBingingNewPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZBingingNewPhoneViewController.h; sourceTree = "<group>"; };
 		AA32942F200358FE00CA77DA /* YZBingingNewPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZBingingNewPhoneViewController.m; sourceTree = "<group>"; };
 		AA34D61522B91E6600E305EB /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
-		AA34D61622B91E6700E305EB /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
+		AA34D61D22BA72F200E305EB /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
 		AA3657CE21D224B9009BE71B /* YZActivityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZActivityModel.h; sourceTree = "<group>"; };
 		AA3657CF21D224B9009BE71B /* YZActivityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZActivityModel.m; sourceTree = "<group>"; };
 		AA3A9D3721DEF58A00F9147C /* HyphenateLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateLite.framework; sourceTree = "<group>"; };
@@ -3553,7 +3553,7 @@
 				AA237FF62143590C00BC47BB /* Foundation.framework in Frameworks */,
 				AA237FF72143590C00BC47BB /* UIKit.framework in Frameworks */,
 				AA237FF82143590C00BC47BB /* CoreText.framework in Frameworks */,
-				AA34D61C22B91E6700E305EB /* TYRZSDK.framework in Frameworks */,
+				AA34D62022BA72F300E305EB /* TYRZSDK.framework in Frameworks */,
 				AA237FF92143590C00BC47BB /* QuartzCore.framework in Frameworks */,
 				AA237FFA2143590C00BC47BB /* CoreFoundation.framework in Frameworks */,
 				AA237FFB2143590C00BC47BB /* AVFoundation.framework in Frameworks */,
@@ -3613,7 +3613,7 @@
 				AA57887B22851CB9002292EA /* jcore-ios-2.0.0.a in Frameworks */,
 				AA67A24E1FAC150100B3611B /* libssl.a in Frameworks */,
 				AA67A24F1FAC150100B3611B /* MobileCoreServices.framework in Frameworks */,
-				AA34D61A22B91E6700E305EB /* TYRZSDK.framework in Frameworks */,
+				AA34D61E22BA72F300E305EB /* TYRZSDK.framework in Frameworks */,
 				AA67A2501FAC150100B3611B /* CoreLocation.framework in Frameworks */,
 				AA67A2551FAC150100B3611B /* AddressBook.framework in Frameworks */,
 				AA67A2561FAC150100B3611B /* libcrypto.a in Frameworks */,
@@ -3667,7 +3667,7 @@
 				AA57887C22851CB9002292EA /* jcore-ios-2.0.0.a in Frameworks */,
 				CE58BAA91DE58BF80033B300 /* libssl.a in Frameworks */,
 				CE58BAAA1DE58BF80033B300 /* MobileCoreServices.framework in Frameworks */,
-				AA34D61B22B91E6700E305EB /* TYRZSDK.framework in Frameworks */,
+				AA34D61F22BA72F300E305EB /* TYRZSDK.framework in Frameworks */,
 				CE58BAAB1DE58BF80033B300 /* CoreLocation.framework in Frameworks */,
 				CE58BAAE1DE58BF80033B300 /* AddressBook.framework in Frameworks */,
 				CE58BAAF1DE58BF80033B300 /* libcrypto.a in Frameworks */,
@@ -5116,8 +5116,8 @@
 		AA34D5E422B7BB4A00E305EB /* TYRZSDK */ = {
 			isa = PBXGroup;
 			children = (
+				AA34D61D22BA72F200E305EB /* TYRZSDK.framework */,
 				AA34D61522B91E6600E305EB /* TYRZResource.bundle */,
-				AA34D61622B91E6700E305EB /* TYRZSDK.framework */,
 			);
 			path = TYRZSDK;
 			sourceTree = "<group>";
