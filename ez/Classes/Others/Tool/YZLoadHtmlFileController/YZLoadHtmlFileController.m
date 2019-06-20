@@ -178,9 +178,7 @@
         return;
     }
     
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"userId":UserId,
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getUpgradeCoupon") params:dict success:^(id json) {

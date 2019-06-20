@@ -79,7 +79,6 @@
 {
     NSDictionary *dict = @{
                            @"type":@"CUSTOMER_SERVICE",
-                           @"sequence":[YZTool uuidString],
                            @"timestamp":[YZDateTool getNowTimeTimestamp]
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getQrCode") params:dict success:^(id json) {

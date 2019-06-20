@@ -38,7 +38,6 @@
 {
     if (!UserId) return;
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"userId":UserId,
                            @"timestamp":[YZDateTool getNowTimeTimestamp],
                            };
@@ -189,7 +188,6 @@
 {
     if (!UserId) return;
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"userId":UserId,
                            @"promotionId":self.giveVoucherModel.couponRedPackagePromotion.promotionId,
                            };

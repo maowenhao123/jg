@@ -30,14 +30,14 @@
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hide)];
         [self addGestureRecognizer:tap];
         
-        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 235)];
+        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 44 + 180 * screenHeight / 667)];
         self.contentView = contentView;
         contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:contentView];
         
         //工具栏取消和选择
         UIToolbar * toolBar = [[UIToolbar alloc]init];
-        toolBar.frame = CGRectMake(0, 0, screenWidth, 35);
+        toolBar.frame = CGRectMake(0, 0, screenWidth, 44);
         [contentView addSubview:toolBar];
         
         UIBarButtonItem * barButtonItem1 = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(hide)];
@@ -52,7 +52,7 @@
         [toolBar setItems:@[barButtonItem1,spaceItem,barButtonItem2]];
         
         //PickerView
-        UIPickerView * pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 35, screenWidth, 200)];
+        UIPickerView * pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 180 * screenHeight / 667)];
         pickView.backgroundColor = [UIColor whiteColor];
         pickView.delegate = self;
         pickView.dataSource = self;
@@ -78,7 +78,7 @@
     [topView addSubview:self];
     
     [UIView animateWithDuration:animateDuration animations:^{
-        self.contentView.y = screenHeight - 235;
+        self.contentView.y = screenHeight - self.contentView.height;
     }];
 }
 - (void)hide{

@@ -140,9 +140,7 @@
 }
 #pragma mark - 获取分享活动数据
 - (void)getShareData {
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getShareFriendSwitch") params:dict success:^(id json) {
         if (SUCCESS) {

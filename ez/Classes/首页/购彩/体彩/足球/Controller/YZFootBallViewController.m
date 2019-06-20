@@ -249,9 +249,7 @@
         YZFBMatchDetailStatus *matchDetailStatus = self.matchDetailDic[roundNum];
         if (!matchDetailStatus) {//没有数据时请求数据
             waitingView_loadingData;
-            NSString * seqId = [YZTool uuidString];//获取uuid
             NSDictionary *dict = @{
-                                   @"sequence":seqId,
                                    @"roundNum":roundNum
                                    };
             [[YZHttpTool shareInstance] requestTarget:self PostWithURL:BaseUrlFootball(@"/getMatchStat") params:dict success:^(id json) {

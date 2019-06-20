@@ -51,7 +51,6 @@
     
     NSDictionary *dict = @{
                            @"id":forecastId,
-                           @"sequence":[YZTool uuidString],
                            };
     waitingView;
     [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getAppInformationDetail") params:dict success:^(id json) {

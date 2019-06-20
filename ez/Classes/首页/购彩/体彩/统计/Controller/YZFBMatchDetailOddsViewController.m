@@ -103,9 +103,7 @@
 - (void)getDataWithCompanyId:(NSString *)companyId
 {
     waitingView_loadingData;
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"roundNum":self.roundNum,
                            @"companyId":companyId
                            };

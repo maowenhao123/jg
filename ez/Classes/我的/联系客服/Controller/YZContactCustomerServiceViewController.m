@@ -41,7 +41,6 @@
 - (void)getPhoneNumber
 {
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getServiceTelephone") params:dict success:^(id json) {
         if (SUCCESS) {
@@ -164,7 +163,6 @@
 {
     //注册
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"userId":UserId,
                            };
     waitingView

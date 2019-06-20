@@ -618,10 +618,8 @@
 #pragma mark - 分享
 - (void)share
 {
-    NSString * seqId = [YZTool uuidString];//获取uuid
     YZUser *user = [YZUserDefaultTool user];
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"gameId":self.order.gameId,
                            @"userName":user.userName
                            };

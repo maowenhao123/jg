@@ -350,9 +350,8 @@
 {
     if (!UserId) return;
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"userId":UserId,
-                           @"ver":@"0.0.2"
+                           @"version":@"0.0.2"
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getGuide") params:dict success:^(id json) {
         YZLog(@"getGuide:%@",json);
@@ -377,7 +376,6 @@
 {
     if (!UserId) return;
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"userId":UserId,
                            @"timestamp":[YZDateTool getNowTimeTimestamp],
                            };

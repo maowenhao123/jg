@@ -165,9 +165,7 @@
         return;
     }
     [MBProgressHUD showNoBackgroundViewMessage:nil toView:self.mainView.standingsView point:CGPointMake(0, -100)];
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"roundNum":self.roundNum
                            };
     [[YZHttpTool shareInstance] requestTarget:self PostWithURL:BaseUrlFootball(@"/getRecord") params:dict success:^(id json) {
@@ -215,9 +213,7 @@
         return;
     }
     [MBProgressHUD showNoBackgroundViewMessage:nil toView:self.mainView.integralView point:CGPointMake(0, -100)];
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"roundNum":self.roundNum
                            };
     [[YZHttpTool shareInstance] requestTarget:self PostWithURL:BaseUrlFootball(@"/getScore") params:dict success:^(id json) {
@@ -278,9 +274,7 @@
         return;
     }
     [MBProgressHUD showNoBackgroundViewMessage:nil toView:self.mainView.oddsView point:CGPointMake(0, -100)];
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"roundNum":self.roundNum
                            };
     [[YZHttpTool shareInstance] requestTarget:self PostWithURL:BaseUrlFootball(@"/getOdds") params:dict success:^(id json) {
@@ -336,9 +330,7 @@
         return;
     }
     [MBProgressHUD showNoBackgroundViewMessage:nil toView:self.mainView.recommendView point:CGPointMake(0, -100)];
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"roundNum":self.roundNum
                            };
     [[YZHttpTool shareInstance] requestTarget:self PostWithURL:BaseUrlFootball(@"/getRecommend") params:dict success:^(id json) {

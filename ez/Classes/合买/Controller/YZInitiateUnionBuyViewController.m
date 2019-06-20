@@ -50,6 +50,7 @@ NSString * const InitiateUnionBuyCellId = @"InitiateUnionBuyCellId";
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     layout.minimumInteritemSpacing = 0.0;//列间距
     layout.minimumLineSpacing = 0.0;//行间距
+    layout.itemSize = CGSizeMake(screenWidth / 4, 109);
     
     CGFloat collectionViewY = 0;
     CGFloat collectionViewH = screenHeight - statusBarH - navBarH;
@@ -63,24 +64,6 @@ NSString * const InitiateUnionBuyCellId = @"InitiateUnionBuyCellId";
     
     //注册
     [collectionView registerClass:[YZZCBuyLotteryCollectionViewCell class] forCellWithReuseIdentifier:InitiateUnionBuyCellId];
-}
-
-#pragma mark - UICollectionViewDelegateFlowLayout
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0;
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsZero;
-    
-}
-
-//配置item的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(screenWidth / 4, 109);
 }
 
 #pragma mark - UICollectionViewDataSource
