@@ -12,4 +12,6 @@
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
+@property (nonatomic,strong) NSDictionary *dic;
+
 @end

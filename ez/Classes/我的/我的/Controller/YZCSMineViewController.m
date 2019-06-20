@@ -567,7 +567,6 @@
 {
     //注册
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"userId":UserId,
                            };
     waitingView

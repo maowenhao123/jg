@@ -59,7 +59,6 @@
 - (void)getChasePlanPromotionData
 {
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getChasePlanPromotion") params:dict success:^(id json) {
         YZLog(@"getChasePlanPromotion:%@",json);
@@ -81,13 +80,15 @@
     {
          YZLog(@"error = %@",error);
          [MBProgressHUD hideHUDForView:self.view];
+        self.bannerView.height = 0;
+        waitingView_loadingData;
+        [self getChasePlanData];
     }];
 }
 
 - (void)getChasePlanData
 {
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getChasePlanList") params:dict success:^(id json) {
         YZLog(@"getChasePlanList:%@",json);

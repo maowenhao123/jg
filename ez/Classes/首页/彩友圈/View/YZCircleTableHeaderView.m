@@ -7,7 +7,17 @@
 //
 
 #import "YZCircleTableHeaderView.h"
-#import "YZCircleSortView.h"
+#import "YZCommunityCircleViewController.h"
+#import "YZCircleCommunityCollectionViewCell.h"
+
+NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollectionViewCellId";
+
+@interface YZCircleTableHeaderView ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic,weak) UICollectionView *collectionView;
+@property (nonatomic,strong) NSArray *dataArray;
+
+@end
 
 @implementation YZCircleTableHeaderView
 
@@ -21,26 +31,97 @@
     return self;
 }
 
+#pragma mark - 请求数据
+- (void)getData
+{
+    NSDictionary *dict = @{
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlCircle(@"/getCommunityList") params:dict success:^(id json) {
+        YZLog(@"getCommunityList:%@",json);
+        if (SUCCESS){
+//            self.dataArray = json[@"community"];
+//            [self.collectionView reloadData];
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+     {
+         YZLog(@"error = %@",error);
+     }];
+}
+
+#pragma mark - 布局子视图
 - (void)setupChildViews
 {
-    CGFloat circleSortViewH = 100;
-    for (int i = 0; i < 3; i++) {
-        YZCircleSortView * circleSortView = [[YZCircleSortView alloc] initWithFrame:CGRectMake(screenWidth / 3 * i, 0, screenWidth / 3, circleSortViewH)];
-        [self addSubview:circleSortView];
+    //collectionView
+    CGFloat collectionViewH = 100;
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.itemSize = CGSizeMake(screenWidth / 3, collectionViewH);
+    
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, collectionViewH) collectionViewLayout:layout];
+    self.collectionView = collectionView;
+    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    collectionView.showsHorizontalScrollIndicator = NO;
+    [self addSubview:collectionView];
+    
+    //注册
+    [collectionView registerClass:[YZCircleCommunityCollectionViewCell class] forCellWithReuseIdentifier:circleCommunityCollectionViewCellId];
+//    //分割线
+//    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, circleCommunityViewH, screenWidth, 1)];
+//    line.backgroundColor = YZWhiteLineColor;
+//    [self addSubview:line];
+//
+//    //公告
+//    UILabel * noticeLabel = [[UILabel alloc] init];
+//    noticeLabel.text = @"公告：";
+//    noticeLabel.frame = CGRectMake(YZMargin, circleCommunityViewH, self.width - 2 *YZMargin, 40);
+//    noticeLabel.textColor = YZBlackTextColor;
+//    noticeLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+//    [self addSubview:noticeLabel];
+}
+
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 3;
+    return self.dataArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    YZCircleCommunityCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:circleCommunityCollectionViewCellId forIndexPath:indexPath];
+//    cell.dic = self.dataArray[indexPath.row];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+//    NSDictionary * dic = self.dataArray[indexPath.row];
+    YZCommunityCircleViewController * communityCircleVC = [[YZCommunityCircleViewController alloc] init];
+//    communityCircleVC.communityId = dic[@"id"];
+//    communityCircleVC.title = dic[@"name"];
+    [self.viewController.navigationController pushViewController:communityCircleVC animated:YES];
+}
+
+#pragma mark - 初始化
+- (NSArray *)dataArray
+{
+    if (!_dataArray) {
+        _dataArray = [NSArray array];
     }
-    
-    //分割线
-    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, circleSortViewH, screenWidth, 1)];
-    line.backgroundColor = YZWhiteLineColor;
-    [self addSubview:line];
-    
-    //公告
-    UILabel * noticeLabel = [[UILabel alloc] init];
-    noticeLabel.text = @"公告：";
-    noticeLabel.frame = CGRectMake(YZMargin, circleSortViewH, self.width - 2 *YZMargin, 40);
-    noticeLabel.textColor = YZBlackTextColor;
-    noticeLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-    [self addSubview:noticeLabel];
+    return _dataArray;
 }
 
 @end

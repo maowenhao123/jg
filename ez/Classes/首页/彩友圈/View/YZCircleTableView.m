@@ -27,9 +27,30 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self setEstimatedSectionHeaderHeightAndFooterHeight];
+//        [self getData];
     }
     return self;
 }
+
+#pragma mark - 请求数据
+- (void)getData
+{
+    NSDictionary *dict = @{
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlCircle(@"/getTopicList") params:dict success:^(id json) {
+        YZLog(@"getTopicList:%@",json);
+        if (SUCCESS){
+            
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+    {
+        YZLog(@"error = %@",error);
+    }];
+}
+
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

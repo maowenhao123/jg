@@ -71,7 +71,6 @@ NSString * const CustomCountCellId = @"YZIntegralCustomCountCollectionViewCellId
 - (void)getData
 {
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            };
     waitingView
     [[YZHttpTool shareInstance] postWithURL:BaseUrlPoint(@"/getPointCoupons") params:dict success:^(id json) {
@@ -355,7 +354,6 @@ NSString * const CustomCountCellId = @"YZIntegralCustomCountCollectionViewCellId
                            @"couponId":self.selectedCouponsModel.id,
                            @"couponCount":@(self.count),
                            @"points":@(self.integral),
-                           @"sequence":[YZTool uuidString],
                            };
     waitingView
     [[YZHttpTool shareInstance] postWithURL:BaseUrlPoint(@"/pointChangeCoupon") params:dict success:^(id json) {

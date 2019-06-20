@@ -99,8 +99,10 @@
         [self presentViewController:nav animated:YES completion:nil];
         return;
     }
-    YZMessageViewController * messageVC = [[YZMessageViewController alloc] init];
+    YZCircleViewController * messageVC = [[YZCircleViewController alloc] init];
     [self.navigationController pushViewController:messageVC animated:YES];
+//    YZMessageViewController * messageVC = [[YZMessageViewController alloc] init];
+//    [self.navigationController pushViewController:messageVC animated:YES];
 }
 
 - (void)serviceBarDidClick

@@ -10,9 +10,11 @@
 
 @interface YZSegementViewController ()<UIScrollViewDelegate>
 
+@property (nonatomic,weak) UIScrollView *topBackScrollView;
 @property (nonatomic, weak) UIButton *selectedBtn;//被选中的顶部按钮
 @property (nonatomic, weak) UIView *topBtnLine;//顶部按钮的下划线
 @property (nonatomic, assign) int tableViewCount;//一个有几个视图
+@property (nonatomic, weak) UIImageView * arrowImageView;
 
 @end
 
@@ -22,19 +24,53 @@
 {
     if (self.btnTitles.count == self.views.count) {//顶部按钮必须和视图数保持一致
         self.tableViewCount = (int)self.btnTitles.count;
+        if (self.maxViewCount == 0) {
+            self.maxViewCount = 4;
+        }
         [self setupChildViews];
     }
 }
 #pragma mark - 布局子视图
 - (void)setupChildViews
 {
-    //底部的view
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, topBtnH)];
-    backView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:backView];
+    for (UIView * subView in self.view.subviews) {
+        [subView removeFromSuperview];
+    }
+    //顶部的view
+    UIScrollView *topBackScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, topBtnH)];
+    self.topBackScrollView = topBackScrollView;
+    topBackScrollView.backgroundColor = [UIColor whiteColor];
+    topBackScrollView.showsVerticalScrollIndicator = NO;
+    topBackScrollView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:topBackScrollView];
+    
+    //小三角
+    if (self.canEdit) {
+        CGFloat arrowViewW = 44;
+        topBackScrollView.width = screenWidth - arrowViewW;
+        
+        UIView * arrowView = [[UIView alloc] initWithFrame:CGRectMake(screenWidth - arrowViewW, 0, arrowViewW, topBtnH)];
+        arrowView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:arrowView];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(arrowViewDidClick)];
+        [arrowView addGestureRecognizer:tap];
+        
+        CGFloat arrowImageViewW = 24;
+        CGFloat arrowImageViewH = 14;
+        UIImageView * arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowView.width - 12 - arrowImageViewW, (topBtnH - arrowImageViewH) / 2, arrowImageViewW, arrowImageViewH)];
+        self.arrowImageView = arrowImageView;
+        arrowImageView.image = [UIImage imageNamed:@"11x5_history_btn"];
+        [arrowView addSubview:arrowImageView];
+    }
     
     //顶部按钮
-    CGFloat topBtnW = (screenWidth - 10) / self.tableViewCount;
+    CGFloat topBtnW = (topBackScrollView.width - 10) / self.tableViewCount;
+    topBackScrollView.contentSize = CGSizeMake(topBackScrollView.width, topBtnH);
+    if (self.tableViewCount > self.maxViewCount) {
+        topBtnW = (topBackScrollView.width - 10) / self.maxViewCount;
+        topBackScrollView.contentSize = CGSizeMake(topBtnW * self.tableViewCount, topBtnH);
+    }
     for(int i = 0;i < self.tableViewCount;i++)
     {
         UIButton *topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -43,18 +79,18 @@
         topBtn.frame = CGRectMake(5 + i*topBtnW, 0, topBtnW, topBtnH - 2);
         topBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         topBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-        [topBtn setTitleColor:YZColor(134, 134, 134, 1) forState:UIControlStateNormal];
-        [topBtn setTitleColor:YZColor(246, 53, 80, 1) forState:UIControlStateSelected];
+        [topBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+        [topBtn setTitleColor:YZRedTextColor forState:UIControlStateSelected];
         [topBtn addTarget:self action:@selector(topBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [backView addSubview:topBtn];
+        [topBackScrollView addSubview:topBtn];
         [self.topBtns addObject:topBtn];
     }
-    //底部红线
+    //底部线
     UIView * topBtnLine = [[UIView alloc]init];
     self.topBtnLine = topBtnLine;
-    topBtnLine.frame = CGRectMake(5, topBtnH - 2, topBtnW, 2);
-    topBtnLine.backgroundColor = YZColor(246, 53, 80, 1);
-    [backView addSubview:topBtnLine];
+    topBtnLine.frame = CGRectMake(5 + 5, topBtnH - 2, topBtnW - 5 * 2, 2);
+    topBtnLine.backgroundColor = YZRedTextColor;
+    [topBackScrollView addSubview:topBtnLine];
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     self.scrollView = scrollView;
@@ -77,13 +113,31 @@
         [scrollView addSubview:view];
     }
 }
+
 #pragma mark - 视图滑动
 - (void)topBtnClick:(UIButton *)btn
 {
     //滚动到指定页码
     [self.scrollView setContentOffset:CGPointMake(btn.tag * screenWidth, 0) animated:YES];
     [self changeSelectedBtn:btn];
+    
+    //所选按钮居中显示
+    if (self.btnTitles.count > self.maxViewCount) {
+        NSInteger index = btn.tag;
+        CGFloat buttonW = btn.width;
+        CGFloat offsetX;
+        if (index <= 1) {
+            offsetX = 0;
+        }else if (index > 1 && index < self.btnTitles.count - 2) {
+            offsetX = (index - 1.5) * buttonW;
+        }else
+        {
+            offsetX = self.topBackScrollView.contentSize.width - screenWidth;
+        }
+        [self.topBackScrollView setContentOffset:CGPointMake(offsetX, self.scrollView.mj_offsetY) animated:YES];
+    }
 }
+
 - (void)changeSelectedBtn:(UIButton *)btn
 {
     self.selectedBtn.selected = NO;
@@ -92,7 +146,7 @@
     btn.selected = YES;
     self.selectedBtn = btn;
     //红线动画
-    [UIView animateWithDuration:animateDuration
+    [UIView animateWithDuration:0.2
                      animations:^{
                          self.topBtnLine.center = CGPointMake(btn.center.x, self.topBtnLine.center.y);
                      }];
@@ -101,6 +155,7 @@
     //当前页面切换，子类实现
     [self changeCurrentIndex:self.currentIndex];
 }
+
 #pragma mark - UIScrollViewDelegate代理方法
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
@@ -115,10 +170,18 @@
         [self changeSelectedBtn:self.topBtns[pageInt]];
     }
 }
+
 - (void)changeCurrentIndex:(int)currentIndex
 {
     //子类实现
 }
+
+#pragma mark - 点击小三角
+- (void)arrowViewDidClick
+{
+    
+}
+
 #pragma mark - 初始化
 - (NSArray *)btnTitles
 {
@@ -143,5 +206,6 @@
     }
     return _topBtns;
 }
+
 
 @end

@@ -104,7 +104,6 @@
 {
     NSDictionary *dict = @{
                            @"id":self.schemeSetmealId,
-                           @"sequence":[YZTool uuidString],
                            };
     waitingView
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getChasePlan") params:dict success:^(id json) {

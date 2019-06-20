@@ -865,9 +865,7 @@
 //获取走势图数据
 - (void)getTrendDataByTermId:(NSString *)termId
 {
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"gameId":self.gameId,
                            @"issueId":termId
                            };

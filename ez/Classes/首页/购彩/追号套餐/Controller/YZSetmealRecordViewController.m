@@ -193,7 +193,7 @@
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
-#pragma  mark - MJRefreshBaseViewDelegate的代理方法
+#pragma  mark - 刷新
 - (void)headerRefreshViewBeginRefreshing
 {
     //清空数据

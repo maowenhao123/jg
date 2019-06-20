@@ -38,10 +38,8 @@
 
 - (void)getData {
     [MBProgressHUD showMessage:@"客官请稍后" toView:self.view];
-    NSString * seqId = [YZTool uuidString];//获取uuid
     YZUser *user = [YZUserDefaultTool user];
     NSDictionary *dict = @{
-                           @"sequence":seqId,
                            @"userName":user.userName
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getShareFriend") params:dict success:^(id json) {

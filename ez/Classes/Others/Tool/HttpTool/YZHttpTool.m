@@ -124,6 +124,7 @@
                            @"channel":mainChannel,
                            @"childChannel":childChannel,
                            @"clientVersion":[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],
+                           @"sequence":[YZTool uuidString],
                            };
     NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:dict];
     if (![tempDict.allKeys containsObject:@"version"]) {

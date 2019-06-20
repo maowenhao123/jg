@@ -151,9 +151,7 @@
 - (void)buttonDidClick:(UIButton *)button
 {
     YZCircleViewAttentionViewController * attentionVC = [[YZCircleViewAttentionViewController alloc] init];
-    if (button.tag == 0) {
-        attentionVC.isFans = YES;
-    }
+    attentionVC.isFans = button.tag == 0;
     [self.navigationController pushViewController:attentionVC animated:YES];
 }
 

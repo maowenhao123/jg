@@ -108,7 +108,6 @@
 - (void)getFunctionData
 {
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"version": @"0.0.4"
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getShortcutModules") params:dict success:^(id json) {
@@ -130,7 +129,6 @@
 - (void)getQuickStakeData
 {
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getQuickStakeGames") params:dict success:^(id json) {
         YZLog(@"getQuickStakeGames:%@",json);
@@ -164,9 +162,7 @@
 //获取滚动新闻
 - (void)getNoticeData
 {
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"seqId":seqId
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlNotice(@"/getNoticeList") params:dict success:^(id json) {
         YZLog(@"getNoticeList:%@",json);
@@ -185,9 +181,7 @@
 //获取彩种信息数据
 - (void)getGameInfoDataWith:(MJRefreshGifHeader *)header
 {
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"seqId":seqId,
                            @"version":@"0.0.5",
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getGameInfoList") params:dict success:^(id json) {
@@ -221,9 +215,7 @@
 //获取资讯
 - (void)getInformationDataWith:(MJRefreshGifHeader *)header
 {
-    NSString * seqId = [YZTool uuidString];//获取uuid
     NSDictionary *dict = @{
-                           @"seqId":seqId,
                            @"pageIndex":@(self.pageIndex),
                            @"pageSize":@(10)
                            };
@@ -402,7 +394,6 @@
     if (indexPath.section == 4)
     {
         YZBuyLotteryCellStatus * status = self.gameInfos[indexPath.row];
-        status.gameId = @"TT";
         YZGameIdViewController *destVc = (YZGameIdViewController *)[[[YZTool gameDestClassDict][status.gameId] alloc] initWithGameId:status.gameId];
         [self.viewController.navigationController pushViewController:destVc animated:YES];
     }else if (indexPath.section == 5)

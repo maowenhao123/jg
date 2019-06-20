@@ -12,8 +12,10 @@
 
 @interface YZSegementViewController : YZBaseViewController
 
+@property (nonatomic, assign) int canEdit;
 @property (nonatomic, strong) NSArray *btnTitles;//顶部按钮标题数组
 @property (nonatomic, strong) NSMutableArray *views;//要显示的view数组
+@property (nonatomic,assign) NSInteger maxViewCount;//最多显示的按钮数
 @property (nonatomic, assign) int currentIndex;//显示第几个view
 @property (nonatomic, weak) UIScrollView *scrollView;//滑动的scrollview
 @property (nonatomic, strong) NSMutableArray *topBtns;//顶部按钮数组

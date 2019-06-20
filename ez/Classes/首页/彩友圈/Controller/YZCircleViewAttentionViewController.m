@@ -13,7 +13,9 @@
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) MJRefreshGifHeader *header;
+@property (nonatomic, weak) MJRefreshBackGifFooter *footer;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, assign) int pageIndex;
 
 @end
 
@@ -22,7 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     if (self.isFans) {
         self.title = @"我的粉丝";
     }else
@@ -30,6 +31,51 @@
         self.title = @"我关注的人";
     }
     [self setupChilds];
+    waitingView_loadingData;
+    self.pageIndex = 0;
+    [self getData];
+}
+
+#pragma mark - 请求数据
+- (void)getData
+{
+    NSNumber * status = self.isFans ? @(1) : @(2);
+    NSDictionary *dict = @{
+                           @"userId": UserId,
+                           @"status": status,
+                           @"pageIndex": @(self.pageIndex),
+                           @"pageSize": @(10)
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlCircle(@"/getByConcernMineUser") params:dict success:^(id json) {
+        [MBProgressHUD hideHUDForView:self.view];
+        YZLog(@"getByConcernMineUser:%@",json);
+        if (SUCCESS){
+            NSArray * dataArray = json[@"users"];
+            [self.dataArray addObjectsFromArray:dataArray];
+            //结束刷新
+            [self.tableView reloadData];
+            [self.header endRefreshing];
+            if (dataArray.count == 0) {//没有新的数据
+                [self.footer endRefreshingWithNoMoreData];
+            }else
+            {
+                [self.footer endRefreshing];
+            }
+        }else
+        {
+            ShowErrorView
+            [self.tableView reloadData];
+            [self.header endRefreshing];
+            [self.footer endRefreshing];
+        }
+    }failure:^(NSError *error)
+    {
+        [MBProgressHUD hideHUDForView:self.view];
+        YZLog(@"error = %@",error);
+        [self.tableView reloadData];
+        [self.header endRefreshing];
+        [self.footer endRefreshing];
+    }];
 }
 
 #pragma mark - 布局子视图
@@ -51,11 +97,27 @@
     [YZTool setRefreshHeaderData:header];
     self.header = header;
     self.tableView.mj_header = header;
+    
+    //初始化底部刷新控件
+    MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
+    [YZTool setRefreshFooterData:footer];
+    self.footer = footer;
+    tableView.mj_footer = footer;
 }
 
+#pragma  mark - 刷新
 - (void)headerRefreshViewBeginRefreshing
 {
-    
+    //清空数据
+    self.pageIndex = 0;
+    [self.dataArray removeAllObjects];
+    [self getData];
+}
+
+- (void)footerRefreshViewBeginRefreshing
+{
+    self.pageIndex++;
+    [self getData];
 }
 
 #pragma mark - Table view data source

@@ -60,41 +60,38 @@ typedef enum : NSUInteger {
 //#define childChannel @"caidd_ios_taylor"
 //#endif
 
-////正式环境
-//#define baseUrl @"http://www1.51mcp.com"
-//#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
-//
-//#if JG
-//#define childChannel @"ios_0001"
-////#define childChannel @"ios_taylor"
-//#elif ZC
-//#define childChannel @"zc_ios_0001"
-//#elif CS
-//#define childChannel @"zc_ios"
-//#endif
-
-//测试环境
-//#define baseUrl @"http://t21.51mcp.com:8811"
-#define baseUrl @"http://c.ez1898.com"
-//#define baseUrl @"http://192.168.11.21:8299"
-#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
+//正式环境
+#define baseUrl @"http://www1.51mcp.com"
+#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
 
 #if JG
-#define childChannel @"ios_test"
+#define childChannel @"ios_0001"
+//#define childChannel @"ios_taylor"
 #elif ZC
-#define childChannel @"zhongcai_ios"
+#define childChannel @"zc_ios_0001"
 #elif CS
-#define childChannel @"zhongcai_ios"
+#define childChannel @"zc_ios"
 #endif
 
-//ping 192.168.11.21
+////测试环境
+////#define baseUrl @"http://t21.51mcp.com:8811"
+//#define baseUrl @"http://c.ez1898.com"
+////#define baseUrl @"http://192.168.11.21:8299"
+//#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
+//
+//#if JG
+//#define childChannel @"ios_test"
+//#elif ZC
+//#define childChannel @"zhongcai_ios"
+//#elif CS
+//#define childChannel @"zhongcai_ios"
+//#endif
+
 #define BaseUrl(param) [NSString stringWithFormat:@"%@/%@", baseUrl, param]
 //极光推送url
 #define BaseUrlJiguang(param) [NSString stringWithFormat:@"%@/jiguang%@",baseUrl,param]
 //代金券url
 #define BaseUrlCoupon(param) [NSString stringWithFormat:@"%@/coupon%@",baseUrl,param]
-////微信
-//#define weixin(param) [NSString stringWithFormat:@"%@/weixin/server%@",baseUrl,param]
 //轮播图
 #define BaseUrlAdvert(param) [NSString stringWithFormat:@"%@/advert%@",baseUrl,param]
 //竞彩开奖
@@ -111,8 +108,10 @@ typedef enum : NSUInteger {
 #define BaseUrlShare(param) [NSString stringWithFormat:@"%@/promotion%@", baseUrl, param]
 //预测
 #define BaseUrlInformation(param) [NSString stringWithFormat:@"%@/information%@", baseUrl, param]
-////积分
+//积分
 #define BaseUrlPoint(param) [NSString stringWithFormat:@"%@/point%@", baseUrl, param]
+//彩友圈
+#define BaseUrlCircle(param) [NSString stringWithFormat:@"%@/information-platform%@", baseUrl, param]
 
 #import <Foundation/Foundation.h>
 #import "MJExtension.h"

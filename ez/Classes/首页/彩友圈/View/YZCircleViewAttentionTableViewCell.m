@@ -62,8 +62,14 @@
     nickNameLabel.textColor = YZBlackTextColor;
     nickNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     [self addSubview:nickNameLabel];
+}
+
+- (void)setDic:(NSDictionary *)dic
+{
+    _dic = dic;
     
-    
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:_dic[@"headPortraitUrl"]]];
+    self.nickNameLabel.text = _dic[@"nickname"];
 }
 
 

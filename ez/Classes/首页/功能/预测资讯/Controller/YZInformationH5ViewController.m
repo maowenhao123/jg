@@ -40,7 +40,6 @@
 - (void)getData
 {
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            };
     waitingView
     [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getAppInformationGameList") params:dict success:^(id json) {

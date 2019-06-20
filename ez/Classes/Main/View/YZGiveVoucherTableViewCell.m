@@ -113,7 +113,6 @@
 {
     if (!UserId) return;
     NSDictionary *dict = @{
-                           @"sequence":[YZTool uuidString],
                            @"userId":UserId,
                            @"promotionId":self.promotionId,
                            @"redpackageId":self.couponRedPackage.redpackageId,
