@@ -75,7 +75,7 @@
 
 - (void)hiddenView
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         self.contentView.frame = CGRectMake(0, self.height - tabBarH, screenWidth, 0);
     }completion:^(BOOL finished) {
         [self removeFromSuperview];

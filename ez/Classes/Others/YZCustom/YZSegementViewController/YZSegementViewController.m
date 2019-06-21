@@ -7,8 +7,9 @@
 //
 
 #import "YZSegementViewController.h"
+#import "YZEditSegementView.h"
 
-@interface YZSegementViewController ()<UIScrollViewDelegate>
+@interface YZSegementViewController ()<UIScrollViewDelegate, YZEditSegementViewDelegate>
 
 @property (nonatomic,weak) UIScrollView *topBackScrollView;
 @property (nonatomic, weak) UIButton *selectedBtn;//被选中的顶部按钮
@@ -56,8 +57,8 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(arrowViewDidClick)];
         [arrowView addGestureRecognizer:tap];
         
-        CGFloat arrowImageViewW = 24;
-        CGFloat arrowImageViewH = 14;
+        CGFloat arrowImageViewW = 21;
+        CGFloat arrowImageViewH = 12;
         UIImageView * arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowView.width - 12 - arrowImageViewW, (topBtnH - arrowImageViewH) / 2, arrowImageViewW, arrowImageViewH)];
         self.arrowImageView = arrowImageView;
         arrowImageView.image = [UIImage imageNamed:@"11x5_history_btn"];
@@ -132,7 +133,7 @@
             offsetX = (index - 1.5) * buttonW;
         }else
         {
-            offsetX = self.topBackScrollView.contentSize.width - screenWidth;
+            offsetX = self.topBackScrollView.contentSize.width - self.topBackScrollView.width;
         }
         [self.topBackScrollView setContentOffset:CGPointMake(offsetX, self.scrollView.mj_offsetY) animated:YES];
     }
@@ -146,7 +147,7 @@
     btn.selected = YES;
     self.selectedBtn = btn;
     //红线动画
-    [UIView animateWithDuration:0.2
+    [UIView animateWithDuration:animateDuration
                      animations:^{
                          self.topBtnLine.center = CGPointMake(btn.center.x, self.topBtnLine.center.y);
                      }];
@@ -167,7 +168,7 @@
         double pageDouble = offsetX / scrollView.frame.size.width;
         int pageInt = (int)(pageDouble + 0.5);
         //3.切换按钮
-        [self changeSelectedBtn:self.topBtns[pageInt]];
+        [self topBtnClick:self.topBtns[pageInt]];
     }
 }
 
@@ -179,7 +180,26 @@
 #pragma mark - 点击小三角
 - (void)arrowViewDidClick
 {
+    //编辑
+    YZEditSegementView * editSegementView = [[YZEditSegementView alloc] initWithBtnTitles:[NSMutableArray arrayWithArray:self.btnTitles] currentText:self.btnTitles[self.currentIndex]];
+    editSegementView.delegate = self;
+    [editSegementView show];
+}
+
+- (void)editSegementDidCompleteWithBtnTitles:(NSMutableArray *)btnTitles currentText:(nonnull NSString *)currentText
+{
+    self.btnTitles = [NSArray arrayWithArray:btnTitles];
+    [self configurationComplete];
     
+    NSInteger currentIndex = [self.btnTitles indexOfObject:currentText];
+    [self topBtnClick:self.topBtns[currentIndex]];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)sourceIndexPath didMoveToIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    UIView *view = self.views[sourceIndexPath.row];
+    [self.views removeObjectAtIndex:sourceIndexPath.row];
+    [self.views insertObject:view atIndex:destinationIndexPath.row];
 }
 
 #pragma mark - 初始化

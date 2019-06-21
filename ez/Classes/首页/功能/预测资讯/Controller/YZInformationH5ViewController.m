@@ -170,7 +170,7 @@
     
     CGFloat menuViewH = CGRectGetMaxY(separator.frame);
     menuView.frame = CGRectMake(0, statusBarH + navBarH, screenWidth, 0);
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         menuView.height = menuViewH;
     }];
 }

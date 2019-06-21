@@ -295,7 +295,7 @@ typedef enum{
 }
 - (void)titleBtnClick:(YZTitleButton *)btn
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         if(!_openTitleMenu)
         {
             btn.imageView.transform = CGAffineTransformMakeRotation(-M_PI);
@@ -376,14 +376,14 @@ typedef enum{
     playTypeView.bounds = CGRectMake(0, 0, playTypeViewW, playTypeViewH);
     
     playTypeView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         playTypeView.transform = CGAffineTransformMakeScale(1, 1);
     }];
 }
 //三个玩法按钮点击
 - (void)playTypeBtn:(UIButton *)btn
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         self.titleBtn.imageView.transform = CGAffineTransformIdentity;
     }];
     _openTitleMenu = !_openTitleMenu;
@@ -1305,7 +1305,7 @@ typedef enum{
 }
 - (void)removePlayTypeBackView
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         self.titleBtn.imageView.transform = CGAffineTransformIdentity;
     }];
     _openTitleMenu = !_openTitleMenu;

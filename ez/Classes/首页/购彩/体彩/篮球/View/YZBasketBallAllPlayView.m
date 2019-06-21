@@ -155,7 +155,7 @@
     self.height = CGRectGetMaxY(bottomView.frame) + 5;
     self.center = CGPointMake(screenWidth / 2, screenHeight / 2);
     self.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         self.transform = CGAffineTransformMakeScale(1, 1);
     }];
     

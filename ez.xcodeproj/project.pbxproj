@@ -10,6 +10,15 @@
 		1DDDBB1422BB6E70006F8ECA /* YZEditSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */; };
 		1DDDBB1522BB6E70006F8ECA /* YZEditSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */; };
 		1DDDBB1622BB6E70006F8ECA /* YZEditSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */; };
+		1DDDBB1922BC6F1F006F8ECA /* YZSegementCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1822BC6F1F006F8ECA /* YZSegementCollectionViewCell.m */; };
+		1DDDBB1A22BC6F1F006F8ECA /* YZSegementCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1822BC6F1F006F8ECA /* YZSegementCollectionViewCell.m */; };
+		1DDDBB1B22BC6F1F006F8ECA /* YZSegementCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1822BC6F1F006F8ECA /* YZSegementCollectionViewCell.m */; };
+		1DDDBB1E22BC74A1006F8ECA /* YZSegementFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1D22BC74A1006F8ECA /* YZSegementFlowLayout.m */; };
+		1DDDBB1F22BC74A1006F8ECA /* YZSegementFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1D22BC74A1006F8ECA /* YZSegementFlowLayout.m */; };
+		1DDDBB2022BC74A1006F8ECA /* YZSegementFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1D22BC74A1006F8ECA /* YZSegementFlowLayout.m */; };
+		1DDDBB2322BCB525006F8ECA /* YZSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */; };
+		1DDDBB2422BCB525006F8ECA /* YZSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */; };
+		1DDDBB2522BCB525006F8ECA /* YZSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */; };
 		1DF96F8822BB28DA00AD8858 /* YZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF96F8722BB28DA00AD8858 /* YZTextView.m */; };
 		1DF96F8922BB28DA00AD8858 /* YZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF96F8722BB28DA00AD8858 /* YZTextView.m */; };
 		1DF96F8A22BB28DA00AD8858 /* YZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF96F8722BB28DA00AD8858 /* YZTextView.m */; };
@@ -2158,6 +2167,12 @@
 		18BBF4061E7B7E2E00AF69E6 /* ez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ez.entitlements; sourceTree = "<group>"; };
 		1DDDBB1222BB6E70006F8ECA /* YZEditSegementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZEditSegementView.h; sourceTree = "<group>"; };
 		1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZEditSegementView.m; sourceTree = "<group>"; };
+		1DDDBB1722BC6F1F006F8ECA /* YZSegementCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSegementCollectionViewCell.h; sourceTree = "<group>"; };
+		1DDDBB1822BC6F1F006F8ECA /* YZSegementCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSegementCollectionViewCell.m; sourceTree = "<group>"; };
+		1DDDBB1C22BC74A1006F8ECA /* YZSegementFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSegementFlowLayout.h; sourceTree = "<group>"; };
+		1DDDBB1D22BC74A1006F8ECA /* YZSegementFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSegementFlowLayout.m; sourceTree = "<group>"; };
+		1DDDBB2122BCB524006F8ECA /* YZSendCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSendCommentView.h; sourceTree = "<group>"; };
+		1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSendCommentView.m; sourceTree = "<group>"; };
 		1DF96F8622BB28DA00AD8858 /* YZTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZTextView.h; sourceTree = "<group>"; };
 		1DF96F8722BB28DA00AD8858 /* YZTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZTextView.m; sourceTree = "<group>"; };
 		1DF96F8B22BB312D00AD8858 /* YZCircleCommunityCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCircleCommunityCollectionViewCell.h; sourceTree = "<group>"; };
@@ -3711,13 +3726,6 @@
 			path = YZTextView;
 			sourceTree = "<group>";
 		};
-		1DF96F9522BB5BCB00AD8858 /* CircleTopBtn */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CircleTopBtn;
-			sourceTree = "<group>";
-		};
 		A90CFE61206E0E970094CD38 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -3835,7 +3843,8 @@
 				AACDC23A20FEE88900955419 /* YZCircleCommentTableViewCell.m */,
 				AACDC23D20FEE8AE00955419 /* YZCircleViewAttentionTableViewCell.h */,
 				AACDC23E20FEE8AE00955419 /* YZCircleViewAttentionTableViewCell.m */,
-				1DF96F9522BB5BCB00AD8858 /* CircleTopBtn */,
+				1DDDBB2122BCB524006F8ECA /* YZSendCommentView.h */,
+				1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5637,6 +5646,10 @@
 				AA74E7881FFE17DD003B53AF /* YZSegementViewController.m */,
 				1DDDBB1222BB6E70006F8ECA /* YZEditSegementView.h */,
 				1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */,
+				1DDDBB1722BC6F1F006F8ECA /* YZSegementCollectionViewCell.h */,
+				1DDDBB1822BC6F1F006F8ECA /* YZSegementCollectionViewCell.m */,
+				1DDDBB1C22BC74A1006F8ECA /* YZSegementFlowLayout.h */,
+				1DDDBB1D22BC74A1006F8ECA /* YZSegementFlowLayout.m */,
 			);
 			path = YZSegementViewController;
 			sourceTree = "<group>";
@@ -7704,6 +7717,7 @@
 			files = (
 				AA237D8B2143590C00BC47BB /* YZThirdPartyBindingViewController.m in Sources */,
 				AA237D8C2143590C00BC47BB /* YZUnionBuyDetailViewController.m in Sources */,
+				1DDDBB1B22BC6F1F006F8ECA /* YZSegementCollectionViewCell.m in Sources */,
 				AA237D8D2143590C00BC47BB /* YZFBMatchDetailTextTableViewCell.m in Sources */,
 				AA237D8E2143590C00BC47BB /* YZWinNumberFBTableViewCell.m in Sources */,
 				AA237D8F2143590C00BC47BB /* YZValidateTool.m in Sources */,
@@ -7725,6 +7739,7 @@
 				AA237D9C2143590C00BC47BB /* UIWebView+AFNetworking.m in Sources */,
 				AA237D9E2143590C00BC47BB /* YZFootBallCell.m in Sources */,
 				AA237D9F2143590C00BC47BB /* YZEuropeOddsCellStatus.m in Sources */,
+				1DDDBB2522BCB525006F8ECA /* YZSendCommentView.m in Sources */,
 				AA237DA02143590C00BC47BB /* YZChartSortStatsStatus.m in Sources */,
 				AA237DA12143590C00BC47BB /* YZFBMatchDetailTypeBtnView.m in Sources */,
 				AA237DA22143590C00BC47BB /* YZFbBetViewController.m in Sources */,
@@ -8167,6 +8182,7 @@
 				AA237F4E2143590C00BC47BB /* YZAddBankCardViewController.m in Sources */,
 				AA237F4F2143590C00BC47BB /* YZFBMatchDetailOddsRightTitleTableViewCell.m in Sources */,
 				AA237F502143590C00BC47BB /* YZKsErtongView.m in Sources */,
+				1DDDBB2022BC74A1006F8ECA /* YZSegementFlowLayout.m in Sources */,
 				AA237F512143590C00BC47BB /* UITableView+YZ.m in Sources */,
 				AA237F522143590C00BC47BB /* YZScjqBetViewController.m in Sources */,
 				AA237F532143590C00BC47BB /* YZFootBallBaseViewController.m in Sources */,
@@ -8313,6 +8329,7 @@
 			files = (
 				AA3291041FFE21D400CA77DA /* YZThirdPartyBindingViewController.m in Sources */,
 				AA74E0D11FFE0A4C003B53AF /* YZUnionBuyDetailViewController.m in Sources */,
+				1DDDBB1922BC6F1F006F8ECA /* YZSegementCollectionViewCell.m in Sources */,
 				AA3293CB1FFE27B700CA77DA /* YZFBMatchDetailTextTableViewCell.m in Sources */,
 				AA74E0AB1FFE0A0C003B53AF /* YZWinNumberFBTableViewCell.m in Sources */,
 				AA74EC4D1FFE17E0003B53AF /* YZValidateTool.m in Sources */,
@@ -8334,6 +8351,7 @@
 				AA74EBB71FFE17E0003B53AF /* UIWebView+AFNetworking.m in Sources */,
 				AA3293731FFE27B700CA77DA /* YZFootBallCell.m in Sources */,
 				AA3293931FFE27B700CA77DA /* YZEuropeOddsCellStatus.m in Sources */,
+				1DDDBB2322BCB525006F8ECA /* YZSendCommentView.m in Sources */,
 				AA3293191FFE27B600CA77DA /* YZChartSortStatsStatus.m in Sources */,
 				AA3293AF1FFE27B700CA77DA /* YZFBMatchDetailTypeBtnView.m in Sources */,
 				AA3293471FFE27B600CA77DA /* YZFbBetViewController.m in Sources */,
@@ -8776,6 +8794,7 @@
 				AA3290CF1FFE20A800CA77DA /* YZAddBankCardViewController.m in Sources */,
 				AA3293C31FFE27B700CA77DA /* YZFBMatchDetailOddsRightTitleTableViewCell.m in Sources */,
 				AA3292E31FFE27B600CA77DA /* YZKsErtongView.m in Sources */,
+				1DDDBB1E22BC74A1006F8ECA /* YZSegementFlowLayout.m in Sources */,
 				AA74EA191FFE17DE003B53AF /* UITableView+YZ.m in Sources */,
 				AA3293431FFE27B600CA77DA /* YZScjqBetViewController.m in Sources */,
 				AA32934B1FFE27B600CA77DA /* YZFootBallBaseViewController.m in Sources */,
@@ -8922,6 +8941,7 @@
 			files = (
 				AA3291051FFE21D400CA77DA /* YZThirdPartyBindingViewController.m in Sources */,
 				AA74E0D21FFE0A4C003B53AF /* YZUnionBuyDetailViewController.m in Sources */,
+				1DDDBB1A22BC6F1F006F8ECA /* YZSegementCollectionViewCell.m in Sources */,
 				AA3293CC1FFE27B700CA77DA /* YZFBMatchDetailTextTableViewCell.m in Sources */,
 				AA74E0AC1FFE0A0C003B53AF /* YZWinNumberFBTableViewCell.m in Sources */,
 				AA74EC4E1FFE17E0003B53AF /* YZValidateTool.m in Sources */,
@@ -8943,6 +8963,7 @@
 				AA74EBB81FFE17E0003B53AF /* UIWebView+AFNetworking.m in Sources */,
 				AA3293741FFE27B700CA77DA /* YZFootBallCell.m in Sources */,
 				AA3293941FFE27B700CA77DA /* YZEuropeOddsCellStatus.m in Sources */,
+				1DDDBB2422BCB525006F8ECA /* YZSendCommentView.m in Sources */,
 				AA32931A1FFE27B600CA77DA /* YZChartSortStatsStatus.m in Sources */,
 				AA3293B01FFE27B700CA77DA /* YZFBMatchDetailTypeBtnView.m in Sources */,
 				AA3293481FFE27B600CA77DA /* YZFbBetViewController.m in Sources */,
@@ -9385,6 +9406,7 @@
 				AACDC22820FEE7B300955419 /* YZCircleModel.m in Sources */,
 				AA74EB6C1FFE17DF003B53AF /* MJRefreshFooter.m in Sources */,
 				AA74E11E1FFE0A86003B53AF /* YZFBOrderDetailViewController.m in Sources */,
+				1DDDBB1F22BC74A1006F8ECA /* YZSegementFlowLayout.m in Sources */,
 				AA3290D01FFE20A800CA77DA /* YZAddBankCardViewController.m in Sources */,
 				AA3293C41FFE27B700CA77DA /* YZFBMatchDetailOddsRightTitleTableViewCell.m in Sources */,
 				AA3292E41FFE27B600CA77DA /* YZKsErtongView.m in Sources */,

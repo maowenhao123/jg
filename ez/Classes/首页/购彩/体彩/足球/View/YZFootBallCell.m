@@ -707,7 +707,7 @@
     allPlayView.delegate = self;
     [backView addSubview:allPlayView];
     allPlayView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         allPlayView.transform = CGAffineTransformMakeScale(1, 1);
     }];
     
@@ -748,7 +748,7 @@
     [backView addSubview:choosePlayView];
     
     choosePlayView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         choosePlayView.transform = CGAffineTransformMakeScale(1, 1);
     }];
     

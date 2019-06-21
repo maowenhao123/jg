@@ -34,8 +34,21 @@
     CGSize detailLabelSize = [detailAttStr boundingRectWithSize:CGSizeMake(viewW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     _detailLabelF = CGRectMake(viewX, CGRectGetMaxY(_avatarImageViewF) + 9, detailLabelSize.width, detailLabelSize.height);
     
-    CGFloat lastViewMaxY = CGRectGetMaxY(_detailLabelF);
-    NSArray * imageUrls = [_pics componentsSeparatedByString:@"|"];
+    NSArray * lotteryMessages = @[@"期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数", @"倍数", @"金额", @"佣金", @"方案"];
+    CGFloat lastLabelMaxY = 0;
+    _labelFs = [NSMutableArray array];
+    CGFloat logoImageViewWH = 60;
+    for (int i = 0; i < lotteryMessages.count; i++) {
+        CGSize labelSize = [lotteryMessages[i] sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(24)] maxSize:CGSizeMake(viewW - 3 * YZMargin - logoImageViewWH, MAXFLOAT)];
+        CGRect labelF = CGRectMake(YZMargin, lastLabelMaxY + 9, labelSize.width, labelSize.height);
+        [_labelFs addObject:[NSValue valueWithCGRect:labelF]];
+        lastLabelMaxY = CGRectGetMaxY(labelF);
+    }
+    _lotteryViewF = CGRectMake(viewX, CGRectGetMaxY(_detailLabelF) + 9, viewW, lastLabelMaxY + 9);
+    _logoImageViewF = CGRectMake(viewW - YZMargin - logoImageViewWH, (_lotteryViewF.size.height - logoImageViewWH) / 2, logoImageViewWH, logoImageViewWH);
+    
+    CGFloat lastViewMaxY = CGRectGetMaxY(_lotteryViewF);
+//    NSArray * imageUrls = [_pics componentsSeparatedByString:@"|"];
     NSInteger imageCount = self.imageCount;//图片数量
     _imageViewFs = [NSMutableArray array];
     if (imageCount == 0) {
@@ -57,7 +70,7 @@
         CGFloat imageViewWH = (viewW - imageViewPadding * 2) / 3;
         imageCount = imageCount > 3 ? 3 : imageCount;
         for (int i = 0; i < imageCount; i++) {
-            CGRect imageViewF = CGRectMake(viewX + (imageViewWH + imageViewPadding) * i, CGRectGetMaxY(_detailLabelF) + 9, imageViewWH, imageViewWH);
+            CGRect imageViewF = CGRectMake(viewX + (imageViewWH + imageViewPadding) * i, CGRectGetMaxY(_lotteryViewF) + 9, imageViewWH, imageViewWH);
             [_imageViewFs addObject:[NSValue valueWithCGRect:imageViewF]];
             lastViewMaxY = CGRectGetMaxY(imageViewF);
         }

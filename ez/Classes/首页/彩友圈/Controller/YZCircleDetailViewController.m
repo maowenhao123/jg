@@ -9,16 +9,38 @@
 #import "YZCircleDetailViewController.h"
 #import "YZCircleTableViewCell.h"
 #import "YZCircleCommentTableViewCell.h"
+#import "YZSendCommentView.h"
+#import "IQKeyboardManager.h"
 
-@interface YZCircleDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface YZCircleDetailViewController ()<UITableViewDelegate, UITableViewDataSource, SendCommentViewDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) YZSendCommentView *sendCommentTextView;
 @property (nonatomic, strong) YZCircleModel *circleModel;
 @property (nonatomic, strong) NSMutableArray *commentDataArray;
+@property (nonatomic,assign) CGFloat keyboardHeight;
 
 @end
 
 @implementation YZCircleDetailViewController
+
+#pragma mark - 控制器的生命周期
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager];
+    keyboardManager.enableAutoToolbar = NO;
+    keyboardManager.enable = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
+    IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager];
+    keyboardManager.enableAutoToolbar = YES;
+    keyboardManager.enable = YES;
+}
 
 - (void)viewDidLoad
 {
@@ -26,8 +48,51 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"彩友圈详情";
     [self setupChilds];
+    // 监听键盘弹出
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+#pragma mark - 键盘
+// 键盘弹出会调用
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    // 获取键盘frame
+    CGRect endFrame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.keyboardHeight = endFrame.size.height;
+    // 获取键盘弹出时长
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:duration
+                     animations:^{
+                         self.sendCommentTextView.y = screenHeight - statusBarH - navBarH - self.sendCommentTextView.height - endFrame.size.height;
+                     }];
+    
+    self.sendCommentTextView.praiseButton.hidden = YES;
+    self.sendCommentTextView.commentButton.hidden = YES;
+    self.sendCommentTextView.sendButton.hidden = NO;
+    [UIView animateWithDuration:animateDuration animations:^{
+        self.sendCommentTextView.textView.width = screenWidth - 60 - YZMargin;
+    }];
 }
 
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    // 获取键盘弹出时长
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:duration
+                     animations:^{
+                         self.sendCommentTextView.y = screenHeight - statusBarH - navBarH - self.sendCommentTextView.height - [YZTool getSafeAreaBottom];
+                         
+                     }];
+    
+    self.sendCommentTextView.praiseButton.hidden = NO;
+    self.sendCommentTextView.commentButton.hidden = NO;
+    self.sendCommentTextView.sendButton.hidden = YES;
+    [UIView animateWithDuration:animateDuration animations:^{
+        self.sendCommentTextView.textView.width = screenWidth - 95 - YZMargin;
+    }];
+}
 #pragma mark - 布局子视图
 - (void)setupChilds
 {
@@ -37,8 +102,9 @@
     circleModel.createTime = 123;
     self.circleModel = circleModel;
     
-    CGFloat tableViewH = screenHeight - statusBarH - navBarH - 45;
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH) style:UITableViewStyleGrouped];
+    CGFloat commentViewH = 40;
+    CGFloat tableViewH = screenHeight - statusBarH - navBarH - commentViewH - [YZTool getSafeAreaBottom];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH)];
     self.tableView = tableView;
     tableView.backgroundColor = YZBackgroundColor;
     tableView.delegate = self;
@@ -47,6 +113,13 @@
     [tableView setEstimatedSectionHeaderHeightAndFooterHeight];
     tableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:tableView];
+    
+    YZSendCommentView * sendCommentTextView = [[YZSendCommentView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(tableView.frame), screenWidth, commentViewH)];
+    self.sendCommentTextView = sendCommentTextView;
+    sendCommentTextView.delegate = self;
+    sendCommentTextView.praiseButton.hidden = NO;
+    sendCommentTextView.sendButton.hidden = YES;
+    [self.view addSubview:sendCommentTextView];
 }
 
 #pragma mark - Table view data source
@@ -140,6 +213,17 @@
         }
     }
     return _commentDataArray;
+}
+
+#pragma mark - dealloc
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:UIKeyboardWillShowNotification
+                                                 object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:UIKeyboardWillHideNotification
+                                                 object:nil];
 }
 
 @end

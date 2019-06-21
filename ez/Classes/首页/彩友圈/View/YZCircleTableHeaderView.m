@@ -59,6 +59,9 @@ NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollecti
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.itemSize = CGSizeMake(screenWidth / 3, collectionViewH);
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    layout.minimumInteritemSpacing = 0.0;//列间距
+    layout.minimumLineSpacing = 0.0;//行间距
     
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, collectionViewH) collectionViewLayout:layout];
     self.collectionView = collectionView;
@@ -70,18 +73,14 @@ NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollecti
     
     //注册
     [collectionView registerClass:[YZCircleCommunityCollectionViewCell class] forCellWithReuseIdentifier:circleCommunityCollectionViewCellId];
-//    //分割线
-//    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, circleCommunityViewH, screenWidth, 1)];
-//    line.backgroundColor = YZWhiteLineColor;
-//    [self addSubview:line];
-//
-//    //公告
-//    UILabel * noticeLabel = [[UILabel alloc] init];
-//    noticeLabel.text = @"公告：";
-//    noticeLabel.frame = CGRectMake(YZMargin, circleCommunityViewH, self.width - 2 *YZMargin, 40);
-//    noticeLabel.textColor = YZBlackTextColor;
-//    noticeLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-//    [self addSubview:noticeLabel];
+    
+    //公告
+    UILabel * noticeLabel = [[UILabel alloc] init];
+    noticeLabel.text = @"最新帖子";
+    noticeLabel.frame = CGRectMake(YZMargin, collectionViewH, self.width - 2 *YZMargin, 40);
+    noticeLabel.textColor = YZBlackTextColor;
+    noticeLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+    [self addSubview:noticeLabel];
 }
 
 #pragma mark - UICollectionViewDataSource
