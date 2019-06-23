@@ -54,7 +54,7 @@
 #pragma mark - 布局子视图
 - (void)configurationChilds
 {
-    self.btnTitles = @[@"未使用", @"已用完", @"已失效", @"已失效" , @"已失效"];
+    self.btnTitles = @[@"item1", @"item2", @"item3", @"item4" , @"item5"];
     CGFloat scrollViewH = screenHeight-statusBarH-navBarH-topBtnH;
     for(int i = 0; i < self.btnTitles.count; i++)
     {

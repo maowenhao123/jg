@@ -92,7 +92,7 @@
         for (int i = 0; i < 10; i++) {
             YZCircleModel *circleModel = [YZCircleModel new];
             circleModel.nickName = @"昵称";
-            circleModel.content = @"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容";
+            circleModel.content = @"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容";
             circleModel.createTime = 123;
             circleModel.imageCount = arc4random() % 3;//图片数量
             [_dataArray addObject:circleModel];

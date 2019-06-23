@@ -46,7 +46,7 @@
 - (void)diceRandomPostionAnimationWithCount:(int)count index:(int)index
 {
     __block int blockCount = count;
-    [UIView animateWithDuration:0.2
+    [UIView animateWithDuration:animateDuration
                      animations:^{
                          self.center = [self getRandomPointWithIndex:index];
                      } completion:^(BOOL finished) {

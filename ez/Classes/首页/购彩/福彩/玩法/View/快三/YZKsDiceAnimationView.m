@@ -201,7 +201,7 @@
     NSTimeInterval showTime = 1.5;//展示筛子号码的时间
     for (int i = 0; i < self.randoms.count; i++) {
         YZKsDiceView * diceView = self.diceViews[i];
-        [UIView animateWithDuration:0.2 animations:^{//回到原位置
+        [UIView animateWithDuration:animateDuration animations:^{//回到原位置
             if (i == 0) {
                 diceView.frame = CGRectMake(KWidth / 2 - imageViewWH - padding, KHeight / 2 - imageViewWH - padding, imageViewWH, imageViewWH);
             }else if (i == 1)

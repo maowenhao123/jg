@@ -10,7 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol YZEditSegementViewDelegate <NSObject>
+
+- (void)editSegementDidCompleteWithBtnTitles:(NSMutableArray *)btnTitles currentText:(NSString *)currentText;
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)sourceIndexPath didMoveToIndexPath:(NSIndexPath *)destinationIndexPath;
+
+@end
+
 @interface YZEditSegementView : UIView
+
+- (instancetype)initWithBtnTitles:(NSMutableArray *)btnTitles currentText:(NSString *)currentText;
+
+- (void)show;
+
+@property (nonatomic, weak) id<YZEditSegementViewDelegate> delegate;
 
 @end
 

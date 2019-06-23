@@ -20,6 +20,7 @@
 #import "YZSfcViewController.h"
 #import "YZScjqViewController.h"
 #import "YZKsViewController.h"
+#import "YZInitiateUnionBuyViewController.h"
 #import "YZSchemeSetmealViewController.h"
 #import "JPUSHService.h"
 #import "YZValidateTool.h"
@@ -145,7 +146,8 @@ static NSDictionary * bankDicInfo;
                               @"T54":[YZScjqViewController class],
                               @"T03":[YZPlsViewController class],
                               @"F04":[YZKsViewController class],
-                              @"TT":[YZSchemeSetmealViewController class]
+                              @"TT":[YZSchemeSetmealViewController class],
+                              @"UNION_PLAN":[YZInitiateUnionBuyViewController class]
                               };
     }
     return gameDestClassDict;

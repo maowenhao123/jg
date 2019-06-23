@@ -280,7 +280,7 @@
 #pragma mark - 标题按钮点击
 - (void)titleBtnClick:(YZTitleButton *)btn
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         if(!_openTitleMenu)
         {
             btn.imageView.transform = CGAffineTransformMakeRotation(-M_PI);
@@ -377,14 +377,14 @@
     playTypeView.center = playTypeBackView.center;
     
     playTypeView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         playTypeView.transform = CGAffineTransformMakeScale(1, 1);
     }];
 }
 
 - (void)removePlayTypeBackView
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animateDuration animations:^{
         self.titleBtn.imageView.transform = CGAffineTransformIdentity;
     }];
     _openTitleMenu = !_openTitleMenu;

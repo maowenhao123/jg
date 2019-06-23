@@ -15,8 +15,11 @@
 @property (nonatomic, weak) UILabel *nickNameLabel;
 @property (nonatomic, weak) UILabel * timeLabel;
 @property (nonatomic, weak) UILabel * detailLabel;
+@property (nonatomic, weak) UIView * lotteryView;
+@property (nonatomic, weak) UIImageView *logoImageView;
 @property (nonatomic, weak) UIButton * praiseButton;
 @property (nonatomic, weak) UIButton * commentButton;
+@property (nonatomic, strong) NSMutableArray *labels;
 
 @end
 
@@ -78,6 +81,32 @@
     detailLabel.numberOfLines = 0;
     [self addSubview:detailLabel];
     
+    //彩票信息
+    UIView * lotteryView = [[UIView alloc] init];
+    self.lotteryView = lotteryView;
+    lotteryView.backgroundColor = YZColor(255, 251, 243, 1);
+    [self addSubview:lotteryView];
+    
+    NSArray * lotteryMessages = @[@"期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数期数", @"倍数", @"金额", @"佣金", @"方案"];
+    for(NSUInteger i = 0; i < lotteryMessages.count; i++)
+    {
+        UILabel *label = [[UILabel alloc] init];
+        label.text = lotteryMessages[i];
+        label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+        label.textColor = YZDrayGrayTextColor;
+        label.numberOfLines = 0;
+        [self.labels addObject:label];
+        [lotteryView addSubview:label];
+    }
+    
+    //logo
+    UIImageView * logoImageView = [[UIImageView alloc] init];
+    self.logoImageView = logoImageView;
+    logoImageView.backgroundColor = [UIColor redColor];
+    logoImageView.layer.masksToBounds = YES;
+    logoImageView.layer.cornerRadius = 30;
+    [lotteryView addSubview:logoImageView];
+    
     //图片
     UIView * lastView = detailLabel;
     for (int i = 0; i < 3; i++) {
@@ -104,7 +133,6 @@
     [praiseButton setImage:[UIImage imageNamed:@"show_praise_gray"] forState:UIControlStateNormal];
     [praiseButton setTitleColor:YZGrayTextColor forState:UIControlStateNormal];
     praiseButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
-    [praiseButton addTarget:self action:@selector(praiseButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:praiseButton];
     
     //评论
@@ -114,21 +142,10 @@
     [commentButton setImage:[UIImage imageNamed:@"show_comment"] forState:UIControlStateNormal];
     [commentButton setTitleColor:YZGrayTextColor forState:UIControlStateNormal];
     commentButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
-    [commentButton addTarget:self action:@selector(commentButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:commentButton];
 }
 
 - (void)imageViewDidClick:(UIGestureRecognizer *)ges
-{
-    
-}
-
-- (void)praiseButtonDidClick:(UIButton *)button
-{
-    
-}
-
-- (void)commentButtonDidClick:(UIButton *)button
 {
     
 }
@@ -151,7 +168,13 @@
     self.nickNameLabel.frame = _circleModel.nickNameLabelF;
     self.timeLabel.frame = _circleModel.timeLabelF;
     self.detailLabel.frame = _circleModel.detailLabelF;
-    UIView * lastView = self.detailLabel;
+    self.lotteryView.frame = _circleModel.lotteryViewF;
+    for (int i = 0; i < self.labels.count; i++) {
+        UILabel * label = self.labels[i];
+        label.frame = [_circleModel.labelFs[i] CGRectValue];
+    }
+    self.logoImageView.frame = _circleModel.logoImageViewF;
+    UIView * lastView = self.lotteryView;
     for (int i = 0; i < self.imageViews.count; i++) {
         UIImageView * imageView = self.imageViews[i];
         imageView.hidden = YES;
@@ -168,6 +191,15 @@
 }
 
 #pragma mark - 初始化
+- (NSMutableArray *)labels
+{
+    if(_labels == nil)
+    {
+        _labels = [NSMutableArray array];
+    }
+    return  _labels;
+}
+
 - (NSMutableArray *)imageViews
 {
     if (!_imageViews) {

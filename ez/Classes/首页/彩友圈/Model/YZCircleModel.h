@@ -31,6 +31,9 @@
 @property (nonatomic, assign) CGRect timeLabelF;
 @property (nonatomic, copy) NSMutableAttributedString * detailAttStr;
 @property (nonatomic, assign)CGRect detailLabelF;
+@property (nonatomic, assign)CGRect lotteryViewF;
+@property (nonatomic, strong) NSMutableArray *labelFs;
+@property (nonatomic, assign)CGRect logoImageViewF;
 @property (nonatomic, strong) NSMutableArray *imageViewFs;
 @property (nonatomic, assign) CGFloat cellH;
 

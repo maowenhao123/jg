@@ -105,7 +105,7 @@
 #define YZChartGrayColor YZColor(125, 117, 110, 1)
 //统计字体浅灰色颜色
 #define YZChartLightGrayColor YZColor(175, 168, 162, 1)
-//统计字体浅灰色颜色
+//统计浅灰色背景颜色
 #define YZChartBackgroundColor YZColor(244, 241, 235, 1)
 
 //字体大小
