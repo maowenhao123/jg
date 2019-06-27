@@ -10,6 +10,7 @@
 
 @protocol YZBuyLotteryCollectionViewDelegate <NSObject>
 
+@optional
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 
 @end

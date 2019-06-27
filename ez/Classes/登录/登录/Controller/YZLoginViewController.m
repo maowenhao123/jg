@@ -33,16 +33,13 @@
 #import "JSON.h"
 #import "WXApi.h"
 
-@interface YZLoginViewController ()<UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,YZLoginAccountTableViewCellDelegate>
+@interface YZLoginViewController ()
 
 @property (nonatomic, weak) YZLeftViewTextField *accountTextField;
 @property (nonatomic, weak) YZLeftViewTextField *pwdTextField;
 @property (nonatomic, weak) UIButton *loginbutton;
 @property (nonatomic,weak) UIButton * showPasswordButton;
 @property (nonatomic, weak) UIButton *switchbtn;
-@property (nonatomic, weak) UIView *historyAccountBgView;
-@property (nonatomic, strong) NSArray *historyAccounts;
-@property (nonatomic, weak) UITableView *historyAccountView;
 
 @end
 
@@ -93,25 +90,6 @@
     accountTextField.textColor = YZBlackTextColor;
     accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [loginview addSubview:accountTextField];
-    
-    UIImageView * leftImageView1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 18, 18)];
-    leftImageView1.image = [UIImage imageNamed:@"login_account_icon"];
-    accountTextField.leftView = leftImageView1;
-    accountTextField.leftViewMode = UITextFieldViewModeAlways;
-    //历史账户按钮
-    self.historyAccounts = [YZStatusCacheTool getAccounts];//获取所有历史用户账户
-    if(self.historyAccounts.count)//有历史账户才显示按钮
-    {
-        UIButton *historyUserBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        CGFloat historyUserBtnW = 16;
-        CGFloat historyUserBtnH = 8;
-        historyUserBtn.frame = CGRectMake(screenWidth - YZMargin - historyUserBtnW, (YZCellH - historyUserBtnH) / 2, historyUserBtnW, historyUserBtnH);
-        UIImage *historyUserBtnImage = [UIImage imageNamed:@"historyAccountBtn"];
-        [historyUserBtn setImage:historyUserBtnImage forState:UIControlStateNormal];
-        [historyUserBtn addTarget:self action:@selector(historyUserBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [loginview addSubview:historyUserBtn];
-        accountTextField.frame = CGRectMake(YZMargin, 0, screenWidth - 2 * YZMargin - 18 - 5, YZCellH);
-    }
     
     //分割线
     UIView *seperator = [[UIView alloc] init];
@@ -578,78 +556,7 @@
     YZSecretChangeViewController *secretVc = [[YZSecretChangeViewController alloc] init];
     [self.navigationController pushViewController:secretVc animated:YES];
 }
-    
-#pragma mark - 历史用户按钮点击
-- (void)historyUserBtnClick
-{
-    [self.view endEditing:YES];
-    self.historyAccounts = [YZStatusCacheTool getAccounts];//获取所有历史用户账户
-    
-    UIView *historyAccountBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-    self.historyAccountBgView = historyAccountBgView;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeHistoryBgview)];
-    tap.delegate = self;
-    [historyAccountBgView addGestureRecognizer:tap];
-    [self.navigationController.view addSubview:historyAccountBgView];
-    
-    UITableView *historyAccountView = [[UITableView alloc] initWithFrame:CGRectMake(0, historyAccountViewY, 278.5, 300)];
-    self.historyAccountView = historyAccountView;
-    historyAccountView.center = CGPointMake(screenWidth/2, historyAccountView.center.y);
-    historyAccountView.delegate = self;
-    historyAccountView.dataSource = self;
-    historyAccountView.tableFooterView = [[UIView alloc] init];
-    historyAccountView.separatorColor = YZWhiteLineColor;
-    [historyAccountView setEstimatedSectionHeaderHeightAndFooterHeight];
-    historyAccountView.scrollEnabled = NO;
-    [historyAccountBgView addSubview:historyAccountView];
-}
-- (void)removeHistoryBgview
-{
-    [self.historyAccountBgView removeFromSuperview];
-    self.historyAccountBgView = nil;
-}
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        CGPoint pos = [touch locationInView:self.historyAccountView.superview];
-        if (CGRectContainsPoint(self.historyAccountView.frame, pos)) {
-            return NO;
-        }
-    }
-    return YES;
-}
-#pragma mark - UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    int count = (int)self.historyAccounts.count;
-    CGFloat maxH = screenHeight - historyAccountViewY - 40;
-    CGFloat height = 44 * count;
-    tableView.height = height < maxH ? height : maxH;
-    return count;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    YZLoginAccountTableViewCell *cell = [YZLoginAccountTableViewCell cellWithTableView:tableView];
-    cell.historyAccount = self.historyAccounts[indexPath.row];
-    cell.delegate = self;
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.accountTextField.text = self.historyAccounts[indexPath.row];
-    self.pwdTextField.text = @"";
-    [self removeHistoryBgview];
-}
-//YZLoginAccountTableViewCellDelegate
-- (void)loginAccountCellDidClickAccountDeleteBtn:(UIButton *)btn inCell:(YZLoginAccountTableViewCell *)cell
-{
-    NSIndexPath * indexPath = [self.historyAccountView indexPathForCell:cell];
-    [YZStatusCacheTool deleteAccount:self.historyAccounts[indexPath.row]];
-    self.historyAccounts = [YZStatusCacheTool getAccounts];//获取所有历史用户账户
-    //删除cell
-    NSArray *arr = [NSArray arrayWithObject:indexPath];
-    [self.historyAccountView deleteRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationTop];
-}
+
 #pragma  mark - 点击登录按钮
 - (void)loginBtnPressed
 {
@@ -710,8 +617,6 @@
         {
             [YZUserDefaultTool removeObjectForKey:@"userPwd"];
         }
-        //存储账户到数据库
-        [YZStatusCacheTool saveAccount:self.accountTextField.text];
         //发送登录成功通知
         [[NSNotificationCenter defaultCenter] postNotificationName:loginSuccessNote object:nil];
         [self loadUserInfo];

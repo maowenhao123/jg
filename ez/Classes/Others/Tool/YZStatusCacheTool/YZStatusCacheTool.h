@@ -23,7 +23,4 @@
 + (NSArray *)getUserStatues;//获取用户信息
 + (void)deleteUserStatus;//删除用户数据
 
-+ (void)saveAccount:(NSString *)account;//存储账户
-+ (NSArray *)getAccounts;//获取账户
-+ (void)deleteAccount:(NSString *)account;//删除某个用户
 @end

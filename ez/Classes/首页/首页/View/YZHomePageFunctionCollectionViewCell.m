@@ -68,7 +68,7 @@
     if (_functions.count > 5) {
         self.pageControl.hidden = NO;
         self.pageControl.numberOfPages = _functions.count / 5 + 1;
-        self.scrollView.contentSize = CGSizeMake(self.itemViewW * (_functions.count / 5 + 1), self.scrollView.height);
+        self.scrollView.contentSize = CGSizeMake(self.itemViewW * (_functions.count - 4), self.scrollView.height);
     }else
     {
         self.pageControl.hidden = YES;

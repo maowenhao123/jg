@@ -147,6 +147,7 @@
 {
     return self.statusArray.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZBetCell *cell = [YZBetCell cellWithTableView:tableView];
@@ -156,21 +157,20 @@
     [self computeAmountMoney];
     return  cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZBetStatus *status = self.statusArray[indexPath.row];
     return status.cellH;
 }
+
 - (void)deleteBtnDidClick:(UIButton *)btn
 {
     [YZStatusCacheTool deleteStatusWithTag:(int)btn.tag];
     [self.tableView reloadData];
     [self computeAmountMoney];
 }
-- (void)autoChooseBtnClick
-{
-    [self autoChoose];//机选号码
-}
+
 #pragma  mark - 机选号码
 - (void)autoChoose
 {
@@ -246,7 +246,7 @@
         }else if(i == 1)
         {
 
-            [btn addTarget:self action:@selector(autoChooseBtnClick) forControlEvents:UIControlEventTouchUpInside];
+            [btn addTarget:self action:@selector(autoChoose) forControlEvents:UIControlEventTouchUpInside];
             [btn setTitle:@"机选一注" forState:UIControlStateNormal];
         }
         [btn setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:5];

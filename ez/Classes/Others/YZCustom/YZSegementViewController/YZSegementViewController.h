@@ -6,7 +6,6 @@
 //  Copyright © 2016年 9ge. All rights reserved.
 //
 #define topBtnH 42
-#define monthViewH 30
 
 #import "YZBaseViewController.h"
 
@@ -23,5 +22,6 @@
 - (void)configurationComplete;//配置好btnTitles views currentIndex后调用，开始布局视图
 - (void)topBtnClick:(UIButton *)btn;//第几个按钮点击
 - (void)changeCurrentIndex:(int)currentIndex;//当前页面切换，子类实现
+- (void)sortDone;
 
 @end

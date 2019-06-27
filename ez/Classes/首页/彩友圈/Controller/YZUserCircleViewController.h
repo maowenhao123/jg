@@ -7,7 +7,10 @@
 //
 
 #import "YZBaseViewController.h"
+#import "YZCircleModel.h"
 
 @interface YZUserCircleViewController : YZBaseViewController
+
+@property (nonatomic, strong) YZCircleModel *circleModel;
 
 @end

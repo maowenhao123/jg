@@ -39,42 +39,7 @@ static FMDatabaseQueue *_queue;//全局变量
         [db executeUpdate:@"insert into t_accountStatus (account) values(?)", account];
     }];
 }
-+ (NSArray *)getAccounts
-{
-    __block NSMutableArray *statusArray = nil;
-    
-    [_queue inDatabase:^(FMDatabase *db) {
-        
-        statusArray = [NSMutableArray array];
-        
-        FMResultSet *rs = nil;
-        rs = [db executeQuery:@"select * from t_accountStatus;"];
-        while (rs.next) {
-            NSString *account = [rs stringForColumn:@"account"];
-            
-            [statusArray insertObject:account atIndex:0];
-        }
-    }];
-    
-    return statusArray;
-}
-+ (void)deleteAccount:(NSString *)account
-{
-    // 2.使用数据库
-    [_queue inDatabase:^(FMDatabase *db) {
-        
-        [db executeUpdate:@"delete from t_accountStatus where account = ?;",account];
-    }];
-}
-+ (void)saveStatuses:(NSArray *)statusArray
-{
-    for (YZBetStatus *status in statusArray) {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [self saveStatus:status];
-        });
-    }
 
-}
 + (void)saveStatus:(YZBetStatus *)status
 {
     [_queue inDatabase:^(FMDatabase *db) {
@@ -87,6 +52,7 @@ static FMDatabaseQueue *_queue;//全局变量
     }];
     YZLog(@"saveStatus，currentThread = %@",[NSThread currentThread]);
 }
+
 + (void)saveUserStatusWith:(id)object
 {
     [_queue inDatabase:^(FMDatabase *db) {

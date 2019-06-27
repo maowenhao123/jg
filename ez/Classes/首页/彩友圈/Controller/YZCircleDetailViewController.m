@@ -48,6 +48,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"彩友圈详情";
     [self setupChilds];
+    waitingView
+    [self getTopicInfo];
     // 监听键盘弹出
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -93,15 +95,44 @@
         self.sendCommentTextView.textView.width = screenWidth - 95 - YZMargin;
     }];
 }
+
+#pragma mark - 请求数据
+- (void)getTopicInfo
+{
+    NSDictionary *dict = @{
+                           @"topicId": self.topicId
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getTopicInfo") params:dict success:^(id json) {
+        YZLog(@"getTopicInfo:%@",json);
+        [MBProgressHUD hideHUDForView:self.view];
+        if (SUCCESS){
+            YZCircleModel *circleModel = [YZCircleModel objectWithKeyValues:json[@"topics"]];
+            circleModel.isDetail = YES;
+            NSDictionary * extInfo = json[@"topics"][@"extInfo"];
+            if (!YZDictIsEmpty(extInfo)) {
+                NSArray * ticketList = extInfo[@"ticketList"];
+                if (!YZArrayIsEmpty(ticketList) && [ticketList isKindOfClass:[NSArray class]]) {
+                    circleModel.extInfo.ticketList = [YZTicketList objectArrayWithKeyValuesArray:extInfo[@"ticketList"]];
+                }
+            }
+            self.circleModel = circleModel;
+            [UIView performWithoutAnimation:^{
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            }];
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+    {
+        YZLog(@"error = %@",error);
+        [MBProgressHUD hideHUDForView:self.view];
+    }];
+}
+
 #pragma mark - 布局子视图
 - (void)setupChilds
 {
-    YZCircleModel *circleModel = [YZCircleModel new];
-    circleModel.nickName = @"昵称";
-    circleModel.content = @"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容";
-    circleModel.createTime = 123;
-    self.circleModel = circleModel;
-    
     CGFloat commentViewH = 40;
     CGFloat tableViewH = screenHeight - statusBarH - navBarH - commentViewH - [YZTool getSafeAreaBottom];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH)];

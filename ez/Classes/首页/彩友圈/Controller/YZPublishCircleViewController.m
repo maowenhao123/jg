@@ -8,12 +8,11 @@
 
 #import "YZPublishCircleViewController.h"
 #import "YZTextView.h"
-#import "YZBottomPickerView.h"
+#import "YZCirclePlayTypePickerView.h"
 
 @interface YZPublishCircleViewController ()
-{
-    NSInteger _index;
-}
+
+@property (nonatomic, weak) YZCirclePlayTypePickerView * playTypePickerView;
 @property (nonatomic, weak) UITextField *playTypeTF;
 @property (nonatomic, weak) YZTextView *descTV;
 @property (nonatomic,strong) NSArray *playTypeArray;
@@ -35,7 +34,7 @@
 {
     NSDictionary *dict = @{
                            };
-    [[YZHttpTool shareInstance] postWithURL:BaseUrlCircle(@"/getAllCommunityPlayTypeList") params:dict success:^(id json) {
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getAllCommunityPlayTypeList") params:dict success:^(id json) {
         YZLog(@"getAllCommunityPlayTypeList:%@",json);
         if (SUCCESS){
             
@@ -81,7 +80,7 @@
     
     UIButton *playTypeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     playTypeBtn.frame = playTypeTF.frame;
-    [playTypeBtn addTarget:self action:@selector(selectPickerView) forControlEvents:UIControlEventTouchUpInside];
+    [playTypeBtn addTarget:self action:@selector(selectPickerView:) forControlEvents:UIControlEventTouchUpInside];
     [playTypeView addSubview:playTypeBtn];
     //accessory
     CGFloat accessoryW = 8;
@@ -89,6 +88,14 @@
     UIImageView * accessoryImageView = [[UIImageView alloc]initWithFrame:CGRectMake(screenWidth - YZMargin - accessoryW, (YZCellH - accessoryH) / 2, accessoryW, accessoryH)];
     accessoryImageView.image = [UIImage imageNamed:@"accessory_dray"];
     [playTypeView addSubview:accessoryImageView];
+    
+    //选择玩法
+    YZCirclePlayTypePickerView * playTypePickerView = [[YZCirclePlayTypePickerView alloc] init];
+    self.playTypePickerView = playTypePickerView;
+    __weak typeof(self) wself = self;
+    playTypePickerView.block = ^(NSDictionary * communityDic, NSDictionary * gameDic){
+        wself.playTypeTF.text = [NSString stringWithFormat:@"%@", gameDic[@"name"]];
+    };
     
     //分割线
     UIView * line1 = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(playTypeView.frame), screenWidth, 1)];
@@ -110,17 +117,10 @@
     [self.view addSubview:line2];
 }
 
-- (void)selectPickerView
+- (void)selectPickerView:(UIButton *)button
 {
     [self.view endEditing:YES];//取消其他键盘
-    NSArray * bankNames = @[@"中国建设银行",@"中国工商银行",@"中国农业银行",@"中国邮政储蓄银行",@"中国银行",@"交通银行",@"招商银行",@"中国光大银行",@"兴业银行",@"平安银行",@"中国民生银行",@"上海浦东发展银行",@"广东发展银行",@"华夏银行",@"中信银行"];
-    //选择银行
-    YZBottomPickerView * playTypeChooseView = [[YZBottomPickerView alloc]initWithArray:bankNames index:_index];
-    playTypeChooseView.block = ^(NSInteger selectedIndex){
-        _index = selectedIndex;
-        self.playTypeTF.text = [NSString stringWithFormat:@"%@",bankNames[selectedIndex]];
-    };
-    [playTypeChooseView show];
+    [self.playTypePickerView show];
 }
 
 - (void)publishBarDidClick

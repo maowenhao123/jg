@@ -193,12 +193,6 @@
         tableView.showsVerticalScrollIndicator = NO;
         [scrollView addSubview:tableView];
         [self.tableViews addObject:tableView];
-        
-//        //初始化头部刷新控件
-//        MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshViewBeginRefreshing)];
-//        [YZTool setRefreshHeaderData:header];
-//        [self.headerViews addObject:header];
-//        tableView.mj_header = header;
     }
 }
 

@@ -24,6 +24,7 @@
 #import "YZLoadHtmlFileController.h"
 #import "YZGameIdViewController.h"
 #import "YZInformationDetailViewController.h"
+#import "YZInitiateUnionBuyViewController.h"
 #import "YZBannerCollectionViewCell.h"
 #import "YZBuyLotteryCollectionReusableView.h"
 #import "YZHomePageFunctionCollectionViewCell.h"
@@ -108,13 +109,19 @@
 - (void)getFunctionData
 {
     NSDictionary *dict = @{
-                           @"version": @"0.0.4"
+                           @"version": @"0.0.5"
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getShortcutModules") params:dict success:^(id json) {
         YZLog(@"getShortcutModules:%@",json);
         if (SUCCESS) {
             NSArray *functions = [YZHomePageFunctionModel objectArrayWithKeyValuesArray:json[@"shortcutModules"]];
-            self.functions = functions;
+            NSMutableArray *functions_mu = [NSMutableArray array];
+            for (YZHomePageFunctionModel * functionModel in functions) {
+                if (![functionModel.type isEqualToString:@"COMMUNITY"]) {
+                    [functions_mu addObject:functionModel];
+                }
+            }
+            self.functions = [NSArray arrayWithArray:functions];
             [UIView performWithoutAnimation:^{
                 [self reloadSections:[NSIndexSet indexSetWithIndex:1]];
             }];
@@ -182,7 +189,7 @@
 - (void)getGameInfoDataWith:(MJRefreshGifHeader *)header
 {
     NSDictionary *dict = @{
-                           @"version":@"0.0.6",
+                           @"version":@"0.0.7",
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getGameInfoList") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self];
@@ -394,8 +401,14 @@
     if (indexPath.section == 4)
     {
         YZBuyLotteryCellStatus * status = self.gameInfos[indexPath.row];
-        YZGameIdViewController *destVc = (YZGameIdViewController *)[[[YZTool gameDestClassDict][status.gameId] alloc] initWithGameId:status.gameId];
-        [self.viewController.navigationController pushViewController:destVc animated:YES];
+        if ([status.gameId isEqualToString:@"UNIONPLAN"]) {
+            YZInitiateUnionBuyViewController *initiateUnionBuyVC = [[YZInitiateUnionBuyViewController alloc] init];
+            [self.viewController.navigationController pushViewController:initiateUnionBuyVC animated:YES];
+        }else
+        {
+            YZGameIdViewController *destVc = (YZGameIdViewController *)[[[YZTool gameDestClassDict][status.gameId] alloc] initWithGameId:status.gameId];
+            [self.viewController.navigationController pushViewController:destVc animated:YES];
+        }
     }else if (indexPath.section == 5)
     {
         //阅读量+1

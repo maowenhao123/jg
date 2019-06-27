@@ -86,6 +86,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"和买详情";
     self.view.backgroundColor = [UIColor whiteColor];
     //先初始化固定控件
     [self setupChilds];

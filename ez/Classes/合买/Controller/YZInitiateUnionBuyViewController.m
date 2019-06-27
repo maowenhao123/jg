@@ -50,7 +50,7 @@ NSString * const InitiateUnionBuyCellId = @"InitiateUnionBuyCellId";
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     layout.minimumInteritemSpacing = 0.0;//列间距
     layout.minimumLineSpacing = 0.0;//行间距
-    layout.itemSize = CGSizeMake(screenWidth / 4, 109);
+    layout.itemSize = CGSizeMake(screenWidth / 3, 109);
     
     CGFloat collectionViewY = 0;
     CGFloat collectionViewH = screenHeight - statusBarH - navBarH;

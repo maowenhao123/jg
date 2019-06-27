@@ -9,6 +9,7 @@
 
 #import "YZShareIncomeViewController.h"
 #import "YZShareIncomeTableViewCell.h"
+#import "YZNoDataTableViewCell.h"
 
 @interface YZShareIncomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -32,6 +33,7 @@
     [self getData];
     [self setupChilds];
 }
+
 - (void)getData {
     waitingView;
     NSDictionary *dict = @{
@@ -68,10 +70,11 @@
         [self.footer endRefreshing];
     }];
 }
+
 - (void)setupChilds
 {
     //tableview
-    UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight - statusBarH - navBarH) style:UITableViewStyleGrouped];
+    UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight - statusBarH - navBarH)];
     self.tableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -95,6 +98,7 @@
     
     [self setupRefreshView];
 }
+
 #pragma mark - 集成上拉下拉刷新控件
 - (void)setupRefreshView
 {
@@ -110,17 +114,20 @@
     self.footer = footer;
     self.tableView.mj_footer = footer;
 }
+
 - (void)headerRefreshViewBeginRefreshing
 {
     _pageIndex = 0;
     [self.dataArray removeAllObjects];
     [self getData];
 }
+
 - (void)footerRefreshViewBeginRefreshing
 {
     _pageIndex ++;
     [self getData];
 }
+
 - (void)setQuantityData
 {
     NSString * number = [NSString stringWithFormat:@"%@",self.json[@"quantity"]];
@@ -131,28 +138,35 @@
     [quantityAttStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:[quantityStr rangeOfString:totalMoney]];
     self.quantityLabel.attributedText = quantityAttStr;
 }
+
 #pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return self.dataArray.count == 0 ? 1 : self.dataArray.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YZShareIncomeTableViewCell * cell = [YZShareIncomeTableViewCell cellWithTableView:tableView];
-    YZShareIncomeStatus * status = self.dataArray[indexPath.row];
-    if (status == self.dataArray.lastObject) {
-        cell.line.hidden = NO;
+    if (self.dataArray.count == 0) {
+        YZNoDataTableViewCell *cell = [YZNoDataTableViewCell cellWithTableView:tableView cellId:@"noShareIncomeCell"];
+        cell.imageName = @"no_recharge";
+        cell.noDataStr = @"您还没有收益记录";
+        return cell;
     }else
     {
-        cell.line.hidden = YES;
+        YZShareIncomeTableViewCell * cell = [YZShareIncomeTableViewCell cellWithTableView:tableView];
+        YZShareIncomeStatus * status = self.dataArray[indexPath.row];
+        if (status == self.dataArray.lastObject) {
+            cell.line.hidden = NO;
+        }else
+        {
+            cell.line.hidden = YES;
+        }
+        cell.status = status;
+        return cell;
     }
-    cell.status = status;
-    return cell;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 35)];
@@ -180,18 +194,17 @@
     
     return headerView;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 35;
+    return self.dataArray.count == 0 ? tableView.height * 0.7 : 35;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 35;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.01;
-}
+
 #pragma mark - 初始化
 - (NSMutableArray *)dataArray
 {

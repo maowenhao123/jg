@@ -12,7 +12,6 @@
 #import "YZNavigationController.h"
 #import "YZShareViewController.h"
 #import "YZBuyLotteryCollectionView.h"
-#import "YZCircleViewController.h"
 #import "YZContactCustomerServiceViewController.h"
 
 @interface YZHomePageViewController ()<YZBuyLotteryCollectionViewDelegate>
@@ -99,10 +98,8 @@
         [self presentViewController:nav animated:YES completion:nil];
         return;
     }
-    YZCircleViewController * messageVC = [[YZCircleViewController alloc] init];
+    YZMessageViewController * messageVC = [[YZMessageViewController alloc] init];
     [self.navigationController pushViewController:messageVC animated:YES];
-//    YZMessageViewController * messageVC = [[YZMessageViewController alloc] init];
-//    [self.navigationController pushViewController:messageVC animated:YES];
 }
 
 - (void)serviceBarDidClick
@@ -155,11 +152,6 @@
     {
         YZLog(@"error = %@",error);
     }];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
 }
 
 @end

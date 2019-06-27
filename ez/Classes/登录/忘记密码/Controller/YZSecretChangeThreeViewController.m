@@ -230,7 +230,6 @@
             [MBProgressHUD showSuccess:@"修改密码成功"];
             //存储账户到数据库
             [YZUserDefaultTool saveObject:json[@"userId"] forKey:@"userId"];
-            [YZStatusCacheTool saveAccount:self.phoneStr];
             [YZUserDefaultTool saveObject:self.passWordTF.text forKey:@"userPwd"];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [YZUserDefaultTool saveObject:@"accountLogin" forKey:@"loginWay"];

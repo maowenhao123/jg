@@ -18,7 +18,6 @@
 #import "YZRechargeListViewController.h"
 #import "YZVoucherViewController.h"
 #import "YZMessageViewController.h"
-#import "YZOrderViewController.h"
 #import "YZLoadHtmlFileController.h"
 #import "YZWeChatPublicViewController.h"
 #import "YZChatViewController.h"
@@ -44,15 +43,6 @@
 
 @implementation YZCSMineViewController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        //接收需要刷新账户中心的纪录的通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshRecord:) name:RefreshRecordNote object:nil];
-    }
-    return self;
-}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -95,11 +85,7 @@
 {
     [self loadUserInfo];
 }
-- (void)refreshRecord:(NSNotification *)note
-{
-    YZOrderViewController *orderVC = [[YZOrderViewController alloc]init];
-    [self.navigationController pushViewController:orderVC animated:YES];
-}
+
 - (void)loadUserInfo
 {
     if (!UserId)

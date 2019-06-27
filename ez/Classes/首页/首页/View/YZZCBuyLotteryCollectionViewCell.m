@@ -20,7 +20,6 @@
 @property (nonatomic, weak) UILabel *descriptionLabel;//描述
 @property (nonatomic, weak) YZSupView *supView;//角标
 @property (nonatomic, weak) UIImageView *supImageView;//角标图片
-@property (nonatomic, weak) UIView *line1;//下分割线
 
 @end
 
@@ -119,6 +118,8 @@
     {
         if ([_status.gameId isEqualToString:@"TT"]) {
             self.logoImageView.image = [UIImage imageNamed:@"scheme_setmeal"];
+        }else if ([_status.gameId isEqualToString:@"UNIONPLAN"]) {
+            self.logoImageView.image = [UIImage imageNamed:@"icon_unionplan"];
         }else
         {
             self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",status.gameId]];

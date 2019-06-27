@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class YZCircleViewAttentionTableViewCell;
+
+@protocol YZCircleViewAttentionTableViewCellDelegate <NSObject>
+
+- (void) circleViewAttentionTableViewCellAttentionBtnDidClick:(YZCircleViewAttentionTableViewCell *)cell;
+
+@end
+
+
 @interface YZCircleViewAttentionTableViewCell : UITableViewCell
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
 @property (nonatomic,strong) NSDictionary *dic;
+
+@property (nonatomic, weak) id<YZCircleViewAttentionTableViewCellDelegate> delegate;
 
 @end

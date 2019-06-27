@@ -145,7 +145,8 @@
 
 - (void)viewTap:(UITapGestureRecognizer *)tap
 {
-    if (tap.view.tag == 0) {
+    if (tap.view.tag == 1) {
+        //跳入当前App设置界面
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }

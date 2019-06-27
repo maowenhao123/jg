@@ -7,6 +7,7 @@
 //
 
 #import "YZCircleCommentTableViewCell.h"
+
 @interface YZCircleCommentTableViewCell ()
 
 @property (nonatomic, weak) UIImageView *avatarImageView;

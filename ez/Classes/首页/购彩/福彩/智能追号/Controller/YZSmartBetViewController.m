@@ -198,7 +198,7 @@
     [self.view addSubview:settingBtn];
     
     //tableView
-    CGFloat bottomViewH = 49;
+    CGFloat bottomViewH = 49 + [YZTool getSafeAreaBottom];
     UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, screenWidth, screenHeight - statusBarH - navBarH - 40 - bottomViewH) style:UITableViewStylePlain];
     self.tableView = tableView;
     tableView.backgroundColor = YZBackgroundColor;
@@ -215,7 +215,7 @@
     //注数和倍数和金额总数
     UILabel *amountLabel = [[UILabel alloc] init];
     self.amountLabel = amountLabel;
-    amountLabel.frame = CGRectMake(YZMargin, 0, screenWidth - 20 - 85, bottomViewH);
+    amountLabel.frame = CGRectMake(YZMargin, 0, screenWidth - 20 - 85, 49);
     amountLabel.textColor = YZBlackTextColor;
     amountLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     [bottomView addSubview:amountLabel];
@@ -224,7 +224,7 @@
     YZBottomButton *confirmBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
     CGFloat confirmBtnH = 30;
     CGFloat confirmBtnW = 75;
-    confirmBtn.frame = CGRectMake(screenWidth - confirmBtnW - 15, (bottomViewH - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
+    confirmBtn.frame = CGRectMake(screenWidth - confirmBtnW - 15, (49 - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
     [confirmBtn setTitle:@"付款" forState:UIControlStateNormal];
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     [bottomView addSubview:confirmBtn];
@@ -488,7 +488,7 @@
     tap.delegate = self;
     [backView addGestureRecognizer:tap];
     
-    YZSmartBetSettingView * settingView = [[YZSmartBetSettingView alloc]initWithFrame:CGRectMake(0, 0, screenWidth - 10, 375)];
+    YZSmartBetSettingView * settingView = [[YZSmartBetSettingView alloc]initWithFrame:CGRectMake(20, 0, screenWidth - 2 * 20, 375)];
     self.settingView = settingView;
     settingView.termCount = (int)self.smartBetArray.count;
     settingView.multipleNumber = _multipleNumber;
@@ -497,6 +497,8 @@
     settingView.winStop = _winStop;
     settingView.delegate = self;
     settingView.center = KEY_WINDOW.center;
+    settingView.layer.masksToBounds = YES;
+    settingView.layer.cornerRadius = 5;
     [backView addSubview:settingView];
     
     //动画

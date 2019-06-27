@@ -114,6 +114,13 @@
     YZNavigationController *buyLottery_nav = [[YZNavigationController alloc]initWithRootViewController:homePageVC];
     buyLottery_nav.view.tag = 1;
     
+    // 2.订单
+    YZOrderViewController *orderVC = [[YZOrderViewController alloc] init];
+    UITabBarItem * tabberItem2 = [self getTabberByImage:[UIImage imageNamed:@"tabber_order_zc"] selectedImage:[UIImage imageNamed:@"tabber_order_selected_zc"] title:@"订单"];
+    orderVC.tabBarItem = tabberItem2;
+    YZNavigationController *orderyVC_nav = [[YZNavigationController alloc]initWithRootViewController:orderVC];
+    orderyVC_nav.view.tag = 2;
+    
     // 3.合买
     YZUnionBuyViewController *unionBuyVC = [[YZUnionBuyViewController alloc] init];
     UITabBarItem * tabberItem3 = [self getTabberByImage:[UIImage imageNamed:@"tabber_unionBuy_zc"] selectedImage:[UIImage imageNamed:@"tabber_unionBuy_selected_zc"] title:@"合买"];
@@ -135,7 +142,7 @@
     YZNavigationController *mineVC_nav = [[YZNavigationController alloc]initWithRootViewController:mineVC];
     mineVC_nav.view.tag = 5;
     
-    self.viewControllers = @[buyLottery_nav,unionBuyVC_nav,winNumberVC_nav,mineVC_nav];
+    self.viewControllers = @[buyLottery_nav, orderyVC_nav, unionBuyVC_nav, winNumberVC_nav, mineVC_nav];
 #elif CS
     // 1.购彩
     YZHomePageViewController *homePageVC = [[YZHomePageViewController alloc] init];
@@ -143,6 +150,13 @@
     homePageVC.tabBarItem = tabberItem1;
     YZNavigationController *buyLottery_nav = [[YZNavigationController alloc]initWithRootViewController:homePageVC];
     buyLottery_nav.view.tag = 1;
+    
+    // 2.订单
+    YZOrderViewController *orderVC = [[YZOrderViewController alloc] init];
+    UITabBarItem * tabberItem2 = [self getTabberByImage:[UIImage imageNamed:@"tabber_order"] selectedImage:[UIImage imageNamed:@"tabber_order_selected"] title:@"订单"];
+    orderVC.tabBarItem = tabberItem2;
+    YZNavigationController *orderyVC_nav = [[YZNavigationController alloc]initWithRootViewController:orderVC];
+    orderyVC_nav.view.tag = 2;
     
     // 3.合买
     YZUnionBuyViewController *unionBuyVC = [[YZUnionBuyViewController alloc] init];
@@ -165,7 +179,7 @@
     YZNavigationController *mineVC_nav = [[YZNavigationController alloc]initWithRootViewController:mineVC];
     mineVC_nav.view.tag = 5;
     
-    self.viewControllers = @[buyLottery_nav,unionBuyVC_nav,winNumberVC_nav,mineVC_nav];
+    self.viewControllers = @[buyLottery_nav, orderyVC_nav, unionBuyVC_nav, winNumberVC_nav, mineVC_nav];
 #endif
     self.delegate = self;
 }
@@ -174,7 +188,7 @@
 {
     self.selectedIndex = 0;
 }
-//去账户控制器
+//去订单
 - (void)toRecord:(NSNotification *)note
 {
     if (!UserId) {
@@ -183,13 +197,7 @@
         [self presentViewController:nav animated:YES completion:nil];
     }else
     {
-#if JG
         self.selectedIndex = 1;
-#elif ZC
-        self.selectedIndex = 3;
-#elif CS
-        self.selectedIndex = 3;
-#endif
     }
 }
 //去个人中心
@@ -200,13 +208,7 @@
         YZNavigationController *nav = [[YZNavigationController alloc] initWithRootViewController:login];
         [self presentViewController:nav animated:YES completion:nil];
     }
-#if JG
     self.selectedIndex = 4;
-#elif ZC
-    self.selectedIndex = 3;
-#elif CS
-    self.selectedIndex = 3;
-#endif
 }
 
 - (UITabBarItem *)getTabberByImage:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title
@@ -221,7 +223,7 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     //点击账户按钮和没有登录，modal登录界面
-    if((viewController.view.tag == 2 || viewController.view.tag == 5) && !UserId)
+    if((viewController.view.tag == 2 || viewController.view.tag == 3 || viewController.view.tag == 5) && !UserId)
     {
         YZLoginViewController *login = [[YZLoginViewController alloc] init];
         YZNavigationController *nav = [[YZNavigationController alloc] initWithRootViewController:login];
