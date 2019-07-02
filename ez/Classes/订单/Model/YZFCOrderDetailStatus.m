@@ -5,7 +5,7 @@
 //  Created by apple on 16/10/12.
 //  Copyright © 2016年 9ge. All rights reserved.
 //
-#define textPadding 5
+#define textPadding 7
 
 #import "YZFCOrderDetailStatus.h"
 
@@ -152,11 +152,11 @@
     [paragraphStyle setHeadIndent:textPadding];
     NSDictionary *attDict = @{NSParagraphStyleAttributeName : paragraphStyle};
     [attStr addAttributes:attDict range:NSMakeRange(0, attStr.length)];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(24)] range:NSMakeRange(0, attStr.length)];
+    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(26)] range:NSMakeRange(0, attStr.length)];
     _betNumber = attStr;
     
     CGSize ticketLabelSize = [attStr boundingRectWithSize:CGSizeMake(screenWidth - 2 * 12, MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading) context:nil].size;
-    _cellH = ticketLabelSize.height + 2 * textPadding;
+    _cellH = ticketLabelSize.height + 2 * 12;
 }
 - (NSMutableArray *)getRangesByString:(NSString *)string keyword:(NSString *)keyword
 {

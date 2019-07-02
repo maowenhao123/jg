@@ -18,6 +18,8 @@
 @property (nonatomic, weak) UIButton * backButon;
 @property (nonatomic, weak) UIButton *attentionButon;
 @property (nonatomic, weak) YZCircleTableView *tableView;
+@property (nonatomic, weak) YZCircleUserInfoHeaderView *headerView;
+@property (nonatomic, strong) YZCircleUserInfoModel *userInfoModel;
 
 @end
 
@@ -47,6 +49,48 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    waitingView
+    [self getData];
+}
+
+#pragma mark - 请求数据
+- (void)getData
+{
+    NSDictionary *dict = @{
+                           @"currentUserId": UserId,
+                           @"targetUserId": self.userId,
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getUserInfo") params:dict success:^(id json) {
+        [MBProgressHUD hideHUDForView:self.view];
+        YZLog(@"getUserInfo:%@",json);
+        if (SUCCESS){
+            self.userInfoModel = [YZCircleUserInfoModel objectWithKeyValues:json[@"userInfo"]];
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+    {
+         [MBProgressHUD hideHUDForView:self.view];
+         YZLog(@"error = %@",error);
+    }];
+}
+
+- (void)setUserInfoModel:(YZCircleUserInfoModel *)userInfoModel
+{
+    _userInfoModel = userInfoModel;
+    
+    self.barNickNameLabel.text = _userInfoModel.nickname;
+    [self.barAvatarImageView sd_setImageWithURL:[NSURL URLWithString:_userInfoModel.headPortraitUrl] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
+    self.headerView.userInfoModel = _userInfoModel;
+    self.attentionButon.enabled = _userInfoModel.concernable;
+    
+    CGSize barNickNameLabelSize = [self.barNickNameLabel.text sizeWithLabelFont:self.barNickNameLabel.font];
+    CGFloat barAvatarImageViewWH = 35;
+    CGFloat barAvatarImageViewX = (screenWidth - barAvatarImageViewWH - barNickNameLabelSize.width - 2) / 2;
+    self.barAvatarImageView.frame = CGRectMake(barAvatarImageViewX, statusBarH + (navBarH - barAvatarImageViewWH) / 2, barAvatarImageViewWH, barAvatarImageViewWH);
+    self.barAvatarImageView.layer.cornerRadius = self.barAvatarImageView.width / 2;
+    self.barNickNameLabel.frame = CGRectMake(CGRectGetMaxX(self.barAvatarImageView.frame) + 2, statusBarH, barNickNameLabelSize.width, navBarH);
 }
 
 #pragma mark - 布局子视图
@@ -55,7 +99,7 @@
     YZCircleTableView *tableView = [[YZCircleTableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     self.tableView = tableView;
     tableView.circleDelegate = self;
-    tableView.userId = self.circleModel.userId;
+    tableView.userId = self.userId;
     tableView.type = CircleUserReleaseTopic;
     [self.view addSubview:tableView];
     [tableView getData];
@@ -71,7 +115,6 @@
     barNickNameLabel.alpha = 0;
     barNickNameLabel.textColor = YZBlackTextColor;
     barNickNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-    barNickNameLabel.text = self.circleModel.nickname ? self.circleModel.nickname : self.circleModel.userName;
     [barView addSubview:barNickNameLabel];
     
     UIImageView * barAvatarImageView = [[UIImageView alloc] init];
@@ -79,15 +122,7 @@
     barAvatarImageView.alpha = 0;
     barAvatarImageView.contentMode = UIViewContentModeScaleAspectFill;
     barAvatarImageView.layer.masksToBounds = YES;
-    [barAvatarImageView sd_setImageWithURL:[NSURL URLWithString:self.circleModel.headPortraitUrl] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
     [barView addSubview:barAvatarImageView];
-    
-    CGSize barNickNameLabelSize = [barNickNameLabel.text sizeWithLabelFont:barNickNameLabel.font];
-    CGFloat barAvatarImageViewWH = 35;
-    CGFloat barAvatarImageViewX = (screenWidth - barAvatarImageViewWH - barNickNameLabelSize.width - 2) / 2;
-    barAvatarImageView.frame = CGRectMake(barAvatarImageViewX, statusBarH + (navBarH - barAvatarImageViewWH) / 2, barAvatarImageViewWH, barAvatarImageViewWH);
-    barAvatarImageView.layer.cornerRadius = barAvatarImageView.width / 2;
-    barNickNameLabel.frame = CGRectMake(CGRectGetMaxX(barAvatarImageView.frame) + 2, statusBarH, barNickNameLabelSize.width, navBarH);
     
     //返回
     UIButton * backButon = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -99,7 +134,7 @@
 
     //headerView
     YZCircleUserInfoHeaderView *headerView = [[YZCircleUserInfoHeaderView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 212)];
-    headerView.circleModel = self.circleModel;
+    self.headerView = headerView;
     tableView.tableHeaderView = headerView;
     
     //关注
@@ -125,7 +160,7 @@
 {
     NSDictionary *dict = @{
                            @"userId": UserId,
-                           @"byConcernUserId": self.circleModel.userId,
+                           @"byConcernUserId": self.userId,
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/userConcern") params:dict success:^(id json) {
         YZLog(@"userConcern:%@",json);

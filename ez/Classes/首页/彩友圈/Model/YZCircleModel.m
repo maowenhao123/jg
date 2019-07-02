@@ -9,6 +9,10 @@
 #import "YZCircleModel.h"
 #import "YZDateTool.h"
 
+@implementation YZCircleExtModel
+
+@end
+
 @implementation YZCircleModel
 
 - (CGFloat)cellH
@@ -18,10 +22,10 @@
     CGFloat viewX = CGRectGetMaxX(_avatarImageViewF) + 7;
     CGFloat viewW = screenWidth - YZMargin - viewX;
     
-    CGSize titleLabelSize = [_nickname ? _nickname : _userName sizeWithLabelFont:[UIFont systemFontOfSize:YZGetFontSize(28)]];
-    _nickNameLabelF = CGRectMake(viewX, 9 + 9, viewW, titleLabelSize.height);
+    CGSize nicknameLabelSize = [_nickname ? _nickname : _userName sizeWithLabelFont:[UIFont systemFontOfSize:YZGetFontSize(28)]];
+    _nickNameLabelF = CGRectMake(viewX, 9 + 9, viewW, nicknameLabelSize.height);
     
-    _timeStr = [YZDateTool getTimeByTimestamp:_createTime format:@"yyyy-MM-dd  HH:mm:ss"];
+    _timeStr = [YZDateTool getTimeByTimestamp:_createTime format:@"yyyy-MM-dd HH:mm:ss"];
     CGSize timeLabelSize = [_timeStr sizeWithLabelFont:[UIFont systemFontOfSize:YZGetFontSize(24)]];
     _timeLabelF = CGRectMake(viewX, CGRectGetMaxY(_nickNameLabelF) + 6, viewW, timeLabelSize.height);
     
@@ -135,6 +139,5 @@
     
     return _cellH;
 }
-
 
 @end

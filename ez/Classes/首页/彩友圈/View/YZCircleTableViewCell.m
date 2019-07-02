@@ -10,9 +10,10 @@
 #import "YZCircleDetailViewController.h"
 #import "YZUserCircleViewController.h"
 #import "YZUnionBuyDetailViewController.h"
+#import "XLPhotoBrowser.h"
 #import "UIButton+YZ.h"
 
-@interface YZCircleTableViewCell ()
+@interface YZCircleTableViewCell ()<XLPhotoBrowserDatasource>
 
 @property (nonatomic, weak) UIImageView *avatarImageView;
 @property (nonatomic, weak) UILabel *nickNameLabel;
@@ -69,6 +70,8 @@
     avatarImageView.layer.masksToBounds = YES;
     avatarImageView.layer.cornerRadius = 18;
     avatarImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer * avatarUserTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userCircleDidClick)];
+    [avatarImageView addGestureRecognizer:avatarUserTap];
     [self addSubview:avatarImageView];
     
     //昵称
@@ -76,10 +79,10 @@
     self.nickNameLabel = nickNameLabel;
     nickNameLabel.textColor = YZBlackTextColor;
     nickNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+    nickNameLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer * nickNameUserTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userCircleDidClick)];
+    [nickNameLabel addGestureRecognizer:nickNameUserTap];
     [self addSubview:nickNameLabel];
-    
-    UITapGestureRecognizer * userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userCircleDidClick)];
-    [avatarImageView addGestureRecognizer:userTap];
     
     //时间
     UILabel * timeLabel = [[UILabel alloc] init];
@@ -192,20 +195,25 @@
 - (void)userCircleDidClick
 {
     YZUserCircleViewController * userCircleVC = [[YZUserCircleViewController alloc] init];
-    userCircleVC.circleModel = self.circleModel;
+    userCircleVC.userId = self.circleModel.userId;
     [self.viewController.navigationController pushViewController:userCircleVC animated:YES];
 }
 
 - (void)circleDetailDidClick
 {
     YZCircleDetailViewController * circleDetailVC = [[YZCircleDetailViewController alloc] init];
-    circleDetailVC.topicId = self.circleModel.topicId;
+    if (!YZStringIsEmpty(self.circleModel.id)) {
+        circleDetailVC.topicId = self.circleModel.id;
+    }else
+    {
+        circleDetailVC.topicId = self.circleModel.topicId;
+    }
     [self.viewController.navigationController pushViewController:circleDetailVC animated:YES];
 }
 
 - (void)followtButtonDidClick
 {
-    YZUnionBuyDetailViewController *unionBuyDetailVC = [[YZUnionBuyDetailViewController alloc] initWithUnionBuyUserId:self.circleModel.extInfo.unionBuyUserId unionBuyPlanId:self.circleModel.extInfo.orderId gameId:self.circleModel.extInfo.gameId];
+    YZUnionBuyDetailViewController *unionBuyDetailVC = [[YZUnionBuyDetailViewController alloc] initWithUnionBuyPlanId:self.circleModel.extInfo.unionBuyUserId gameId:self.circleModel.extInfo.gameId];
     [self.viewController.navigationController pushViewController:unionBuyDetailVC animated:YES];
 }
 
@@ -231,7 +239,19 @@
 
 - (void)imageViewDidClick:(UIGestureRecognizer *)ges
 {
-    
+    UIView * view = ges.view;
+    NSMutableArray * imageUrls = [NSMutableArray array];
+    for (NSDictionary * topicAlbumDic in self.circleModel.topicAlbumList) {
+        [imageUrls addObject:topicAlbumDic[@"originalUrl"]];
+    }
+    XLPhotoBrowser * photoBrowser = [XLPhotoBrowser showPhotoBrowserWithCurrentImageIndex:view.tag imageCount:imageUrls.count datasource:self];
+    photoBrowser.browserStyle = XLPhotoBrowserStyleSimple;
+}
+
+#pragma mark - XLPhotoBrowserDatasource
+- (UIView *)photoBrowser:(XLPhotoBrowser *)browser sourceImageViewForIndex:(NSInteger)index
+{
+    return self.imageViews[index];
 }
 
 - (void)setCircleModel:(YZCircleModel *)circleModel
@@ -292,7 +312,7 @@
         imageView.hidden = YES;
         if (i < _circleModel.imageViewFs.count) {
             NSDictionary * imageDic = _circleModel.topicAlbumList[i];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:imageDic[@"breviaryUrl"]] placeholderImage:[UIImage ImageFromColor:YZLightDrayColor]];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:imageDic[@"breviaryUrl"]] placeholderImage:[UIImage ImageFromColor:YZWhiteLineColor]];
             CGRect imageViewF = [_circleModel.imageViewFs[i] CGRectValue];
             imageView.hidden = NO;
             imageView.frame = imageViewF;

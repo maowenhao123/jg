@@ -13,6 +13,10 @@
 
 @property (nonatomic,weak) UIView * backView;
 @property (nonatomic, weak) UITextField * textField;
+@property (nonatomic, weak) UIButton *codeBtn;
+@property (nonatomic, weak) UIButton *forgetPwdButton;
+@property (nonatomic, weak) UIButton *changeButton;
+@property (nonatomic, assign) int type;//1密码 2验证码
 
 @end
 
@@ -22,6 +26,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.type = 1;
         [self setupChildViews];
     }
     return self;
@@ -30,11 +35,11 @@
 {
     self.backgroundColor = YZColor(0, 0, 0, 0.4);
     
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDidClick)];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeFromSuperview)];
     tap.delegate = self;
     [self addGestureRecognizer:tap];
     
-    CGFloat backViewW = 300;
+    CGFloat backViewW = screenWidth * 0.85;
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, backViewW, 0)];
     self.backView = backView;
     backView.backgroundColor = [UIColor whiteColor];
@@ -53,38 +58,64 @@
     [backView addSubview:titleLabel];
     
     //内容
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(titleLabel.frame) + 25, backView.width - 30, 37)];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(titleLabel.frame) + 20, backView.width - 30, 40)];
     self.textField = textField;
-    textField.backgroundColor = YZBackgroundColor;
     textField.textColor = YZBlackTextColor;
     textField.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     textField.placeholder = @"请输入登录密码";
     textField.secureTextEntry = YES;
-    textField.layer.cornerRadius = 3;
+    textField.backgroundColor = YZColor(236, 236, 236, 1);
+    textField.borderStyle = UITextBorderStyleNone;
     textField.layer.masksToBounds = YES;
-    textField.layer.borderWidth = 0.8;
-    textField.layer.borderColor = YZGrayLineColor.CGColor;
+    textField.layer.cornerRadius = 4;
     [backView addSubview:textField];
     
+    //获取验证码
+    YZBottomButton * codeBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
+    self.codeBtn = codeBtn;
+    [codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [codeBtn setTitleColor:YZBlueBallColor forState:UIControlStateNormal];
+    [codeBtn setBackgroundImage:[UIImage ImageFromColor:[UIColor clearColor]] forState:UIControlStateNormal];//正常
+    [codeBtn setBackgroundImage:[UIImage ImageFromColor:[UIColor clearColor]] forState:UIControlStateHighlighted];//高亮
+    [codeBtn setBackgroundImage:[UIImage ImageFromColor:[UIColor clearColor]] forState:UIControlStateDisabled];//不可选
+    CGSize codeBtnSize = [codeBtn.currentTitle sizeWithLabelFont:codeBtn.titleLabel.font];
+    CGFloat codeBtnW = codeBtnSize.width;
+    codeBtn.frame = CGRectMake(textField.width - codeBtnW - YZMargin, 0, codeBtnW, textField.height);
+    codeBtn.hidden = YES;
+    [codeBtn addTarget:self action:@selector(getCodeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    [textField addSubview:codeBtn];
+    
+    //切换按钮
+    CGFloat buttonY = CGRectGetMaxY(textField.frame) + 10;
+    UIButton *changeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.changeButton = changeButton;
+    changeButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    [changeButton setTitleColor:YZBlueBallColor forState:UIControlStateNormal];
+    [changeButton setTitle:@"使用短信验证" forState:UIControlStateNormal];
+    CGSize changeButtonSize = [changeButton.currentTitle sizeWithLabelFont:changeButton.titleLabel.font];
+    changeButton.frame = CGRectMake(15, buttonY, changeButtonSize.width, 20);
+    [changeButton addTarget:self action:@selector(changeButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [backView addSubview:changeButton];
+    
     //忘记密码
-    UIButton *keybutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGFloat keybuttonY = CGRectGetMaxY(textField.frame) + 10;
-    keybutton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
-    [keybutton setTitleColor:YZBlueBallColor forState:UIControlStateNormal];
-    [keybutton setTitle:@"忘记密码" forState:UIControlStateNormal];
-    CGSize keybuttonSize = [keybutton.currentTitle sizeWithLabelFont:keybutton.titleLabel.font];
-    keybutton.frame = CGRectMake(15, keybuttonY, keybuttonSize.width, 20);
-    [keybutton addTarget:self action:@selector(ketbtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [backView addSubview:keybutton];
+    UIButton *forgetPwdButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.forgetPwdButton = forgetPwdButton;
+    forgetPwdButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    [forgetPwdButton setTitleColor:YZBlueBallColor forState:UIControlStateNormal];
+    [forgetPwdButton setTitle:@"忘记密码" forState:UIControlStateNormal];
+    CGSize forgetPwdButtonSize = [forgetPwdButton.currentTitle sizeWithLabelFont:forgetPwdButton.titleLabel.font];
+    forgetPwdButton.frame = CGRectMake(backView.width - forgetPwdButtonSize.width - 15, buttonY, forgetPwdButtonSize.width, 20);
+    [forgetPwdButton addTarget:self action:@selector(forgetPwdButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [backView addSubview:forgetPwdButton];
     
     CGFloat buttonW = backView.width / 2;
     CGFloat buttonH = 42;
     //分割线
-    UIView * line1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(keybutton.frame) + 20, backView.width, 1)];
+    UIView * line1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(forgetPwdButton.frame) + 20, backView.width, 1)];
     line1.backgroundColor = YZWhiteLineColor;
     [backView addSubview:line1];
     
-    UIView * line2 = [[UIView alloc] initWithFrame:CGRectMake(buttonW, CGRectGetMaxY(keybutton.frame) + 20, 1, buttonH)];
+    UIView * line2 = [[UIView alloc] initWithFrame:CGRectMake(buttonW, CGRectGetMaxY(forgetPwdButton.frame) + 20, 1, buttonH)];
     line2.backgroundColor = YZWhiteLineColor;
     [backView addSubview:line2];
     
@@ -116,12 +147,29 @@
      }];
 }
 
-- (void)tapDidClick
+- (void)changeButtonDidClick
 {
-    [self removeFromSuperview];
+    [self endEditing:YES];
+    self.textField.text = @"";
+    if (self.type == 1) {
+        self.type = 2;
+        [self.changeButton setTitle:@"使用密码验证" forState:UIControlStateNormal];
+        self.forgetPwdButton.hidden = YES;
+        self.textField.secureTextEntry = NO;
+        self.textField.keyboardType = UIKeyboardTypeNumberPad;
+        self.codeBtn.hidden = NO;
+    }else
+    {
+        self.type = 1;
+        [self.changeButton setTitle:@"使用短信验证" forState:UIControlStateNormal];
+        self.forgetPwdButton.hidden = NO;
+        self.textField.secureTextEntry = YES;
+        self.textField.keyboardType = UIKeyboardTypeDefault;
+        self.codeBtn.hidden = YES;
+    }
 }
 
-- (void)ketbtnPressed
+- (void)forgetPwdButtonDidClick
 {
     YZSecretChangeViewController *secretVc = [[YZSecretChangeViewController alloc] init];
     [self.viewController.navigationController pushViewController:secretVc animated:YES];
@@ -134,11 +182,15 @@
         return;
     }
     
-    [self removeFromSuperview];
-    
     if (_delegate && [_delegate respondsToSelector:@selector(withDrawalWithPassWord:)]) {
         [_delegate withDrawalWithPassWord:self.textField.text];
     }
+    [self removeFromSuperview];
+}
+
+- (void)getCodeBtnPressed
+{
+    
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch

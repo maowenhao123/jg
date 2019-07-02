@@ -15,7 +15,7 @@
 @property (nonatomic, assign) int pageIndex;
 @property (nonatomic, weak) MJRefreshGifHeader *headerView;
 @property (nonatomic, weak) MJRefreshBackGifFooter *footerView;
-@property (nonatomic, strong) NSMutableArray *dataArray;//近期开奖数据
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 

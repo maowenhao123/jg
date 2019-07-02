@@ -8,13 +8,15 @@
 
 #import "YZCircleUserInfoHeaderView.h"
 #import "YZCircleViewAttentionViewController.h"
+#import "YZAddImageManage.h"
 
-@interface YZCircleUserInfoHeaderView ()
+@interface YZCircleUserInfoHeaderView ()<AddImageManageDelegate>
 
 @property (nonatomic, weak) UIImageView *avatarImageView;
 @property (nonatomic, weak) UILabel *nickNameLabel;
 @property (nonatomic, weak) UIButton *attentionButon;
 @property (nonatomic, weak) UIButton *fansButton;
+@property (nonatomic, strong) YZAddImageManage * addImageManage;
 
 @end
 
@@ -40,6 +42,9 @@
     avatarImageView.layer.cornerRadius = avatarImageView.width / 2;
     avatarImageView.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.3].CGColor;
     avatarImageView.layer.borderWidth = 3;
+    avatarImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer * chooseAvatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAvatarDidClick)];
+    [avatarImageView addGestureRecognizer:chooseAvatarTap];
     [self addSubview:avatarImageView];
     
     //昵称
@@ -70,16 +75,21 @@
         [button addTarget:self action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
     }
+    
+    //分割线
+    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(screenWidth / 2 - 0.75, CGRectGetMaxY(nickNameLabel.frame) + 15, 1.5, 15)];
+    line.backgroundColor = [UIColor whiteColor];
+    [self addSubview:line];
 }
 
-- (void)setCircleModel:(YZCircleModel *)circleModel
+- (void)setUserInfoModel:(YZCircleUserInfoModel *)userInfoModel
 {
-    _circleModel = circleModel;
+    _userInfoModel = userInfoModel;
     
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:_circleModel.headPortraitUrl] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
-    self.nickNameLabel.text = _circleModel.nickname ? _circleModel.nickname : _circleModel.userName;
-    [self.attentionButon setTitle:[NSString stringWithFormat:@"关注%@", _circleModel.likeNumber] forState:UIControlStateNormal];
-    [self.fansButton setTitle:[NSString stringWithFormat:@"粉丝%@", _circleModel.likeNumber] forState:UIControlStateNormal];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:_userInfoModel.headPortraitUrl] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
+    self.nickNameLabel.text = _userInfoModel.nickname;
+    [self.attentionButon setTitle:[NSString stringWithFormat:@"关注%@", _userInfoModel.concernCount] forState:UIControlStateNormal];
+    [self.fansButton setTitle:[NSString stringWithFormat:@"粉丝%@", _userInfoModel.fansCount] forState:UIControlStateNormal];
     
 }
 
@@ -91,4 +101,21 @@
 }
 
 
+#pragma mark - 修改头像
+- (void)chooseAvatarDidClick
+{
+    if (!self.canChooseAvatar) {
+        return;
+    }
+    
+    self.addImageManage = [[YZAddImageManage alloc] init];
+    self.addImageManage.viewController = self.viewController;
+    self.addImageManage.delegate = self;
+    [self.addImageManage addImage];
+}
+
+- (void)imageManageCropImage:(UIImage *)image
+{
+    
+}
 @end

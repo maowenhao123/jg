@@ -14,6 +14,9 @@
 
 @interface YZMineCircleViewController ()
 
+@property (nonatomic, weak) YZCircleUserInfoHeaderView *headerView;
+@property (nonatomic, strong) YZCircleUserInfoModel *userInfoModel;
+
 @end
 
 @implementation YZMineCircleViewController
@@ -36,6 +39,38 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupChilds];
+    waitingView
+    [self getData];
+}
+
+#pragma mark - 请求数据
+- (void)getData
+{
+    NSDictionary *dict = @{
+                           @"currentUserId": UserId,
+                           @"targetUserId": UserId,
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getUserInfo") params:dict success:^(id json) {
+        [MBProgressHUD hideHUDForView:self.view];
+        YZLog(@"getUserInfo:%@",json);
+        if (SUCCESS){
+            self.userInfoModel = [YZCircleUserInfoModel objectWithKeyValues:json[@"userInfo"]];
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+    {
+         [MBProgressHUD hideHUDForView:self.view];
+         YZLog(@"error = %@",error);
+    }];
+}
+
+- (void)setUserInfoModel:(YZCircleUserInfoModel *)userInfoModel
+{
+    _userInfoModel = userInfoModel;
+    
+    self.headerView.userInfoModel = _userInfoModel;
 }
 
 #pragma mark - 布局子视图
@@ -43,6 +78,8 @@
 {
     //headerView
     YZCircleUserInfoHeaderView *headerView = [[YZCircleUserInfoHeaderView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 212)];
+    self.headerView = headerView;
+    headerView.canChooseAvatar = YES;
     [self.view addSubview:headerView];
     
     //返回

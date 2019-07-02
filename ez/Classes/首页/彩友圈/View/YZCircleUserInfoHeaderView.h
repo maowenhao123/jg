@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YZCircleModel.h"
+#import "YZCircleUserInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YZCircleUserInfoHeaderView : UIView
 
-@property (nonatomic, strong) YZCircleModel *circleModel;
+@property (nonatomic, assign) BOOL canChooseAvatar;
+@property (nonatomic, strong) YZCircleUserInfoModel *userInfoModel;
 
 @end
 

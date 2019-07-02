@@ -138,6 +138,7 @@
     {
         YZCircleViewAttentionTableViewCell * cell = [YZCircleViewAttentionTableViewCell cellWithTableView:tableView];
         cell.dic = self.dataArray[indexPath.row];
+        cell.isFans = self.isFans;
         cell.delegate = self;
         return cell;
     }
@@ -161,7 +162,12 @@
         YZLog(@"cancelUserConcern:%@",json);
         if (SUCCESS){
             [self.dataArray removeObjectAtIndex:indexPath.row];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (self.dataArray.count == 0) {
+                [self.tableView reloadData];
+            }else
+            {
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
         }else
         {
             ShowErrorView

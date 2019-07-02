@@ -9,16 +9,20 @@
 #import "YZCircleDetailViewController.h"
 #import "YZCircleTableViewCell.h"
 #import "YZCircleCommentTableViewCell.h"
+#import "YZCircleCommentListView.h"
 #import "YZSendCommentView.h"
 #import "IQKeyboardManager.h"
 
-@interface YZCircleDetailViewController ()<UITableViewDelegate, UITableViewDataSource, SendCommentViewDelegate>
+@interface YZCircleDetailViewController ()<UITableViewDelegate, UITableViewDataSource, SendCommentViewDelegate, CircleCommentTableViewCellDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) YZSendCommentView *sendCommentTextView;
 @property (nonatomic, strong) YZCircleModel *circleModel;
 @property (nonatomic, strong) NSMutableArray *commentDataArray;
 @property (nonatomic,assign) CGFloat keyboardHeight;
+@property (nonatomic, weak) MJRefreshGifHeader *header;
+@property (nonatomic, weak) MJRefreshBackGifFooter *footer;
+@property (nonatomic, assign) int pageIndex;
 
 @end
 
@@ -49,7 +53,9 @@
     self.title = @"彩友圈详情";
     [self setupChilds];
     waitingView
+    self.pageIndex = 0;
     [self getTopicInfo];
+    [self getCommentList];
     // 监听键盘弹出
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -100,6 +106,8 @@
 - (void)getTopicInfo
 {
     NSDictionary *dict = @{
+                           @"pageIndex": @(self.pageIndex),
+                           @"pageSize": @(10),
                            @"topicId": self.topicId
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getTopicInfo") params:dict success:^(id json) {
@@ -116,9 +124,8 @@
                 }
             }
             self.circleModel = circleModel;
-            [UIView performWithoutAnimation:^{
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-            }];
+            self.sendCommentTextView.circleModel = circleModel;
+            [self.tableView reloadData];
         }else
         {
             ShowErrorView
@@ -128,6 +135,50 @@
         YZLog(@"error = %@",error);
         [MBProgressHUD hideHUDForView:self.view];
     }];
+}
+
+- (void)getCommentList
+{
+    NSDictionary *dict = @{
+                           @"topicId": self.topicId,
+                           @"pageIndex": @(self.pageIndex),
+                           @"pageSize": @(10)
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getTopicCommentList") params:dict success:^(id json) {
+        YZLog(@"getTopicCommentList:%@",json);
+        [MBProgressHUD hideHUDForView:self.view];
+        if (SUCCESS){
+            NSArray *commentDataArray = [YZCircleCommentModel objectArrayWithKeyValuesArray:json[@"topicComments"]];
+            for (YZCircleCommentModel * commentModel in commentDataArray) {
+                NSInteger index = [commentDataArray indexOfObject:commentModel];
+                NSArray *topicCommentReplys = [YZTopicCommentReplyModel objectArrayWithKeyValuesArray:json[@"topicComments"][index][@"topicCommentReplys"]];
+                commentModel.topicCommentReplys = topicCommentReplys;
+            }
+            [self.commentDataArray addObjectsFromArray:commentDataArray];
+            [self.tableView reloadData];
+            [self.header endRefreshing];
+            
+            if (commentDataArray.count == 0) {//没有新的数据
+                [self.footer endRefreshingWithNoMoreData];
+            }else
+            {
+                [self.footer endRefreshing];
+            }
+        }else
+        {
+            ShowErrorView
+            [self.tableView reloadData];
+            [self.header endRefreshing];
+            [self.footer endRefreshing];
+        }
+    }failure:^(NSError *error)
+     {
+         YZLog(@"error = %@",error);
+         [MBProgressHUD hideHUDForView:self.view];
+         [self.tableView reloadData];
+         [self.header endRefreshing];
+         [self.footer endRefreshing];
+     }];
 }
 
 #pragma mark - 布局子视图
@@ -140,10 +191,23 @@
     tableView.backgroundColor = YZBackgroundColor;
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [tableView setEstimatedSectionHeaderHeightAndFooterHeight];
     tableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:tableView];
+    
+    //初始化头部刷新控件
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshViewBeginRefreshing)];
+    [YZTool setRefreshHeaderData:header];
+    self.header = header;
+    self.tableView.mj_header = header;
+    
+    //初始化底部刷新控件
+    MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
+    [YZTool setRefreshFooterData:footer];
+    self.footer = footer;
+    tableView.mj_footer = footer;
     
     YZSendCommentView * sendCommentTextView = [[YZSendCommentView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(tableView.frame), screenWidth, commentViewH)];
     self.sendCommentTextView = sendCommentTextView;
@@ -151,6 +215,65 @@
     sendCommentTextView.praiseButton.hidden = NO;
     sendCommentTextView.sendButton.hidden = YES;
     [self.view addSubview:sendCommentTextView];
+}
+
+#pragma  mark - 刷新
+- (void)headerRefreshViewBeginRefreshing
+{
+    //清空数据
+    self.pageIndex = 0;
+    [self.commentDataArray removeAllObjects];
+    [self getTopicInfo];
+    [self getCommentList];
+}
+
+- (void)footerRefreshViewBeginRefreshing
+{
+    self.pageIndex++;
+    [self getCommentList];
+}
+
+#pragma mark - SendCommentViewDelegate
+- (void)textViewSendButtonDidClickWithText:(NSString *)text
+{
+    NSDictionary *dict = [NSDictionary dictionary];
+    NSString * url = @"";
+    if (self.sendCommentTextView.indexPath) {
+        YZCircleCommentModel * commentModel = self.commentDataArray[self.sendCommentTextView.indexPath.row];
+        NSDictionary * topicCommentReply = @{
+                                             @"userId": UserId,
+                                             @"topicId": self.topicId,
+                                             @"commentId": commentModel.id,
+                                             @"content": text
+                                             };
+        dict = @{
+                 @"topicCommentReply": topicCommentReply
+                 };
+        url = BaseUrlInformation(@"/replyComment");
+    }else
+    {
+        dict = @{
+                 @"userId": UserId,
+                 @"topicId": self.topicId,
+                 @"content": text
+                 };
+        url = BaseUrlInformation(@"/commentTopic");
+    }
+    [[YZHttpTool shareInstance] postWithURL:url params:dict success:^(id json) {
+        [MBProgressHUD hideHUDForView:self.view];
+        YZLog(@"commentTopic:%@",json);
+        if (SUCCESS){
+            [self.sendCommentTextView reset];
+            [self.sendCommentTextView.textView resignFirstResponder];
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+     {
+         [MBProgressHUD hideHUDForView:self.view];
+         YZLog(@"error = %@",error);
+     }];
 }
 
 #pragma mark - Table view data source
@@ -177,6 +300,7 @@
     {
         YZCircleCommentTableViewCell* cell = [YZCircleCommentTableViewCell cellWithTableView:tableView];
         cell.commentModel = self.commentDataArray[indexPath.row];
+        cell.delegate = self;
         return cell;
     }
 }
@@ -200,11 +324,6 @@
     return 9 + 40;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.01;
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
@@ -221,27 +340,41 @@
     
     //评论数
     UILabel * numberLabel = [[UILabel alloc] init];
-    numberLabel.text = @"评论：128";
+    numberLabel.text = [NSString stringWithFormat:@"评论：%@", self.circleModel.concernNumber];
     numberLabel.frame = CGRectMake(YZMargin, 9, screenWidth - 2 * YZMargin, 40);
     numberLabel.textColor = YZBlackTextColor;
-    numberLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    numberLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     [headerView addSubview:numberLabel];
     
     return headerView;
 }
 
+#pragma mark - CircleCommentTableViewCellDelegate
+- (void)replyButtonDidClickWithCell:(YZCircleCommentTableViewCell *)cell
+{
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
+    
+    YZCircleCommentModel * commentModel = self.commentDataArray[indexPath.row];
+    [self.sendCommentTextView.textView becomeFirstResponder];
+    self.sendCommentTextView.textView.myPlaceholder = [NSString stringWithFormat:@"回复：%@", commentModel.userName];
+    self.sendCommentTextView.indexPath = indexPath;
+}
+
+- (void)allCommentButtonDidClickWithCell:(YZCircleCommentTableViewCell *)cell
+{
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
+    
+    YZCircleCommentModel * commentModel = self.commentDataArray[indexPath.row];
+    YZCircleCommentListView *commentListView = [[YZCircleCommentListView alloc] initWithTopicId:commentModel.topicId commentId:commentModel.id];
+    [commentListView show];
+    commentListView.circleModel = self.circleModel;
+    
+}
 #pragma mark - 初始化
 - (NSMutableArray *)commentDataArray
 {
     if (!_commentDataArray) {
         _commentDataArray = [NSMutableArray array];
-        for (int i = 0; i < 3; i++) {
-            YZCircleCommentModel *commentModel = [YZCircleCommentModel new];
-            commentModel.nickName = @"昵称";
-            commentModel.content = @"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容";
-            commentModel.createTime = 123;
-            [_commentDataArray addObject:commentModel];
-        }
     }
     return _commentDataArray;
 }

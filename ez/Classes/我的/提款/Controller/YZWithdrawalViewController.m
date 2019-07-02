@@ -336,29 +336,29 @@
     [self.view endEditing:YES];
     
     YZUser *user = [YZUserDefaultTool user];
-    if (!user.modifyPwd) {//如果没有密码，先去设置密码
-        YZSettingPassWordViewController *settingPassWordVC = [[YZSettingPassWordViewController alloc]init];
-        [self.navigationController pushViewController:settingPassWordVC animated:YES];
-        return;
-    }
-    float totalBalance = [self.balanceLabel.text floatValue];
-    float withDrawalMoney = [self.withdrawalTF.text floatValue];
-    if (totalBalance == 0) {
-        [MBProgressHUD showError:@"可提款金额为0"];
-        return;
-    }
-    if (withDrawalMoney == 0) {
-        [MBProgressHUD showError:@"请输入提款金额"];
-        return;
-    }
-    if (totalBalance < withDrawalMoney) {
-        [MBProgressHUD showError:@"可提款金额不足"];
-        return;
-    }
-    if (withDrawalMoney < 3) {
-        [MBProgressHUD showError:@"提款金额不能小于3元"];
-        return;
-    }
+//    if (!user.modifyPwd) {//如果没有密码，先去设置密码
+//        YZSettingPassWordViewController *settingPassWordVC = [[YZSettingPassWordViewController alloc]init];
+//        [self.navigationController pushViewController:settingPassWordVC animated:YES];
+//        return;
+//    }
+//    float totalBalance = [self.balanceLabel.text floatValue];
+//    float withDrawalMoney = [self.withdrawalTF.text floatValue];
+//    if (totalBalance == 0) {
+//        [MBProgressHUD showError:@"可提款金额为0"];
+//        return;
+//    }
+//    if (withDrawalMoney == 0) {
+//        [MBProgressHUD showError:@"请输入提款金额"];
+//        return;
+//    }
+//    if (totalBalance < withDrawalMoney) {
+//        [MBProgressHUD showError:@"可提款金额不足"];
+//        return;
+//    }
+//    if (withDrawalMoney < 3) {
+//        [MBProgressHUD showError:@"提款金额不能小于3元"];
+//        return;
+//    }
     
     //输入登录密码
     YZWithdrawalPasswordView * passwordView = [[YZWithdrawalPasswordView alloc] initWithFrame:self.view.bounds];

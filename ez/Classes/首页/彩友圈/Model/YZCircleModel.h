@@ -7,8 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "YZCircleExtModel.h"
 #import "YZTicketList.h"
+
+@interface YZCircleExtModel : NSObject
+
+@property (nonatomic, strong) NSNumber * commission;
+@property (nonatomic, copy) NSString * gameId;
+@property (nonatomic, copy) NSString * gameName;
+@property (nonatomic, strong) NSNumber * issue;
+@property (nonatomic, copy) NSString * matchGames;
+@property (nonatomic, strong) NSNumber * money;
+@property (nonatomic, strong) NSNumber * multiple;
+@property (nonatomic, copy) NSString * orderId;
+@property (nonatomic, strong) NSNumber * settings;
+@property (nonatomic, copy) NSString * unionBuyUserId;
+@property (nonatomic, copy) NSString * userId;
+@property (nonatomic, strong) NSArray * ticketList;
+
+@end
 
 @interface YZCircleModel : NSObject
 
@@ -24,6 +40,7 @@
 @property (nonatomic, copy) NSString * nickname;//用户昵称
 @property (nonatomic, copy) NSString * userName;//用户昵称
 @property (nonatomic, copy) NSString * topicId;
+@property (nonatomic, copy) NSString * id;
 @property (nonatomic, strong) NSNumber * type;
 @property (nonatomic, copy) NSString * userId;//用户id
 @property (nonatomic, strong) NSArray * topicAlbumList;//图片

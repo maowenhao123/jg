@@ -12,8 +12,7 @@
 
 @property (nonatomic, weak) UIImageView *avatarImageView;
 @property (nonatomic, weak) UILabel *nickNameLabel;
-@property (nonatomic, weak) UILabel * timeLabel;
-@property (nonatomic, weak) UILabel * commentLabel;
+@property (nonatomic, weak) UIButton *cancelAttentionButon;
 
 @end
 
@@ -65,24 +64,31 @@
     [self addSubview:nickNameLabel];
     
     //取消关注
-    UIButton *attentionButon = [UIButton buttonWithType:UIButtonTypeCustom];
-    attentionButon.frame = CGRectMake(screenWidth - YZMargin - 70, (60 - 30) / 2, 70, 30);
-    attentionButon.backgroundColor = YZBaseColor;
-    [attentionButon setTitle:@"取消" forState:UIControlStateNormal];
-    [attentionButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    attentionButon.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
-    attentionButon.layer.masksToBounds = YES;
-    attentionButon.layer.cornerRadius = 3;
-    [attentionButon addTarget:self action:@selector(attentionButonDidClick) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:attentionButon];
+    UIButton *cancelAttentionButon = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelAttentionButon.frame = CGRectMake(screenWidth - YZMargin - 70, (60 - 30) / 2, 70, 30);
+    cancelAttentionButon.backgroundColor = YZBaseColor;
+    [cancelAttentionButon setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelAttentionButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    cancelAttentionButon.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    cancelAttentionButon.layer.masksToBounds = YES;
+    cancelAttentionButon.layer.cornerRadius = 3;
+    [cancelAttentionButon addTarget:self action:@selector(cancelAttentionButonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:cancelAttentionButon];
 }
 
-- (void)attentionButonDidClick
+- (void)cancelAttentionButonDidClick
 {
     if([self.delegate respondsToSelector:@selector(circleViewAttentionTableViewCellAttentionBtnDidClick:)])
     {
         [self.delegate circleViewAttentionTableViewCellAttentionBtnDidClick:self];
     }
+}
+
+- (void)setIsFans:(BOOL)isFans
+{
+    _isFans = isFans;
+    
+    self.cancelAttentionButon.hidden = _isFans;
 }
 
 - (void)setDic:(NSDictionary *)dic

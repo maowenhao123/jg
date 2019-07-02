@@ -61,6 +61,7 @@
     self.praiseButton = praiseButton;
     praiseButton.frame = CGRectMake(self.width - 50, 0, 40, 40);
     [praiseButton setImage:[UIImage imageNamed:@"show_praise_gray"] forState:UIControlStateNormal];
+    [praiseButton setImage:[UIImage imageNamed:@"show_praise_light"] forState:UIControlStateSelected];
     [praiseButton setTitleColor:YZGrayTextColor forState:UIControlStateNormal];
     praiseButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
     [self addSubview:praiseButton];
@@ -74,17 +75,19 @@
     commentButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
     [self addSubview:commentButton];
     
-    [self.praiseButton setTitle:@"11" forState:UIControlStateNormal];
-    [self.commentButton setTitle:@"11" forState:UIControlStateNormal];
-    [self.praiseButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
-    [self.commentButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
+    [praiseButton setTitle:@"0" forState:UIControlStateNormal];
+    [commentButton setTitle:@"0" forState:UIControlStateNormal];
+    [praiseButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
+    [commentButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
     
     YZTextView * textView = [[YZTextView alloc] init];
     self.textView = textView;
     textView.frame = CGRectMake(YZMargin, 5, commentButton.x - 5 - YZMargin, 30);
     textView.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     textView.tintColor = YZRedTextColor;
-    textView.myPlaceholder = @"请输入评论";
+//    textView.myPlaceholder = @"暂不支持评论";
+//    textView.userInteractionEnabled = NO;
+    textView.myPlaceholder = @"请评论...";
     textView.returnKeyType = UIReturnKeySend;
     textView.enablesReturnKeyAutomatically = YES;
     textView.delegate = self;
@@ -141,6 +144,29 @@
 - (void)dealloc {
     //注销通知
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)setCircleModel:(YZCircleModel *)circleModel
+{
+    _circleModel = circleModel;
+    
+    self.praiseButton.selected = [_circleModel.likeStatus boolValue];
+    [self.praiseButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.likeNumber] forState:UIControlStateNormal];
+    [self.commentButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.concernNumber] forState:UIControlStateNormal];
+    [self.praiseButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
+    [self.commentButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
+}
+
+- (void)reset
+{
+    self.textView.height = 30;
+    self.height = 40;
+    self.sendButton.centerY = self.textView.centerY;
+    self.textView.text = nil;
+    self.sendButton.enabled = NO;
+    self.toUserId = @"";
+    self.indexPath = nil;
+    self.textView.myPlaceholder = @"请评论...";
 }
 
 #pragma mark - 点赞

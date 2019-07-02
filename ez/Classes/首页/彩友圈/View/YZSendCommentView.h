@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YZTextView.h"
+#import "YZCircleModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) UIButton * praiseButton;
 @property (nonatomic, weak) UIButton * commentButton;
 @property (nonatomic, weak) id<SendCommentViewDelegate> delegate;
+@property (nonatomic, strong) YZCircleModel *circleModel;
+@property (nonatomic,copy) NSString *toUserId;
+@property (nonatomic,strong) NSIndexPath *indexPath;
+
+- (void)reset;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #define padding 5.0f
 #define bottomViewH 80
-#define orderInfoLabelH 22
+#define orderInfoLabelH 27
 #define orderInfoLabelCount 10
 
 #import "YZUnionBuyDetailViewController.h"
@@ -143,6 +143,7 @@
     CGFloat tableViewH = screenHeight - statusBarH - navBarH - bottomViewH - [YZTool getSafeAreaBottom];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH) style:UITableViewStylePlain];
     self.tableView = tableView;
+    tableView.backgroundColor = YZBackgroundColor;
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -151,7 +152,7 @@
     
     //headerView
     //上面显示的界面
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 50 + orderInfoLabelH * orderInfoLabelCount + 7 * 2 + 10)];
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 50 + 7 +  orderInfoLabelH * orderInfoLabelCount + 7 * 2 + 10)];
     self.headerView.backgroundColor = [UIColor whiteColor];
     
     //logo
@@ -163,13 +164,13 @@
     UILabel *gameNameLabel = [[UILabel alloc] init];
     self.gameNameLabel = gameNameLabel;
     gameNameLabel.textColor = YZBlackTextColor;
-    gameNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
+    gameNameLabel.font = [UIFont boldSystemFontOfSize:YZGetFontSize(30)];
     [self.headerView addSubview:gameNameLabel];
     
     //期数
     UILabel *termIdLabel = [[UILabel alloc] init];
     self.termIdLabel = termIdLabel;
-    termIdLabel.textColor = YZGrayTextColor;
+    termIdLabel.textColor = YZDrayGrayTextColor;
     termIdLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
     [self.headerView addSubview:termIdLabel];
     
@@ -184,7 +185,7 @@
     {
         UILabel *label = [[UILabel alloc] init];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+        label.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
         label.textColor = YZBlackTextColor;
         label.numberOfLines = 0;
         [self.headerView addSubview:label];
@@ -206,8 +207,8 @@
     //状态
     UILabel *statusLabel = [[UILabel alloc] init];
     self.statusLabel = statusLabel;
-    statusLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
-    statusLabel.textColor = YZColor(134, 134, 134, 1);
+    statusLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    statusLabel.textColor = YZDrayGrayTextColor;
     statusLabel.textAlignment = NSTextAlignmentCenter;
     statusLabel.numberOfLines = 0;
     [self.headerView addSubview:statusLabel];
@@ -220,7 +221,6 @@
     
     //footerView
     self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 0)];
-    self.footerView.backgroundColor = [UIColor whiteColor];
     
     UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 10)];
     lineView2.backgroundColor = YZBackgroundColor;
@@ -257,8 +257,7 @@
     self.bottomView = bottomView;
     bottomView.delegate = self;
     [self.view addSubview:bottomView];
-    
-//    [self setupBottomBar];
+
     [self setupMyUnionBuyRecordDetailBottomBar];
 }
 
@@ -389,9 +388,9 @@
         CGSize labelSize = [label.text sizeWithFont:label.font maxSize:CGSizeMake(screenWidth -  2 * YZMargin, MAXFLOAT)];
         CGFloat labelY = CGRectGetMaxY(lastLabel.frame);
         if (i == 0) {
-            labelY = 50;
+            labelY = 50 + 7;
         }
-        CGFloat labelH = labelSize.height > 20 ? labelSize.height : orderInfoLabelH;
+        CGFloat labelH = labelSize.height > orderInfoLabelH ? labelSize.height : orderInfoLabelH;
         label.frame = CGRectMake(YZMargin, labelY, labelSize.width, labelH);
         lastLabel = label;
     }
@@ -400,9 +399,9 @@
     self.gradeLabel.frame = CGRectMake(CGRectGetMaxX(userNameLabel.frame) + 4, userNameLabel.y, screenWidth - (CGRectGetMaxX(userNameLabel.frame) + 4), userNameLabel.height);
     
     //圆饼图
-    CGFloat circleChartWH = 65;
+    CGFloat circleChartWH = 75;
     CGFloat circleChartX = screenWidth - circleChartWH - 20;
-    CGFloat circleChartY = 50 + 20;
+    CGFloat circleChartY = 50 + 30;
     self.circleChart.frame = CGRectMake(circleChartX, circleChartY, circleChartWH, circleChartWH);
     self.circleChart.selfBuyRatio = _unionBuyStatus.schedule;
     self.circleChart.guaranteeRatio = @([_unionBuyStatus.deposit floatValue] / [_unionBuyStatus.totalAmount floatValue]);
@@ -502,7 +501,7 @@
     YZFCOrderDetailTableViewCell * cell = [YZFCOrderDetailTableViewCell cellWithTableView:tableView];
     if(indexPath.row % 2 != 0)
     {
-        cell.backgroundColor = UIColorFromRGB(0xFFE7E7E7);
+        cell.backgroundColor = YZWhiteLineColor;
     }else
     {
         cell.backgroundColor = [UIColor whiteColor];
@@ -518,22 +517,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (!self.unionBuyStatus) return 0;
-    return 30;
+    return 35;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (!self.unionBuyStatus) return nil;
     //开奖号码
-    UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 30)];
+    UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 35)];
     headerView.backgroundColor = [UIColor whiteColor];
     
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(YZMargin, 0, screenWidth - 2 * YZMargin, 30)];
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(YZMargin, 0, screenWidth - 2 * YZMargin, 35)];
     label.text = [NSString stringWithFormat:@"该方案设置为%@",[YZTool getSecretStatus:[_unionBuyStatus.settings integerValue]]];
-    label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+    label.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     label.textColor = YZBlackTextColor;
     [headerView addSubview:label];
     
-    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, 29, screenWidth, 1)];
+    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, 34, screenWidth, 1)];
     line.backgroundColor = YZWhiteLineColor;
     [headerView addSubview:line];
     
