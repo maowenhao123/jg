@@ -11,5 +11,6 @@
 @interface YZBonusCardRechargeViewController : YZBaseViewController
 
 @property (nonatomic, assign) BOOL isOrderPay;//订单支付跳转来的
+@property (nonatomic, copy) NSString *detailUrl;
 
 @end

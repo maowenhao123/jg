@@ -94,7 +94,7 @@
         label.textColor = YZBlackTextColor;
         if(i < 3)
         {
-            label.textColor = YZGrayTextColor;
+            label.textColor = YZDrayGrayTextColor;
             label.text = titles[i];
         }
         [self.labels addObject:label];

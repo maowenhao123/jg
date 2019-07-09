@@ -9,7 +9,7 @@
 #define padding 5.0f
 #define bottomViewH 80
 #define orderInfoLabelH 27
-#define orderInfoLabelCount 10
+#define orderInfoLabelCount 8
 
 #import "YZUnionBuyDetailViewController.h"
 #import "YZBetSuccessViewController.h"
@@ -53,6 +53,7 @@
 @property (nonatomic,strong) UIView *footerView;
 @property (nonatomic,weak) UIButton *followDetailBtn;
 @property (nonatomic, weak) UIButton *cancelPlanBtn;
+@property (nonatomic, strong) NSMutableArray *bottomLabels;
 @property (nonatomic, weak) YZUnionBuyDetaiBottomView *bottomView;
 @property (nonatomic,weak) UIView *myUnionBuyBottomView;
 @property (nonatomic, weak) UILabel *ratioLabel;//占用比例
@@ -86,7 +87,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"和买详情";
+    self.title = @"合买详情";
     self.view.backgroundColor = [UIColor whiteColor];
     //先初始化固定控件
     [self setupChilds];
@@ -221,10 +222,22 @@
     
     //footerView
     self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 0)];
+    self.footerView.backgroundColor = [UIColor whiteColor];
     
     UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 10)];
     lineView2.backgroundColor = YZBackgroundColor;
     [self.footerView addSubview:lineView2];
+    
+    for(NSUInteger i = 0; i < 2; i++)
+    {
+        UILabel *label = [[UILabel alloc] init];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+        label.textColor = YZBlackTextColor;
+        label.numberOfLines = 0;
+        [self.footerView addSubview:label];
+        [self.bottomLabels addObject:label];
+    }
     
     //跟单详情
     YZBottomButton *followDetailBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
@@ -264,7 +277,6 @@
 //初始化我的合买记录详情的底部栏
 - (void)setupMyUnionBuyRecordDetailBottomBar
 {
-    UIFont *unionFont = [UIFont systemFontOfSize:YZGetFontSize(24)];
     //底栏
     CGFloat bottomViewH_ = 40;
     CGFloat bottomViewY = screenHeight - bottomViewH_ - statusBarH - navBarH - [YZTool getSafeAreaBottom];
@@ -282,7 +294,7 @@
     self.myUnionRatioLabel = myUnionRatioLabel;
     myUnionRatioLabel.textAlignment = NSTextAlignmentCenter;
     myUnionRatioLabel.textColor = YZBlackTextColor;
-    myUnionRatioLabel.font = unionFont;
+    myUnionRatioLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     myUnionRatioLabel.frame = CGRectMake(padding, 0, screenWidth - 2 * padding, bottomViewH_);
     [bottomView addSubview:myUnionRatioLabel];
 }
@@ -300,16 +312,36 @@
 {
     [self refreshTopUI];
 
+    UILabel *lastLabel;
+    for(NSUInteger i = 0;i < self.bottomLabels.count; i++)
+    {
+        UILabel *label = self.bottomLabels[i];
+        if (i == 0) {
+            label.text = [NSString stringWithFormat:@"方案标题：%@",_unionBuyStatus.title ? _unionBuyStatus.title : @"无"];
+        }else if (i == 1)
+        {
+            label.text = [NSString stringWithFormat:@"方案描述：%@", _unionBuyStatus.desc ? _unionBuyStatus.desc : @"无"];
+        }
+        CGSize labelSize = [label.text sizeWithFont:label.font maxSize:CGSizeMake(screenWidth -  2 * YZMargin, MAXFLOAT)];
+        CGFloat labelY = CGRectGetMaxY(lastLabel.frame);
+        if (i == 0) {
+            labelY = 10 + 7;
+        }
+        CGFloat labelH = labelSize.height > orderInfoLabelH ? labelSize.height : orderInfoLabelH;
+        label.frame = CGRectMake(YZMargin, labelY, labelSize.width, labelH);
+        lastLabel = label;
+    }
     //撤单按钮
     if(!_isUnionBuyDetail &&  [_unionBuyStatus.status integerValue] == 10 && [_unionBuyStatus.schedule integerValue] < 50 && [_unionBuyStatus.userType integerValue] == 1)//不是合买大厅push过来的、方案进行中、认购金额大于等于50%时发起人不能撤单、发起合买才可以撤单
     {
+        self.followDetailBtn.y = CGRectGetMaxY(lastLabel.frame) + YZMargin;
+        self.cancelPlanBtn.y = CGRectGetMaxY(self.followDetailBtn.frame) + YZMargin;
         self.cancelPlanBtn.hidden = NO;
-        self.cancelPlanBtn.height = 37;
         self.footerView.height = CGRectGetMaxY(self.cancelPlanBtn.frame) + YZMargin;
     }else
     {
+        self.followDetailBtn.y = CGRectGetMaxY(lastLabel.frame) + YZMargin;
         self.cancelPlanBtn.hidden = YES;
-        self.cancelPlanBtn.height = 0;
         self.footerView.height = CGRectGetMaxY(self.followDetailBtn.frame) + YZMargin;
     }
     self.tableView.tableFooterView = self.footerView;
@@ -378,12 +410,6 @@
         }else if (i == 7)
         {
             label.text = [NSString stringWithFormat:@"方案详情：%@", [YZTool getSecretStatus:[_unionBuyStatus.settings integerValue]]];
-        }else if (i == 8)
-        {
-            label.text = [NSString stringWithFormat:@"方案标题：%@",_unionBuyStatus.title ? _unionBuyStatus.title : @"无"];
-        }else if (i == 9)
-        {
-            label.text = [NSString stringWithFormat:@"方案描述：%@",_unionBuyStatus.desc ? _unionBuyStatus.desc : @"无"];
         }
         CGSize labelSize = [label.text sizeWithFont:label.font maxSize:CGSizeMake(screenWidth -  2 * YZMargin, MAXFLOAT)];
         CGFloat labelY = CGRectGetMaxY(lastLabel.frame);
@@ -449,7 +475,7 @@
     }
     
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:str];
-    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:YZGetFontSize(28)],NSForegroundColorAttributeName : YZRedTextColor};
+    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:YZGetFontSize(30)],NSForegroundColorAttributeName : YZRedTextColor};
     
     NSRange yuanRange = [str rangeOfString:@"元"];
     [attStr addAttributes:dict range:NSMakeRange(0, yuanRange.location + 1)];
@@ -685,6 +711,14 @@
         _topLabels = [NSMutableArray array];
     }
     return  _topLabels;
+}
+- (NSMutableArray *)bottomLabels
+{
+    if(_bottomLabels == nil)
+    {
+        _bottomLabels = [NSMutableArray array];
+    }
+    return  _bottomLabels;
 }
 
 - (NSAttributedString *)getAttStrByGrade:(NSNumber *)grade

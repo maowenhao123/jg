@@ -143,17 +143,6 @@
             }else //跳转网页
             {
                 [MBProgressHUD hideHUD];
-                
-//                NSNumber *multiple = _param.multiple;//投多少倍
-//                NSNumber *amount = _param.amount;
-//                NSNumber *termCount = @1;//追期数
-//                NSArray *ticketList = _param.ticketList;
-//                NSString *ticketListJsonStr = [ticketList JSONRepresentation];
-//                YZLog(@"ticketListJsonStr = %@",ticketListJsonStr);
-//                NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@",UserId, _param.gameId, _param.termId, multiple, amount,[ticketListJsonStr URLEncodedString], @"ACCOUNT", termCount,_param.termId, @false, @"1407305392008", mainChannel,childChannel, [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]];
-//                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
-//                YZLog(@"url = %@",url);
-//                [[UIApplication sharedApplication] openURL:url];
             }
         }else
         {
@@ -192,7 +181,7 @@
                            @"singleMoney":@(100),
                            };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
-        
+
         YZLog(@"comfirmStartUnionBuy - json = %@",json);
         if(SUCCESS)
         {
@@ -202,6 +191,8 @@
             YZBetSuccessViewController *betSuccessVc = [[YZBetSuccessViewController alloc] init];
             betSuccessVc.payVcType = BetTypeUnionbuyBet;
             betSuccessVc.termCount = 1;
+            _param.unionBuyUserId = [NSString stringWithFormat:@"%@", json[@"unionBuyPlanId"]];
+            betSuccessVc.unionbuyModel = _param;
             //跳转
             [self.sourceController.navigationController pushViewController:betSuccessVc animated:YES];
         }else
@@ -210,7 +201,7 @@
             ShowErrorView
         }
     } failure:^(NSError *error) {
-        
+
         [MBProgressHUD hideHUD];
         YZLog(@"comfirmStartUnionBuy - error = %@",error);
     }];

@@ -115,7 +115,7 @@
         [MBProgressHUD hideHUDForView:self.view];
         if (SUCCESS){
             YZCircleModel *circleModel = [YZCircleModel objectWithKeyValues:json[@"topics"]];
-            circleModel.isDetail = YES;
+            circleModel.circleTableViewType = CircleTableViewDetail;
             NSDictionary * extInfo = json[@"topics"][@"extInfo"];
             if (!YZDictIsEmpty(extInfo)) {
                 NSArray * ticketList = extInfo[@"ticketList"];
@@ -265,6 +265,8 @@
         if (SUCCESS){
             [self.sendCommentTextView reset];
             [self.sendCommentTextView.textView resignFirstResponder];
+            
+            [self headerRefreshViewBeginRefreshing];
         }else
         {
             ShowErrorView

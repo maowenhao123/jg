@@ -18,7 +18,7 @@
 #import "YZMessageViewController.h"
 #import "YZOrderViewController.h"
 #import "YZLoadHtmlFileController.h"
-#import "YZContactCustomerServiceViewController.h"
+#import "YZCustomerServiceViewController.h"
 #import "YZShareViewController.h"
 #import "YZThirdPartyStatus.h"
 #import "UIImageView+WebCache.h"
@@ -37,6 +37,7 @@
 @property (nonatomic, weak) UIButton * withdrawalButton;
 @property (nonatomic, weak) UIButton * voucheButton;
 @property (nonatomic,strong) YZUser *user;
+@property (nonatomic, weak) MJRefreshGifHeader *header;
 
 @end
 
@@ -87,17 +88,18 @@
     if (!UserId)
     {
         [MBProgressHUD hideHUDForView:self.view];
+        [self.header endRefreshing];
         return;
     }
     NSDictionary *dict = @{
                            @"cmd":@(8006),
                            @"userId":UserId
                            };
-    //20190510101341972
     //1612201120220100000026446
     [[YZHttpTool shareInstance] requestTarget:self PostWithParams:dict success:^(id json) {
         YZLog(@"%@",json);
         [MBProgressHUD hideHUDForView:self.view];
+        [self.header endRefreshing];
         if (SUCCESS) {
             //存储用户信息
             YZUser *user = [YZUser objectWithKeyValues:json];
@@ -110,6 +112,7 @@
         }
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
+        [self.header endRefreshing];
         YZLog(@"账户error");
     }];
 }
@@ -315,8 +318,19 @@
     }
     
     scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(functionView.frame) + 10);
+
+    //初始化头部刷新控件
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshViewBeginRefreshing)];
+    [YZTool setRefreshHeaderGif:header];
+    self.header= header;
+    scrollView.mj_header = header;
 }
 
+//刷新
+- (void)headerRefreshViewBeginRefreshing
+{
+    [self loadUserInfo];
+}
 #pragma mark - 设置数据
 - (void)setUser:(YZUser *)user
 {
@@ -484,7 +498,7 @@
         [self.navigationController pushViewController:htmlVc animated:YES];
     }else if (button.tag == 6)
     {
-        YZContactCustomerServiceViewController * contactServiceVC = [[YZContactCustomerServiceViewController alloc]init];
+        YZCustomerServiceViewController * contactServiceVC = [[YZCustomerServiceViewController alloc]init];
         [self.navigationController pushViewController:contactServiceVC animated:YES];
     }else if (button.tag == 7)
     {

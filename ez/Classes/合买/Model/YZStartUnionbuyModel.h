@@ -48,6 +48,7 @@
  *  保密设置
  */
 @property (nonatomic, copy) NSNumber *settings;
-//@property (nonatomic, copy) NSNumber *singleMoney;//单份金额
+
+@property (nonatomic, copy) NSString *unionBuyUserId;
 
 @end

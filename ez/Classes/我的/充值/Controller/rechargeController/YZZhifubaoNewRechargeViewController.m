@@ -6,6 +6,7 @@
 //  Copyright (c) 2016年 9ge. All rights reserved.
 //
 #import "YZZhifubaoNewRechargeViewController.h"
+#import "YZLoadHtmlFileController.h"
 
 @interface YZZhifubaoNewRechargeViewController ()
 
@@ -81,7 +82,20 @@
     CGFloat explainH = explainSize.height;
     explainLabel.frame = CGRectMake(YZMargin, 170, screenWidth - 2 * YZMargin, explainH);
     [self.view addSubview:explainLabel];
+    
+    //充值说明
+    if (!YZStringIsEmpty(self.detailUrl)) {
+        UIButton * rechargeExplainBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [rechargeExplainBtn setTitle:@"充值说明（点击查看）" forState:UIControlStateNormal];
+        [rechargeExplainBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        rechargeExplainBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+        [rechargeExplainBtn addTarget:self action:@selector(rechargeExplainBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+        CGSize rechargeExplainBtnSize = [rechargeExplainBtn.currentTitle sizeWithLabelFont:rechargeExplainBtn.titleLabel.font];
+        rechargeExplainBtn.frame = CGRectMake(explainLabel.x, CGRectGetMaxY(explainLabel.frame) + 10, rechargeExplainBtnSize.width, rechargeExplainBtnSize.height);
+        [self.view addSubview:rechargeExplainBtn];
+    }
 }
+
 #pragma mark -  复制账号并跳转到支付宝
 - (void)pasteAccount{
     //复制账号
@@ -91,7 +105,9 @@
     [MBProgressHUD showSuccess:@"复制成功"];
     [self performSelector:@selector(skipAlipay) withObject:self afterDelay:1.0f];
 }
-- (void)skipAlipay{
+
+- (void)skipAlipay
+{
     //跳转到支付宝
     NSURL *alipay_url = [NSURL URLWithString:@"alipay:"];
     if ([[UIApplication sharedApplication] canOpenURL:alipay_url]) {
@@ -101,4 +117,11 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://auth.alipay.com/login/index.htm"]];
     }
 }
+
+- (void)rechargeExplainBtnDidClick
+{
+    YZLoadHtmlFileController * updataActivityVC = [[YZLoadHtmlFileController alloc] initWithWeb:self.detailUrl];
+    [self.navigationController pushViewController:updataActivityVC animated:YES];
+}
+
 @end

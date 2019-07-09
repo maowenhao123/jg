@@ -64,6 +64,7 @@
     [praiseButton setImage:[UIImage imageNamed:@"show_praise_light"] forState:UIControlStateSelected];
     [praiseButton setTitleColor:YZGrayTextColor forState:UIControlStateNormal];
     praiseButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
+    [praiseButton addTarget:self action:@selector(praiseButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:praiseButton];
     
     //评论
@@ -170,9 +171,36 @@
 }
 
 #pragma mark - 点赞
-- (void)praiseButtonDidClick:(UIButton *)button
+- (void)praiseButtonDidClick
 {
-    
+    NSString * topicId = self.circleModel.topicId;
+    if (YZStringIsEmpty(topicId)) {
+        topicId = self.circleModel.id;
+    }
+    NSDictionary *dict = @{
+                           @"userId": UserId,
+                           @"topicId": topicId,
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/topicLike") params:dict success:^(id json) {
+        YZLog(@"topicLike:%@",json);
+        if (SUCCESS){
+            self.praiseButton.selected = [json[@"likeStatus"] boolValue];
+            int likeNumber = [self.praiseButton.currentTitle intValue];
+            if (self.praiseButton.selected) {
+                likeNumber++;
+            }else
+            {
+                likeNumber--;
+            }
+            [self.praiseButton setTitle:[NSString stringWithFormat:@"%d", likeNumber] forState:UIControlStateNormal];
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+     {
+         YZLog(@"error = %@",error);
+     }];
 }
 
 

@@ -70,6 +70,7 @@
 {
     _userInfoModel = userInfoModel;
     
+    self.headerView.userId = UserId;
     self.headerView.userInfoModel = _userInfoModel;
 }
 

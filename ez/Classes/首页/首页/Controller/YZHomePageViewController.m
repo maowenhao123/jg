@@ -12,7 +12,7 @@
 #import "YZNavigationController.h"
 #import "YZShareViewController.h"
 #import "YZBuyLotteryCollectionView.h"
-#import "YZContactCustomerServiceViewController.h"
+#import "YZCustomerServiceViewController.h"
 
 @interface YZHomePageViewController ()<YZBuyLotteryCollectionViewDelegate>
 
@@ -30,7 +30,7 @@
 {
     [super viewWillAppear:animated];
     // 取出appearance对象
-    UINavigationBar *navBar = self.navigationController.navigationBar;
+    UINavigationBar *navBar = [UINavigationBar appearance];
     // 设置背景
     [navBar setBackgroundImage:[UIImage ImageFromColor:YZBaseColor WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
 }
@@ -110,7 +110,7 @@
         [self presentViewController:nav animated:YES completion:nil];
         return;
     }
-    YZContactCustomerServiceViewController * contactServiceVC = [[YZContactCustomerServiceViewController alloc]init];
+    YZCustomerServiceViewController * contactServiceVC = [[YZCustomerServiceViewController alloc]init];
     [self.navigationController pushViewController:contactServiceVC animated:YES];
 }
 

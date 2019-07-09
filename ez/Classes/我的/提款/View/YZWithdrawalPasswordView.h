@@ -10,7 +10,7 @@
 
 @protocol YZWithdrawalPasswordViewDelegate <NSObject>
 
-- (void)withDrawalWithPassWord:(NSString *)passWord;
+- (void)withDrawalWithPassWord:(NSString *)passWord type:(int)type;
 
 @end
 

@@ -26,10 +26,10 @@
 {
     [super viewDidLoad];
     if (self.isFans) {
-        self.title = @"我的粉丝";
+        self.title = @"粉丝列表";
     }else
     {
-        self.title = @"我关注的人";
+        self.title = @"关注列表";
     }
     [self setupChilds];
     waitingView_loadingData;
@@ -42,7 +42,7 @@
 {
     NSNumber * status = self.isFans ? @(1) : @(2);
     NSDictionary *dict = @{
-                           @"userId": UserId,
+                           @"userId": self.userId,
                            @"status": status,
                            @"pageIndex": @(self.pageIndex),
                            @"pageSize": @(10)
@@ -138,7 +138,12 @@
     {
         YZCircleViewAttentionTableViewCell * cell = [YZCircleViewAttentionTableViewCell cellWithTableView:tableView];
         cell.dic = self.dataArray[indexPath.row];
-        cell.isFans = self.isFans;
+        if (self.isFans || UserId != self.userId) {
+            cell.cancelAttentionButon.hidden = YES;
+        }else
+        {
+            cell.cancelAttentionButon.hidden = NO;
+        }
         cell.delegate = self;
         return cell;
     }

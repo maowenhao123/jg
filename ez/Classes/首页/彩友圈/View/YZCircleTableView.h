@@ -33,6 +33,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString * playTypeId;
 @property (nonatomic, copy) NSString * userId;
 
+- (void)headerRefreshViewBeginRefreshing;
 - (void)getData;
 
 @end

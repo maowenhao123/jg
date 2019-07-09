@@ -175,7 +175,6 @@
     [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(14, 1)];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZBlueBallColor range:NSMakeRange(15, 5)];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(20, 6)];
-    //    [attStr insertAttributedString:[[NSMutableAttributedString alloc] initWithString:@" "] atIndex:0];
     status.labelText = attStr;
     CGSize labelSize = [str sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(30)] maxSize:CGSizeMake(screenWidth - 2 * YZMargin -  5 - 18, MAXFLOAT)];
     status.cellH = labelSize.height + 10 > 45 ? labelSize.height + 10 : 45;

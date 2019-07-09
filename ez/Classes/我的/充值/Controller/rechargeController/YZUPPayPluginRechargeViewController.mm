@@ -30,6 +30,8 @@
     self.tishiLabel.attributedText = attStr;
     CGSize tishiSize = [self.tishiLabel.attributedText boundingRectWithSize:CGSizeMake(screenWidth - 2 * YZMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.tishiLabel.height = tishiSize.height;//改变提示label的高度
+    self.rechargeExplainBtn.y = CGRectGetMaxY(self.tishiLabel.frame) + 10;
+    
     //接收充值成功的通知
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(gotoRechargeSuccessVC)

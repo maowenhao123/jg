@@ -10,7 +10,7 @@
 #import "YZCircleTableViewCell.h"
 #import "YZNoDataTableViewCell.h"
 
-@interface YZCircleTableView ()<UITableViewDelegate, UITableViewDataSource>
+@interface YZCircleTableView ()<UITableViewDelegate, UITableViewDataSource, CircleTableViewCellwDelegate>
 
 @property (nonatomic, assign) int pageIndex;
 @property (nonatomic, weak) MJRefreshGifHeader *headerView;
@@ -122,6 +122,15 @@
         if (SUCCESS){
             NSArray * dataArray = [YZCircleModel objectArrayWithKeyValuesArray:json[@"topics"]];
             for (YZCircleModel * circleModel in dataArray) {
+                if (self.type == CircleNewTopic || self.type == CircleConcernTopic) {
+                    circleModel.circleTableViewType = CircleTableViewList;
+                }else if (self.type == CircleMineTopic)
+                {
+                    circleModel.circleTableViewType = CircleTableViewMine;
+                }else if (self.type == CircleUserReleaseTopic)
+                {
+                    circleModel.circleTableViewType = CircleTableViewUser;
+                }
                 NSInteger index = [dataArray indexOfObject:circleModel];
                 NSDictionary * extInfo = json[@"topics"][index][@"extInfo"];
                 if (!YZDictIsEmpty(extInfo)) {
@@ -175,6 +184,7 @@
     {
         YZCircleTableViewCell * cell = [YZCircleTableViewCell cellWithTableView:tableView];
         cell.circleModel = self.dataArray[indexPath.row];
+        cell.delegate = self;
         return cell;
     }
 }
@@ -193,6 +203,42 @@
     if (_circleDelegate && [_circleDelegate respondsToSelector:@selector(circleTableViewDidScroll:)]) {
         [_circleDelegate circleTableViewDidScroll:scrollView];
     }
+}
+
+- (void)circleTableViewCellDeleteButtonDidClickWithCell:(YZCircleTableViewCell *)cell
+{
+    NSIndexPath *indexPath = [self indexPathForCell:cell];
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确认删除该帖子？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction * alertAction2 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        YZCircleModel * circleModel = self.dataArray[indexPath.row];
+        NSDictionary *dict = @{
+                               @"userId": UserId,
+                               @"topicId": circleModel.id,
+                               };
+        [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/deleteMineTopic") params:dict success:^(id json) {
+            YZLog(@"deleteMineTopic:%@",json);
+            if (SUCCESS){
+                [self.dataArray removeObjectAtIndex:indexPath.row];
+                if (self.dataArray.count == 0) {
+                    [self reloadData];
+                }else
+                {
+                    [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+            }else
+            {
+                ShowErrorView
+            }
+        }failure:^(NSError *error)
+         {
+             YZLog(@"error = %@",error);
+         }];
+    }];
+    [alertController addAction:alertAction1];
+    [alertController addAction:alertAction2];
+    [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - 初始化

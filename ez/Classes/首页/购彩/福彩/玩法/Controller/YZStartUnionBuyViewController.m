@@ -413,12 +413,6 @@
 }
 - (void)buy
 {
-    /**
-     上个控制器所传参数
-     param.multiple = multiple;
-     param.amount = amount;
-     param.ticketList = ticketList;
-     */
     _unionbuyModel.title = self.titleTd.text;
     _unionbuyModel.desc = self.descTd.text;
     _unionbuyModel.commission = @([self.commissionTd.text integerValue]);

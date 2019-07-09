@@ -12,7 +12,6 @@
 
 @property (nonatomic, weak) UIImageView *avatarImageView;
 @property (nonatomic, weak) UILabel *nickNameLabel;
-@property (nonatomic, weak) UIButton *cancelAttentionButon;
 
 @end
 
@@ -65,6 +64,7 @@
     
     //取消关注
     UIButton *cancelAttentionButon = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.cancelAttentionButon = cancelAttentionButon;
     cancelAttentionButon.frame = CGRectMake(screenWidth - YZMargin - 70, (60 - 30) / 2, 70, 30);
     cancelAttentionButon.backgroundColor = YZBaseColor;
     [cancelAttentionButon setTitle:@"取消" forState:UIControlStateNormal];
@@ -82,13 +82,6 @@
     {
         [self.delegate circleViewAttentionTableViewCellAttentionBtnDidClick:self];
     }
-}
-
-- (void)setIsFans:(BOOL)isFans
-{
-    _isFans = isFans;
-    
-    self.cancelAttentionButon.hidden = _isFans;
 }
 
 - (void)setDic:(NSDictionary *)dic

@@ -10,4 +10,6 @@
 
 @interface YZBankRemitController : YZBaseViewController
 
+@property (nonatomic, copy) NSString *detailUrl;
+
 @end

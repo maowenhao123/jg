@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YZCircleUserInfoHeaderView : UIView
 
 @property (nonatomic, assign) BOOL canChooseAvatar;
+@property (nonatomic, copy) NSString * userId;
 @property (nonatomic, strong) YZCircleUserInfoModel *userInfoModel;
 
 @end

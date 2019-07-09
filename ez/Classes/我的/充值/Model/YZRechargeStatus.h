@@ -17,6 +17,7 @@
 @property (nonatomic, assign) int seqNo;//序号
 @property (nonatomic, assign) long createDate;//创建时间
 @property (nonatomic, assign) int status;//状态 2:启用 4:禁用
+@property (nonatomic, copy) NSString *detailUrl;
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, copy) NSString *imageUrl;
 

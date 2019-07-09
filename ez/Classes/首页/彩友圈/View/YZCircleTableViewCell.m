@@ -23,10 +23,12 @@
 @property (nonatomic, weak) UILabel * detailLabel;
 @property (nonatomic, weak) UIView * lotteryView;
 @property (nonatomic, weak) UIImageView *logoImageView;
+@property (nonatomic, weak) UIButton * deleteButton;
 @property (nonatomic, weak) UIButton * praiseButton;
 @property (nonatomic, weak) UIButton * commentButton;
 @property (nonatomic, weak) YZBottomButton * followtButton;
 @property (nonatomic, strong) NSMutableArray *labels;
+@property (nonatomic, strong) NSMutableArray * imageViews;
 
 @end
 
@@ -141,14 +143,13 @@
     //logo
     UIImageView * logoImageView = [[UIImageView alloc] init];
     self.logoImageView = logoImageView;
-    logoImageView.backgroundColor = [UIColor redColor];
     logoImageView.layer.masksToBounds = YES;
     logoImageView.layer.cornerRadius = 30;
     [lotteryView addSubview:logoImageView];
     
     //图片
     UIView * lastView = detailLabel;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 9; i++) {
         UIImageView * imageView = [[UIImageView alloc] init];
         imageView.tag = i;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -166,12 +167,24 @@
     CGFloat buttonW = 40;
     CGFloat buttonH = 26;
     //点赞
+    UIButton * deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.deleteButton = deleteButton;
+    deleteButton.frame = CGRectMake(lotteryView.x, CGRectGetMaxY(lastView.frame), buttonW, buttonH);
+    [deleteButton setImage:[UIImage imageNamed:@"delete_circle_icon"] forState:UIControlStateNormal];
+    [deleteButton setTitleColor:YZGrayTextColor forState:UIControlStateNormal];
+    deleteButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
+    [deleteButton addTarget:self action:@selector(deleteButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:deleteButton];
+    
+    //点赞
     UIButton * praiseButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.praiseButton = praiseButton;
     praiseButton.frame = CGRectMake(screenWidth - 2 * YZMargin - buttonW * 2, CGRectGetMaxY(lastView.frame), buttonW, buttonH);
     [praiseButton setImage:[UIImage imageNamed:@"show_praise_gray"] forState:UIControlStateNormal];
+    [praiseButton setImage:[UIImage imageNamed:@"show_praise_light"] forState:UIControlStateSelected];
     [praiseButton setTitleColor:YZGrayTextColor forState:UIControlStateNormal];
     praiseButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
+    [praiseButton addTarget:self action:@selector(praiseButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:praiseButton];
     
     //评论
@@ -237,6 +250,45 @@
     }];
 }
 
+- (void)deleteButtonDidClick
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(circleTableViewCellDeleteButtonDidClickWithCell:)]) {
+        [_delegate circleTableViewCellDeleteButtonDidClickWithCell:self];
+    }
+}
+
+- (void)praiseButtonDidClick
+{
+    NSString * topicId = self.circleModel.topicId;
+    if (YZStringIsEmpty(topicId)) {
+        topicId = self.circleModel.id;
+    }
+    NSDictionary *dict = @{
+                           @"userId": UserId,
+                           @"topicId": topicId,
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/topicLike") params:dict success:^(id json) {
+        YZLog(@"topicLike:%@",json);
+        if (SUCCESS){
+            self.praiseButton.selected = [json[@"likeStatus"] boolValue];
+            int likeNumber = [self.praiseButton.currentTitle intValue];
+            if (self.praiseButton.selected) {
+                likeNumber++;
+            }else
+            {
+                likeNumber--;
+            }
+            [self.praiseButton setTitle:[NSString stringWithFormat:@"%d", likeNumber] forState:UIControlStateNormal];
+        }else
+        {
+            ShowErrorView
+        }
+    }failure:^(NSError *error)
+     {
+         YZLog(@"error = %@",error);
+     }];
+}
+
 - (void)imageViewDidClick:(UIGestureRecognizer *)ges
 {
     UIView * view = ges.view;
@@ -249,6 +301,15 @@
 }
 
 #pragma mark - XLPhotoBrowserDatasource
+- (NSURL *)photoBrowser:(XLPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index
+{
+    NSMutableArray * imageUrls = [NSMutableArray array];
+    for (NSDictionary * topicAlbumDic in self.circleModel.topicAlbumList) {
+        [imageUrls addObject:topicAlbumDic[@"originalUrl"]];
+    }
+    return imageUrls[index];
+}
+
 - (UIView *)photoBrowser:(XLPhotoBrowser *)browser sourceImageViewForIndex:(NSInteger)index
 {
     return self.imageViews[index];
@@ -260,7 +321,7 @@
     
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:_circleModel.headPortraitUrl] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
     self.nickNameLabel.text = _circleModel.nickname ? _circleModel.nickname : _circleModel.userName;
-    self.timeLabel.text = _circleModel.timeStr;
+    self.timeLabel.attributedText = _circleModel.timeAttStr;
     self.communityLabel.text = _circleModel.communityName;
     self.attentionButon.enabled = ![_circleModel.concernStatus boolValue];
 #if JG
@@ -278,7 +339,7 @@
     for (int i = 0; i < _circleModel.lotteryMessages.count; i++) {
         UILabel * label = self.labels[i];
         if (i == 5) {
-            if (_circleModel.isDetail) {
+            if (_circleModel.circleTableViewType == CircleTableViewDetail) {
                 label.attributedText = _circleModel.lotteryMessages[i];
             }
         }else
@@ -288,14 +349,22 @@
     }
     
     //frame
-    self.avatarImageView.frame = _circleModel.avatarImageViewF;
-    self.nickNameLabel.frame = _circleModel.nickNameLabelF;
+    if (_circleModel.circleTableViewType == CircleTableViewUser || _circleModel.circleTableViewType == CircleTableViewMine) {
+        self.avatarImageView.hidden = YES;
+        self.nickNameLabel.hidden = YES;
+    }else
+    {
+        self.avatarImageView.hidden = NO;
+        self.nickNameLabel.hidden = NO;
+        self.avatarImageView.frame = _circleModel.avatarImageViewF;
+        self.nickNameLabel.frame = _circleModel.nickNameLabelF;
+    }
     self.timeLabel.frame = _circleModel.timeLabelF;
     self.communityLabel.frame = _circleModel.communityLabelF;
     self.attentionButon.frame = _circleModel.attentionButonF;
     self.detailLabel.frame = _circleModel.detailLabelF;
     self.lotteryView.frame = _circleModel.lotteryViewF;
-    self.lotteryView.hidden = YZStringIsEmpty(_circleModel.extInfo.userId);
+    self.lotteryView.hidden = [_circleModel.type intValue] != 1;
     for (int i = 0; i < self.labels.count; i++) {
         UILabel * label = self.labels[i];
         label.hidden = YES;
@@ -312,15 +381,39 @@
         imageView.hidden = YES;
         if (i < _circleModel.imageViewFs.count) {
             NSDictionary * imageDic = _circleModel.topicAlbumList[i];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:imageDic[@"breviaryUrl"]] placeholderImage:[UIImage ImageFromColor:YZWhiteLineColor]];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:imageDic[@"originalUrl"]] placeholderImage:[UIImage ImageFromColor:YZWhiteLineColor]];
             CGRect imageViewF = [_circleModel.imageViewFs[i] CGRectValue];
             imageView.hidden = NO;
             imageView.frame = imageViewF;
-            lastView = imageView;
+            if (i % 3 == 0) {
+               lastView = imageView;
+            }
         }
     }
-    self.praiseButton.y = CGRectGetMaxY(lastView.frame) + 5;
-    self.commentButton.y = CGRectGetMaxY(lastView.frame) + 5;
+    if (_circleModel.circleTableViewType == CircleTableViewMine) {
+        self.deleteButton.y = CGRectGetMaxY(lastView.frame) + 5;
+        if ([_circleModel.type intValue] == 1) {
+            self.deleteButton.x = self.lotteryView.x;
+        }else
+        {
+            self.deleteButton.x = lastView.x;
+        }
+        self.deleteButton.hidden = NO;
+    }else
+    {
+        self.deleteButton.hidden = YES;
+    }
+    
+    if (_circleModel.circleTableViewType == CircleTableViewDetail) {
+        self.praiseButton.hidden = YES;
+        self.commentButton.hidden = YES;
+    }else
+    {
+        self.praiseButton.hidden = NO;
+        self.commentButton.hidden = NO;
+        self.praiseButton.y = CGRectGetMaxY(lastView.frame) + 5;
+        self.commentButton.y = CGRectGetMaxY(lastView.frame) + 5;
+    }
 }
 
 #pragma mark - 初始化

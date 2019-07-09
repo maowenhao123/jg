@@ -25,6 +25,8 @@
     CGSize tishiSize = [self.tishiLabel.attributedText boundingRectWithSize:CGSizeMake(screenWidth - 2 * YZMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.tishiLabel.height = tishiSize.height;//改变提示label的高度
 
+    self.rechargeExplainBtn.y = CGRectGetMaxY(self.tishiLabel.frame) + 10;
+    
     //限额说明
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"限额说明" style:UIBarButtonItemStylePlain target:self action:@selector(limitBtnClick)];
     //接收微信充值成功的通知

@@ -5,7 +5,7 @@
 //  Created by apple on 16/10/8.
 //  Copyright © 2016年 9ge. All rights reserved.
 //
-#define orderInfoLabelH 22
+#define orderInfoLabelH 27
 #define orderInfoLabelCount 6
 
 #import "YZFBOrderDetailViewController.h"
@@ -90,7 +90,7 @@
     //分享
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"order_share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
     
-    CGFloat tableViewH = screenHeight - statusBarH - navBarH - 40;
+    CGFloat tableViewH = screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom];
     UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH)];
     self.tableView = tableView;
     tableView.delegate = self;
@@ -139,7 +139,7 @@
     
     for (int i = 0; i < orderInfoLabelCount; i++) {
         UILabel * orderInfoLabel = [[UILabel alloc]init];
-        orderInfoLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+        orderInfoLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
         orderInfoLabel.textColor = YZBlackTextColor;
         orderInfoLabel.numberOfLines = 0;
         [orderInfoView addSubview:orderInfoLabel];
@@ -156,7 +156,7 @@
     
     //出票明细
     UIButton * tickDetailButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    tickDetailButton.frame = CGRectMake(0, screenHeight - statusBarH - navBarH - 40, screenWidth, 40);
+    tickDetailButton.frame = CGRectMake(0, screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom], screenWidth, 40);
     tickDetailButton.backgroundColor = [UIColor whiteColor];
     [tickDetailButton setTitle:@"出票明细" forState:UIControlStateNormal];
     [tickDetailButton setTitleColor:YZBlackTextColor forState:UIControlStateNormal];

@@ -34,7 +34,7 @@
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hide)];
         [self addGestureRecognizer:tap];
         
-        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 44 + 180 * screenHeight / 667)];
+        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 44 + 220)];
         self.contentView = contentView;
         contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:contentView];
@@ -56,7 +56,7 @@
         [toolBar setItems:@[barButtonItem1,spaceItem,barButtonItem2]];
         
         //PickerView
-        UIPickerView * pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 180 * screenHeight / 667)];
+        UIPickerView * pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 220)];
         self.pickView = pickView;
         pickView.backgroundColor = [UIColor whiteColor];
         pickView.delegate = self;
@@ -89,7 +89,6 @@
         YZLog(@"error = %@",error);
     }];
 }
-
 
 //设置数据
 - (void)setSortArray1

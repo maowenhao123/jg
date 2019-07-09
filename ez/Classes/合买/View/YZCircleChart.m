@@ -63,7 +63,7 @@
             {
                 _selfBuyCountLabel = label;
                 label.textColor = YZBlackTextColor;
-                label.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+                label.font = [UIFont boldSystemFontOfSize:YZGetFontSize(28)];
             }else
             {
                 _guaranteeCountLabel = label;
@@ -79,8 +79,7 @@
 {
     [super layoutSubviews];
     
-    _selfBuyCountLabel.frame = CGRectMake(0, 5, self.width, self.height * 0.5);
-    _guaranteeCountLabel.frame = CGRectMake(0, CGRectGetMaxY(_selfBuyCountLabel.frame), self.width, self.height * 0.2);
+    
 }
 
 - (void)setSelfBuyRatio:(NSNumber *)selfBuyRatio
@@ -97,6 +96,13 @@
     int guaranteeRatio100 = round(_guaranteeRatio.floatValue * 100);
     _guaranteeCountLabel.text = [NSString stringWithFormat:@"保%d%%", guaranteeRatio100];
     _guaranteeCountLabel.hidden = guaranteeRatio100 == 0 ? YES :NO;
+    if (_guaranteeCountLabel.hidden) {
+        _selfBuyCountLabel.frame = self.bounds;
+    }else
+    {
+        _selfBuyCountLabel.frame = CGRectMake(0, 5, self.width, self.height * 0.5);
+        _guaranteeCountLabel.frame = CGRectMake(0, CGRectGetMaxY(_selfBuyCountLabel.frame), self.width, self.height * 0.2);
+    }
 }
 
 - (void)strokeChart

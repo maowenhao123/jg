@@ -82,6 +82,7 @@
     
     self.barNickNameLabel.text = _userInfoModel.nickname;
     [self.barAvatarImageView sd_setImageWithURL:[NSURL URLWithString:_userInfoModel.headPortraitUrl] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
+    self.headerView.userId = self.userId;
     self.headerView.userInfoModel = _userInfoModel;
     self.attentionButon.enabled = _userInfoModel.concernable;
     

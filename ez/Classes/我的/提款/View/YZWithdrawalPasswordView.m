@@ -10,12 +10,15 @@
 #import "YZSecretChangeViewController.h"
 
 @interface YZWithdrawalPasswordView ()<UIGestureRecognizerDelegate>
-
+{
+    int oneMinute;
+}
 @property (nonatomic,weak) UIView * backView;
 @property (nonatomic, weak) UITextField * textField;
 @property (nonatomic, weak) UIButton *codeBtn;
 @property (nonatomic, weak) UIButton *forgetPwdButton;
 @property (nonatomic, weak) UIButton *changeButton;
+@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) int type;//1密码 2验证码
 
 @end
@@ -178,19 +181,77 @@
 - (void)confirmBtnClick
 {
     if (YZStringIsEmpty(self.textField.text)) {
-        [MBProgressHUD showError:@"您还未输入密码"];
+        if (self.type == 1) {
+            [MBProgressHUD showError:@"您还未输入密码"];
+        }else
+        {
+            [MBProgressHUD showError:@"您还未输入验证码"];
+        }
         return;
     }
     
-    if (_delegate && [_delegate respondsToSelector:@selector(withDrawalWithPassWord:)]) {
-        [_delegate withDrawalWithPassWord:self.textField.text];
+    if (_delegate && [_delegate respondsToSelector:@selector(withDrawalWithPassWord:type:)]) {
+        [_delegate withDrawalWithPassWord:self.textField.text type:self.type];
     }
     [self removeFromSuperview];
 }
 
 - (void)getCodeBtnPressed
 {
+    [self endEditing:YES];
     
+    NSDictionary *dict = @{
+                           @"cmd": @(12002),
+                           @"userId": UserId
+                           };
+    self.codeBtn.enabled = NO;
+    [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
+        if(SUCCESS)
+        {
+            YZUser *user = [YZUserDefaultTool user];
+            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"验证码已发送至%@", user.mobilePhone]];
+            //倒计时
+            [self countDown];
+        }else
+        {
+            ShowErrorView
+            //倒计时失效
+            self.codeBtn.enabled = YES;
+            [self.codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [self.timer invalidate];
+            self.timer = nil;
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"获取验证码失败"];
+        //倒计时失效
+        self.codeBtn.enabled = YES;
+        [self.codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.timer invalidate];
+        self.timer = nil;
+    }];
+}
+
+- (void)countDown
+{
+    oneMinute = 60;
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(nextSecond) userInfo:nil repeats:YES];
+    self.timer =timer;
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+}
+- (void)nextSecond
+{
+    self.codeBtn.enabled = NO;
+    if(oneMinute > 0)
+    {
+        oneMinute--;
+        [self.codeBtn setTitle:[NSString stringWithFormat:@"%d秒",oneMinute] forState:UIControlStateNormal];
+    }else
+    {
+        self.codeBtn.enabled = YES;
+        [self.codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch

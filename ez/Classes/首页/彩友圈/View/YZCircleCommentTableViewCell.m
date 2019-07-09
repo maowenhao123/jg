@@ -55,6 +55,7 @@
     //头像
     UIImageView * avatarImageView = [[UIImageView alloc] init];
     self.avatarImageView = avatarImageView;
+    avatarImageView.layer.masksToBounds = YES;
     [self addSubview:avatarImageView];
     
     //昵称
@@ -126,6 +127,7 @@
     
     //frame
     self.avatarImageView.frame = _commentModel.avatarImageViewF;
+    self.avatarImageView.layer.cornerRadius = _commentModel.avatarImageViewF.size.width / 2;
     self.userNameLabel.frame = _commentModel.userNameLabelF;
     self.timeLabel.frame = _commentModel.timeLabelF;
     self.commentLabel.frame = _commentModel.commentLabelF;

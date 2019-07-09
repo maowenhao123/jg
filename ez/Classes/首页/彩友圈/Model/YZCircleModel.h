@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "YZTicketList.h"
 
+typedef enum : NSUInteger {
+    CircleTableViewList = 1,
+    CircleTableViewUser = 2,
+    CircleTableViewMine = 3,
+    CircleTableViewDetail = 4,
+} CircleTableViewType;
+
 @interface YZCircleExtModel : NSObject
 
 @property (nonatomic, strong) NSNumber * commission;
@@ -45,24 +52,24 @@
 @property (nonatomic, copy) NSString * userId;//用户id
 @property (nonatomic, strong) NSArray * topicAlbumList;//图片
 @property (nonatomic, strong) YZCircleExtModel *extInfo;
-@property (nonatomic,assign) BOOL isDetail;
+@property (nonatomic,assign) CircleTableViewType circleTableViewType;
 //自定义
 @property (nonatomic,assign) NSInteger index;
 
-@property (nonatomic, assign)CGRect avatarImageViewF;
-@property (nonatomic, assign)CGRect nickNameLabelF;
-@property (nonatomic, copy) NSString *timeStr;
+@property (nonatomic, assign) CGRect avatarImageViewF;
+@property (nonatomic, assign) CGRect nickNameLabelF;
+@property (nonatomic, copy) NSAttributedString *timeAttStr;
 @property (nonatomic, assign) CGRect timeLabelF;
 @property (nonatomic, assign) CGRect communityLabelF;
 @property (nonatomic, assign) CGRect attentionButonF;
-@property (nonatomic, copy) NSMutableAttributedString * detailAttStr;
-@property (nonatomic, assign)CGRect detailLabelF;
-@property (nonatomic, assign)CGRect lotteryViewF;
+@property (nonatomic, copy) NSAttributedString * detailAttStr;
+@property (nonatomic, assign) CGRect detailLabelF;
+@property (nonatomic, assign) CGRect lotteryViewF;
 @property (nonatomic, strong) NSArray * lotteryMessages;
 @property (nonatomic, strong) NSMutableArray *labelFs;
-@property (nonatomic, assign)CGRect logoImageViewF;
+@property (nonatomic, assign) CGRect logoImageViewF;
 @property (nonatomic, strong) NSMutableArray *imageViewFs;
-@property (nonatomic, assign)CGRect followtButtonF;
+@property (nonatomic, assign) CGRect followtButtonF;
 @property (nonatomic, assign) CGFloat cellH;
 
 @end

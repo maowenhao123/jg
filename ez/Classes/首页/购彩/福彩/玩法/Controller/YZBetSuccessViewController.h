@@ -13,10 +13,12 @@ typedef enum : NSUInteger {
 } PayVcType;
 
 #import "YZBaseViewController.h"
+#import "YZStartUnionbuyModel.h"
 
 @interface YZBetSuccessViewController : YZBaseViewController
 
 @property (nonatomic, assign) PayVcType payVcType;
+@property (nonatomic, strong) YZStartUnionbuyModel *unionbuyModel;
 @property (nonatomic, assign) int isDismissVC;
 @property (nonatomic, assign) int termCount;
 

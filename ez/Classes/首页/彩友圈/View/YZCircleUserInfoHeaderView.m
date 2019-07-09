@@ -97,6 +97,7 @@
 {
     YZCircleViewAttentionViewController * attentionVC = [[YZCircleViewAttentionViewController alloc] init];
     attentionVC.isFans = button.tag == 1;
+    attentionVC.userId = self.userId;
     [self.viewController.navigationController pushViewController:attentionVC animated:YES];
 }
 
@@ -116,6 +117,44 @@
 
 - (void)imageManageCropImage:(UIImage *)image
 {
-    
+    NSDictionary *dict = @{
+                           @"type": @"user",
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getAliOssToken") params:dict success:^(id json) {
+        YZLog(@"getAliOssToken:%@",json);
+        if (SUCCESS){
+            [[YZHttpTool shareInstance] uploadWithImage:image currentIndex:0 totalCount:1 aliOssToken:json[@"aliOssToken"] Success:^(NSString * picUrl) {
+                [self setUserHeadPortraitWithUserHeadPortrait:picUrl image:image];
+            } Failure:^(NSError *error) {
+                [MBProgressHUD showError:@"上传图片失败"];
+            }  Progress:^(float percent) {
+                
+            }];
+        }else
+        {
+            ShowErrorView
+        }
+    } failure:^(NSError *error) {
+        YZLog(@"error = %@",error);
+    }];
 }
+
+- (void)setUserHeadPortraitWithUserHeadPortrait:(NSString *)userHeadPortrait image:(UIImage *)image
+{
+    NSDictionary *dict = @{
+                           @"userHeadPortrait": userHeadPortrait
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/setUserHeadPortrait") params:dict success:^(id json) {
+        YZLog(@"setUserHeadPortrait:%@",json);
+        if (SUCCESS){
+            self.avatarImageView.image = image;
+        }else
+        {
+            ShowErrorView
+        }
+    } failure:^(NSError *error) {
+        YZLog(@"error = %@",error);
+    }];
+}
+
 @end

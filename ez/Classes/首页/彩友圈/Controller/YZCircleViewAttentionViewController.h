@@ -11,5 +11,6 @@
 @interface YZCircleViewAttentionViewController : YZBaseViewController
 
 @property (nonatomic, assign) BOOL isFans;
+@property (nonatomic, copy) NSString * userId;
 
 @end

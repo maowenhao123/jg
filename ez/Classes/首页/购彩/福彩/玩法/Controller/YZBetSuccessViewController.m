@@ -7,6 +7,7 @@
 //
 
 #import "YZBetSuccessViewController.h"
+#import "YZPublishUnionBuyCircleViewController.h"
 #import "YZLoadHtmlFileController.h"
 #import "YZTabBarViewController.h"
 #import "UIButton+YZ.h"
@@ -34,9 +35,7 @@
     self.view.backgroundColor = YZBackgroundColor;
     self.title = @"下单成功";
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"back_btn_flat" highIcon:@"back_btn_flat" target:self action:@selector(back)];
-#if JG
     [self getActivityData];
-#endif
     [self setupChilds];
 }
 
@@ -157,9 +156,16 @@
     detailLabel.frame = CGRectMake(detailLabelX, CGRectGetMaxY(button.frame) + 10, detailLabelW, detailLabelSize.height);
     [scrollView addSubview:detailLabel];
     
+    //合买晒单
+    YZBottomButton * publishCircleBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
+    publishCircleBtn.y = CGRectGetMaxY(detailLabel.frame) + 50;
+    [publishCircleBtn setTitle:@"合买晒单" forState:UIControlStateNormal];
+    [publishCircleBtn addTarget:self action:@selector(publishCircleBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:publishCircleBtn];
+    
     //继续投注
     YZBottomButton * againBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
-    againBtn.y = CGRectGetMaxY(detailLabel.frame) + 50;
+    againBtn.y = CGRectGetMaxY(publishCircleBtn.frame) + 20;
     [againBtn setTitle:@"继续投注" forState:UIControlStateNormal];
     [againBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:againBtn];
@@ -175,7 +181,6 @@
     [lookBtn addTarget:self action:@selector(lookBetRecord) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:lookBtn];
     
-#if JG
     //二维码
     CGFloat imageViewWH = 190;
     CGFloat imageViewX = (screenWidth - imageViewWH) / 2;
@@ -207,14 +212,14 @@
     [scrollView addSubview:vipcnButton];
     
     scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(vipcnButton.frame) + 10);
-#elif ZC
-    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(lookBtn.frame) + 10);
-#elif CS
-    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(lookBtn.frame) + 10);
-#endif
-    
 }
 
+- (void)publishCircleBtnDidClick
+{
+    YZPublishUnionBuyCircleViewController * publishCircleVC = [[YZPublishUnionBuyCircleViewController alloc] init];
+    publishCircleVC.unionbuyModel = self.unionbuyModel;
+    [self.navigationController pushViewController:publishCircleVC animated:YES];
+}
 
 - (void)back
 {

@@ -22,7 +22,7 @@
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
 @property (nonatomic,strong) NSDictionary *dic;
-@property (nonatomic, assign) BOOL isFans;
+@property (nonatomic, weak) UIButton *cancelAttentionButon;
 
 @property (nonatomic, weak) id<YZCircleViewAttentionTableViewCellDelegate> delegate;
 

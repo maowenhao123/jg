@@ -25,6 +25,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"彩友圈";
     [self setupChilds];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCircleList) name:@"RefreshCircleListNotification" object:nil];
+}
+
+- (void)refreshCircleList
+{
+    [super topBtnClick:self.topBtns[0]];
+    YZCircleTableView *tableView = (YZCircleTableView *)self.views.firstObject;
+    [tableView headerRefreshViewBeginRefreshing];
 }
 
 #pragma mark - 布局子视图
@@ -69,6 +77,12 @@
 {
     YZPublishCircleViewController * publishCircleVC = [[YZPublishCircleViewController alloc] init];
     [self.navigationController pushViewController:publishCircleVC animated:YES];
+}
+
+- (void)dealloc
+{
+    //注销通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

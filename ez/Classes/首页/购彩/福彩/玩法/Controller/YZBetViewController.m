@@ -300,9 +300,6 @@
             if([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])//11选5才有智能追号
             {
                 [confirmBtn setTitle:@"智能追号" forState:UIControlStateNormal];
-//            }else if([self.gameId isEqualToString:@"F03"] || [self.gameId isEqualToString:@"T04"])//七乐彩和排列五没有合买
-//            {
-//                confirmBtn.hidden = YES;
             }else
             {
                 [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
