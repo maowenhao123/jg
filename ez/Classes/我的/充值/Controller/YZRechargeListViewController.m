@@ -189,6 +189,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     YZRechargeStatus *status = self.statusArray[indexPath.row];
+    status.detailUrl = @"";
     if([status.clientId isEqualToString:@"jiuge_ziweixing_wx"] || [status.clientId isEqualToString:@"zhongcai_ziweixing_wx"] || [status.clientId isEqualToString:@"jiuge_lftpay_weixin_qr"] || [status.clientId isEqualToString:@"plbpay_weixin_h5"])//微信支付
     {
         YZWeixinRechargeViewController *weixinRechargeVc = [[YZWeixinRechargeViewController alloc] init];

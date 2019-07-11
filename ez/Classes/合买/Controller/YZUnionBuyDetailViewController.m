@@ -7,7 +7,6 @@
 //
 
 #define padding 5.0f
-#define bottomViewH 80
 #define orderInfoLabelH 27
 #define orderInfoLabelCount 8
 
@@ -28,6 +27,9 @@
 #import "YZDateTool.h"
 #import "YZTicketList.h"
 #import "NSDate+YZ.h"
+#import "YZShareView.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "WXApi.h"
 
 @interface YZUnionBuyDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,YZUnionChangeNickNameViewDelegate, YZUnionBuyDetaiBottomViewDelegate>
 {
@@ -100,8 +102,8 @@
 {
     NSNumber *cmd = _isUnionBuyDetail ? @(8121) : @(8124);//合买详情就是前面，我的合买记录详情就是后面的
     NSMutableDictionary *dict = [@{
-                           @"cmd":cmd,
-                           } mutableCopy];
+                                   @"cmd":cmd,
+                                   } mutableCopy];
     if(_isUnionBuyDetail)
     {
         [dict setObject:_unionBuyPlanId forKey:@"unionBuyPlanId"];//合买详情
@@ -109,7 +111,7 @@
     {
         [dict setObject:_unionBuyUserId forKey:@"unionBuyUserId"];//我的合买记录详情
     }
-
+    
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"getUnionBuyDetailData - json = %@",json);
         [MBProgressHUD hideHUDForView:self.view];
@@ -141,7 +143,10 @@
 #pragma mark - 初始化所有子控件
 - (void)setupChilds
 {
-    CGFloat tableViewH = screenHeight - statusBarH - navBarH - bottomViewH - [YZTool getSafeAreaBottom];
+    if (_isUnionBuyDetail) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"合买分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
+    }
+    CGFloat tableViewH = screenHeight - statusBarH - navBarH - 80 - [YZTool getSafeAreaBottom];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH) style:UITableViewStylePlain];
     self.tableView = tableView;
     tableView.backgroundColor = YZBackgroundColor;
@@ -263,40 +268,55 @@
     cancelPlanBtn.layer.borderWidth = 1;
     cancelPlanBtn.layer.borderColor = YZGrayLineColor.CGColor;
     [self.footerView addSubview:cancelPlanBtn];
-
+    
     //底部视图
-    CGFloat bottomViewY = screenHeight - statusBarH - navBarH - bottomViewH - [YZTool getSafeAreaBottom];
-    YZUnionBuyDetaiBottomView *bottomView = [[YZUnionBuyDetaiBottomView alloc] initWithFrame:CGRectMake(0, bottomViewY, screenWidth, bottomViewH + [YZTool getSafeAreaBottom])];
-    self.bottomView = bottomView;
-    bottomView.delegate = self;
-    [self.view addSubview:bottomView];
-
-    [self setupMyUnionBuyRecordDetailBottomBar];
+    if(_isUnionBuyDetail){
+        CGFloat bottomViewY = screenHeight - statusBarH - navBarH - 80 - [YZTool getSafeAreaBottom];
+        YZUnionBuyDetaiBottomView *bottomView = [[YZUnionBuyDetaiBottomView alloc] initWithFrame:CGRectMake(0, bottomViewY, screenWidth, 80 + [YZTool getSafeAreaBottom])];
+        self.bottomView = bottomView;
+        bottomView.delegate = self;
+        [self.view addSubview:bottomView];
+    }else
+    {
+        [self setupMyUnionBuyRecordDetailBottomBar];
+    }
 }
 
 //初始化我的合买记录详情的底部栏
 - (void)setupMyUnionBuyRecordDetailBottomBar
 {
     //底栏
-    CGFloat bottomViewH_ = 40;
-    CGFloat bottomViewY = screenHeight - bottomViewH_ - statusBarH - navBarH - [YZTool getSafeAreaBottom];
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, bottomViewY, screenWidth, bottomViewH_ + [YZTool getSafeAreaBottom])];
+    CGFloat bottomViewY = screenHeight - 100 - statusBarH - navBarH - [YZTool getSafeAreaBottom];
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, bottomViewY, screenWidth, 100 + [YZTool getSafeAreaBottom])];
     self.myUnionBuyBottomView = bottomView;
-    bottomView.backgroundColor = [UIColor whiteColor];
-    //阴影
-    bottomView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-    bottomView.layer.shadowOffset = CGSizeMake(0, -1);
-    bottomView.layer.shadowOpacity = 1;
     [self.view addSubview:bottomView];
     
     //占用多少的label
-    UILabel *myUnionRatioLabel = [[UILabel alloc] init];
+    UILabel *myUnionRatioLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 45)];
     self.myUnionRatioLabel = myUnionRatioLabel;
+    myUnionRatioLabel.backgroundColor = YZWhiteLineColor;
     myUnionRatioLabel.textAlignment = NSTextAlignmentCenter;
     myUnionRatioLabel.textColor = YZBlackTextColor;
-    myUnionRatioLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
-    myUnionRatioLabel.frame = CGRectMake(padding, 0, screenWidth - 2 * padding, bottomViewH_);
+    myUnionRatioLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     [bottomView addSubview:myUnionRatioLabel];
+    
+    //分享
+    UIButton * shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareButton.frame = CGRectMake(0, CGRectGetMaxY(myUnionRatioLabel.frame), screenWidth, 55 + [YZTool getSafeAreaBottom]);
+    shareButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, [YZTool getSafeAreaBottom], 0);
+    NSMutableAttributedString * shareAttStr = [[NSMutableAttributedString alloc] initWithString:@"邀请好友来跟单\n（邀请用户跟单还可以分享收益）"];
+    [shareAttStr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, shareAttStr.length)];
+    [shareAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(32)] range:NSMakeRange(0, 7)];
+    [shareAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(24)] range:NSMakeRange(7, shareAttStr.length - 7)];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 3;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    [shareAttStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, shareAttStr.length)];
+    [shareButton setAttributedTitle:shareAttStr forState:UIControlStateNormal];
+    shareButton.titleLabel.numberOfLines = 0;
+    shareButton.backgroundColor = YZBaseColor;
+    [shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:shareButton];
 }
 #pragma mark - 更新所有的UI
 - (void)setUnionBuyStatus:(YZUnionBuyStatus *)unionBuyStatus
@@ -311,7 +331,7 @@
 - (void)refreshUI
 {
     [self refreshTopUI];
-
+    
     UILabel *lastLabel;
     for(NSUInteger i = 0;i < self.bottomLabels.count; i++)
     {
@@ -345,13 +365,13 @@
         self.footerView.height = CGRectGetMaxY(self.followDetailBtn.frame) + YZMargin;
     }
     self.tableView.tableFooterView = self.footerView;
-
+    
     if(_isUnionBuyDetail)
     {
+        self.tableView.height = screenHeight - statusBarH - navBarH - 80 - [YZTool getSafeAreaBottom];
         self.myUnionBuyBottomView.hidden = YES;
         if([_unionBuyStatus.status integerValue] > 10)
         {
-            self.tableView.height = screenHeight - statusBarH - navBarH - [YZTool getSafeAreaBottom];
             self.bottomView.hidden = YES;
             return;//10以后都是满员，不出现底部参与购买栏
         }
@@ -359,7 +379,7 @@
         self.bottomView.unionBuyStatus = self.unionBuyStatus;
     }else
     {
-        self.tableView.height = screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom];
+        self.tableView.height = screenHeight - statusBarH - navBarH - 100 - [YZTool getSafeAreaBottom];
         self.bottomView.hidden = YES;
         self.myUnionBuyBottomView.hidden = NO;
         [self setMyUnionBuyRecordDetailRatioLabelText];
@@ -450,7 +470,7 @@
         self.statusLabel.text = [NSString stringWithFormat:@"%@\n%@",_unionBuyStatus.ticketStatusDesc, _unionBuyStatus.statusDesc];
         statusLabelSize = [self.statusLabel.text sizeWithFont:self.statusLabel.font maxSize:CGSizeMake(circleChartWH + 20, MAXFLOAT)];
     }
-
+    
     CGFloat statusLabelY = CGRectGetMaxY(self.circleChart.frame) + 7;
     self.statusLabel.frame = CGRectMake(0, statusLabelY, statusLabelSize.width, statusLabelSize.height);
     self.statusLabel.centerX = self.circleChart.centerX;
@@ -475,7 +495,7 @@
     }
     
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:str];
-    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:YZGetFontSize(30)],NSForegroundColorAttributeName : YZRedTextColor};
+    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:YZGetFontSize(32)],NSForegroundColorAttributeName : YZRedTextColor};
     
     NSRange yuanRange = [str rangeOfString:@"元"];
     [attStr addAttributes:dict range:NSMakeRange(0, yuanRange.location + 1)];
@@ -515,13 +535,9 @@
         show = NO;
     }
     
-    if (show) {
-        return self.dataArray.count;
-    }else
-    {
-        return 0;
-    }
+    return show ? self.dataArray.count : 0;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZFCOrderDetailTableViewCell * cell = [YZFCOrderDetailTableViewCell cellWithTableView:tableView];
@@ -568,7 +584,6 @@
 - (void)bottomViewConfirmBtnClick
 {
     [self.view endEditing:YES];
-    
     if(!UserId)//没登录
     {
         YZLoginViewController *loginVc = [[YZLoginViewController alloc] init];
@@ -576,7 +591,7 @@
         [self presentViewController:nav animated:YES completion:nil];
         return;
     }
-
+    
     if ([YZTool needChangeNickName]) {
         YZUnionChangeNickNameView * changeNickNameView = [[YZUnionChangeNickNameView alloc] initWithFrame:self.view.bounds];
         changeNickNameView.delegate = self;
@@ -656,7 +671,7 @@
 - (void)cancelPlan
 {
     [MBProgressHUD showMessage:@"请稍后" toView:self.view];
-
+    
     NSDictionary *dict = @{
                            @"cmd":@(8122),
                            @"unionBuyUserId":_unionBuyUserId,
@@ -758,8 +773,58 @@
             [attStr appendAttributedString:textAttStr];
         }
     }
-    
     return attStr;
 }
+
+#pragma mark - 分享
+- (void)share
+{
+    YZShareView * shareView = [[YZShareView alloc]init];
+    [shareView show];
+    shareView.block = ^(UMSocialPlatformType platformType){//选择平台
+        [self shareToPlatformType:platformType];
+    };
+}
+
+- (void)shareToPlatformType:(UMSocialPlatformType)platformType
+{
+    NSString * title = _unionBuyStatus.title ? _unionBuyStatus.title : @"无";
+    NSString * descr = _unionBuyStatus.desc ? _unionBuyStatus.desc : @"无";
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+#if JG
+    UIImage * image = [UIImage imageNamed:@"logo"];
+#elif ZC
+    UIImage * image = [UIImage imageNamed:@"logo1"];
+#elif CS
+    UIImage * image = [UIImage imageNamed:@"logo1"];
+#endif
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
+    YZUser *user = [YZUserDefaultTool user];
+    NSString * nickName = user.nickName;
+    shareObject.webpageUrl = [NSString stringWithFormat:@"%@/unionbuydetail?unionBuyPlanId=%@&userName=%@", shareBaseUrl, _unionBuyPlanId, nickName];
+    messageObject.shareObject = shareObject;//调用分享接口
+#if JG
+    [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
+#elif ZC
+    [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
+#elif CS
+    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
+#endif
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSInteger errorCode = error.code;
+            if (errorCode == 2003) {
+                [MBProgressHUD showError:@"分享失败"];
+            }else if (errorCode == 2008)
+            {
+                [MBProgressHUD showError:@"应用未安装"];
+            }else if (errorCode == 2010)
+            {
+                [MBProgressHUD showError:@"网络异常"];
+            }
+        }
+    }];
+}
+
 
 @end

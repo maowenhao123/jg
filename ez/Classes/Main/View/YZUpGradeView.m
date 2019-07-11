@@ -79,7 +79,7 @@
         [contentAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(24)] range:NSMakeRange(0, contentAttStr.length)];
         [contentAttStr addAttribute:NSForegroundColorAttributeName value:YZDrayGrayTextColor range:NSMakeRange(0, contentAttStr.length)];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        [paragraphStyle setLineSpacing:3];
+        paragraphStyle.lineSpacing = 3;
         [contentAttStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, contentAttStr.length)];
         contentLabel.attributedText = contentAttStr;
     }

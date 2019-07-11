@@ -34,7 +34,7 @@
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hide)];
         [self addGestureRecognizer:tap];
         
-        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 44 + 220)];
+        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 44 + 250)];
         self.contentView = contentView;
         contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:contentView];
@@ -56,7 +56,7 @@
         [toolBar setItems:@[barButtonItem1,spaceItem,barButtonItem2]];
         
         //PickerView
-        UIPickerView * pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 220)];
+        UIPickerView * pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 250)];
         self.pickView = pickView;
         pickView.backgroundColor = [UIColor whiteColor];
         pickView.delegate = self;

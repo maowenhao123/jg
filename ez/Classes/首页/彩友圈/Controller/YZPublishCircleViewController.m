@@ -31,7 +31,7 @@
 {
     [super viewWillAppear:animated];
     // 取出appearance对象
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
     // 设置背景
     [navBar setBackgroundImage:[UIImage ImageFromColor:YZBaseColor WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
 }
@@ -40,7 +40,7 @@
 {
     [super viewWillAppear:animated];
     // 取出appearance对象
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
     // 设置背景
     [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
 }
@@ -49,7 +49,7 @@
 {
     [super viewWillAppear:animated];
     // 取出appearance对象
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
     // 设置背景
     [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
 }

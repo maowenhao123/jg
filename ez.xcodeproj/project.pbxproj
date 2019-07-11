@@ -268,6 +268,39 @@
 		1DDDBB2322BCB525006F8ECA /* YZSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */; };
 		1DDDBB2422BCB525006F8ECA /* YZSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */; };
 		1DDDBB2522BCB525006F8ECA /* YZSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */; };
+		1DDDEB5222D5B1F3003A9C07 /* YZShareProfitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB5122D5B1F3003A9C07 /* YZShareProfitsViewController.m */; };
+		1DDDEB5322D5B1F3003A9C07 /* YZShareProfitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB5122D5B1F3003A9C07 /* YZShareProfitsViewController.m */; };
+		1DDDEB5422D5B1F3003A9C07 /* YZShareProfitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB5122D5B1F3003A9C07 /* YZShareProfitsViewController.m */; };
+		1DDDEB6F22D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB5722D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		1DDDEB7022D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB5722D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		1DDDEB7122D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB5722D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		1DDDEB7222D5BB80003A9C07 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6022D5BB80003A9C07 /* ViewController+MASAdditions.m */; };
+		1DDDEB7322D5BB80003A9C07 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6022D5BB80003A9C07 /* ViewController+MASAdditions.m */; };
+		1DDDEB7422D5BB80003A9C07 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6022D5BB80003A9C07 /* ViewController+MASAdditions.m */; };
+		1DDDEB7522D5BB80003A9C07 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6422D5BB80003A9C07 /* MASCompositeConstraint.m */; };
+		1DDDEB7622D5BB80003A9C07 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6422D5BB80003A9C07 /* MASCompositeConstraint.m */; };
+		1DDDEB7722D5BB80003A9C07 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6422D5BB80003A9C07 /* MASCompositeConstraint.m */; };
+		1DDDEB7822D5BB80003A9C07 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6522D5BB80003A9C07 /* MASConstraintMaker.m */; };
+		1DDDEB7922D5BB80003A9C07 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6522D5BB80003A9C07 /* MASConstraintMaker.m */; };
+		1DDDEB7A22D5BB80003A9C07 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6522D5BB80003A9C07 /* MASConstraintMaker.m */; };
+		1DDDEB7B22D5BB80003A9C07 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6622D5BB80003A9C07 /* MASLayoutConstraint.m */; };
+		1DDDEB7C22D5BB80003A9C07 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6622D5BB80003A9C07 /* MASLayoutConstraint.m */; };
+		1DDDEB7D22D5BB80003A9C07 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6622D5BB80003A9C07 /* MASLayoutConstraint.m */; };
+		1DDDEB7E22D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6722D5BB80003A9C07 /* NSArray+MASAdditions.m */; };
+		1DDDEB7F22D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6722D5BB80003A9C07 /* NSArray+MASAdditions.m */; };
+		1DDDEB8022D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6722D5BB80003A9C07 /* NSArray+MASAdditions.m */; };
+		1DDDEB8122D5BB80003A9C07 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6822D5BB80003A9C07 /* View+MASAdditions.m */; };
+		1DDDEB8222D5BB80003A9C07 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6822D5BB80003A9C07 /* View+MASAdditions.m */; };
+		1DDDEB8322D5BB80003A9C07 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6822D5BB80003A9C07 /* View+MASAdditions.m */; };
+		1DDDEB8422D5BB80003A9C07 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6B22D5BB80003A9C07 /* MASConstraint.m */; };
+		1DDDEB8522D5BB80003A9C07 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6B22D5BB80003A9C07 /* MASConstraint.m */; };
+		1DDDEB8622D5BB80003A9C07 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6B22D5BB80003A9C07 /* MASConstraint.m */; };
+		1DDDEB8722D5BB80003A9C07 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6D22D5BB80003A9C07 /* MASViewConstraint.m */; };
+		1DDDEB8822D5BB80003A9C07 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6D22D5BB80003A9C07 /* MASViewConstraint.m */; };
+		1DDDEB8922D5BB80003A9C07 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6D22D5BB80003A9C07 /* MASViewConstraint.m */; };
+		1DDDEB8A22D5BB80003A9C07 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */; };
+		1DDDEB8B22D5BB80003A9C07 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */; };
+		1DDDEB8C22D5BB80003A9C07 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */; };
 		1DE61F9222CB3DE600C1490E /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE61F8122CB3DDF00C1490E /* CGGeometry+RSKImageCropper.m */; };
 		1DE61F9322CB3DE600C1490E /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE61F8122CB3DDF00C1490E /* CGGeometry+RSKImageCropper.m */; };
 		1DE61F9422CB3DE600C1490E /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE61F8122CB3DDF00C1490E /* CGGeometry+RSKImageCropper.m */; };
@@ -2497,6 +2530,33 @@
 		1DDDBB1D22BC74A1006F8ECA /* YZSegementFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSegementFlowLayout.m; sourceTree = "<group>"; };
 		1DDDBB2122BCB524006F8ECA /* YZSendCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSendCommentView.h; sourceTree = "<group>"; };
 		1DDDBB2222BCB525006F8ECA /* YZSendCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSendCommentView.m; sourceTree = "<group>"; };
+		1DDDEB5022D5B1F3003A9C07 /* YZShareProfitsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZShareProfitsViewController.h; sourceTree = "<group>"; };
+		1DDDEB5122D5B1F3003A9C07 /* YZShareProfitsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZShareProfitsViewController.m; sourceTree = "<group>"; };
+		1DDDEB5622D5BB80003A9C07 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		1DDDEB5722D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		1DDDEB5822D5BB80003A9C07 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		1DDDEB5922D5BB80003A9C07 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		1DDDEB5A22D5BB80003A9C07 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		1DDDEB5B22D5BB80003A9C07 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		1DDDEB5C22D5BB80003A9C07 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		1DDDEB5D22D5BB80003A9C07 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		1DDDEB5E22D5BB80003A9C07 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		1DDDEB5F22D5BB80003A9C07 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		1DDDEB6022D5BB80003A9C07 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		1DDDEB6122D5BB80003A9C07 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		1DDDEB6222D5BB80003A9C07 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		1DDDEB6322D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		1DDDEB6422D5BB80003A9C07 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		1DDDEB6522D5BB80003A9C07 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		1DDDEB6622D5BB80003A9C07 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		1DDDEB6722D5BB80003A9C07 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		1DDDEB6822D5BB80003A9C07 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		1DDDEB6922D5BB80003A9C07 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		1DDDEB6A22D5BB80003A9C07 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		1DDDEB6B22D5BB80003A9C07 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		1DDDEB6C22D5BB80003A9C07 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		1DDDEB6D22D5BB80003A9C07 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		1DE61F8022CB3DDF00C1490E /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
 		1DE61F8122CB3DDF00C1490E /* CGGeometry+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+RSKImageCropper.m"; sourceTree = "<group>"; };
 		1DE61F8222CB3DE000C1490E /* RSKImageCropper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = "<group>"; };
@@ -4248,6 +4308,38 @@
 			path = AliyunOSSiOS;
 			sourceTree = "<group>";
 		};
+		1DDDEB5522D5BB80003A9C07 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				1DDDEB5622D5BB80003A9C07 /* MASCompositeConstraint.h */,
+				1DDDEB5722D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				1DDDEB5822D5BB80003A9C07 /* MASConstraint+Private.h */,
+				1DDDEB5922D5BB80003A9C07 /* MASLayoutConstraint.h */,
+				1DDDEB5A22D5BB80003A9C07 /* NSArray+MASShorthandAdditions.h */,
+				1DDDEB5B22D5BB80003A9C07 /* MASConstraintMaker.h */,
+				1DDDEB5C22D5BB80003A9C07 /* View+MASAdditions.h */,
+				1DDDEB5D22D5BB80003A9C07 /* NSArray+MASAdditions.h */,
+				1DDDEB5E22D5BB80003A9C07 /* MASUtilities.h */,
+				1DDDEB5F22D5BB80003A9C07 /* MASViewAttribute.h */,
+				1DDDEB6022D5BB80003A9C07 /* ViewController+MASAdditions.m */,
+				1DDDEB6122D5BB80003A9C07 /* MASViewConstraint.h */,
+				1DDDEB6222D5BB80003A9C07 /* MASConstraint.h */,
+				1DDDEB6322D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				1DDDEB6422D5BB80003A9C07 /* MASCompositeConstraint.m */,
+				1DDDEB6522D5BB80003A9C07 /* MASConstraintMaker.m */,
+				1DDDEB6622D5BB80003A9C07 /* MASLayoutConstraint.m */,
+				1DDDEB6722D5BB80003A9C07 /* NSArray+MASAdditions.m */,
+				1DDDEB6822D5BB80003A9C07 /* View+MASAdditions.m */,
+				1DDDEB6922D5BB80003A9C07 /* View+MASShorthandAdditions.h */,
+				1DDDEB6A22D5BB80003A9C07 /* Masonry.h */,
+				1DDDEB6B22D5BB80003A9C07 /* MASConstraint.m */,
+				1DDDEB6C22D5BB80003A9C07 /* ViewController+MASAdditions.h */,
+				1DDDEB6D22D5BB80003A9C07 /* MASViewConstraint.m */,
+				1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
 		1DE61F7F22CB3DCF00C1490E /* RSKImageCropper */ = {
 			isa = PBXGroup;
 			children = (
@@ -4620,6 +4712,8 @@
 			children = (
 				AA3290741FFE1D6100CA77DA /* YZShareViewController.h */,
 				AA3290721FFE1D6100CA77DA /* YZShareViewController.m */,
+				1DDDEB5022D5B1F3003A9C07 /* YZShareProfitsViewController.h */,
+				1DDDEB5122D5B1F3003A9C07 /* YZShareProfitsViewController.m */,
 				AA3290711FFE1D6100CA77DA /* YZShareIncomeViewController.h */,
 				AA3290731FFE1D6100CA77DA /* YZShareIncomeViewController.m */,
 			);
@@ -6773,6 +6867,7 @@
 		AA74E8B01FFE17DD003B53AF /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1DDDEB5522D5BB80003A9C07 /* Masonry */,
 				1DE61FBF22CC4F6200C1490E /* TZImagePickerController */,
 				1DE61F7F22CB3DCF00C1490E /* RSKImageCropper */,
 				1DBD8E0922CB2C020024CF7B /* SDWebImage */,
@@ -8278,6 +8373,7 @@
 				AA237DDD2143590C00BC47BB /* YZCircleModel.m in Sources */,
 				AA237DDE2143590C00BC47BB /* HDBubbleView+Transform.m in Sources */,
 				AAA65A3322A75D5800DB7427 /* YZQuickStakeGamesView.m in Sources */,
+				1DDDEB7D22D5BB80003A9C07 /* MASLayoutConstraint.m in Sources */,
 				AA237DE02143590C00BC47BB /* YZChartDataStatus.m in Sources */,
 				AA237DE12143590C00BC47BB /* RSKTouchView.m in Sources */,
 				AA237DE22143590C00BC47BB /* YZQxcViewController.m in Sources */,
@@ -8288,6 +8384,7 @@
 				AA237DE62143590C00BC47BB /* YZQrCodeModel.m in Sources */,
 				AA237DE72143590C00BC47BB /* MJRefreshBackNormalFooter.m in Sources */,
 				AA237DE82143590C00BC47BB /* YZMoneyDetailViewController.m in Sources */,
+				1DDDEB8322D5BB80003A9C07 /* View+MASAdditions.m in Sources */,
 				AA237DE92143590C00BC47BB /* YZUnionBuyFollowUserCellStatusFrame.m in Sources */,
 				AA237DEA2143590C00BC47BB /* YZShareIncomeStatus.m in Sources */,
 				AA237DEB2143590C00BC47BB /* YZCircleTableView.m in Sources */,
@@ -8306,6 +8403,7 @@
 				AA237DF52143590C00BC47BB /* YZDltViewController.m in Sources */,
 				AA237DF62143590C00BC47BB /* YZAsiaOddsCellStatus.m in Sources */,
 				AA237DF72143590C00BC47BB /* YZMessageViewController.m in Sources */,
+				1DDDEB7722D5BB80003A9C07 /* MASCompositeConstraint.m in Sources */,
 				AA237DF82143590C00BC47BB /* YZFBMatchDetailStandingsContentTableViewCell.m in Sources */,
 				AA237DF92143590C00BC47BB /* YZBankCardStatus.m in Sources */,
 				1DE61FF722CC4F7600C1490E /* TZImageCropManager.m in Sources */,
@@ -8485,6 +8583,7 @@
 				AA237E962143590C00BC47BB /* YZFBMatchDetailViewController.m in Sources */,
 				AA237E972143590C00BC47BB /* HDFacialView.m in Sources */,
 				AA237E982143590C00BC47BB /* YZOddsCellStatus.m in Sources */,
+				1DDDEB8922D5BB80003A9C07 /* MASViewConstraint.m in Sources */,
 				AA237E992143590C00BC47BB /* YZRecommendRowStatus.m in Sources */,
 				1DB2A59722C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */,
 				AA237E9A2143590C00BC47BB /* MJRefreshBackGifFooter.m in Sources */,
@@ -8539,6 +8638,7 @@
 				AA237ECE2143590C00BC47BB /* YZBtnsView.m in Sources */,
 				AA237ECF2143590C00BC47BB /* YZShowNickNameViewController.m in Sources */,
 				AA237ED02143590C00BC47BB /* YZMessageDetailStatus.m in Sources */,
+				1DDDEB8622D5BB80003A9C07 /* MASConstraint.m in Sources */,
 				AA237ED12143590C00BC47BB /* YZBonusCardRechargeViewController.m in Sources */,
 				AA237ED22143590C00BC47BB /* YZShareView.m in Sources */,
 				AA237ED32143590C00BC47BB /* HDChatToolbar.m in Sources */,
@@ -8560,6 +8660,7 @@
 				AA237EDF2143590C00BC47BB /* YZRoundStatus.m in Sources */,
 				AA237EE02143590C00BC47BB /* YZWinNumberGradeTableViewCell.m in Sources */,
 				AA237EE12143590C00BC47BB /* YZUnionBuyStatus.m in Sources */,
+				1DDDEB7A22D5BB80003A9C07 /* MASConstraintMaker.m in Sources */,
 				AA237EE22143590C00BC47BB /* YZAttatchedCell.m in Sources */,
 				AA237EE32143590C00BC47BB /* YZFbBetCellStatus.m in Sources */,
 				1DE6200922CC4F7600C1490E /* NSBundle+TZImagePicker.m in Sources */,
@@ -8583,6 +8684,7 @@
 				AA237EF42143590C00BC47BB /* YZSmartBetTableViewCell.m in Sources */,
 				AA237EF52143590C00BC47BB /* YZRechargeSuccessViewController.m in Sources */,
 				AA237EF62143590C00BC47BB /* YZFBMatchDetailOddsView.m in Sources */,
+				1DDDEB8C22D5BB80003A9C07 /* MASViewAttribute.m in Sources */,
 				AA237EF82143590C00BC47BB /* IQUIWindow+Hierarchy.m in Sources */,
 				1DBD8B5D22CAFF780024CF7B /* FSActionSheetConfig.m in Sources */,
 				AA237EF92143590C00BC47BB /* YZChartStatsStatus.m in Sources */,
@@ -8754,6 +8856,7 @@
 				AA237F902143590C00BC47BB /* UIScrollView+MJRefresh.m in Sources */,
 				AA237F922143590C00BC47BB /* MJMethod.m in Sources */,
 				AA237F932143590C00BC47BB /* YZCN.m in Sources */,
+				1DDDEB7422D5BB80003A9C07 /* ViewController+MASAdditions.m in Sources */,
 				AA237F942143590C00BC47BB /* YZUserCircleViewController.m in Sources */,
 				AA237F952143590C00BC47BB /* YZWinNumberViewController.m in Sources */,
 				AA237F962143590C00BC47BB /* YZUnionBuyFollowRecordViewController.m in Sources */,
@@ -8797,12 +8900,14 @@
 				1DE61FB822CB84BB00C1490E /* YZPublishLotteryCircleViewController.m in Sources */,
 				AA237FB42143590C00BC47BB /* NSDateFormatter+Category.m in Sources */,
 				AA237FB52143590C00BC47BB /* HDCustomMessageCell.m in Sources */,
+				1DDDEB5422D5B1F3003A9C07 /* YZShareProfitsViewController.m in Sources */,
 				AA237FB62143590C00BC47BB /* HDBubbleView+Voice.m in Sources */,
 				AA237FB72143590C00BC47BB /* HDBubbleView+Evaluate.m in Sources */,
 				AA237FB92143590C00BC47BB /* UIImage+RSKImageCropper.m in Sources */,
 				AA237FBA2143590C00BC47BB /* YZBasketBallBetViewController.m in Sources */,
 				AA237FBC2143590C00BC47BB /* YZFBTimeChooseView.m in Sources */,
 				AA237FBD2143590C00BC47BB /* YZWeChatPublicViewController.m in Sources */,
+				1DDDEB8022D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */,
 				AA237FBE2143590C00BC47BB /* IQUITextFieldView+Additions.m in Sources */,
 				AA237FBF2143590C00BC47BB /* YZKsBottomBtn.m in Sources */,
 				AA237FC02143590C00BC47BB /* YZSsqChartViewController.m in Sources */,
@@ -8828,6 +8933,7 @@
 				AA237FD22143590C00BC47BB /* YZBingingNewPhoneViewController.m in Sources */,
 				1DBD8E8622CB2C250024CF7B /* SDWebImageCompat.m in Sources */,
 				AA57888522855C51002292EA /* YZFBPlayTypeView.m in Sources */,
+				1DDDEB7122D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				AA237FD32143590C00BC47BB /* YZWinNumberFBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8938,6 +9044,7 @@
 				AACDC22720FEE7B300955419 /* YZCircleModel.m in Sources */,
 				AA74EB0D1FFE17DF003B53AF /* HDBubbleView+Transform.m in Sources */,
 				AAA65A3122A75D5800DB7427 /* YZQuickStakeGamesView.m in Sources */,
+				1DDDEB7B22D5BB80003A9C07 /* MASLayoutConstraint.m in Sources */,
 				AA32930B1FFE27B600CA77DA /* YZChartDataStatus.m in Sources */,
 				AA74EBFF1FFE17E0003B53AF /* RSKTouchView.m in Sources */,
 				AA3292C71FFE27B600CA77DA /* YZQxcViewController.m in Sources */,
@@ -8948,6 +9055,7 @@
 				AA4B7BBE20172C1900A6F764 /* YZQrCodeModel.m in Sources */,
 				AA74EB5D1FFE17DF003B53AF /* MJRefreshBackNormalFooter.m in Sources */,
 				AA74ECBF1FFE1A6A003B53AF /* YZMoneyDetailViewController.m in Sources */,
+				1DDDEB8122D5BB80003A9C07 /* View+MASAdditions.m in Sources */,
 				AA74E0D91FFE0A4C003B53AF /* YZUnionBuyFollowUserCellStatusFrame.m in Sources */,
 				AA32907F1FFE1D6100CA77DA /* YZShareIncomeStatus.m in Sources */,
 				AACDC22F20FEE80400955419 /* YZCircleTableView.m in Sources */,
@@ -8966,6 +9074,7 @@
 				AA3292C11FFE27B600CA77DA /* YZDltViewController.m in Sources */,
 				AA32938B1FFE27B700CA77DA /* YZAsiaOddsCellStatus.m in Sources */,
 				AA74ECD31FFE1AD6003B53AF /* YZMessageViewController.m in Sources */,
+				1DDDEB7522D5BB80003A9C07 /* MASCompositeConstraint.m in Sources */,
 				AA3293D11FFE27B700CA77DA /* YZFBMatchDetailStandingsContentTableViewCell.m in Sources */,
 				AA3290D11FFE20A800CA77DA /* YZBankCardStatus.m in Sources */,
 				1DE61FF522CC4F7600C1490E /* TZImageCropManager.m in Sources */,
@@ -9145,6 +9254,7 @@
 				AA32937B1FFE27B700CA77DA /* YZFBMatchDetailViewController.m in Sources */,
 				AA74EAF11FFE17DF003B53AF /* HDFacialView.m in Sources */,
 				AA3293871FFE27B700CA77DA /* YZOddsCellStatus.m in Sources */,
+				1DDDEB8722D5BB80003A9C07 /* MASViewConstraint.m in Sources */,
 				AA3293831FFE27B700CA77DA /* YZRecommendRowStatus.m in Sources */,
 				1DB2A59522C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */,
 				AA74EB591FFE17DF003B53AF /* MJRefreshBackGifFooter.m in Sources */,
@@ -9199,6 +9309,7 @@
 				AA3293771FFE27B700CA77DA /* YZBtnsView.m in Sources */,
 				AA3290C91FFE20A800CA77DA /* YZShowNickNameViewController.m in Sources */,
 				AA74ECD51FFE1AD6003B53AF /* YZMessageDetailStatus.m in Sources */,
+				1DDDEB8422D5BB80003A9C07 /* MASConstraint.m in Sources */,
 				AA74ECA81FFE19A5003B53AF /* YZBonusCardRechargeViewController.m in Sources */,
 				AA74E13B1FFE0A86003B53AF /* YZShareView.m in Sources */,
 				AA74EAEF1FFE17DF003B53AF /* HDChatToolbar.m in Sources */,
@@ -9220,6 +9331,7 @@
 				AA32939B1FFE27B700CA77DA /* YZRoundStatus.m in Sources */,
 				AA74E0A71FFE0A0C003B53AF /* YZWinNumberGradeTableViewCell.m in Sources */,
 				AA74E0DD1FFE0A4C003B53AF /* YZUnionBuyStatus.m in Sources */,
+				1DDDEB7822D5BB80003A9C07 /* MASConstraintMaker.m in Sources */,
 				AA74E0E71FFE0A4C003B53AF /* YZAttatchedCell.m in Sources */,
 				AA3293551FFE27B600CA77DA /* YZFbBetCellStatus.m in Sources */,
 				1DE6200722CC4F7600C1490E /* NSBundle+TZImagePicker.m in Sources */,
@@ -9243,6 +9355,7 @@
 				AA3293031FFE27B600CA77DA /* YZSmartBetTableViewCell.m in Sources */,
 				AA74ECA41FFE19A5003B53AF /* YZRechargeSuccessViewController.m in Sources */,
 				AA3293B91FFE27B700CA77DA /* YZFBMatchDetailOddsView.m in Sources */,
+				1DDDEB8A22D5BB80003A9C07 /* MASViewAttribute.m in Sources */,
 				AA74EB931FFE17E0003B53AF /* IQUIWindow+Hierarchy.m in Sources */,
 				1DBD8B5B22CAFF780024CF7B /* FSActionSheetConfig.m in Sources */,
 				AA32930F1FFE27B600CA77DA /* YZChartStatsStatus.m in Sources */,
@@ -9414,6 +9527,7 @@
 				AA74EB4F1FFE17DF003B53AF /* UIScrollView+MJRefresh.m in Sources */,
 				AA74EB471FFE17DF003B53AF /* MJMethod.m in Sources */,
 				AA3293511FFE27B600CA77DA /* YZCN.m in Sources */,
+				1DDDEB7222D5BB80003A9C07 /* ViewController+MASAdditions.m in Sources */,
 				AACDC21320FEE6EA00955419 /* YZUserCircleViewController.m in Sources */,
 				AA74E0931FFE0A0C003B53AF /* YZWinNumberViewController.m in Sources */,
 				AA74E0D31FFE0A4C003B53AF /* YZUnionBuyFollowRecordViewController.m in Sources */,
@@ -9457,12 +9571,14 @@
 				1DE61FB622CB84BB00C1490E /* YZPublishLotteryCircleViewController.m in Sources */,
 				AA74EA531FFE17DE003B53AF /* NSDateFormatter+Category.m in Sources */,
 				AA74EAE31FFE17DF003B53AF /* HDCustomMessageCell.m in Sources */,
+				1DDDEB5222D5B1F3003A9C07 /* YZShareProfitsViewController.m in Sources */,
 				AA74EAFD1FFE17DF003B53AF /* HDBubbleView+Voice.m in Sources */,
 				AA74EB111FFE17DF003B53AF /* HDBubbleView+Evaluate.m in Sources */,
 				AA74EC051FFE17E0003B53AF /* UIImage+RSKImageCropper.m in Sources */,
 				AAD1206620BCFE0300D47F85 /* YZBasketBallBetViewController.m in Sources */,
 				AA74E0A31FFE0A0C003B53AF /* YZFBTimeChooseView.m in Sources */,
 				AA32908B1FFE1D9E00CA77DA /* YZWeChatPublicViewController.m in Sources */,
+				1DDDEB7E22D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */,
 				AA74EB951FFE17E0003B53AF /* IQUITextFieldView+Additions.m in Sources */,
 				AA3292EF1FFE27B600CA77DA /* YZKsBottomBtn.m in Sources */,
 				AA3293071FFE27B600CA77DA /* YZSsqChartViewController.m in Sources */,
@@ -9488,6 +9604,7 @@
 				AA329430200358FE00CA77DA /* YZBingingNewPhoneViewController.m in Sources */,
 				1DBD8E8422CB2C250024CF7B /* SDWebImageCompat.m in Sources */,
 				AA57888322855C51002292EA /* YZFBPlayTypeView.m in Sources */,
+				1DDDEB6F22D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				AA74E08D1FFE0A0C003B53AF /* YZWinNumberFBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9501,6 +9618,7 @@
 				1DDDBB1A22BC6F1F006F8ECA /* YZSegementCollectionViewCell.m in Sources */,
 				AA3293CC1FFE27B700CA77DA /* YZFBMatchDetailTextTableViewCell.m in Sources */,
 				AA74E0AC1FFE0A0C003B53AF /* YZWinNumberFBTableViewCell.m in Sources */,
+				1DDDEB7322D5BB80003A9C07 /* ViewController+MASAdditions.m in Sources */,
 				AA74EC4E1FFE17E0003B53AF /* YZValidateTool.m in Sources */,
 				AA3292B41FFE27B600CA77DA /* YZQilecaiViewController.m in Sources */,
 				AA9264A4224C666A00FCEFC7 /* YZBottomButton.m in Sources */,
@@ -9510,6 +9628,7 @@
 				AA3293721FFE27B700CA77DA /* YZSfcCell.m in Sources */,
 				1DBD8C5222CB00470024CF7B /* DACircularProgressView.m in Sources */,
 				AA3293A41FFE27B700CA77DA /* YZMatchCellStatus.m in Sources */,
+				1DDDEB5322D5B1F3003A9C07 /* YZShareProfitsViewController.m in Sources */,
 				1DBD8E0422CB2BDE0024CF7B /* SDCollectionViewCell.m in Sources */,
 				AA3291111FFE21D400CA77DA /* YZWeixinStatus.m in Sources */,
 				1DE61F9F22CB3DE700C1490E /* RSKInternalUtility.m in Sources */,
@@ -9688,6 +9807,7 @@
 				AA74EBAE1FFE17E0003B53AF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AA74EA681FFE17DF003B53AF /* HDUserModel.m in Sources */,
 				AA3292D01FFE27B600CA77DA /* YZSelectBallCellStatus.m in Sources */,
+				1DDDEB8222D5BB80003A9C07 /* View+MASAdditions.m in Sources */,
 				AA3292E61FFE27B600CA77DA /* YZKsBaseView.m in Sources */,
 				AA3293341FFE27B600CA77DA /* YZChartSsqPlaytypeView.m in Sources */,
 				AA3293581FFE27B600CA77DA /* YZSfcCellStatus.m in Sources */,
@@ -9741,6 +9861,7 @@
 				AA74E0E41FFE0A4C003B53AF /* YZUnionBuyFollowUserCell.m in Sources */,
 				AA3293961FFE27B700CA77DA /* YZOverUnderCellStatus.m in Sources */,
 				AA74EBD41FFE17E0003B53AF /* FMDatabaseAdditions.m in Sources */,
+				1DDDEB7F22D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */,
 				AA74E1401FFE0A86003B53AF /* YZFCOrderDetailTableViewCell.m in Sources */,
 				AA74EA2E1FFE17DE003B53AF /* YZNoDataTableViewCell.m in Sources */,
 				1DE61FE422CC4F7500C1490E /* TZVideoPlayerController.m in Sources */,
@@ -9758,6 +9879,7 @@
 				1DBD8E7322CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				AA32936A1FFE27B600CA77DA /* YZFBMatchDetailCellView.m in Sources */,
 				AA74EA6E1FFE17DF003B53AF /* CWStarRateView.m in Sources */,
+				1DDDEB7622D5BB80003A9C07 /* MASCompositeConstraint.m in Sources */,
 				AAE55C7A207EF8B000A29844 /* YZIntegralCustomCountCollectionViewCell.m in Sources */,
 				AA74EBBC1FFE17E0003B53AF /* AFImageDownloader.m in Sources */,
 				AA3293CE1FFE27B700CA77DA /* YZFBMatchDetailStandingsTitleTableViewCell.m in Sources */,
@@ -9785,6 +9907,7 @@
 				AA3293BC1FFE27B700CA77DA /* YZFBMatchDetailOddsRightContentTableViewCell.m in Sources */,
 				AA74EA281FFE17DE003B53AF /* YZNewFeatureViewController.m in Sources */,
 				AAD2530920F5B50600ACAA72 /* YZSetmealRecordViewController.m in Sources */,
+				1DDDEB8522D5BB80003A9C07 /* MASConstraint.m in Sources */,
 				AA3292CC1FFE27B600CA77DA /* YZBetSuccessViewController.m in Sources */,
 				1DBD8E7622CB2C250024CF7B /* SDWebImageCodersManager.m in Sources */,
 				AA74E2651FFE0C41003B53AF /* YZWithdrawalBankCardTableViewCell.m in Sources */,
@@ -9801,6 +9924,7 @@
 				AA3293681FFE27B600CA77DA /* YZFTHeaderView.m in Sources */,
 				AA32931E1FFE27B600CA77DA /* YZChartTitleView.m in Sources */,
 				AA3292F61FFE27B600CA77DA /* YZSelectBallCell.m in Sources */,
+				1DDDEB8B22D5BB80003A9C07 /* MASViewAttribute.m in Sources */,
 				AA32937C1FFE27B700CA77DA /* YZFBMatchDetailViewController.m in Sources */,
 				1DB2A59622C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */,
 				AA74EAF21FFE17DF003B53AF /* HDFacialView.m in Sources */,
@@ -9822,6 +9946,7 @@
 				AA74EB8C1FFE17E0003B53AF /* IQPreviousNextView.m in Sources */,
 				1DE61FA222CB3DE700C1490E /* RSKImageCropViewController.m in Sources */,
 				AA32907E1FFE1D6100CA77DA /* YZShareIncomeViewController.m in Sources */,
+				1DDDEB7922D5BB80003A9C07 /* MASConstraintMaker.m in Sources */,
 				AA3293141FFE27B600CA77DA /* YZChartNumberStatsStatus.m in Sources */,
 				AA74EB561FFE17DF003B53AF /* UIScrollView+MJExtension.m in Sources */,
 				AA74ECDC1FFE1AD6003B53AF /* YZMessageTableViewCell.m in Sources */,
@@ -9830,6 +9955,7 @@
 				1DBD8E8822CB2C250024CF7B /* UIImageView+WebCache.m in Sources */,
 				AA74EBDA1FFE17E0003B53AF /* FMResultSet.m in Sources */,
 				AA3292C01FFE27B600CA77DA /* YZFucaiViewController.m in Sources */,
+				1DDDEB7022D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				AA74E1321FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m in Sources */,
 				AA32936E1FFE27B700CA77DA /* YZFBChoosePlayView.m in Sources */,
 				AA74EB741FFE17DF003B53AF /* MJRefreshComponent.m in Sources */,
@@ -9963,6 +10089,7 @@
 				AA74EB8A1FFE17E0003B53AF /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				AA3293901FFE27B700CA77DA /* YZFBMatchDetailOddsStatus.m in Sources */,
 				AA74E1281FFE0A86003B53AF /* YZOrder.m in Sources */,
+				1DDDEB7C22D5BB80003A9C07 /* MASLayoutConstraint.m in Sources */,
 				AAD1207020BD2BD900D47F85 /* YZBasketBallPassWayView.m in Sources */,
 				1DBD8E9122CB2C250024CF7B /* SDAnimatedImageRep.m in Sources */,
 				1DBD8C5522CB00470024CF7B /* PSTCollectionViewController.m in Sources */,
@@ -10094,6 +10221,7 @@
 				AA3293AE1FFE27B700CA77DA /* YZFBMatchDetailIntegralContentTableViewCell.m in Sources */,
 				AA74E0D01FFE0A4C003B53AF /* YZUnionBuyViewController.m in Sources */,
 				AA74EA5C1FFE17DE003B53AF /* HDEmoji.m in Sources */,
+				1DDDEB8822D5BB80003A9C07 /* MASViewConstraint.m in Sources */,
 				AA74EAF41FFE17DF003B53AF /* HDFaceView.m in Sources */,
 				AA32905E1FFE1C9C00CA77DA /* YZVoucherViewController.m in Sources */,
 				AA74EA841FFE17DF003B53AF /* HDAudioPlayerUtil.m in Sources */,

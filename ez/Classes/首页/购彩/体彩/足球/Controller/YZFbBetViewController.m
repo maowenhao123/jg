@@ -90,7 +90,7 @@
     }
     [self.passWayBtn setTitle:title forState:UIControlStateNormal];
     
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
     navBar.tintColor = [UIColor whiteColor];
     // 设置标题属性
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
@@ -106,7 +106,7 @@
 {
     [super viewWillDisappear:animated];
     // 取出appearance对象
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
 #if JG
     //设置颜色
     navBar.tintColor = [UIColor whiteColor];

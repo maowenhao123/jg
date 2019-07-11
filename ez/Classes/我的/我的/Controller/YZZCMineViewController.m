@@ -16,10 +16,9 @@
 #import "YZRechargeListViewController.h"
 #import "YZVoucherViewController.h"
 #import "YZMessageViewController.h"
-#import "YZOrderViewController.h"
 #import "YZLoadHtmlFileController.h"
 #import "YZCustomerServiceViewController.h"
-#import "YZShareViewController.h"
+#import "YZShareProfitsViewController.h"
 #import "YZThirdPartyStatus.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+YZ.h"
@@ -214,9 +213,11 @@
     CGFloat lineH = 20;
     for (int i = 0; i < 3; i++) {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.tag = i;
         button.frame = CGRectMake(screenWidth * i / 3, moneyDetailBtnY, screenWidth / 3, moneyDetailBtnH);
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         button.titleLabel.numberOfLines = 2;
+        [button addTarget:self action:@selector(moneyDetailButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
         [moneyDetailView addSubview:button];
         [self.moneyDetailbtns addObject:button];
         if (i != 2) {
@@ -430,6 +431,13 @@
     [self.navigationController pushViewController:accountInfoVC animated:YES];
 }
 
+- (void)moneyDetailButtonDidClick:(UIButton *)button
+{
+    YZMoneyDetailViewController *moneyDetailVC = [[YZMoneyDetailViewController alloc] init];
+    moneyDetailVC.currentIndex = (int)button.tag;
+    [self.navigationController pushViewController:moneyDetailVC animated:YES];
+}
+
 - (void)walletButtonDidClick:(UIButton *)button
 {
     if (button.tag == 1) {//提款
@@ -473,8 +481,21 @@
 {
     if (button.tag == 0)
     {
-        YZOrderViewController *orderVC = [[YZOrderViewController alloc]init];
-        [self.navigationController pushViewController:orderVC animated:YES];
+        NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self.navigationController popToRootViewControllerAnimated:NO];
+            });
+        }];
+        NSBlockOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:RefreshRecordNote object:@(1)];
+            });
+        }];
+        [op2 addDependency:op1];
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        [queue waitUntilAllOperationsAreFinished];
+        [queue addOperation:op1];
+        [queue addOperation:op2];
     }else if (button.tag == 1)
     {
         YZMoneyDetailViewController *moneyDetailVC = [[YZMoneyDetailViewController alloc]init];
@@ -502,8 +523,8 @@
         [self.navigationController pushViewController:contactServiceVC animated:YES];
     }else if (button.tag == 7)
     {
-        YZShareViewController * settingVC = [[YZShareViewController alloc]init];
-        [self.navigationController pushViewController:settingVC animated:YES];
+        YZShareProfitsViewController * shareProfitsVC = [[YZShareProfitsViewController alloc]init];
+        [self.navigationController pushViewController:shareProfitsVC animated:YES];
     }
 }
 

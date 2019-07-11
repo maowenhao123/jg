@@ -65,7 +65,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
     // 设置navBar背景
     [navBar setBackgroundImage:[UIImage ImageFromColor:YZColor(40, 40, 40, 1) WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
     //设置颜色
@@ -79,7 +79,7 @@
 {
     [super viewWillDisappear:animated];
     // 取出appearance对象
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
 #if JG
     //设置颜色
     navBar.tintColor = [UIColor whiteColor];

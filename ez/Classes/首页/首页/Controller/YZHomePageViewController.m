@@ -10,7 +10,6 @@
 #import "YZMessageViewController.h"
 #import "YZLoginViewController.h"
 #import "YZNavigationController.h"
-#import "YZShareViewController.h"
 #import "YZBuyLotteryCollectionView.h"
 #import "YZCustomerServiceViewController.h"
 
@@ -30,7 +29,7 @@
 {
     [super viewWillAppear:animated];
     // 取出appearance对象
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
     // 设置背景
     [navBar setBackgroundImage:[UIImage ImageFromColor:YZBaseColor WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
 }

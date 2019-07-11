@@ -21,7 +21,6 @@
 @property (nonatomic, weak) UITextField *snTextField;//序号
 @property (nonatomic, weak) UITextField *passwordTextField;//密码
 @property (nonatomic, weak) UITextField *chargeMoneyTextField;//钱
-@property (nonatomic, weak) UIPickerView *pickerView;
 @property (nonatomic, weak) UIView *backView;
 
 @end

@@ -40,10 +40,12 @@
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [IQKeyboardManager sharedManager].toolbarDoneBarButtonItemText = @"完成";
-
+    
+    [YZStatusCacheTool deleteAllStatus];//删除数据
+    
     //注册一键登录
     [TYRZUILogin initializeWithAppId:TYRZAPPId appKey:TYRZAPPKey];
-    //微信注册
+
 #if JG
     //删除userId，以重新登录
     int autoLoginType = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"autoLogin"];
@@ -74,14 +76,9 @@
     HOptions *option = [[HOptions alloc] init];
     option.appkey = CECAppKey;
     option.tenantId = CECTenantId;
-//    option.enableConsoleLog = YES;
     //推送证书名字
     option.apnsCertName = apnsCertName;//(集成离线推送必填)
-    //Kefu SDK 初始化,初始化失败后将不能使用Kefu SDK
-    HError *initError = [[HChatClient sharedClient] initializeSDKWithOptions:option];
-    if (initError) { // 初始化错误
-        YZLog(@"环信初始化错误");
-    }
+    [[HChatClient sharedClient] initializeSDKWithOptions:option];
     
     NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     YZLog(@"userInfo：%@",userInfo);

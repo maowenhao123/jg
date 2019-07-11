@@ -67,7 +67,7 @@
     //完成配置
     [super configurationComplete];
     waitingView_loadingData;
-    [super topBtnClick:self.topBtns[0]];
+    [super topBtnClick:self.topBtns[self.currentIndex]];
 }
 - (void)changeCurrentIndex:(int)currentIndex
 {

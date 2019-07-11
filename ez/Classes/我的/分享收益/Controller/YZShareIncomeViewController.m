@@ -29,11 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的收益";
-    self.view.backgroundColor = YZBackgroundColor;
     [self getData];
     [self setupChilds];
 }
 
+#pragma mark - 请求数据
 - (void)getData {
     waitingView;
     NSDictionary *dict = @{
@@ -71,6 +71,7 @@
     }];
 }
 
+#pragma mark - 布局视图
 - (void)setupChilds
 {
     //tableview

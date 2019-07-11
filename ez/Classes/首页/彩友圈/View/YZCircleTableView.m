@@ -117,8 +117,10 @@
                  @"userId": UserId
                  };
     }
+    [MBProgressHUD showMessage:@"客官请稍后" toView:self];
     [[YZHttpTool shareInstance] postWithURL:url params:dict success:^(id json) {
         YZLog(@"getTopicList:%@",json);
+        [MBProgressHUD hideHUDForView:self];
         if (SUCCESS){
             NSArray * dataArray = [YZCircleModel objectArrayWithKeyValuesArray:json[@"topics"]];
             for (YZCircleModel * circleModel in dataArray) {
@@ -136,6 +138,7 @@
                 if (!YZDictIsEmpty(extInfo)) {
                     NSArray * ticketList = extInfo[@"ticketList"];
                     if (!YZArrayIsEmpty(ticketList) && [ticketList isKindOfClass:[NSArray class]]) {
+                        circleModel.extInfo.description_ = extInfo[@"description"];
                         circleModel.extInfo.ticketList = [YZTicketList objectArrayWithKeyValuesArray:extInfo[@"ticketList"]];
                     }
                 }
@@ -160,6 +163,7 @@
     }failure:^(NSError *error)
     {
         YZLog(@"error = %@",error);
+        [MBProgressHUD hideHUDForView:self];
         [self reloadData];
         [self.headerView endRefreshing];
         [self.footerView endRefreshing];

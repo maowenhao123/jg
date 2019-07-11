@@ -30,6 +30,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString * unionBuyUserId;
 @property (nonatomic, copy) NSString * userId;
 @property (nonatomic, strong) NSArray * ticketList;
+@property (nonatomic, copy) NSString * description_;
 
 @end
 
@@ -65,7 +66,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSAttributedString * detailAttStr;
 @property (nonatomic, assign) CGRect detailLabelF;
 @property (nonatomic, assign) CGRect lotteryViewF;
-@property (nonatomic, strong) NSArray * lotteryMessages;
+@property (nonatomic, strong) NSMutableArray * lotteryMessages;
 @property (nonatomic, strong) NSMutableArray *labelFs;
 @property (nonatomic, assign) CGRect logoImageViewF;
 @property (nonatomic, strong) NSMutableArray *imageViewFs;

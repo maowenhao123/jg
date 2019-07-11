@@ -10,6 +10,7 @@
 
 @protocol YZMineHeaderViewDelegate <NSObject>
 
+@optional
 - (void)mineHeaderViewDidClick;//点击头像imageview的代理方法
 - (void)mineDetailTableViewCellDidClickAvatar;//点击头像imageview的代理方法
 - (void)mineRechargeTableViewCellDidClickBtn:(UIButton *)button;//点击提现和充值的代理方法

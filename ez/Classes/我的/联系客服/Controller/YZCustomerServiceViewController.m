@@ -224,15 +224,25 @@
         [self.view addSubview:callWebview];
     }else if ([subTitie isEqualToString:@"微信客服"])//跳转微信
     {
-        NSURL * url = [NSURL URLWithString:@"weixin://"];
-        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
-        //先判断是否能打开该url
-        if (canOpen)
-        {   //打开微信
-            [[UIApplication sharedApplication] openURL:url];
-        }else {
-            [MBProgressHUD showError:@"您的设备未安装微信APP"];
-        }
+        //复制账号
+        UIPasteboard *pab = [UIPasteboard generalPasteboard];
+        NSString *string = @"17395802558";
+        [pab setString:string];
+        [MBProgressHUD showSuccess:@"复制成功"];
+        [self performSelector:@selector(skipWeixin) withObject:self afterDelay:1.0f];
+    }
+}
+
+- (void)skipWeixin
+{
+    NSURL * url = [NSURL URLWithString:@"weixin://"];
+    BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
+    //先判断是否能打开该url
+    if (canOpen)
+    {   //打开微信
+        [[UIApplication sharedApplication] openURL:url];
+    }else {
+        [MBProgressHUD showError:@"您的设备未安装微信APP"];
     }
 }
 #pragma mark - 初始化
@@ -268,7 +278,7 @@
 #if JG
         _subTities = @[@"点击发起咨询", @"点击发起聊天", @"点击拨打电话"];
 #elif ZC
-        _subTities = @[@"点击发起咨询", @"微信客服", @"点击拨打电话"];
+        _subTities = @[@"点击发起咨询", @"点击复制微信号", @"点击拨打电话"];
 #elif CS
         _subTities = @[@"点击发起咨询", @"点击拨打电话"];
 #endif

@@ -111,14 +111,11 @@
     self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录", @"合买记录"];
     //添加tableview
     CGFloat scrollViewH = screenHeight - statusBarH - navBarH - tabBarH - topBtnH;
-    if (self.navigationController.viewControllers.count > 1) {
-        scrollViewH = screenHeight - statusBarH - navBarH - topBtnH;
-    }
     for(int i = 0; i < self.btnTitles.count; i++)
     {
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth * i, 0, screenWidth, scrollViewH)];
         tableView.tag = i;
-        tableView.backgroundColor = [UIColor whiteColor];
+        tableView.backgroundColor = YZBackgroundColor;
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -139,7 +136,7 @@
     }
     //完成配置
     [super configurationComplete];
-    [super topBtnClick:self.topBtns[0]];
+    [super topBtnClick:self.topBtns[self.currentIndex]];
 }
 #pragma mark - MJRefresh的代理方法
 - (void)headerRefreshViewBeginRefreshing

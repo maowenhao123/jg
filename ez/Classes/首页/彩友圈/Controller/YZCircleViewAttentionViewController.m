@@ -157,30 +157,37 @@
 - (void)circleViewAttentionTableViewCellAttentionBtnDidClick:(YZCircleViewAttentionTableViewCell *)cell
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
     NSDictionary * dic = self.dataArray[indexPath.row];
-    NSDictionary *dict = @{
-                           @"userId": UserId,
-                           @"cancelUserId": dic[@"userId"],
-                           };
-    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/cancelUserConcern") params:dict success:^(id json) {
-        YZLog(@"cancelUserConcern:%@",json);
-        if (SUCCESS){
-            [self.dataArray removeObjectAtIndex:indexPath.row];
-            if (self.dataArray.count == 0) {
-                [self.tableView reloadData];
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:[NSString stringWithFormat:@"取消关注%@？", dic[@"nickname"]] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction * alertAction2 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSDictionary *dict = @{
+                               @"userId": UserId,
+                               @"cancelUserId": dic[@"userId"],
+                               };
+        [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/cancelUserConcern") params:dict success:^(id json) {
+            YZLog(@"cancelUserConcern:%@",json);
+            if (SUCCESS){
+                [self.dataArray removeObjectAtIndex:indexPath.row];
+                if (self.dataArray.count == 0) {
+                    [self.tableView reloadData];
+                }else
+                {
+                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
             }else
             {
-                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                ShowErrorView
             }
-        }else
+        }failure:^(NSError *error)
         {
-            ShowErrorView
-        }
-    }failure:^(NSError *error)
-    {
-         YZLog(@"error = %@",error);
+            YZLog(@"error = %@",error);
+        }];
     }];
+    [alertController addAction:alertAction1];
+    [alertController addAction:alertAction2];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - 初始化

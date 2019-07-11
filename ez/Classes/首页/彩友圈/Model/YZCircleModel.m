@@ -71,6 +71,7 @@
         lastViewMaxY = CGRectGetMaxY(_detailLabelF);
     }
     
+    _lotteryMessages = [NSMutableArray array];
     if ([_type intValue] == 1) {
         NSString * schemeContent = @"方案内容：";
         for (YZTicketList * ticketModel in _extInfo.ticketList) {
@@ -87,44 +88,54 @@
         paragraphStyle.lineSpacing = 5;
         paragraphStyle.alignment = NSTextAlignmentCenter;
         [schemeContentAttStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(5, schemeContentAttStr.length - 5)];
-        NSArray * lotteryMessages = @[[NSString stringWithFormat:@"%@ 第%@期", [YZTool gameIdNameDict][_extInfo.gameId], _extInfo.issue],
-                                      [NSString stringWithFormat:@"倍数：%@", _extInfo.multiple], [NSString stringWithFormat:@"金额：%.2f", [_extInfo.money floatValue] / 100],
+        NSArray * lotteryMessages = @[[NSString stringWithFormat:@"宣言：%@", YZStringIsEmpty(_extInfo.description_) ? @"暂无" : _extInfo.description_],
+                                      [NSString stringWithFormat:@"%@ 第%@期", [YZTool gameIdNameDict][_extInfo.gameId], _extInfo.issue],
+                                      [NSString stringWithFormat:@"倍数：%@", _extInfo.multiple],
+                                      [NSString stringWithFormat:@"金额：%.2f", [_extInfo.money floatValue] / 100],
                                       [NSString stringWithFormat:@"佣金：%@%%", _extInfo.commission],
                                       [NSString stringWithFormat:@"方案：%@", [YZTool getSecretStatus:[_extInfo.settings integerValue]]]];
+        NSMutableArray *lotteryMessages_mu = [NSMutableArray arrayWithArray:lotteryMessages];
         if (_circleTableViewType == CircleTableViewDetail && [_extInfo.settings intValue] == 1) {
-            NSMutableArray *lotteryMessages_mu = [NSMutableArray arrayWithArray:lotteryMessages];
             [lotteryMessages_mu addObject:schemeContentAttStr];
-            _lotteryMessages = [NSArray arrayWithArray:lotteryMessages_mu];
-        }else
-        {
-            _lotteryMessages = lotteryMessages;
         }
         CGFloat lastLabelMaxY = 3;
         _labelFs = [NSMutableArray array];
         CGFloat logoImageViewWH = 60;
-        CGFloat logoMaxH = 0;
-        for (int i = 0; i < _lotteryMessages.count; i++) {
+        for (int i = 0; i < lotteryMessages_mu.count; i++) {
             CGSize labelSize;
-            id lotteryMessage = _lotteryMessages[i];
+            id lotteryMessage = lotteryMessages_mu[i];
             if ([lotteryMessage isKindOfClass:[NSAttributedString class]]) {
                 labelSize = [lotteryMessage boundingRectWithSize:CGSizeMake(viewW - 2 * YZMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+                [_lotteryMessages addObject:lotteryMessage];
             }else
             {
-                labelSize = [lotteryMessage sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(24)] maxSize:CGSizeMake(viewW - 3 * YZMargin - logoImageViewWH, MAXFLOAT)];
+                NSMutableAttributedString * lotteryMessageAttStr = [[NSMutableAttributedString alloc] initWithString:lotteryMessage];
+                if (i == 0) {
+                    [lotteryMessageAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(28)] range:NSMakeRange(0, lotteryMessageAttStr.length)];
+                    labelSize = [lotteryMessageAttStr boundingRectWithSize:CGSizeMake(viewW - 2 * YZMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+                }else
+                {
+                    [lotteryMessageAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(26)] range:NSMakeRange(0, lotteryMessageAttStr.length)];
+                    labelSize = [lotteryMessageAttStr boundingRectWithSize:CGSizeMake(viewW - 3 * YZMargin - logoImageViewWH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+                }
+                [_lotteryMessages addObject:lotteryMessageAttStr];
             }
             CGRect labelF = CGRectMake(YZMargin, lastLabelMaxY + 9, labelSize.width, labelSize.height);
+            if (i == 1) {
+                labelF = CGRectMake(YZMargin, lastLabelMaxY + 15, labelSize.width, labelSize.height);
+            }
             [_labelFs addObject:[NSValue valueWithCGRect:labelF]];
             lastLabelMaxY = CGRectGetMaxY(labelF);
-            if (i == 4) {
-                logoMaxH = lastLabelMaxY + 9;
-            }
         }
+        CGRect labelF1 = [_labelFs[0] CGRectValue];
+        CGRect labelF5 = [_labelFs[4] CGRectValue];
+        CGFloat logoMaxH = CGRectGetMaxY(labelF5) - CGRectGetMaxY(labelF1);
         if (_circleTableViewType == CircleTableViewDetail) {
             _followtButtonF = CGRectMake(YZMargin * 2, lastLabelMaxY + 9, viewW - 2 * 2 * YZMargin, 35);
             lastLabelMaxY = CGRectGetMaxY(_followtButtonF);
         }
         _lotteryViewF = CGRectMake(viewX, lastViewMaxY + 9, viewW, lastLabelMaxY + 12);
-        _logoImageViewF = CGRectMake(viewW - YZMargin - logoImageViewWH, (logoMaxH - logoImageViewWH) / 2, logoImageViewWH, logoImageViewWH);
+        _logoImageViewF = CGRectMake(viewW - YZMargin - logoImageViewWH, CGRectGetMaxY(labelF1) + (logoMaxH - logoImageViewWH) / 2, logoImageViewWH, logoImageViewWH);
         lastViewMaxY = CGRectGetMaxY(_lotteryViewF);
     }
     

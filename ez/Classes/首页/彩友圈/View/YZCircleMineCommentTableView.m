@@ -70,8 +70,10 @@
                             @"pageSize":@(10),
                             @"userId": UserId
                             };
+    [MBProgressHUD showMessage:@"客官请稍后" toView:self];
     [[YZHttpTool shareInstance] postWithURL:url params:dict success:^(id json) {
         YZLog(@"getMineMessage:%@",json);
+        [MBProgressHUD hideHUDForView:self];
         if (SUCCESS){
             NSArray * dataArray = [YZCircleMineCommentModel objectArrayWithKeyValuesArray:json[@"topicReply"]];
             [self.dataArray addObjectsFromArray:dataArray];
@@ -94,6 +96,7 @@
     }failure:^(NSError *error)
      {
          YZLog(@"error = %@",error);
+         [MBProgressHUD hideHUDForView:self];
          [self reloadData];
          [self.headerView endRefreshing];
          [self.footerView endRefreshing];

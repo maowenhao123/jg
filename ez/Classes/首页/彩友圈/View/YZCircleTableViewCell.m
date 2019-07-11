@@ -22,6 +22,7 @@
 @property (nonatomic, weak) UIButton *attentionButon;
 @property (nonatomic, weak) UILabel * detailLabel;
 @property (nonatomic, weak) UIView * lotteryView;
+@property (nonatomic, weak) UIView * lotteryLine;
 @property (nonatomic, weak) UIImageView *logoImageView;
 @property (nonatomic, weak) UIButton * deleteButton;
 @property (nonatomic, weak) UIButton * praiseButton;
@@ -130,15 +131,19 @@
     lotteryView.backgroundColor = YZColor(255, 251, 243, 1);
     [self addSubview:lotteryView];
     
-    for(NSUInteger i = 0; i < 6; i++)
+    for(NSUInteger i = 0; i < 7; i++)
     {
         UILabel *label = [[UILabel alloc] init];
-        label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
         label.textColor = YZDrayGrayTextColor;
         label.numberOfLines = 0;
         [self.labels addObject:label];
         [lotteryView addSubview:label];
     }
+    //分割线
+    UIView * lotteryLine = [[UIView alloc] init];
+    self.lotteryLine = lotteryLine;
+    lotteryLine.backgroundColor = [UIColor whiteColor];
+    [lotteryView addSubview:lotteryLine];
     
     //logo
     UIImageView * logoImageView = [[UIImageView alloc] init];
@@ -336,17 +341,6 @@
     [self.commentButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.concernNumber] forState:UIControlStateNormal];
     [self.praiseButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
     [self.commentButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
-    for (int i = 0; i < _circleModel.lotteryMessages.count; i++) {
-        UILabel * label = self.labels[i];
-        if (i == 5) {
-            if (_circleModel.circleTableViewType == CircleTableViewDetail) {
-                label.attributedText = _circleModel.lotteryMessages[i];
-            }
-        }else
-        {
-            label.text = _circleModel.lotteryMessages[i];
-        }
-    }
     
     //frame
     if (_circleModel.circleTableViewType == CircleTableViewUser || _circleModel.circleTableViewType == CircleTableViewMine) {
@@ -372,7 +366,14 @@
             label.hidden = NO;
             label.frame = [_circleModel.labelFs[i] CGRectValue];
         }
+        if (i < _circleModel.lotteryMessages.count) {
+            label.hidden = NO;
+            label.attributedText = _circleModel.lotteryMessages[i];
+        }
     }
+    CGRect labelF1 = [_circleModel.labelFs[0] CGRectValue];
+    self.lotteryLine.frame = CGRectMake(0, CGRectGetMaxY(labelF1) + 6, self.lotteryView.width, 2.5);
+    
     self.followtButton.frame = _circleModel.followtButtonF;
     self.logoImageView.frame = _circleModel.logoImageViewF;
     UIView * lastView = self.lotteryView;

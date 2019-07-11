@@ -181,7 +181,11 @@
     lineView.frame = CGRectMake(5, topBtnH - 2, topBtnW - 2 * 5, 2);
     [tabbarBgView addSubview:lineView];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topBtnH, screenWidth, screenHeight - statusBarH - navBarH - topBtnH - tabBarH) style:UITableViewStylePlain];
+    CGFloat tableViewH = screenHeight - statusBarH - navBarH - tabBarH - topBtnH;
+    if (self.navigationController.viewControllers.count > 1) {
+        tableViewH = screenHeight - statusBarH - navBarH - topBtnH;
+    }
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topBtnH, screenWidth, tableViewH) style:UITableViewStylePlain];
     self.tableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;

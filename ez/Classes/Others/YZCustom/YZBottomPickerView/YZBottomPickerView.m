@@ -30,7 +30,7 @@
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hide)];
         [self addGestureRecognizer:tap];
         
-        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 44 + 180 * screenHeight / 667)];
+        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight, screenWidth, 44 + 250)];
         self.contentView = contentView;
         contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:contentView];
@@ -52,7 +52,7 @@
         [toolBar setItems:@[barButtonItem1,spaceItem,barButtonItem2]];
         
         //PickerView
-        UIPickerView * pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 180 * screenHeight / 667)];
+        UIPickerView * pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 250)];
         pickView.backgroundColor = [UIColor whiteColor];
         pickView.delegate = self;
         pickView.dataSource = self;
@@ -89,8 +89,8 @@
         [self removeFromSuperview];
     }];
 }
-#pragma mark - UIPickerViewDataSource
 
+#pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
 }
@@ -98,9 +98,11 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return self.dataArray.count;
 }
+
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return self.dataArray[row];
 }
+
 #pragma mark - UIPickerViewDelegate
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     UILabel* pickerLabel = (UILabel*)view;
@@ -113,7 +115,7 @@
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
         [pickerLabel setFont:[UIFont systemFontOfSize:17]];
     }
-    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    pickerLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;
 }
 

@@ -153,39 +153,8 @@
     }
     
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDidClick)]];
-    //    [self test];
 }
-- (void)test
-{
-    NSDictionary *testDict = @{
-                               @"cmd":@(8026),
-                               @"gameId":@"T05"
-                               };
-    [[YZHttpTool shareInstance] postWithParams:testDict success:^(id json) {
-        YZLog(@"%@",json);
-        if (Jump) {//隐藏充值按钮
-            self.rechargeButton.hidden = YES;
-            self.withdrawalButton.x = 0;
-            self.withdrawalButton.width = screenWidth / 2;
-            self.voucheButton.x = screenWidth / 2;
-            self.voucheButton.width = screenWidth / 2;
-        }else
-        {
-            self.rechargeButton.hidden = NO;
-            self.rechargeButton.x = 0;
-            self.rechargeButton.width = screenWidth / 3;
-            self.withdrawalButton.x = screenWidth / 3;
-            self.withdrawalButton.width = screenWidth / 3;
-            self.voucheButton.x = screenWidth / 3 * 2;
-            self.voucheButton.width = screenWidth / 3;
-        }
-        [self.withdrawalButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-        [self.rechargeButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-        [self.voucheButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-    } failure:^(NSError *error) {
-        YZLog(@"getCurrentTermData - error = %@",error);
-    }];
-}
+
 #pragma mark - 按钮点击
 - (void)tapDidClick
 {
@@ -193,12 +162,14 @@
         [_delegate mineHeaderViewDidClick];
     }
 }
+
 - (void)avatarClick
 {
     if (_delegate && [_delegate respondsToSelector:@selector(mineDetailTableViewCellDidClickAvatar)]) {
         [_delegate mineDetailTableViewCellDidClickAvatar];
     }
 }
+
 - (void)buttonDidClick:(UIButton *)button
 {
     if (_delegate && [_delegate respondsToSelector:@selector(mineRechargeTableViewCellDidClickBtn:)]) {
