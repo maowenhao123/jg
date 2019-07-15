@@ -39,7 +39,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupChilds];
-    waitingView
     [self getData];
 }
 
@@ -51,7 +50,6 @@
                            @"targetUserId": UserId,
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getUserInfo") params:dict success:^(id json) {
-        [MBProgressHUD hideHUDForView:self.view];
         YZLog(@"getUserInfo:%@",json);
         if (SUCCESS){
             self.userInfoModel = [YZCircleUserInfoModel objectWithKeyValues:json[@"userInfo"]];
@@ -61,7 +59,6 @@
         }
     }failure:^(NSError *error)
     {
-         [MBProgressHUD hideHUDForView:self.view];
          YZLog(@"error = %@",error);
     }];
 }

@@ -162,7 +162,7 @@
     
     UIView * lastView = detailLabel;
     
-    if (self.payVcType == BetTypeUnionbuyBet) {
+    if (self.payVcType == BetTypeStartUnionBuyBet || self.payVcType == BetTypeParticipateUnionBuyBet) {
         //合买分享
         YZBottomButton * shareButton = [YZBottomButton buttonWithType:UIButtonTypeCustom];
         shareButton.y = CGRectGetMaxY(detailLabel.frame) + 50;
@@ -319,7 +319,7 @@
 #pragma mark - 查看投注记录按钮
 - (void)lookBetRecord
 {
-    if (self.payVcType == BetTypeUnionbuyBet) {
+    if (self.payVcType == BetTypeStartUnionBuyBet || self.payVcType == BetTypeParticipateUnionBuyBet) {
         [self toAccountWithRecordIndex:AccountRecordTypeMyUnionBuy];
     }else if (self.termCount > 1) {//追号
         [self toAccountWithRecordIndex:AccountRecordTypeMyScheme];

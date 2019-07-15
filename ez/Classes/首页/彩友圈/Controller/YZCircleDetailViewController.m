@@ -139,6 +139,8 @@
 
 - (void)getCommentList
 {
+    return;
+    
     NSDictionary *dict = @{
                            @"topicId": self.topicId,
                            @"pageIndex": @(self.pageIndex),

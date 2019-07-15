@@ -338,7 +338,8 @@
 #endif
     self.detailLabel.attributedText = _circleModel.detailAttStr;
     [self.praiseButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.likeNumber] forState:UIControlStateNormal];
-    [self.commentButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.concernNumber] forState:UIControlStateNormal];
+//    [self.commentButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.concernNumber] forState:UIControlStateNormal];
+    [self.commentButton setTitle:@"0" forState:UIControlStateNormal];
     [self.praiseButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
     [self.commentButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
     

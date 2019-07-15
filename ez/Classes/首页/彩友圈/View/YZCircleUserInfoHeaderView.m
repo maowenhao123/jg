@@ -40,8 +40,6 @@
     self.avatarImageView = avatarImageView;
     avatarImageView.layer.masksToBounds = YES;
     avatarImageView.layer.cornerRadius = avatarImageView.width / 2;
-    avatarImageView.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.3].CGColor;
-    avatarImageView.layer.borderWidth = 3;
     avatarImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer * chooseAvatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAvatarDidClick)];
     [avatarImageView addGestureRecognizer:chooseAvatarTap];

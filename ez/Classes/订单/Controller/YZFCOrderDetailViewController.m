@@ -137,7 +137,7 @@
     
     UILabel * playTypeNameLabel = [[UILabel alloc]init];
     self.playTypeNameLabel = playTypeNameLabel;
-    playTypeNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
+    playTypeNameLabel.font = [UIFont boldSystemFontOfSize:YZGetFontSize(30)];
     playTypeNameLabel.textColor = YZBlackTextColor;
     [playTypeView addSubview:playTypeNameLabel];
     

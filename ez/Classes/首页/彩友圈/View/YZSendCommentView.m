@@ -86,9 +86,9 @@
     textView.frame = CGRectMake(YZMargin, 5, commentButton.x - 5 - YZMargin, 30);
     textView.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     textView.tintColor = YZRedTextColor;
-//    textView.myPlaceholder = @"暂不支持评论";
-//    textView.userInteractionEnabled = NO;
-    textView.myPlaceholder = @"请评论...";
+    textView.myPlaceholder = @"暂不支持评论";
+    textView.userInteractionEnabled = NO;
+//    textView.myPlaceholder = @"请评论...";
     textView.returnKeyType = UIReturnKeySend;
     textView.enablesReturnKeyAutomatically = YES;
     textView.delegate = self;
@@ -153,7 +153,8 @@
     
     self.praiseButton.selected = [_circleModel.likeStatus boolValue];
     [self.praiseButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.likeNumber] forState:UIControlStateNormal];
-    [self.commentButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.concernNumber] forState:UIControlStateNormal];
+    //    [self.commentButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.concernNumber] forState:UIControlStateNormal];
+    [self.commentButton setTitle:@"0" forState:UIControlStateNormal];
     [self.praiseButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
     [self.commentButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:2];
 }

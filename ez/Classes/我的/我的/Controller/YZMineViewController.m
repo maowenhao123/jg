@@ -21,8 +21,8 @@
 #import "YZRechargeListViewController.h"
 #import "YZVoucherViewController.h"
 #import "YZMessageViewController.h"
-#import "YZShareViewController.h"
 #import "YZLoadHtmlFileController.h"
+#import "YZShareProfitsViewController.h"
 #import "YZCustomerServiceViewController.h"
 #import "YZChatViewController.h"
 #import "YZWeChatPublicViewController.h"
@@ -219,7 +219,7 @@
         if (indexPath.row == 0) {//分享
             BOOL share_open = [YZUserDefaultTool getIntForKey:@"share_open"];
             if (share_open) {
-                YZShareViewController * shareVC = [[YZShareViewController alloc] init];
+                YZShareProfitsViewController * shareVC = [[YZShareProfitsViewController alloc] init];
                 [self.navigationController pushViewController:shareVC animated:YES];
             }else{
                 [self share];

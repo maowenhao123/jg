@@ -433,6 +433,11 @@
     param.singleMoney = cell.statusFrame.status.singleMoney;
     param.gameId = cell.statusFrame.status.gameId;
     param.termId = cell.statusFrame.status.issue;
+    param.title = cell.statusFrame.status.title;
+    param.desc = cell.statusFrame.status.desc;
+    param.commission = cell.statusFrame.status.commission;
+    param.deposit = cell.statusFrame.status.deposit;
+    param.settings = cell.statusFrame.status.settings;
     
     [[YZUnionBuyComfirmPayTool shareInstance] participateUnionBuyOfAllWithParam:param sourceController:self];
 }

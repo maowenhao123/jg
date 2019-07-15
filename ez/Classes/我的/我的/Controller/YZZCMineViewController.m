@@ -20,10 +20,11 @@
 #import "YZCustomerServiceViewController.h"
 #import "YZShareProfitsViewController.h"
 #import "YZThirdPartyStatus.h"
+#import "YZAddImageManage.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+YZ.h"
 
-@interface YZZCMineViewController ()
+@interface YZZCMineViewController ()<AddImageManageDelegate>
 
 @property (nonatomic, weak) UIScrollView * scrollView;
 @property (nonatomic,weak)  UIImageView *avatarImageView;
@@ -37,6 +38,7 @@
 @property (nonatomic, weak) UIButton * voucheButton;
 @property (nonatomic,strong) YZUser *user;
 @property (nonatomic, weak) MJRefreshGifHeader *header;
+@property (nonatomic, strong) YZAddImageManage * addImageManage;
 
 @end
 
@@ -46,6 +48,7 @@
 {
     [super viewWillAppear:animated];
     [self loadUserInfo];
+    [self getAvatarData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -71,11 +74,25 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     waitingView_loadingData;
-    //接收登录成功通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUserInfo) name:loginSuccessNote object:nil];
-    //接收html充值成功通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUserInfo) name:HtmlRechargeSuccessNote object:nil];
 }
+#pragma mark - 请求数据
+- (void)getAvatarData
+{
+    NSDictionary *dict = @{
+                           @"currentUserId": UserId,
+                           @"targetUserId": UserId,
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getUserInfo") params:dict success:^(id json) {
+        YZLog(@"getUserInfo:%@",json);
+        if (SUCCESS){
+            [self setAvatarWithavAtarUrlString:json[@"userInfo"][@"headPortraitUrl"]];
+        }
+    }failure:^(NSError *error)
+     {
+         YZLog(@"error = %@",error);
+     }];
+}
+
 //断网状态下，此方法必须实现
 - (void)noNetReloadRequest
 {
@@ -115,6 +132,7 @@
         YZLog(@"账户error");
     }];
 }
+
 - (void)getMessageCount
 {
     NSDictionary *dict = @{
@@ -139,7 +157,7 @@
     
     //背景
     UIImageView * backView = [[UIImageView alloc]init];
-    backView.frame = CGRectMake(0, 0, screenWidth, statusBarH + navBarH + 78 * screenWidth / 375);
+    backView.frame = CGRectMake(0, 0, screenWidth, statusBarH + navBarH + 100);
     if (iPhone5 || iPhone4)
     {
         backView.image = [UIImage imageNamed:@"mine_top_bg_zc_4"];
@@ -168,39 +186,42 @@
     [backView addSubview:settingButton];
     
     //头像
-    UIImageView *avatarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(YZMargin, statusBarH + 25, 50, 50)];
+    UIImageView *avatarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, statusBarH + 20, 70, 70)];
     self.avatarImageView = avatarImageView;
     avatarImageView.image = [UIImage imageNamed:@"avatar_zc"];
     avatarImageView.layer.masksToBounds = YES;
     avatarImageView.layer.cornerRadius = avatarImageView.width / 2;
+    avatarImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer * chooseAvatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAvatarDidClick)];
+    [avatarImageView addGestureRecognizer:chooseAvatarTap];
     [backView addSubview:avatarImageView];
     
     //昵称
-    UILabel * nickNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 10, statusBarH + 25, screenWidth - (CGRectGetMaxX(avatarImageView.frame) + 10), 30)];
+    UILabel * nickNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 10, statusBarH + 30, screenWidth - (CGRectGetMaxX(avatarImageView.frame) + 10), 30)];
     self.nickNameLabel = nickNameLabel;
     nickNameLabel.text = @"昵称";
     nickNameLabel.textColor = [UIColor whiteColor];
-    nickNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
+    nickNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(32)];
     [backView addSubview:nickNameLabel];
     
     //实名认证
-    UILabel * nameCertificationLabel = [[UILabel alloc]init];
+    UILabel * nameCertificationLabel = [[UILabel alloc] init];
     self.nameCertificationLabel = nameCertificationLabel;
     nameCertificationLabel.textColor = YZColor(253, 165, 162, 1);
-    nameCertificationLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+    nameCertificationLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     [backView addSubview:nameCertificationLabel];
     
     //分割线1
-    UIView * line1 = [[UIView alloc]init];
+    UIView * line1 = [[UIView alloc] init];
     self.line1 = line1;
     line1.backgroundColor = YZColor(253, 165, 162, 1);
     [backView addSubview:line1];
     
     //手机绑定信息
-    UILabel * phoneBindingLabel = [[UILabel alloc]init];
+    UILabel * phoneBindingLabel = [[UILabel alloc] init];
     self.phoneBindingLabel = phoneBindingLabel;
     phoneBindingLabel.textColor = YZColor(253, 165, 162, 1);
-    phoneBindingLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+    phoneBindingLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     [backView addSubview:phoneBindingLabel];
     
     //账户金额
@@ -336,27 +357,15 @@
 - (void)setUser:(YZUser *)user
 {
     _user = user;
-    //头像
-    NSString * loginWay = [YZUserDefaultTool getObjectForKey:@"loginWay"];
-    YZThirdPartyStatus *thirdPartyStatus = [YZUserDefaultTool thirdPartyStatus];
-    if ([loginWay isEqualToString:@"thirdPartyLogin"] && thirdPartyStatus) {//第三方登录
-        NSURL *imageUrl = [NSURL URLWithString:thirdPartyStatus.iconurl];
-        //取出偏好设置中得已选图片
-        NSString *imageTag = [YZUserDefaultTool getObjectForKey:@"selectedIconTag"];
-        imageTag = imageTag ? imageTag : @"0";
-        UIImage *placeholderImage = [UIImage imageNamed:[NSString stringWithFormat:@"icon%@",imageTag]];
-        [self.avatarImageView sd_setImageWithURL:imageUrl placeholderImage:placeholderImage];
-    }else
-    {
-        self.avatarImageView.image = [UIImage imageNamed:@"avatar_zc"];
-    }
     
     //赋值个人基本信息
-    if ([loginWay isEqualToString:@"thirdPartyLogin"] && thirdPartyStatus) {//第三方登录
-        self.nickNameLabel.text = thirdPartyStatus.name;
-    }else
-    {
+    NSString * loginWay = [YZUserDefaultTool getObjectForKey:@"loginWay"];
+    YZThirdPartyStatus *thirdPartyStatus = [YZUserDefaultTool thirdPartyStatus];
+    if (!YZStringIsEmpty(_user.nickName)) {
         self.nickNameLabel.text = _user.nickName;
+    }else if ([loginWay isEqualToString:@"thirdPartyLogin"] && thirdPartyStatus)//第三方登录
+    {
+        self.nickNameLabel.text = thirdPartyStatus.name;
     }
     
     if (_user.userInfo.realname) {
@@ -399,6 +408,23 @@
     CGSize mobilePhoneSize = [self.phoneBindingLabel.text sizeWithLabelFont:self.phoneBindingLabel.font];
     self.phoneBindingLabel.frame = CGRectMake(CGRectGetMaxX(self.line1.frame) + 3, self.nameCertificationLabel.y, mobilePhoneSize.width, self.nameCertificationLabel.height);
 }
+
+- (void)setAvatarWithavAtarUrlString:(NSString *)avatarUrlString
+{
+    NSString * loginWay = [YZUserDefaultTool getObjectForKey:@"loginWay"];
+    YZThirdPartyStatus *thirdPartyStatus = [YZUserDefaultTool thirdPartyStatus];
+    if (!YZStringIsEmpty(avatarUrlString)) {
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrlString] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
+    }else if ([loginWay isEqualToString:@"thirdPartyLogin"] && thirdPartyStatus)//第三方登录
+    {
+        NSURL *imageUrl = [NSURL URLWithString:thirdPartyStatus.iconurl];
+        [self.avatarImageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
+    }else
+    {
+        self.avatarImageView.image = [UIImage imageNamed:@"avatar_zc"];
+    }
+}
+
 - (void)setMoneyButtonTitleByBalance:(NSString *)balance bonus:(NSString *)bonus grade:(NSString *)grade
 {
     NSArray *moneys = [NSArray arrayWithObjects:balance,bonus,grade,nil];
@@ -526,6 +552,57 @@
         YZShareProfitsViewController * shareProfitsVC = [[YZShareProfitsViewController alloc]init];
         [self.navigationController pushViewController:shareProfitsVC animated:YES];
     }
+}
+
+#pragma mark - 修改头像
+- (void)chooseAvatarDidClick
+{
+    self.addImageManage = [[YZAddImageManage alloc] init];
+    self.addImageManage.viewController = self;
+    self.addImageManage.delegate = self;
+    [self.addImageManage addImage];
+}
+
+- (void)imageManageCropImage:(UIImage *)image
+{
+    NSDictionary *dict = @{
+                           @"type": @"user",
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getAliOssToken") params:dict success:^(id json) {
+        YZLog(@"getAliOssToken:%@",json);
+        if (SUCCESS){
+            [[YZHttpTool shareInstance] uploadWithImage:image currentIndex:0 totalCount:1 aliOssToken:json[@"aliOssToken"] Success:^(NSString * picUrl) {
+                [self setUserHeadPortraitWithUserHeadPortrait:picUrl image:image];
+            } Failure:^(NSError *error) {
+                [MBProgressHUD showError:@"上传图片失败"];
+            }  Progress:^(float percent) {
+                
+            }];
+        }else
+        {
+            ShowErrorView
+        }
+    } failure:^(NSError *error) {
+        YZLog(@"error = %@",error);
+    }];
+}
+
+- (void)setUserHeadPortraitWithUserHeadPortrait:(NSString *)userHeadPortrait image:(UIImage *)image
+{
+    NSDictionary *dict = @{
+                           @"userHeadPortrait": userHeadPortrait
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/setUserHeadPortrait") params:dict success:^(id json) {
+        YZLog(@"setUserHeadPortrait:%@",json);
+        if (SUCCESS){
+            self.avatarImageView.image = image;
+        }else
+        {
+            ShowErrorView
+        }
+    } failure:^(NSError *error) {
+        YZLog(@"error = %@",error);
+    }];
 }
 
 #pragma mark - 初始化

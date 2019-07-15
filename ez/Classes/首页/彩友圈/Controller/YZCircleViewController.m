@@ -39,8 +39,8 @@
 - (void)setupChilds
 {
     UIBarButtonItem * mineBar = [[UIBarButtonItem alloc] initWithTitle:@"我的" style:UIBarButtonItemStylePlain target:self action:@selector(mineBarDidClick)];
-    UIBarButtonItem * publishBar = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(publishBarDidClick)];
-    self.navigationItem.rightBarButtonItems = @[mineBar, publishBar];
+//    UIBarButtonItem * publishBar = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(publishBarDidClick)];
+    self.navigationItem.rightBarButtonItem = mineBar;
     
     //添加btnTitle
     self.btnTitles = @[@"圈子", @"我关注的"];

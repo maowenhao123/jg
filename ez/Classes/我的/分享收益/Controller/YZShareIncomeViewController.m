@@ -16,8 +16,8 @@
     int _pageIndex;
 }
 @property (nonatomic, weak) UITableView *tableView;
-@property (nonatomic,weak) UILabel * quantityLabel;
-@property (nonatomic,strong) id json;
+@property (nonatomic, weak) UILabel * quantityLabel;
+@property (nonatomic, strong) id json;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, weak) MJRefreshGifHeader *header;
 @property (nonatomic, weak) MJRefreshBackGifFooter *footer;
@@ -26,7 +26,8 @@
 
 @implementation YZShareIncomeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.title = @"我的收益";
     [self getData];

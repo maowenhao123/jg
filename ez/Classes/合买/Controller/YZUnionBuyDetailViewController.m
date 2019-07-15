@@ -608,6 +608,14 @@
     param.singleMoney = _unionBuyStatus.singleMoney;
     param.gameId = _unionBuyStatus.gameId;
     param.termId = _unionBuyStatus.issue;
+    param.title = _unionBuyStatus.title;
+    param.desc = _unionBuyStatus.desc;
+    param.commission = _unionBuyStatus.commission;
+    param.deposit = _unionBuyStatus.deposit;
+    param.settings = _unionBuyStatus.settings;
+    param.multiple = _unionBuyStatus.multiple;
+    param.amount = _unionBuyStatus.totalAmount;
+    param.ticketList = _unionBuyStatus.tickets;
     
     [[YZUnionBuyComfirmPayTool shareInstance] participateUnionBuyOfAllWithParam:param sourceController:self];
 }

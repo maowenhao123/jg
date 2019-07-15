@@ -114,7 +114,14 @@
     
     CGFloat viewH = 50;
     for (int i = 0; i < self.titleAttStrings.count; i++) {
-        CGFloat viewY = 10 + i * (viewH + 10);
+        CGFloat viewY = 0;
+        if (i == 0)
+        {
+            viewY = 10;
+        }else
+        {
+            viewY = 10 + i * (viewH + 10);
+        }
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, viewY, screenWidth, viewH)];
         view.tag = i;
         view.backgroundColor = [UIColor whiteColor];
@@ -211,7 +218,13 @@
         [self chatDidBarClick];
     }else if ([subTitie isEqualToString:@"点击发起聊天"])//跳转QQ
     {
-        NSString *urlStr = @"http://wpa.b.qq.com/cgi/wpa.php?ln=2&uin=4007001898";
+#if JG
+        NSString *urlStr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web", @"4007001898"];
+#elif ZC
+        NSString *urlStr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web", @"1843013161"];
+#elif CS
+        NSString *urlStr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web", @"1843013161"];
+#endif
         NSURL *url = [NSURL URLWithString:urlStr];
         UIWebView *webView = [UIWebView new];
         [webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -222,7 +235,7 @@
         UIWebView * callWebview = [[UIWebView alloc] init];
         [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
         [self.view addSubview:callWebview];
-    }else if ([subTitie isEqualToString:@"微信客服"])//跳转微信
+    }else if ([subTitie isEqualToString:@"点击复制微信号"])//跳转微信
     {
         //复制账号
         UIPasteboard *pab = [UIPasteboard generalPasteboard];
@@ -252,17 +265,20 @@
         _titleAttStrings = [NSMutableArray array];
         NSMutableAttributedString * attString1 = [self getAttributedStringWithBlackText:@"在线客服" blueText:@""];
         
-        NSMutableAttributedString * attString2 = [self getAttributedStringWithBlackText:@"QQ客服" blueText:@"4007001898"];
-        
         NSMutableAttributedString * attString3 = [self getAttributedStringWithBlackText:@"微信客服" blueText:@"17395802558"];
         
         NSMutableAttributedString * attString4 = [[NSMutableAttributedString alloc]initWithString:@""];
 #if JG
+        NSMutableAttributedString * attString2 = [self getAttributedStringWithBlackText:@"QQ客服" blueText:@"4007001898"];
+
         [_titleAttStrings addObject:attString1];
         [_titleAttStrings addObject:attString2];
         [_titleAttStrings addObject:attString4];
 #elif ZC
+        NSMutableAttributedString * attString2 = [self getAttributedStringWithBlackText:@"QQ客服" blueText:@"1843013161"];
+        
         [_titleAttStrings addObject:attString1];
+        [_titleAttStrings addObject:attString2];
         [_titleAttStrings addObject:attString3];
         [_titleAttStrings addObject:attString4];
 #elif CS
@@ -278,7 +294,7 @@
 #if JG
         _subTities = @[@"点击发起咨询", @"点击发起聊天", @"点击拨打电话"];
 #elif ZC
-        _subTities = @[@"点击发起咨询", @"点击复制微信号", @"点击拨打电话"];
+        _subTities = @[@"点击发起咨询", @"点击发起聊天", @"点击复制微信号", @"点击拨打电话"];
 #elif CS
         _subTities = @[@"点击发起咨询", @"点击拨打电话"];
 #endif
@@ -291,7 +307,7 @@
 #if JG
         _logos = @[@"contact_customerService_chat", @"contact_customerService_qq", @"contact_customerService_phone"];
 #elif ZC
-        _logos = @[@"contact_customerService_chat", @"contact_customerService_weixin", @"contact_customerService_phone"];
+        _logos = @[@"contact_customerService_chat", @"contact_customerService_qq", @"contact_customerService_weixin", @"contact_customerService_phone"];
 #elif CS
         _logos = @[@"contact_customerService_chat", @"contact_customerService_phone"];
 #endif

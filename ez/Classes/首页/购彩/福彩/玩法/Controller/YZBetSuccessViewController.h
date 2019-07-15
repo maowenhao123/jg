@@ -9,7 +9,8 @@ typedef enum : NSUInteger {
     BetTypeNormal = 1,//1：正常
     BetTypeFastBet = 2,//2：快速投注
     BetTypeSmartBet = 3,//3：智能追号
-    BetTypeUnionbuyBet = 4,//4：合买
+    BetTypeStartUnionBuyBet = 4,//4：发起合买
+    BetTypeParticipateUnionBuyBet = 5,//4：参与合买
 } PayVcType;
 
 #import "YZBaseViewController.h"

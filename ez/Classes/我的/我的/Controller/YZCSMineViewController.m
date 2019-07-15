@@ -11,7 +11,6 @@
 #import "YZIntegralConversionViewController.h"
 #import "YZAccountInfoViewController.h"
 #import "YZMoneyDetailViewController.h"
-#import "YZShareViewController.h"
 #import "YZRechargeRecordViewController.h"
 #import "YZWithdrawalRecordViewController.h"
 #import "YZWithdrawalViewController.h"
@@ -19,6 +18,7 @@
 #import "YZVoucherViewController.h"
 #import "YZMessageViewController.h"
 #import "YZLoadHtmlFileController.h"
+#import "YZShareProfitsViewController.h"
 #import "YZWeChatPublicViewController.h"
 #import "YZChatViewController.h"
 #import "YZThirdPartyStatus.h"
@@ -513,7 +513,7 @@
         [self.navigationController pushViewController:withdrawalRecordVC animated:YES];
     }else if (button.tag == 100)
     {
-        YZShareViewController * shareVC = [[YZShareViewController alloc] init];
+        YZShareProfitsViewController * shareVC = [[YZShareProfitsViewController alloc] init];
         [self.navigationController pushViewController:shareVC animated:YES];
     }else if (button.tag == 101)
     {

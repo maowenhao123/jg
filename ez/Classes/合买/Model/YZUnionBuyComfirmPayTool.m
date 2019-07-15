@@ -189,12 +189,12 @@
             //删除数据库中得所有号码球数据
             [YZStatusCacheTool deleteAllStatus];
             YZBetSuccessViewController *betSuccessVc = [[YZBetSuccessViewController alloc] init];
-            betSuccessVc.payVcType = BetTypeUnionbuyBet;
+            betSuccessVc.payVcType = BetTypeStartUnionBuyBet;
             betSuccessVc.termCount = 1;
             _param.unionBuyUserId = [NSString stringWithFormat:@"%@", json[@"unionBuyUserId"]];
             _param.unionBuyPlanId = [NSString stringWithFormat:@"%@", json[@"unionBuyPlanId"]];
             betSuccessVc.unionbuyModel = _param;
-//            //跳转
+            //跳转
             [self.sourceController.navigationController pushViewController:betSuccessVc animated:YES];
         }else
         {
@@ -231,8 +231,11 @@
             //删除数据库中得所有号码球数据
             [YZStatusCacheTool deleteAllStatus];
             YZBetSuccessViewController *betSuccessVc = [[YZBetSuccessViewController alloc] init];
-            betSuccessVc.payVcType = BetTypeUnionbuyBet;
+            _param.unionBuyUserId = [NSString stringWithFormat:@"%@", json[@"unionBuyUserId"]];
+            _param.unionBuyPlanId = [NSString stringWithFormat:@"%@", json[@"unionBuyPlanId"]];
+            betSuccessVc.payVcType = BetTypeParticipateUnionBuyBet;
             betSuccessVc.termCount = 1;
+            betSuccessVc.unionbuyModel = _param;
             //跳转
             [self.sourceController.navigationController pushViewController:betSuccessVc animated:YES];
         }else
