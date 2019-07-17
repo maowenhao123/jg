@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSArray *unionBuyFollowUserStatus;//模型数组
 @property (nonatomic, strong) NSMutableArray *statusFrames;//模型和frame数组
 @property (nonatomic, strong) NSNumber *totalMoney;//总金额
+@property (nonatomic, weak) MJRefreshGifHeader *header;
 
 @end
 
@@ -35,36 +36,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"参与者列表";
+    self.view.backgroundColor = YZBackgroundColor;
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"back_btn_flat" highIcon:@"back_btn_flat" target:self action:@selector(back)];
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.title = @"参与者列表";
+    waitingView
     [self getFollowDetail];
+    
+    //初始化头部刷新控件
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(getFollowDetail)];
+    self.header = header;
+    [YZTool setRefreshHeaderData:header];
+    self.tableView.mj_header = header;
 }
+
 - (void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-#pragma mark - tableview的数据源的代理方法
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.statusFrames.count;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    YZUnionBuyFollowUserCell *cell = [YZUnionBuyFollowUserCell cellWithTableView:tableView];
-    cell.statusFrame = self.statusFrames[indexPath.row];
-    return cell;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    YZUnionBuyFollowUserCellStatusFrame *statusFrame = self.statusFrames[indexPath.row];
-    return  statusFrame.cellH;
-}
-#pragma mark - 跟单详情
+#pragma mark - 请求数据
 - (void)getFollowDetail
 {
     NSDictionary *dict = @{
@@ -72,10 +66,10 @@
                            @"unionBuyPlanId":self.unionBuyPlanId,
                            @"unionBuyUserId":self.unionBuyUserId
                            };
-    waitingView
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"followDetailBtnClick - json = %@",json);
         [MBProgressHUD hideHUDForView:self.view];
+        [self.header endRefreshing];
         if (SUCCESS) {
             self.totalMoney = json[@"totalMoney"];
             self.unionBuyFollowUserStatus = [YZUnionBuyStatus objectArrayWithKeyValuesArray:json[@"unionBuys"]];
@@ -86,9 +80,11 @@
         }
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
+        [self.header endRefreshing];
         YZLog(@"followDetailBtnClick - error = %@",error);
     }];
 }
+
 - (void)setUnionBuyFollowUserStatus:(NSArray *)unionBuyFollowUserStatus
 {
     _unionBuyFollowUserStatus = unionBuyFollowUserStatus;
@@ -106,6 +102,24 @@
     _statusFrames = statusFrames;
 }
 
+#pragma mark - tableview的数据源的代理方法
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.statusFrames.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    YZUnionBuyFollowUserCell *cell = [YZUnionBuyFollowUserCell cellWithTableView:tableView];
+    cell.statusFrame = self.statusFrames[indexPath.row];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    YZUnionBuyFollowUserCellStatusFrame *statusFrame = self.statusFrames[indexPath.row];
+    return  statusFrame.cellH;
+}
 
 
 @end

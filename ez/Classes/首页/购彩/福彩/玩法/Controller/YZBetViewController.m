@@ -421,13 +421,13 @@
                 text = @"期";
             }
             betLabel.text = text;
-            CGFloat betLabelX = 0;
+            CGFloat betLabelX = -5;
             if(j == 1)
             {
-                betLabelX = CGRectGetMaxX(multipleTextField.frame) + 2;
+                betLabelX = CGRectGetMaxX(multipleTextField.frame) + 5;
             }
             betLabel.frame = CGRectMake(betLabelX, 0 , wordW, backViewH);
-           [backView addSubview:betLabel];
+            [backView addSubview:betLabel];
         }
         //右边的追加投注、中奖后停追
         UIButton *rightbtn = [UIButton buttonWithType:UIButtonTypeCustom];

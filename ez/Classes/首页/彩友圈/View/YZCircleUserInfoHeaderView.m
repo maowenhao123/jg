@@ -99,7 +99,6 @@
     [self.viewController.navigationController pushViewController:attentionVC animated:YES];
 }
 
-
 #pragma mark - 修改头像
 - (void)chooseAvatarDidClick
 {

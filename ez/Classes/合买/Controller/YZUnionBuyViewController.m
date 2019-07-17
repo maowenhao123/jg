@@ -153,7 +153,7 @@
     [self.view addSubview:tabbarBgView];
     
     //三个按钮,1：金额排序、2：进度排序、3：战绩排序
-    NSArray *topTitles = @[@"金额排序",@"进度排序",@"战绩排序"];
+    NSArray *topTitles = @[@"金额排序", @"进度排序", @"战绩排序"];
     CGFloat topBtnW = (screenWidth - 10) / topTitles.count;
     for(NSUInteger i = 0; i < topTitles.count; i++)
     {
@@ -187,6 +187,7 @@
     }
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topBtnH, screenWidth, tableViewH) style:UITableViewStylePlain];
     self.tableView = tableView;
+    tableView.backgroundColor = YZBackgroundColor;
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -264,9 +265,9 @@
 - (void)tabbarButtonClick:(UIButton *)btn
 {
     [self selectedButtonClick:btn];
-    
     [self.header beginRefreshing];
 }
+
 #pragma mark - 头部按钮点击
 - (void)titleBtnClick:(UIButton *)sender
 {    

@@ -17,7 +17,7 @@
 #import "YZVoucherViewController.h"
 #import "YZMessageViewController.h"
 #import "YZLoadHtmlFileController.h"
-#import "YZCustomerServiceViewController.h"
+#import "YZServiceListViewController.h"
 #import "YZShareProfitsViewController.h"
 #import "YZThirdPartyStatus.h"
 #import "YZAddImageManage.h"
@@ -26,6 +26,7 @@
 
 @interface YZZCMineViewController ()<AddImageManageDelegate>
 
+@property (nonatomic, weak) UIView * guideView;
 @property (nonatomic, weak) UIScrollView * scrollView;
 @property (nonatomic,weak)  UIImageView *avatarImageView;
 @property (nonatomic,weak) UILabel * nickNameLabel;
@@ -68,6 +69,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = YZBackgroundColor;
     [self setupChilds];
+    [self addGuideView];
     if (@available(iOS 11.0, *)) {
         self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
@@ -148,6 +150,7 @@
          YZLog(@"error = %@",error);
      }];
 }
+
 #pragma mark - 布局视图
 - (void)setupChilds
 {
@@ -353,6 +356,61 @@
 {
     [self loadUserInfo];
 }
+
+#pragma mark - 设置头像引导
+- (void)addGuideView
+{
+    BOOL haveShow = [YZUserDefaultTool getIntForKey:@"avatar_guideHaveShow"];
+    if (haveShow) {
+        return;
+    }
+    //guide
+    UIView * guideView = [[UIView alloc] initWithFrame:KEY_WINDOW.bounds];
+    self.guideView = guideView;
+    [KEY_WINDOW addSubview:guideView];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeGuideView)];
+    [guideView addGestureRecognizer:tap];
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, guideView.width, guideView.height)];
+    //小圆
+    CGPoint center = self.avatarImageView.center;
+    UIBezierPath *circlePath = [UIBezierPath bezierPath];
+    [circlePath moveToPoint:center];
+    [circlePath addArcWithCenter:center radius:self.avatarImageView.width / 2 startAngle:0 endAngle:2 * M_PI clockwise:YES];
+    [circlePath closePath];
+    [path appendPath:circlePath];
+    [path setUsesEvenOddFillRule:YES];
+    
+    CAShapeLayer *fillLayer = [CAShapeLayer layer];
+    fillLayer.path = path.CGPath;
+    fillLayer.fillRule = kCAFillRuleEvenOdd;
+    fillLayer.fillColor = YZColor(0, 0, 0, 0.6).CGColor;
+    [guideView.layer addSublayer:fillLayer];
+    
+    UILabel * guideLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 2 * 20, 100)];
+    guideLabel.center = guideView.center;
+    guideLabel.text = @"请点击设置您的头像，让更多彩友认识您";
+    guideLabel.numberOfLines = 0;
+    guideLabel.textColor = [UIColor whiteColor];
+    guideLabel.font = [UIFont boldSystemFontOfSize:YZGetFontSize(40)];
+    guideLabel.textAlignment = NSTextAlignmentCenter;
+    [guideView addSubview:guideLabel];
+    
+    [YZUserDefaultTool saveInt:1 forKey:@"avatar_guideHaveShow"];
+}
+
+- (void)removeGuideView
+{
+    [UIView animateWithDuration:animateDuration
+                     animations:^{
+                         self.guideView.alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.guideView removeFromSuperview];
+                     }];
+}
+
 #pragma mark - 设置数据
 - (void)setUser:(YZUser *)user
 {
@@ -471,7 +529,6 @@
             UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"完善实名信息后才能提款哦" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction * alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             UIAlertAction * alertAction2 = [UIAlertAction actionWithTitle:@"去完善" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                //没有实名认证需要先进行实名认证才能提现
                 if (!_user.userInfo.realname && !_user.mobilePhone) {
                     YZNamePhoneBindingViewController * namePhoneBindingVC = [[YZNamePhoneBindingViewController alloc]init];
                     [self.navigationController pushViewController:namePhoneBindingVC animated:YES];
@@ -514,7 +571,7 @@
         }];
         NSBlockOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotificationName:RefreshRecordNote object:@(1)];
+                [[NSNotificationCenter defaultCenter] postNotificationName:RefreshRecordNote object:@(0)];
             });
         }];
         [op2 addDependency:op1];
@@ -545,8 +602,8 @@
         [self.navigationController pushViewController:htmlVc animated:YES];
     }else if (button.tag == 6)
     {
-        YZCustomerServiceViewController * contactServiceVC = [[YZCustomerServiceViewController alloc]init];
-        [self.navigationController pushViewController:contactServiceVC animated:YES];
+        YZServiceListViewController * serviceListVC = [[YZServiceListViewController alloc]init];
+        [self.navigationController pushViewController:serviceListVC animated:YES];
     }else if (button.tag == 7)
     {
         YZShareProfitsViewController * shareProfitsVC = [[YZShareProfitsViewController alloc]init];

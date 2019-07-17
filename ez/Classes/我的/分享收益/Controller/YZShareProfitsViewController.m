@@ -38,8 +38,9 @@
 }
 
 #pragma mark - 请求数据
-- (void)getData {
-    [MBProgressHUD showMessage:@"客官请稍后" toView:self.view];
+- (void)getData
+{
+    waitingView
     YZUser *user = [YZUserDefaultTool user];
     NSDictionary *dict = @{
                            @"userName":user.userName

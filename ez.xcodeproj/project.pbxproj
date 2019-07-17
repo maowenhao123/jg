@@ -10,6 +10,12 @@
 		1D76806422DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806522DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806622DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
+		1D76806C22DC505A007C1154 /* YZServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806B22DC505A007C1154 /* YZServiceModel.m */; };
+		1D76806D22DC505A007C1154 /* YZServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806B22DC505A007C1154 /* YZServiceModel.m */; };
+		1D76806E22DC505A007C1154 /* YZServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806B22DC505A007C1154 /* YZServiceModel.m */; };
+		1D76807122DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
+		1D76807222DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
+		1D76807322DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
 		1DB2A59522C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59622C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59722C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
@@ -2354,6 +2360,10 @@
 		18BBF4061E7B7E2E00AF69E6 /* ez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ez.entitlements; sourceTree = "<group>"; };
 		1D76806222DC4F9D007C1154 /* YZServiceListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceListViewController.h; sourceTree = "<group>"; };
 		1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceListViewController.m; sourceTree = "<group>"; };
+		1D76806A22DC505A007C1154 /* YZServiceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceModel.h; sourceTree = "<group>"; };
+		1D76806B22DC505A007C1154 /* YZServiceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceModel.m; sourceTree = "<group>"; };
+		1D76806F22DC5064007C1154 /* YZServiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceTableViewCell.h; sourceTree = "<group>"; };
+		1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceTableViewCell.m; sourceTree = "<group>"; };
 		1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZ11x5PlayTypeView.h; sourceTree = "<group>"; };
 		1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZ11x5PlayTypeView.m; sourceTree = "<group>"; };
 		1DB2A59D22C20615000AFE52 /* YZCirclePlayTypePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCirclePlayTypePickerView.h; sourceTree = "<group>"; };
@@ -4042,6 +4052,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D76806822DC5040007C1154 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D76806F22DC5064007C1154 /* YZServiceTableViewCell.h */,
+				1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D76806922DC5046007C1154 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1D76806A22DC505A007C1154 /* YZServiceModel.h */,
+				1D76806B22DC505A007C1154 /* YZServiceModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1DBD8B2C22CAFF770024CF7B /* XLPhotoBrowser+CoderXL */ = {
 			isa = PBXGroup;
 			children = (
@@ -4666,8 +4694,8 @@
 			isa = PBXGroup;
 			children = (
 				AA3290641FFE1CED00CA77DA /* Controller */,
-				AA3290691FFE1CED00CA77DA /* Model */,
-				AA32906A1FFE1CED00CA77DA /* View */,
+				1D76806922DC5046007C1154 /* Model */,
+				1D76806822DC5040007C1154 /* View */,
 			);
 			path = "联系客服";
 			sourceTree = "<group>";
@@ -4683,20 +4711,6 @@
 				AA3290661FFE1CED00CA77DA /* YZChatViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		AA3290691FFE1CED00CA77DA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AA32906A1FFE1CED00CA77DA /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		AA32906F1FFE1D6100CA77DA /* 分享收益 */ = {
@@ -8351,6 +8365,7 @@
 				AA237DCB2143590C00BC47BB /* YZKsSantongView.m in Sources */,
 				AA237DCC2143590C00BC47BB /* YZMineFunctionTableViewCell.m in Sources */,
 				AA237DCD2143590C00BC47BB /* YZIntegralCouponsCollectionViewCell.m in Sources */,
+				1D76807322DC5064007C1154 /* YZServiceTableViewCell.m in Sources */,
 				AA237DCE2143590C00BC47BB /* YZKsHistoryTableView.m in Sources */,
 				AA237DCF2143590C00BC47BB /* YZShareIncomeTableViewCell.m in Sources */,
 				AA237DD02143590C00BC47BB /* HDEmojiEmoticons.m in Sources */,
@@ -8905,6 +8920,7 @@
 				AA237FB72143590C00BC47BB /* HDBubbleView+Evaluate.m in Sources */,
 				AA237FB92143590C00BC47BB /* UIImage+RSKImageCropper.m in Sources */,
 				AA237FBA2143590C00BC47BB /* YZBasketBallBetViewController.m in Sources */,
+				1D76806E22DC505A007C1154 /* YZServiceModel.m in Sources */,
 				AA237FBC2143590C00BC47BB /* YZFBTimeChooseView.m in Sources */,
 				AA237FBD2143590C00BC47BB /* YZWeChatPublicViewController.m in Sources */,
 				1DDDEB8022D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */,
@@ -9022,6 +9038,7 @@
 				AA3292F11FFE27B600CA77DA /* YZKsSantongView.m in Sources */,
 				AA74E1D61FFE0AEA003B53AF /* YZMineFunctionTableViewCell.m in Sources */,
 				AAE55C73207EF8B000A29844 /* YZIntegralCouponsCollectionViewCell.m in Sources */,
+				1D76807122DC5064007C1154 /* YZServiceTableViewCell.m in Sources */,
 				AA3292DB1FFE27B600CA77DA /* YZKsHistoryTableView.m in Sources */,
 				AA3290811FFE1D6100CA77DA /* YZShareIncomeTableViewCell.m in Sources */,
 				AA74EA611FFE17DE003B53AF /* HDEmojiEmoticons.m in Sources */,
@@ -9576,6 +9593,7 @@
 				AA74EB111FFE17DF003B53AF /* HDBubbleView+Evaluate.m in Sources */,
 				AA74EC051FFE17E0003B53AF /* UIImage+RSKImageCropper.m in Sources */,
 				AAD1206620BCFE0300D47F85 /* YZBasketBallBetViewController.m in Sources */,
+				1D76806C22DC505A007C1154 /* YZServiceModel.m in Sources */,
 				AA74E0A31FFE0A0C003B53AF /* YZFBTimeChooseView.m in Sources */,
 				AA32908B1FFE1D9E00CA77DA /* YZWeChatPublicViewController.m in Sources */,
 				1DDDEB7E22D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */,
@@ -9725,6 +9743,7 @@
 				1DBD8E4C22CB2C250024CF7B /* NSButton+WebCache.m in Sources */,
 				1DBD8B2A22CAF0740024CF7B /* YZCircleUserInfoModel.m in Sources */,
 				AA4B7BBF20172C1900A6F764 /* YZQrCodeModel.m in Sources */,
+				1D76807222DC5064007C1154 /* YZServiceTableViewCell.m in Sources */,
 				AA74EB5E1FFE17DF003B53AF /* MJRefreshBackNormalFooter.m in Sources */,
 				AA74ECC01FFE1A6A003B53AF /* YZMoneyDetailViewController.m in Sources */,
 				AA74E0DA1FFE0A4C003B53AF /* YZUnionBuyFollowUserCellStatusFrame.m in Sources */,
@@ -9995,6 +10014,7 @@
 				AA74ECB11FFE19A5003B53AF /* YZRechargeRecordTableViewCell.m in Sources */,
 				AA1E100D20F7524F0045FBD4 /* YZChooseNumberView.m in Sources */,
 				AA32938A1FFE27B700CA77DA /* YZAsiaOddsStatus.m in Sources */,
+				1D76806D22DC505A007C1154 /* YZServiceModel.m in Sources */,
 				AACDC23820FEE85E00955419 /* YZCircleTableViewCell.m in Sources */,
 				1DF418E122C5AC6800D57367 /* YZCircleMineCommentTableViewCell.m in Sources */,
 				AACDC21020FEE68D00955419 /* YZCircleViewController.m in Sources */,

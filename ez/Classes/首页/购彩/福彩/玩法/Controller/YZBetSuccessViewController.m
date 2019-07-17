@@ -162,7 +162,7 @@
     
     UIView * lastView = detailLabel;
     
-    if (self.payVcType == BetTypeStartUnionBuyBet || self.payVcType == BetTypeParticipateUnionBuyBet) {
+    if (self.payVcType == BetTypeStartUnionBuyBet) {
         //合买分享
         YZBottomButton * shareButton = [YZBottomButton buttonWithType:UIButtonTypeCustom];
         shareButton.y = CGRectGetMaxY(detailLabel.frame) + 50;

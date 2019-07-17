@@ -12,6 +12,7 @@
 #import "YZNavigationController.h"
 #import "YZBuyLotteryCollectionView.h"
 #import "YZCustomerServiceViewController.h"
+#import "YZServiceListViewController.h"
 
 @interface YZHomePageViewController ()<YZBuyLotteryCollectionViewDelegate>
 
@@ -109,8 +110,11 @@
         [self presentViewController:nav animated:YES completion:nil];
         return;
     }
-    YZCustomerServiceViewController * contactServiceVC = [[YZCustomerServiceViewController alloc]init];
+    YZServiceListViewController * contactServiceVC = [[YZServiceListViewController alloc]init];
     [self.navigationController pushViewController:contactServiceVC animated:YES];
+    
+//    YZCustomerServiceViewController * contactServiceVC = [[YZCustomerServiceViewController alloc]init];
+//    [self.navigationController pushViewController:contactServiceVC animated:YES];
 }
 
 - (void)headerRefreshViewBeginRefreshing

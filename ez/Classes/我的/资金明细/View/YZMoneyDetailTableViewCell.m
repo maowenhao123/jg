@@ -21,7 +21,7 @@
 //初始化一个cell
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
-    NSString *ID = @"MoneyDetailCell";
+    NSString *ID = @"MoneyDetailCellId";
     YZMoneyDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if(cell == nil)
     {
@@ -30,6 +30,7 @@
     }
     return cell;
 }
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -38,6 +39,7 @@
     }
     return self;
 }
+
 - (void)setupChilds
 {
     //1、描述label
