@@ -47,7 +47,7 @@
         if(i > 0)
         {
             label.font = smallFont;
-            label.textColor = YZGrayTextColor;
+            label.textColor = YZDrayGrayTextColor;
         }else
         {
             label.font = bigFont;

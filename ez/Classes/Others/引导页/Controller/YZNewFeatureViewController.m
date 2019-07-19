@@ -131,7 +131,7 @@
 {
     imageView.userInteractionEnabled = YES;
     
-    UIButton *startButton = [[UIButton alloc] init];
+    UIButton *startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat buttonW = 300;
     CGFloat buttonX = (screenWidth - buttonW) / 2;
     startButton.frame = CGRectMake(buttonX, screenHeight * 0.7, buttonW, screenHeight * 0.3);

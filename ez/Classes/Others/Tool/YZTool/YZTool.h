@@ -166,4 +166,12 @@
  */
 + (BOOL)needChangeNickName;
 
+#pragma mark - 压缩图片
+/**
+ * 压缩图片
+ *
+ * @param myimage 要压缩的图片
+ */
++ (UIImage *)imageCompressionWithImage:(UIImage *)myimage;
+
 @end

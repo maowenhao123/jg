@@ -8,6 +8,7 @@
 
 #import "YZBankCardRechargeViewController.h"
 #import "YZRechargeSuccessViewController.h"
+#import "YZLoadHtmlFileController.h"
 #import "LLPaySdk.h"//连连支付
 #import "YZValidateTool.h"
 #import "JSON.h"
@@ -119,7 +120,27 @@
     CGFloat tishiY = CGRectGetMaxY(rechargeBtn.frame) + 10;
     tishi.frame = CGRectMake(YZMargin, tishiY, tishiW, tishiSize.height);
     [self.view addSubview:tishi];
+    
+    //充值说明
+    if (!YZStringIsEmpty(self.detailUrl)) {
+        UIButton * rechargeExplainBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [rechargeExplainBtn setTitle:@"充值说明（点击查看）" forState:UIControlStateNormal];
+        [rechargeExplainBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        rechargeExplainBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+        [rechargeExplainBtn addTarget:self action:@selector(rechargeExplainBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+        CGSize rechargeExplainBtnSize = [rechargeExplainBtn.currentTitle sizeWithLabelFont:rechargeExplainBtn.titleLabel.font];
+        rechargeExplainBtn.frame = CGRectMake(tishi.x, CGRectGetMaxY(tishi.frame) + 10, rechargeExplainBtnSize.width, rechargeExplainBtnSize.height);
+        [self.view addSubview:rechargeExplainBtn];
+    }
 }
+
+- (void)rechargeExplainBtnDidClick
+{
+    YZLoadHtmlFileController * updataActivityVC = [[YZLoadHtmlFileController alloc] initWithWeb:self.detailUrl];
+    [self.navigationController pushViewController:updataActivityVC animated:YES];
+}
+
+
 - (void)rechargeBtnClick
 {
     if(![YZValidateTool validateNickname:self.nameTF.text])

@@ -27,6 +27,7 @@ NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollecti
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         [self setupChildViews];
+        [self getData];
     }
     return self;
 }
@@ -36,19 +37,16 @@ NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollecti
 {
     NSDictionary *dict = @{
                            };
-    [[YZHttpTool shareInstance] postWithURL:BaseUrlCircle(@"/getCommunityList") params:dict success:^(id json) {
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getCommunityList") params:dict success:^(id json) {
         YZLog(@"getCommunityList:%@",json);
         if (SUCCESS){
-//            self.dataArray = json[@"community"];
-//            [self.collectionView reloadData];
-        }else
-        {
-            ShowErrorView
+            self.dataArray = json[@"community"];
+            [self.collectionView reloadData];
         }
     }failure:^(NSError *error)
-     {
+    {
          YZLog(@"error = %@",error);
-     }];
+    }];
 }
 
 #pragma mark - 布局子视图
@@ -91,7 +89,6 @@ NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollecti
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
     return self.dataArray.count;
 }
 
@@ -99,7 +96,7 @@ NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollecti
 {
     
     YZCircleCommunityCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:circleCommunityCollectionViewCellId forIndexPath:indexPath];
-//    cell.dic = self.dataArray[indexPath.row];
+    cell.dic = self.dataArray[indexPath.row];
     return cell;
 }
 
@@ -107,10 +104,10 @@ NSString * const circleCommunityCollectionViewCellId = @"circleCommunityCollecti
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-//    NSDictionary * dic = self.dataArray[indexPath.row];
+    NSDictionary * dic = self.dataArray[indexPath.row];
     YZCommunityCircleViewController * communityCircleVC = [[YZCommunityCircleViewController alloc] init];
-//    communityCircleVC.communityId = dic[@"id"];
-//    communityCircleVC.title = dic[@"name"];
+    communityCircleVC.communityId = dic[@"id"];
+    communityCircleVC.title = dic[@"name"];
     [self.viewController.navigationController pushViewController:communityCircleVC animated:YES];
 }
 

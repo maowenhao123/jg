@@ -32,16 +32,12 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    BOOL isTC = [self.gameId isEqualToString:@"T51"] || [self.gameId isEqualToString:@"T53"] || [self.gameId isEqualToString:@"T52"] || [self.gameId isEqualToString:@"T54"];
-    if (!isTC) {
-        self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"back_btn_flat" highIcon:@"back_btn_flat" target:self action:@selector(backToBuyLottery)];
-    }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithIcon:@"more_flat" highIcon:@"more_pressed_flat" target:self action:@selector(openMenuView)];
     [self setupMenuView];
 }
 
 #pragma mark - 返回上一页面
-- (void)backToBuyLottery
+- (void)back
 {
     if([YZStatusCacheTool getStatues].count)
     {

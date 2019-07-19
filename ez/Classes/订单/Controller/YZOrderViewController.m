@@ -5,7 +5,7 @@
 //  Created by apple on 16/9/7.
 //  Copyright © 2016年 9ge. All rights reserved.
 //
-#define tableViewCount 4
+#define monthViewH 30
 
 #import "YZOrderViewController.h"
 #import "YZFCOrderDetailViewController.h"
@@ -39,8 +39,6 @@
 {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor whiteColor];
-        self.navigationItem.title = @"我的订单";
         //初始化
         self.pageIndex1 = 0;
         self.pageIndex2 = 0;
@@ -55,8 +53,11 @@
     }
     return self;
 }
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = @"我的订单";
 }
 #pragma  mark - 接到通知
 - (void)loginSuccess
@@ -107,20 +108,14 @@
 - (void)configurationChilds
 {
     //添加btnTitle
-    self.btnTitles = @[@"投注记录",@"追号记录",@"中奖记录",@"合买记录"];
+    self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录", @"合买记录"];
     //添加tableview
-#if JG
-    CGFloat scrollViewH = screenHeight-statusBarH-navBarH-tabBarH-topBtnH;
-#elif ZC
-    CGFloat scrollViewH = screenHeight-statusBarH-navBarH-topBtnH;
-#elif CS
-    CGFloat scrollViewH = screenHeight-statusBarH-navBarH-topBtnH;
-#endif
-    for(int i = 0;i < tableViewCount;i++)
+    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - tabBarH - topBtnH;
+    for(int i = 0; i < self.btnTitles.count; i++)
     {
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth * i, 0, screenWidth, scrollViewH)];
         tableView.tag = i;
-        tableView.backgroundColor = [UIColor whiteColor];
+        tableView.backgroundColor = YZBackgroundColor;
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -141,7 +136,7 @@
     }
     //完成配置
     [super configurationComplete];
-    [super topBtnClick:self.topBtns[0]];
+    [super topBtnClick:self.topBtns[self.currentIndex]];
 }
 #pragma mark - MJRefresh的代理方法
 - (void)headerRefreshViewBeginRefreshing
@@ -220,11 +215,6 @@
     }
 }
 #pragma  mark - 获取我的投注记录、追号记录、合买记录的数据
-//断网状态下，此方法必须实现
-- (void)noNetReloadRequest
-{
-    [self headerRefreshViewBeginRefreshing];
-}
 - (void)getRecordList
 {
     MJRefreshGifHeader *header = self.headerViews[self.currentIndex];
@@ -263,7 +253,7 @@
                            @"pageIndex":pageIndex,
                            @"pageSize":@(10)
                            };
-    [[YZHttpTool shareInstance] requestTarget:self PostWithParams:dict success:^(id json) {
+    [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"%@",json);
         [MBProgressHUD hideHUDForView:self.view];
         UITableView *tableView = self.views[self.currentIndex];
@@ -435,7 +425,7 @@
         return tableView.height;
     }else
     {
-        return 61;
+        return 66;
     }
 }
 //区头

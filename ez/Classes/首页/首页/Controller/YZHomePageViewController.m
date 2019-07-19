@@ -10,10 +10,9 @@
 #import "YZMessageViewController.h"
 #import "YZLoginViewController.h"
 #import "YZNavigationController.h"
-#import "YZShareViewController.h"
 #import "YZBuyLotteryCollectionView.h"
-#import "YZCircleViewController.h"
-#import "YZContactCustomerServiceViewController.h"
+#import "YZCustomerServiceViewController.h"
+#import "YZServiceListViewController.h"
 
 @interface YZHomePageViewController ()<YZBuyLotteryCollectionViewDelegate>
 
@@ -99,10 +98,8 @@
         [self presentViewController:nav animated:YES completion:nil];
         return;
     }
-    YZCircleViewController * messageVC = [[YZCircleViewController alloc] init];
+    YZMessageViewController * messageVC = [[YZMessageViewController alloc] init];
     [self.navigationController pushViewController:messageVC animated:YES];
-//    YZMessageViewController * messageVC = [[YZMessageViewController alloc] init];
-//    [self.navigationController pushViewController:messageVC animated:YES];
 }
 
 - (void)serviceBarDidClick
@@ -113,8 +110,11 @@
         [self presentViewController:nav animated:YES completion:nil];
         return;
     }
-    YZContactCustomerServiceViewController * contactServiceVC = [[YZContactCustomerServiceViewController alloc]init];
+    YZServiceListViewController * contactServiceVC = [[YZServiceListViewController alloc]init];
     [self.navigationController pushViewController:contactServiceVC animated:YES];
+    
+//    YZCustomerServiceViewController * contactServiceVC = [[YZCustomerServiceViewController alloc]init];
+//    [self.navigationController pushViewController:contactServiceVC animated:YES];
 }
 
 - (void)headerRefreshViewBeginRefreshing
@@ -155,11 +155,6 @@
     {
         YZLog(@"error = %@",error);
     }];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
 }
 
 @end

@@ -14,6 +14,7 @@
 #import "YZInformationH5ViewController.h"
 #import "YZRechargeListViewController.h"
 #import "YZVoucherViewController.h"
+#import "YZCircleViewController.h"
 #import "UIImageView+WebCache.h"
 
 @interface YZHomePageFunctionItemView ()
@@ -114,6 +115,16 @@
     {
         YZInitiateUnionBuyViewController * initiateUnionBuyVC = [[YZInitiateUnionBuyViewController alloc] init];
         [self.viewController.navigationController pushViewController:initiateUnionBuyVC animated:YES];
+    }else if ([self.functionModel.type isEqualToString:@"COMMUNITY"])//彩友圈
+    {
+        if (!UserId) {
+            YZLoginViewController *login = [[YZLoginViewController alloc] init];
+            YZNavigationController *nav = [[YZNavigationController alloc] initWithRootViewController:login];
+            [self.viewController presentViewController:nav animated:YES completion:nil];
+            return;
+        }
+        YZCircleViewController * messageVC = [[YZCircleViewController alloc] init];
+        [self.viewController.navigationController pushViewController:messageVC animated:YES];
     }
 }
 

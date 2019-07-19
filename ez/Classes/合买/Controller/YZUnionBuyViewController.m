@@ -153,7 +153,7 @@
     [self.view addSubview:tabbarBgView];
     
     //三个按钮,1：金额排序、2：进度排序、3：战绩排序
-    NSArray *topTitles = @[@"金额排序",@"进度排序",@"战绩排序"];
+    NSArray *topTitles = @[@"金额排序", @"进度排序", @"战绩排序"];
     CGFloat topBtnW = (screenWidth - 10) / topTitles.count;
     for(NSUInteger i = 0; i < topTitles.count; i++)
     {
@@ -181,8 +181,13 @@
     lineView.frame = CGRectMake(5, topBtnH - 2, topBtnW - 2 * 5, 2);
     [tabbarBgView addSubview:lineView];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topBtnH, screenWidth, screenHeight - statusBarH - navBarH - topBtnH - tabBarH) style:UITableViewStylePlain];
+    CGFloat tableViewH = screenHeight - statusBarH - navBarH - tabBarH - topBtnH;
+    if (self.navigationController.viewControllers.count > 1) {
+        tableViewH = screenHeight - statusBarH - navBarH - topBtnH;
+    }
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topBtnH, screenWidth, tableViewH) style:UITableViewStylePlain];
     self.tableView = tableView;
+    tableView.backgroundColor = YZBackgroundColor;
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -260,9 +265,9 @@
 - (void)tabbarButtonClick:(UIButton *)btn
 {
     [self selectedButtonClick:btn];
-    
     [self.header beginRefreshing];
 }
+
 #pragma mark - 头部按钮点击
 - (void)titleBtnClick:(UIButton *)sender
 {    
@@ -327,7 +332,6 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         YZUnionBuyStatus *status = [[(YZUnionBuyCell *)cell statusFrame] status];
         YZUnionBuyDetailViewController *detailVc = [[YZUnionBuyDetailViewController alloc] initWithUnionBuyPlanId:status.unionBuyPlanId gameId:status.gameId];
-        detailVc.title = @"合买详情";
         [self.navigationController pushViewController:detailVc animated:YES];
     }
 }
@@ -430,6 +434,11 @@
     param.singleMoney = cell.statusFrame.status.singleMoney;
     param.gameId = cell.statusFrame.status.gameId;
     param.termId = cell.statusFrame.status.issue;
+    param.title = cell.statusFrame.status.title;
+    param.desc = cell.statusFrame.status.desc;
+    param.commission = cell.statusFrame.status.commission;
+    param.deposit = cell.statusFrame.status.deposit;
+    param.settings = cell.statusFrame.status.settings;
     
     [[YZUnionBuyComfirmPayTool shareInstance] participateUnionBuyOfAllWithParam:param sourceController:self];
 }

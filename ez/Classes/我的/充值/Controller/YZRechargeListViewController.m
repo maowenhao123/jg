@@ -76,8 +76,6 @@
     NSDictionary *dict = @{
                            @"version":@"0.0.2"
                            };
-    //@"http:192.168.11.42:6300/getPaymentList"
-    //BaseUrlSalesManager(@"/getPaymentList")
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getPaymentList") params:dict success:^(id json) {
         YZLog(@"getPromotionList:%@",json);
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -196,13 +194,16 @@
         YZWeixinRechargeViewController *weixinRechargeVc = [[YZWeixinRechargeViewController alloc] init];
         weixinRechargeVc.paymentId = status.paymentId;
         weixinRechargeVc.isOrderPay = self.isOrderPay;
-        weixinRechargeVc.clientId = status.clientId;if ([status.clientId isEqualToString:@"plbpay_weixin_h5"]) {
+        weixinRechargeVc.clientId = status.clientId;
+        weixinRechargeVc.detailUrl = status.detailUrl;
+        if ([status.clientId isEqualToString:@"plbpay_weixin_h5"]) {
             weixinRechargeVc.url = status.url;
         }
         [self.navigationController pushViewController:weixinRechargeVc animated:YES];
     }else if ([status.clientId isEqualToString:@"jiuge_alipytransfer"] || [status.clientId isEqualToString:@"zhongcai_alipytransfer"])//支付宝转账
     {
-        YZZhifubaoNewRechargeViewController *zhifubaoNewRechargeVc = [[YZZhifubaoNewRechargeViewController alloc]init];
+        YZZhifubaoNewRechargeViewController *zhifubaoNewRechargeVc = [[YZZhifubaoNewRechargeViewController alloc] init];
+        zhifubaoNewRechargeVc.detailUrl = status.detailUrl;
         [self.navigationController pushViewController:zhifubaoNewRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"zhongcai_alipay_app"] || [status.clientId isEqualToString:@"jiuge_alipay_qr"] || [status.clientId isEqualToString:@"jiuge_lftpay_alipay_qr"] || [status.clientId isEqualToString:@"plbpay_alipay_h5"])//支付宝充值
     {
@@ -210,6 +211,7 @@
         zhifubaoRechargeVc.paymentId = status.paymentId;
         zhifubaoRechargeVc.clientId = status.clientId;
         zhifubaoRechargeVc.isOrderPay = self.isOrderPay;
+        zhifubaoRechargeVc.detailUrl = status.detailUrl;
         if ([status.clientId isEqualToString:@"plbpay_alipay_h5"]) {
             zhifubaoRechargeVc.url = status.url;
         }
@@ -220,32 +222,38 @@
         htmlRechargeVc.title = status.name;
         htmlRechargeVc.paymentId = status.paymentId;
         htmlRechargeVc.goBrowser = [status.clientId isEqualToString:@"common_wap"];
+        htmlRechargeVc.detailUrl = status.detailUrl;
         [self.navigationController pushViewController:htmlRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"zhongcai_lianlian_app"])//银行卡支付(连连支付)
     {
         YZBankCardRechargeViewController *phoneCardRechargeVc = [[YZBankCardRechargeViewController alloc] init];
         phoneCardRechargeVc.paymentId = status.paymentId;
         phoneCardRechargeVc.isOrderPay = self.isOrderPay;
+        phoneCardRechargeVc.detailUrl = status.detailUrl;
         [self.navigationController pushViewController:phoneCardRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"jiuge_banktransfer"] || [status.clientId isEqualToString:@"zhongcai_banktransfer"])//银行汇款
     {
         YZBankRemitController *bankRemitRechargeVc = [[YZBankRemitController alloc]init];
+        bankRemitRechargeVc.detailUrl = status.detailUrl;
         [self.navigationController pushViewController:bankRemitRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"jiuge_couponscard"])//彩金卡充值 
     {
         YZBonusCardRechargeViewController *bonusCardRechargeVc = [[YZBonusCardRechargeViewController alloc]init];
         bonusCardRechargeVc.isOrderPay = self.isOrderPay;
+        bonusCardRechargeVc.detailUrl = status.detailUrl;
         [self.navigationController pushViewController:bonusCardRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"jiuge_telecard"])//手机充值卡充值
     {
         YZPhoneCardRechargeViewController *phoneCardRechargeVc = [[YZPhoneCardRechargeViewController alloc]init];
         phoneCardRechargeVc.isOrderPay = self.isOrderPay;
+        phoneCardRechargeVc.detailUrl = status.detailUrl;
         [self.navigationController pushViewController:phoneCardRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"jiuge_unionpay"])//银联支付
     {
         YZUPPayPluginRechargeViewController *uPPayPluginRechargeVc = [[YZUPPayPluginRechargeViewController alloc] init];
         uPPayPluginRechargeVc.paymentId = status.paymentId;
         uPPayPluginRechargeVc.isOrderPay = self.isOrderPay;
+        uPPayPluginRechargeVc.detailUrl = status.detailUrl;
         [self.navigationController pushViewController:uPPayPluginRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"alipytransfer"] || [status.clientId isEqualToString:@"web"])//H5页面
     {

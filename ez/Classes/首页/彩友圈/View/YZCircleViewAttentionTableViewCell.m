@@ -12,8 +12,6 @@
 
 @property (nonatomic, weak) UIImageView *avatarImageView;
 @property (nonatomic, weak) UILabel *nickNameLabel;
-@property (nonatomic, weak) UILabel * timeLabel;
-@property (nonatomic, weak) UILabel * commentLabel;
 
 @end
 
@@ -49,27 +47,49 @@
     [self addSubview:line];
     
     //头像
-    CGFloat avatarImageViewWH = 35;
-    UIImageView * avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (50 - avatarImageViewWH) / 2, avatarImageViewWH, avatarImageViewWH)];
+    CGFloat avatarImageViewWH = 40;
+    UIImageView * avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (60 - avatarImageViewWH) / 2, avatarImageViewWH, avatarImageViewWH)];
     self.avatarImageView = avatarImageView;
-    avatarImageView.image = [UIImage imageNamed:@"avatar_zc"];
+    avatarImageView.layer.masksToBounds = YES;
+    avatarImageView.layer.cornerRadius = 20;
     [self addSubview:avatarImageView];
     
     //昵称
-    UILabel * nickNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 10, 0, 150, 50)];
+    UILabel * nickNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 10, 0, 150, 60)];
     self.nickNameLabel = nickNameLabel;
     nickNameLabel.text = @"昵称";
     nickNameLabel.textColor = YZBlackTextColor;
     nickNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     [self addSubview:nickNameLabel];
+    
+    //取消关注
+    UIButton *cancelAttentionButon = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.cancelAttentionButon = cancelAttentionButon;
+    cancelAttentionButon.frame = CGRectMake(screenWidth - YZMargin - 70, (60 - 30) / 2, 70, 30);
+    cancelAttentionButon.backgroundColor = YZBaseColor;
+    [cancelAttentionButon setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelAttentionButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    cancelAttentionButon.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    cancelAttentionButon.layer.masksToBounds = YES;
+    cancelAttentionButon.layer.cornerRadius = 3;
+    [cancelAttentionButon addTarget:self action:@selector(cancelAttentionButonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:cancelAttentionButon];
+}
+
+- (void)cancelAttentionButonDidClick
+{
+    if([self.delegate respondsToSelector:@selector(circleViewAttentionTableViewCellAttentionBtnDidClick:)])
+    {
+        [self.delegate circleViewAttentionTableViewCellAttentionBtnDidClick:self];
+    }
 }
 
 - (void)setDic:(NSDictionary *)dic
 {
     _dic = dic;
     
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:_dic[@"headPortraitUrl"]]];
-    self.nickNameLabel.text = _dic[@"nickname"];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", _dic[@"headPortraitUrl"]]] placeholderImage:[UIImage imageNamed:@"avatar_zc"]];
+    self.nickNameLabel.text = [NSString stringWithFormat:@"%@", _dic[@"nickname"]];
 }
 
 

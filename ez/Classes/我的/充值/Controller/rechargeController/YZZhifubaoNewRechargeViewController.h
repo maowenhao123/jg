@@ -10,4 +10,6 @@
 
 @interface YZZhifubaoNewRechargeViewController : YZBaseViewController
 
+@property (nonatomic, copy) NSString *detailUrl;
+
 @end

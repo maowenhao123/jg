@@ -7,12 +7,16 @@
 //
 
 #import "YZBetSuccessViewController.h"
+#import "YZPublishUnionBuyCircleViewController.h"
 #import "YZLoadHtmlFileController.h"
 #import "YZTabBarViewController.h"
 #import "UIButton+YZ.h"
 #import "YZQrCodeModel.h"
 #import "YZActivityModel.h"
 #import "YZDateTool.h"
+#import "YZShareView.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "WXApi.h"
 
 @interface YZBetSuccessViewController ()
 
@@ -34,9 +38,7 @@
     self.view.backgroundColor = YZBackgroundColor;
     self.title = @"下单成功";
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"back_btn_flat" highIcon:@"back_btn_flat" target:self action:@selector(back)];
-#if JG
     [self getActivityData];
-#endif
     [self setupChilds];
 }
 
@@ -129,6 +131,7 @@
 - (void)setupChilds
 {
     UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight - statusBarH - navBarH)];
+    scrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:scrollView];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -157,9 +160,39 @@
     detailLabel.frame = CGRectMake(detailLabelX, CGRectGetMaxY(button.frame) + 10, detailLabelW, detailLabelSize.height);
     [scrollView addSubview:detailLabel];
     
+    UIView * lastView = detailLabel;
+    
+    if (self.payVcType == BetTypeStartUnionBuyBet) {
+        //合买分享
+        YZBottomButton * shareButton = [YZBottomButton buttonWithType:UIButtonTypeCustom];
+        shareButton.y = CGRectGetMaxY(detailLabel.frame) + 50;
+        shareButton.height = 55;
+        NSMutableAttributedString * shareAttStr = [[NSMutableAttributedString alloc] initWithString:@"邀请好友来跟单\n（邀请用户跟单还可以分享收益）"];
+        [shareAttStr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, shareAttStr.length)];
+        [shareAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(30)] range:NSMakeRange(0, 7)];
+        [shareAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(24)] range:NSMakeRange(7, shareAttStr.length - 7)];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineSpacing = 3;
+        paragraphStyle.alignment = NSTextAlignmentCenter;
+        [shareAttStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, shareAttStr.length)];
+        [shareButton setAttributedTitle:shareAttStr forState:UIControlStateNormal];
+        shareButton.titleLabel.numberOfLines = 0;
+        [shareButton addTarget:self action:@selector(shareButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
+        [scrollView addSubview:shareButton];
+        
+        //合买晒单
+        YZBottomButton * publishCircleBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
+        publishCircleBtn.y = CGRectGetMaxY(shareButton.frame) + 20;
+        [publishCircleBtn setTitle:@"合买晒单" forState:UIControlStateNormal];
+        [publishCircleBtn addTarget:self action:@selector(publishCircleBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+        [scrollView addSubview:publishCircleBtn];
+        
+        lastView = publishCircleBtn;
+    }
+    
     //继续投注
     YZBottomButton * againBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
-    againBtn.y = CGRectGetMaxY(detailLabel.frame) + 50;
+    againBtn.y = CGRectGetMaxY(lastView.frame) + 20;
     [againBtn setTitle:@"继续投注" forState:UIControlStateNormal];
     [againBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:againBtn];
@@ -172,10 +205,11 @@
     [lookBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
     [lookBtn setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:lookBtn.bounds] forState:UIControlStateNormal];
     [lookBtn setBackgroundImage:[UIImage ImageFromColor:YZColor(216, 216, 216, 1) WithRect:lookBtn.bounds] forState:UIControlStateHighlighted];
+    lookBtn.layer.borderWidth = 1;
+    lookBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
     [lookBtn addTarget:self action:@selector(lookBetRecord) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:lookBtn];
     
-#if JG
     //二维码
     CGFloat imageViewWH = 190;
     CGFloat imageViewX = (screenWidth - imageViewWH) / 2;
@@ -207,14 +241,14 @@
     [scrollView addSubview:vipcnButton];
     
     scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(vipcnButton.frame) + 10);
-#elif ZC
-    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(lookBtn.frame) + 10);
-#elif CS
-    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(lookBtn.frame) + 10);
-#endif
-    
 }
 
+- (void)publishCircleBtnDidClick
+{
+    YZPublishUnionBuyCircleViewController * publishCircleVC = [[YZPublishUnionBuyCircleViewController alloc] init];
+    publishCircleVC.unionbuyModel = self.unionbuyModel;
+    [self.navigationController pushViewController:publishCircleVC animated:YES];
+}
 
 - (void)back
 {
@@ -285,7 +319,7 @@
 #pragma mark - 查看投注记录按钮
 - (void)lookBetRecord
 {
-    if (self.payVcType == BetTypeUnionbuyBet) {
+    if (self.payVcType == BetTypeStartUnionBuyBet || self.payVcType == BetTypeParticipateUnionBuyBet) {
         [self toAccountWithRecordIndex:AccountRecordTypeMyUnionBuy];
     }else if (self.termCount > 1) {//追号
         [self toAccountWithRecordIndex:AccountRecordTypeMyScheme];
@@ -315,6 +349,55 @@
     [queue addOperation:op2];
 }
 
+#pragma mark - 分享
+- (void)shareButtonDidClick
+{
+    YZShareView * shareView = [[YZShareView alloc]init];
+    [shareView show];
+    shareView.block = ^(UMSocialPlatformType platformType){//选择平台
+        [self shareToPlatformType:platformType];
+    };
+}
+
+- (void)shareToPlatformType:(UMSocialPlatformType)platformType
+{
+    NSString * title = self.unionbuyModel.title ? self.unionbuyModel.title : @"无";
+    NSString * descr = self.unionbuyModel.desc ? self.unionbuyModel.desc : @"无";
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+#if JG
+    UIImage * image = [UIImage imageNamed:@"logo"];
+#elif ZC
+    UIImage * image = [UIImage imageNamed:@"logo1"];
+#elif CS
+    UIImage * image = [UIImage imageNamed:@"logo1"];
+#endif
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
+    YZUser *user = [YZUserDefaultTool user];
+    NSString * nickName = user.nickName;
+        shareObject.webpageUrl = [NSString stringWithFormat:@"%@/unionbuydetail?unionBuyPlanId=%@&userName=%@", shareBaseUrl, self.unionbuyModel.unionBuyPlanId, nickName];
+    messageObject.shareObject = shareObject;//调用分享接口
+#if JG
+    [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
+#elif ZC
+    [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
+#elif CS
+    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
+#endif
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSInteger errorCode = error.code;
+            if (errorCode == 2003) {
+                [MBProgressHUD showError:@"分享失败"];
+            }else if (errorCode == 2008)
+            {
+                [MBProgressHUD showError:@"应用未安装"];
+            }else if (errorCode == 2010)
+            {
+                [MBProgressHUD showError:@"网络异常"];
+            }
+        }
+    }];
+}
 #pragma mark - 初始化
 - (NSArray *)activityArray
 {

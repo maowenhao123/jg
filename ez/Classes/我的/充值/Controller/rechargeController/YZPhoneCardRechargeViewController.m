@@ -8,6 +8,7 @@
 
 #import "YZPhoneCardRechargeViewController.h"
 #import "YZRechargeSuccessViewController.h"
+#import "YZLoadHtmlFileController.h"
 #import "YZBottomPickerView.h"
 #import "YZDecimalTextField.h"
 
@@ -20,14 +21,14 @@
 @property (nonatomic, weak) UITextField *snTextField;//序号
 @property (nonatomic, weak) UITextField *passwordTextField;//密码
 @property (nonatomic, weak) UITextField *chargeMoneyTextField;//钱
-@property (nonatomic, weak) UIPickerView *pickerView;
 @property (nonatomic, weak) UIView *backView;
 
 @end
 
 @implementation YZPhoneCardRechargeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.view.backgroundColor = YZBackgroundColor;
     self.title = @"手机充值卡充值";
@@ -36,7 +37,7 @@
 - (void)setupChilds
 {
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.frame = CGRectMake(0, 0, screenWidth, self.view.frame.size.height);
+    scrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight - statusBarH - navBarH);
     scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:scrollView];
     //输入框的背景view
@@ -147,8 +148,31 @@
     CGSize labelSize = [promptLabel.attributedText boundingRectWithSize:CGSizeMake(labelW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     promptLabel.frame = CGRectMake(YZMargin, labelY, labelSize.width, labelSize.height);
     [scrollView addSubview:promptLabel];
-    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(promptLabel.frame) + statusBarH + navBarH);
+    
+    //充值说明
+    if (!YZStringIsEmpty(self.detailUrl)) {
+        UIButton * rechargeExplainBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [rechargeExplainBtn setTitle:@"充值说明（点击查看）" forState:UIControlStateNormal];
+        [rechargeExplainBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        rechargeExplainBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+        [rechargeExplainBtn addTarget:self action:@selector(rechargeExplainBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+        CGSize rechargeExplainBtnSize = [rechargeExplainBtn.currentTitle sizeWithLabelFont:rechargeExplainBtn.titleLabel.font];
+        rechargeExplainBtn.frame = CGRectMake(promptLabel.x, CGRectGetMaxY(promptLabel.frame) + 10, rechargeExplainBtnSize.width, rechargeExplainBtnSize.height);
+        [self.view addSubview:rechargeExplainBtn];
+        
+        scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(rechargeExplainBtn.frame) + YZMargin);
+    }else
+    {
+        scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(promptLabel.frame) + YZMargin);
+    }
 }
+
+- (void)rechargeExplainBtnDidClick
+{
+    YZLoadHtmlFileController * updataActivityVC = [[YZLoadHtmlFileController alloc] initWithWeb:self.detailUrl];
+    [self.navigationController pushViewController:updataActivityVC animated:YES];
+}
+
 #pragma mark - 选择运营商
 - (void)selectMobileOperator
 {

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    CircleNewTopic = 1,
+    CircleCommunityTopic = 2,
+    CircleConcernTopic = 3,
+    CircleUserReleaseTopic = 4,
+    CircleMineTopic = 5,
+} CircleSourceType;
+
 @protocol YZCircleTableViewDelegate <NSObject>
 
 @optional;
@@ -19,5 +27,13 @@
 
 @property (nonatomic, weak) id<YZCircleTableViewDelegate> circleDelegate;
 
+@property (nonatomic, assign) CircleSourceType type;
+
+@property (nonatomic, copy) NSString * communityId;
+@property (nonatomic, copy) NSString * playTypeId;
+@property (nonatomic, copy) NSString * userId;
+
+- (void)headerRefreshViewBeginRefreshing;
+- (void)getData;
 
 @end

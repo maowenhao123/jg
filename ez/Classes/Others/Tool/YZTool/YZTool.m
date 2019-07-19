@@ -20,7 +20,6 @@
 #import "YZSfcViewController.h"
 #import "YZScjqViewController.h"
 #import "YZKsViewController.h"
-#import "YZInitiateUnionBuyViewController.h"
 #import "YZSchemeSetmealViewController.h"
 #import "JPUSHService.h"
 #import "YZValidateTool.h"
@@ -146,8 +145,7 @@ static NSDictionary * bankDicInfo;
                               @"T54":[YZScjqViewController class],
                               @"T03":[YZPlsViewController class],
                               @"F04":[YZKsViewController class],
-                              @"TT":[YZSchemeSetmealViewController class],
-                              @"UNION_PLAN":[YZInitiateUnionBuyViewController class]
+                              @"TT":[YZSchemeSetmealViewController class]
                               };
     }
     return gameDestClassDict;
@@ -558,7 +556,6 @@ static NSInteger seq = 0;
 }
 
 #pragma mark - 处理小数
-//自适应保留小数
 + (NSString *)formatFloat:(double)f
 {
     if (fmod(f, 1)==0) {//如果是整数
@@ -570,7 +567,7 @@ static NSInteger seq = 0;
     }
 }
 
-//获取底部安全区域
+#pragma mark - 获取底部安全区域
 + (CGFloat)getSafeAreaBottom
 {
     if (@available(iOS 11.0, *)) {
@@ -579,7 +576,7 @@ static NSInteger seq = 0;
     return 0;
 }
 
-//获取竞彩足球顶部图片
+#pragma mark - 获取竞彩足球顶部图片
 + (UIImage *)getFBNavImage
 {
     CGFloat weight = 25 ;
@@ -608,7 +605,7 @@ static NSInteger seq = 0;
     return image;
 }
 
-//是否需要修改昵称
+#pragma mark - 是否需要修改昵称
 + (BOOL)needChangeNickName
 {
     YZUser *user = [YZUserDefaultTool user];
@@ -626,6 +623,21 @@ static NSInteger seq = 0;
         return YES;
     }
     return NO;
+}
+
+#pragma mark - 压缩图片
++ (UIImage *)imageCompressionWithImage:(UIImage *)myimage{
+    NSData *data = UIImageJPEGRepresentation(myimage, 1.0);
+    if (data.length>100*1024) {
+        if (data.length>1024*1024) {//1M以及以上
+            data=UIImageJPEGRepresentation(myimage, 0.1);
+        }else if (data.length>512*1024) {//0.5M-1M
+            data=UIImageJPEGRepresentation(myimage, 0.5);
+        }else if (data.length>200*1024) {//0.25M-0.5M
+            data=UIImageJPEGRepresentation(myimage, 0.9);
+        }
+    }
+    return [UIImage imageWithData:data];
 }
 
 @end

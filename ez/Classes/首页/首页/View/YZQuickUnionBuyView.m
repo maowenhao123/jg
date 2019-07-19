@@ -120,7 +120,6 @@
 {
     YZUnionBuyStatus *status = self.statusFrame.status;
     YZUnionBuyDetailViewController *detailVc = [[YZUnionBuyDetailViewController alloc] initWithUnionBuyPlanId:status.unionBuyPlanId gameId:status.gameId];
-    detailVc.title = @"合买详情";
     [self.viewController.navigationController pushViewController:detailVc animated:YES];
 }
 

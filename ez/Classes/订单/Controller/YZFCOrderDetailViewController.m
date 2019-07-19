@@ -5,12 +5,13 @@
 //  Created by apple on 16/9/30.
 //  Copyright © 2016年 9ge. All rights reserved.
 //
-#define orderInfoLabelH 22
+#define orderInfoLabelH 27
 #define orderInfoLabelCount 5
 
 #import "YZFCOrderDetailViewController.h"
 #import "YZRechargeListViewController.h"
 #import "YZBetSuccessViewController.h"
+#import "YZPublishLotteryCircleViewController.h"
 #import "YZChooseVoucherViewController.h"
 #import "YZFCOrderDetailTableViewCell.h"
 #import "YZWinNumberBall.h"
@@ -20,7 +21,7 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "WXApi.h"
 
-@interface YZFCOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface YZFCOrderDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, assign) BOOL isScheme;//是追号跳转来的
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -39,7 +40,8 @@
 
 @implementation YZFCOrderDetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"投注详情";
@@ -103,9 +105,9 @@
     //分享
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"order_share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
     
-    CGFloat tableViewH = screenHeight - statusBarH - navBarH - 40;
+    CGFloat tableViewH = screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom];
     if (self.isScheme || [self.gameId isEqualToString:@"T53"] || [self.gameId isEqualToString:@"T54"]) {
-        tableViewH = screenHeight - statusBarH - navBarH;
+        tableViewH = screenHeight - statusBarH - navBarH - [YZTool getSafeAreaBottom];
     }
     UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH)];
     self.tableView = tableView;
@@ -135,7 +137,7 @@
     
     UILabel * playTypeNameLabel = [[UILabel alloc]init];
     self.playTypeNameLabel = playTypeNameLabel;
-    playTypeNameLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
+    playTypeNameLabel.font = [UIFont boldSystemFontOfSize:YZGetFontSize(30)];
     playTypeNameLabel.textColor = YZBlackTextColor;
     [playTypeView addSubview:playTypeNameLabel];
     
@@ -151,7 +153,7 @@
     
     for (int i = 0; i < orderInfoLabelCount; i++) {
         UILabel * orderInfoLabel = [[UILabel alloc]init];
-        orderInfoLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+        orderInfoLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
         orderInfoLabel.textColor = YZBlackTextColor;
         [orderInfoView addSubview:orderInfoLabel];
         
@@ -165,13 +167,31 @@
     
     tableView.tableHeaderView = headerView;
     
+    UIView *bottomButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom], screenWidth, 40 + [YZTool getSafeAreaBottom])];
+    bottomButtonView.backgroundColor = YZBaseColor;
+    [self.view addSubview:bottomButtonView];
+    
+    NSArray * bottomButtonTitles = @[@"晒单"];
     if (!(self.isScheme || [self.gameId isEqualToString:@"T53"] || [self.gameId isEqualToString:@"T54"])) {
         //快速投注 胜负彩 四场进球不显示快速投注
-        YZBottomButton * betButton = [YZBottomButton buttonWithType:UIButtonTypeCustom];
-        betButton.frame = CGRectMake(0, screenHeight - statusBarH - navBarH - 40, screenWidth, 40);
-        [betButton setTitle:@"快速投注" forState:UIControlStateNormal];
-        [betButton addTarget:self action:@selector(fastBetBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:betButton];
+        bottomButtonTitles = @[@"快速投注", @"晒单"];
+    }
+    CGFloat bottomButtonW = screenWidth / bottomButtonTitles.count;
+    for (int i = 0; i < bottomButtonTitles.count; i++) {
+        YZBottomButton * bottomButton = [YZBottomButton buttonWithType:UIButtonTypeCustom];
+        bottomButton.tag = i;
+        bottomButton.frame = CGRectMake(i * bottomButtonW, 0, bottomButtonW, 40);
+        [bottomButton setTitle:bottomButtonTitles[i] forState:UIControlStateNormal];
+        bottomButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
+        [bottomButton addTarget:self action:@selector(bottomButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomButtonView addSubview:bottomButton];
+    }
+    if (bottomButtonTitles.count == 2)
+    {
+        //分割线
+        UIView * line = [[UIView alloc]initWithFrame:CGRectMake(screenWidth / 2 - 0.75, (40 - 20) / 2, 1.5, 20)];
+        line.backgroundColor = [UIColor whiteColor];
+        [bottomButtonView addSubview:line];
     }
 }
 - (void)refreshUI
@@ -262,19 +282,9 @@
         if(cell == nil){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:rid];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 10)];
-            view.backgroundColor = YZBackgroundColor;
-            [cell addSubview:view];
-            
-            UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(YZMargin, 10, screenWidth - YZMargin, 27)];
-            label.text = @"投注号码:";
-            label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
-            label.textColor = YZBlackTextColor;
-            [cell addSubview:label];
-            
-            UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, 36, screenWidth, 1)];
-            line.backgroundColor = YZWhiteLineColor;
-            [cell addSubview:line];
+            cell.textLabel.text = @"投注号码:";
+            cell.textLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+            cell.textLabel.textColor = YZBlackTextColor;
         }
         return cell;
     }else
@@ -294,7 +304,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 37;
+        return 35;
     }
     YZFCOrderDetailStatus * status = self.dataArray[indexPath.row - 1];
     return status.cellH;
@@ -306,7 +316,7 @@
         return 0;
     }else
     {
-        return 40 + 27;
+        return 40 + 35;
     }
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -317,16 +327,16 @@
     }else
     {
          //开奖号码
-        UIView * winNumberView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 67)];
+        UIView * winNumberView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 40 + 35)];
         winNumberView.backgroundColor = [UIColor whiteColor];
         
-        UILabel * winNumberPromptLabel = [[UILabel alloc]initWithFrame:CGRectMake(YZMargin, 0, screenWidth - 20, 27)];
+        UILabel * winNumberPromptLabel = [[UILabel alloc]initWithFrame:CGRectMake(YZMargin, 0, screenWidth - 20, 35)];
         winNumberPromptLabel.text = @"开奖号码:";
-        winNumberPromptLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+        winNumberPromptLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
         winNumberPromptLabel.textColor = YZBlackTextColor;
         [winNumberView addSubview:winNumberPromptLabel];
         
-        UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, 26, screenWidth, 1)];
+        UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, 34, screenWidth, 1)];
         line.backgroundColor = YZWhiteLineColor;
         [winNumberView addSubview:line];
         
@@ -345,7 +355,7 @@
         for(int i = 0;i < winNumberArr.count;i++)
         {
             CGFloat ballX = padding + (ballW + padding1) * i;
-            CGFloat ballY = 27 + (40 - ballH) / 2;
+            CGFloat ballY = 35 + (40 - ballH) / 2;
             YZWinNumberBallStatus * winNumberBallStatus = [[YZWinNumberBallStatus alloc]init];
             winNumberBallStatus.number = winNumberArr[i];
             winNumberBallStatus.type = 1;
@@ -369,7 +379,29 @@
         return winNumberView;
     }
 }
-#pragma mark - 快速投注
+
+#pragma mark - 底部按钮
+- (void)bottomButtonDidClick:(UIButton *)button
+{
+    if ([button.currentTitle isEqualToString:@"快速投注"]) {
+        [self fastBetBtnClick];
+    }else
+    {
+        CGSize size = self.tableView.contentSize;
+        UIGraphicsBeginImageContext(size);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.view.layer renderInContext:context];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        YZPublishLotteryCircleViewController * publishCircleVC = [[YZPublishLotteryCircleViewController alloc] init];
+        publishCircleVC.gameId = self.order.gameId;
+        publishCircleVC.image = image;
+        [self.navigationController pushViewController:publishCircleVC animated:YES];
+    }
+}
+
+//快速投注
 - (void)fastBetBtnClick
 {
     [self loadUserInfo];
@@ -631,7 +663,7 @@
             YZShareView * shareView = [[YZShareView alloc]init];
             [shareView show];
             shareView.block = ^(UMSocialPlatformType platformType){//选择平台
-                [self shareImageToPlatformType:platformType json:json];
+                [self shareToPlatformType:platformType json:json];
             };
         }
     } failure:^(NSError *error)
@@ -640,7 +672,7 @@
         YZLog(@"error = %@",error);
     }];
 }
-- (void)shareImageToPlatformType:(UMSocialPlatformType)platformType json:(id)json
+- (void)shareToPlatformType:(UMSocialPlatformType)platformType json:(id)json
 {
     NSString * title;
     NSString * descr;

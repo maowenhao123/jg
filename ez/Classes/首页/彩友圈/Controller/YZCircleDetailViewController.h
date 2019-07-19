@@ -10,4 +10,6 @@
 
 @interface YZCircleDetailViewController : YZBaseViewController
 
+@property (nonatomic, copy) NSString *topicId;
+
 @end

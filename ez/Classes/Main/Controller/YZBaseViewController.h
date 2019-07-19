@@ -10,4 +10,6 @@
 
 @interface YZBaseViewController : UIViewController
 
+- (void)back;
+
 @end

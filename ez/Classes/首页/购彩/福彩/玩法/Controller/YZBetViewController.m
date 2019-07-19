@@ -147,6 +147,7 @@
 {
     return self.statusArray.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZBetCell *cell = [YZBetCell cellWithTableView:tableView];
@@ -156,21 +157,20 @@
     [self computeAmountMoney];
     return  cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZBetStatus *status = self.statusArray[indexPath.row];
     return status.cellH;
 }
+
 - (void)deleteBtnDidClick:(UIButton *)btn
 {
     [YZStatusCacheTool deleteStatusWithTag:(int)btn.tag];
     [self.tableView reloadData];
     [self computeAmountMoney];
 }
-- (void)autoChooseBtnClick
-{
-    [self autoChoose];//机选号码
-}
+
 #pragma  mark - 机选号码
 - (void)autoChoose
 {
@@ -246,7 +246,7 @@
         }else if(i == 1)
         {
 
-            [btn addTarget:self action:@selector(autoChooseBtnClick) forControlEvents:UIControlEventTouchUpInside];
+            [btn addTarget:self action:@selector(autoChoose) forControlEvents:UIControlEventTouchUpInside];
             [btn setTitle:@"机选一注" forState:UIControlStateNormal];
         }
         [btn setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:5];
@@ -300,9 +300,6 @@
             if([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])//11选5才有智能追号
             {
                 [confirmBtn setTitle:@"智能追号" forState:UIControlStateNormal];
-//            }else if([self.gameId isEqualToString:@"F03"] || [self.gameId isEqualToString:@"T04"])//七乐彩和排列五没有合买
-//            {
-//                confirmBtn.hidden = YES;
             }else
             {
                 [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
@@ -424,13 +421,13 @@
                 text = @"期";
             }
             betLabel.text = text;
-            CGFloat betLabelX = 0;
+            CGFloat betLabelX = -5;
             if(j == 1)
             {
-                betLabelX = CGRectGetMaxX(multipleTextField.frame) + 2;
+                betLabelX = CGRectGetMaxX(multipleTextField.frame) + 5;
             }
             betLabel.frame = CGRectMake(betLabelX, 0 , wordW, backViewH);
-           [backView addSubview:betLabel];
+            [backView addSubview:betLabel];
         }
         //右边的追加投注、中奖后停追
         UIButton *rightbtn = [UIButton buttonWithType:UIButtonTypeCustom];

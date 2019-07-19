@@ -40,7 +40,7 @@
     //添加btnTitle
     self.btnTitles = @[@"系统消息", @"我的消息"];
     //添加tableview
-    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - topBtnH - [YZTool getSafeAreaBottom];
+    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - topBtnH;
     for(int i = 0; i < 2; i++)
     {
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth * i, 0, screenWidth, scrollViewH) style:UITableViewStyleGrouped];
@@ -71,6 +71,7 @@
     
     self.scrollView.scrollEnabled = NO;
 }
+
 - (void)emptyBarDidClicked
 {
     if (self.messageArray.count == 0) {
@@ -240,33 +241,46 @@
 //删除数据
 - (void)deleteDataWithMessageId:(NSString *)messageId indexPath:(NSIndexPath *)indexPath
 {
-    NSString * urlStr;
-    if (self.currentIndex == 0) {//系统消息
-        urlStr = @"/commonMessageDel";
-    }else
-    {
-        urlStr = @"/messageDel";
-    }
-    NSDictionary *dict = @{
-                           @"userId":UserId,
-                           @"jpushMessageId":messageId
-                           };
-    [[YZHttpTool shareInstance] postWithURL:BaseUrlJiguang(urlStr) params:dict success:^(id json) {
-        if (SUCCESS) {
-            [MBProgressHUD showSuccess:@"消息删除成功"];
-            NSMutableArray *messageArray_ = self.messageArray[self.currentIndex];
-            [messageArray_ removeObjectAtIndex:indexPath.section];
-            UITableView *tableView = self.views[self.currentIndex];
-            [tableView reloadData];
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确认删除该消息吗？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction * alertAction2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString * urlStr;
+        if (self.currentIndex == 0) {//系统消息
+            urlStr = @"/commonMessageDel";
         }else
         {
-            ShowErrorView;
+            urlStr = @"/messageDel";
         }
-    } failure:^(NSError *error)
-     {
-         YZLog(@"error = %@",error);
-     }];
+        NSDictionary *dict = @{
+                               @"userId":UserId,
+                               @"jpushMessageId":messageId
+                               };
+        [[YZHttpTool shareInstance] postWithURL:BaseUrlJiguang(urlStr) params:dict success:^(id json) {
+            if (SUCCESS) {
+                [MBProgressHUD showSuccess:@"消息删除成功"];
+                NSMutableArray *messageArray_ = self.messageArray[self.currentIndex];
+                [messageArray_ removeObjectAtIndex:indexPath.section];
+                UITableView *tableView = self.views[self.currentIndex];
+                if (messageArray_.count == 0) {
+                    [tableView reloadData];
+                }else
+                {
+                    [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+            }else
+            {
+                ShowErrorView;
+            }
+        } failure:^(NSError *error)
+         {
+             YZLog(@"error = %@",error);
+         }];
+    }];
+    [alertController addAction:alertAction1];
+    [alertController addAction:alertAction2];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

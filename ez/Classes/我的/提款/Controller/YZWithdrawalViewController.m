@@ -366,7 +366,7 @@
     [self.view addSubview:passwordView];
 }
 
-- (void)withDrawalWithPassWord:(NSString *)passWord
+- (void)withDrawalWithPassWord:(NSString *)passWord type:(int)type
 {
     YZBankCardStatus * status = self.bankCards[self.selBankCardIndex];
     NSString * cardId = status.cardId;
@@ -378,13 +378,27 @@
 #elif CS
     NSNumber * cmd = @(10920);
 #endif
-    NSDictionary *dict = @{
-                           @"cmd":cmd,
-                           @"userId":UserId,
-                           @"cardId":cardId,
-                           @"money":money,
-                           @"passwd":passWord
-                           };
+    NSDictionary *dict = [NSDictionary dictionary];
+    if (type == 1) {//密码验证
+        dict = @{
+                @"cmd":cmd,
+                @"userId":UserId,
+                @"cardId":cardId,
+                @"money":money,
+                @"passwd":passWord,
+                @"type": @(type)
+                };
+    }else//短信验证
+    {
+       dict = @{
+                @"cmd":cmd,
+                @"userId":UserId,
+                @"cardId":cardId,
+                @"money":money,
+                @"verifyCode":passWord,
+                @"type": @(type)
+                };
+    }
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"%@",json);
         if (SUCCESS) {

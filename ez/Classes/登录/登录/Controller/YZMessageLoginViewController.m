@@ -204,8 +204,6 @@
         //存储userId和userName
         [YZUserDefaultTool saveObject:json[@"userId"] forKey:@"userId"];
         [YZUserDefaultTool saveObject:self.phoneTextField.text forKey:@"userName"];//userAccount
-        //存储账户到数据库
-        [YZStatusCacheTool saveAccount:self.phoneTextField.text];
         //发送登录成功通知
         [[NSNotificationCenter defaultCenter] postNotificationName:loginSuccessNote object:nil];
         [self loadUserInfo];

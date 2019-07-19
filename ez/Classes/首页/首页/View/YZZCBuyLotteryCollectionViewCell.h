@@ -12,6 +12,7 @@
 @interface YZZCBuyLotteryCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) YZBuyLotteryCellStatus * status;
+@property (nonatomic, weak) UIView *line1;//下分割线
 @property (nonatomic, weak) UIView *line2;//右分割线
 
 @end

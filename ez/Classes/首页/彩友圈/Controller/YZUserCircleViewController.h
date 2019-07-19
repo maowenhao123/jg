@@ -10,4 +10,6 @@
 
 @interface YZUserCircleViewController : YZBaseViewController
 
+@property (nonatomic, copy) NSString *userId;
+
 @end

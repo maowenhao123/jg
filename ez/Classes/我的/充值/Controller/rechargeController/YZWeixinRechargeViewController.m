@@ -25,6 +25,8 @@
     CGSize tishiSize = [self.tishiLabel.attributedText boundingRectWithSize:CGSizeMake(screenWidth - 2 * YZMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.tishiLabel.height = tishiSize.height;//改变提示label的高度
 
+    self.rechargeExplainBtn.y = CGRectGetMaxY(self.tishiLabel.frame) + 10;
+    
     //限额说明
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"限额说明" style:UIBarButtonItemStylePlain target:self action:@selector(limitBtnClick)];
     //接收微信充值成功的通知
@@ -124,33 +126,21 @@
                                                    name:WeiXinRechargeSuccessNote
                                                  object:nil];
 }
+
+#pragma mark -- json转字典
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
-    
-    if (jsonString == nil) {
-        
-        return nil;
-        
-    }
+    if (jsonString == nil) return nil;
     
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    
     NSError *err;
-    
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                         
                                                         options:NSJSONReadingMutableContainers
-                         
                                                           error:&err];
-    
     if(err) {
-        
         NSLog(@"json解析失败：%@",err);
-        
         return nil;
-        
     }
-    
     return dic;
-    
 }
+
 @end

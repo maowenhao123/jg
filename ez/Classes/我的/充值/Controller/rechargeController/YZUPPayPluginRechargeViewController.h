@@ -11,6 +11,4 @@
 
 @interface YZUPPayPluginRechargeViewController : YZRechargeBaseViewController
 
-@property (nonatomic, copy) NSString *paymentId;//支付方式
-
 @end

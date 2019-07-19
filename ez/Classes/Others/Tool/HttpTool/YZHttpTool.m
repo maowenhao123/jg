@@ -7,6 +7,7 @@
 //
 #define requestTimeoutInterval 25
 
+#import <AliyunOSSiOS/OSSService.h>
 #import "YZHttpTool.h"
 #import "AFHTTPSessionManager.h"
 #import "UIViewController+YZNoNetController.h"
@@ -131,7 +132,7 @@
         [tempDict setValue:@"0.0.1" forKey:@"version"];
     }
     NSString * KUserId = [YZUserDefaultTool getObjectForKey:@"userId"];
-    if (!YZStringIsEmpty(KUserId)) {
+    if (!YZStringIsEmpty(KUserId) && ![tempDict.allKeys containsObject:@"userId"]) {
         [tempDict setValue:KUserId forKey:@"userId"];
     }
     [tempDict addEntriesFromDictionary:params];//拼接参数
@@ -191,6 +192,74 @@
         getFailure();
     }];
 }
+//上传图片
+- (void)uploadWithImage:(UIImage *)image currentIndex:(NSInteger)currentIndex totalCount:(NSInteger)totalCount aliOssToken:(NSDictionary *)aliOssToken Success:(void (^)(NSString * picUrl))success Failure:(void (^)(NSError * error))failure Progress:(void(^)(float percent))percent
+{
+    __block MBProgressHUD *HUD;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        HUD = [MBProgressHUD showHUDAddedTo:KEY_WINDOW animated:YES];
+        HUD.mode = MBProgressHUDModeAnnularDeterminate;//圆环作为进度条
+        if (totalCount == 1)
+        {
+            HUD.label.text = @"图片上传中....";
+        }else
+        {
+            HUD.label.text = [NSString stringWithFormat:@"%ld/%ld图片上传中....", (long)currentIndex, totalCount];
+        }
+    });
+    OSSPutObjectRequest * put = [OSSPutObjectRequest new];
+    put.bucketName = aliOssToken[@"bucket"];
+    // 设置时间格式
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSString *fileName = [NSString stringWithFormat:@"%@%@.png", aliOssToken[@"path"], str];
+    put.objectKey = fileName;
+    NSData * data = UIImageJPEGRepresentation(image, 1.0);
+    CGFloat dataKBytes = data.length/1000.0;
+    CGFloat maxQuality = 0.9f;
+    CGFloat lastData = dataKBytes;
+    while (dataKBytes > 300 && maxQuality > 0.01f) {
+        maxQuality = maxQuality - 0.01f;
+        data = UIImageJPEGRepresentation(image, maxQuality);
+        dataKBytes = data.length / 1000.0;
+        if (lastData == dataKBytes) {
+            break;
+        }else{
+            lastData = dataKBytes;
+        }
+    }
+    put.uploadingData = data; // 直接上传NSData
+    put.uploadProgress = ^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
+        percent(1.0 * totalByteSent / totalBytesExpectedToSend);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            HUD.progress = 1.0 * totalByteSent / totalBytesExpectedToSend;
+        });
+    };
+    NSString *endpoint = [NSString stringWithFormat:@"%@", aliOssToken[@"url"]];
+    id<OSSCredentialProvider> credential = [[OSSStsTokenCredentialProvider alloc] initWithAccessKeyId:aliOssToken[@"accessKeyId"] secretKeyId:aliOssToken[@"accessKeySecret"] securityToken:aliOssToken[@"securityToken"]];
+    OSSClient *client = [[OSSClient alloc] initWithEndpoint:endpoint credentialProvider:credential];
+    OSSTask * putTask = [client putObject:put];
+    [putTask continueWithBlock:^id(OSSTask *task) {
+        task = [client presignPublicURLWithBucketName:aliOssToken[@"bucket"]
+                                            withObjectKey:fileName];
+        if (!task.error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [HUD hideAnimated:YES];
+                success(task.result);
+                NSLog(@"result%@", task.result);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [HUD hideAnimated:YES];
+                failure(task.error);
+                NSLog(@"error%@", task.error);
+            });
+        }
+        return putTask;
+    }];
+}
+
 #pragma mark - 网络变化
 /**
  *  判断网络状态
@@ -207,29 +276,5 @@
      */
     return [AFNetworkReachabilityManager sharedManager].isReachable;
 }
-//错误处理
-+ (void)errorHandle:(NSURLSessionDataTask * _Nullable)task error:(NSError * _Nonnull)error failure:(void (^)(NSError *))failure
-{
-    
-    NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-    NSInteger statusCode = response.statusCode;
-    
-//    error.statusCode = statusCode;
-    
-    if (statusCode == 401) {//密码错误
-        
-    } else if (statusCode == 0) {//没有网络
-        
-    } else if (statusCode == 500) {//参数错误
-        
-    } else if (statusCode == 404) {
-        
-    } else if (statusCode == 400) {
-        
-    }
-//    
-//    if (failure) {
-//        failure(error);
-//    }
-}
+
 @end

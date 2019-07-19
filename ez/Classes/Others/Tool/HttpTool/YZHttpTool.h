@@ -41,16 +41,9 @@ typedef enum : NSUInteger {
 #define jumpURLStr @"http://html5.51mcp.com/ios/confirm.jsp"
 
 ////预发布环境
-//#if JG
 //#define baseUrl @"http://www1.51mcp.com"
+//#define shareBaseUrl @"http://stage.ez1898.com"
 //#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
-//#elif ZC
-//#define baseUrl @"http://www1.51mcp.com"
-//#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
-//#elif CS
-//#define baseUrl @"http://www1.51tiantianz.com"
-//#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
-//#endif
 //
 //#if JG
 //#define childChannel @"taylor"
@@ -62,6 +55,7 @@ typedef enum : NSUInteger {
 
 //正式环境
 #define baseUrl @"http://www1.51mcp.com"
+#define shareBaseUrl @"https://cp.ez1898.com"
 #define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
 
 #if JG
@@ -74,9 +68,8 @@ typedef enum : NSUInteger {
 #endif
 
 ////测试环境
-////#define baseUrl @"http://t21.51mcp.com:8811"
 //#define baseUrl @"http://c.ez1898.com"
-////#define baseUrl @"http://192.168.11.21:8299"
+//#define shareBaseUrl @"http://test.ez1898.com"
 //#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
 //
 //#if JG
@@ -136,5 +129,7 @@ typedef enum : NSUInteger {
 - (void)postWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure;
 //合买大厅获取合买数据
 - (void)getUnionBuyStatusWithUserName:(NSString *)userName gameId:(NSString *)gameId sortType:(SortType)sortType fieldType:(FieldType)fieldType  index:(NSInteger)index getSuccess:(void(^)(NSArray *unionBuys))getSuccess getFailure:(void(^)())getFailure;
+#pragma mark - 图片上传
+- (void)uploadWithImage:(UIImage *)image currentIndex:(NSInteger)currentIndex totalCount:(NSInteger)totalCount aliOssToken:(NSDictionary *)aliOssToken Success:(void (^)(NSString * picUrl))success Failure:(void (^)(NSError * error))failure Progress:(void(^)(float percent))percent;
 
 @end

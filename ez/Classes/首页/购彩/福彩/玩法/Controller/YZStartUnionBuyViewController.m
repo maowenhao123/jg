@@ -14,9 +14,10 @@
 #import "NSString+YZ.h"
 #import "UIImage+YZ.h"
 #import "YZValidateTool.h"
-#import "YZHttpTool.h"
 #import "YZUnionBuyComfirmPayTool.h"
 #import "YZUnionChangeNickNameView.h"
+#import "YZTextView.h"
+#import "YZBottomPickerView.h"
 
 @interface YZStartUnionBuyViewController ()<UITextFieldDelegate, YZUnionChangeNickNameViewDelegate>
 {
@@ -24,6 +25,7 @@
     NSInteger _amountAmoney;
     NSUInteger _selfBuyMinNumber;//自购最低值
     YZStartUnionbuyModel *_unionbuyModel;
+    NSInteger _index;
 }
 @property (nonatomic, weak) UITextField *commissionTd;//佣金输入框
 @property (nonatomic, weak) UILabel *moneyLabel;//应付金额label
@@ -31,7 +33,8 @@
 @property (nonatomic, weak) UITextField *guaranteeTd;//保底
 @property (nonatomic, weak) UIButton *selectedSettingBtn;
 @property (nonatomic, weak) UITextField *titleTd;//标题
-@property (nonatomic, weak) UITextField *descTd;//描述
+@property (nonatomic, weak) UILabel *desTitleLabel;
+@property (nonatomic, weak) YZTextView *descTV;//描述
 
 @end
 
@@ -53,8 +56,6 @@
 {
     [super viewDidLoad];
     self.title = @"发起合买";
-    self.view.backgroundColor = [UIColor whiteColor];
-    
     [self setupChilds];
 }
 - (void)setupChilds
@@ -62,8 +63,8 @@
     //说明按钮
     self.navigationItem.rightBarButtonItem =  [UIBarButtonItem itemWithIcon:@"unionBuy_guide" highIcon:@"unionBuy_guide" target:self action:@selector(unionBuyGuideButtonClick)];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight - statusBarH - navBarH - bottomViewH);
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight - statusBarH - navBarH - bottomViewH - [YZTool getSafeAreaBottom])];
+    scrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:scrollView];
 
     //2个label
@@ -206,18 +207,16 @@
     secreteLabel.frame = CGRectMake(YZMargin, CGRectGetMaxY(lastSeparator.frame) + 15, screenWidth - 2 * YZMargin, secreteLabelSize.height);
     [scrollView addSubview:secreteLabel];
     
-    NSArray *btnTitles = [NSArray arrayWithObjects:@"完全公开",@"参与可见",@"截止公开",@"完全保密", nil];
+    NSArray *btnTitles = @[@"完全公开", @"参与可见", @"截止公开", @"完全保密"];
     NSUInteger btnCount = 4;
     CGFloat btnW = (screenWidth - (btnCount + 1) * YZMargin) / btnCount;
-    CGFloat btnH = 30;
+    CGFloat btnH = 35;
     CGFloat btnY = CGRectGetMaxY(secreteLabel.frame) + 10;
     UIButton *lastBtn = nil;;
     for(NSUInteger i = 0;i < btnCount;i ++)
     {
         UIButton *btn = [[UIButton alloc] init];
         btn.tag = i;
-        btn.layer.borderWidth = 1;
-        btn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
         [btn setTitle:btnTitles[i] forState:UIControlStateNormal];
         [btn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
@@ -225,13 +224,11 @@
         [btn setFrame:CGRectMake(YZMargin + i * (btnW + YZMargin), btnY, btnW, btnH)];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:YZGetFontSize(24)]];
         [btn setBackgroundImage:[UIImage ImageFromColor:YZColor(238, 238, 238, 1) WithRect:btn.bounds] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage resizedImageWithName:@"playTypeBtnSelBg"] forState:UIControlStateHighlighted];
-        [btn setBackgroundImage:[UIImage resizedImageWithName:@"playTypeBtnSelBg"] forState:UIControlStateSelected];
+        [btn setBackgroundImage:[UIImage ImageFromColor:YZBaseColor] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage ImageFromColor:YZBaseColor] forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(settingBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.layer.masksToBounds = YES;
         btn.layer.cornerRadius = 2;
-        btn.layer.borderWidth = 1;
-        btn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
         [scrollView addSubview:btn];
         lastBtn = btn;
         if(i == 0)
@@ -244,46 +241,83 @@
     lineView.backgroundColor = YZBackgroundColor;
     [scrollView addSubview:lineView];
     
-    UIView *descView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lineView.frame), screenWidth, 180)];
+    UIView *descView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lineView.frame), screenWidth, 0)];
     descView.backgroundColor = [UIColor whiteColor];
     [scrollView addSubview:descView];
     
     //标题
-    NSArray *descTitles = @[@"方案标题",@"方案描述"];
+    NSArray *descTitles = @[@"方案标题", @"个人宣言"];
+    CGFloat maxViewY = 10;
     for(NSUInteger i = 0; i < 2; i++)
     {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, 15 + i * (30 + 30 + 15), screenWidth - 2 * YZMargin, 30)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, maxViewY + i * YZMargin, screenWidth - 2 * YZMargin, 30)];
         label.text = descTitles[i];
         label.textColor = YZBlackTextColor;
-        label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+        label.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         [descView addSubview:label];
+        maxViewY = CGRectGetMaxY(label.frame);
         
-        UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(YZMargin, 45 + i * (30 + 45), screenWidth - 2 * YZMargin, 30)];
-        textfield.borderStyle = UITextBorderStyleNone;
-        textfield.text = [NSString stringWithFormat:@"%@合买方案", [YZTool gameIdNameDict][_gameId]];
-        textfield.textColor = YZBlackTextColor;
-        textfield.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-        textfield.layer.masksToBounds = YES;
-        textfield.layer.cornerRadius = 2;
-        textfield.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
-        textfield.layer.borderWidth = 1;
-        [descView addSubview:textfield];
-        
-        lastTextfield = textfield;
-        if(i == 0)
-        {
+        if (i == 0) {
+            UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(YZMargin, maxViewY + 5, screenWidth - 2 * YZMargin, 40)];
             self.titleTd = textfield;
+            textfield.borderStyle = UITextBorderStyleNone;
+            textfield.text = [NSString stringWithFormat:@"%@合买方案", [YZTool gameIdNameDict][_gameId]];
+            textfield.textColor = YZBlackTextColor;
+            textfield.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+            textfield.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 8, 0)];
+            textfield.leftViewMode = UITextFieldViewModeAlways;
+            textfield.layer.borderColor = YZGrayLineColor.CGColor;
+            textfield.layer.borderWidth = 1;
+            textfield.layer.masksToBounds = YES;
+            textfield.layer.cornerRadius = 5;
+            [descView addSubview:textfield];
+            maxViewY = CGRectGetMaxY(textfield.frame);
         }else
         {
-            self.descTd = textfield;
+            UIView * chooseDesView = [[UIView alloc] initWithFrame:CGRectMake(YZMargin, maxViewY + 5, screenWidth - 2 * YZMargin, 140)];
+            chooseDesView.layer.borderColor = YZGrayLineColor.CGColor;
+            chooseDesView.layer.borderWidth = 1;
+            chooseDesView.layer.masksToBounds = YES;
+            chooseDesView.layer.cornerRadius = 5;
+            [descView addSubview:chooseDesView];
+            maxViewY = CGRectGetMaxY(chooseDesView.frame);
+            
+            UIView *separator = [[UIView alloc] init];
+            separator.backgroundColor = YZGrayLineColor;
+            separator.frame = CGRectMake(0, 40, screenWidth, 1);
+            [chooseDesView addSubview:separator];
+            
+            UILabel *desTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, chooseDesView.width - 8 - 30, 40)];
+            self.desTitleLabel = desTitleLabel;
+            desTitleLabel.text = [NSString stringWithFormat:@"%@合买方案", [YZTool gameIdNameDict][_gameId]];
+            desTitleLabel.textColor = YZBlackTextColor;
+            desTitleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+            [chooseDesView addSubview:desTitleLabel];
+            
+            //accessory
+            UIButton *accessoryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            accessoryBtn.frame =  CGRectMake(0, 0, chooseDesView.width, desTitleLabel.height);
+            [accessoryBtn setImageEdgeInsets:UIEdgeInsetsMake(0, accessoryBtn.width - 10 - 20, 0, 0)];
+            [accessoryBtn setImage:[UIImage imageNamed:@"unionBuy_graydownArrow"] forState:UIControlStateNormal];
+            [accessoryBtn addTarget:self action:@selector(chooseDesPickerView) forControlEvents:UIControlEventTouchUpInside];
+            [chooseDesView addSubview:accessoryBtn];
+            
+            YZTextView *textView = [[YZTextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(desTitleLabel.frame), chooseDesView.width, 100)];
+            self.descTV = textView;
+            textView.textColor = YZBlackTextColor;
+            textView.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+            textView.myPlaceholder = @"您还可以自定义您的合买宣言";
+            [chooseDesView addSubview:textView];
         }
     }
+    descView.height = maxViewY + YZMargin;
+    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(descView.frame));
     
     //底栏
     CGFloat bottomViewW = screenWidth;
     CGFloat bottomViewX = 0;
     CGFloat bottomViewY = screenHeight - bottomViewH - statusBarH - navBarH - [YZTool getSafeAreaBottom];
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(bottomViewX, bottomViewY, bottomViewW, bottomViewH)];
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(bottomViewX, bottomViewY, bottomViewW, bottomViewH + [YZTool getSafeAreaBottom])];
     bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bottomView];
     
@@ -323,6 +357,28 @@
     YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] initWithFileName:@"unionBuy.html"];
     htmlVc.title = @"合买大厅说明";
     [self.navigationController pushViewController:htmlVc animated:YES];
+}
+- (void)chooseDesPickerView
+{
+    [self.view endEditing:YES];
+    
+    NSArray * desArr = @[@"一起来合买，中奖一起乐！",
+                         @"众人拾柴火焰高，跟我中奖一起乐！",
+                         @"梦想还是要有的，万一实现了呢？让我们一起向梦想冲刺！",
+                         @"少数人的智慧，一伙儿人的梦想！",
+                         @"你我不相识，合买成朋友！",
+                         @"一人中奖很孤单，一起中奖来狂欢！",
+                         @"合买！又要中了！不能少了您……",
+                         @"我用战绩来说话，快来跟单吧！",
+                         @"不怕不懂号，就怕专家来选号，快来跟单吧！",
+                         @"刚中过，跟我一起合买来中更大奖！"];
+    YZBottomPickerView * desChooseView = [[YZBottomPickerView alloc]initWithArray:desArr index:_index];
+    desChooseView.block = ^(NSInteger selectedIndex){
+        _index = selectedIndex;
+        self.desTitleLabel.text = desArr[selectedIndex];
+        self.descTV.text = desArr[selectedIndex];
+    };
+    [desChooseView show];
 }
 #pragma  mark - 保密设置按钮点击
 - (void)settingBtnClick:(UIButton *)btn
@@ -413,14 +469,8 @@
 }
 - (void)buy
 {
-    /**
-     上个控制器所传参数
-     param.multiple = multiple;
-     param.amount = amount;
-     param.ticketList = ticketList;
-     */
     _unionbuyModel.title = self.titleTd.text;
-    _unionbuyModel.desc = self.descTd.text;
+    _unionbuyModel.desc = self.descTV.text;
     _unionbuyModel.commission = @([self.commissionTd.text integerValue]);
     _unionbuyModel.money = @([self.selfBuyTd.text integerValue] * 100);
     _unionbuyModel.deposit = @([self.guaranteeTd.text integerValue] * 100);

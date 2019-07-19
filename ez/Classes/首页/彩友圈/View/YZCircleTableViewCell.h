@@ -9,13 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "YZCircleModel.h"
 
+@class YZCircleTableViewCell;
+
+@protocol CircleTableViewCellwDelegate <NSObject>
+
+@optional
+- (void)circleTableViewCellDeleteButtonDidClickWithCell:(YZCircleTableViewCell *)cell;
+
+@end
+
 @interface YZCircleTableViewCell : UITableViewCell
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
+@property (nonatomic, weak) id<CircleTableViewCellwDelegate> delegate;
+
 @property (nonatomic, strong) YZCircleModel *circleModel;
-
-@property (nonatomic, strong) NSMutableArray * imageViews;
-
 
 @end

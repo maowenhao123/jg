@@ -9,7 +9,7 @@
 #import "YZLoadHtmlFileController.h"
 #import "YZLoginViewController.h"
 #import "YZNavigationController.h"
-#import "YZShareViewController.h"
+#import "YZShareProfitsViewController.h"
 #import "YZWebView.h"
 
 @interface YZLoadHtmlFileController ()<WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler>
@@ -131,7 +131,7 @@
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }else if ([urlStr isEqualToString:@"self://shareMakeMoney"]) {//分享活动
-        YZShareViewController * shareVC = [[YZShareViewController alloc] init];
+        YZShareProfitsViewController * shareVC = [[YZShareProfitsViewController alloc] init];
         [self.navigationController pushViewController:shareVC animated:YES];
         decisionHandler(WKNavigationActionPolicyCancel);
         return;

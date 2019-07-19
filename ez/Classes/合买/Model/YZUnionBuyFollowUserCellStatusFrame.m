@@ -20,7 +20,7 @@
     CGFloat padding = 8;
     //参与者label的frame
     CGFloat userNameX = YZMargin;
-    CGFloat userNameY = padding;
+    CGFloat userNameY = 10;
     CGSize userNameSize = [self sizeWithFont:bigFont text:_status.userName];
     CGFloat userNameW = userNameSize.width;
     CGFloat userNameH = userNameSize.height;
@@ -50,7 +50,7 @@
     CGFloat moneyOfTotalY = moneyY;
     _moneyOfTotalF = CGRectMake(moneyOfTotalX, moneyOfTotalY, moneyOfTotalW, moneyOfTotalH);
     
-    _cellH = CGRectGetMaxY(_moneyOfTotalF) + padding;
+    _cellH = CGRectGetMaxY(_moneyOfTotalF) + 10;
 }
 - (CGSize)sizeWithFont:(UIFont *)font text:(NSString *)text
 {

@@ -21,10 +21,8 @@
 {
     [super viewDidLoad];
     self.canEdit = YES;
-//    waitingView_loadingData;
-//    [self getData];
-    //初始化顶
-    [self configurationChilds];
+    waitingView_loadingData;
+    [self getData];
 }
 
 #pragma mark - 请求数据
@@ -34,46 +32,83 @@
                            @"userId": UserId,
                            @"communityId": self.communityId,
                            };
-    [[YZHttpTool shareInstance] postWithURL:BaseUrlCircle(@"/getByConcernMineUser") params:dict success:^(id json) {
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getCommunityPlayType") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self.view];
-        YZLog(@"getByConcernMineUser:%@",json);
+        YZLog(@"getCommunityPlayType:%@",json);
         if (SUCCESS){
-
-            
+            self.dataArray = json[@"topics"];
+            [self configurationChildsWithDataArray:self.dataArray];
         }else
         {
             ShowErrorView
         }
     }failure:^(NSError *error)
-     {
-         [MBProgressHUD hideHUDForView:self.view];
-         YZLog(@"error = %@",error);
-     }];
+    {
+        [MBProgressHUD hideHUDForView:self.view];
+        YZLog(@"error = %@",error);
+    }];
 }
 
 #pragma mark - 布局子视图
-- (void)configurationChilds
+- (void)configurationChildsWithDataArray:(NSArray *)dataArray
 {
-    self.btnTitles = @[@"item1", @"item2", @"item3", @"item4" , @"item5"];
-    CGFloat scrollViewH = screenHeight-statusBarH-navBarH-topBtnH;
+    NSMutableArray *btnTitles = [NSMutableArray array];
+    [btnTitles addObject:@"全部"];
+    for (NSDictionary * dic in dataArray) {
+        [btnTitles addObject:dic[@"name"]];
+    }
+    self.btnTitles = [NSArray arrayWithArray:btnTitles];
+    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - topBtnH;
     for(int i = 0; i < self.btnTitles.count; i++)
     {
-        YZCircleTableView *tableView = [[YZCircleTableView alloc] initWithFrame:CGRectMake(screenWidth * i, 0, screenWidth, scrollViewH) style:UITableViewStyleGrouped];
+        YZCircleTableView *tableView = [[YZCircleTableView alloc] initWithFrame:CGRectMake(screenWidth * i, 0, screenWidth, scrollViewH)];
         tableView.tag = i;
+        tableView.type = CircleCommunityTopic;
+        tableView.communityId = self.communityId;
+        if (i == 0) {
+            tableView.playTypeId = @"";
+        }else
+        {
+            NSDictionary * dic = dataArray[i - 1];
+            tableView.playTypeId = dic[@"id"];
+        }
         [self.views addObject:tableView];
+        
+        [tableView getData];
     }
     //完成配置
     [super configurationComplete];
     [super topBtnClick:self.topBtns[0]];
 }
 
-#pragma mark - 初始化
-- (NSArray *)dataArray
+//设置圈子可选玩法
+- (void)sortDone
 {
-    if (!_dataArray) {
-        _dataArray = [NSArray array];
+    NSMutableArray * playTypes = [NSMutableArray array];
+    for (int i = 0; i < self.views.count; i++) {
+        if (i != 0) {
+            YZCircleTableView *tableView = self.views[i];
+            NSDictionary * dict = @{
+                                    @"playTypeId": tableView.playTypeId,
+                                    @"order": @(i)
+                                    };
+            [playTypes addObject:dict];
+        }
     }
-    return _dataArray;
+    
+    NSDictionary *dict = @{
+                           @"userId": UserId,
+                           @"communityId": self.communityId,
+                           @"playTypes": playTypes
+                           };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/setCommunityPlayType") params:dict success:^(id json) {
+        if (SUCCESS){
+            
+        }
+    }failure:^(NSError *error)
+    {
+        YZLog(@"error = %@",error);
+    }];
 }
 
 @end

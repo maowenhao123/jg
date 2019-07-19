@@ -174,7 +174,7 @@ canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
     [topView addSubview:self];
     
     [UIView animateWithDuration:animateDuration animations:^{
-        self.contentView.y = screenHeight - self.contentView.height;
+        self.contentView.y = statusBarH;
     }];
 }
 - (void)hide{
@@ -229,6 +229,10 @@ canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
                                  {
                                      self.contentView.y = screenHeight;
                                  }
+                             }
+                         }completion:^(BOOL finished) {
+                             if (self.contentView.y == screenHeight) {
+                                 [self removeFromSuperview];
                              }
                          }];
     }else if (pan.state == UIGestureRecognizerStateCancelled)

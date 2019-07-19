@@ -7,10 +7,12 @@
 //
 
 #import "YZBankRemitController.h"
+#import "YZLoadHtmlFileController.h"
 
 @implementation YZBankRemitController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.view.backgroundColor = YZBackgroundColor;
     self.title = @"银行汇款";
@@ -45,26 +47,7 @@
             [backView addSubview:line];
         }
     }
-//    UILabel *callLabel = [[UILabel alloc] init];
-//    callLabel.text = @"汇款成功后请致电";
-//    callLabel.textColor = YZGrayTextColor;
-//    callLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
-//    CGFloat callLabelY = CGRectGetMaxY(backView.frame) + 10;
-//    CGFloat callLabelW = screenWidth - 2 * YZMargin;
-//    CGFloat callLabelH = 20;
-//    CGSize callLabelSize = [callLabel.text sizeWithFont:callLabel.font maxSize:CGSizeMake(callLabelW, MAXFLOAT)];
-//    callLabel.frame = CGRectMake(YZMargin, callLabelY, callLabelSize.width, callLabelH);
-//    [self.view addSubview:callLabel];
-//
-//    UIButton * callBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [callBtn setTitleColor:YZBlueBallColor forState:UIControlStateNormal];
-//    [callBtn setTitle:@"400-700-1898" forState:UIControlStateNormal];
-//    callBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
-//    CGSize callBtnSize = [callBtn.currentTitle sizeWithLabelFont:callBtn.titleLabel.font];
-//    callBtn.frame = CGRectMake(CGRectGetMaxX(callLabel.frame) + 3, callLabelY, callBtnSize.width, callLabelH);
-//    [callBtn addTarget:self action:@selector(kefuClick) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:callBtn];
-    
+
     UILabel *promptLabel = [[UILabel alloc] init];
     promptLabel.textColor = YZGrayTextColor;
     promptLabel.numberOfLines = 0;
@@ -79,7 +62,26 @@
     CGSize labelSize = [promptLabel.attributedText boundingRectWithSize:CGSizeMake(labelW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     promptLabel.frame = CGRectMake(YZMargin, labelY, labelW, labelSize.height);
     [self.view addSubview:promptLabel];
+    
+    //充值说明
+    if (!YZStringIsEmpty(self.detailUrl)) {
+        UIButton * rechargeExplainBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [rechargeExplainBtn setTitle:@"充值说明（点击查看）" forState:UIControlStateNormal];
+        [rechargeExplainBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        rechargeExplainBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+        [rechargeExplainBtn addTarget:self action:@selector(rechargeExplainBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+        CGSize rechargeExplainBtnSize = [rechargeExplainBtn.currentTitle sizeWithLabelFont:rechargeExplainBtn.titleLabel.font];
+        rechargeExplainBtn.frame = CGRectMake(promptLabel.x, CGRectGetMaxY(promptLabel.frame) + 10, rechargeExplainBtnSize.width, rechargeExplainBtnSize.height);
+        [self.view addSubview:rechargeExplainBtn];
+    }
 }
+
+- (void)rechargeExplainBtnDidClick
+{
+    YZLoadHtmlFileController * updataActivityVC = [[YZLoadHtmlFileController alloc] initWithWeb:self.detailUrl];
+    [self.navigationController pushViewController:updataActivityVC animated:YES];
+}
+
 - (void)kefuClick
 {
     UIWebView *callWebview =[[UIWebView alloc] init];

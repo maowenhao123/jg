@@ -8,8 +8,9 @@
 
 #import "YZCircleViewAttentionViewController.h"
 #import "YZCircleViewAttentionTableViewCell.h"
+#import "YZNoDataTableViewCell.h"
 
-@interface YZCircleViewAttentionViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface YZCircleViewAttentionViewController ()<UITableViewDelegate, UITableViewDataSource, YZCircleViewAttentionTableViewCellDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) MJRefreshGifHeader *header;
@@ -25,10 +26,10 @@
 {
     [super viewDidLoad];
     if (self.isFans) {
-        self.title = @"我的粉丝";
+        self.title = @"粉丝列表";
     }else
     {
-        self.title = @"我关注的人";
+        self.title = @"关注列表";
     }
     [self setupChilds];
     waitingView_loadingData;
@@ -41,12 +42,12 @@
 {
     NSNumber * status = self.isFans ? @(1) : @(2);
     NSDictionary *dict = @{
-                           @"userId": UserId,
+                           @"userId": self.userId,
                            @"status": status,
                            @"pageIndex": @(self.pageIndex),
                            @"pageSize": @(10)
                            };
-    [[YZHttpTool shareInstance] postWithURL:BaseUrlCircle(@"/getByConcernMineUser") params:dict success:^(id json) {
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/getByConcernMineUser") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self.view];
         YZLog(@"getByConcernMineUser:%@",json);
         if (SUCCESS){
@@ -123,24 +124,70 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //    return self.dataArray.count;
-    return 10;
+    return self.dataArray.count == 0 ? 1 : self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YZCircleViewAttentionTableViewCell * cell = [YZCircleViewAttentionTableViewCell cellWithTableView:tableView];
-    return cell;
+    if (self.dataArray.count == 0) {
+        YZNoDataTableViewCell *cell = [YZNoDataTableViewCell cellWithTableView:tableView cellId:@"noShareIncomeCell"];
+        cell.imageName = @"no_recharge";
+        cell.noDataStr = @"暂无数据";
+        return cell;
+    }else
+    {
+        YZCircleViewAttentionTableViewCell * cell = [YZCircleViewAttentionTableViewCell cellWithTableView:tableView];
+        cell.dic = self.dataArray[indexPath.row];
+        if (self.isFans || UserId != self.userId) {
+            cell.cancelAttentionButon.hidden = YES;
+        }else
+        {
+            cell.cancelAttentionButon.hidden = NO;
+        }
+        cell.delegate = self;
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return self.dataArray.count == 0 ? tableView.height * 0.7 : 60;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)circleViewAttentionTableViewCellAttentionBtnDidClick:(YZCircleViewAttentionTableViewCell *)cell
 {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSDictionary * dic = self.dataArray[indexPath.row];
     
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:[NSString stringWithFormat:@"取消关注%@？", dic[@"nickname"]] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction * alertAction2 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSDictionary *dict = @{
+                               @"userId": UserId,
+                               @"cancelUserId": dic[@"userId"],
+                               };
+        [[YZHttpTool shareInstance] postWithURL:BaseUrlInformation(@"/cancelUserConcern") params:dict success:^(id json) {
+            YZLog(@"cancelUserConcern:%@",json);
+            if (SUCCESS){
+                [self.dataArray removeObjectAtIndex:indexPath.row];
+                if (self.dataArray.count == 0) {
+                    [self.tableView reloadData];
+                }else
+                {
+                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+            }else
+            {
+                ShowErrorView
+            }
+        }failure:^(NSError *error)
+        {
+            YZLog(@"error = %@",error);
+        }];
+    }];
+    [alertController addAction:alertAction1];
+    [alertController addAction:alertAction2];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - 初始化

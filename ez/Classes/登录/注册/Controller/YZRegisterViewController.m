@@ -269,9 +269,6 @@
         [YZUserDefaultTool saveObject:self.accountTextField.text forKey:@"userName"];
         [YZUserDefaultTool saveObject:self.pwdTextField.text forKey:@"userPwd"];
 
-        //存储账户到数据库
-        [YZStatusCacheTool saveAccount:self.accountTextField.text];
-        
         //账号登录
         [YZUserDefaultTool saveObject:@"accountLogin" forKey:@"loginWay"];
         //发送登录成功通知

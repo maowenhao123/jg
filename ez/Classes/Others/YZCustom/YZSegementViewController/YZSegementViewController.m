@@ -108,9 +108,10 @@
     scrollView.pagingEnabled = YES;
     
     //添加view
-    for(int i = 0;i < self.tableViewCount;i++)
+    for(int i = 0; i < self.tableViewCount; i++)
     {
         UIView * view = self.views[i];
+        view.x = screenWidth * i;
         [scrollView addSubview:view];
     }
 }
@@ -189,17 +190,39 @@
 - (void)editSegementDidCompleteWithBtnTitles:(NSMutableArray *)btnTitles currentText:(nonnull NSString *)currentText
 {
     self.btnTitles = [NSArray arrayWithArray:btnTitles];
-    [self configurationComplete];
+
+    self.currentIndex = (int)[self.btnTitles indexOfObject:currentText];
+    [self topBtnClick:self.topBtns[self.currentIndex]];
     
-    NSInteger currentIndex = [self.btnTitles indexOfObject:currentText];
-    [self topBtnClick:self.topBtns[currentIndex]];
+    [self sortDone];
+}
+
+- (void)sortDone
+{
+    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)sourceIndexPath didMoveToIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    UIView *view = self.views[sourceIndexPath.row];
+    UIView *view1 = self.views[sourceIndexPath.row];
     [self.views removeObjectAtIndex:sourceIndexPath.row];
-    [self.views insertObject:view atIndex:destinationIndexPath.row];
+    [self.views insertObject:view1 atIndex:destinationIndexPath.row];
+    
+    UIView *button1 = self.topBtns[sourceIndexPath.row];
+    [self.topBtns removeObjectAtIndex:sourceIndexPath.row];
+    [self.topBtns insertObject:button1 atIndex:destinationIndexPath.row];
+    
+    for (UIView * view in self.views) {
+        NSInteger index = [self.views indexOfObject:view];
+        view.tag = index;
+        view.x = view.width * index;
+    }
+    
+    for (UIView * view in self.topBtns) {
+        NSInteger index = [self.topBtns indexOfObject:view];
+        view.tag = index;
+        view.x = view.width * index;
+    }
 }
 
 #pragma mark - 初始化
