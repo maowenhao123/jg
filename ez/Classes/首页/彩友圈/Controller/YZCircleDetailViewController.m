@@ -121,19 +121,23 @@
                 NSArray * ticketList = extInfo[@"ticketList"];
                 if (!YZArrayIsEmpty(ticketList) && [ticketList isKindOfClass:[NSArray class]]) {
                     circleModel.extInfo.ticketList = [YZTicketList objectArrayWithKeyValuesArray:extInfo[@"ticketList"]];
+                    circleModel.extInfo.description_ = extInfo[@"description"];
                 }
             }
             self.circleModel = circleModel;
             self.sendCommentTextView.circleModel = circleModel;
             [self.tableView reloadData];
+            [self.header endRefreshing];
         }else
         {
             ShowErrorView
+            [self.header endRefreshing];
         }
     }failure:^(NSError *error)
     {
         YZLog(@"error = %@",error);
         [MBProgressHUD hideHUDForView:self.view];
+        [self.header endRefreshing];
     }];
 }
 
@@ -205,11 +209,11 @@
     self.header = header;
     self.tableView.mj_header = header;
     
-    //初始化底部刷新控件
-    MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
-    [YZTool setRefreshFooterData:footer];
-    self.footer = footer;
-    tableView.mj_footer = footer;
+//    //初始化底部刷新控件
+//    MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
+//    [YZTool setRefreshFooterData:footer];
+//    self.footer = footer;
+//    tableView.mj_footer = footer;
     
     YZSendCommentView * sendCommentTextView = [[YZSendCommentView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(tableView.frame), screenWidth, commentViewH)];
     self.sendCommentTextView = sendCommentTextView;
@@ -344,7 +348,9 @@
     
     //评论数
     UILabel * numberLabel = [[UILabel alloc] init];
-    numberLabel.text = [NSString stringWithFormat:@"评论：%@", self.circleModel.concernNumber];
+    if (self.circleModel) {
+        numberLabel.text = [NSString stringWithFormat:@"评论：%@", self.circleModel.concernNumber];
+    }
     numberLabel.frame = CGRectMake(YZMargin, 9, screenWidth - 2 * YZMargin, 40);
     numberLabel.textColor = YZBlackTextColor;
     numberLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];

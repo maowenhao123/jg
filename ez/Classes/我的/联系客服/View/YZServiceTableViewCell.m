@@ -72,7 +72,20 @@
     _serviceModel = serviceModel;
     
     [self.logoImageView sd_setImageWithURL:[NSURL URLWithString:_serviceModel.icon] placeholderImage:[UIImage imageNamed:@"contact_customerService_chat"]];
-    self.titleLabel.text = _serviceModel.name;
+    NSDictionary *extendDic = [YZTool dictionaryWithJsonString:serviceModel.extendParams];
+    if ([serviceModel.redirectType isEqualToString:@"WEIXIN"])
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ %@", _serviceModel.name ,extendDic[@"weixin"]];
+    }else if ([serviceModel.redirectType isEqualToString:@"QQ"])
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ %@", _serviceModel.name ,extendDic[@"qq"]];
+    }else if ([serviceModel.redirectType isEqualToString:@"TELL"])
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"%@ %@", _serviceModel.name ,extendDic[@"tellphone"]];
+    }else if ([serviceModel.redirectType isEqualToString:@"EASEMOB"])
+    {
+        self.titleLabel.text = [NSString stringWithFormat:@"%@", _serviceModel.name];
+    }
     self.subTitleLabel.text = _serviceModel.description_;
 }
 

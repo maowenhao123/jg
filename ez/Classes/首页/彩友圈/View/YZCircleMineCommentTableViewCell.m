@@ -55,6 +55,8 @@
     //头像
     UIImageView * avatarImageView = [[UIImageView alloc] init];
     self.avatarImageView = avatarImageView;
+    avatarImageView.layer.masksToBounds = YES;
+    avatarImageView.layer.cornerRadius = 18;
     [self addSubview:avatarImageView];
     
     //昵称

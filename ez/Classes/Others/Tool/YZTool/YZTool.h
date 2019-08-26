@@ -173,5 +173,7 @@
  * @param myimage 要压缩的图片
  */
 + (UIImage *)imageCompressionWithImage:(UIImage *)myimage;
+#pragma mark -- json转字典
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 
 @end

@@ -92,7 +92,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZServiceModel *serviceModel = self.dataArray[indexPath.row];
-    NSDictionary *extendDic = [self dictionaryWithJsonString:serviceModel.extendParams];
+    NSDictionary *extendDic = [YZTool dictionaryWithJsonString:serviceModel.extendParams];
     if (YZDictIsEmpty(extendDic)) {
         return;
     }
@@ -109,11 +109,16 @@
         [self performSelector:@selector(skipWeixin) withObject:self afterDelay:1.0f];
     }else if ([serviceModel.redirectType isEqualToString:@"QQ"])
     {
-        NSString *urlStr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web", extendDic[@"qq"]];
-        NSURL *url = [NSURL URLWithString:urlStr];
-        UIWebView *webView = [UIWebView new];
-        [webView loadRequest:[NSURLRequest requestWithURL:url]];
-        [self.view addSubview:webView];
+        NSString *urlStr = [NSString stringWithFormat:@"%@", extendDic[@"url"]];
+        NSURL * url = [NSURL URLWithString:urlStr];
+        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
+        //先判断是否能打开该url
+        if (canOpen)
+        {   //打开QQ
+            [[UIApplication sharedApplication] openURL:url];
+        }else {
+            [MBProgressHUD showError:@"您的设备未安装QQ"];
+        }
     }else if ([serviceModel.redirectType isEqualToString:@"TELL"])
     {
         NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@", extendDic[@"tellphone"]];
@@ -201,20 +206,5 @@
     return _dataArray;
 }
 
-#pragma mark -- json转字典
-- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
-    if (jsonString == nil) return nil;
-    
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&err];
-    if(err) {
-        NSLog(@"json解析失败：%@",err);
-        return nil;
-    }
-    return dic;
-}
 
 @end
