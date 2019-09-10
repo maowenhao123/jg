@@ -113,6 +113,17 @@
     [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+#elif RR
+    //设置颜色
+    navBar.tintColor = YZBlackTextColor;
+    // 设置标题属性
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
+    [navBar setTitleTextAttributes:textAttrs];
+    // 设置背景
+    [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
+    //设置状态栏
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 #endif
 }
 

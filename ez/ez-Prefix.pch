@@ -265,5 +265,33 @@
 #define CECClientSecret @"YXA69TygCsH1sE_JTXQ8piRRBwMv2M8"
 #define CECIM @"kefuchannelimid_074140"
 
+//------------------------- 人人彩 ----------------------------
+#elif RR
+//微信
+#define WXAppIdOld @"wxdbc628a07b9c8b89"
+#define WXAppSecretOld @"312773564007871247f8966fdb449872"
+
+#define WXAppIdNew @"wxa62072532bc40982"
+#define WXAppSecretNew @"36d382b5edacbd37705aad77338f8806"
+//极光
+#define JPushId @"2fc0d62064c90883699c5c00"
+//友盟
+#define UMengId @"593a0ccb8f4a9d0555001784"
+//QQ
+#define QQAPPId @"101364405"
+#define QQAppSecret @"322be2f869571091ff5c67414d611f68"
+//新浪微博
+#define SinaAPPId @"1477364888"
+#define SinaAppSecret @"7393ae25d46932c98c3d80c62eb9aa81"
+//环信
+#define CECAppKey @"1490171102061257#kefuchannelapp49141"
+#define CECTenantId @"73270"
+#define CECClientID @"YXA6U4KPIL-fEeeY6zkqX_FtKQ"
+#define CECClientSecret @"YXA6Apq1gCZL1pGTMlBs3V1fOk6nsww"
+#define CECIM @"kefuchannelimid_030441"
+//一键登录
+#define TYRZAPPId @"300011887762"
+#define TYRZAPPKey @"E7F678DC2555A94DE78653FE3BE916F1"
+
 #endif
 

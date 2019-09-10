@@ -44,7 +44,7 @@
     [YZStatusCacheTool deleteAllStatus];//删除数据
     
     //注册一键登录
-    [TYRZUILogin initializeWithAppId:TYRZAPPId appKey:TYRZAPPKey];
+//    [TYRZUILogin initializeWithAppId:TYRZAPPId appKey:TYRZAPPKey];
 
 #if JG
     //删除userId，以重新登录
@@ -57,6 +57,8 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
+#elif RR
+    [WXApi registerApp:WXAppIdOld withDescription:@"人人彩"];
 #endif
     //极光注册
     [JPUSHService setLogOFF];

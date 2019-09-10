@@ -1426,6 +1426,8 @@
             model.avatarImage = [UIImage imageNamed:@"logo1"];
 #elif CS
             model.avatarImage = [UIImage imageNamed:@"logo1"];
+#elif RR
+            model.avatarImage = [UIImage imageNamed:@"logo1"];
 #endif
             model.failImageName = @"imageDownloadFail";
         }
