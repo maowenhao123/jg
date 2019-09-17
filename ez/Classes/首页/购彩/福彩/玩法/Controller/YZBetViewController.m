@@ -304,7 +304,14 @@
                 [confirmBtn setTitle:@"智能追号" forState:UIControlStateNormal];
             }else
             {
+#if JG
                 [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
+#elif ZC
+                [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
+#elif CS
+                [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
+#elif RR
+#endif
             }
         }else
         {

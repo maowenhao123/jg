@@ -108,7 +108,15 @@
 - (void)configurationChilds
 {
     //添加btnTitle
+#if JG
     self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录", @"合买记录"];
+#elif ZC
+    self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录", @"合买记录"];
+#elif CS
+    self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录", @"合买记录"];
+#elif RR
+    self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录"];
+#endif
     //添加tableview
     CGFloat scrollViewH = screenHeight - statusBarH - navBarH - tabBarH - topBtnH;
     for(int i = 0; i < self.btnTitles.count; i++)

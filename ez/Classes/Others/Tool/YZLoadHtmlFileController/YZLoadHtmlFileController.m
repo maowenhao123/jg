@@ -16,8 +16,6 @@
 
 @property (nonatomic, weak) YZWebView *webView;
 
-@property (nonatomic, weak) UIView *progressView;
-
 @end
 
 @implementation YZLoadHtmlFileController
@@ -79,12 +77,8 @@
     webView.allowsBackForwardNavigationGestures = YES;
     [self.view addSubview:webView];
     [self loadWebView];
-    [webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
     
-    UIView *progressView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 2.5)];
-    self.progressView = progressView;
-    progressView.backgroundColor = YZColor(224, 3, 12, 1);
-    [self.view addSubview:progressView];
+    [webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)back
@@ -206,30 +200,6 @@
         if (self.navigationController.navigationBarHidden == NO) {
             self.title = self.webView.title;
         }
-    }
-}
-
-- (void)setProgress:(float)progress animated:(BOOL)animated {
-    BOOL isGrowing = progress > 0.0;
-    [UIView animateWithDuration:(isGrowing && animated) ? 0.27 : 0.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        CGRect frame = self.progressView.frame;
-        frame.size.width = progress * self.view.size.width;
-        self.progressView.frame = frame;
-    } completion:nil];
-    
-    if (progress >= 1.0) {
-        [UIView animateWithDuration:animated ? 0.27 : 0.0 delay:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.progressView.alpha = 0.0;
-        } completion:^(BOOL completed){
-            CGRect frame = self.progressView.frame;
-            frame.size.width = 0;
-            self.progressView.frame = frame;
-        }];
-    }
-    else {
-        [UIView animateWithDuration:animated ? 0.27 : 0.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.progressView.alpha = 1.0;
-        } completion:nil];
     }
 }
 

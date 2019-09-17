@@ -15,6 +15,7 @@
 #import "YZMineViewController.h"
 #import "YZZCMineViewController.h"
 #import "YZCSMineViewController.h"
+#import "YZRRMineViewController.h"
 #import "YZLoginViewController.h"
 #import "YZNavigationController.h"
 #import "YZUpGradeView.h"
@@ -183,40 +184,33 @@
 #elif RR
     // 1.购彩
     YZHomePageViewController *homePageVC = [[YZHomePageViewController alloc] init];
-    UITabBarItem * tabberItem1 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_buyLottery_zc"] selectedImage:[UIImage imageNamed:@"tabbar_buyLottery_selected_zc"] title:@"购彩"];
+    UITabBarItem * tabberItem1 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_buyLottery_rr"] selectedImage:[UIImage imageNamed:@"tabbar_buyLottery_selected_rr"] title:@"购彩"];
     homePageVC.tabBarItem = tabberItem1;
     YZNavigationController *buyLottery_nav = [[YZNavigationController alloc]initWithRootViewController:homePageVC];
     buyLottery_nav.view.tag = 1;
     
     // 2.订单
     YZOrderViewController *orderVC = [[YZOrderViewController alloc] init];
-    UITabBarItem * tabberItem2 = [self getTabberByImage:[UIImage imageNamed:@"tabber_order"] selectedImage:[UIImage imageNamed:@"tabber_order_selected"] title:@"订单"];
+    UITabBarItem * tabberItem2 = [self getTabberByImage:[UIImage imageNamed:@"tabber_order_rr"] selectedImage:[UIImage imageNamed:@"tabber_order_selected_rr"] title:@"订单"];
     orderVC.tabBarItem = tabberItem2;
     YZNavigationController *orderyVC_nav = [[YZNavigationController alloc]initWithRootViewController:orderVC];
     orderyVC_nav.view.tag = 2;
     
-    // 3.合买
-    YZUnionBuyViewController *unionBuyVC = [[YZUnionBuyViewController alloc] init];
-    UITabBarItem * tabberItem3 = [self getTabberByImage:[UIImage imageNamed:@"tabber_unionBuy_zc"] selectedImage:[UIImage imageNamed:@"tabber_unionBuy_selected_zc"] title:@"合买"];
-    unionBuyVC.tabBarItem = tabberItem3;
-    YZNavigationController *unionBuyVC_nav = [[YZNavigationController alloc]initWithRootViewController:unionBuyVC];
-    unionBuyVC_nav.view.tag = 3;
-    
     // 4.开奖
     YZWinNumberViewController *winNumberVC = [[YZWinNumberViewController alloc] init];
-    UITabBarItem * tabberItem4 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_winNumber_zc"] selectedImage:[UIImage imageNamed:@"tabbar_winNumber_selected_zc"] title:@"开奖"];
+    UITabBarItem * tabberItem4 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_winNumber_rr"] selectedImage:[UIImage imageNamed:@"tabbar_winNumber_selected_rr"] title:@"开奖"];
     winNumberVC.tabBarItem = tabberItem4;
     YZNavigationController *winNumberVC_nav = [[YZNavigationController alloc]initWithRootViewController:winNumberVC];
     winNumberVC_nav.view.tag = 4;
     
     // 5.我的
-    YZCSMineViewController *mineVC = [[YZCSMineViewController alloc] init];
-    UITabBarItem * tabberItem5 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_mine_zc"] selectedImage:[UIImage imageNamed:@"tabbar_mine_selected_zc"] title:@"我的"];
+    YZRRMineViewController *mineVC = [[YZRRMineViewController alloc] init];
+    UITabBarItem * tabberItem5 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_mine_rr"] selectedImage:[UIImage imageNamed:@"tabbar_mine_selected_rr"] title:@"我的"];
     mineVC.tabBarItem = tabberItem5;
     YZNavigationController *mineVC_nav = [[YZNavigationController alloc]initWithRootViewController:mineVC];
     mineVC_nav.view.tag = 5;
     
-    self.viewControllers = @[buyLottery_nav, orderyVC_nav, unionBuyVC_nav, winNumberVC_nav, mineVC_nav];
+    self.viewControllers = @[buyLottery_nav, orderyVC_nav, winNumberVC_nav, mineVC_nav];
 #endif
     self.delegate = self;
 }
@@ -245,7 +239,15 @@
         YZNavigationController *nav = [[YZNavigationController alloc] initWithRootViewController:login];
         [self presentViewController:nav animated:YES completion:nil];
     }
+#if JG
     self.selectedIndex = 4;
+#elif ZC
+    self.selectedIndex = 4;
+#elif CS
+    self.selectedIndex = 4;
+#elif RR
+    self.selectedIndex = 3;
+#endif
 }
 
 - (UITabBarItem *)getTabberByImage:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title

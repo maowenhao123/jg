@@ -60,11 +60,17 @@
         [MBProgressHUD showMessage:@"获取数据，客官请稍后..." toView:self];
         [self getFunctionData];
         [self getQuickStakeData];
-        [self getAllUnionBuyStatus];
         [self getNoticeData];
         [self getGameInfoDataWith:nil];
         [self getInformationDataWith:nil];
-        
+#if JG
+        [self getAllUnionBuyStatus];
+#elif ZC
+        [self getAllUnionBuyStatus];
+#elif CS
+        [self getAllUnionBuyStatus];
+#elif RR
+#endif
         //初始化底部刷新控件
         MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
         [YZTool setRefreshFooterData:footer];

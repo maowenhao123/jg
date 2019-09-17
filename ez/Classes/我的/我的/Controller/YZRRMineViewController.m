@@ -46,22 +46,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBar.hidden = YES;
-    
-    //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
     [self loadUserInfo];
-    
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    self.navigationController.navigationBar.hidden = NO;
-    
-    //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 - (void)viewDidLoad
@@ -137,29 +133,25 @@
     self.scrollView = scrollView;
     [self.view addSubview:scrollView];
     //背景
-    UIImageView * backView = [[UIImageView alloc]init];
-    backView.frame = CGRectMake(0, 0, screenWidth, 142);
-    if (iPhone5 || iPhone4)
-    {
-        backView.image = [UIImage imageNamed:@"mine_top_bg_zc_4"];
-    }else if (iPhone6)
-    {
-        backView.image = [UIImage imageNamed:@"mine_top_bg_zc_6"];
-    }else if (iPhone6P)
-    {
-        backView.image = [UIImage imageNamed:@"mine_top_bg_zc_6P"];
-    }else
-    {
-        backView.image = [UIImage imageNamed:@"mine_top_bg_zc_6P"];
-    }
+    UIImageView * backView = [[UIImageView alloc] init];
+    backView.frame = CGRectMake(0, 0, screenWidth, 155);
+    backView.image = [UIImage imageNamed:@"mine_top_bg_rr"];
     backView.userInteractionEnabled = YES;
     [scrollView addSubview:backView];
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mineBackViewClick)];
     [backView addGestureRecognizer:tap];
     
+    //设置
+    UIButton * settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGFloat settingButtonWH = 55;
+    settingButton.frame = CGRectMake(screenWidth - settingButtonWH - 5, statusBarH, settingButtonWH, settingButtonWH);
+    [settingButton setImage:[UIImage imageNamed:@"11x5_setting"] forState:UIControlStateNormal];
+    [settingButton addTarget:self action:@selector(settingButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [backView addSubview:settingButton];
+    
     //头像
-    UIImageView *avatarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(YZMargin, 59, 50, 50)];
+    UIImageView *avatarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(YZMargin, 49, 50, 50)];
     self.avatarImageView = avatarImageView;
     avatarImageView.image = [UIImage imageNamed:@"avatar_zc"];
     avatarImageView.layer.masksToBounds = YES;
@@ -167,7 +159,7 @@
     [backView addSubview:avatarImageView];
     
     //昵称
-    UILabel * nickNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 10, 60, screenWidth - (CGRectGetMaxX(avatarImageView.frame) + 10), 30)];
+    UILabel * nickNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 10, 50, screenWidth - (CGRectGetMaxX(avatarImageView.frame) + 10), 30)];
     self.nickNameLabel = nickNameLabel;
     nickNameLabel.text = @"昵称";
     nickNameLabel.textColor = [UIColor whiteColor];
@@ -177,7 +169,7 @@
     //实名认证
     UILabel * nameCertificationLabel = [[UILabel alloc]init];
     self.nameCertificationLabel = nameCertificationLabel;
-    nameCertificationLabel.textColor = YZColor(253, 165, 162, 1);
+    nameCertificationLabel.textColor = UIColorFromRGB(0xffd9d8);
     nameCertificationLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
     [backView addSubview:nameCertificationLabel];
     
@@ -190,35 +182,32 @@
     //手机绑定信息
     UILabel * phoneBindingLabel = [[UILabel alloc]init];
     self.phoneBindingLabel = phoneBindingLabel;
-    phoneBindingLabel.textColor = YZColor(253, 165, 162, 1);
+    phoneBindingLabel.textColor = UIColorFromRGB(0xffd9d8);
     phoneBindingLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
     [backView addSubview:phoneBindingLabel];
-    
-    //accessory
-    CGFloat accessoryW = 8;
-    CGFloat accessoryH = 11;
-    UIImageView * accessory = [[UIImageView alloc]init];
-    accessory.frame = CGRectMake(screenWidth - YZMargin - accessoryW, (backView.height - accessoryH) / 2, accessoryW, accessoryH);
-    accessory.image = [UIImage imageNamed:@"mine_accessory_zc"];
-    [backView addSubview:accessory];
-    
+   
     //账户金额
-    UIView * moneyDetailView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(backView.frame), screenWidth, 77)];
+    UIView * moneyDetailView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(backView.frame) - 40, screenWidth - 2 * 15, 80)];
     moneyDetailView.backgroundColor = [UIColor whiteColor];
+    moneyDetailView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    moneyDetailView.layer.shadowOffset = CGSizeMake(2, 2);
+    moneyDetailView.layer.shadowRadius = 2;
+    moneyDetailView.layer.shadowOpacity = 0.8;
+    moneyDetailView.layer.cornerRadius = 5;
     [scrollView addSubview:moneyDetailView];
     
     CGFloat moneyDetailBtnY = 0;
     CGFloat moneyDetailBtnH = moneyDetailView.height;
-    CGFloat lineH = 20;
+    CGFloat lineH = 21;
     for (int i = 0; i < 3; i++) {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(screenWidth * i / 3, moneyDetailBtnY, screenWidth / 3, moneyDetailBtnH);
+        button.frame = CGRectMake(moneyDetailView.width * i / 3, moneyDetailBtnY, moneyDetailView.width / 3, moneyDetailBtnH);
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         button.titleLabel.numberOfLines = 2;
         [moneyDetailView addSubview:button];
         [self.moneyDetailbtns addObject:button];
         if (i != 2) {
-            UIView * line = [[UIView alloc]initWithFrame:CGRectMake(screenWidth / 3 - 1,(moneyDetailBtnH - lineH) / 2, 1.5, lineH)];
+            UIView * line = [[UIView alloc]initWithFrame:CGRectMake(moneyDetailView.width / 3 - 1, (moneyDetailBtnH - lineH) / 2, 1.5, lineH)];
             line.backgroundColor = YZWhiteLineColor;
             [button addSubview:line];
         }
@@ -226,44 +215,59 @@
     [self setMoneyButtonTitleByBalance:@"0元" bonus:@"0元" grade:@"0"];
     
     //我的钱包
-    UIView * walletView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(moneyDetailView.frame) + 9, screenWidth, 110)];
+    UIView * walletView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(backView.frame), screenWidth, 178)];
     walletView.backgroundColor = [UIColor whiteColor];
     [scrollView addSubview:walletView];
+    [scrollView bringSubviewToFront:moneyDetailView];
+    
+    UIView * lineView1 = [[UIView alloc]initWithFrame:CGRectMake(15, 62, 3, 15)];
+    lineView1.backgroundColor = UIColorFromRGB(0xf47a3a);
+    [walletView addSubview:lineView1];
     
     UILabel * walletLabel = [[UILabel alloc] init];
-    walletLabel.textColor = YZBlackTextColor;
+    walletLabel.textColor = UIColorFromRGB(0x2b2b2b);
     walletLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     walletLabel.text = @"我的钱包";
     CGSize walletLabelSize = [walletLabel.text sizeWithLabelFont:walletLabel.font];
-    walletLabel.frame = CGRectMake(YZMargin, 11, walletLabelSize.width, walletLabelSize.height);
+    walletLabel.frame = CGRectMake(CGRectGetMaxX(lineView1.frame) + 5, 62, walletLabelSize.width, walletLabelSize.height);
     [walletView addSubview:walletLabel];
+    lineView1.centerY = walletLabel.centerY;
+    
+    UIView * line2 = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(walletLabel.frame) + 12, screenWidth, 1)];
+    line2.backgroundColor = YZWhiteLineColor;
+    [walletView addSubview:line2];
     
     //充值提款彩券
-    CGFloat rechargeBtnY = 40;
-    CGFloat rechargeBtnH = 58;
-    for (int i = 0; i < 3; i++) {
+    CGFloat rechargeBtnY = CGRectGetMaxY(line2.frame) + 3;
+    CGFloat rechargeBtnH = 85;
+    for (int i = 0; i < 4; i++) {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag = i;
-        button.frame = CGRectMake(screenWidth / 3 * i, rechargeBtnY, screenWidth / 3, rechargeBtnH);
+        button.frame = CGRectMake(walletView.width / 4 * i, rechargeBtnY, walletView.width / 4, rechargeBtnH);
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         if (i == 0) {
             self.rechargeButton = button;
-            [button setImage:[UIImage imageNamed:@"mine_recharge_icon"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"mine_recharge_icon_rr"] forState:UIControlStateNormal];
             [button setTitle:@"充值" forState:UIControlStateNormal];
         }else if (i == 1)
         {
             self.withdrawalButton = button;
-            [button setImage:[UIImage imageNamed:@"mine_withdrawal_icon"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"mine_withdrawal_icon_rr"] forState:UIControlStateNormal];
             [button setTitle:@"提款" forState:UIControlStateNormal];
         }else if (i == 2)
         {
             self.voucheButton = button;
-            [button setImage:[UIImage imageNamed:@"vouche_bar"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"vouche_bar_rr"] forState:UIControlStateNormal];
             [button setTitle:@"彩券" forState:UIControlStateNormal];
+        }else if (i == 3)
+        {
+            self.voucheButton = button;
+            [button setImage:[UIImage imageNamed:@"integral_conversion_icon_rr"] forState:UIControlStateNormal];
+            [button setTitle:@"积分兑换" forState:UIControlStateNormal];
         }
-        [button setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
-        [button setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentUp imgTextDistance:10];//图片和文字的间距
+        [button setTitleColor:UIColorFromRGB(0x2b2b2b) forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+        [button setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentUp imgTextDistance:7];//图片和文字的间距
         [button addTarget:self action:@selector(walletButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
         [walletView addSubview:button];
         if (i != 0) {
@@ -280,15 +284,19 @@
             functionViewH = 120;
         }else
         {
-            functionViewH = 190;
+            functionViewH = 120;
         }
-        UIView * functionView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lastView.frame) + 9, screenWidth, functionViewH)];
+        UIView * functionView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lastView.frame) + 10, screenWidth, functionViewH)];
         functionView.backgroundColor = [UIColor whiteColor];
         [scrollView addSubview:functionView];
         lastView = functionView;
         
+        UIView * lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 15, 3, 15)];
+        lineView.backgroundColor = UIColorFromRGB(0xf47a3a);
+        [functionView addSubview:lineView];
+        
         UILabel * functionLabel = [[UILabel alloc] init];
-        functionLabel.textColor = YZBlackTextColor;
+        functionLabel.textColor = UIColorFromRGB(0x2b2b2b);
         functionLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         if (i == 0) {
             functionLabel.text = @"我的交易";
@@ -297,28 +305,28 @@
             functionLabel.text = @"我的服务";
         }
         CGSize functionLabelSize = [functionLabel.text sizeWithLabelFont:functionLabel.font];
-        functionLabel.frame = CGRectMake(YZMargin, 11, functionLabelSize.width, functionLabelSize.height);
+        functionLabel.frame = CGRectMake(CGRectGetMaxX(lineView.frame) + 5, 15, functionLabelSize.width, functionLabelSize.height);
         [functionView addSubview:functionLabel];
+        lineView.centerY = functionLabel.centerY;
         
         //功能按钮
-        CGFloat functionBtnY1 = 40;
-        CGFloat functionBtnY2 = 114;
+        CGFloat functionBtnY = 40;
         CGFloat functionBtnH = 70;
         NSArray * buttonTitles;
         NSArray * buttonImageNames;
         if (i == 0) {
-            buttonTitles = @[@"积分兑换", @"资金明细", @"充值记录", @"提款记录"];
-            buttonImageNames = @[@"mine_integral_cs_icon", @"mine_money_detail_cs_icon", @"mine_recharge_record_cs_icon", @"mine_withdrawal_record_cs_icon"];
+            buttonTitles = @[@"投注详情", @"资金明细", @"充值记录", @"提款记录"];
+            buttonImageNames = @[@"mine_order_rr_icon", @"mine_money_rr_icon", @"mine_recharge_record_rr_icon", @"mine_withdrawal_record_rr_icon"];
         }else
         {
-            buttonTitles = @[@"分享好友赚钱", @"我的消息", @"购彩帮助", @"关于我们", @"在线客服", @"客服电话", @"微信公众号", @"设置"];
-            buttonImageNames = @[@"mine_share_cs_icon", @"mine_message_cs_icon", @"mine_help_cs_icon", @"mine_about_cs_icon", @"mine_contact_service_cs_icon", @"mine_contact_service_phone_cs_icon", @"weixin_code_cs_icon",@"mine_setting_zc_icon"];
+            buttonTitles = @[@"我的消息", @"购彩帮助", @"联系客服"];
+            buttonImageNames = @[@"mine_message_rr_icon", @"mine_help_rr_icon", @"mine_contact_service_rr_icon"];
         }
         for (int j = 0; j < buttonTitles.count; j++) {
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.tag = i * 100 + j;
-            button.frame = CGRectMake(screenWidth / 4 * (j % 4), (j < 4 ? functionBtnY1 : functionBtnY2), screenWidth / 4, functionBtnH);
-            [button setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+            button.frame = CGRectMake(screenWidth / 4 * (j % 4), functionBtnY, screenWidth / 4, functionBtnH);
+            [button setTitleColor:UIColorFromRGB(0x2b2b2b) forState:UIControlStateNormal];
             button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
             [button setImage:[UIImage imageNamed:buttonImageNames[j]] forState:UIControlStateNormal];
             [button setTitle:buttonTitles[j] forState:UIControlStateNormal];
@@ -329,39 +337,8 @@
         
         scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(functionView.frame) + 10);
     }
-    //    [self test];
 }
-- (void)test
-{
-    NSDictionary *testDict = @{
-                               @"cmd":@(8026),
-                               @"gameId":@"T05"
-                               };
-    [[YZHttpTool shareInstance] postWithParams:testDict success:^(id json) {
-        YZLog(@"%@",json);
-        if (Jump) {//隐藏充值按钮
-            self.rechargeButton.hidden = YES;
-            self.withdrawalButton.x = 0;
-            self.withdrawalButton.width = screenWidth / 2;
-            self.voucheButton.x = screenWidth / 2;
-            self.voucheButton.width = screenWidth / 2;
-        }else
-        {
-            self.rechargeButton.hidden = NO;
-            self.rechargeButton.x = 0;
-            self.rechargeButton.width = screenWidth / 3;
-            self.withdrawalButton.x = screenWidth / 3;
-            self.withdrawalButton.width = screenWidth / 3;
-            self.voucheButton.x = screenWidth / 3 * 2;
-            self.voucheButton.width = screenWidth / 3;
-        }
-        [self.withdrawalButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-        [self.rechargeButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-        [self.voucheButton setButtonTitleWithImageAlignment:UIButtonTitleWithImageAlignmentLeft imgTextDistance:10];//图片和文字的间距
-    } failure:^(NSError *error) {
-        YZLog(@"getCurrentTermData - error = %@",error);
-    }];
-}
+
 #pragma mark - 设置数据
 - (void)setUser:(YZUser *)user
 {
@@ -432,15 +409,15 @@
 - (void)setMoneyButtonTitleByBalance:(NSString *)balance bonus:(NSString *)bonus grade:(NSString *)grade
 {
     NSArray *moneys = [NSArray arrayWithObjects:balance,bonus,grade,nil];
-    NSArray * moneyDetailbtnTitles = @[@"彩金",@"奖金",@"积分"];
+    NSArray * moneyDetailbtnTitles = @[@"彩金", @"奖金", @"积分"];
     for (UIButton * button in self.moneyDetailbtns) {
         NSInteger index = [self.moneyDetailbtns indexOfObject:button];
         NSString * btnStr = [NSString stringWithFormat:@"%@\n%@", moneys[index], moneyDetailbtnTitles[index]];
         NSMutableAttributedString * btnAttStr = [[NSMutableAttributedString alloc]initWithString:btnStr];
         [btnAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(34)] range:NSMakeRange(0, btnAttStr.length - 2)];
-        [btnAttStr addAttribute:NSForegroundColorAttributeName value:YZColor(238, 37, 37, 1) range:NSMakeRange(0, btnAttStr.length - 2)];
+        [btnAttStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xee2525) range:NSMakeRange(0, btnAttStr.length - 2)];
         [btnAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(24)] range:NSMakeRange(btnAttStr.length - 2, 2)];
-        [btnAttStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(btnAttStr.length - 2, 2)];
+        [btnAttStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xababab) range:NSMakeRange(btnAttStr.length - 2, 2)];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.alignment = NSTextAlignmentCenter;//居中
         [paragraphStyle setLineSpacing:7];//行间距
@@ -454,6 +431,13 @@
     YZAccountInfoViewController * accountInfoVC = [[YZAccountInfoViewController alloc]init];
     [self.navigationController pushViewController:accountInfoVC animated:YES];
 }
+
+- (void)settingButtonDidClick
+{
+    YZMineSettingViewController * settingVC = [[YZMineSettingViewController alloc]init];
+    [self.navigationController pushViewController:settingVC animated:YES];
+}
+
 - (void)walletButtonDidClick:(UIButton *)button
 {
     if (button.tag == 1) {//提款
@@ -486,10 +470,14 @@
     {
         YZRechargeListViewController *rechargeVc = [[YZRechargeListViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:rechargeVc animated:YES];
-    }else
+    }else if (button.tag == 2)//彩券
     {
         YZVoucherViewController * voucherVC = [[YZVoucherViewController alloc]init];
         [self.navigationController pushViewController:voucherVC animated:YES];
+    }else if (button.tag == 3)//积分兑换
+    {
+        YZIntegralConversionViewController * integralConversionVC = [[YZIntegralConversionViewController alloc] init];
+        [self.navigationController pushViewController:integralConversionVC animated:YES];
     }
 }
 
@@ -497,8 +485,21 @@
 {
     if (button.tag == 0)
     {
-        YZIntegralConversionViewController * integralConversionVC = [[YZIntegralConversionViewController alloc] init];
-        [self.navigationController pushViewController:integralConversionVC animated:YES];
+        NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self.navigationController popToRootViewControllerAnimated:NO];
+            });
+        }];
+        NSBlockOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:RefreshRecordNote object:@(0)];
+            });
+        }];
+        [op2 addDependency:op1];
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        [queue waitUntilAllOperationsAreFinished];
+        [queue addOperation:op1];
+        [queue addOperation:op2];
     }else if (button.tag == 1)
     {
         YZMoneyDetailViewController *moneyDetailVC = [[YZMoneyDetailViewController alloc]init];
@@ -513,39 +514,15 @@
         [self.navigationController pushViewController:withdrawalRecordVC animated:YES];
     }else if (button.tag == 100)
     {
-        YZShareProfitsViewController * shareVC = [[YZShareProfitsViewController alloc] init];
-        [self.navigationController pushViewController:shareVC animated:YES];
-    }else if (button.tag == 101)
-    {
         YZMessageViewController * messageVC = [[YZMessageViewController alloc]init];
         [self.navigationController pushViewController:messageVC animated:YES];
-    }else if (button.tag == 102)
+    }else if (button.tag == 101)
     {
         YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] initWithFileName:@"help.htm"];
-        htmlVc.title = @"购彩帮助";
         [self.navigationController pushViewController:htmlVc animated:YES];
-    }else if (button.tag == 103)
-    {
-        YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] initWithFileName:@"about.htm"];
-        htmlVc.title = @"关于我们";
-        [self.navigationController pushViewController:htmlVc animated:YES];
-    }else if (button.tag == 104)
+    }else if (button.tag == 102)
     {
         [self chatDidBarClick];
-    }else if (button.tag == 105)
-    {
-        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"400-700-1898"];
-        UIWebView * callWebview = [[UIWebView alloc] init];
-        [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
-        [self.view addSubview:callWebview];
-    }else if (button.tag == 106)
-    {
-        YZWeChatPublicViewController * weChatPublicVC = [[YZWeChatPublicViewController alloc]init];
-        [self.navigationController pushViewController:weChatPublicVC animated:YES];
-    }else if (button.tag == 107)
-    {
-        YZMineSettingViewController * settingVC = [[YZMineSettingViewController alloc]init];
-        [self.navigationController pushViewController:settingVC animated:YES];
     }
 }
 

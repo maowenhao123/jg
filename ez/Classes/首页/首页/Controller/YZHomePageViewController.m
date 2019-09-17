@@ -56,7 +56,8 @@
     [self getMessageCount];
     if (@available(iOS 11.0, *)) {
         self.buyLotteryCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
+    } else
+    {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     //接收刷新是否有新消息
@@ -76,7 +77,7 @@
 #elif CS
     self.navigationItem.rightBarButtonItems = @[self.messageBarButtonItem, serviceBarButtonItem];
 #elif RR
-    self.navigationItem.rightBarButtonItems = @[self.messageBarButtonItem, serviceBarButtonItem];
+    self.navigationItem.rightBarButtonItem = self.messageBarButtonItem;
 #endif
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);

@@ -48,7 +48,7 @@
 /**
  *  请求数据
  */
-- (void)postWithParams:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure
+- (void) postWithParams:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     // 创建请求管理对象
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
@@ -62,16 +62,29 @@
     NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
     [formatter setDateFormat:@"YYYYMMddhhmmssSSS"];
     NSString *nowDateStr = [formatter stringFromDate:[NSDate date]];
+    
+    NSString * posternBaseUrl = [YZUserDefaultTool getObjectForKey:@"PosternBaseUrl"];
+    NSString * posternMainChannel = [YZUserDefaultTool getObjectForKey:@"PosternMainChannel"];
+    NSString * posternChildChannel = [YZUserDefaultTool getObjectForKey:@"PosternChildChannel"];
+    if (YZStringIsEmpty(posternBaseUrl)) {
+        posternBaseUrl = mcpUrl;
+    }
+    if (YZStringIsEmpty(posternMainChannel)) {
+        posternMainChannel = mainChannel;
+    }
+    if (YZStringIsEmpty(posternChildChannel)) {
+        posternChildChannel = childChannel;
+    }
     //发送请求
     NSDictionary *dict = @{
                            @"id":nowDateStr,
-                           @"channel":mainChannel,
-                           @"childChannel":childChannel,
+                           @"channel":posternMainChannel,
+                           @"childChannel":posternChildChannel,
                            @"clientVersion":[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],
                            };
     NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:dict];
     [tempDict addEntriesFromDictionary:params];//拼接参数
-    [mgr POST:mcpUrl
+    [mgr POST:posternBaseUrl
    parameters:tempDict
      progress:^(NSProgress * _Nonnull uploadProgress) {
          
@@ -116,14 +129,23 @@
     // 设置返回格式
     mgr.responseSerializer = [AFJSONResponseSerializer serializer];
 
+    NSString * posternMainChannel = [YZUserDefaultTool getObjectForKey:@"PosternMainChannel"];
+    NSString * posternChildChannel = [YZUserDefaultTool getObjectForKey:@"PosternChildChannel"];
+    if (YZStringIsEmpty(posternMainChannel)) {
+        posternMainChannel = mainChannel;
+    }
+    if (YZStringIsEmpty(posternChildChannel)) {
+        posternChildChannel = childChannel;
+    }
+    
     //发送请求
     NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
     [formatter setDateFormat:@"YYYYMMddhhmmssSSS"];
     NSString *nowDateStr = [formatter stringFromDate:[NSDate date]];
     NSDictionary *dict = @{
                            @"id":nowDateStr,
-                           @"channel":mainChannel,
-                           @"childChannel":childChannel,
+                           @"channel":posternMainChannel,
+                           @"childChannel":posternChildChannel,
                            @"clientVersion":[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],
                            @"sequence":[YZTool uuidString],
                            };

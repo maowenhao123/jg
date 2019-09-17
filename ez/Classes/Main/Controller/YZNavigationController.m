@@ -203,7 +203,7 @@
 #pragma mark - UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZCSMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZUserCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZMineCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZFBMatchDetailViewController") class]];
+    BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZCSMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZRRMineViewController") class]]  || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZUserCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZMineCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZFBMatchDetailViewController") class]];
 #if JG
     if ([viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]]) {
         hiddenNavBar = NO;

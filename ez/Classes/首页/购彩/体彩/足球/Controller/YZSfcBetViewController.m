@@ -165,6 +165,7 @@
     confirmBtn.layer.masksToBounds = YES;
     confirmBtn.layer.cornerRadius = 2;
     
+#if JG
     //合买按钮
     UIButton *unionBuyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.unionBuyBtn = unionBuyBtn;
@@ -177,6 +178,34 @@
     unionBuyBtn.layer.borderWidth = 1;
     unionBuyBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
     [bottomView addSubview:unionBuyBtn];
+#elif ZC
+    //合买按钮
+    UIButton *unionBuyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.unionBuyBtn = unionBuyBtn;
+    unionBuyBtn.frame = CGRectMake(15, (bottomViewH - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
+    [unionBuyBtn setBackgroundImage:[UIImage ImageFromColor:YZColor(238, 238, 238, 1) WithRect:confirmBtn.bounds] forState:UIControlStateNormal];
+    [unionBuyBtn setTitle:@"发起合买" forState:UIControlStateNormal];
+    [unionBuyBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+    unionBuyBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    [unionBuyBtn addTarget:self action:@selector(unionBuyBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    unionBuyBtn.layer.borderWidth = 1;
+    unionBuyBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
+    [bottomView addSubview:unionBuyBtn];
+#elif CS
+    //合买按钮
+    UIButton *unionBuyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.unionBuyBtn = unionBuyBtn;
+    unionBuyBtn.frame = CGRectMake(15, (bottomViewH - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
+    [unionBuyBtn setBackgroundImage:[UIImage ImageFromColor:YZColor(238, 238, 238, 1) WithRect:confirmBtn.bounds] forState:UIControlStateNormal];
+    [unionBuyBtn setTitle:@"发起合买" forState:UIControlStateNormal];
+    [unionBuyBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+    unionBuyBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    [unionBuyBtn addTarget:self action:@selector(unionBuyBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    unionBuyBtn.layer.borderWidth = 1;
+    unionBuyBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
+    [bottomView addSubview:unionBuyBtn];
+#elif RR
+#endif
     
     //注数和倍数和金额总数
     UILabel *amountLabel = [[UILabel alloc] init];

@@ -288,7 +288,7 @@
     
     UIView * lastView;
     //输入框
-    NSArray * placeholders = @[@"用户名/手机号",@"登录密码"];
+    NSArray * placeholders = @[@"用户名/手机号", @"登录密码"];
     CGFloat textFieldH = 52;
     
     for (int i = 0; i < 2; i++) {

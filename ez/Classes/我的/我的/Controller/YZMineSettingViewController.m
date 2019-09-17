@@ -187,29 +187,6 @@
         [self.navigationController popToRootViewControllerAnimated:NO];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ToBuyLottery" object:nil];
     });
-
-//    dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
-//    dispatch_after(poptime, dispatch_get_main_queue(), ^{
-//        [MBProgressHUD hideHUDForView:self.view];
-//
-//        //退出登录，发送返回购彩大厅通知
-//        NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
-//            dispatch_sync(dispatch_get_main_queue(), ^{
-//                [self.navigationController popToRootViewControllerAnimated:NO];
-//            });
-//        }];
-//
-//        NSBlockOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
-//            dispatch_sync(dispatch_get_main_queue(), ^{
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"ToBuyLottery" object:nil];
-//            });
-//        }];
-//        [op2 addDependency:op1];
-//        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//        [queue waitUntilAllOperationsAreFinished];
-//        [queue addOperation:op1];
-//        [queue addOperation:op2];
-//    });
 }
 
 @end
