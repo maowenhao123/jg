@@ -140,6 +140,17 @@
     [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+#elif RR
+    //设置颜色
+    navBar.tintColor = YZBlackTextColor;
+    // 设置标题属性
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
+    [navBar setTitleTextAttributes:textAttrs];
+    // 设置背景
+    [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
+    //设置状态栏
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 #endif
 }
 
@@ -1111,6 +1122,8 @@
                 NSString * mcpStr = @"ZCmcp";
 #elif CS
                 NSString * mcpStr = @"CSmcp";
+#elif RR
+                NSString * mcpStr = @"RRmcp";
 #endif
                 NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&multiple=%@&amount=%@&number=%@&payType=%@&id=%@&channel=%@&childChannel=%@&version=%@&playType=%@&betType=%@&remark=%@",UserId,self.gameId,multiple,amount,[number URLEncodedString],@"ACCOUNT",@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],_playType,[self getBetType],mcpStr];
                 NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];

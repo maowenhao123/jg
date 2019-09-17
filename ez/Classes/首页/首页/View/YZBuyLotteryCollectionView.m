@@ -303,6 +303,8 @@
         return CGSizeMake(screenWidth / 3, cellH_zc);
 #elif CS
         return CGSizeMake(screenWidth / 3, cellH_zc);
+#elif RR
+        return CGSizeMake(screenWidth / 3, cellH_zc);
 #endif
     }else if (indexPath.section == 5){
         return CGSizeMake(screenWidth, informationCell);
@@ -375,6 +377,10 @@
         YZZCBuyLotteryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:gameInfoCellId_zc forIndexPath:indexPath];
         cell.status = self.gameInfos[indexPath.row];
         return cell;
+#elif RR
+        YZZCBuyLotteryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:gameInfoCellId_zc forIndexPath:indexPath];
+        cell.status = self.gameInfos[indexPath.row];
+        return cell;
 #endif
     }else if (indexPath.section == 5)
     {
@@ -441,6 +447,13 @@
     }
 }
 #elif CS
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (_buyLotteryDelegate && [_buyLotteryDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+        [_buyLotteryDelegate scrollViewDidScroll:self];
+    }
+}
+#elif RR
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (_buyLotteryDelegate && [_buyLotteryDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {

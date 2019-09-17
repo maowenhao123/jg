@@ -221,6 +221,8 @@
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
 #elif CS
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
+#elif RR
+    self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
 #endif
     
     //两个按钮
@@ -837,6 +839,8 @@
 #elif ZC
         NSString * mcpStr = @"ZCmcp";
 #elif CS
+        NSString * mcpStr = @"CSmcp";
+#elif RR
         NSString * mcpStr = @"CSmcp";
 #endif
         NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,self.winStopBtn.selected ? @true : @false,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];

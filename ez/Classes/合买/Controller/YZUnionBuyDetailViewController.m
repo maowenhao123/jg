@@ -17,6 +17,7 @@
 #import "YZLoginViewController.h"
 #import "YZNavigationController.h"
 #import "YZUnionBuyFollowRecordViewController.h"//合买跟单记录控制器
+#import "YZPublishUnionBuyCircleViewController.h"
 #import "JSON.h"
 #import "YZUnionBuyStatus.h"
 #import "YZCircleChart.h"
@@ -145,6 +146,9 @@
 {
     if (_isUnionBuyDetail) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"合买分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
+    }else
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"晒单" style:UIBarButtonItemStylePlain target:self action:@selector(baskOrder)];
     }
     CGFloat tableViewH = screenHeight - statusBarH - navBarH - 80 - [YZTool getSafeAreaBottom];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH) style:UITableViewStylePlain];
@@ -340,7 +344,7 @@
             label.text = [NSString stringWithFormat:@"方案标题：%@",_unionBuyStatus.title ? _unionBuyStatus.title : @"无"];
         }else if (i == 1)
         {
-            label.text = [NSString stringWithFormat:@"方案描述：%@", _unionBuyStatus.desc ? _unionBuyStatus.desc : @"无"];
+            label.text = [NSString stringWithFormat:@"个人宣言：%@", _unionBuyStatus.desc ? _unionBuyStatus.desc : @"无"];
         }
         CGSize labelSize = [label.text sizeWithFont:label.font maxSize:CGSizeMake(screenWidth -  2 * YZMargin, MAXFLOAT)];
         CGFloat labelY = CGRectGetMaxY(lastLabel.frame);
@@ -580,6 +584,7 @@
     
     return headerView;
 }
+
 #pragma mark - 确认按钮点击、参与合买
 - (void)bottomViewConfirmBtnClick
 {
@@ -598,26 +603,32 @@
         [self.view addSubview:changeNickNameView];
         return;
     }
+    YZStartUnionbuyModel *unionbuyModel = [[YZStartUnionbuyModel alloc] init];
+    unionbuyModel.gameId = self.unionBuyStatus.gameId;
+    unionbuyModel.userName = _unionBuyStatus.userName;
+    unionbuyModel.unionBuyPlanId = _unionBuyStatus.unionBuyPlanId;
+    unionbuyModel.planId = _unionBuyStatus.planId;
+    unionbuyModel.termId = self.unionBuyStatus.term.termId;
+    unionbuyModel.amount = self.unionBuyStatus.totalAmount;
+    unionbuyModel.multiple = self.unionBuyStatus.multiple;
+    unionbuyModel.commission = self.unionBuyStatus.commission;
+    unionbuyModel.settings = self.unionBuyStatus.settings;
+    unionbuyModel.desc = self.unionBuyStatus.desc;
+    unionbuyModel.money = @([self.bottomView.moneyTd.text integerValue] * 100);
+    unionbuyModel.singleMoney = _unionBuyStatus.singleMoney;
+    NSMutableArray * ticketList = [NSMutableArray array];
+    for (YZTicketList * ticketModel in self.unionBuyStatus.tickets) {
+        NSDictionary * ticketDic = @{
+                                     @"betType": ticketModel.betType,
+                                     @"numbers": ticketModel.numbers,
+                                     @"count": ticketModel.count
+                                     };
+        [ticketList addObject:ticketDic];
+    }
+    unionbuyModel.ticketList = ticketList;
+    unionbuyModel.unionBuyPlanId = self.unionBuyStatus.unionBuyPlanId;
     
-    YZStartUnionbuyModel *param = [[YZStartUnionbuyModel alloc] init];
-    param.gameId = self.gameId;
-    param.userName = _unionBuyStatus.userName;
-    param.unionBuyPlanId = _unionBuyStatus.unionBuyPlanId;
-    param.planId = _unionBuyStatus.planId;
-    param.money = @([self.bottomView.moneyTd.text integerValue] * 100);
-    param.singleMoney = _unionBuyStatus.singleMoney;
-    param.gameId = _unionBuyStatus.gameId;
-    param.termId = _unionBuyStatus.issue;
-    param.title = _unionBuyStatus.title;
-    param.desc = _unionBuyStatus.desc;
-    param.commission = _unionBuyStatus.commission;
-    param.deposit = _unionBuyStatus.deposit;
-    param.settings = _unionBuyStatus.settings;
-    param.multiple = _unionBuyStatus.multiple;
-    param.amount = _unionBuyStatus.totalAmount;
-    param.ticketList = _unionBuyStatus.tickets;
-    
-    [[YZUnionBuyComfirmPayTool shareInstance] participateUnionBuyOfAllWithParam:param sourceController:self];
+    [[YZUnionBuyComfirmPayTool shareInstance] participateUnionBuyOfAllWithParam:unionbuyModel sourceController:self];
 }
 - (void)confirmBtnDidClick:(NSString *)nickName
 {
@@ -784,6 +795,33 @@
     return attStr;
 }
 
+#pragma mark - 晒单
+- (void)baskOrder
+{
+    YZStartUnionbuyModel *unionbuyModel = [[YZStartUnionbuyModel alloc] init];
+    unionbuyModel.gameId = self.unionBuyStatus.gameId;
+    unionbuyModel.termId = self.unionBuyStatus.term.termId;
+    unionbuyModel.amount = self.unionBuyStatus.totalAmount;
+    unionbuyModel.multiple = self.unionBuyStatus.multiple;
+    unionbuyModel.commission = self.unionBuyStatus.commission;
+    unionbuyModel.settings = self.unionBuyStatus.settings;
+    unionbuyModel.desc = self.unionBuyStatus.desc;
+    NSMutableArray * ticketList = [NSMutableArray array];
+    for (YZTicketList * ticketModel in self.unionBuyStatus.tickets) {
+        NSDictionary * ticketDic = @{
+                                     @"betType": ticketModel.betType,
+                                     @"numbers": ticketModel.numbers,
+                                     @"count": ticketModel.count
+                                     };
+        [ticketList addObject:ticketDic];
+    }
+    unionbuyModel.ticketList = ticketList;
+    unionbuyModel.unionBuyPlanId = self.unionBuyStatus.unionBuyPlanId;
+    
+    YZPublishUnionBuyCircleViewController * publishCircleVC = [[YZPublishUnionBuyCircleViewController alloc] init];
+    publishCircleVC.unionbuyModel = unionbuyModel;
+    [self.navigationController pushViewController:publishCircleVC animated:YES];
+}
 #pragma mark - 分享
 - (void)share
 {
@@ -805,6 +843,8 @@
     UIImage * image = [UIImage imageNamed:@"logo1"];
 #elif CS
     UIImage * image = [UIImage imageNamed:@"logo1"];
+#elif RR
+    UIImage * image = [UIImage imageNamed:@"logo1"];
 #endif
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
     YZUser *user = [YZUserDefaultTool user];
@@ -817,6 +857,8 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
+#elif RR
+    [WXApi registerApp:WXAppIdOld withDescription:@"人人彩"];
 #endif
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {

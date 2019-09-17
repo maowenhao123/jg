@@ -7,9 +7,8 @@
 //
 
 #import "YZAddImageManage.h"
-#import "RSKImageCropper.h"
 
-@interface YZAddImageManage ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate>
+@interface YZAddImageManage ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -51,29 +50,13 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image];
-    imageCropVC.delegate = self;
-    if (self.isSquare) {
-        imageCropVC.cropMode=RSKImageCropModeSquare;
-    }else
-    {
-        imageCropVC.cropMode=RSKImageCropModeCircle;
-    }
-    [picker pushViewController:imageCropVC animated:YES];
-}
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self.viewController dismissViewControllerAnimated:YES completion:nil];
-}
-- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage usingCropRect:(CGRect)cropRect
-{
-    UIImage * croppedImage_ = [YZTool imageCompressionWithImage:croppedImage];
+    UIImage * croppedImage_ = [YZTool imageCompressionWithImage:image];
     if (_delegate && [_delegate respondsToSelector:@selector(imageManageCropImage:)]) {
         [_delegate imageManageCropImage:croppedImage_];
     }
-    [controller dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
-- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
 }

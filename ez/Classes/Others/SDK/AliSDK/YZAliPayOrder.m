@@ -47,6 +47,8 @@
                 NSString * appScheme = @"ZCAlipay";
 #elif CS
                 NSString * appScheme = @"CSAlipay";
+#elif RR
+                NSString * appScheme = @"RRAlipay";
 #endif
                 // NOTE: 调用支付结果开始支付
                 [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {

@@ -108,6 +108,30 @@
             name = [NSString stringWithFormat:@"guidePage%d_XMax_zc", index + 1];
         }
         imageView.image = [UIImage imageNamed:name];
+#elif RR
+        UIImageView *imageView = [[UIImageView alloc] init];
+        // 设置图片
+        NSString *name = [NSString stringWithFormat:@"guidePage%d_6P_zc", index + 1];
+        if (iPhone5)
+        {
+            name = [NSString stringWithFormat:@"guidePage%d_5_zc", index + 1];
+        }else if (iPhone6)
+        {
+            name = [NSString stringWithFormat:@"guidePage%d_6_zc", index + 1];
+        }else if (iPhone6P)
+        {
+            name = [NSString stringWithFormat:@"guidePage%d_6P_zc", index + 1];
+        }else if (iPhoneX)
+        {
+            name = [NSString stringWithFormat:@"guidePage%d_X_zc", index + 1];
+        }else if (iPhoneXR)
+        {
+            name = [NSString stringWithFormat:@"guidePage%d_XR_zc", index + 1];
+        }else if (iPhoneXSMax)
+        {
+            name = [NSString stringWithFormat:@"guidePage%d_XMax_zc", index + 1];
+        }
+        imageView.image = [UIImage imageNamed:name];
 #endif
         // 设置frame
         CGFloat imageX = index * imageW;

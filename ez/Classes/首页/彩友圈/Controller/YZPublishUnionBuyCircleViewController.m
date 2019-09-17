@@ -103,7 +103,8 @@
     lotteryView.backgroundColor = YZColor(255, 251, 243, 1);
     [self.view addSubview:lotteryView];
     
-    NSArray * lotteryMessages = @[[NSString stringWithFormat:@"%@ 第%@期", [YZTool gameIdNameDict][self.unionbuyModel.gameId], self.unionbuyModel.termId],
+    NSArray * lotteryMessages = @[[NSString stringWithFormat:@"合买宣言：%@", self.unionbuyModel.desc],
+                                  [NSString stringWithFormat:@"%@ 第%@期", [YZTool gameIdNameDict][self.unionbuyModel.gameId], self.unionbuyModel.termId],
                                   [NSString stringWithFormat:@"倍数：%@", self.unionbuyModel.multiple], [NSString stringWithFormat:@"金额：%.2f", [self.unionbuyModel.amount floatValue] / 100],
                                   [NSString stringWithFormat:@"佣金：%@%%", self.unionbuyModel.commission],
                                   [NSString stringWithFormat:@"方案：%@", [YZTool getSecretStatus:[self.unionbuyModel.settings integerValue]]]];
@@ -112,7 +113,14 @@
         NSString * betTypeStr = [[NSString stringWithFormat:@"%@", ticketDic[@"betType"]] isEqualToString:@"00"] ? @"[单式]" : @"[复式]";
         NSString *numbers = ticketDic[@"numbers"];
         numbers = [numbers stringByReplacingOccurrencesOfString:@";" withString:[NSString stringWithFormat:@"%@\n", betTypeStr]];
-        NSString * schemeContent_ = [NSString stringWithFormat:@"\n%@%@\n倍数：%@倍 注数：%d注", numbers, betTypeStr, self.unionbuyModel.multiple, [self.unionbuyModel.amount intValue] / 200 / [self.unionbuyModel.multiple intValue]];
+        int count = 0;
+        if ([ticketDic.allKeys containsObject:@"count"]) {
+            count = [ticketDic[@"count"] intValue];
+        }else
+        {
+            count = [self.unionbuyModel.amount intValue] / 200 / [self.unionbuyModel.multiple intValue];
+        }
+        NSString * schemeContent_ = [NSString stringWithFormat:@"\n%@%@\n倍数：%@倍 注数：%d注", numbers, betTypeStr, self.unionbuyModel.multiple, count];
         schemeContent = [NSString stringWithFormat:@"%@%@", schemeContent, schemeContent_];
     }
     NSMutableAttributedString * schemeContentAttStr = [[NSMutableAttributedString alloc] initWithString:schemeContent];
@@ -125,14 +133,14 @@
     CGFloat logoImageViewWH = 60;
     CGFloat logoMaxH = 0;
     CGFloat lastLabelMaxY = 3;
-    for(NSUInteger i = 0; i < 6; i++)
+    for(NSUInteger i = 0; i < 7; i++)
     {
         UILabel *label = [[UILabel alloc] init];
         label.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
         label.textColor = YZDrayGrayTextColor;
         label.numberOfLines = 0;
         CGSize labelSize;
-        if (i < 5) {
+        if (i < 6) {
             label.text = lotteryMessages[i];
             labelSize = [label.text sizeWithFont:label.font maxSize:CGSizeMake(screenWidth - 3 * YZMargin - logoImageViewWH, MAXFLOAT)];
         }else
@@ -143,7 +151,7 @@
         label.frame = CGRectMake(YZMargin, lastLabelMaxY + 9, labelSize.width, labelSize.height);
         [lotteryView addSubview:label];
         lastLabelMaxY = CGRectGetMaxY(label.frame);
-        if (i == 4) {
+        if (i == 5) {
             logoMaxH = lastLabelMaxY + 9;
         }
     }
@@ -158,6 +166,8 @@
     logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", self.unionbuyModel.gameId]];
 #elif CS
     logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", self.unionbuyModel.gameId]];
+#elif RR
+    logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", self.unionbuyModel.gameId]];
 #endif
     [lotteryView addSubview:logoImageView];
     
@@ -166,22 +176,6 @@
 
 - (void)publishBarDidClick
 {
-    /*
-     balance = 0;
-     bonus = 2;
-     channel = zhongcai;
-     childChannel = "zc_ios";
-     cmd = 8128;
-     giftBalance = 0;
-     grade = 3;
-     id = 20190703040026842;
-     payResult = "{}";
-     payType = ACCOUNT;
-     planId = 190703160026010000436;
-     retCode = 0;
-     retDesc = "\U6210\U529f";
-     unionBuyPlanId = 190703160026010000006;
-     unionBuyUserId = 190703160026010000022;*/
     waitingView
     NSInteger count = [self.unionbuyModel.amount intValue] / 200 / [self.unionbuyModel.multiple intValue];
     NSMutableArray * ticketList = [NSMutableArray array];
@@ -189,7 +183,9 @@
         NSMutableDictionary *ticketDic_ = [NSMutableDictionary dictionaryWithDictionary:ticketDic];
         [ticketDic_ setValue:self.unionbuyModel.gameId forKey:@"gameId"];
         [ticketDic_ setValue:self.unionbuyModel.multiple forKey:@"multiple"];
-        [ticketDic_ setValue:@(count) forKey:@"count"];
+        if (![ticketDic.allKeys containsObject:@"count"]) {
+            [ticketDic_ setValue:@(count) forKey:@"count"];
+        }
         [ticketList addObject:ticketDic_];
     }
     NSDictionary * extInfo = @{

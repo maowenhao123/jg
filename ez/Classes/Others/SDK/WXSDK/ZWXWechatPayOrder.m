@@ -32,6 +32,8 @@
     [WXApi registerApp:WXAppIdNew withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdNew withDescription:@"财多多"];
+#elif RR
+    [WXApi registerApp:WXAppIdNew withDescription:@"人人彩"];
 #endif
 
     NSString * payInfoJson = [@{@"clientType":@(1)} JSONRepresentation];

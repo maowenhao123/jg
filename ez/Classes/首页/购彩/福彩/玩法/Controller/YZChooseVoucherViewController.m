@@ -277,6 +277,8 @@
         NSString * mcpStr = @"ZCmcp";
 #elif CS
         NSString * mcpStr = @"CSmcp";
+#elif RR
+        NSString * mcpStr = @"CSmcp";
 #endif
         if (self.isJC) {
             [MBProgressHUD hideHUDForView:self.view];

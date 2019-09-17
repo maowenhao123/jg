@@ -112,7 +112,7 @@
     UIButton *copyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.vipcnButton = copyBtn;
     copyBtn.backgroundColor = [UIColor whiteColor];
-    [copyBtn setTitle:@"复制公众号" forState:UIControlStateNormal];
+    [copyBtn setTitle:@"复制微信号" forState:UIControlStateNormal];
     [copyBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
     copyBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     [copyBtn addTarget:self action:@selector(copyBtnClick) forControlEvents:UIControlEventTouchUpInside];
