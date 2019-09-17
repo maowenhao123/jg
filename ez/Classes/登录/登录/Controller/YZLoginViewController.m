@@ -288,7 +288,7 @@
     
     UIView * lastView;
     //输入框
-    NSArray * placeholders = @[@"用户名/手机号",@"登录密码"];
+    NSArray * placeholders = @[@"用户名/手机号", @"登录密码"];
     CGFloat textFieldH = 52;
     
     for (int i = 0; i < 2; i++) {
@@ -386,6 +386,17 @@
     [defaults synchronize];
     
     //第三方登录
+#if ZC
+    [self setupThirdPartyLogin];
+#elif CS
+    [self setupThirdPartyLogin];
+#elif RR
+    
+#endif
+}
+
+- (void)setupThirdPartyLogin
+{
     UIView *thirdPartyView = [[UIView alloc] initWithFrame:CGRectMake(0, screenHeight - [YZTool getSafeAreaBottom] - 83, screenWidth, 83)];
     thirdPartyView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:thirdPartyView];
@@ -433,7 +444,6 @@
         [thirdPartyView addSubview:thirdPartyBtn];
     }
 }
-    
 #pragma mark - 点击按钮
 - (void)buttonDidClick:(UIButton *)button
 {

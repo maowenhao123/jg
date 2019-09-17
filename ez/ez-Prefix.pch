@@ -183,9 +183,6 @@
 #define currentZhexian @"currentZhexian"
 #define currentHouliangwei @"currentHouliangwei"
 
-//URL
-#define baseH5Url @"http://s.51mcp.com"
-
 //------------------------- 第三方Id ----------------------------
 #if JG
 //------------------------- 九歌彩票 ----------------------------

@@ -6,6 +6,7 @@
 //  Copyright © 2016年 9ge. All rights reserved.
 //
 #import "YZAccountInfoViewController.h"
+#import "YZPosternViewController.h"
 #import "YZNicknameViewController.h"
 #import "YZShowNickNameViewController.h"
 #import "YZShowPhoneViewController.h"
@@ -22,6 +23,7 @@
     self.title = @"个人资料";
     [self setupChilds];
 }
+
 - (void)setupChilds
 {
     NSArray *titles = @[@"用户名称",@"昵称",@"实名认证",@"手机号码",@"银行卡号",@"修改密码"];
@@ -35,7 +37,6 @@
         if (i != 0) {
            [button setBackgroundImage:[UIImage ImageFromColor:YZColor(233, 233, 233, 1) WithRect:button.bounds] forState:UIControlStateHighlighted];
         }
-        [button addTarget:self action:@selector(viewTap:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
         lastView = button;
         
@@ -64,6 +65,8 @@
             UIImageView * accessoryImageView = [[UIImageView alloc]initWithFrame:CGRectMake(screenWidth - 15 - accessoryW, (YZCellH - accessoryH) / 2, accessoryW, accessoryH)];
             accessoryImageView.image = [UIImage imageNamed:@"accessory_dray"];
             [button addSubview:accessoryImageView];
+
+            [button addTarget:self action:@selector(viewTap:) forControlEvents:UIControlEventTouchUpInside];
         }
         //分割线
         if (i != 5) {
@@ -81,7 +84,20 @@
     CGSize size = [footerLabel.text sizeWithLabelFont:footerLabel.font];
     footerLabel.frame = CGRectMake(YZMargin, CGRectGetMaxY(lastView.frame) + 10, screenWidth - YZMargin * 2, size.height);
     [self.view addSubview:footerLabel];
+    
+    UITapGestureRecognizer * posternTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(posternTap)];
+    posternTap.numberOfTapsRequired = 5;
+    footerLabel.userInteractionEnabled = YES;
+    [footerLabel addGestureRecognizer:posternTap];
 }
+
+//后门
+- (void)posternTap
+{
+    YZPosternViewController * posternVC = [[YZPosternViewController alloc]init];
+    [self.navigationController pushViewController:posternVC animated:YES];
+}
+
 - (void)viewTap:(UIButton *)button
 {
     if (button.tag == 1) {

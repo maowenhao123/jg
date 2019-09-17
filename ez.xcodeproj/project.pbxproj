@@ -1131,6 +1131,10 @@
 		1DE6201A22CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6201922CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.m */; };
 		1DE6201B22CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6201922CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.m */; };
 		1DE6201C22CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6201922CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.m */; };
+		1DF156FF2327A04000A7B788 /* YZPosternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF156FE2327A04000A7B788 /* YZPosternViewController.m */; };
+		1DF157002327A04700A7B788 /* YZPosternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF156FE2327A04000A7B788 /* YZPosternViewController.m */; };
+		1DF157012327A04700A7B788 /* YZPosternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF156FE2327A04000A7B788 /* YZPosternViewController.m */; };
+		1DF157022327A04800A7B788 /* YZPosternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF156FE2327A04000A7B788 /* YZPosternViewController.m */; };
 		1DF418DB22C5AC3100D57367 /* YZCircleMineCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF418DA22C5AC3100D57367 /* YZCircleMineCommentTableView.m */; };
 		1DF418DC22C5AC3100D57367 /* YZCircleMineCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF418DA22C5AC3100D57367 /* YZCircleMineCommentTableView.m */; };
 		1DF418DD22C5AC3100D57367 /* YZCircleMineCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF418DA22C5AC3100D57367 /* YZCircleMineCommentTableView.m */; };
@@ -3350,6 +3354,8 @@
 		1DE6201022CC511900C1490E /* YZAddImageCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZAddImageCollectionViewCell.m; sourceTree = "<group>"; };
 		1DE6201822CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZPublishUnionBuyCircleViewController.h; sourceTree = "<group>"; };
 		1DE6201922CDD9A700C1490E /* YZPublishUnionBuyCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZPublishUnionBuyCircleViewController.m; sourceTree = "<group>"; };
+		1DF156FD2327A04000A7B788 /* YZPosternViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZPosternViewController.h; sourceTree = "<group>"; };
+		1DF156FE2327A04000A7B788 /* YZPosternViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZPosternViewController.m; sourceTree = "<group>"; };
 		1DF418D922C5AC3100D57367 /* YZCircleMineCommentTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCircleMineCommentTableView.h; sourceTree = "<group>"; };
 		1DF418DA22C5AC3100D57367 /* YZCircleMineCommentTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCircleMineCommentTableView.m; sourceTree = "<group>"; };
 		1DF418DE22C5AC6800D57367 /* YZCircleMineCommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCircleMineCommentTableViewCell.h; sourceTree = "<group>"; };
@@ -5744,6 +5750,8 @@
 			children = (
 				AA3290BD1FFE20A800CA77DA /* YZAccountInfoViewController.h */,
 				AA3290BE1FFE20A800CA77DA /* YZAccountInfoViewController.m */,
+				1DF156FD2327A04000A7B788 /* YZPosternViewController.h */,
+				1DF156FE2327A04000A7B788 /* YZPosternViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -8760,7 +8768,7 @@
 					};
 					AA237D892143590C00BC47BB = {
 						DevelopmentTeam = 65FQR43XBY;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					AA67A01C1FAC150100B3611B = {
 						DevelopmentTeam = 65FQR43XBY;
@@ -9379,6 +9387,7 @@
 				1DCA1AA62327376100F2061B /* FMDatabaseAdditions.m in Sources */,
 				1DCA1AA72327376100F2061B /* YZFCOrderDetailTableViewCell.m in Sources */,
 				1DCA1AA82327376100F2061B /* YZNoDataTableViewCell.m in Sources */,
+				1DF157022327A04800A7B788 /* YZPosternViewController.m in Sources */,
 				1DCA1AA92327376100F2061B /* YZSetmealBetViewController.m in Sources */,
 				1DCA1AAA2327376100F2061B /* YZCircleDetailViewController.m in Sources */,
 				1DCA1AAB2327376100F2061B /* YZNamePhoneBindingViewController.m in Sources */,
@@ -10039,6 +10048,7 @@
 				AA237E5A2143590C00BC47BB /* FMDatabaseAdditions.m in Sources */,
 				AA237E5B2143590C00BC47BB /* YZFCOrderDetailTableViewCell.m in Sources */,
 				AA237E5C2143590C00BC47BB /* YZNoDataTableViewCell.m in Sources */,
+				1DF157012327A04700A7B788 /* YZPosternViewController.m in Sources */,
 				AA237E5D2143590C00BC47BB /* YZSetmealBetViewController.m in Sources */,
 				AA237E5E2143590C00BC47BB /* YZCircleDetailViewController.m in Sources */,
 				AA237E5F2143590C00BC47BB /* YZNamePhoneBindingViewController.m in Sources */,
@@ -10611,6 +10621,7 @@
 				AA74EA591FFE17DE003B53AF /* HDMessageReadManager.m in Sources */,
 				AA74ECA01FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */,
 				AA74EB051FFE17DF003B53AF /* HDBubbleView.m in Sources */,
+				1DF156FF2327A04000A7B788 /* YZPosternViewController.m in Sources */,
 				AA74E12D1FFE0A86003B53AF /* YZOrderStatus.m in Sources */,
 				AA3292F71FFE27B600CA77DA /* YZTitleButton.m in Sources */,
 				A90CFE69206E0F030094CD38 /* YZGiveVoucherModel.m in Sources */,
@@ -11366,6 +11377,7 @@
 				AA328AE022927BFD00605090 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				1DBD8E6422CB2C250024CF7B /* SDWebImageDownloaderOperation.m in Sources */,
 				AA3293C21FFE27B700CA77DA /* YZFBMatchDetailOddsContentTableViewCell.m in Sources */,
+				1DF157002327A04700A7B788 /* YZPosternViewController.m in Sources */,
 				AA74E0E41FFE0A4C003B53AF /* YZUnionBuyFollowUserCell.m in Sources */,
 				AA3293961FFE27B700CA77DA /* YZOverUnderCellStatus.m in Sources */,
 				AA74EBD41FFE17E0003B53AF /* FMDatabaseAdditions.m in Sources */,
@@ -11808,7 +11820,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mao wenhao (XZPLR55U48)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
@@ -11865,7 +11877,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rrc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = dcs_dev_22;
+				PROVISIONING_PROFILE_SPECIFIER = rr_dev_38;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -11884,7 +11896,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
@@ -11938,7 +11950,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rrc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = dcs_appstore;
+				PROVISIONING_PROFILE_SPECIFIER = rr_adHoc_38;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -11956,10 +11968,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -12010,7 +12022,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rrc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = rr_adHoc_38;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -12029,7 +12041,7 @@
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -12085,7 +12097,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.dcs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = dcs_dev_22;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -12103,9 +12115,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -12158,7 +12170,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.dcs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = dcs_appstore;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -12175,11 +12187,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
