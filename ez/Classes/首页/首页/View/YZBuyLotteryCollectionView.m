@@ -123,11 +123,14 @@
             NSArray *functions = [YZHomePageFunctionModel objectArrayWithKeyValuesArray:json[@"shortcutModules"]];
             NSMutableArray *functions_mu = [NSMutableArray array];
             for (YZHomePageFunctionModel * functionModel in functions) {
-                if (![functionModel.type isEqualToString:@"COMMUNITY"]) {
+                if (![functionModel.type isEqualToString:@"COMMUNITY"] && ![functionModel.type isEqualToString:@"UNIONPLAN"]) {
                     [functions_mu addObject:functionModel];
                 }
             }
             self.functions = [NSArray arrayWithArray:functions];
+#if RR
+            self.functions = [NSArray arrayWithArray:functions_mu];
+#endif
             [UIView performWithoutAnimation:^{
                 [self reloadSections:[NSIndexSet indexSetWithIndex:1]];
             }];
@@ -228,6 +231,10 @@
 //获取资讯
 - (void)getInformationDataWith:(MJRefreshGifHeader *)header
 {
+#if RR
+    [self.footer endRefreshingWithNoMoreData];
+    return;
+#endif
     NSDictionary *dict = @{
                            @"pageIndex":@(self.pageIndex),
                            @"pageSize":@(10)

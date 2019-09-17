@@ -37,7 +37,7 @@ typedef enum : NSUInteger {
 #elif CS
 #define mainChannel @"caidd"
 #elif RR
-#define mainChannel @"zhongcai"
+#define mainChannel @"rrcai"
 #endif
 
 #define jumpURLStr @"http://html5.51mcp.com/ios/confirm.jsp"
@@ -54,24 +54,24 @@ typedef enum : NSUInteger {
 //#elif CS
 //#define childChannel @"caidd_ios_taylor"
 //#elif RR
-//#define childChannel @"rr_ios_taylor"
+//#define childChannel @"rrcai_ios_taylor"
 //#endif
 
-//正式环境
-#define baseUrl @"http://www1.51mcp.com"
-#define shareBaseUrl @"https://cp.ez1898.com"
-#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
-
-#if JG
-#define childChannel @"ios_0001"
-//#define childChannel @"ios_taylor"
-#elif ZC
-#define childChannel @"zc_ios_0001"
-#elif CS
-#define childChannel @"zc_ios"
-#elif RR
-#define childChannel @"zc_ios_0001"
-#endif
+////正式环境
+//#define baseUrl @"http://www1.51mcp.com"
+//#define shareBaseUrl @"https://cp.ez1898.com"
+//#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
+//
+//#if JG
+//#define childChannel @"ios_0001"
+////#define childChannel @"ios_taylor"
+//#elif ZC
+//#define childChannel @"zc_ios_0001"
+//#elif CS
+//#define childChannel @"zc_ios"
+//#elif RR
+//#define childChannel @"rrcai_ios_taylor"
+//#endif
 
 ////测试环境
 //#define baseUrl @"http://c.ez1898.com"
@@ -85,8 +85,18 @@ typedef enum : NSUInteger {
 //#elif CS
 //#define childChannel @"zhongcai_ios"
 //#elif RR
-//#define childChannel @"rr_ios_test"
+//#define childChannel @"rrcai_ios_taylor"
 //#endif
+
+//URL
+//#define baseH5Url @"http://s.51mcp.com"
+
+//人人彩
+#define baseUrl @"http://api.qgmzn.com"
+#define shareBaseUrl [NSString stringWithFormat:@"%@/stakerules",baseUrl]
+#define baseH5Url @"http://s.51mcp.com"
+#define mcpUrl [NSString stringWithFormat:@"%@",baseUrl]
+#define childChannel @"rrcai_ios_taylor"
 
 #define BaseUrl(param) [NSString stringWithFormat:@"%@/%@", baseUrl, param]
 //极光推送url
