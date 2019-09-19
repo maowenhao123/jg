@@ -95,7 +95,7 @@ typedef enum : NSUInteger {
 #define baseUrl @"http://api.qgmzn.com"
 #define shareBaseUrl [NSString stringWithFormat:@"%@/stakerules",baseUrl]
 #define baseH5Url @"http://s.51mcp.com"
-#define mcpUrl [NSString stringWithFormat:@"%@",baseUrl]
+#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
 #define childChannel @"rrcai_ios_taylor"
 
 #define BaseUrl(param) [NSString stringWithFormat:@"%@/%@", baseUrl, param]

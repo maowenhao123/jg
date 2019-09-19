@@ -351,7 +351,13 @@
     registerBtn.layer.cornerRadius = loginBtn.height / 2;
     registerBtn.layer.borderColor = YZBaseColor.CGColor;
     registerBtn.layer.borderWidth = 1;
+#if ZC
     [registerBtn addTarget:self action:@selector(quickLoginDidClick:) forControlEvents:UIControlEventTouchUpInside];
+#elif CS
+    [registerBtn addTarget:self action:@selector(quickLoginDidClick:) forControlEvents:UIControlEventTouchUpInside];
+#elif RR
+    [registerBtn addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];
+#endif
     [self.view addSubview:registerBtn];
     lastView = registerBtn;
     

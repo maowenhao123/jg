@@ -61,19 +61,30 @@
     CGFloat scale = 0.9;
     CGFloat backImageViewW = 260 * scale;
     CGFloat backImageViewH = 77 * scale;
+#if RR
+    backImageViewW = 280;
+    backImageViewH = 140;
+#endif
     CGFloat backImageViewX = (screenWidth - backImageViewW) / 2;
     CGFloat backImageViewY = CGRectGetMaxY(promptLabel.frame) + 26;
     UIImageView * backImageView = [[UIImageView alloc]init];
     backImageView.frame = CGRectMake(backImageViewX, backImageViewY, backImageViewW, backImageViewH);
     backImageView.image = [UIImage imageNamed:@"no_order_back_icon"];
+#if RR
+    backImageView.image = [UIImage imageNamed:@"no_order_back_icon_rr"];
+#endif
     [self addSubview:backImageView];
     
     //选球的白色背景
-    CGFloat ballViewX = 13 * scale;
-    CGFloat ballViewY = 17 * scale;
     CGFloat ballViewW = 227 * scale;
     CGFloat ballViewH = 45 * scale;
-        UIView * ballView = [[UIView alloc]init];
+    CGFloat ballViewX = 13 * scale;
+    CGFloat ballViewY = 17 * scale;
+#if RR
+    ballViewX = (backImageView.width - ballViewW) / 2;
+    ballViewY = (backImageView.height - ballViewH) / 2;
+#endif
+    UIView * ballView = [[UIView alloc]init];
     self.ballView = ballView;
     ballView.frame = CGRectMake(ballViewX, ballViewY, ballViewW, ballViewH);
     ballView.layer.masksToBounds = YES;
@@ -82,9 +93,13 @@
     //换一注
     CGFloat afreshButtonW = 48 * scale;
     CGFloat afreshButtonH = 77 * scale;
+    CGFloat afreshButtonY = backImageView.y + 3;
+#if RR
+    afreshButtonY = backImageView.y + backImageView.height * 0.2;
+#endif
     UIButton * afreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.afreshButton = afreshButton;
-    afreshButton.frame = CGRectMake(CGRectGetMaxX(backImageView.frame) - 3, backImageView.y + 3, afreshButtonW, afreshButtonH);
+    afreshButton.frame = CGRectMake(CGRectGetMaxX(backImageView.frame) - 3, afreshButtonY, afreshButtonW, afreshButtonH);
     [afreshButton setImage:[UIImage imageNamed:@"no_order_afresh_up"] forState:UIControlStateNormal];
     [afreshButton setImage:[UIImage imageNamed:@"no_order_afresh_down"] forState:UIControlStateHighlighted];
     [afreshButton setImage:[UIImage imageNamed:@"no_order_afresh_down"] forState:UIControlStateSelected];

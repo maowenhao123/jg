@@ -59,15 +59,17 @@
         [self registerClass];
         [MBProgressHUD showMessage:@"获取数据，客官请稍后..." toView:self];
         [self getFunctionData];
-        [self getQuickStakeData];
         [self getNoticeData];
         [self getGameInfoDataWith:nil];
         [self getInformationDataWith:nil];
 #if JG
+        [self getQuickStakeData];
         [self getAllUnionBuyStatus];
 #elif ZC
+        [self getQuickStakeData];
         [self getAllUnionBuyStatus];
 #elif CS
+        [self getQuickStakeData];
         [self getAllUnionBuyStatus];
 #elif RR
 #endif
@@ -294,6 +296,9 @@
         }
     }else if (indexPath.section == 2)
     {
+#if RR
+        return CGSizeMake(screenWidth, 1);
+#endif
         if (!YZObjectIsEmpty(self.quickStakeGameModel) || !YZObjectIsEmpty(self.unionBuyStatus)) {
             return CGSizeMake(screenWidth, 115);
         }else

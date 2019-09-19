@@ -281,11 +281,11 @@
 #define SinaAPPId @"1477364888"
 #define SinaAppSecret @"7393ae25d46932c98c3d80c62eb9aa81"
 //环信
-#define CECAppKey @"1490171102061257#kefuchannelapp49141"
-#define CECTenantId @"73270"
-#define CECClientID @"YXA6U4KPIL-fEeeY6zkqX_FtKQ"
-#define CECClientSecret @"YXA6Apq1gCZL1pGTMlBs3V1fOk6nsww"
-#define CECIM @"kefuchannelimid_030441"
+#define CECAppKey @"1412190919061768#kefuchannelapp74590"
+#define CECTenantId @"108989"
+#define CECClientID @"YXA60gYDMNqhEemYEud_Uvagww"
+#define CECClientSecret @"YXA6LCxLE_Z60OH0ep42cBodRz4vQho"
+#define CECIM @"kefuchannelimid_847760"
 //一键登录
 #define TYRZAPPId @"300011887762"
 #define TYRZAPPKey @"E7F678DC2555A94DE78653FE3BE916F1"

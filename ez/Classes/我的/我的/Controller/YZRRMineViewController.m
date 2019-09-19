@@ -20,7 +20,7 @@
 #import "YZLoadHtmlFileController.h"
 #import "YZShareProfitsViewController.h"
 #import "YZWeChatPublicViewController.h"
-#import "YZChatViewController.h"
+#import "YZServiceListViewController.h"
 #import "YZThirdPartyStatus.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+YZ.h"
@@ -518,67 +518,13 @@
         [self.navigationController pushViewController:messageVC animated:YES];
     }else if (button.tag == 101)
     {
-        YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] initWithFileName:@"help.htm"];
+        YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] initWithWeb:[NSString stringWithFormat:@"%@/helpbuy", baseUrl]];
         [self.navigationController pushViewController:htmlVc animated:YES];
     }else if (button.tag == 102)
     {
-        [self chatDidBarClick];
+        YZServiceListViewController * serviceListVC = [[YZServiceListViewController alloc]init];
+        [self.navigationController pushViewController:serviceListVC animated:YES];
     }
-}
-
-- (void)chatDidBarClick
-{
-    //注册
-    NSDictionary *dict = @{
-                           @"userId":UserId,
-                           };
-    waitingView
-    [[YZHttpTool shareInstance] postWithURL:BaseUrlEasemob(@"/register") params:dict success:^(id json) {
-        if (SUCCESS) {
-            YZLog(@"%@", json);
-            //异步登录
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                HChatClient *client = [HChatClient sharedClient];
-                HError *error = [client loginWithUsername:json[@"userInfo"][@"username"] password:json[@"userInfo"][@"password"]];
-                if (!error)
-                {
-                    YZLog(@"登录成功");
-                    YZUser *user = [YZUserDefaultTool user];
-                    [[EMClient sharedClient] setApnsNickname:user.nickName];
-                    EMPushOptions *options = [[EMClient sharedClient] pushOptions];
-                    options.displayStyle = EMPushDisplayStyleMessageSummary;// 显示消息内容
-                    EMError *pushError = [[EMClient sharedClient] updatePushOptionsToServer]; // 更新配置到服务器，该方法为同步方法，如果需要，请放到单独线程
-                    if(!pushError) {
-                        YZLog(@"更新成功");
-                    }else {
-                        YZLog(@"更新失败");
-                    }
-                    
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideHUDForView:self.view];
-                        // 进入会话页面
-                        YZChatViewController *chatVC = [[YZChatViewController alloc] initWithConversationChatter:CECIM];
-                        chatVC.title = @"在线客服";
-                        [self.navigationController pushViewController:chatVC animated:YES];
-                    });
-                } else
-                {
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD hideHUDForView:self.view];
-                        [MBProgressHUD showError:@"发起聊天失败"];
-                    });
-                }
-            });
-        }else
-        {
-            [MBProgressHUD hideHUDForView:self.view];
-            ShowErrorView
-        }
-    } failure:^(NSError *error)
-     {
-         YZLog(@"error = %@",error);
-         [MBProgressHUD hideHUDForView:self.view];
-     }];
 }
 
 #pragma mark - 初始化

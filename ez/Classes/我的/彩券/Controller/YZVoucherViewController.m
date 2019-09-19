@@ -201,6 +201,9 @@
     if (respCouponList.count == 0) {
         YZNoDataTableViewCell *cell = [YZNoDataTableViewCell cellWithTableView:tableView cellId:@"noVoucherCell"];
         cell.imageName = @"no_voucher";
+#if RR
+        cell.imageName = @"no_voucher_rr";
+#endif
         cell.noDataStr = @"暂时没有彩券";
         return cell;
     }else

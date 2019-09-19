@@ -176,6 +176,13 @@
         //快速投注 胜负彩 四场进球不显示快速投注
         bottomButtonTitles = @[@"快速投注", @"晒单"];
     }
+#if RR
+    bottomButtonTitles = @[];
+    if (!(self.isScheme || [self.gameId isEqualToString:@"T53"] || [self.gameId isEqualToString:@"T54"])) {
+        //快速投注 胜负彩 四场进球不显示快速投注
+        bottomButtonTitles = @[@"快速投注"];
+    }
+#endif
     CGFloat bottomButtonW = screenWidth / bottomButtonTitles.count;
     for (int i = 0; i < bottomButtonTitles.count; i++) {
         YZBottomButton * bottomButton = [YZBottomButton buttonWithType:UIButtonTypeCustom];

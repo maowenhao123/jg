@@ -27,8 +27,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+#if JG
         [self setupChilds];
         [self addTimer];
+#elif ZC
+        [self setupChilds];
+        [self addTimer];
+#elif CS
+        [self setupChilds];
+        [self addTimer];
+#elif RR
+#endif
     }
     return self;
 }

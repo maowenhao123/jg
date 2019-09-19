@@ -231,21 +231,11 @@
     }else if (indexPath.section == 2)
     {
         if (indexPath.row == 0) {//购彩帮助
-#if RR
-            YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] initWithWeb:[NSString stringWithFormat:@"%@/helpbuy", baseUrl]];
-            [self.navigationController pushViewController:htmlVc animated:YES];
-            return;
-#endif
             YZLoadHtmlFileController *htmlVc1 = [[YZLoadHtmlFileController alloc] initWithFileName:@"help.htm"];
             htmlVc1.title = @"购彩帮助";
             [self.navigationController pushViewController:htmlVc1 animated:YES];
         }else if (indexPath.row == 1)//关于我们
         {
-#if RR
-            YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] initWithWeb:[NSString stringWithFormat:@"%@/about", baseUrl]];
-            [self.navigationController pushViewController:htmlVc animated:YES];
-            return;
-#endif
             YZLoadHtmlFileController *htmlVc1 = [[YZLoadHtmlFileController alloc] initWithFileName:@"about.htm"];
             htmlVc1.title = @"关于我们";
             [self.navigationController pushViewController:htmlVc1 animated:YES];

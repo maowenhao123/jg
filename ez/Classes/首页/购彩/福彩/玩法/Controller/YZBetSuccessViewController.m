@@ -185,9 +185,15 @@
         publishCircleBtn.y = CGRectGetMaxY(shareButton.frame) + 20;
         [publishCircleBtn setTitle:@"合买晒单" forState:UIControlStateNormal];
         [publishCircleBtn addTarget:self action:@selector(publishCircleBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+#if ZC
         [scrollView addSubview:publishCircleBtn];
-        
         lastView = publishCircleBtn;
+#elif CS
+        [scrollView addSubview:publishCircleBtn];
+        lastView = publishCircleBtn;
+#elif RR
+        lastView = shareButton;
+#endif
     }
     
     //继续投注
