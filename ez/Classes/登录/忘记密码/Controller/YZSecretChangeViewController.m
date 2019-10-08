@@ -138,6 +138,9 @@
     nextButton.enabled = NO;//默认不可选
     [self.view addSubview:nextButton];
     
+#if RR
+    return;
+#endif
     //联系客服按钮
     UILabel * promptLabel = [[UILabel alloc]init];
     promptLabel.text = @"客服电话";

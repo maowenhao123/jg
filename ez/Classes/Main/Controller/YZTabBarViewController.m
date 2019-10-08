@@ -394,6 +394,12 @@
                            @"userId":UserId,
                            @"version":@"0.0.2"
                            };
+#if RR
+    dict = @{
+             @"userId":UserId,
+             @"version":@"0.0.1"
+             };
+#endif
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getGuide") params:dict success:^(id json) {
         YZLog(@"getGuide:%@",json);
         if (SUCCESS) {

@@ -108,13 +108,25 @@
     //温馨提示
     UILabel *tishi = [[UILabel alloc] init];
     tishi.numberOfLines = 0;
-    tishi.textColor = YZGrayTextColor;
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、充值免手续费，充值金额不可提现\n 2、交易限额由发卡银行统一设定，若超出限额请更换银行卡\n3、如充值未到账，请及时联系客服"];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:5];
-    [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
-    tishi.attributedText = attStr;
+    if (!YZStringIsEmpty(self.intro))
+    {
+        NSDictionary *optoins = @{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType};
+        NSData *data = [self.intro dataUsingEncoding:NSUnicodeStringEncoding];
+        NSError * error;
+        NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:&error];
+        if (!error) {
+            tishi.attributedText = attributeString;
+        }
+    }else
+    {
+        tishi.textColor = YZGrayTextColor;
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、充值免手续费，充值金额不可提现\n 2、交易限额由发卡银行统一设定，若超出限额请更换银行卡\n3、如充值未到账，请及时联系客服"];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:5];
+        [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
+        tishi.attributedText = attStr;
+    }
     CGFloat tishiW = screenWidth - 2 * YZMargin;
     CGSize tishiSize = [tishi.attributedText boundingRectWithSize:CGSizeMake(tishiW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     CGFloat tishiY = CGRectGetMaxY(rechargeBtn.frame) + 10;

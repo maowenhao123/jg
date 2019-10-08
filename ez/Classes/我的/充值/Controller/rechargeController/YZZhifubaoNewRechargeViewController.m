@@ -63,26 +63,38 @@
     [self.view addSubview:lineView];
     //转账说明
     UILabel * explainLabel = [[UILabel alloc]init];
-    explainLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
     explainLabel.numberOfLines = 0;
-    explainLabel.textColor = YZGrayTextColor;
+    if (!YZStringIsEmpty(self.intro))
+    {
+        NSDictionary *optoins = @{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType};
+        NSData *data = [self.intro dataUsingEncoding:NSUnicodeStringEncoding];
+        NSError * error;
+        NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:&error];
+        if (!error) {
+            explainLabel.attributedText = attributeString;
+        }
+    }else
+    {
+        explainLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
+        explainLabel.textColor = YZGrayTextColor;
 #if JG
-    NSString * string = @"转账说明:\n1、复制以上账户(九歌公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
+        NSString * string = @"转账说明:\n1、复制以上账户(九歌公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
 #elif ZC
-    NSString * string = @"转账说明:\n1、复制以上账户(中彩迅达公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
+        NSString * string = @"转账说明:\n1、复制以上账户(中彩迅达公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
 #elif CS
-    NSString * string = @"转账说明:\n1、复制以上账户(中彩迅达公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
+        NSString * string = @"转账说明:\n1、复制以上账户(中彩迅达公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
 #elif RR
-    NSString * string = @"转账说明:\n1、复制以上账户(中彩迅达公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
+        NSString * string = @"转账说明:\n1、复制以上账户(人人彩公司专有支付宝账户)并使用您的个人支付宝为该账户转账即可充值彩金。\n2、为确保彩金顺利到账，转账时“必须”在备注栏中注明您的购彩手机号码。\n3、转账后将由专职人员为您充值彩金，工作日充值时间段为9:30~18:00，当日18点以后的转账请求将顺延到下一工作日。\n4、周末和节假日的充值请求将顺延到之后的第一个工作日。\n5、充值金额不可提现，奖金可以提现。彩金将在您转账后10分钟内到账，如未到账可通过客服QQ、微信或拨打客服电话4007001898查询。";
 #endif
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:string];
-    NSString * redString = @"转账时“必须”在备注栏中注明您的购彩手机号码。";
-    [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:[string rangeOfString:redString]];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:5];
-    [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
-    explainLabel.attributedText = attStr;
-    CGSize explainSize = [explainLabel.text sizeWithFont:explainLabel.font maxSize:CGSizeMake(screenWidth - 2 * YZMargin, MAXFLOAT)];
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:string];
+        NSString * redString = @"转账时“必须”在备注栏中注明您的购彩手机号码。";
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:[string rangeOfString:redString]];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:5];
+        [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
+        explainLabel.attributedText = attStr;
+    }
+    CGSize explainSize = [explainLabel.attributedText boundingRectWithSize:CGSizeMake(screenWidth - 2 * YZMargin, MAXFLOAT) options:0 context:nil].size;
     CGFloat explainH = explainSize.height;
     explainLabel.frame = CGRectMake(YZMargin, 170, screenWidth - 2 * YZMargin, explainH);
     [self.view addSubview:explainLabel];

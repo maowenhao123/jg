@@ -802,7 +802,6 @@
 - (void)getCurrentTermData
 {
     if(_nextOpenRemainSeconds > 0) return;
-    [MBProgressHUD showNoBackgroundViewMessage:nil toView:self.view point:CGPointMake(0, -20)];
     NSDictionary *dict = @{
                            @"cmd":@(8026),
                            @"gameId":self.gameId
@@ -878,12 +877,10 @@
                            @"issueId":termId
                            };
     [[YZHttpTool shareInstance] postWithURL:[NSString stringWithFormat:@"%@%@",baseUrl,@"/misstrend/getMissNumber"] params:dict success:^(id json) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (SUCCESS) {
             [self setTrendDataByJson:json];
         }
     } failure:^(NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         YZLog(@"getMissNumber - error = %@",error);
     }];
 }

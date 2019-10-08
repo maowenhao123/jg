@@ -150,6 +150,9 @@
     confirmButton.enabled = NO;
     [self.view addSubview:confirmButton];
     
+#if RR
+    return;
+#endif
     //联系客服按钮
     UILabel * promptLabel = [[UILabel alloc]init];
     promptLabel.text = @"客服电话";

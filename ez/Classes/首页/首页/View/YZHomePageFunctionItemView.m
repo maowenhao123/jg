@@ -14,6 +14,7 @@
 #import "YZInformationH5ViewController.h"
 #import "YZRechargeListViewController.h"
 #import "YZVoucherViewController.h"
+#import "YZServiceListViewController.h"
 #import "YZCircleViewController.h"
 #import "UIImageView+WebCache.h"
 
@@ -125,6 +126,33 @@
         }
         YZCircleViewController * messageVC = [[YZCircleViewController alloc] init];
         [self.viewController.navigationController pushViewController:messageVC animated:YES];
+    }else if ([self.functionModel.type isEqualToString:@"KEFU"])//在线客服列表
+    {
+        if (!UserId) {
+            YZLoginViewController *login = [[YZLoginViewController alloc] init];
+            YZNavigationController *nav = [[YZNavigationController alloc] initWithRootViewController:login];
+            [self.viewController presentViewController:nav animated:YES completion:nil];
+            return;
+        }
+        YZServiceListViewController * contactServiceVC = [[YZServiceListViewController alloc]init];
+        [self.viewController.navigationController pushViewController:contactServiceVC animated:YES];
+    }else if ([self.functionModel.type isEqualToString:@"ORDER"])//订单列表
+    {
+        NSBlockOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self.viewController.navigationController popToRootViewControllerAnimated:NO];
+            });
+        }];
+        NSBlockOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:RefreshRecordNote object:@(0)];
+            });
+        }];
+        [op2 addDependency:op1];
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        [queue waitUntilAllOperationsAreFinished];
+        [queue addOperation:op1];
+        [queue addOperation:op2];
     }
 }
 

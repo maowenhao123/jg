@@ -135,14 +135,26 @@
     
     //提示文字
     UILabel *promptLabel = [[UILabel alloc] init];
-    promptLabel.textColor = YZGrayTextColor;
     promptLabel.numberOfLines = 0;
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、运营商收取充值卡面额3%的服务费，在充值金额中直接扣除；\n2、请务必选择与充值卡面额相同的金额，否则会导致支付不成功，或资金丢失。（如：使用面额100元的充值卡但选择50元，高于50元部分不返还）\n3、充值金额不可提现，奖金可以提现。\n\n全国通用的移动卡（序列号17位，密码18位）\n全国通用的联通卡（序列号15位，密码19位）\n全国通用的电信卡（序列号19位，密码18位）\n福建地方的移动卡（序列号16位，密码17位）\n浙江地方的移动卡（序列号10位，密码8位）\n江苏地方的移动卡（序列号16位，密码17位）\n辽宁地方的移动卡（序列号18位，密码21位"];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:5];
-    [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
-    promptLabel.attributedText = attStr;
+    if (!YZStringIsEmpty(self.intro))
+    {
+        NSDictionary *optoins = @{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType};
+        NSData *data = [self.intro dataUsingEncoding:NSUnicodeStringEncoding];
+        NSError * error;
+        NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:&error];
+        if (!error) {
+            promptLabel.attributedText = attributeString;
+        }
+    }else
+    {
+        promptLabel.textColor = YZGrayTextColor;
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、运营商收取充值卡面额3%的服务费，在充值金额中直接扣除；\n2、请务必选择与充值卡面额相同的金额，否则会导致支付不成功，或资金丢失。（如：使用面额100元的充值卡但选择50元，高于50元部分不返还）\n3、充值金额不可提现，奖金可以提现。\n\n全国通用的移动卡（序列号17位，密码18位）\n全国通用的联通卡（序列号15位，密码19位）\n全国通用的电信卡（序列号19位，密码18位）\n福建地方的移动卡（序列号16位，密码17位）\n浙江地方的移动卡（序列号10位，密码8位）\n江苏地方的移动卡（序列号16位，密码17位）\n辽宁地方的移动卡（序列号18位，密码21位"];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:5];
+        [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
+        promptLabel.attributedText = attStr;
+    }
     CGFloat labelY = CGRectGetMaxY(rechargeBtn.frame) + 10;
     CGFloat labelW = screenWidth - 2 * YZMargin;
     CGSize labelSize = [promptLabel.attributedText boundingRectWithSize:CGSizeMake(labelW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;

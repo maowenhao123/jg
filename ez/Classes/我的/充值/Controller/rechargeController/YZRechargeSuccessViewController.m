@@ -101,6 +101,9 @@
     footerLabel.frame = CGRectMake(YZMargin, CGRectGetMaxY(buyLotteryBtn.frame) + 10, size.width, size.height);
     [self.view addSubview:footerLabel];
     
+#if RR
+    return;
+#endif
     UILabel * callLabel = [[UILabel alloc]init];
     callLabel.text = @"2、客服电话:";
     callLabel.textColor = YZGrayTextColor;

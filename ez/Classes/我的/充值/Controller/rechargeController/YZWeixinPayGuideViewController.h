@@ -10,4 +10,6 @@
 
 @interface YZWeixinPayGuideViewController : YZBaseViewController
 
+@property (nonatomic, copy) NSString *intro;//说明
+
 @end

@@ -453,7 +453,7 @@
     NSMutableArray *array = [NSMutableArray array];
     //左边view的第一个cell
     YZSelectBallCellStatus *status = [[YZSelectBallCellStatus alloc] init];
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"红球 至少选6个"];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"红球 至少选6个，超过6个为复式投注"];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZRedBallColor range:NSMakeRange(0, 2)];
     status.title = attStr;
     status.isRed = YES;
@@ -465,7 +465,7 @@
     
     //左边view的第二个cell
     YZSelectBallCellStatus *status1 = [[YZSelectBallCellStatus alloc] init];
-    NSMutableAttributedString *attStr1 = [[NSMutableAttributedString alloc] initWithString:@"蓝球 至少选1个"];
+    NSMutableAttributedString *attStr1 = [[NSMutableAttributedString alloc] initWithString:@"蓝球 至少选1个，超过1个为复式投注"];
     [attStr1 addAttribute:NSForegroundColorAttributeName value:YZBlueBallColor range:NSMakeRange(0, 2)];
     status1.title = attStr1;
     status1.isRed = NO;
@@ -488,7 +488,7 @@
     
     //右边view的第一个cell
     YZSelectBallCellStatus *status = [[YZSelectBallCellStatus alloc] init];
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"红球胆码 选择1-5个"];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"红球胆码 选择1-5个，胆码加托码“至少选择7个"];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZRedBallColor range:NSMakeRange(0, 4)];
     status.title = attStr;
     status.isRed = YES;

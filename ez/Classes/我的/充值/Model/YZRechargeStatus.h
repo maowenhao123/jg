@@ -20,6 +20,7 @@
 @property (nonatomic, copy) NSString *detailUrl;
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, copy) NSString *intro;//说明
 
 @property (nonatomic, copy) NSString *imageName;//图片名称
 @property (nonatomic, copy) NSString *title;//充值标题

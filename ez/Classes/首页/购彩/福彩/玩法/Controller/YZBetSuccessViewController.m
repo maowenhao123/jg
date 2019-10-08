@@ -45,6 +45,9 @@
 #pragma mark - 请求数据
 - (void)getActivityData
 {
+#if RR
+    return;
+#endif
     NSDictionary *dict = @{
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getQuickStakeInformation") params:dict success:^(id json) {
@@ -79,6 +82,9 @@
 
 - (void)getQrCodeData
 {
+#if RR
+    return;
+#endif
     NSDictionary *dict = @{
                            @"type":@"CUSTOMER_SERVICE",
                            @"timestamp":[YZDateTool getNowTimeTimestamp]
@@ -216,6 +222,7 @@
     [lookBtn addTarget:self action:@selector(lookBetRecord) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:lookBtn];
     
+#if ZC
     //二维码
     CGFloat imageViewWH = 190;
     CGFloat imageViewX = (screenWidth - imageViewWH) / 2;
@@ -247,6 +254,42 @@
     [scrollView addSubview:vipcnButton];
     
     scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(vipcnButton.frame) + 10);
+#elif CS
+    //二维码
+    CGFloat imageViewWH = 190;
+    CGFloat imageViewX = (screenWidth - imageViewWH) / 2;
+    UIImageView *codeImageView = [[UIImageView alloc] init];
+    self.codeImageView = codeImageView;
+    codeImageView.frame = CGRectMake(imageViewX, CGRectGetMaxY(codeImageView.frame) + 20, imageViewWH, imageViewWH);
+    [scrollView addSubview:codeImageView];
+    
+    UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress)];
+    codeImageView.userInteractionEnabled = YES;
+    [codeImageView addGestureRecognizer:longPress];
+    
+    UILabel * promptLabel = [[UILabel alloc] init];
+    self.promptLabel = promptLabel;
+    promptLabel.numberOfLines = 0;
+    [scrollView addSubview:promptLabel];
+    
+    UIButton * vipcnButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.vipcnButton = vipcnButton;
+    vipcnButton.frame = CGRectMake((screenWidth - 80) / 2, CGRectGetMaxY(lookBtn.frame) + 10, 80, 30);
+    [vipcnButton setTitle:@"复制公共号" forState:UIControlStateNormal];
+    [vipcnButton setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+    vipcnButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+    vipcnButton.layer.masksToBounds = YES;
+    vipcnButton.layer.cornerRadius = 3;
+    vipcnButton.layer.borderWidth = 1;
+    vipcnButton.layer.borderColor = YZGrayTextColor.CGColor;
+    [vipcnButton addTarget:self action:@selector(vipcnButtonDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:vipcnButton];
+    
+    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(vipcnButton.frame) + 10);
+#elif RR
+    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(lookBtn.frame) + 10);
+#endif
+    
 }
 
 - (void)publishCircleBtnDidClick

@@ -160,7 +160,7 @@
     withdrawalTF.borderStyle = UITextBorderStyleNone;
     withdrawalTF.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     withdrawalTF.textColor = YZBlackTextColor;
-    withdrawalTF.placeholder = @"至少3元";
+    withdrawalTF.placeholder = @"请输入提款金额";
     [withdrawalView addSubview:withdrawalTF];
     
     headerView.frame = CGRectMake(0, 0, screenHeight, CGRectGetMaxY(withdrawalView.frame) + 10);
@@ -230,6 +230,10 @@
         promptLabel.frame = CGRectMake(submitBtn.x, CGRectGetMaxY(submitBtn.frame) + 10, screenWidth - 2 * submitBtn.x, promptLabelSize.height);
         [footerView addSubview:promptLabel];
 
+#if RR
+        self.tableView.tableFooterView = footerView;
+        return;
+#endif
         UILabel * callLabel = [[UILabel alloc]init];
         callLabel.text = @"5、客服热线：";
         callLabel.textColor = YZGrayTextColor;
@@ -355,10 +359,10 @@
         [MBProgressHUD showError:@"可提款金额不足"];
         return;
     }
-    if (withDrawalMoney < 3) {
-        [MBProgressHUD showError:@"提款金额不能小于3元"];
-        return;
-    }
+//    if (withDrawalMoney < 3) {
+//        [MBProgressHUD showError:@"提款金额不能小于3元"];
+//        return;
+//    }
     
     //输入登录密码
     YZWithdrawalPasswordView * passwordView = [[YZWithdrawalPasswordView alloc] initWithFrame:self.view.bounds];

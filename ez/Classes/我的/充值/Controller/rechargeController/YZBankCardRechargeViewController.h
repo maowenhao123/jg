@@ -13,5 +13,6 @@
 @property (nonatomic, copy) NSString *paymentId;//支付方式
 @property (nonatomic, assign) BOOL isOrderPay;//订单支付跳转来的
 @property (nonatomic, copy) NSString *detailUrl;
+@property (nonatomic, copy) NSString *intro;//说明
 
 @end

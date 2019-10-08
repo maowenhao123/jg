@@ -311,6 +311,7 @@
 #elif CS
                 [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
 #elif RR
+                confirmBtn = nil;
 #endif
             }
         }else
@@ -318,8 +319,8 @@
             confirmBtn.frame = CGRectMake(screenWidth - confirmBtnW - 15, (bottomViewH - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
             [confirmBtn setTitle:@"投注" forState:UIControlStateNormal];
         }
-        [bottomView addSubview:confirmBtn];
         [confirmBtn addTarget:self action:@selector(confirmBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:confirmBtn];
     }
     
     //注数和倍数和金额总数

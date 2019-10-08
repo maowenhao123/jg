@@ -104,7 +104,9 @@
 {
     //分享
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"order_share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
-    
+#if RR
+    self.navigationItem.rightBarButtonItem = nil;
+#endif
     CGFloat tableViewH = screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom];
     if (self.isScheme || [self.gameId isEqualToString:@"T53"] || [self.gameId isEqualToString:@"T54"]) {
         tableViewH = screenHeight - statusBarH - navBarH - [YZTool getSafeAreaBottom];

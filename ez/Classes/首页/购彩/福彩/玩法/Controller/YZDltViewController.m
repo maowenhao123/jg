@@ -361,7 +361,7 @@
     NSMutableArray *array = [NSMutableArray array];
     //左边view的第一个cell
     YZSelectBallCellStatus *status = [[YZSelectBallCellStatus alloc] init];
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"前区 至少选5个"];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"前区 至少选5个，超过5个为复式投注"];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZRedBallColor range:NSMakeRange(0, 2)];
     status.title = attStr;
     status.isRed = YES;
@@ -373,7 +373,7 @@
     
     //左边view的第二个cell
     YZSelectBallCellStatus *status1 = [[YZSelectBallCellStatus alloc] init];
-    NSMutableAttributedString *attStr1 = [[NSMutableAttributedString alloc] initWithString:@"后区 至少选2个"];
+    NSMutableAttributedString *attStr1 = [[NSMutableAttributedString alloc] initWithString:@"后区 至少选2个，超过2个为复式投注"];
     [attStr1 addAttribute:NSForegroundColorAttributeName value:YZBlueBallColor range:NSMakeRange(0, 2)];
     status1.title = attStr1;
     status1.isRed = NO;
@@ -395,7 +395,7 @@
     NSMutableArray *array = [NSMutableArray array];
     //右边view的第一个cell
     YZSelectBallCellStatus *status = [[YZSelectBallCellStatus alloc] init];
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"前区胆码 至少选择1个,至多选4个"];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"前区胆码 至少选择1个，至多选4个，胆码加托码至少选择6个"];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZRedBallColor range:NSMakeRange(0, 4)];
     status.title = attStr;
     status.isRed = YES;

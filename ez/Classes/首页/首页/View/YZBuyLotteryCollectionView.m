@@ -55,7 +55,7 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
-        self.backgroundColor = YZBackgroundColor;
+        self.backgroundColor = [UIColor whiteColor];
         [self registerClass];
         [MBProgressHUD showMessage:@"获取数据，客官请稍后..." toView:self];
         [self getFunctionData];
@@ -119,6 +119,11 @@
     NSDictionary *dict = @{
                            @"version": @"0.0.5"
                            };
+#if RR
+    dict = @{
+             @"version":@"0.0.1"
+             };
+#endif
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getShortcutModules") params:dict success:^(id json) {
         YZLog(@"getShortcutModules:%@",json);
         if (SUCCESS) {
@@ -202,6 +207,11 @@
     NSDictionary *dict = @{
                            @"version":@"0.0.7",
                            };
+#if RR
+    dict = @{
+             @"version":@"0.0.1"
+             };
+#endif
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getGameInfoList") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self];
         [header endRefreshing];

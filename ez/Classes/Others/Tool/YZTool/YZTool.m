@@ -495,10 +495,27 @@ static NSInteger seq = 0;
         gifHeader.lastUpdatedTimeLabel.hidden= YES;//如果不隐藏这个会默认 图片在最左边不是在中间
         gifHeader.stateLabel.hidden = YES;
         NSMutableArray * images = [NSMutableArray array];
+#if JG
         for (int i = 0; i < 10; i++) {
             UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
             [images addObject:image];
         }
+#elif ZC
+        for (int i = 0; i < 10; i++) {
+            UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
+            [images addObject:image];
+        }
+#elif CS
+        for (int i = 0; i < 10; i++) {
+            UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
+            [images addObject:image];
+        }
+#elif RR
+        for (int i = 0; i < 12; i++) {
+            UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader_%d_rr",i+1]];
+            [images addObject:image];
+        }
+#endif
         [gifHeader setImages:images forState:MJRefreshStateIdle];
         [gifHeader setImages:images forState:MJRefreshStatePulling];
         [gifHeader setImages:images forState:MJRefreshStateRefreshing];

@@ -51,14 +51,26 @@
     }
 
     UILabel *promptLabel = [[UILabel alloc] init];
-    promptLabel.textColor = YZGrayTextColor;
     promptLabel.numberOfLines = 0;
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、ATM机暂时不支持汇款到对公账号；\n2、仅支持网银转账、银行柜台汇款，工作日9:00-16:00汇款当天到账，16:00后次日到账。周末及节假日顺延至下一工作日处理；\n3、汇款后请尽量保留相关凭证，以便需要时与客服核实确认；\n4、建议3000元以上充值使用银行汇款，小额充值尽量使用在线充值方式。\n5、充值金额不可提现，奖金可以提现。"];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:5];
-    [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
-    promptLabel.attributedText = attStr;
+    if (!YZStringIsEmpty(self.intro))
+    {
+        NSDictionary *optoins = @{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType};
+        NSData *data = [self.intro dataUsingEncoding:NSUnicodeStringEncoding];
+        NSError * error;
+        NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:&error];
+        if (!error) {
+            promptLabel.attributedText = attributeString;
+        }
+    }else
+    {
+        promptLabel.textColor = YZGrayTextColor;
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、ATM机暂时不支持汇款到对公账号；\n2、仅支持网银转账、银行柜台汇款，工作日9:00-16:00汇款当天到账，16:00后次日到账。周末及节假日顺延至下一工作日处理；\n3、汇款后请尽量保留相关凭证，以便需要时与客服核实确认；\n4、建议3000元以上充值使用银行汇款，小额充值尽量使用在线充值方式。\n5、充值金额不可提现，奖金可以提现。"];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:5];
+        [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
+        promptLabel.attributedText = attStr;
+    }
     CGFloat labelY = CGRectGetMaxY(backView.frame) + 10;
     CGFloat labelW = screenWidth - 2 * YZMargin;
     CGSize labelSize = [promptLabel.attributedText boundingRectWithSize:CGSizeMake(labelW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
@@ -84,12 +96,4 @@
     [self.navigationController pushViewController:updataActivityVC animated:YES];
 }
 
-- (void)kefuClick
-{
-    UIWebView *callWebview =[[UIWebView alloc] init];
-    NSString *telUrl = @"tel://4007001898";
-    NSURL *telURL =[NSURL URLWithString:telUrl];
-    [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
-    [self.view addSubview:callWebview];
-}
 @end

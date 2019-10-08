@@ -179,6 +179,9 @@
     [nextButton addTarget:self action:@selector(nextButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextButton];
     
+#if RR
+    return;
+#endif
     //联系客服按钮
     UILabel * promptLabel = [[UILabel alloc]init];
     promptLabel.text = @"客服电话";
