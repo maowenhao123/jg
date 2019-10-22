@@ -114,11 +114,17 @@
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 #elif RR
-    // 设置背景
-    [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
-    navBar.tintColor = YZBlackTextColor;
+    navBar.translucent = NO;//取消透明度
+    if (IsBangIPhone) {
+        // 设置背景
+        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_88"] forBarMetrics:UIBarMetricsDefault];
+    }else
+    {
+        // 设置背景
+        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_64"] forBarMetrics:UIBarMetricsDefault];
+    }
     //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 #endif
     [navBar setShadowImage:nil];
     //销毁定时器
@@ -631,7 +637,7 @@
         }
     }
     NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@",redStr,blueStr]];
-    [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, redStr.length)];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(0, redStr.length)];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZBlueBallColor range:NSMakeRange(redStr.length + 1, blueStr.length)];
     self.selectedBallView.numberLabel.attributedText = attStr;
 }
@@ -855,13 +861,13 @@
         NSString * deltaTime;
         deltaTime = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)deltaDate.hour,(long)deltaDate.minute, (long)deltaDate.second];
         attStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"距%@期截止:%@",termId,deltaTime]];
-        [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(8, attStr.length - 8)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(8, attStr.length - 8)];
     }else if (_remainSeconds <= 0 && _nextOpenRemainSeconds > 0)//当前期已截止销售,下期还未开始
     {
         NSString * deltaTime;
         deltaTime = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)nextOpenDeltaDate.hour,(long)nextOpenDeltaDate.minute, (long)nextOpenDeltaDate.second];
         attStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"•距%@期开始:%@",nextTermId,deltaTime]];
-        [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(8, attStr.length - 8)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(8, attStr.length - 8)];
     }else//为0的时候，重新刷新数据
     {
         attStr = [[NSMutableAttributedString alloc]initWithString:@"获取新期次中..."];
@@ -1521,7 +1527,7 @@
     NSRange range1 = [str rangeOfString:@"|"];//17
     NSRange range2 = [str rangeOfString:@"["];//20
     NSRange range3 = [str rangeOfString:@"]"];//25
-    [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, range1.location)];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(0, range1.location)];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(range1.location, 1)];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZBlueBallColor range:NSMakeRange(range1.location + 1, blueBalls.count * 3 - 1)];
     [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(range2.location, range3.location - range2.location + 1)];

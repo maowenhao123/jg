@@ -115,7 +115,7 @@
     //底部label
     UILabel *bottomLabel = [[UILabel alloc]init];
     self.bottomLabel = bottomLabel;
-    bottomLabel.textColor = YZRedTextColor;
+    bottomLabel.textColor = YZBaseColor;
     if ((self.isJC && ![self.gameId isEqualToString:@"T52"]) || self.isSFC) {//竞彩为绿色
         bottomLabel.textColor = YZColor(80, 148, 35, 1);
     }

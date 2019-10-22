@@ -18,6 +18,9 @@
     button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     [button setBackgroundImage:[UIImage ImageFromColor:YZBaseColor] forState:UIControlStateNormal];//正常
     [button setBackgroundImage:[UIImage ImageFromColor:YZColor(163, 32, 27, 1)] forState:UIControlStateHighlighted];//高亮
+#if RR
+    [button setBackgroundImage:[UIImage ImageFromColor:UIColorFromRGB(0x118dbe)] forState:UIControlStateHighlighted];//高亮
+#endif
     [button setBackgroundImage:[UIImage ImageFromColor:YZColor(215, 215, 215, 1)] forState:UIControlStateDisabled];//不可选
     button.layer.masksToBounds = YES;
     button.layer.cornerRadius = 3;

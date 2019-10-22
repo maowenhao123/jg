@@ -34,7 +34,7 @@
         [self setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
         self.titleLabel.font = [UIFont systemFontOfSize:17];
 #elif RR
-        [self setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.titleLabel.font = [UIFont systemFontOfSize:17];
 #endif
 

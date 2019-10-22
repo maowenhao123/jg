@@ -36,7 +36,7 @@
     
     //选择兑换张数
     UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 13, 5, 15)];
-    lineView.backgroundColor = YZRedBallColor;
+    lineView.backgroundColor = YZBaseColor;
     [self addSubview:lineView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(lineView.frame) + 7, 13, screenWidth - CGRectGetMaxX(lineView.frame) - 7 - 10, 15)];

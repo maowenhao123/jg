@@ -136,7 +136,7 @@
     UILabel * balanceLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(balancePromptLabel.frame) + 10, 0, screenWidth - CGRectGetMaxX(balancePromptLabel.frame) - 20, balanceView.height)];
     self.balanceLabel = balanceLabel;
     balanceLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-    balanceLabel.textColor = YZRedTextColor;
+    balanceLabel.textColor = YZBaseColor;
     balanceLabel.textAlignment = NSTextAlignmentRight;
     [balanceView addSubview:balanceLabel];
     

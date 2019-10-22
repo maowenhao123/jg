@@ -123,6 +123,10 @@
     [switchbtn setImage:[UIImage imageNamed:@"bet_weixuanzhong"] forState:UIControlStateNormal];
     [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateSelected];
     [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateHighlighted];
+#if RR
+    [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateSelected];
+    [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateHighlighted];
+#endif
     switchbtn.selected = YES;
     [switchbtn setTitle:@"自动登录" forState:UIControlStateNormal];
     [switchbtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
@@ -345,7 +349,7 @@
     UIButton * registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     registerBtn.frame = CGRectMake(loginBtn.x, CGRectGetMaxY(loginBtn.frame) + 20, screenWidth - 2 * loginBtn.x, 40);
     [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [registerBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+    [registerBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
     registerBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     registerBtn.layer.masksToBounds = YES;
     registerBtn.layer.cornerRadius = loginBtn.height / 2;

@@ -54,6 +54,9 @@
         UIImageView * progressImageView = [[UIImageView alloc]init];
         if (i == 0) {
             progressImageView.image = [UIImage imageNamed:@"secretChange1_red"];
+#if RR
+            progressImageView.image = [UIImage imageNamed:@"secretChange1_blue_rr"];
+#endif
         }else if (i == 1)
         {
             progressImageView.image = [UIImage imageNamed:@"secretChange2_gray"];
@@ -67,15 +70,15 @@
         UILabel * progressLabel = [[UILabel alloc]init];
         if (i == 0) {
             progressLabel.text = @"验证信息";
-            progressLabel.textColor = YZRedTextColor;
+            progressLabel.textColor = YZBaseColor;
         }else if (i == 1)
         {
             progressLabel.text = @"验证手机号";
-            progressLabel.textColor = YZGrayTextColor;
+            progressLabel.textColor = YZBaseColor;
         }else if (i == 2)
         {
             progressLabel.text = @"重置密码";
-            progressLabel.textColor = YZGrayTextColor;
+            progressLabel.textColor = YZBaseColor;
         }
         progressLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
         [progressView addSubview:progressLabel];
@@ -100,6 +103,9 @@
             UIImageView * arrowImageView = [[UIImageView alloc]init];
             if (i == 1) {
                 arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_red"];
+#if RR
+                arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_blue_rr"];
+#endif
             }else if (i == 2)
             {
                 arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_gray"];

@@ -515,6 +515,7 @@ static NSInteger seq = 0;
             UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader_%d_rr",i+1]];
             [images addObject:image];
         }
+        gifHeader.ignoredScrollViewContentInsetTop = statusBarH + navBarH;
 #endif
         [gifHeader setImages:images forState:MJRefreshStateIdle];
         [gifHeader setImages:images forState:MJRefreshStatePulling];

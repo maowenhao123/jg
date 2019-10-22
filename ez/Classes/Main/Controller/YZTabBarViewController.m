@@ -9,6 +9,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import "YZTabBarViewController.h"
 #import "YZHomePageViewController.h"
+#import "YZRRHomePageViewController.h"
 #import "YZOrderViewController.h"
 #import "YZUnionBuyViewController.h"
 #import "YZWinNumberViewController.h"
@@ -34,8 +35,7 @@
     UITabBar * tabBar = [UITabBar appearance];
     // 设置背景
     [tabBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, tabBarH)]];
-    tabBar.tintColor = YZColor(224, 3, 12, 1);
-    
+    tabBar.tintColor = YZBaseColor;
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:YZGetFontSize(20)];
     [[UITabBarItem appearance] setTitleTextAttributes:textAttrs
@@ -183,7 +183,7 @@
     self.viewControllers = @[buyLottery_nav, orderyVC_nav, unionBuyVC_nav, winNumberVC_nav, mineVC_nav];
 #elif RR
     // 1.购彩
-    YZHomePageViewController *homePageVC = [[YZHomePageViewController alloc] init];
+    YZRRHomePageViewController *homePageVC = [[YZRRHomePageViewController alloc] init];
     UITabBarItem * tabberItem1 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_buyLottery_rr"] selectedImage:[UIImage imageNamed:@"tabbar_buyLottery_selected_rr"] title:@"购彩"];
     homePageVC.tabBarItem = tabberItem1;
     YZNavigationController *buyLottery_nav = [[YZNavigationController alloc]initWithRootViewController:homePageVC];

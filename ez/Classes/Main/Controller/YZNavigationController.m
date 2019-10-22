@@ -79,20 +79,27 @@
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
     [navBar setTitleTextAttributes:textAttrs];
 #elif RR
-    // 设置背景
-    [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
+    if (IsBangIPhone) {
+        // 设置背景
+        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_88"] forBarMetrics:UIBarMetricsDefault];
+    }else
+    {
+        // 设置背景
+        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_64"] forBarMetrics:UIBarMetricsDefault];
+    }
     navBar.shadowImage = nil;
     //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     //设置颜色
-    navBar.tintColor = YZBlackTextColor;
+    navBar.tintColor = [UIColor whiteColor];
     
     // 设置标题属性
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
+    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];;
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
     [navBar setTitleTextAttributes:textAttrs];
+    navBar.translucent = NO;//取消透明度
 #endif
 }
 
@@ -138,12 +145,12 @@
     UIBarButtonItem *barItem = [UIBarButtonItem appearance];
     
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
+    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
     [barItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     
     NSMutableDictionary *disabledTextAttrs = [NSMutableDictionary dictionary];
-    disabledTextAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
+    disabledTextAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
     disabledTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
     [barItem setTitleTextAttributes:disabledTextAttrs forState:UIControlStateHighlighted];
 #endif
@@ -203,7 +210,7 @@
 #pragma mark - UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZCSMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZRRMineViewController") class]]  || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZUserCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZMineCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZFBMatchDetailViewController") class]];
+    BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZRRHomePageViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZCSMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZRRMineViewController") class]]  || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZUserCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZMineCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZFBMatchDetailViewController") class]];
 #if JG
     if ([viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]]) {
         hiddenNavBar = NO;

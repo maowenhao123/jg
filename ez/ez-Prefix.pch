@@ -74,7 +74,15 @@
 // rgb颜色转换（16进制->10进制）
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 //app主颜色
-#define YZBaseColor YZColor(203, 58, 53, 1) 
+#if JG
+#define YZBaseColor YZColor(203, 58, 53, 1)
+#elif ZC
+#define YZBaseColor YZColor(203, 58, 53, 1)
+#elif CS
+#define YZBaseColor YZColor(203, 58, 53, 1)
+#elif RR
+#define YZBaseColor UIColorFromRGB(0x13a2db)
+#endif
 //常用黑色字体颜色
 #define YZBlackTextColor YZColor(43, 43, 43, 1)
 //常用灰色字体颜色

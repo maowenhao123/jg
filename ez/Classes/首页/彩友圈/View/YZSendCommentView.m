@@ -48,7 +48,7 @@
     self.sendButton = sendButton;
     sendButton.hidden = YES;
     [sendButton setTitle:@"发送" forState:UIControlStateNormal];
-    [sendButton setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+    [sendButton setTitleColor:YZBaseColor forState:UIControlStateNormal];
     [sendButton setTitleColor:YZGrayTextColor forState:UIControlStateDisabled];
     sendButton.enabled = NO;//默认不可选
     sendButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];

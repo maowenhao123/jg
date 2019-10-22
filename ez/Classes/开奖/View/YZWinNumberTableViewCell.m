@@ -11,12 +11,14 @@
 
 @interface YZWinNumberTableViewCell ()
 
+@property (nonatomic, weak) UIImageView *bgImageView;
 @property (nonatomic, weak) UIImageView *lotteryImageView;
 @property (nonatomic, weak) UILabel *lotteryNameLabel;
 @property (nonatomic, weak) UILabel *lotteryPeriodLabel;
 @property (nonatomic, weak) UILabel *lotteryTimeLabel;
 @property (nonatomic, weak) UILabel *lotteryDetailLabel;
 @property (nonatomic, weak) UIView *lotteryNumberView;
+@property (nonatomic, weak) UIImageView * accessory;
 
 @end
 
@@ -30,6 +32,11 @@
     if(cell == nil)
     {
         cell = [[YZWinNumberTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor whiteColor];
+#if RR
+        cell.backgroundColor = YZBackgroundColor;
+#endif
     }
     return cell;
 }
@@ -42,8 +49,17 @@
     }
     return self;
 }
+
 - (void)setupChildViews
 {
+#if RR
+    //0.背景图片
+    UIImageView *bgImageView = [[UIImageView alloc] init];
+    bgImageView.image = [UIImage imageNamed:@"cell_bg_rr"];
+    [self.contentView addSubview:bgImageView];
+    self.bgImageView = bgImageView;
+#endif
+    
     //1.彩票图片
     UIImageView *lotteryImageView = [[UIImageView alloc] init];
     [self.contentView addSubview:lotteryImageView];
@@ -94,12 +110,10 @@
     [self addSubview:line];
     
     //accessory
-    CGFloat accessoryW = 8;
-    CGFloat accessoryH = 11;
     UIImageView * accessory = [[UIImageView alloc]init];
-    accessory.frame = CGRectMake(screenWidth - YZMargin - accessoryW, (70 - accessoryH) / 2, accessoryW, accessoryH);
     accessory.image = [UIImage imageNamed:@"accessory_dray"];
     [self addSubview:accessory];
+    self.accessory = accessory;
 }
 - (void)setStatusFrame:(YZWinNumberStatusFrame *)statusFrame
 {
@@ -111,6 +125,9 @@
     //设置frame
     [self settingFrame];
     
+#if RR
+    return;
+#endif
     if ([_statusFrame.status.gameId isEqualToString:@"T51"] || [_statusFrame.status.gameId isEqualToString:@"T52"]) {//竞彩足球没有号码球 名称下移
         self.lotteryDetailLabel.hidden = NO;
         self.lotteryNumberView.hidden = YES;
@@ -125,6 +142,10 @@
 #pragma  mark - 设置frame
 - (void)settingFrame
 {
+#if RR
+    self.bgImageView.frame = self.statusFrame.bgImageViewF;
+    self.line.hidden = YES;
+#endif
     //设置彩票图片frame
     self.lotteryImageView.frame = self.statusFrame.imageF;
     
@@ -142,6 +163,8 @@
     
     //查看比赛结果
     self.lotteryDetailLabel.frame = self.statusFrame.detailF;
+    
+    self.accessory.frame = self.statusFrame.accessoryF;
 }
 #pragma  mark - 设置数据
 - (void)settingData

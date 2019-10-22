@@ -331,7 +331,7 @@
         [button setImage:[UIImage imageNamed:buttonImageNames[i]] forState:UIControlStateNormal];
         [button setTitle:buttonTitles[i] forState:UIControlStateNormal];
         if ([button.currentTitle isEqualToString:@"分享好友赚钱"]) {
-            [button setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+            [button setTitleColor:YZBaseColor forState:UIControlStateNormal];
         }else
         {
             [button setTitleColor:YZBlackTextColor forState:UIControlStateNormal];

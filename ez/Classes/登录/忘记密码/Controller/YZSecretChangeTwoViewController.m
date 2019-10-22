@@ -58,9 +58,15 @@
         UIImageView * progressImageView = [[UIImageView alloc]init];
         if (i == 0) {
             progressImageView.image = [UIImage imageNamed:@"secretChange1_red"];
+#if RR
+            progressImageView.image = [UIImage imageNamed:@"secretChange1_blue_rr"];
+#endif
         }else if (i == 1)
         {
             progressImageView.image = [UIImage imageNamed:@"secretChange2_red"];
+#if RR
+            progressImageView.image = [UIImage imageNamed:@"secretChange2_blue_rr"];
+#endif
         }else if (i == 2)
         {
             progressImageView.image = [UIImage imageNamed:@"secretChange3_gray"];
@@ -104,9 +110,15 @@
             UIImageView * arrowImageView = [[UIImageView alloc]init];
             if (i == 1) {
                 arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_red"];
+#if RR
+                arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_blue_rr"];
+#endif
             }else if (i == 2)
             {
                 arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_red"];
+#if RR
+                arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_blue_rr"];
+#endif
             }
             UIView * progressView1 = progressViews[i - 1];
             UIView * progressView2 = progressViews[i];

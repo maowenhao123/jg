@@ -60,7 +60,14 @@
     // 取出appearance对象
     UINavigationBar *navBar = self.navigationController.navigationBar;
     // 设置背景
-    [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
+    if (IsBangIPhone) {
+        // 设置背景
+        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_88"] forBarMetrics:UIBarMetricsDefault];
+    }else
+    {
+        // 设置背景
+        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_64"] forBarMetrics:UIBarMetricsDefault];
+    }
 }
 #endif
 - (void)viewDidLoad

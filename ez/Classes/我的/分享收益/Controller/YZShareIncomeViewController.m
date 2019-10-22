@@ -136,8 +136,8 @@
     NSString * totalMoney = [NSString stringWithFormat:@"%.2f",[self.json[@"totalMoney"] floatValue] / 100];
     NSString *quantityStr = [NSString stringWithFormat:@"您累计邀请了%@位好友，收益总额%@元",number,totalMoney];
     NSMutableAttributedString *quantityAttStr = [[NSMutableAttributedString alloc] initWithString:quantityStr];
-    [quantityAttStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:[quantityStr rangeOfString:number]];
-    [quantityAttStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:[quantityStr rangeOfString:totalMoney]];
+    [quantityAttStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:[quantityStr rangeOfString:number]];
+    [quantityAttStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:[quantityStr rangeOfString:totalMoney]];
     self.quantityLabel.attributedText = quantityAttStr;
 }
 

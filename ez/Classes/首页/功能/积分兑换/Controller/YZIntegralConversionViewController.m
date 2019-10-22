@@ -109,7 +109,7 @@ NSString * const CustomCountCellId = @"YZIntegralCustomCountCollectionViewCellId
     //collectionView
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
-    CGFloat bottomViewH = 49;
+    CGFloat bottomViewH = 49 + [YZTool getSafeAreaBottom];
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(currentIntegralView.frame), screenWidth, screenHeight - statusBarH - navBarH - CGRectGetMaxY(currentIntegralView.frame) - bottomViewH) collectionViewLayout:layout];
     self.collectionView = collectionView;
     collectionView.backgroundColor = [UIColor whiteColor];
@@ -128,7 +128,7 @@ NSString * const CustomCountCellId = @"YZIntegralCustomCountCollectionViewCellId
     //底栏
     CGFloat bottomViewW = screenWidth;
     CGFloat bottomViewX = 0;
-    CGFloat bottomViewY = screenHeight - bottomViewH - statusBarH - navBarH - [YZTool getSafeAreaBottom];
+    CGFloat bottomViewY = screenHeight - bottomViewH - statusBarH - navBarH;
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(bottomViewX, bottomViewY, bottomViewW, bottomViewH)];
     bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bottomView];
@@ -141,7 +141,7 @@ NSString * const CustomCountCellId = @"YZIntegralCustomCountCollectionViewCellId
     //兑换按钮
     CGFloat confirmBtnH = 30;
     CGFloat confirmBtnW = 75;
-    CGFloat confirmBtnY = (bottomViewH - confirmBtnH) / 2;
+    CGFloat confirmBtnY = (49 - confirmBtnH) / 2;
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     confirmBtn.frame = CGRectMake(screenWidth - confirmBtnW - 15, confirmBtnY, confirmBtnW, confirmBtnH);
     [confirmBtn setBackgroundImage:[UIImage ImageFromColor:YZBaseColor WithRect:confirmBtn.bounds] forState:UIControlStateNormal];
@@ -162,7 +162,7 @@ NSString * const CustomCountCellId = @"YZIntegralCustomCountCollectionViewCellId
     CGFloat amountLabelX = 10;
     CGFloat amountLabelW = confirmBtn.x - 10 - amountLabelX;
     CGFloat amountLabelH = 25;
-    CGFloat amountLabelY = (bottomView.height - amountLabelH) / 2;
+    CGFloat amountLabelY = (49 - amountLabelH) / 2;
     amountLabel.frame = CGRectMake(amountLabelX, amountLabelY, amountLabelW, amountLabelH);
     [bottomView addSubview:amountLabel];
     

@@ -65,7 +65,7 @@
         topBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         topBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         [topBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-        [topBtn setTitleColor:YZRedTextColor forState:UIControlStateSelected];
+        [topBtn setTitleColor:YZBaseColor forState:UIControlStateSelected];
         [topBtn addTarget:self action:@selector(topBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [topBackScrollView addSubview:topBtn];
         [self.topBtns addObject:topBtn];
@@ -74,7 +74,7 @@
     UIView * topBtnLine = [[UIView alloc]init];
     self.topBtnLine = topBtnLine;
     topBtnLine.frame = CGRectMake(5 + 5, topBtnH - 2, topBtnW - 5 * 2, 2);
-    topBtnLine.backgroundColor = YZRedTextColor;
+    topBtnLine.backgroundColor = YZBaseColor;
     [topBackScrollView addSubview:topBtnLine];
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];

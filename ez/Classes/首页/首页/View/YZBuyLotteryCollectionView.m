@@ -55,7 +55,7 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
         [self registerClass];
         [MBProgressHUD showMessage:@"获取数据，客官请稍后..." toView:self];
         [self getFunctionData];
@@ -65,19 +65,32 @@
 #if JG
         [self getQuickStakeData];
         [self getAllUnionBuyStatus];
-#elif ZC
-        [self getQuickStakeData];
-        [self getAllUnionBuyStatus];
-#elif CS
-        [self getQuickStakeData];
-        [self getAllUnionBuyStatus];
-#elif RR
-#endif
+        
         //初始化底部刷新控件
         MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
         [YZTool setRefreshFooterData:footer];
         self.footer = footer;
         self.mj_footer = footer;
+#elif ZC
+        [self getQuickStakeData];
+        [self getAllUnionBuyStatus];
+        
+        //初始化底部刷新控件
+        MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
+        [YZTool setRefreshFooterData:footer];
+        self.footer = footer;
+        self.mj_footer = footer;
+#elif CS
+        [self getQuickStakeData];
+        [self getAllUnionBuyStatus];
+        
+        //初始化底部刷新控件
+        MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
+        [YZTool setRefreshFooterData:footer];
+        self.footer = footer;
+        self.mj_footer = footer;
+#elif RR
+#endif
     }
     return self;
 }
@@ -292,52 +305,55 @@
 {
     if (indexPath.section == 0)
     {
-        return CGSizeMake(screenWidth, bannerH);
+#if RR
+        return CGSizeMake(self.width, bannerH + 10);
+#endif
+        return CGSizeMake(self.width, bannerH);
     }else if (indexPath.section == 1)
     {
         if (self.functions.count > 5) {
-            return CGSizeMake(screenWidth, 95);
+            return CGSizeMake(self.width, 95);
         }else if (self.functions.count <= 5 && self.functions.count > 0)
         {
-            return CGSizeMake(screenWidth, 84);
+            return CGSizeMake(self.width, 84);
         }else
         {
-            return CGSizeMake(screenWidth, 1);
+            return CGSizeMake(self.width, 1);
         }
     }else if (indexPath.section == 2)
     {
 #if RR
-        return CGSizeMake(screenWidth, 1);
+        return CGSizeMake(self.width, 1);
 #endif
         if (!YZObjectIsEmpty(self.quickStakeGameModel) || !YZObjectIsEmpty(self.unionBuyStatus)) {
-            return CGSizeMake(screenWidth, 115);
+            return CGSizeMake(self.width, 115);
         }else
         {
-            return CGSizeMake(screenWidth, 1);
+            return CGSizeMake(self.width, 1);
         }
     }else if (indexPath.section == 3)
     {
         if (self.cycleDatas.count == 0) {//没有数据时
-            return CGSizeMake(screenWidth, 10);
+            return CGSizeMake(self.width, 10);
         }else
         {
-            return CGSizeMake(screenWidth, cycleScrollViewH);
+            return CGSizeMake(self.width, cycleScrollViewH);
         }
     }else if (indexPath.section == 4)
     {
 #if JG
-        return CGSizeMake(screenWidth / 2, cellH);
+        return CGSizeMake(self.width / 2, cellH);
 #elif ZC
-        return CGSizeMake(screenWidth / 3, cellH_zc);
+        return CGSizeMake(self.width / 3, cellH_zc);
 #elif CS
-        return CGSizeMake(screenWidth / 3, cellH_zc);
+        return CGSizeMake(self.width / 3, cellH_zc);
 #elif RR
-        return CGSizeMake(screenWidth / 3, cellH_zc);
+        return CGSizeMake(self.width / 3, cellH_zc);
 #endif
     }else if (indexPath.section == 5){
-        return CGSizeMake(screenWidth, informationCell);
+        return CGSizeMake(self.width, informationCell);
     }
-    return CGSizeMake(screenWidth, 0);
+    return CGSizeMake(self.width, 0);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
@@ -400,14 +416,17 @@
 #elif ZC
         YZZCBuyLotteryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:gameInfoCellId_zc forIndexPath:indexPath];
         cell.status = self.gameInfos[indexPath.row];
+        cell.index = indexPath.row;
         return cell;
 #elif CS
         YZZCBuyLotteryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:gameInfoCellId_zc forIndexPath:indexPath];
         cell.status = self.gameInfos[indexPath.row];
+        cell.index = indexPath.row;
         return cell;
 #elif RR
         YZZCBuyLotteryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:gameInfoCellId_zc forIndexPath:indexPath];
         cell.status = self.gameInfos[indexPath.row];
+        cell.index = indexPath.row;
         return cell;
 #endif
     }else if (indexPath.section == 5)

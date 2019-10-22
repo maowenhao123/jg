@@ -212,4 +212,21 @@
     }
 }
 
+- (void)setIndex:(NSInteger)index
+{
+    _index = index;
+    
+    if (_index % 3 == 2) {
+        self.line2.hidden = YES;
+    }else
+    {
+        self.line2.hidden = NO;
+    }
+    
+#if RR
+    
+#endif
+    
+}
+
 @end

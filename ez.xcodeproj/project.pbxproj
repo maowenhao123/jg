@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1DD70423556EED00051D7A /* YZRRHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1DD70323556EED00051D7A /* YZRRHomePageViewController.m */; };
+		1D1DD70523556EFC00051D7A /* YZRRHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1DD70323556EED00051D7A /* YZRRHomePageViewController.m */; };
+		1D1DD70623556EFC00051D7A /* YZRRHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1DD70323556EED00051D7A /* YZRRHomePageViewController.m */; };
+		1D1DD70723556EFC00051D7A /* YZRRHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1DD70323556EED00051D7A /* YZRRHomePageViewController.m */; };
 		1D76806422DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806522DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806622DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
@@ -3100,6 +3104,8 @@
 		18BBF3FE1E7B779900AF69E6 /* zc-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "zc-info.plist"; sourceTree = "<group>"; };
 		18BBF4041E7B78CC00AF69E6 /* zc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zc.entitlements; sourceTree = "<group>"; };
 		18BBF4061E7B7E2E00AF69E6 /* ez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ez.entitlements; sourceTree = "<group>"; };
+		1D1DD70223556EED00051D7A /* YZRRHomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZRRHomePageViewController.h; sourceTree = "<group>"; };
+		1D1DD70323556EED00051D7A /* YZRRHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZRRHomePageViewController.m; sourceTree = "<group>"; };
 		1D76806222DC4F9D007C1154 /* YZServiceListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceListViewController.h; sourceTree = "<group>"; };
 		1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceListViewController.m; sourceTree = "<group>"; };
 		1D76806A22DC505A007C1154 /* YZServiceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceModel.h; sourceTree = "<group>"; };
@@ -6518,6 +6524,8 @@
 			children = (
 				AA3292721FFE27B600CA77DA /* YZHomePageViewController.h */,
 				AA3292711FFE27B600CA77DA /* YZHomePageViewController.m */,
+				1D1DD70223556EED00051D7A /* YZRRHomePageViewController.h */,
+				1D1DD70323556EED00051D7A /* YZRRHomePageViewController.m */,
 				AA926487224B54E400FCEFC7 /* YZInformationDetailViewController.h */,
 				AA926488224B54E400FCEFC7 /* YZInformationDetailViewController.m */,
 			);
@@ -9705,6 +9713,7 @@
 				1DCA1BE82327376100F2061B /* IQToolbar.m in Sources */,
 				1DCA1BE92327376100F2061B /* MJRefreshConst.m in Sources */,
 				1DCA1BEA2327376100F2061B /* FMDatabaseQueue.m in Sources */,
+				1D1DD70723556EFC00051D7A /* YZRRHomePageViewController.m in Sources */,
 				1DCA1BEB2327376100F2061B /* YZInitiateUnionBuyViewController.m in Sources */,
 				1DCA1BEC2327376100F2061B /* YZUnionChangeNickNameView.m in Sources */,
 				1DCA1BED2327376100F2061B /* SDWebImageWebPCoder.m in Sources */,
@@ -10366,6 +10375,7 @@
 				AA237F822143590C00BC47BB /* IQToolbar.m in Sources */,
 				AA237F842143590C00BC47BB /* MJRefreshConst.m in Sources */,
 				AA237F852143590C00BC47BB /* FMDatabaseQueue.m in Sources */,
+				1D1DD70623556EFC00051D7A /* YZRRHomePageViewController.m in Sources */,
 				AAA65A2E22A73CBF00DB7427 /* YZInitiateUnionBuyViewController.m in Sources */,
 				AA237F862143590C00BC47BB /* YZUnionChangeNickNameView.m in Sources */,
 				1DBD8E6E22CB2C250024CF7B /* SDWebImageWebPCoder.m in Sources */,
@@ -10853,6 +10863,7 @@
 				AA32939B1FFE27B700CA77DA /* YZRoundStatus.m in Sources */,
 				AA74E0A71FFE0A0C003B53AF /* YZWinNumberGradeTableViewCell.m in Sources */,
 				AA74E0DD1FFE0A4C003B53AF /* YZUnionBuyStatus.m in Sources */,
+				1D1DD70423556EED00051D7A /* YZRRHomePageViewController.m in Sources */,
 				1DDDEB7822D5BB80003A9C07 /* MASConstraintMaker.m in Sources */,
 				AA74E0E71FFE0A4C003B53AF /* YZAttatchedCell.m in Sources */,
 				AA3293551FFE27B600CA77DA /* YZFbBetCellStatus.m in Sources */,
@@ -11695,6 +11706,7 @@
 				1DBD8C7922CB00470024CF7B /* PSTGridLayoutItem.m in Sources */,
 				AA74ECB31FFE19A5003B53AF /* YZRechargeTableViewCell.m in Sources */,
 				CE58BA3C1DE58BF80033B300 /* YZTabBarViewController.m in Sources */,
+				1D1DD70523556EFC00051D7A /* YZRRHomePageViewController.m in Sources */,
 				AA3293061FFE27B600CA77DA /* YZSmartBetSettingView.m in Sources */,
 				1DBD8B5322CAFF780024CF7B /* XLPhotoBrowser.m in Sources */,
 				AA74EB721FFE17DF003B53AF /* MJRefreshAutoFooter.m in Sources */,
@@ -11819,7 +11831,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -11877,7 +11889,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = rr_dev_38;
+				PROVISIONING_PROFILE_SPECIFIER = rrc_adHoc_2;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -11895,7 +11907,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sheila Savannah (W63NAXL672)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -11950,7 +11962,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = rrc_adHoc_3;
+				PROVISIONING_PROFILE_SPECIFIER = rr_adhoc_3;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -11967,7 +11979,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sheila Savannah (W63NAXL672)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -12022,7 +12034,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = rrc_adHoc_3;
+				PROVISIONING_PROFILE_SPECIFIER = rr_adhoc_3;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

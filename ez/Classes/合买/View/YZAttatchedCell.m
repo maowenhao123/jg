@@ -69,7 +69,7 @@
     UIButton *allBuyBtn = [[UIButton alloc] init];
     self.allBuyBtn = allBuyBtn;
     [allBuyBtn setTitle:@"全包" forState:UIControlStateNormal];
-    [allBuyBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+    [allBuyBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
     allBuyBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
     [allBuyBtn addTarget:self action:@selector(allBuyBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:allBuyBtn];

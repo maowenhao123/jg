@@ -69,9 +69,12 @@
     if(isS1x5)//11选5
     {
         titleArray = @[@"购物车", @"近期开奖", @"玩法说明"];
-    }else if (isSsq || isDlt || isKs)//大乐透 双色球 快三
+    }else if (isSsq || isDlt)//大乐透 双色球
     {
         titleArray = @[@"走势图", @"购物车", @"近期开奖", @"玩法说明"];
+    }else if (isKs)//快三
+    {
+        titleArray = @[@"购物车", @"近期开奖", @"玩法说明"];
     }else if (isTC)//体彩
     {
         titleArray = @[@"玩法说明"];

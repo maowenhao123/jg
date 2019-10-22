@@ -149,7 +149,7 @@ typedef enum{
 #elif CS
     [titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
 #elif RR
-    [titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
+    [titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
 #endif
     [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -236,13 +236,13 @@ typedef enum{
     topBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     topBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     [topBtn setTitleColor:YZColor(134, 134, 134, 1) forState:UIControlStateNormal];
-    [topBtn setTitleColor:YZColor(246, 53, 80, 1) forState:UIControlStateSelected];
+    [topBtn setTitleColor:YZBaseColor forState:UIControlStateSelected];
     [backView2 addSubview:topBtn];
     
     //底部红线
     UIView * topBtnLine = [[UIView alloc]init];
     topBtnLine.frame = CGRectMake(5, 36 - 2, screenWidth - 10, 2);
-    topBtnLine.backgroundColor = YZColor(246, 53, 80, 1);
+    topBtnLine.backgroundColor = YZBaseColor;
     [backView2 addSubview:topBtnLine];
 }
 - (void)setupZusanBtn{

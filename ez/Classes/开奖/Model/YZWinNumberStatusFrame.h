@@ -17,6 +17,10 @@
 
 @interface YZWinNumberStatusFrame : NSObject
 /**
+ *  背景图片的frame
+ */
+@property (nonatomic, assign, readonly) CGRect bgImageViewF;
+/**
  *  图片的frame
  */
 @property (nonatomic, assign, readonly) CGRect imageF;
@@ -40,6 +44,10 @@
  查看比赛结果
  */
 @property (nonatomic, assign, readonly) CGRect detailF;
+/*
+ accessory
+ */
+@property (nonatomic, assign, readonly) CGRect accessoryF;
 
 @property (nonatomic, strong) YZWinNumberStatus *status;
 

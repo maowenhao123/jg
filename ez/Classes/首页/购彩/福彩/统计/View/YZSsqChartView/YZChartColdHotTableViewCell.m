@@ -87,7 +87,7 @@
             if (!YZStringIsEmpty(thirty)) {
                 label.text = [NSString stringWithFormat:@"%@", thirty];
                 if (_status.max_thirty) {
-                    label.textColor = YZRedTextColor;
+                    label.textColor = YZBaseColor;
                 }
             }
         }else if (i == 1)//50期
@@ -96,7 +96,7 @@
             if (!YZStringIsEmpty(fifty)) {
                 label.text = [NSString stringWithFormat:@"%@", fifty];
                 if (_status.max_fifty) {
-                    label.textColor = YZRedTextColor;
+                    label.textColor = YZBaseColor;
                 }
             }
         }else if (i == 2)//100期

@@ -103,11 +103,16 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+#if RR
+    if (indexPath.row == self.statusFrames.count - 1) {
+        return 5 * 2 + 70;
+    }
+    return 5 + 70;
+#endif
     return 70;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     YZWinNumberStatusFrame * statusFrame = self.statusFrames[indexPath.row];
     
     if ([statusFrame.status.gameId isEqualToString:@"T51"] || [statusFrame.status.gameId isEqualToString:@"T52"]) {//竞彩足球
@@ -140,7 +145,7 @@
         status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
 #endif
         status.lotteryName = [YZTool gameIdNameDict][gameId];
-        for(int j = 0;j < self.termList.count;j++)
+        for(int j = 0; j < self.termList.count;j++)
         {
             NSString *aGameId = self.termList[j][@"gameId"];
             if([aGameId isEqualToString:gameId])
@@ -177,6 +182,10 @@
             }
         }
     }
+#if RR
+    self.statusFrames = statusFrameArray;
+    return;
+#endif
     if (statusFrameArray.count > 0) {//添加竞彩足球 竞彩篮球
         YZWinNumberStatusFrame *statusFrame1 = [[YZWinNumberStatusFrame alloc] init];
         YZWinNumberStatus *status1 = [[YZWinNumberStatus alloc] init];

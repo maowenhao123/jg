@@ -49,17 +49,6 @@
     [self loadUserInfo];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -169,7 +158,7 @@
     //实名认证
     UILabel * nameCertificationLabel = [[UILabel alloc]init];
     self.nameCertificationLabel = nameCertificationLabel;
-    nameCertificationLabel.textColor = UIColorFromRGB(0xffd9d8);
+    nameCertificationLabel.textColor = [UIColor whiteColor];
     nameCertificationLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
     [backView addSubview:nameCertificationLabel];
     
@@ -182,7 +171,7 @@
     //手机绑定信息
     UILabel * phoneBindingLabel = [[UILabel alloc]init];
     self.phoneBindingLabel = phoneBindingLabel;
-    phoneBindingLabel.textColor = UIColorFromRGB(0xffd9d8);
+    phoneBindingLabel.textColor = [UIColor whiteColor];
     phoneBindingLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
     [backView addSubview:phoneBindingLabel];
    
@@ -221,7 +210,7 @@
     [scrollView bringSubviewToFront:moneyDetailView];
     
     UIView * lineView1 = [[UIView alloc]initWithFrame:CGRectMake(15, 62, 3, 15)];
-    lineView1.backgroundColor = UIColorFromRGB(0xf47a3a);
+    lineView1.backgroundColor = YZBaseColor;
     [walletView addSubview:lineView1];
     
     UILabel * walletLabel = [[UILabel alloc] init];
@@ -292,7 +281,7 @@
         lastView = functionView;
         
         UIView * lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 15, 3, 15)];
-        lineView.backgroundColor = UIColorFromRGB(0xf47a3a);
+        lineView.backgroundColor = YZBaseColor;
         [functionView addSubview:lineView];
         
         UILabel * functionLabel = [[UILabel alloc] init];
@@ -415,7 +404,7 @@
         NSString * btnStr = [NSString stringWithFormat:@"%@\n%@", moneys[index], moneyDetailbtnTitles[index]];
         NSMutableAttributedString * btnAttStr = [[NSMutableAttributedString alloc]initWithString:btnStr];
         [btnAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(34)] range:NSMakeRange(0, btnAttStr.length - 2)];
-        [btnAttStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xee2525) range:NSMakeRange(0, btnAttStr.length - 2)];
+        [btnAttStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(0, btnAttStr.length - 2)];
         [btnAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(24)] range:NSMakeRange(btnAttStr.length - 2, 2)];
         [btnAttStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xababab) range:NSMakeRange(btnAttStr.length - 2, 2)];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];

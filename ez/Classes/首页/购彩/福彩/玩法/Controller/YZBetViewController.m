@@ -444,6 +444,9 @@
         rightbtn.tag = i;
         [rightbtn setImage:[UIImage imageNamed:@"bet_weixuanzhong"] forState:UIControlStateNormal];
         [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateSelected];
+#if RR
+        [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateSelected];
+#endif
         [rightbtn.titleLabel setFont:[UIFont systemFontOfSize:YZGetFontSize(26)]];
         if(i == 0)
         {

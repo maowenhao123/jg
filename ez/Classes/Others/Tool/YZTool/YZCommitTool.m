@@ -567,7 +567,7 @@
             [muStr appendString:[NSString stringWithFormat:@"[二同号复选%d注]",betCount]];
             NSRange range = [muStr rangeOfString:@"["];
             NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:muStr];
-            [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, range.location)];
+            [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(0, range.location)];
             [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(range.location, muStr.length-range.location)];
            CGSize labelSize = [muStr sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(30)] maxSize:CGSizeMake(screenWidth - 2 * YZMargin - 18 - 5, MAXFLOAT)];
             status.labelText = attStr;

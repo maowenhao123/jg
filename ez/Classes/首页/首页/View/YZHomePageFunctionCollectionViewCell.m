@@ -24,7 +24,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        self.itemViewW = screenWidth / 5;
+        self.itemViewW = self.width / 5;
         [self setupChilds];
     }
     return self;
@@ -40,6 +40,10 @@
     scrollView.clipsToBounds = NO;
     scrollView.delegate = self;
     [self addSubview:scrollView];
+#if RR
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 5;
+#endif
     
     UIPageControl * pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 75, self.width, 10)];
     self.pageControl = pageControl;
@@ -57,10 +61,10 @@
         return;
     }else if (_functions.count < 5)
     {
-        self.itemViewW = screenWidth / _functions.count;
+        self.itemViewW = self.width / _functions.count;
     }else
     {
-        self.itemViewW = screenWidth / 5;
+        self.itemViewW = self.width / 5;
     }
     
     self.scrollView.width = self.itemViewW;
@@ -92,10 +96,10 @@
     CGFloat offsetX = scrollView.contentOffset.x;
     if (offsetX == 0) {
         self.pageControl.currentPage = 0;
-    }else if (offsetX > 0 && offsetX <= screenWidth)
+    }else if (offsetX > 0 && offsetX <= self.width)
     {
         self.pageControl.currentPage = 1;
-    }else if (offsetX > 1 && offsetX <= screenWidth * 2)
+    }else if (offsetX > 1 && offsetX <= self.width * 2)
     {
         self.pageControl.currentPage = 2;
     }

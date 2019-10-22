@@ -103,7 +103,7 @@
     if (!YZStringIsEmpty(self.detailUrl)) {
         UIButton * rechargeExplainBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [rechargeExplainBtn setTitle:@"充值说明（点击查看）" forState:UIControlStateNormal];
-        [rechargeExplainBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        [rechargeExplainBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
         rechargeExplainBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         [rechargeExplainBtn addTarget:self action:@selector(rechargeExplainBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
         CGSize rechargeExplainBtnSize = [rechargeExplainBtn.currentTitle sizeWithLabelFont:rechargeExplainBtn.titleLabel.font];

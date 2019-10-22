@@ -118,6 +118,10 @@
     [rightbtn setImage:[UIImage imageNamed:@"bet_weixuanzhong"] forState:UIControlStateNormal];
     [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateSelected];
     [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateHighlighted];
+#if RR
+    [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateSelected];
+    [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateHighlighted];
+#endif
     rightbtn.selected = YES;
     rightbtn.frame = CGRectMake(YZMargin, CGRectGetMaxY(registerbtn.frame) + 10, 25, 23.2);
     [rightbtn addTarget:self action:@selector(clickrightbtn:) forControlEvents:UIControlEventTouchUpInside];

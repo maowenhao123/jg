@@ -14,9 +14,14 @@
 {
     _status = status;
     
+    _bgImageViewF = CGRectMake(YZMargin, 5, screenWidth - 2 * YZMargin, 70);
     //设置彩票图片的frame
     CGFloat imageX = YZMargin;
     CGFloat imageY = (70 - 39) / 2;
+#if RR
+    imageX = YZMargin + YZMargin;
+    imageY = 5 + (70 - 39) / 2;
+#endif
     CGFloat imageW = 39;
     CGFloat imageH = 39;
     _imageF = CGRectMake(imageX, imageY, imageW, imageH);
@@ -24,12 +29,16 @@
     //设置彩票名字的frame
     CGFloat nameX = (status.lotteryImage ? CGRectGetMaxX(_imageF) : 0) + YZMargin;
     CGFloat nameY = 10;
+#if RR
+    nameY = 5 + 10;
+    nameX = (status.lotteryImage ? CGRectGetMaxX(_imageF) : YZMargin) + YZMargin;
+#endif
     CGSize nameSize = [status.lotteryName sizeWithLabelFont:YZLotteryNameFont];
     CGFloat nameW = nameSize.width;
     _nameF = CGRectMake(nameX, nameY, nameW, 20);
     
     //设置彩票期数的frame
-    CGFloat periodX = CGRectGetMaxX(_nameF) + 5;
+    CGFloat periodX = CGRectGetMaxX(_nameF) + 10;
     CGSize periodSize = [status.lotteryPeriod sizeWithLabelFont:YZLotteryPeriodFont];
     CGFloat periodW = periodSize.width;
     CGFloat periodY = nameY;
@@ -53,9 +62,19 @@
     CGFloat numberViewX = nameX;
     CGFloat numberViewY = CGRectGetMaxY(_nameF) + 5;
     CGFloat numberViewW = screenWidth - nameX - 20;
+#if RR
+    numberViewW = self.bgImageViewF.size.width - nameX - 20;
+#endif
     CGFloat numberViewH = 20;
     _numberViewF = CGRectMake(numberViewX, numberViewY, numberViewW, numberViewH);
 
+    CGFloat accessoryW = 8;
+    CGFloat accessoryH = 11;
+    _accessoryF = CGRectMake(screenWidth - YZMargin - accessoryW, (70 - accessoryH) / 2, accessoryW, accessoryH);
+#if RR
+    _accessoryF = CGRectMake(CGRectGetMaxX(_bgImageViewF) - YZMargin - accessoryW, 5 + (70 - accessoryH) / 2, accessoryW, accessoryH);
+#endif
+    
     _cellH = CGRectGetMaxY(_detailF) + 5;
     
 }
