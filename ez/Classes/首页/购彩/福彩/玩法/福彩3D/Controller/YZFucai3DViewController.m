@@ -1,16 +1,16 @@
 //
-//  YZFucaiViewController.m
+//  YZFucai3DViewController.m
 //  ez
 //
 //  Created by apple on 14-9-10.
 //  Copyright (c) 2014年 9ge. All rights reserved.
 //
 
-#import "YZFucaiViewController.h"
+#import "YZFucai3DViewController.h"
 #import "YZBallBtn.h"
 #import "YZBetStatus.h"
 
-@interface YZFucaiViewController ()<UITableViewDelegate,UITableViewDataSource,YZSelectBallCellDelegate,YZBallBtnDelegate>
+@interface YZFucai3DViewController ()<UITableViewDelegate,UITableViewDataSource,YZSelectBallCellDelegate,YZBallBtnDelegate>
 @property (nonatomic, weak) UIView *countBackView;//选择多少个号码的背部view
 @property (nonatomic, weak) UIScrollView *scrollView3;//组三view
 
@@ -63,7 +63,7 @@ typedef enum{
     KTableViewZuxuansanFuTag = 32,
 }tableviewTag;
 
-@implementation YZFucaiViewController
+@implementation YZFucai3DViewController
 
 - (void)viewDidLoad
 {

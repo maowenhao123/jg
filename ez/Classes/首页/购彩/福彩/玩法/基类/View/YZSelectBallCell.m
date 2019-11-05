@@ -99,6 +99,7 @@
     lineView.backgroundColor = YZGrayLineColor;
     [self addSubview:lineView];
 }
+
 - (void)setStatus:(YZSelectBallCellStatus *)status
 {
     _status = status;

@@ -20,6 +20,14 @@
 		1D76807122DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
 		1D76807222DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
 		1D76807322DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
+		1D7BDF972371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDF982371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDF992371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDF9A2371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDFFC23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
+		1D7BDFFD23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
+		1D7BDFFE23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
+		1D7BDFFF23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
 		1DB2A59522C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59622C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59722C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
@@ -595,7 +603,7 @@
 		1DCA1B032327376100F2061B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD8E3122CB2C1E0024CF7B /* UIImageView+WebCache.m */; };
 		1DCA1B042327376100F2061B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E9941FFE17DE003B53AF /* FMResultSet.m */; };
 		1DCA1B052327376100F2061B /* YZBasketBallBetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207720BE398100D47F85 /* YZBasketBallBetHeaderView.m */; };
-		1DCA1B062327376100F2061B /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
+		1DCA1B062327376100F2061B /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
 		1DCA1B072327376100F2061B /* YZFbOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1091FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m */; };
 		1DCA1B082327376100F2061B /* YZFBChoosePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */; };
 		1DCA1B092327376100F2061B /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E91A1FFE17DE003B53AF /* MJRefreshComponent.m */; };
@@ -899,7 +907,6 @@
 		1DCA1C3D2327376100F2061B /* YZStartUnionBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */; };
 		1DCA1C3E2327376100F2061B /* YZChooseVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */; };
 		1DCA1C3F2327376100F2061B /* YZMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74ECCE1FFE1AD6003B53AF /* YZMessageType.m */; };
-		1DCA1C402327376100F2061B /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
 		1DCA1C412327376100F2061B /* YZBuyLotteryCellStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292781FFE27B600CA77DA /* YZBuyLotteryCellStatus.m */; };
 		1DCA1C422327376100F2061B /* UIResponder+HRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7BF1FFE17DD003B53AF /* UIResponder+HRouter.m */; };
 		1DCA1C432327376100F2061B /* YZFBMatchDetailRecommendStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292191FFE27B600CA77DA /* YZFBMatchDetailRecommendStatus.m */; };
@@ -1474,7 +1481,7 @@
 		AA237EAF2143590C00BC47BB /* YZFBMatchDetailTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32925E1FFE27B600CA77DA /* YZFBMatchDetailTeamView.m */; };
 		AA237EB02143590C00BC47BB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E9941FFE17DE003B53AF /* FMResultSet.m */; };
 		AA237EB12143590C00BC47BB /* YZBasketBallBetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207720BE398100D47F85 /* YZBasketBallBetHeaderView.m */; };
-		AA237EB22143590C00BC47BB /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
+		AA237EB22143590C00BC47BB /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
 		AA237EB32143590C00BC47BB /* YZFbOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1091FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m */; };
 		AA237EB42143590C00BC47BB /* YZFBChoosePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */; };
 		AA237EB52143590C00BC47BB /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E91A1FFE17DE003B53AF /* MJRefreshComponent.m */; };
@@ -1708,7 +1715,6 @@
 		AA237FC82143590C00BC47BB /* YZStartUnionBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */; };
 		AA237FC92143590C00BC47BB /* YZChooseVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */; };
 		AA237FCA2143590C00BC47BB /* YZMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74ECCE1FFE1AD6003B53AF /* YZMessageType.m */; };
-		AA237FCD2143590C00BC47BB /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
 		AA237FCE2143590C00BC47BB /* YZBuyLotteryCellStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292781FFE27B600CA77DA /* YZBuyLotteryCellStatus.m */; };
 		AA237FCF2143590C00BC47BB /* UIResponder+HRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7BF1FFE17DD003B53AF /* UIResponder+HRouter.m */; };
 		AA237FD02143590C00BC47BB /* YZFBMatchDetailRecommendStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292191FFE27B600CA77DA /* YZFBMatchDetailRecommendStatus.m */; };
@@ -1905,8 +1911,8 @@
 		AA3292BC1FFE27B600CA77DA /* YZConsumableVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */; };
 		AA3292BD1FFE27B600CA77DA /* YZPlwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291381FFE27B600CA77DA /* YZPlwViewController.m */; };
 		AA3292BE1FFE27B600CA77DA /* YZPlwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291381FFE27B600CA77DA /* YZPlwViewController.m */; };
-		AA3292BF1FFE27B600CA77DA /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
-		AA3292C01FFE27B600CA77DA /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
+		AA3292BF1FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
+		AA3292C01FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
 		AA3292C11FFE27B600CA77DA /* YZDltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32913C1FFE27B600CA77DA /* YZDltViewController.m */; };
 		AA3292C21FFE27B600CA77DA /* YZDltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32913C1FFE27B600CA77DA /* YZDltViewController.m */; };
 		AA3292C31FFE27B600CA77DA /* YZSsqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32913D1FFE27B600CA77DA /* YZSsqViewController.m */; };
@@ -2025,8 +2031,6 @@
 		AA3293421FFE27B600CA77DA /* YZSfcBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291CE1FFE27B600CA77DA /* YZSfcBetViewController.m */; };
 		AA3293431FFE27B600CA77DA /* YZScjqBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */; };
 		AA3293441FFE27B600CA77DA /* YZScjqBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */; };
-		AA3293451FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
-		AA3293461FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
 		AA3293471FFE27B600CA77DA /* YZFbBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */; };
 		AA3293481FFE27B600CA77DA /* YZFbBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */; };
 		AA3293491FFE27B600CA77DA /* YZFootBallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */; };
@@ -3112,6 +3116,10 @@
 		1D76806B22DC505A007C1154 /* YZServiceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceModel.m; sourceTree = "<group>"; };
 		1D76806F22DC5064007C1154 /* YZServiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceTableViewCell.h; sourceTree = "<group>"; };
 		1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceTableViewCell.m; sourceTree = "<group>"; };
+		1D7BDF952371088E0015CD8E /* YZKy481ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ViewController.h; sourceTree = "<group>"; };
+		1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ViewController.m; sourceTree = "<group>"; };
+		1D7BDFFA23710F760015CD8E /* YZFbBetSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFbBetSuccessViewController.h; sourceTree = "<group>"; };
+		1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFbBetSuccessViewController.m; sourceTree = "<group>"; };
 		1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZ11x5PlayTypeView.h; sourceTree = "<group>"; };
 		1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZ11x5PlayTypeView.m; sourceTree = "<group>"; };
 		1DB2A59D22C20615000AFE52 /* YZCirclePlayTypePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCirclePlayTypePickerView.h; sourceTree = "<group>"; };
@@ -3507,7 +3515,7 @@
 		AA3291271FFE27B600CA77DA /* YZPlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPlsViewController.m; sourceTree = "<group>"; };
 		AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZChooseVoucherViewController.m; sourceTree = "<group>"; };
 		AA3291291FFE27B600CA77DA /* YZPlwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPlwViewController.h; sourceTree = "<group>"; };
-		AA32912A1FFE27B600CA77DA /* YZFucaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFucaiViewController.h; sourceTree = "<group>"; };
+		AA32912A1FFE27B600CA77DA /* YZFucai3DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFucai3DViewController.h; sourceTree = "<group>"; };
 		AA32912B1FFE27B600CA77DA /* YZConsumableVoucherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZConsumableVoucherViewController.h; sourceTree = "<group>"; };
 		AA32912C1FFE27B600CA77DA /* YZSsqViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSsqViewController.h; sourceTree = "<group>"; };
 		AA32912D1FFE27B600CA77DA /* YZDltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDltViewController.h; sourceTree = "<group>"; };
@@ -3522,7 +3530,7 @@
 		AA3291361FFE27B600CA77DA /* YZS1x5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZS1x5ViewController.m; sourceTree = "<group>"; };
 		AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZConsumableVoucherViewController.m; sourceTree = "<group>"; };
 		AA3291381FFE27B600CA77DA /* YZPlwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPlwViewController.m; sourceTree = "<group>"; };
-		AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFucaiViewController.m; sourceTree = "<group>"; };
+		AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFucai3DViewController.m; sourceTree = "<group>"; };
 		AA32913A1FFE27B600CA77DA /* YZChooseVoucherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZChooseVoucherViewController.h; sourceTree = "<group>"; };
 		AA32913B1FFE27B600CA77DA /* YZPlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPlsViewController.h; sourceTree = "<group>"; };
 		AA32913C1FFE27B600CA77DA /* YZDltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDltViewController.m; sourceTree = "<group>"; };
@@ -3644,7 +3652,6 @@
 		AA3291D01FFE27B600CA77DA /* YZFbBetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFbBetViewController.h; sourceTree = "<group>"; };
 		AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZScjqBetViewController.m; sourceTree = "<group>"; };
 		AA3291D21FFE27B600CA77DA /* YZSfcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSfcViewController.h; sourceTree = "<group>"; };
-		AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFbBetSuccessViewController.m; sourceTree = "<group>"; };
 		AA3291D41FFE27B600CA77DA /* YZScjqViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZScjqViewController.h; sourceTree = "<group>"; };
 		AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFbBetViewController.m; sourceTree = "<group>"; };
 		AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFootBallViewController.m; sourceTree = "<group>"; };
@@ -3653,7 +3660,6 @@
 		AA3291D91FFE27B600CA77DA /* YZSfcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSfcViewController.m; sourceTree = "<group>"; };
 		AA3291DA1FFE27B600CA77DA /* YZScjqBetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZScjqBetViewController.h; sourceTree = "<group>"; };
 		AA3291DB1FFE27B600CA77DA /* YZScjqViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZScjqViewController.m; sourceTree = "<group>"; };
-		AA3291DC1FFE27B600CA77DA /* YZFbBetSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFbBetSuccessViewController.h; sourceTree = "<group>"; };
 		AA3291DE1FFE27B600CA77DA /* YZGameIndosStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZGameIndosStatus.h; sourceTree = "<group>"; };
 		AA3291DF1FFE27B600CA77DA /* YZScjqCellStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZScjqCellStatus.h; sourceTree = "<group>"; };
 		AA3291E01FFE27B600CA77DA /* YZMatchInfosStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMatchInfosStatus.h; sourceTree = "<group>"; };
@@ -4858,6 +4864,653 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1D7BDF912371081E0015CD8E /* 快赢481 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDF93237108730015CD8E /* Controller */,
+				1D7BDF92237108730015CD8E /* Model */,
+				1D7BDF94237108740015CD8E /* View */,
+			);
+			path = "快赢481";
+			sourceTree = "<group>";
+		};
+		1D7BDF92237108730015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDF93237108730015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDF952371088E0015CD8E /* YZKy481ViewController.h */,
+				1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDF94237108740015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDF9B23710AC30015CD8E /* 基类 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDF9E23710AD70015CD8E /* Controller */,
+				1D7BDF9C23710AD60015CD8E /* Model */,
+				1D7BDF9D23710AD70015CD8E /* View */,
+			);
+			path = "基类";
+			sourceTree = "<group>";
+		};
+		1D7BDF9C23710AD60015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA32914B1FFE27B600CA77DA /* YZSelectBallCellStatus.h */,
+				AA3291491FFE27B600CA77DA /* YZSelectBallCellStatus.m */,
+				AA32914A1FFE27B600CA77DA /* YZRecentLotteryStatus.h */,
+				AA3291481FFE27B600CA77DA /* YZRecentLotteryStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDF9D23710AD70015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA32917A1FFE27B600CA77DA /* YZTitleButton.h */,
+				AA3291721FFE27B600CA77DA /* YZTitleButton.m */,
+				AA3291771FFE27B600CA77DA /* YZSelectBallCell.h */,
+				AA32916F1FFE27B600CA77DA /* YZSelectBallCell.m */,
+				AA3291791FFE27B600CA77DA /* YZBallBtn.h */,
+				AA3291731FFE27B600CA77DA /* YZBallBtn.m */,
+				AA3291751FFE27B600CA77DA /* YZRecentLotteryCell.h */,
+				AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */,
+				AA3291701FFE27B600CA77DA /* YZSelectedBetNumberView.h */,
+				AA3291761FFE27B600CA77DA /* YZSelectedBetNumberView.m */,
+				AA3291781FFE27B600CA77DA /* YZLotteryButton.h */,
+				AA32914F1FFE27B600CA77DA /* YZLotteryButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDF9E23710AD70015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32913F1FFE27B600CA77DA /* YZGameIdViewController.h */,
+				AA3291321FFE27B600CA77DA /* YZGameIdViewController.m */,
+				AA3291421FFE27B600CA77DA /* YZSelectBaseViewController.h */,
+				AA32912F1FFE27B600CA77DA /* YZSelectBaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDF9F23710B110015CD8E /* 下单 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFA123710B1D0015CD8E /* Controller */,
+				1D7BDFA223710B1D0015CD8E /* Model */,
+				1D7BDFA023710B1C0015CD8E /* View */,
+			);
+			path = "下单";
+			sourceTree = "<group>";
+		};
+		1D7BDFA023710B1C0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291741FFE27B600CA77DA /* YZBetCell.h */,
+				AA32914D1FFE27B600CA77DA /* YZBetCell.m */,
+				AA3291711FFE27B600CA77DA /* YZUnionChangeNickNameView.h */,
+				AA32917B1FFE27B600CA77DA /* YZUnionChangeNickNameView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFA123710B1D0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32913E1FFE27B600CA77DA /* YZBetViewController.h */,
+				AA3291331FFE27B600CA77DA /* YZBetViewController.m */,
+				AA32913A1FFE27B600CA77DA /* YZChooseVoucherViewController.h */,
+				AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */,
+				AA32912B1FFE27B600CA77DA /* YZConsumableVoucherViewController.h */,
+				AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */,
+				AA3291311FFE27B600CA77DA /* YZStartUnionBuyViewController.h */,
+				AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */,
+				AA3291341FFE27B600CA77DA /* YZBetSuccessViewController.h */,
+				AA3291461FFE27B600CA77DA /* YZBetSuccessViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFA223710B1D0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA4B7BBC20172C1900A6F764 /* YZQrCodeModel.h */,
+				AA4B7BBD20172C1900A6F764 /* YZQrCodeModel.m */,
+				AA3657CE21D224B9009BE71B /* YZActivityModel.h */,
+				AA3657CF21D224B9009BE71B /* YZActivityModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFA323710B920015CD8E /* 11选5 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFA823710BB20015CD8E /* Controller */,
+				1D7BDFA923710BB20015CD8E /* Model */,
+				1D7BDFA723710BB20015CD8E /* View */,
+			);
+			path = "11选5";
+			sourceTree = "<group>";
+		};
+		1D7BDFA723710BB20015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */,
+				1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFA823710BB20015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291451FFE27B600CA77DA /* YZS1x5ViewController.h */,
+				AA3291361FFE27B600CA77DA /* YZS1x5ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFA923710BB20015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFAA23710BE10015CD8E /* 快三 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFAC23710BEC0015CD8E /* Controller */,
+				1D7BDFAB23710BEB0015CD8E /* Model */,
+				1D7BDFAD23710BEC0015CD8E /* View */,
+			);
+			path = "快三";
+			sourceTree = "<group>";
+		};
+		1D7BDFAB23710BEB0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFAC23710BEC0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291351FFE27B600CA77DA /* YZKsViewController.h */,
+				AA3291441FFE27B600CA77DA /* YZKsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFAD23710BEC0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291551FFE27B600CA77DA /* YZKsPlayTypeView.h */,
+				AA3291671FFE27B600CA77DA /* YZKsPlayTypeView.m */,
+				AA3291521FFE27B600CA77DA /* YZKsBaseView.h */,
+				AA3291621FFE27B600CA77DA /* YZKsBaseView.m */,
+				AA3291651FFE27B600CA77DA /* YZKsHezhiView.h */,
+				AA3291581FFE27B600CA77DA /* YZKsHezhiView.m */,
+				AA32916E1FFE27B600CA77DA /* YZKsErtongView.h */,
+				AA32915E1FFE27B600CA77DA /* YZKsErtongView.m */,
+				AA32915D1FFE27B600CA77DA /* YZKsErbutongView.h */,
+				AA3291691FFE27B600CA77DA /* YZKsErbutongView.m */,
+				AA32915C1FFE27B600CA77DA /* YZKsSantongView.h */,
+				AA32916C1FFE27B600CA77DA /* YZKsSantongView.m */,
+				AA3291631FFE27B600CA77DA /* YZKsSanbutongView.h */,
+				AA3291511FFE27B600CA77DA /* YZKsSanbutongView.m */,
+				AA3291601FFE27B600CA77DA /* YZKsHistoryTableView.h */,
+				AA3291541FFE27B600CA77DA /* YZKsHistoryTableView.m */,
+				AA3291591FFE27B600CA77DA /* YZKsHistoryTableViewCell.h */,
+				AA3291641FFE27B600CA77DA /* YZKsHistoryTableViewCell.m */,
+				AA32916B1FFE27B600CA77DA /* YZksHistoryWinNumberView.h */,
+				AA32915A1FFE27B600CA77DA /* YZksHistoryWinNumberView.m */,
+				AA3291611FFE27B600CA77DA /* YZKsDiceAnimationView.h */,
+				AA3291531FFE27B600CA77DA /* YZKsDiceAnimationView.m */,
+				AA3291561FFE27B600CA77DA /* YZKsDiceView.h */,
+				AA3291681FFE27B600CA77DA /* YZKsDiceView.m */,
+				AA3291661FFE27B600CA77DA /* YZKsBottomView.h */,
+				AA3291571FFE27B600CA77DA /* YZKsBottomView.m */,
+				AA32915B1FFE27B600CA77DA /* YZKsBottomBtn.h */,
+				AA32916A1FFE27B600CA77DA /* YZKsBottomBtn.m */,
+				AA32915F1FFE27B600CA77DA /* YZKsBtn.h */,
+				AA32916D1FFE27B600CA77DA /* YZKsBtn.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFAE23710CD70015CD8E /* 双色球 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFAF23710CE70015CD8E /* Controller */,
+				1D7BDFB023710CE70015CD8E /* Model */,
+				1D7BDFB123710CE70015CD8E /* View */,
+			);
+			path = "双色球";
+			sourceTree = "<group>";
+		};
+		1D7BDFAF23710CE70015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912C1FFE27B600CA77DA /* YZSsqViewController.h */,
+				AA32913D1FFE27B600CA77DA /* YZSsqViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFB023710CE70015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFB123710CE70015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFB223710CEF0015CD8E /* 大乐透 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFB323710CFB0015CD8E /* Controller */,
+				1D7BDFB423710CFC0015CD8E /* Model */,
+				1D7BDFB523710CFC0015CD8E /* View */,
+			);
+			path = "大乐透";
+			sourceTree = "<group>";
+		};
+		1D7BDFB323710CFB0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912D1FFE27B600CA77DA /* YZDltViewController.h */,
+				AA32913C1FFE27B600CA77DA /* YZDltViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFB423710CFC0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFB523710CFC0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFB623710D030015CD8E /* 排列三 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFB723710D0C0015CD8E /* Controller */,
+				1D7BDFB923710D0D0015CD8E /* Model */,
+				1D7BDFB823710D0C0015CD8E /* View */,
+			);
+			path = "排列三";
+			sourceTree = "<group>";
+		};
+		1D7BDFB723710D0C0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32913B1FFE27B600CA77DA /* YZPlsViewController.h */,
+				AA3291271FFE27B600CA77DA /* YZPlsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFB823710D0C0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFB923710D0D0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFBA23710D180015CD8E /* 排列五 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC923710D570015CD8E /* Controller */,
+				1D7BDFC723710D560015CD8E /* Model */,
+				1D7BDFC823710D560015CD8E /* View */,
+			);
+			path = "排列五";
+			sourceTree = "<group>";
+		};
+		1D7BDFBB23710D220015CD8E /* 七星彩 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC623710D510015CD8E /* Controller */,
+				1D7BDFC523710D510015CD8E /* Model */,
+				1D7BDFC423710D500015CD8E /* View */,
+			);
+			path = "七星彩";
+			sourceTree = "<group>";
+		};
+		1D7BDFBC23710D290015CD8E /* 七乐彩 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC323710D490015CD8E /* Controller */,
+				1D7BDFC123710D480015CD8E /* Model */,
+				1D7BDFC223710D480015CD8E /* View */,
+			);
+			path = "七乐彩";
+			sourceTree = "<group>";
+		};
+		1D7BDFBD23710D360015CD8E /* 福彩3D */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC023710D420015CD8E /* Controller */,
+				1D7BDFBE23710D410015CD8E /* Model */,
+				1D7BDFBF23710D420015CD8E /* View */,
+			);
+			path = "福彩3D";
+			sourceTree = "<group>";
+		};
+		1D7BDFBE23710D410015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFBF23710D420015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC023710D420015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912A1FFE27B600CA77DA /* YZFucai3DViewController.h */,
+				AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFC123710D480015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFC223710D480015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC323710D490015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291411FFE27B600CA77DA /* YZQilecaiViewController.h */,
+				AA3291301FFE27B600CA77DA /* YZQilecaiViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFC423710D500015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC523710D510015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFC623710D510015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912E1FFE27B600CA77DA /* YZQxcViewController.h */,
+				AA3291431FFE27B600CA77DA /* YZQxcViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFC723710D560015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFC823710D560015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC923710D570015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291291FFE27B600CA77DA /* YZPlwViewController.h */,
+				AA3291381FFE27B600CA77DA /* YZPlwViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFCA23710DAF0015CD8E /* 竞彩足球 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFCD23710DCE0015CD8E /* Controller */,
+				1D7BDFCF23710DCF0015CD8E /* Model */,
+				1D7BDFCE23710DCE0015CD8E /* View */,
+			);
+			path = "竞彩足球";
+			sourceTree = "<group>";
+		};
+		1D7BDFCB23710DBA0015CD8E /* 四场进球 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFD223710DE80015CD8E /* Controller */,
+				1D7BDFD023710DE80015CD8E /* Model */,
+				1D7BDFD123710DE80015CD8E /* View */,
+			);
+			path = "四场进球";
+			sourceTree = "<group>";
+		};
+		1D7BDFCC23710DC20015CD8E /* 胜负彩 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFD323710DEE0015CD8E /* Controller */,
+				1D7BDFD423710DEE0015CD8E /* Model */,
+				1D7BDFD523710DEF0015CD8E /* View */,
+			);
+			path = "胜负彩";
+			sourceTree = "<group>";
+		};
+		1D7BDFCD23710DCE0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291CD1FFE27B600CA77DA /* YZFootBallBaseViewController.h */,
+				AA3291D81FFE27B600CA77DA /* YZFootBallBaseViewController.m */,
+				AA3291CF1FFE27B600CA77DA /* YZFootBallViewController.h */,
+				AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */,
+				AA3291D01FFE27B600CA77DA /* YZFbBetViewController.h */,
+				AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFCE23710DCE0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3292001FFE27B600CA77DA /* YZFTHeaderView.h */,
+				AA3291F51FFE27B600CA77DA /* YZFTHeaderView.m */,
+				AA57888122855C51002292EA /* YZFBPlayTypeView.h */,
+				AA57888222855C51002292EA /* YZFBPlayTypeView.m */,
+				AA578886228562CF002292EA /* YZFBSiftView.h */,
+				AA578887228562CF002292EA /* YZFBSiftView.m */,
+				AA3291F81FFE27B600CA77DA /* YZFootBallCell.h */,
+				AA3292021FFE27B600CA77DA /* YZFootBallCell.m */,
+				AA3292061FFE27B600CA77DA /* YZFBChoosePlayView.h */,
+				AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */,
+				AA3292051FFE27B600CA77DA /* YZFBAllPlayView.h */,
+				AA3291FD1FFE27B600CA77DA /* YZFBAllPlayView.m */,
+				AA3291FF1FFE27B600CA77DA /* YZFBMatchDetailCellView.h */,
+				AA3291F61FFE27B600CA77DA /* YZFBMatchDetailCellView.m */,
+				AA3291FA1FFE27B600CA77DA /* YZFbBetCell.h */,
+				AA3292031FFE27B600CA77DA /* YZFbBetCell.m */,
+				AA3291FC1FFE27B600CA77DA /* YZBtnsView.h */,
+				AA3292041FFE27B600CA77DA /* YZBtnsView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFCF23710DCF0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291DE1FFE27B600CA77DA /* YZGameIndosStatus.h */,
+				AA3291EC1FFE27B600CA77DA /* YZGameIndosStatus.m */,
+				AA3291E41FFE27B600CA77DA /* YZSectionStatus.h */,
+				AA3291EE1FFE27B600CA77DA /* YZSectionStatus.m */,
+				AA3291E01FFE27B600CA77DA /* YZMatchInfosStatus.h */,
+				AA3291EA1FFE27B600CA77DA /* YZMatchInfosStatus.m */,
+				AA3291EF1FFE27B600CA77DA /* YZOddsMap.h */,
+				AA3291E31FFE27B600CA77DA /* YZOddsMap.m */,
+				AA3291E91FFE27B600CA77DA /* YZCN.h */,
+				AA3291E11FFE27B600CA77DA /* YZCN.m */,
+				AA3291E61FFE27B600CA77DA /* YZBetStatus.h */,
+				AA3291F21FFE27B600CA77DA /* YZBetStatus.m */,
+				AA3291E21FFE27B600CA77DA /* YZPlayPassWay.h */,
+				AA3291F01FFE27B600CA77DA /* YZPlayPassWay.m */,
+				AA3291E51FFE27B600CA77DA /* YZFootBallMatchRate.h */,
+				AA3291ED1FFE27B600CA77DA /* YZFootBallMatchRate.m */,
+				AA3291F11FFE27B600CA77DA /* YZFbBetCellStatus.h */,
+				AA3291E71FFE27B600CA77DA /* YZFbBetCellStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFD023710DE80015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291DF1FFE27B600CA77DA /* YZScjqCellStatus.h */,
+				AA3291EB1FFE27B600CA77DA /* YZScjqCellStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFD123710DE80015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3292011FFE27B600CA77DA /* YZScjqCell.h */,
+				AA3291F91FFE27B600CA77DA /* YZScjqCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFD223710DE80015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291D41FFE27B600CA77DA /* YZScjqViewController.h */,
+				AA3291DB1FFE27B600CA77DA /* YZScjqViewController.m */,
+				AA3291DA1FFE27B600CA77DA /* YZScjqBetViewController.h */,
+				AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFD323710DEE0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291D21FFE27B600CA77DA /* YZSfcViewController.h */,
+				AA3291D91FFE27B600CA77DA /* YZSfcViewController.m */,
+				AA3291D71FFE27B600CA77DA /* YZSfcBetViewController.h */,
+				AA3291CE1FFE27B600CA77DA /* YZSfcBetViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFD423710DEE0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291F31FFE27B600CA77DA /* YZSfcCellStatus.h */,
+				AA3291E81FFE27B600CA77DA /* YZSfcCellStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFD523710DEF0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291F71FFE27B600CA77DA /* YZSfcCell.h */,
+				AA3291FE1FFE27B600CA77DA /* YZSfcCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFD623710E4D0015CD8E /* 下单成功 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFE423710E770015CD8E /* Controller */,
+				1D7BDFF823710F260015CD8E /* Model */,
+				1D7BDFF923710F260015CD8E /* View */,
+			);
+			path = "下单成功";
+			sourceTree = "<group>";
+		};
+		1D7BDFE423710E770015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFFA23710F760015CD8E /* YZFbBetSuccessViewController.h */,
+				1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */,
+			);
+			name = Controller;
+			path = ../Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFF823710F260015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFF923710F260015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1DBD8B2C22CAFF770024CF7B /* XLPhotoBrowser+CoderXL */ = {
 			isa = PBXGroup;
 			children = (
@@ -5975,128 +6628,20 @@
 		AA3291251FFE27B600CA77DA /* 玩法 */ = {
 			isa = PBXGroup;
 			children = (
-				AA3291261FFE27B600CA77DA /* Controller */,
-				AA3291471FFE27B600CA77DA /* Model */,
-				AA32914C1FFE27B600CA77DA /* View */,
+				1D7BDF9B23710AC30015CD8E /* 基类 */,
+				1D7BDF912371081E0015CD8E /* 快赢481 */,
+				1D7BDFA323710B920015CD8E /* 11选5 */,
+				1D7BDFAE23710CD70015CD8E /* 双色球 */,
+				1D7BDFB223710CEF0015CD8E /* 大乐透 */,
+				1D7BDFAA23710BE10015CD8E /* 快三 */,
+				1D7BDFB623710D030015CD8E /* 排列三 */,
+				1D7BDFBA23710D180015CD8E /* 排列五 */,
+				1D7BDFBB23710D220015CD8E /* 七星彩 */,
+				1D7BDFBC23710D290015CD8E /* 七乐彩 */,
+				1D7BDFBD23710D360015CD8E /* 福彩3D */,
+				1D7BDF9F23710B110015CD8E /* 下单 */,
 			);
 			path = "玩法";
-			sourceTree = "<group>";
-		};
-		AA3291261FFE27B600CA77DA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AA32913F1FFE27B600CA77DA /* YZGameIdViewController.h */,
-				AA3291321FFE27B600CA77DA /* YZGameIdViewController.m */,
-				AA3291421FFE27B600CA77DA /* YZSelectBaseViewController.h */,
-				AA32912F1FFE27B600CA77DA /* YZSelectBaseViewController.m */,
-				AA3291451FFE27B600CA77DA /* YZS1x5ViewController.h */,
-				AA3291361FFE27B600CA77DA /* YZS1x5ViewController.m */,
-				AA3291351FFE27B600CA77DA /* YZKsViewController.h */,
-				AA3291441FFE27B600CA77DA /* YZKsViewController.m */,
-				AA32912C1FFE27B600CA77DA /* YZSsqViewController.h */,
-				AA32913D1FFE27B600CA77DA /* YZSsqViewController.m */,
-				AA32912D1FFE27B600CA77DA /* YZDltViewController.h */,
-				AA32913C1FFE27B600CA77DA /* YZDltViewController.m */,
-				AA32913B1FFE27B600CA77DA /* YZPlsViewController.h */,
-				AA3291271FFE27B600CA77DA /* YZPlsViewController.m */,
-				AA3291291FFE27B600CA77DA /* YZPlwViewController.h */,
-				AA3291381FFE27B600CA77DA /* YZPlwViewController.m */,
-				AA32912E1FFE27B600CA77DA /* YZQxcViewController.h */,
-				AA3291431FFE27B600CA77DA /* YZQxcViewController.m */,
-				AA3291411FFE27B600CA77DA /* YZQilecaiViewController.h */,
-				AA3291301FFE27B600CA77DA /* YZQilecaiViewController.m */,
-				AA32912A1FFE27B600CA77DA /* YZFucaiViewController.h */,
-				AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */,
-				AA32913E1FFE27B600CA77DA /* YZBetViewController.h */,
-				AA3291331FFE27B600CA77DA /* YZBetViewController.m */,
-				AA32913A1FFE27B600CA77DA /* YZChooseVoucherViewController.h */,
-				AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */,
-				AA32912B1FFE27B600CA77DA /* YZConsumableVoucherViewController.h */,
-				AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */,
-				AA3291311FFE27B600CA77DA /* YZStartUnionBuyViewController.h */,
-				AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */,
-				AA3291341FFE27B600CA77DA /* YZBetSuccessViewController.h */,
-				AA3291461FFE27B600CA77DA /* YZBetSuccessViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		AA3291471FFE27B600CA77DA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AA32914B1FFE27B600CA77DA /* YZSelectBallCellStatus.h */,
-				AA3291491FFE27B600CA77DA /* YZSelectBallCellStatus.m */,
-				AA32914A1FFE27B600CA77DA /* YZRecentLotteryStatus.h */,
-				AA3291481FFE27B600CA77DA /* YZRecentLotteryStatus.m */,
-				AA4B7BBC20172C1900A6F764 /* YZQrCodeModel.h */,
-				AA4B7BBD20172C1900A6F764 /* YZQrCodeModel.m */,
-				AA3657CE21D224B9009BE71B /* YZActivityModel.h */,
-				AA3657CF21D224B9009BE71B /* YZActivityModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AA32914C1FFE27B600CA77DA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291501FFE27B600CA77DA /* 快三 */,
-				AA32917A1FFE27B600CA77DA /* YZTitleButton.h */,
-				AA3291721FFE27B600CA77DA /* YZTitleButton.m */,
-				AA3291771FFE27B600CA77DA /* YZSelectBallCell.h */,
-				AA32916F1FFE27B600CA77DA /* YZSelectBallCell.m */,
-				AA3291791FFE27B600CA77DA /* YZBallBtn.h */,
-				AA3291731FFE27B600CA77DA /* YZBallBtn.m */,
-				AA3291751FFE27B600CA77DA /* YZRecentLotteryCell.h */,
-				AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */,
-				1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */,
-				1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */,
-				AA3291701FFE27B600CA77DA /* YZSelectedBetNumberView.h */,
-				AA3291761FFE27B600CA77DA /* YZSelectedBetNumberView.m */,
-				AA3291781FFE27B600CA77DA /* YZLotteryButton.h */,
-				AA32914F1FFE27B600CA77DA /* YZLotteryButton.m */,
-				AA3291741FFE27B600CA77DA /* YZBetCell.h */,
-				AA32914D1FFE27B600CA77DA /* YZBetCell.m */,
-				AA3291711FFE27B600CA77DA /* YZUnionChangeNickNameView.h */,
-				AA32917B1FFE27B600CA77DA /* YZUnionChangeNickNameView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AA3291501FFE27B600CA77DA /* 快三 */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291551FFE27B600CA77DA /* YZKsPlayTypeView.h */,
-				AA3291671FFE27B600CA77DA /* YZKsPlayTypeView.m */,
-				AA3291511FFE27B600CA77DA /* YZKsSanbutongView.m */,
-				AA3291521FFE27B600CA77DA /* YZKsBaseView.h */,
-				AA3291531FFE27B600CA77DA /* YZKsDiceAnimationView.m */,
-				AA3291541FFE27B600CA77DA /* YZKsHistoryTableView.m */,
-				AA3291561FFE27B600CA77DA /* YZKsDiceView.h */,
-				AA3291571FFE27B600CA77DA /* YZKsBottomView.m */,
-				AA3291581FFE27B600CA77DA /* YZKsHezhiView.m */,
-				AA3291591FFE27B600CA77DA /* YZKsHistoryTableViewCell.h */,
-				AA32915A1FFE27B600CA77DA /* YZksHistoryWinNumberView.m */,
-				AA32915B1FFE27B600CA77DA /* YZKsBottomBtn.h */,
-				AA32915C1FFE27B600CA77DA /* YZKsSantongView.h */,
-				AA32915D1FFE27B600CA77DA /* YZKsErbutongView.h */,
-				AA32915E1FFE27B600CA77DA /* YZKsErtongView.m */,
-				AA32915F1FFE27B600CA77DA /* YZKsBtn.h */,
-				AA3291601FFE27B600CA77DA /* YZKsHistoryTableView.h */,
-				AA3291611FFE27B600CA77DA /* YZKsDiceAnimationView.h */,
-				AA3291621FFE27B600CA77DA /* YZKsBaseView.m */,
-				AA3291631FFE27B600CA77DA /* YZKsSanbutongView.h */,
-				AA3291641FFE27B600CA77DA /* YZKsHistoryTableViewCell.m */,
-				AA3291651FFE27B600CA77DA /* YZKsHezhiView.h */,
-				AA3291661FFE27B600CA77DA /* YZKsBottomView.h */,
-				AA3291681FFE27B600CA77DA /* YZKsDiceView.m */,
-				AA3291691FFE27B600CA77DA /* YZKsErbutongView.m */,
-				AA32916A1FFE27B600CA77DA /* YZKsBottomBtn.m */,
-				AA32916B1FFE27B600CA77DA /* YZksHistoryWinNumberView.h */,
-				AA32916C1FFE27B600CA77DA /* YZKsSantongView.m */,
-				AA32916D1FFE27B600CA77DA /* YZKsBtn.m */,
-				AA32916E1FFE27B600CA77DA /* YZKsErtongView.h */,
-			);
-			path = "快三";
 			sourceTree = "<group>";
 		};
 		AA32917C1FFE27B600CA77DA /* 智能追号 */ = {
@@ -6224,102 +6769,14 @@
 		AA3291CA1FFE27B600CA77DA /* 体彩 */ = {
 			isa = PBXGroup;
 			children = (
+				1D7BDFCA23710DAF0015CD8E /* 竞彩足球 */,
+				1D7BDFCC23710DC20015CD8E /* 胜负彩 */,
+				1D7BDFCB23710DBA0015CD8E /* 四场进球 */,
 				AA072E8720B3F92500973E72 /* 篮球 */,
-				AA3291CB1FFE27B600CA77DA /* 足球 */,
+				1D7BDFD623710E4D0015CD8E /* 下单成功 */,
 				AA3292071FFE27B600CA77DA /* 统计 */,
 			);
 			path = "体彩";
-			sourceTree = "<group>";
-		};
-		AA3291CB1FFE27B600CA77DA /* 足球 */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291CC1FFE27B600CA77DA /* Controller */,
-				AA3291DD1FFE27B600CA77DA /* Model */,
-				AA3291F41FFE27B600CA77DA /* View */,
-			);
-			path = "足球";
-			sourceTree = "<group>";
-		};
-		AA3291CC1FFE27B600CA77DA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291CD1FFE27B600CA77DA /* YZFootBallBaseViewController.h */,
-				AA3291D81FFE27B600CA77DA /* YZFootBallBaseViewController.m */,
-				AA3291CF1FFE27B600CA77DA /* YZFootBallViewController.h */,
-				AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */,
-				AA3291D01FFE27B600CA77DA /* YZFbBetViewController.h */,
-				AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */,
-				AA3291D21FFE27B600CA77DA /* YZSfcViewController.h */,
-				AA3291D91FFE27B600CA77DA /* YZSfcViewController.m */,
-				AA3291D41FFE27B600CA77DA /* YZScjqViewController.h */,
-				AA3291DB1FFE27B600CA77DA /* YZScjqViewController.m */,
-				AA3291D71FFE27B600CA77DA /* YZSfcBetViewController.h */,
-				AA3291CE1FFE27B600CA77DA /* YZSfcBetViewController.m */,
-				AA3291DA1FFE27B600CA77DA /* YZScjqBetViewController.h */,
-				AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */,
-				AA3291DC1FFE27B600CA77DA /* YZFbBetSuccessViewController.h */,
-				AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		AA3291DD1FFE27B600CA77DA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291DE1FFE27B600CA77DA /* YZGameIndosStatus.h */,
-				AA3291EC1FFE27B600CA77DA /* YZGameIndosStatus.m */,
-				AA3291E41FFE27B600CA77DA /* YZSectionStatus.h */,
-				AA3291EE1FFE27B600CA77DA /* YZSectionStatus.m */,
-				AA3291E01FFE27B600CA77DA /* YZMatchInfosStatus.h */,
-				AA3291EA1FFE27B600CA77DA /* YZMatchInfosStatus.m */,
-				AA3291EF1FFE27B600CA77DA /* YZOddsMap.h */,
-				AA3291E31FFE27B600CA77DA /* YZOddsMap.m */,
-				AA3291E91FFE27B600CA77DA /* YZCN.h */,
-				AA3291E11FFE27B600CA77DA /* YZCN.m */,
-				AA3291E61FFE27B600CA77DA /* YZBetStatus.h */,
-				AA3291F21FFE27B600CA77DA /* YZBetStatus.m */,
-				AA3291E21FFE27B600CA77DA /* YZPlayPassWay.h */,
-				AA3291F01FFE27B600CA77DA /* YZPlayPassWay.m */,
-				AA3291E51FFE27B600CA77DA /* YZFootBallMatchRate.h */,
-				AA3291ED1FFE27B600CA77DA /* YZFootBallMatchRate.m */,
-				AA3291F11FFE27B600CA77DA /* YZFbBetCellStatus.h */,
-				AA3291E71FFE27B600CA77DA /* YZFbBetCellStatus.m */,
-				AA3291F31FFE27B600CA77DA /* YZSfcCellStatus.h */,
-				AA3291E81FFE27B600CA77DA /* YZSfcCellStatus.m */,
-				AA3291DF1FFE27B600CA77DA /* YZScjqCellStatus.h */,
-				AA3291EB1FFE27B600CA77DA /* YZScjqCellStatus.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AA3291F41FFE27B600CA77DA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AA3292001FFE27B600CA77DA /* YZFTHeaderView.h */,
-				AA3291F51FFE27B600CA77DA /* YZFTHeaderView.m */,
-				AA57888122855C51002292EA /* YZFBPlayTypeView.h */,
-				AA57888222855C51002292EA /* YZFBPlayTypeView.m */,
-				AA578886228562CF002292EA /* YZFBSiftView.h */,
-				AA578887228562CF002292EA /* YZFBSiftView.m */,
-				AA3291F81FFE27B600CA77DA /* YZFootBallCell.h */,
-				AA3292021FFE27B600CA77DA /* YZFootBallCell.m */,
-				AA3292061FFE27B600CA77DA /* YZFBChoosePlayView.h */,
-				AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */,
-				AA3292051FFE27B600CA77DA /* YZFBAllPlayView.h */,
-				AA3291FD1FFE27B600CA77DA /* YZFBAllPlayView.m */,
-				AA3291FF1FFE27B600CA77DA /* YZFBMatchDetailCellView.h */,
-				AA3291F61FFE27B600CA77DA /* YZFBMatchDetailCellView.m */,
-				AA3291FA1FFE27B600CA77DA /* YZFbBetCell.h */,
-				AA3292031FFE27B600CA77DA /* YZFbBetCell.m */,
-				AA3291F71FFE27B600CA77DA /* YZSfcCell.h */,
-				AA3291FE1FFE27B600CA77DA /* YZSfcCell.m */,
-				AA3292011FFE27B600CA77DA /* YZScjqCell.h */,
-				AA3291F91FFE27B600CA77DA /* YZScjqCell.m */,
-				AA3291FC1FFE27B600CA77DA /* YZBtnsView.h */,
-				AA3292041FFE27B600CA77DA /* YZBtnsView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		AA3292071FFE27B600CA77DA /* 统计 */ = {
@@ -9235,6 +9692,7 @@
 				1DCA1A022327376100F2061B /* YZShareIncomeTableViewCell.m in Sources */,
 				1DCA1A032327376100F2061B /* HDEmojiEmoticons.m in Sources */,
 				1DCA1A052327376100F2061B /* YZCircleCommentTableView.m in Sources */,
+				1D7BDF9A2371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				1DCA1A062327376100F2061B /* YZChooseBirthdayTableViewCell.m in Sources */,
 				1DCA1A072327376100F2061B /* TZAssetCell.m in Sources */,
 				1DCA1A082327376100F2061B /* UIImage+GIF.m in Sources */,
@@ -9412,6 +9870,7 @@
 				1DCA1AB62327376100F2061B /* YZIntegralCountCollectionViewCell.m in Sources */,
 				1DCA1AB72327376100F2061B /* UIImageView+HighlightedWebCache.m in Sources */,
 				1DCA1AB82327376100F2061B /* YZksHistoryWinNumberView.m in Sources */,
+				1D7BDFFF23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				1DCA1AB92327376100F2061B /* YZFBMatchDetailCellView.m in Sources */,
 				1DCA1ABA2327376100F2061B /* CWStarRateView.m in Sources */,
 				1DCA1ABB2327376100F2061B /* YZIntegralCustomCountCollectionViewCell.m in Sources */,
@@ -9489,7 +9948,7 @@
 				1DCA1B032327376100F2061B /* UIImageView+WebCache.m in Sources */,
 				1DCA1B042327376100F2061B /* FMResultSet.m in Sources */,
 				1DCA1B052327376100F2061B /* YZBasketBallBetHeaderView.m in Sources */,
-				1DCA1B062327376100F2061B /* YZFucaiViewController.m in Sources */,
+				1DCA1B062327376100F2061B /* YZFucai3DViewController.m in Sources */,
 				1DCA1B072327376100F2061B /* YZFbOrderDetailTableViewCell.m in Sources */,
 				1DCA1B082327376100F2061B /* YZFBChoosePlayView.m in Sources */,
 				1DCA1B092327376100F2061B /* MJRefreshComponent.m in Sources */,
@@ -9795,7 +10254,6 @@
 				1DCA1C3D2327376100F2061B /* YZStartUnionBuyViewController.m in Sources */,
 				1DCA1C3E2327376100F2061B /* YZChooseVoucherViewController.m in Sources */,
 				1DCA1C3F2327376100F2061B /* YZMessageType.m in Sources */,
-				1DCA1C402327376100F2061B /* YZFbBetSuccessViewController.m in Sources */,
 				1DCA1C412327376100F2061B /* YZBuyLotteryCellStatus.m in Sources */,
 				1DCA1C422327376100F2061B /* UIResponder+HRouter.m in Sources */,
 				1DCA1C432327376100F2061B /* YZFBMatchDetailRecommendStatus.m in Sources */,
@@ -9897,6 +10355,7 @@
 				AA237DCF2143590C00BC47BB /* YZShareIncomeTableViewCell.m in Sources */,
 				AA237DD02143590C00BC47BB /* HDEmojiEmoticons.m in Sources */,
 				1DD0334922C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */,
+				1D7BDF992371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				AA237DD22143590C00BC47BB /* YZChooseBirthdayTableViewCell.m in Sources */,
 				1DE61FE822CC4F7500C1490E /* TZAssetCell.m in Sources */,
 				1DBD8E5322CB2C250024CF7B /* UIImage+GIF.m in Sources */,
@@ -10074,6 +10533,7 @@
 				AA237E682143590C00BC47BB /* YZIntegralCountCollectionViewCell.m in Sources */,
 				1DBD8E7422CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				AA237E692143590C00BC47BB /* YZksHistoryWinNumberView.m in Sources */,
+				1D7BDFFE23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				AA237E6A2143590C00BC47BB /* YZFBMatchDetailCellView.m in Sources */,
 				AA237E6B2143590C00BC47BB /* CWStarRateView.m in Sources */,
 				AA237E6C2143590C00BC47BB /* YZIntegralCustomCountCollectionViewCell.m in Sources */,
@@ -10151,7 +10611,7 @@
 				1DBD8E8922CB2C250024CF7B /* UIImageView+WebCache.m in Sources */,
 				AA237EB02143590C00BC47BB /* FMResultSet.m in Sources */,
 				AA237EB12143590C00BC47BB /* YZBasketBallBetHeaderView.m in Sources */,
-				AA237EB22143590C00BC47BB /* YZFucaiViewController.m in Sources */,
+				AA237EB22143590C00BC47BB /* YZFucai3DViewController.m in Sources */,
 				AA237EB32143590C00BC47BB /* YZFbOrderDetailTableViewCell.m in Sources */,
 				AA237EB42143590C00BC47BB /* YZFBChoosePlayView.m in Sources */,
 				AA237EB52143590C00BC47BB /* MJRefreshComponent.m in Sources */,
@@ -10457,7 +10917,6 @@
 				AA237FC82143590C00BC47BB /* YZStartUnionBuyViewController.m in Sources */,
 				AA237FC92143590C00BC47BB /* YZChooseVoucherViewController.m in Sources */,
 				AA237FCA2143590C00BC47BB /* YZMessageType.m in Sources */,
-				AA237FCD2143590C00BC47BB /* YZFbBetSuccessViewController.m in Sources */,
 				AA237FCE2143590C00BC47BB /* YZBuyLotteryCellStatus.m in Sources */,
 				AA237FCF2143590C00BC47BB /* UIResponder+HRouter.m in Sources */,
 				AA237FD02143590C00BC47BB /* YZFBMatchDetailRecommendStatus.m in Sources */,
@@ -10815,7 +11274,7 @@
 				1DBD8E8722CB2C250024CF7B /* UIImageView+WebCache.m in Sources */,
 				AA74EBD91FFE17E0003B53AF /* FMResultSet.m in Sources */,
 				AAD1207820BE398100D47F85 /* YZBasketBallBetHeaderView.m in Sources */,
-				AA3292BF1FFE27B600CA77DA /* YZFucaiViewController.m in Sources */,
+				AA3292BF1FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */,
 				AA74E1311FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m in Sources */,
 				AA32936D1FFE27B700CA77DA /* YZFBChoosePlayView.m in Sources */,
 				AA74EB731FFE17DF003B53AF /* MJRefreshComponent.m in Sources */,
@@ -11126,8 +11585,8 @@
 				AA3292C51FFE27B600CA77DA /* YZStartUnionBuyViewController.m in Sources */,
 				AA3292AF1FFE27B600CA77DA /* YZChooseVoucherViewController.m in Sources */,
 				AA74ECD91FFE1AD6003B53AF /* YZMessageType.m in Sources */,
-				AA3293451FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */,
 				AA3293DB1FFE27B700CA77DA /* YZBuyLotteryCellStatus.m in Sources */,
+				1D7BDF972371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				AA74EA511FFE17DE003B53AF /* UIResponder+HRouter.m in Sources */,
 				AA3293851FFE27B700CA77DA /* YZFBMatchDetailRecommendStatus.m in Sources */,
 				AA32910C1FFE21D400CA77DA /* YZWeixin.m in Sources */,
@@ -11135,6 +11594,7 @@
 				1DBD8E8422CB2C250024CF7B /* SDWebImageCompat.m in Sources */,
 				AA57888322855C51002292EA /* YZFBPlayTypeView.m in Sources */,
 				1DDDEB6F22D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				1D7BDFFC23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				AA74E08D1FFE0A0C003B53AF /* YZWinNumberFBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11228,6 +11688,7 @@
 				AAE55C74207EF8B000A29844 /* YZIntegralCouponsCollectionViewCell.m in Sources */,
 				AA3292DC1FFE27B600CA77DA /* YZKsHistoryTableView.m in Sources */,
 				AA3290821FFE1D6100CA77DA /* YZShareIncomeTableViewCell.m in Sources */,
+				1D7BDF982371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				AA74EA621FFE17DE003B53AF /* HDEmojiEmoticons.m in Sources */,
 				1DD0334822C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */,
 				AA32931C1FFE27B600CA77DA /* YZChartBallView.m in Sources */,
@@ -11405,6 +11866,7 @@
 				AA3292EC1FFE27B600CA77DA /* YZKsDiceView.m in Sources */,
 				AA3292E81FFE27B600CA77DA /* YZKsHistoryTableViewCell.m in Sources */,
 				AA3293501FFE27B600CA77DA /* YZScjqViewController.m in Sources */,
+				1D7BDFFD23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				AAE55C78207EF8B000A29844 /* YZIntegralCountCollectionViewCell.m in Sources */,
 				AA3292E21FFE27B600CA77DA /* YZksHistoryWinNumberView.m in Sources */,
 				1DBD8E7322CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -11484,7 +11946,7 @@
 				AA3293C81FFE27B700CA77DA /* YZFBMatchDetailTeamView.m in Sources */,
 				1DBD8E8822CB2C250024CF7B /* UIImageView+WebCache.m in Sources */,
 				AA74EBDA1FFE17E0003B53AF /* FMResultSet.m in Sources */,
-				AA3292C01FFE27B600CA77DA /* YZFucaiViewController.m in Sources */,
+				AA3292C01FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */,
 				1DDDEB7022D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				AA74E1321FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m in Sources */,
 				AA32936E1FFE27B700CA77DA /* YZFBChoosePlayView.m in Sources */,
@@ -11789,7 +12251,6 @@
 				AA3292C61FFE27B600CA77DA /* YZStartUnionBuyViewController.m in Sources */,
 				AA3292B01FFE27B600CA77DA /* YZChooseVoucherViewController.m in Sources */,
 				AA74ECDA1FFE1AD6003B53AF /* YZMessageType.m in Sources */,
-				AA3293461FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */,
 				AA3293DC1FFE27B700CA77DA /* YZBuyLotteryCellStatus.m in Sources */,
 				AA74EA521FFE17DE003B53AF /* UIResponder+HRouter.m in Sources */,
 				AA3293861FFE27B700CA77DA /* YZFBMatchDetailRecommendStatus.m in Sources */,
@@ -12719,7 +13180,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cd768b6-a0d1-40b1-942a-27fcfe2227d0";
-				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_38;
+				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_44;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

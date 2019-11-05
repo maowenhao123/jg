@@ -160,6 +160,7 @@
 {
     [super viewDidLoad];
     self.delegate = self;
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated

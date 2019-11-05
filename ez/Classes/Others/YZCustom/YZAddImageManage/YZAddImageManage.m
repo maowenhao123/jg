@@ -28,6 +28,7 @@
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         picker.allowsEditing = NO;
+        picker.modalPresentationStyle = UIModalPresentationFullScreen;
         [self.viewController presentViewController:picker animated:YES completion:nil];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -40,6 +41,7 @@
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         picker.allowsEditing = NO;
+        picker.modalPresentationStyle = UIModalPresentationFullScreen;
         [self.viewController presentViewController:picker animated:YES completion:nil];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];

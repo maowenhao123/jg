@@ -27,31 +27,7 @@
     [self setupChilds];
     [self getConsumableListDetailData];
 }
-- (void)setupChilds
-{
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消使用" style:UIBarButtonItemStylePlain target:self action:@selector(cancelUseVoucher)];
-    
-    CGFloat scrollViewH = screenHeight-statusBarH-navBarH;
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, scrollViewH) style:UITableViewStyleGrouped];
-    self.tableView = tableView;
-    tableView.backgroundColor = YZBackgroundColor;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [tableView setEstimatedSectionHeaderHeightAndFooterHeight];
-    [self.view addSubview:tableView];
-    
-    //下拉刷新
-    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshViewBeginRefreshing)];
-    [YZTool setRefreshHeaderData:header];
-    tableView.mj_header = header;
-    self.header = header;
-}
-#pragma  mark - MJRefreshBaseViewDelegate的代理方法
-- (void)refreshViewBeginRefreshing
-{
-    [self getConsumableListDetailData];
-}
+
 #pragma  mark - 获取可用彩券的数据
 //断网状态下，此方法必须实现
 - (void)noNetReloadRequest
@@ -90,15 +66,46 @@
          [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
+
+#pragma  mark - 布局视图
+- (void)setupChilds
+{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消使用" style:UIBarButtonItemStylePlain target:self action:@selector(cancelUseVoucher)];
+    
+    CGFloat scrollViewH = screenHeight-statusBarH-navBarH;
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, scrollViewH) style:UITableViewStyleGrouped];
+    self.tableView = tableView;
+    tableView.backgroundColor = YZBackgroundColor;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [tableView setEstimatedSectionHeaderHeightAndFooterHeight];
+    [self.view addSubview:tableView];
+    
+    //下拉刷新
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshViewBeginRefreshing)];
+    [YZTool setRefreshHeaderData:header];
+    tableView.mj_header = header;
+    self.header = header;
+}
+
+#pragma  mark - MJRefreshBaseViewDelegate的代理方法
+- (void)refreshViewBeginRefreshing
+{
+    [self getConsumableListDetailData];
+}
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataArray.count;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZVoucherTableViewCell * cell = [YZVoucherTableViewCell cellWithTableView:tableView];
@@ -108,14 +115,17 @@
     cell.goButton.hidden = YES;
     return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 75;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 10;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (section == self.dataArray.count - 1) {
@@ -123,6 +133,7 @@
     }
     return 0.01;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -132,6 +143,7 @@
         [_delegate chooseVoucherStstus:status];
     }
 }
+
 //取消使用代金券
 - (void)cancelUseVoucher
 {
@@ -140,6 +152,7 @@
         [_delegate cancelUseVoucher];
     }
 }
+
 #pragma mark - 初始化
 - (NSArray *)dataArray
 {
@@ -148,4 +161,5 @@
     }
     return _dataArray;
 }
+
 @end

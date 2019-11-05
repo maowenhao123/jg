@@ -15,8 +15,9 @@
 #import "YZSsqViewController.h"
 #import "YZQxcViewController.h"
 #import "YZPlwViewController.h"
-#import "YZFucaiViewController.h"
+#import "YZFucai3DViewController.h"
 #import "YZQilecaiViewController.h"
+#import "YZKy481ViewController.h"
 #import "YZSfcViewController.h"
 #import "YZScjqViewController.h"
 #import "YZKsViewController.h"
@@ -136,10 +137,11 @@ static NSDictionary * bankDicInfo;
                               @"T62":[YZS1x5ViewController class],
                               @"T63":[YZS1x5ViewController class],
                               @"T64":[YZS1x5ViewController class],
+                              @"T06":[YZKy481ViewController class],
                               @"F01":[YZSsqViewController class],
                               @"T02":[YZQxcViewController class],
                               @"T04":[YZPlwViewController class],
-                              @"F02":[YZFucaiViewController class],
+                              @"F02":[YZFucai3DViewController class],
                               @"F03":[YZQilecaiViewController class],
                               @"T53":[YZSfcViewController class],
                               @"T54":[YZScjqViewController class],

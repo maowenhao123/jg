@@ -9,6 +9,7 @@
 #import "YZBetCell.h"
 
 @implementation YZBetCell
+
 //初始化一个cell
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
@@ -22,6 +23,7 @@
     
     return cell;
 }
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -30,6 +32,7 @@
     }
     return self;
 }
+
 - (void)setupChilds
 {
     UILabel *label = [[UILabel alloc] init];
@@ -50,6 +53,7 @@
     lineView.backgroundColor = YZWhiteLineColor;
     [self addSubview:lineView];
 }
+
 - (void)setStatus:(YZBetStatus *)status
 {
     _status = status;
@@ -68,4 +72,5 @@
     self.deleteBtn.frame = CGRectMake(deleteBtnX, 0, deleteBtnW, deleteBtnH);
     self.deleteBtn.center = CGPointMake(self.deleteBtn.center.x, self.label.center.y);
 }
+
 @end

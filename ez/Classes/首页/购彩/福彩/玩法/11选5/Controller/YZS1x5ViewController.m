@@ -38,7 +38,7 @@
 @property (nonatomic, weak) UIView *currentHistoryView;//当前的历史开奖view
 @property (nonatomic, weak) UIView *historyBackView;//有万千百位的历史开奖的背景view
 @property (nonatomic, weak) UIView *historyTopBackView;//
-@property (nonatomic, weak) YZLotteryButton *historySelBtn;
+@property (nonatomic, weak) UIButton *historySelBtn;
 @property (nonatomic, weak) UIScrollView *historyScrollView;//有万千百位的历史开奖的scrollView
 @property (nonatomic, strong) NSMutableArray * titleBtns;//标题按钮的数组;
 @property (nonatomic, weak) UIView *playTypeView;//玩法视图
@@ -50,10 +50,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _playTypeBtnTitles = [[NSArray alloc] initWithObjects:@"任选一", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八", @"前二直选", @"前二组选", @"前三直选", @"前三组选", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"前二组选", @"前三组选", @"",nil];
-    _playTypeCodes = [[NSArray alloc] initWithObjects:@"21",@"22", @"23", @"24", @"25", @"26", @"27", @"28", @"30", @"29", @"32", @"31", @"22", @"23", @"24", @"25", @"26", @"27", @"29", @"31", @"",nil];
-    _minSelCountArray = [[NSArray alloc] initWithObjects:@"1",@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"1", @"2", @"1", @"3", @"1",@"2", @"3", @"4", @"5", @"6", @"1", @"2", @"",nil];
-    _maxSelCountArray = [[NSArray alloc] initWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"1", @"2",nil];
+    _playTypeBtnTitles = @[@"任选一", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八", @"前二直选", @"前二组选", @"前三直选", @"前三组选", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"前二组选", @"前三组选", @""];
+    _playTypeCodes = @[@"21",@"22", @"23", @"24", @"25", @"26", @"27", @"28", @"30", @"29", @"32", @"31", @"22", @"23", @"24", @"25", @"26", @"27", @"29", @"31", @""];
+    _minSelCountArray = @[@"1",@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"1", @"2", @"1", @"3", @"1",@"2", @"3", @"4", @"5", @"6", @"1", @"2", @""];
+    _maxSelCountArray = @[@"1", @"2", @"3", @"4", @"5", @"6", @"1", @"2", @""];
 
     _btnTitles = [[NSArray alloc] initWithObjects:@"万位",@"千位",@"百位", nil];
     [self setupSonChilds];
@@ -156,7 +156,7 @@
     CGFloat topBtnH = btnWH;
     for(int i = 0;i < btnCount;i++)
     {
-        YZLotteryButton *topBtn = [YZLotteryButton buttonWithType:UIButtonTypeCustom];
+        UIButton *topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         topBtn.backgroundColor = [UIColor whiteColor];
         topBtn.tag = i;
         [topBtn setTitle:_btnTitles[i] forState:UIControlStateNormal];
@@ -255,7 +255,7 @@
         [self closeTableViewWithAnimation];
     }
 }
-- (void)historyTopBtnClick:(YZLotteryButton *)btn
+- (void)historyTopBtnClick:(UIButton *)btn
 {
     [self.historyScrollView setContentOffset:CGPointMake(btn.tag * screenWidth, 0) animated:YES];
 }
@@ -319,7 +319,7 @@
         }
     }
 }
-- (void)changeHistoryBtnState:(YZLotteryButton *)btn
+- (void)changeHistoryBtnState:(UIButton *)btn
 {
     self.historySelBtn.selected = NO;
     self.historySelBtn.userInteractionEnabled = YES;
@@ -722,7 +722,7 @@
 
     //设置被选中
     for (int i = 0; i < self.titleBtns.count; i++) {
-        YZLotteryButton * button = self.titleBtns[i];
+        UIButton * button = self.titleBtns[i];
         if (i == _selectedPlayTypeBtnTag) {
             button.selected = YES;
         }else

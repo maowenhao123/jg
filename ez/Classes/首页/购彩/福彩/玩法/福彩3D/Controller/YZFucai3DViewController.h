@@ -1,5 +1,5 @@
 //
-//  YZFucaiViewController.h
+//  YZFucai3DViewController.h
 //  ez
 //
 //  Created by apple on 14-9-10.
@@ -8,6 +8,6 @@
 
 #import "YZSelectBaseViewController.h"
 
-@interface YZFucaiViewController : YZSelectBaseViewController
+@interface YZFucai3DViewController : YZSelectBaseViewController
 
 @end

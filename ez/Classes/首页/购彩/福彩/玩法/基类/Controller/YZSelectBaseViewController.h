@@ -7,7 +7,6 @@
 //
 
 #import "YZGameIdViewController.h"
-#import "YZLotteryButton.h"
 #import "YZSelectBallCell.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "YZBetViewController.h"
@@ -48,8 +47,8 @@ typedef enum {
 @property (nonatomic, strong) NSArray *recentStatus;//近期开奖数据
 
 - (NSMutableArray *)sortBallsArray:(NSMutableArray *)mutableArray;//排序数组
-- (void)changeBtnState:(YZLotteryButton *)btn;
-- (void)topBtnClick:(YZLotteryButton *)btn;
+- (void)changeBtnState:(UIButton *)btn;
+- (void)topBtnClick:(UIButton *)btn;
 - (void)removeSetDeadlineTimer;
 - (void)setDeleteAutoSelectedBtnTitle;
 

@@ -289,12 +289,12 @@
     }
 }
 #pragma mark - tableView的滚动
-- (void)topBtnClick:(YZLotteryButton *)btn
+- (void)topBtnClick:(UIButton *)btn
 {
     //滚动到指定页码
     [self.scrollView setContentOffset:CGPointMake(btn.tag * screenWidth, 0) animated:YES];
 }
-- (void)changeBtnState:(YZLotteryButton *)btn
+- (void)changeBtnState:(UIButton *)btn
 {
     self.selectedBtn.selected = NO;
     self.selectedBtn.userInteractionEnabled = YES;

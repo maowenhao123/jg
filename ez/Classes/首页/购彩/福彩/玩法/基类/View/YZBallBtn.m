@@ -14,6 +14,7 @@
     YZBallBtn *btn = [YZBallBtn buttonWithType:UIButtonTypeCustom];
     return btn;
 }
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -27,6 +28,7 @@
     }
     return self;
 }
+
 - (void)ballClick:(YZBallBtn *)btn
 {
     if(self.isSelected)
@@ -48,6 +50,7 @@
     
     self.selected = !self.selected;
 }
+
 - (void)ballClickWithoutAnimation
 {
     if(self.isSelected)
@@ -62,6 +65,7 @@
     }
     self.selected = !self.selected;
 }
+
 - (void)autoSelBallClickWithoutAnimation
 {
     if(self.isSelected)
@@ -83,28 +87,33 @@
     self.selected = !self.selected;
 
 }
+
 - (void)ballChangeToWhite
 {
     [self setImage:[UIImage imageNamed:@"ball_flat"] forState:UIControlStateNormal];
     [self setTitleColor:self.ballTextColor forState:UIControlStateNormal];
     self.selected = NO;
 }
+
 - (void)ballChangeToRed
 {
     [self setImage:[UIImage imageNamed:@"redBall_flat"] forState:UIControlStateNormal];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.selected = YES;
 }
+
 - (void)ballChangeBlue
 {
     [self setImage:[UIImage imageNamed:@"blueBall_flat"] forState:UIControlStateNormal];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.selected = YES;
 }
+
 - (CGRect)titleRectForContentRect:(CGRect)contentRect
 {
     return contentRect;
 }
+
 - (CGRect)imageRectForContentRect:(CGRect)contentRect
 {
     return contentRect;

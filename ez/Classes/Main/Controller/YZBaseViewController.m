@@ -21,7 +21,9 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = YZBackgroundColor;
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -37,7 +39,9 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)viewWillDisappear:(BOOL)animated {
+
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     // 设置系统返回手势的代理为我们刚进入控制器的时候记录的系统的返回手势代理
     self.navigationController.interactivePopGestureRecognizer.delegate = _delegate;
@@ -48,6 +52,7 @@
 {
     return self.navigationController.childViewControllers.count > 1;
 }
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return self.navigationController.viewControllers.count > 1;
