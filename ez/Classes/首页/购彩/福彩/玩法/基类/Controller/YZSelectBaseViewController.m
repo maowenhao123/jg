@@ -477,6 +477,7 @@
     }
     return mutableArray;
 }
+
 #pragma mark - 初始化
 - (NSMutableArray *)topBtns
 {
@@ -485,6 +486,7 @@
     }
     return _topBtns;
 }
+
 - (NSMutableArray *)tableViews
 {
     if(_tableViews == nil)
@@ -493,6 +495,7 @@
     }
     return _tableViews;
 }
+
 #pragma  mark - 销毁对象
 - (void)dealloc
 {

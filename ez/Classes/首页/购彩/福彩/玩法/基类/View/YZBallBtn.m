@@ -51,43 +51,6 @@
     self.selected = !self.selected;
 }
 
-- (void)ballClickWithoutAnimation
-{
-    if(self.isSelected)
-    {
-        [self setImage:[UIImage imageNamed:@"ball_flat"] forState:UIControlStateNormal];
-        [self setTitleColor:self.ballTextColor forState:UIControlStateNormal];
- 
-    }else
-    {
-        [self setImage:[UIImage imageNamed:self.selImageName] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    self.selected = !self.selected;
-}
-
-- (void)autoSelBallClickWithoutAnimation
-{
-    if(self.isSelected)
-    {
-        [self setImage:[UIImage imageNamed:@"ball_flat"] forState:UIControlStateNormal];
-        [self setTitleColor:self.ballTextColor forState:UIControlStateNormal];
-        
-    }else
-    {
-        [self setImage:[UIImage imageNamed:self.selImageName] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    //通知代理已点击ballBtn
-    if([self.delegate  respondsToSelector:@selector(ballDidClick:)])
-    {
-        [self.delegate ballDidClick:self];
-    }
-    
-    self.selected = !self.selected;
-
-}
-
 - (void)ballChangeToWhite
 {
     [self setImage:[UIImage imageNamed:@"ball_flat"] forState:UIControlStateNormal];

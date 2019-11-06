@@ -75,6 +75,7 @@ static NSDictionary * bankDicInfo;
     }
     return betTypeNameDict;
 }
+
 + (NSDictionary *)playTypeName
 {
     if(playTypeNameDict == nil)
@@ -100,22 +101,36 @@ static NSDictionary * bankDicInfo;
     }
     return playTypeNameDict;
 }
-+ (NSArray *)gameIds
-{
-    if(gameIds == nil)
-    {
-        gameIds = @[@"F04",@"T05",@"T61",@"T62",@"T63",@"T64",@"T51",@"F01",@"T01",@"T03",@"T04",@"T02",@"F02",@"F03",@"T52",@"T53",@"T54"];
-    }
-    return gameIds;
-}
+
 + (NSDictionary *)gameIdNameDict
 {
     if(gameIdNameDict == nil)
     {
-        gameIdNameDict = @{@"T03":@"排列三",@"T51":@"竞彩足球",@"T52":@"竞彩篮球",@"T01":@"大乐透", @"T05":@"11选5",@"T61":@"新11选5",@"T62":@"快乐11选5",@"T63":@"幸福11选5",@"T64":@"开心11选5",@"F01":@"双色球",@"T02":@"七星彩",@"T04":@"排列五",@"F02":@"福彩3D",@"F03":@"七乐彩",@"T52":@"竞彩篮球",@"T53":@"胜负彩",@"T54":@"四场进球",@"F04":@"快三"};
+        gameIdNameDict = @{
+                            @"T03":@"排列三",
+                            @"T51":@"竞彩足球",
+                            @"T52":@"竞彩篮球",
+                            @"T01":@"大乐透",
+                            @"T05":@"11选5",
+                            @"T06":@"快赢481",
+                            @"T61":@"新11选5",
+                            @"T62":@"快乐11选5",
+                            @"T63":@"幸福11选5",
+                            @"T64":@"开心11选5",
+                            @"F01":@"双色球",
+                            @"T02":@"七星彩",
+                            @"T04":@"排列五",
+                            @"F02":@"福彩3D",
+                            @"F03":@"七乐彩",
+                            @"T52":@"竞彩篮球",
+                            @"T53":@"胜负彩",
+                            @"T54":@"四场进球",
+                            @"F04":@"快三"
+        };
     }
     return gameIdNameDict;
 }
+
 + (NSDictionary *)passWayDict
 {
     if(passWayDict == nil)
@@ -124,6 +139,7 @@ static NSDictionary * bankDicInfo;
     }
     return passWayDict;
 }
+
 + (NSDictionary *)gameDestClassDict
 {
     if(gameDestClassDict == nil)
@@ -152,6 +168,7 @@ static NSDictionary * bankDicInfo;
     }
     return gameDestClassDict;
 }
+
 + (NSDictionary *)footBallPlayTypeDic
 {
     if(footBallPlayTypeDic == nil)
@@ -167,6 +184,7 @@ static NSDictionary * bankDicInfo;
     }
     return footBallPlayTypeDic;
 }
+
 + (NSDictionary *)basketBallPlayTypeDic
 {
     if(basketBallPlayTypeDic == nil)
@@ -181,6 +199,7 @@ static NSDictionary * bankDicInfo;
     }
     return basketBallPlayTypeDic;
 }
+
 + (NSDictionary *)bBshengfenDic
 {
     if (bBshengfenDic == nil) {
@@ -201,6 +220,7 @@ static NSDictionary * bankDicInfo;
     }
     return bBshengfenDic;
 }
+
 + (NSDictionary *)getBankDicInfo
 {
     if (bankDicInfo == nil) {
@@ -233,6 +253,7 @@ static NSDictionary * bankDicInfo;
     }
     return bankDicInfo;
 }
+
 + (NSString *)getOrderStatus:(int)status
 {
     switch (status) {
@@ -256,6 +277,7 @@ static NSDictionary * bankDicInfo;
             return @"";
     }
 }
+
 + (NSString *)getTicketStatus:(int)status
 {
     switch (status) {
@@ -279,6 +301,7 @@ static NSDictionary * bankDicInfo;
             return @"";
     }
 }
+
 + (NSString *)getSchemeStatus:(int)status
 {
     switch (status) {

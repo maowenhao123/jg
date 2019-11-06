@@ -22,6 +22,7 @@
 @interface YZSelectBallCell : UITableViewCell
 
 + (YZSelectBallCell *)cellWithTableView:(UITableView *)tableView andIndexpath:(NSIndexPath *)indexPath;
+
 @property (nonatomic, strong) YZSelectBallCellStatus *status;//数据模型
 @property (nonatomic, strong) NSMutableArray *ballsArray;//球的数组
 @property (nonatomic, weak) id<YZSelectBallCellDelegate,YZBallBtnDelegate> delegate;
@@ -31,4 +32,5 @@
 @property (nonatomic, strong) id owner;//属于谁
 @property (nonatomic, assign) NSInteger index;
 - (void)randomBtnClick:(YZLotteryButton *)btn;
+
 @end

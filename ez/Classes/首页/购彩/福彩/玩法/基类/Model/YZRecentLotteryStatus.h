@@ -17,7 +17,9 @@ typedef enum {
 }KhistoryCellTag;
 
 @interface YZRecentLotteryStatus : NSObject
+
 @property (nonatomic, copy) NSString *termId;
 @property (nonatomic, copy) NSString *winNumber;
 @property (nonatomic, assign) KhistoryCellTag cellTag;
+
 @end

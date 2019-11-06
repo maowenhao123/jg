@@ -459,6 +459,9 @@
             [self.viewController.navigationController pushViewController:initiateUnionBuyVC animated:YES];
         }else
         {
+            if ([status.gameId isEqualToString:@"TT"]) {
+                status.gameId = @"T06";
+            }
             YZGameIdViewController *destVc = (YZGameIdViewController *)[[[YZTool gameDestClassDict][status.gameId] alloc] initWithGameId:status.gameId];
             [self.viewController.navigationController pushViewController:destVc animated:YES];
         }

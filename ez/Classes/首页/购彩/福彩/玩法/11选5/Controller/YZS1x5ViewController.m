@@ -47,7 +47,8 @@
 
 @implementation YZS1x5ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     _playTypeBtnTitles = @[@"任选一", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八", @"前二直选", @"前二组选", @"前三直选", @"前三组选", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"前二组选", @"前三组选", @""];
@@ -55,11 +56,13 @@
     _minSelCountArray = @[@"1",@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"1", @"2", @"1", @"3", @"1",@"2", @"3", @"4", @"5", @"6", @"1", @"2", @""];
     _maxSelCountArray = @[@"1", @"2", @"3", @"4", @"5", @"6", @"1", @"2", @""];
 
-    _btnTitles = [[NSArray alloc] initWithObjects:@"万位",@"千位",@"百位", nil];
+    _btnTitles = @[@"万位",@"千位",@"百位"];
     [self setupSonChilds];
     [self setupPlayTypeView];
     [self loadHistoryData];//获取历史开奖数据
 }
+
+#pragma mark - 布局子视图
 - (void)setupSonChilds
 {
     //移除父控制器不必要的控件
@@ -69,7 +72,6 @@
     //titleBtn
     YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
-    self.navigationItem.titleView = titleBtn;
     //默认玩法为任选五
     BOOL havesSelectedPlayType = [YZUserDefaultTool getIntForKey:@"havesSelectedPlayType"];
     if (!havesSelectedPlayType) {
@@ -86,7 +88,7 @@
     NSString *title = _playTypeBtnTitles[_selectedPlayTypeBtnTag];
     if(_selectedPlayTypeBtnTag >= 12)
     {
-        title = [NSString stringWithFormat:@"%@胆拖",title];
+        title = [NSString stringWithFormat:@"%@胆拖", title];
     }
     [titleBtn setTitle:title forState:UIControlStateNormal];
     
@@ -100,6 +102,7 @@
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
 #endif
     [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView = titleBtn;
     
     //可以上下滑动的tableview
     UITableView *tableView = [[UITableView alloc] init];

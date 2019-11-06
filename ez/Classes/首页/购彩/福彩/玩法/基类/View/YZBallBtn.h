@@ -25,8 +25,6 @@
 @property (nonatomic, strong) id owner;//button属于谁
 + (YZBallBtn *)button;
 - (void)ballClick:(YZBallBtn *)btn;//有动画的点击
-- (void)ballClickWithoutAnimation;//没有动画的点击
-- (void)autoSelBallClickWithoutAnimation;
 - (void)ballChangeToWhite;
 - (void)ballChangeToRed;
 - (void)ballChangeBlue;

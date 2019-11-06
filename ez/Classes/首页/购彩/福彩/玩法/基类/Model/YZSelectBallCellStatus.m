@@ -35,10 +35,13 @@
     CGFloat btnW = 35;
     CGFloat btnH = 35;
     CGFloat cellH = 0;
-    int maxColumns = _icon ? 6 : 7;//一行显示几个
+    int maxColumns = 7;//一行显示几个
+    if (!YZStringIsEmpty(_icon) || !YZStringIsEmpty(_leftTitle)) {
+        maxColumns = 6;
+    }
     for (int i = 0; i < _ballsCount; i++) {
         CGFloat btnX = 0;
-        if(_icon)//红色图片有文字
+        if (!YZStringIsEmpty(_icon) || !YZStringIsEmpty(_leftTitle))
         {
             padding = (screenWidth - maxColumns * btnW - iconTitleW) / (maxColumns + 1);
             btnX = padding + iconTitleW + (i % maxColumns) * (btnW + padding);
@@ -67,4 +70,5 @@
     _cellH = cellH;
     return _cellH;
 }
+
 @end

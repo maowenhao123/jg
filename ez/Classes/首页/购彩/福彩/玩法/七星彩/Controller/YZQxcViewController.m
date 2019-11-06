@@ -93,7 +93,7 @@ typedef enum{
     YZBallBtn *ball = cell1.ballsArray[selBallNum];
     if(ball.isSelected) return;
     
-    [ball autoSelBallClickWithoutAnimation];
+    [ball ballClick:ball];
     [self setBetCount:1];
     self.autoSelBallNumbers[cell1.tag] = @(KHasNullAutoSel);
 }

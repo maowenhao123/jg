@@ -11,6 +11,7 @@
 #import "YZBetStatus.h"
 
 @interface YZPlwViewController ()<UITableViewDelegate,UITableViewDataSource,YZSelectBallCellDelegate,YZBallBtnDelegate>
+
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *statusArray1;//左边tableview的数据
 @property (nonatomic, strong) NSMutableArray *selWanBalls;//已选万位
@@ -88,22 +89,19 @@ typedef enum{
     YZBallBtn *ball = cell1.ballsArray[selBallNum];
     if(ball.isSelected) return;
     
-    [ball autoSelBallClickWithoutAnimation];
+    [ball ballClick:ball];
     self.autoSelBallNumbers[cell1.tag] = @(KHasNullAutoSel);
 }
 #pragma  mark - 删除按钮点击
 - (void)deleteBtnClick
 {
     YZLog(@"deleteBtnClick");
-    if(self.currentTableView == self.tableView)
-    {
-        [self clearSelBalls:self.selWanBalls];
-        [self clearSelBalls:self.selQianBalls];
-        [self clearSelBalls:self.selBaiBalls];//移除选中的球对象数组
-        [self clearSelBalls:self.selShiBalls];
-        [self clearSelBalls:self.selGeBalls];
-        [self.selNumberArray removeAllObjects];//移除选中的球号码数组
-    }
+    [self clearSelBalls:self.selWanBalls];
+    [self clearSelBalls:self.selQianBalls];
+    [self clearSelBalls:self.selBaiBalls];//移除选中的球对象数组
+    [self clearSelBalls:self.selShiBalls];
+    [self clearSelBalls:self.selGeBalls];
+    [self.selNumberArray removeAllObjects];//移除选中的球号码数组
     [self computeAmountMoney];
 }
 #pragma mark - 机选

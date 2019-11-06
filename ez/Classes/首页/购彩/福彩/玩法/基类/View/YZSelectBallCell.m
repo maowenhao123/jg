@@ -10,10 +10,14 @@
 #import "YZSelectBallCell.h"
 
 @interface YZSelectBallCell ()
+
 @property (nonatomic, weak) UILabel *label;
 @property (nonatomic, weak) UIImageView *icon;
+@property (nonatomic, weak) UILabel *leftLabel;
 @property (nonatomic, weak) UIView * lineView;
+
 @end
+
 @implementation YZSelectBallCell
 
 +(YZSelectBallCell *)cellWithTableView:(UITableView *)tableView andIndexpath:(NSIndexPath *)indexPath
@@ -91,7 +95,16 @@
     //显示个十百位的图片
     UIImageView * icon = [[UIImageView alloc]init];
     self.icon = icon;
+    icon.hidden = YES;
     [self addSubview:icon];
+    
+    //显示左边标题
+    UILabel *leftLabel = [[UILabel alloc] init];
+    self.leftLabel = leftLabel;
+    leftLabel.textColor = YZBlackTextColor;
+    leftLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
+    leftLabel.hidden = YES;
+    [self addSubview:leftLabel];
     
     //分割线
     UIView * lineView = [[UIView alloc]init];
@@ -128,8 +141,9 @@
     }
     
     //icon文字
-    if(_status.icon)
+    if(!YZStringIsEmpty(_status.icon))
     {
+        self.icon.hidden = NO;
         self.icon.image = [UIImage imageNamed:_status.icon];
         CGFloat iconY = 1;
         if(_status.title)
@@ -139,10 +153,17 @@
         CGFloat iconW = 35;
         CGFloat iconH = 16;
         self.icon.frame = CGRectMake(0, iconY, iconW, iconH);
+    }else
+    {
+        self.icon.image = nil;
+        self.icon.hidden = YES;
     }
     
     //号码球
-    int maxColumns = _status.icon ? 6 : 7;//一行显示几个
+    int maxColumns = 7;//一行显示几个
+    if (!YZStringIsEmpty(_status.icon) || !YZStringIsEmpty(_status.leftTitle)) {
+        maxColumns = 6;
+    }
     if(_status.ballReuse == NO)//不循环利用球，则删除
     {
         for(YZBallBtn *ball in self.ballsArray)
@@ -176,9 +197,8 @@
                 [btn setTitle:[NSString stringWithFormat:@"%02ld",(long)btn.tag] forState:UIControlStateNormal];
             }
             [btn setTitleColor:btn.ballTextColor forState:UIControlStateNormal];
-            btn.titleLabel.textAlignment = NSTextAlignmentCenter;
             CGFloat btnX = 0;
-            if(_status.icon)//红色图片有文字
+            if (!YZStringIsEmpty(_status.icon) || !YZStringIsEmpty(_status.leftTitle))
             {
                 padding = (screenWidth - maxColumns * btnW - iconTitleW) / (maxColumns + 1);
                 btnX = padding + iconTitleW + (i % maxColumns) * (btnW + padding);
@@ -192,7 +212,7 @@
             //
             if(_status.title)
             {
-                if ( _status.icon && !_status.RandomCount) {
+                if (!YZStringIsEmpty(_status.icon) && !_status.RandomCount) {
                     btnY = 40 + padding + (i / maxColumns) * (btnH + padding);
                 }else
                 {
@@ -205,28 +225,45 @@
             btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
             [self addSubview:btn];
             [ballsArray addObject:btn];
-            //文字的frame
-            if(_status.title)
-            {
-                self.label.attributedText = _status.title;
-                CGSize labelSize = [self.label.text sizeWithFont:self.label.font maxSize:CGSizeMake(screenWidth, 20)];
-                self.label.frame = CGRectMake(padding, 10, labelSize.width, 20);
-            }else
-            {
-                self.label.attributedText = nil;
-                self.label.frame = CGRectZero;
-            }
         }
         self.ballsArray = ballsArray;
     }
-    if(_status.title && _status.icon &&!_status.RandomCount)
+    
+    //title文字的frame
+    if(_status.title)
+    {
+       self.label.hidden = NO;
+       self.label.attributedText = _status.title;
+       self.label.frame = CGRectMake(YZMargin, 10, screenWidth - 2 * YZMargin, 20);
+    }else
+    {
+       self.label.attributedText = nil;
+       self.label.hidden = YES;
+    }
+    
+     //左边文字
+    if(!YZStringIsEmpty(_status.leftTitle))
+    {
+      self.leftLabel.hidden = NO;
+      self.leftLabel.text = _status.leftTitle;
+      CGFloat leftLabelW = 50;
+      CGFloat leftLabelH = 30;
+      UIButton * btn = self.ballsArray.firstObject;
+      self.leftLabel.frame = CGRectMake(YZMargin, btn.y, leftLabelW, leftLabelH);
+    }else
+    {
+      self.leftLabel.text = @"";
+      self.leftLabel.hidden = YES;
+    }
+    
+    if(!YZStringIsEmpty(_status.title) && !YZStringIsEmpty(_status.icon) && !_status.RandomCount)
     {
         self.lineView.frame = CGRectMake(0, CGRectGetMaxY(self.label.frame) + 10, screenWidth, 1);
     }else
     {
         self.lineView.frame = CGRectMake(0, 0, screenWidth, 1);
     }
-    if (self.index == 0 && !_status.icon) {
+    if (self.index == 0 && YZStringIsEmpty(_status.icon)) {
         self.lineView.hidden = YES;
     }else
     {
@@ -272,6 +309,7 @@
         }
     }
 }
+
 - (void)randomCountBtnClick:(YZLotteryButton *)btn
 {
     if([self.delegate respondsToSelector:@selector(randomCountBtnDidClick:)])

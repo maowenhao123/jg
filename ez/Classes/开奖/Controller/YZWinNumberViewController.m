@@ -130,7 +130,7 @@
 - (void)setStatusFrames
 {
     NSMutableArray *statusFrameArray = [NSMutableArray array];
-    NSMutableArray *muArr = [[YZTool gameIds] mutableCopy];
+    NSMutableArray *muArr = [[YZTool gameIdNameDict].allKeys mutableCopy];
     for(int i = 0;i < muArr.count;i++)
     {
         NSString *gameId = muArr[i];
