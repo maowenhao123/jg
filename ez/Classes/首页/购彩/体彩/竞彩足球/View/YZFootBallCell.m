@@ -348,13 +348,6 @@
     [muAttStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n",macthNum]]];//显示第几个比赛
     
     [muAttStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n",detailInfoArray[2]]]];//比赛名称
-    NSTextAttachment *attach = [[NSTextAttachment alloc] init];
-    UIImage *image = [UIImage imageNamed:@"timer"];
-    attach.image = image;
-    CGFloat scale = 1.2;
-    attach.bounds = CGRectMake(0, 0, image.size.width * scale, image.size.height * scale);
-    NSAttributedString *attachAttStr = [NSMutableAttributedString attributedStringWithAttachment:attach];
-    [muAttStr appendAttributedString:attachAttStr];//添加一个时间的图片
     NSString *endTime = [_matchInfos.endTime substringWithRange:NSMakeRange(11, 5)];
     NSString *endTimeStr = [NSString stringWithFormat:@" %@",endTime];
     [muAttStr appendAttributedString:[[NSAttributedString alloc] initWithString:endTimeStr]];//添加截止时间

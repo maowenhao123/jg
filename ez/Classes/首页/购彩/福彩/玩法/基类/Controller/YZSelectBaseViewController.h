@@ -16,14 +16,6 @@
 
 #define endTimeLabelH 30
 
-typedef enum {
-    KHistoryTag11 = 11,
-    
-    KHistory2Tag21 = 21,
-    KHistory2Tag22 = 22,
-    KHistory2Tag23 = 23
-}KHistoryTag;
-
 @interface YZSelectBaseViewController : YZGameIdViewController
 
 @property (nonatomic, weak) UIButton *leftBtn;

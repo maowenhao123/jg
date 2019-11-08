@@ -9,5 +9,7 @@
 #import "YZOddsMap.h"
 
 @implementation YZOddsMap
+
 MJCodingImplementation
+
 @end

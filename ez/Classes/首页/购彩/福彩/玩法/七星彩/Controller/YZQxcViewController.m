@@ -571,8 +571,6 @@ typedef enum{
     }
     [array removeAllObjects];
 }
-- (void)removePlayTypeBackView
-{
-    [self.playTypeBackView removeFromSuperview];
-}
+
+
 @end

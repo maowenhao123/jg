@@ -80,6 +80,7 @@
     typeLabel.layer.borderWidth = 0.25;
     [self addSubview:typeLabel];
 }
+
 - (void)setStatus:(YZRecentLotteryStatus *)status
 {
     self.termIdLabel.text = [NSString stringWithFormat:@"%@期",[status.termId substringFromIndex:status.termId.length - 2]];
@@ -116,6 +117,7 @@
         }
     }
 }
+
 - (NSMutableArray *)sortArray:(NSMutableArray *)array
 {
     if(array.count == 1) return array;
@@ -133,6 +135,7 @@
     }
     return array;
 }
+
 - (NSMutableArray *)winNumberViews
 {
     if (_winNumberViews == nil) {
@@ -140,15 +143,6 @@
     }
     return _winNumberViews;
 }
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

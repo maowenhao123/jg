@@ -115,8 +115,8 @@
     self.scrollView = scrollView;
     scrollView.delegate = self;
     
-    CGFloat bottomViewH = 49;
-    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - CGRectGetMaxY(endTimeLabel.frame) - bottomViewH - backViewH - [YZTool getSafeAreaBottom];
+    CGFloat bottomViewH = 49 + [YZTool getSafeAreaBottom];
+    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - CGRectGetMaxY(endTimeLabel.frame) - bottomViewH - backViewH;
     scrollView.frame = CGRectMake(0, CGRectGetMaxY(backView.frame), screenWidth, scrollViewH);
     [self.view addSubview:scrollView];
     //设置属性
@@ -150,7 +150,7 @@
     //底栏
     CGFloat bottomViewW = screenWidth;
     CGFloat bottomViewX = 0;
-    CGFloat bottomViewY = screenHeight - bottomViewH - statusBarH - navBarH - [YZTool getSafeAreaBottom];
+    CGFloat bottomViewY = screenHeight - bottomViewH - statusBarH - navBarH;
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(bottomViewX, bottomViewY, bottomViewW, bottomViewH)];
     self.bottomView = bottomView;
     bottomView.backgroundColor = [UIColor whiteColor];
@@ -159,7 +159,7 @@
     //删除按钮
     CGFloat buttonH = 30;
     CGFloat buttonW = 75;
-    CGFloat buttonY = (bottomViewH - buttonH) / 2;
+    CGFloat buttonY = (bottomViewH - [YZTool getSafeAreaBottom] - buttonH) / 2;
     UIButton *deleteAutoSelectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.deleteAutoSelectedBtn = deleteAutoSelectedBtn;
     deleteAutoSelectedBtn.frame = CGRectMake(15, buttonY, buttonW, buttonH);
@@ -192,7 +192,7 @@
     CGFloat amountLabelX = CGRectGetMaxX(deleteAutoSelectedBtn.frame) + 10;
     CGFloat amountLabelW = confirmBtn.x - 10 - amountLabelX;
     CGFloat amountLabelH = 25;
-    CGFloat amountLabelY = (bottomView.height - amountLabelH) / 2;
+    CGFloat amountLabelY = (bottomView.height - [YZTool getSafeAreaBottom] - amountLabelH) / 2;
     amountLabel.frame = CGRectMake(amountLabelX, amountLabelY, amountLabelW, amountLabelH);
     [bottomView addSubview:amountLabel];
     self.betCount = 0;

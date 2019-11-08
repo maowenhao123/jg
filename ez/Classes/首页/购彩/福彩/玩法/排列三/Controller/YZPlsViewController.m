@@ -520,9 +520,6 @@ typedef enum{
     }else if(tableView.tag == 6)//组六
     {
         return  self.statusArrayZuliu.count;
-    }else if(tableView.tag == KHistoryTag11)//历史开奖
-    {
-        return self.recentStatus.count;
     }else
     {
         return 0;
@@ -538,42 +535,34 @@ typedef enum{
     {
         cell.status = self.statusArray1[indexPath.row];
         cell.owner = self.tableView1;
-        return  cell;
     }else if(tableView.tag == 1)//和值
     {
         cell.status = self.statusArray2[indexPath.row];
         cell.owner = self.tableView2;
-        return  cell;
     }else if(tableView.tag == 2)//组合
     {
         cell.status = self.statusArray3[indexPath.row];
         cell.owner = self.tableViewZuhe;
-        return  cell;
     }else if(tableView.tag == KTableViewZuxuanTag)//组选
     {
         cell.status = self.statusArrayZuxuan[indexPath.row];
         cell.owner = self.tableViewZuxuan;
-        return  cell;
     }else if(tableView.tag == KTableViewZuxuansanDanTag)//组三单式
     {
         cell.status = self.statusArrayZusan1[indexPath.row];
         cell.owner = self.tableView31;
-        return  cell;
     }else if(tableView.tag == KTableViewZuxuansanFuTag)//组三单式
     {
         cell.status = self.statusArrayZusan2[indexPath.row];
         cell.owner = self.tableView32;
-        return  cell;
     }else if(tableView.tag == 6)//组六
     {
         cell.status = self.statusArrayZuliu[indexPath.row];
         cell.owner = self.tableView6;
-        return  cell;
-    }else
-    {
-        return cell;
     }
+    return cell;
 }
+
 //返回cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

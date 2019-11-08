@@ -6,9 +6,10 @@
 //  Copyright (c) 2014年 9ge. All rights reserved.
 //
 #define playTypeBtnCount 21
+
 #import "YZS1x5ViewController.h"
 #import "YZTitleButton.h"
-#import "YZRecentLotteryCell.h"
+#import "YZ11x5RecentLotteryCell.h"
 #import "YZCommitTool.h"
 
 @interface YZS1x5ViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate,YZSelectBallCellDelegate,YZBallBtnDelegate>
@@ -20,10 +21,9 @@
     NSArray *_minSelCountArray;//至少选几个球的数组
     NSArray *_maxSelCountArray;//至多选几个球的数组
     int _currentMinSelCount;//当前至少选几个球
-    NSArray *_btnTitles;//按钮标题
     BOOL _panEnable;//pan手势是否激活
     int _selectedPlayTypeBtnTag;//选中的玩法的tag
-    CGFloat lastTranslationY;
+    CGFloat _lastTranslationY;
 }
 @property (nonatomic, weak) YZTitleButton *titleBtn;//title按钮
 @property (nonatomic, weak) UIView *playTypeBackView;//玩法背景view
@@ -55,8 +55,7 @@
     _playTypeCodes = @[@"21",@"22", @"23", @"24", @"25", @"26", @"27", @"28", @"30", @"29", @"32", @"31", @"22", @"23", @"24", @"25", @"26", @"27", @"29", @"31", @""];
     _minSelCountArray = @[@"1",@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"1", @"2", @"1", @"3", @"1",@"2", @"3", @"4", @"5", @"6", @"1", @"2", @""];
     _maxSelCountArray = @[@"1", @"2", @"3", @"4", @"5", @"6", @"1", @"2", @""];
-
-    _btnTitles = @[@"万位",@"千位",@"百位"];
+    
     [self setupSonChilds];
     [self setupPlayTypeView];
     [self loadHistoryData];//获取历史开奖数据
@@ -73,13 +72,13 @@
     YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
     //默认玩法为任选五
-    BOOL havesSelectedPlayType = [YZUserDefaultTool getIntForKey:@"havesSelectedPlayType"];
-    if (!havesSelectedPlayType) {
-        [YZUserDefaultTool saveInt:4 forKey:@"selectedPlayTypeBtnTag"];
-        [YZUserDefaultTool saveInt:1 forKey:@"havesSelectedPlayType"];
+    BOOL havesSelected11x5PlayType = [YZUserDefaultTool getIntForKey:@"havesSelected11x5PlayType"];
+    if (!havesSelected11x5PlayType) {
+        [YZUserDefaultTool saveInt:4 forKey:@"selected11x5PlayTypeBtnTag"];
+        [YZUserDefaultTool saveInt:1 forKey:@"havesSelected11x5PlayType"];
     }
     //设置数据源和标题
-    _selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selectedPlayTypeBtnTag"];
+    _selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selected11x5PlayTypeBtnTag"];
     
     self.currentStatusArray = self.allStatusArray[_selectedPlayTypeBtnTag];//记录的数据源
     _currentPlayTypeCode = _playTypeCodes[_selectedPlayTypeBtnTag];//记录的当前玩法
@@ -136,7 +135,7 @@
     historyTableView.scrollEnabled = NO;
     historyTableView.delegate = self;
     historyTableView.dataSource = self;
-    historyTableView.tag = KHistoryTag11;
+    historyTableView.tag = KhistoryCellTagZero;
     self.historyTableView = historyTableView;
     historyTableView.frame = tableView.frame;
     [historyTableView setEstimatedSectionHeaderHeightAndFooterHeight];
@@ -157,34 +156,32 @@
     
     int btnCount = 3;
     CGFloat topBtnH = btnWH;
+    CGFloat topBtnW = screenWidth / btnCount;
+    NSArray * btnTitles = @[@"万位",@"千位",@"百位"];
     for(int i = 0;i < btnCount;i++)
     {
         UIButton *topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        topBtn.backgroundColor = [UIColor whiteColor];
         topBtn.tag = i;
-        [topBtn setTitle:_btnTitles[i] forState:UIControlStateNormal];
-        if(i==0)
-        {
-            topBtn.selected = YES;
-            self.historySelBtn = topBtn;
-            topBtn.userInteractionEnabled = NO;
-        }
-        CGFloat topBtnW = screenWidth / btnCount;
         topBtn.frame = CGRectMake(topBtnW * i, 0, topBtnW, topBtnH);
-        topBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        topBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-        [topBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        topBtn.backgroundColor = [UIColor whiteColor];
+        [topBtn setTitle:btnTitles[i] forState:UIControlStateNormal];
+        topBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
+        [topBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
         [topBtn setTitleColor:YZColor(233, 116, 61, 1.0) forState:UIControlStateSelected];
-        [topBtn setImage:[UIImage imageNamed:@"button_underline"] forState:UIControlStateSelected];
-        [historyTopBackView addSubview:topBtn];
+        [topBtn setBackgroundImage:[UIImage imageNamed:@"button_underline"] forState:UIControlStateSelected];
+        if(i == 0)
+        {
+           topBtn.selected = YES;
+           self.historySelBtn = topBtn;
+        }
         [topBtn addTarget:self action:@selector(historyTopBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [historyTopBackView addSubview:topBtn];
     }
     
     //有万千百的历史开奖
     CGFloat historyScrollViewH = 11 * btnWH;
     UIScrollView *historyScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, btnWH , screenWidth, historyScrollViewH)];
     self.historyScrollView = historyScrollView;
-    //设置属性
     historyScrollView.backgroundColor = [UIColor whiteColor];
     historyScrollView.delaysContentTouches = NO;
     historyScrollView.delegate = self;
@@ -207,13 +204,13 @@
         tableView.dataSource = self;
         if(i == 0)
         {
-            tableView.tag = KHistory2Tag21;
+            tableView.tag = KhistoryCellTagWan;
         }else if (i == 1)
         {
-            tableView.tag = KHistory2Tag22;
+            tableView.tag = KhistoryCellTagQian;
         }else
         {
-            tableView.tag = KHistory2Tag23;
+            tableView.tag = KhistoryCellTagBai;
         }
         [tableView setEstimatedSectionHeaderHeightAndFooterHeight];
         [self.historyTableViews addObject:tableView];
@@ -248,6 +245,7 @@
     
     [super setDeleteAutoSelectedBtnTitle];
 }
+
 - (void)historyBtnDidClick
 {
     if(self.tableView1.y == CGRectGetMaxY(self.endTimeLabel.frame))
@@ -258,10 +256,12 @@
         [self closeTableViewWithAnimation];
     }
 }
+
 - (void)historyTopBtnClick:(UIButton *)btn
 {
     [self.historyScrollView setContentOffset:CGPointMake(btn.tag * screenWidth, 0) animated:YES];
 }
+
 - (void)addPanGestureToView:(UIView *)view
 {
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewPan:)];
@@ -306,27 +306,24 @@
         tableView.height = (self.recentStatus.count + 1)* btnWH;
     }
 }
+
 #pragma mark - UIScrollViewDelegate代理方法
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if(![scrollView isKindOfClass:[UITableView class]])
     {
         if (scrollView == self.historyScrollView) {
-            // 1.取出水平方向上滚动的距离
             CGFloat offsetX = scrollView.contentOffset.x;
-            
-            // 2.求出页码
             double pageDouble = offsetX / (screenWidth);
             int historyPageInt = (int)(pageDouble + 0.5);
             [self changeHistoryBtnState:self.historyTopBackView.subviews[historyPageInt]];
         }
     }
 }
+
 - (void)changeHistoryBtnState:(UIButton *)btn
 {
     self.historySelBtn.selected = NO;
-    self.historySelBtn.userInteractionEnabled = YES;
-    btn.userInteractionEnabled = NO;
     btn.selected = YES;
     self.historySelBtn = btn;
 }
@@ -352,17 +349,17 @@
         {
             tableView.y = endY;
         }
-        lastTranslationY = translation.y;
+        _lastTranslationY = translation.y;
     }
     
     if(pan.state == UIGestureRecognizerStateEnded)
     {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-             if(lastTranslationY > 2)//有向下滑的趋势
+             if(_lastTranslationY > 2)//有向下滑的趋势
              {
                  tableView.y = endY;
-             }else if (lastTranslationY < -2)//有向上滑的趋势
+             }else if (_lastTranslationY < -2)//有向上滑的趋势
              {
                  tableView.y = endTimeBgMaxY;
              }else//无趋势
@@ -389,10 +386,10 @@
     CGFloat layerScale = (tableView.y - endTimeBgMaxY) / (endY - endTimeBgMaxY);
     self.alphaChangeView.layer.backgroundColor = YZColor(0, 0, 0, 0.7*(1 - layerScale)).CGColor;
 }
+
 #pragma mark - 近期开奖按钮点击，重写父类方法
 - (void)recentOpenLotteryBtnClick
 {
-
     if(self.tableView1.y == CGRectGetMaxY(self.endTimeLabel.frame))
     {
         [self openTableViewWithAnimation];
@@ -401,6 +398,7 @@
         [self closeTableViewWithAnimation];
     }
 }
+
 #pragma mark - 打开tableView
 - (void)openTableViewWithAnimation
 {
@@ -415,6 +413,7 @@
                          }];
     }
 }
+
 #pragma mark - 关闭tableView
 - (void)closeTableViewWithAnimation
 {
@@ -427,10 +426,11 @@
                          }];
     }
 }
+
 #pragma mark - tableview的代理数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(tableView.tag == KHistoryTag11 || tableView.tag == KHistory2Tag21 || tableView.tag == KHistory2Tag22 || tableView.tag == KHistory2Tag23)
+    if(tableView.tag == KhistoryCellTagZero || tableView.tag == KhistoryCellTagWan || tableView.tag == KhistoryCellTagQian || tableView.tag == KhistoryCellTagBai)
     {
         int count = (int)self.recentStatus.count;
         if(count > 0) _panEnable = YES;
@@ -442,9 +442,9 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(tableView.tag == KHistoryTag11 || tableView.tag == KHistory2Tag21 || tableView.tag == KHistory2Tag22 || tableView.tag == KHistory2Tag23)
+    if(tableView.tag == KhistoryCellTagZero || tableView.tag == KhistoryCellTagWan || tableView.tag == KhistoryCellTagQian || tableView.tag == KhistoryCellTagBai)
     {
-        YZRecentLotteryCell *cell = [YZRecentLotteryCell cellWithTableView:tableView];
+        YZ11x5RecentLotteryCell *cell = [YZ11x5RecentLotteryCell cellWithTableView:tableView];
         if(indexPath.row % 2 != 0)
         {
             cell.backgroundColor = UIColorFromRGB(0xFFE7E7E7);
@@ -452,21 +452,8 @@
         {
             cell.backgroundColor = [UIColor whiteColor];
         }
-        NSArray *statusArr = nil;
-        if(tableView.tag == KHistoryTag11)
-        {
-            statusArr = [self recentStatusWithCellTag:KhistoryCellTagZero];
-        }else if (tableView.tag == KHistory2Tag21)
-        {
-            statusArr = [self recentStatusWithCellTag:KhistoryCellTagWan];
-        }else if (tableView.tag == KHistory2Tag22)
-        {
-            statusArr = [self recentStatusWithCellTag:KhistoryCellTagQian];
-        }else if (tableView.tag == KHistory2Tag23)
-        {
-            statusArr = [self recentStatusWithCellTag:KhistoryCellTagBai];
-        }
-        cell.status = statusArr[indexPath.row];
+        cell.cellTag = (int)tableView.tag;
+        cell.status = self.recentStatus[indexPath.row];
         return cell;
     }else
     {
@@ -478,9 +465,10 @@
         return cell;
     }
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(tableView.tag == KHistoryTag11 ||tableView.tag == KHistory2Tag21 ||tableView.tag == KHistory2Tag22 ||tableView.tag == KHistory2Tag23)
+    if(tableView.tag == KhistoryCellTagZero ||tableView.tag == KhistoryCellTagWan ||tableView.tag == KhistoryCellTagQian ||tableView.tag == KhistoryCellTagBai)
     {
         return btnWH;
     }else
@@ -491,7 +479,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if(tableView.tag == KHistoryTag11 ||tableView.tag == KHistory2Tag21 ||tableView.tag == KHistory2Tag22 ||tableView.tag == KHistory2Tag23)
+    if(tableView.tag == KhistoryCellTagZero ||tableView.tag == KhistoryCellTagWan ||tableView.tag == KhistoryCellTagQian ||tableView.tag == KhistoryCellTagBai)
     {
         return btnWH;
     }
@@ -499,12 +487,12 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if(tableView.tag == KHistoryTag11 ||tableView.tag == KHistory2Tag21 ||tableView.tag == KHistory2Tag22 ||tableView.tag == KHistory2Tag23)
+    if(tableView.tag == KhistoryCellTagZero || tableView.tag == KhistoryCellTagWan ||tableView.tag == KhistoryCellTagQian ||tableView.tag == KhistoryCellTagBai)
     {
         UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, btnWH)];
         headerView.backgroundColor = UIColorFromRGB(0xFFE7E7E7);
         CGFloat btn1W = screenWidth - 11 * btnWH;
-        for(int i = 0;i < 12;i++)
+        for(int i = 0; i < 12; i++)
         {
             UIButton *btn = [[UIButton alloc] init];
             btn.userInteractionEnabled = NO;
@@ -529,6 +517,7 @@
     }
     return nil;
 }
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(tableView != self.tableView1) return;
@@ -553,7 +542,7 @@
         }
     }
 }
-#pragma mark - YZHistoryWinViewDelegate
+
 - (void)chooseBall:(NSArray *)selectedBalls withPlayTypeNum:(int)playTypeNum
 {
     UIButton * button = _titleBtns[playTypeNum];
@@ -586,6 +575,7 @@
     [playTypeBackView addGestureRecognizer:tap];
     tap.delegate = self;
     [self.tabBarController.view addSubview:playTypeBackView];
+    
     //玩法view
     UIView *playTypeView = [[UIView alloc] init];
     self.playTypeView = playTypeView;
@@ -662,7 +652,7 @@
         [btn addTarget:self action:@selector(playTypeBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         //选中图片
-        int selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selectedPlayTypeBtnTag"];//没有存储，取出来默认是0
+        int selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selected11x5PlayTypeBtnTag"];//没有存储，取出来默认是0
         if(selectedPlayTypeBtnTag == i)//有就选择相应地按钮
         {
             btn.selected = YES;
@@ -671,6 +661,7 @@
     CGFloat playTypeViewH = CGRectGetMaxY(lastBtn.frame) + 5;
     playTypeView.bounds = CGRectMake(0, 0, playTypeViewW, playTypeViewH);
 }
+
 - (void)titleBtnClick:(YZTitleButton *)btn
 {
     [self closeTableViewWithAnimation];//打开或者关闭tableView
@@ -713,10 +704,11 @@
         [self switchOtherPlayTypeWithBtn:btn];
     }
 }
+
 - (void)switchOtherPlayTypeWithBtn:(UIButton *)btn
 {
     //存储选中的玩法
-    [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selectedPlayTypeBtnTag"];
+    [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selected11x5PlayTypeBtnTag"];
     
     //设置玩法
     _currentPlayTypeCode = _playTypeCodes[btn.tag];
@@ -881,6 +873,7 @@
     }
     [self computeAmountMoney];
 }
+
 #pragma mark - 计算注数和金额
 - (void)computeAmountMoney
 {
@@ -1193,17 +1186,7 @@
     }
     return tag;
 }
-- (NSArray *)recentStatusWithCellTag:(KhistoryCellTag)cellTag
-{
-    NSMutableArray *muArr = [[NSMutableArray alloc] init];
-    for(int i = 0;i < self.recentStatus.count;i++)
-    {
-        YZRecentLotteryStatus *status = self.recentStatus[i];
-        status.cellTag = cellTag;
-        [muArr addObject:status];
-    }
-    return muArr;
-}
+
 - (NSMutableArray *)historyTableViews
 {
     if(_historyTableViews == nil)

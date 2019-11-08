@@ -550,8 +550,7 @@
 
 #pragma  mark - 获取到了比赛信息后调用
 - (void)getCurrentMatchInfoEnded
-{
-    
+{    
     [self setStatusArray:nil];//设置statusArray数据
     self.currentStatusArray = self.statusArray;//设置当前数据源
     self.currentMatchNames = [self.matchNameArray mutableCopy];//设置当前比赛名称

@@ -1,27 +1,28 @@
 //
-//  YZRecentLotteryCell.m
+//  YZ11x5RecentLotteryCell.m
 //  ez
 //
 //  Created by apple on 14-11-17.
 //  Copyright (c) 2014年 9ge. All rights reserved.
 //
 
-#import "YZRecentLotteryCell.h"
+#import "YZ11x5RecentLotteryCell.h"
 
-@interface YZRecentLotteryCell ()
+@interface YZ11x5RecentLotteryCell ()
 
 @property (nonatomic, strong) NSMutableArray *btns;
 
 @end
 
-@implementation YZRecentLotteryCell
-+ (YZRecentLotteryCell *)cellWithTableView:(UITableView *)tableView
+@implementation YZ11x5RecentLotteryCell
+
++ (YZ11x5RecentLotteryCell *)cellWithTableView:(UITableView *)tableView
 {
-    static NSString *ID = @"recentLottery";
-    YZRecentLotteryCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    static NSString *ID = @"YZ11x5RecentLotteryCellId";
+    YZ11x5RecentLotteryCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if(cell == nil)
     {
-        cell = [[YZRecentLotteryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[YZ11x5RecentLotteryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return  cell;
@@ -81,18 +82,17 @@
     //设置号码球
     NSArray *ballArray = [_status.winNumber componentsSeparatedByString:@","];
     NSString *imageName = @"redBg";
-    if(_status.cellTag)//是万千百的cell
+    if(_cellTag)//是万千百的cell
     {
-//        YZLog(@"cellTag = %d",_status.cellTag);
         NSArray *subArr = ballArray;
-        if(_status.cellTag == KhistoryCellTagWan && _status.termId)
+        if(_cellTag == KhistoryCellTagWan && _status.termId)
         {
             subArr = [ballArray subarrayWithRange:NSMakeRange(0, 1)];
-        }else if(_status.cellTag == KhistoryCellTagQian && _status.termId)
+        }else if(_cellTag == KhistoryCellTagQian && _status.termId)
         {
             subArr = [ballArray subarrayWithRange:NSMakeRange(1, 1)];
             imageName = @"greenBg";
-        }else if(_status.cellTag == KhistoryCellTagBai && _status.termId)
+        }else if(_cellTag == KhistoryCellTagBai && _status.termId)
         {
             subArr = [ballArray subarrayWithRange:NSMakeRange(2, 1)];
             imageName = @"blueBg";
@@ -103,6 +103,7 @@
         [self setBallsWithBallsArray:ballArray ballImageName:imageName];
     }
 }
+
 - (void)setBallsWithBallsArray:(NSArray *)ballsArray ballImageName:(NSString *)imageName
 {
     for(NSString *str in ballsArray)
