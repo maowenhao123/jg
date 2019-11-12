@@ -18,6 +18,7 @@
 #import "YZBankCardRechargeViewController.h"
 #import "YZUPPayPluginRechargeViewController.h"
 #import "YZBonusCardRechargeViewController.h"
+#import "YZErCodeRechargeViewController.h"
 #import "YZRechargeTableViewCell.h"
 #import "YZRechargeStatus.h"
 
@@ -108,7 +109,7 @@
     NSMutableArray * statusArray = [NSMutableArray array];
     for (YZRechargeStatus * status in paymentArray) {
         if (status.status == 2) {//启用的才添加
-            if ([status.clientId isEqualToString:@"jiuge_alipytransfer"] || [status.clientId isEqualToString:@"zhongcai_alipytransfer"] || [status.clientId isEqualToString:@"zhongcai_alipay_app"] || [status.clientId isEqualToString:@"jiuge_alipay_qr"] || [status.clientId isEqualToString:@"jiuge_lftpay_alipay_qr"] || [status.clientId isEqualToString:@"plbpay_alipay_h5"] || [status.clientId isEqualToString:@"alipytransfer"])//支付宝
+            if ([status.clientId isEqualToString:@"jiuge_alipytransfer"] || [status.clientId isEqualToString:@"zhongcai_alipytransfer"] || [status.clientId isEqualToString:@"zhongcai_alipay_app"] || [status.clientId isEqualToString:@"jiuge_alipay_qr"] || [status.clientId isEqualToString:@"jiuge_lftpay_alipay_qr"] || [status.clientId isEqualToString:@"plbpay_alipay_h5"] || [status.clientId isEqualToString:@"alipytransfer"] || [status.clientId isEqualToString:@"alipay_img_qr"])//支付宝
             {
                 status.imageName = @"rechagre_zhifubao_icon";
                 status.title = status.name;
@@ -194,7 +195,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     YZRechargeStatus *status = self.statusArray[indexPath.row];
-    if([status.clientId isEqualToString:@"jiuge_ziweixing_wx"] || [status.clientId isEqualToString:@"zhongcai_ziweixing_wx"] || [status.clientId isEqualToString:@"jiuge_lftpay_weixin_qr"] || [status.clientId isEqualToString:@"plbpay_weixin_h5"])//微信支付
+    if([status.clientId isEqualToString:@"jiuge_ziweixing_wx"] || [status.clientId isEqualToString:@"zhongcai_ziweixing_wx"] || [status.clientId isEqualToString:@"plbpay_weixin_h5"])//微信支付
     {
         YZWeixinRechargeViewController *weixinRechargeVc = [[YZWeixinRechargeViewController alloc] init];
         weixinRechargeVc.paymentId = status.paymentId;
@@ -224,6 +225,14 @@
             zhifubaoRechargeVc.url = status.url;
         }
         [self.navigationController pushViewController:zhifubaoRechargeVc animated:YES];
+    }else if ([status.clientId isEqualToString:@"jiuge_lftpay_weixin_qr"] || [status.clientId isEqualToString:@"alipay_img_qr"])//二维码充值
+    {
+        YZErCodeRechargeViewController *erCodeRechargeVc = [[YZErCodeRechargeViewController alloc] init];
+        erCodeRechargeVc.paymentId = status.paymentId;
+        erCodeRechargeVc.clientId = status.clientId;
+        erCodeRechargeVc.detailUrl = status.detailUrl;
+        erCodeRechargeVc.intro = status.intro;
+        [self.navigationController pushViewController:erCodeRechargeVc animated:YES];
     }else if([status.clientId isEqualToString:@"weixin_qr"] || [status.clientId isEqualToString:@"qq_qr"] || [status.clientId isEqualToString:@"jd_qr"] || [status.clientId isEqualToString:@"unionpay_qr"] || [status.clientId isEqualToString:@"common_wap"])//html充值
     {
         YZHtmlRechargeViewController *htmlRechargeVc = [[YZHtmlRechargeViewController alloc] init];

@@ -48,6 +48,14 @@
 		1D7BE003237112580015CD8E /* YZKy481PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */; };
 		1D7BE004237112580015CD8E /* YZKy481PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */; };
 		1D7BE005237112580015CD8E /* YZKy481PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */; };
+		1D96B6C523794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6C623794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6C723794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6C823794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6CB2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
+		1D96B6CC2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
+		1D96B6CD2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
+		1D96B6CE2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
 		1DB2A59522C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59622C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59722C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
@@ -439,7 +447,6 @@
 		1DCA1A4A2327376100F2061B /* YZChartChooseBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291C91FFE27B600CA77DA /* YZChartChooseBallView.m */; };
 		1DCA1A4B2327376100F2061B /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD8C0422CB00460024CF7B /* MWZoomingScrollView.m */; };
 		1DCA1A4C2327376100F2061B /* HDMessageReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7C31FFE17DD003B53AF /* HDMessageReadManager.m */; };
-		1DCA1A4D2327376100F2061B /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
 		1DCA1A4E2327376100F2061B /* HDBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E89C1FFE17DD003B53AF /* HDBubbleView.m */; };
 		1DCA1A4F2327376100F2061B /* YZOrderStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1001FFE0A86003B53AF /* YZOrderStatus.m */; };
 		1DCA1A502327376100F2061B /* YZTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291721FFE27B600CA77DA /* YZTitleButton.m */; };
@@ -1350,7 +1357,6 @@
 		AA237E052143590C00BC47BB /* YZUpGradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA43DCAE1F4AE0F70018818E /* YZUpGradeView.m */; };
 		AA237E062143590C00BC47BB /* YZChartChooseBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291C91FFE27B600CA77DA /* YZChartChooseBallView.m */; };
 		AA237E072143590C00BC47BB /* HDMessageReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7C31FFE17DD003B53AF /* HDMessageReadManager.m */; };
-		AA237E082143590C00BC47BB /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
 		AA237E092143590C00BC47BB /* HDBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E89C1FFE17DD003B53AF /* HDBubbleView.m */; };
 		AA237E0A2143590C00BC47BB /* YZOrderStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1001FFE0A86003B53AF /* YZOrderStatus.m */; };
 		AA237E0B2143590C00BC47BB /* YZTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291721FFE27B600CA77DA /* YZTitleButton.m */; };
@@ -2891,8 +2897,6 @@
 		AA74EC9D1FFE19A5003B53AF /* YZUPPayPluginRechargeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7C1FFE19A5003B53AF /* YZUPPayPluginRechargeViewController.mm */; };
 		AA74EC9E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m */; };
 		AA74EC9F1FFE19A5003B53AF /* YZBankCardRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m */; };
-		AA74ECA01FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
-		AA74ECA11FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
 		AA74ECA21FFE19A5003B53AF /* YZBankRemitController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC801FFE19A5003B53AF /* YZBankRemitController.m */; };
 		AA74ECA31FFE19A5003B53AF /* YZBankRemitController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC801FFE19A5003B53AF /* YZBankRemitController.m */; };
 		AA74ECA41FFE19A5003B53AF /* YZRechargeSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC811FFE19A5003B53AF /* YZRechargeSuccessViewController.m */; };
@@ -3150,6 +3154,10 @@
 		1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFbBetSuccessViewController.m; sourceTree = "<group>"; };
 		1D7BE000237112580015CD8E /* YZKy481PlayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481PlayTypeView.h; sourceTree = "<group>"; };
 		1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481PlayTypeView.m; sourceTree = "<group>"; };
+		1D96B6C323794D9E00F1FC63 /* YZErCodeRechargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZErCodeRechargeViewController.h; sourceTree = "<group>"; };
+		1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZErCodeRechargeViewController.m; sourceTree = "<group>"; };
+		1D96B6C92379519300F1FC63 /* YZErCodeRechargeSuccessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZErCodeRechargeSuccessView.h; sourceTree = "<group>"; };
+		1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZErCodeRechargeSuccessView.m; sourceTree = "<group>"; };
 		1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZ11x5PlayTypeView.h; sourceTree = "<group>"; };
 		1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZ11x5PlayTypeView.m; sourceTree = "<group>"; };
 		1DB2A59D22C20615000AFE52 /* YZCirclePlayTypePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCirclePlayTypePickerView.h; sourceTree = "<group>"; };
@@ -4453,7 +4461,6 @@
 		AA74EA111FFE17DE003B53AF /* YZStatusCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZStatusCacheTool.h; sourceTree = "<group>"; };
 		AA74EA121FFE17DE003B53AF /* YZStatusCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZStatusCacheTool.m; sourceTree = "<group>"; };
 		AA74EC6D1FFE19A5003B53AF /* YZRechargeRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZRechargeRecordViewController.m; sourceTree = "<group>"; };
-		AA74EC6F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZWeixinPayGuideViewController.h; sourceTree = "<group>"; };
 		AA74EC701FFE19A5003B53AF /* YZZhifubaoRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZZhifubaoRechargeViewController.m; sourceTree = "<group>"; };
 		AA74EC711FFE19A5003B53AF /* YZBankCardRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZBankCardRechargeViewController.h; sourceTree = "<group>"; };
 		AA74EC721FFE19A5003B53AF /* YZZhifubaoNewRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZZhifubaoNewRechargeViewController.h; sourceTree = "<group>"; };
@@ -4469,7 +4476,6 @@
 		AA74EC7C1FFE19A5003B53AF /* YZUPPayPluginRechargeViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YZUPPayPluginRechargeViewController.mm; sourceTree = "<group>"; };
 		AA74EC7D1FFE19A5003B53AF /* YZZhifubaoRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZZhifubaoRechargeViewController.h; sourceTree = "<group>"; };
 		AA74EC7E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBankCardRechargeViewController.m; sourceTree = "<group>"; };
-		AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZWeixinPayGuideViewController.m; sourceTree = "<group>"; };
 		AA74EC801FFE19A5003B53AF /* YZBankRemitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBankRemitController.m; sourceTree = "<group>"; };
 		AA74EC811FFE19A5003B53AF /* YZRechargeSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZRechargeSuccessViewController.m; sourceTree = "<group>"; };
 		AA74EC821FFE19A5003B53AF /* YZPhoneCardRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPhoneCardRechargeViewController.m; sourceTree = "<group>"; };
@@ -8762,8 +8768,8 @@
 				AA74EC701FFE19A5003B53AF /* YZZhifubaoRechargeViewController.m */,
 				AA74EC831FFE19A5003B53AF /* YZWeixinRechargeViewController.h */,
 				AA74EC791FFE19A5003B53AF /* YZWeixinRechargeViewController.m */,
-				AA74EC6F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.h */,
-				AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */,
+				1D96B6C323794D9E00F1FC63 /* YZErCodeRechargeViewController.h */,
+				1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */,
 				AA27DA09201EF1FC0068C9CA /* YZHtmlRechargeViewController.h */,
 				AA27DA0A201EF1FC0068C9CA /* YZHtmlRechargeViewController.m */,
 				AA74EC711FFE19A5003B53AF /* YZBankCardRechargeViewController.h */,
@@ -8800,6 +8806,8 @@
 				AA74EC911FFE19A5003B53AF /* YZRechargeTableViewCell.m */,
 				AA74EC8E1FFE19A5003B53AF /* YZRechargeRecordTableViewCell.h */,
 				AA74EC901FFE19A5003B53AF /* YZRechargeRecordTableViewCell.m */,
+				1D96B6C92379519300F1FC63 /* YZErCodeRechargeSuccessView.h */,
+				1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -9802,7 +9810,6 @@
 				1DCA1A4A2327376100F2061B /* YZChartChooseBallView.m in Sources */,
 				1DCA1A4B2327376100F2061B /* MWZoomingScrollView.m in Sources */,
 				1DCA1A4C2327376100F2061B /* HDMessageReadManager.m in Sources */,
-				1DCA1A4D2327376100F2061B /* YZWeixinPayGuideViewController.m in Sources */,
 				1DCA1A4E2327376100F2061B /* HDBubbleView.m in Sources */,
 				1DCA1A4F2327376100F2061B /* YZOrderStatus.m in Sources */,
 				1DCA1A502327376100F2061B /* YZTitleButton.m in Sources */,
@@ -10079,6 +10086,7 @@
 				1DCA1B5A2327376100F2061B /* NSObject+SBJSON.m in Sources */,
 				1DCA1B5B2327376100F2061B /* MWCaptionView.m in Sources */,
 				1DCA1B5C2327376100F2061B /* NSImage+WebCache.m in Sources */,
+				1D96B6C823794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				1DCA1B5D2327376100F2061B /* YZFootBallTool.m in Sources */,
 				1DCA1B5E2327376100F2061B /* YZHomePageFunctionItemView.m in Sources */,
 				1DCA1B5F2327376100F2061B /* YZQuickStakeGameModel.m in Sources */,
@@ -10149,6 +10157,7 @@
 				1DCA1BA22327376100F2061B /* YZBetTool.m in Sources */,
 				1DCA1BA32327376100F2061B /* YZSfcViewController.m in Sources */,
 				1DCA1BA42327376100F2061B /* UIView+MJExtension.m in Sources */,
+				1D96B6CE2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				1DCA1BA52327376100F2061B /* YZZCMineViewController.m in Sources */,
 				1DCA1BA62327376100F2061B /* YZRechargeStatus.m in Sources */,
 				1DCA1BA72327376100F2061B /* YZChoosePhoneView.m in Sources */,
@@ -10470,7 +10479,6 @@
 				AA237E062143590C00BC47BB /* YZChartChooseBallView.m in Sources */,
 				1DBD8C3E22CB00470024CF7B /* MWZoomingScrollView.m in Sources */,
 				AA237E072143590C00BC47BB /* HDMessageReadManager.m in Sources */,
-				AA237E082143590C00BC47BB /* YZWeixinPayGuideViewController.m in Sources */,
 				AA237E092143590C00BC47BB /* HDBubbleView.m in Sources */,
 				AA237E0A2143590C00BC47BB /* YZOrderStatus.m in Sources */,
 				AA237E0B2143590C00BC47BB /* YZTitleButton.m in Sources */,
@@ -10747,6 +10755,7 @@
 				AA237F002143590C00BC47BB /* NSObject+SBJSON.m in Sources */,
 				1DBD8C3B22CB00470024CF7B /* MWCaptionView.m in Sources */,
 				1DBD8E7122CB2C250024CF7B /* NSImage+WebCache.m in Sources */,
+				1D96B6C723794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				AA237F012143590C00BC47BB /* YZFootBallTool.m in Sources */,
 				AA237F022143590C00BC47BB /* YZHomePageFunctionItemView.m in Sources */,
 				AA237F042143590C00BC47BB /* YZQuickStakeGameModel.m in Sources */,
@@ -10817,6 +10826,7 @@
 				AA237F3D2143590C00BC47BB /* YZBetTool.m in Sources */,
 				AA237F3E2143590C00BC47BB /* YZSfcViewController.m in Sources */,
 				AA237F3F2143590C00BC47BB /* UIView+MJExtension.m in Sources */,
+				1D96B6CD2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				AA237F402143590C00BC47BB /* YZZCMineViewController.m in Sources */,
 				AA237F412143590C00BC47BB /* YZRechargeStatus.m in Sources */,
 				AA237F422143590C00BC47BB /* YZChoosePhoneView.m in Sources */,
@@ -11139,7 +11149,6 @@
 				AA32933F1FFE27B600CA77DA /* YZChartChooseBallView.m in Sources */,
 				1DBD8C3C22CB00470024CF7B /* MWZoomingScrollView.m in Sources */,
 				AA74EA591FFE17DE003B53AF /* HDMessageReadManager.m in Sources */,
-				AA74ECA01FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */,
 				AA74EB051FFE17DF003B53AF /* HDBubbleView.m in Sources */,
 				1DF156FF2327A04000A7B788 /* YZPosternViewController.m in Sources */,
 				AA74E12D1FFE0A86003B53AF /* YZOrderStatus.m in Sources */,
@@ -11469,6 +11478,7 @@
 				AA74E1271FFE0A86003B53AF /* YZOrder.m in Sources */,
 				AA3293631FFE27B600CA77DA /* YZPlayPassWay.m in Sources */,
 				AA92647B224B1CD200FCEFC7 /* YZInformationCollectionViewCell.m in Sources */,
+				1D96B6CB2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				1DD0334222C4A478006094A2 /* YZCircleUserInfoHeaderView.m in Sources */,
 				1DE61FFE22CC4F7600C1490E /* TZPhotoPickerController.m in Sources */,
 				1DBD8E9922CB2C250024CF7B /* SDWebImagePrefetcher.m in Sources */,
@@ -11505,6 +11515,7 @@
 				1DBD8E5722CB2C250024CF7B /* SDWebImageTransition.m in Sources */,
 				AA74EA191FFE17DE003B53AF /* UITableView+YZ.m in Sources */,
 				AA3293431FFE27B600CA77DA /* YZScjqBetViewController.m in Sources */,
+				1D96B6C523794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				AA32934B1FFE27B600CA77DA /* YZFootBallBaseViewController.m in Sources */,
 				AA74EA331FFE17DE003B53AF /* YZBottomPickerView.m in Sources */,
 				AA3293A11FFE27B700CA77DA /* YZMatchFutureStatus.m in Sources */,
@@ -11815,7 +11826,6 @@
 				AA3293401FFE27B600CA77DA /* YZChartChooseBallView.m in Sources */,
 				1DBD8C3D22CB00470024CF7B /* MWZoomingScrollView.m in Sources */,
 				AA74EA5A1FFE17DE003B53AF /* HDMessageReadManager.m in Sources */,
-				AA74ECA11FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */,
 				AA74EB061FFE17DF003B53AF /* HDBubbleView.m in Sources */,
 				AA74E12E1FFE0A86003B53AF /* YZOrderStatus.m in Sources */,
 				AA3292F81FFE27B600CA77DA /* YZTitleButton.m in Sources */,
@@ -12090,6 +12100,7 @@
 				AA74E1CB1FFE0AEA003B53AF /* YZMineSettingViewController.m in Sources */,
 				AAD1207920BE398100D47F85 /* YZBasketBallBetHeaderView.m in Sources */,
 				1DBD8B2522C9EC5D0024CF7B /* YZCircleCommentListTableViewCell.m in Sources */,
+				1D96B6C623794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				AA74EB761FFE17DF003B53AF /* NSObject+SBJSON.m in Sources */,
 				AA74EC4A1FFE17E0003B53AF /* YZFootBallTool.m in Sources */,
 				1DBD8C3A22CB00470024CF7B /* MWCaptionView.m in Sources */,
@@ -12160,6 +12171,7 @@
 				AA74EB801FFE17E0003B53AF /* NSString+SBJSON.m in Sources */,
 				AA74EBA41FFE17E0003B53AF /* AFURLSessionManager.m in Sources */,
 				1DBD8C7C22CB00470024CF7B /* SDWebImageDecoder.m in Sources */,
+				1D96B6CC2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				AA74EC581FFE17E0003B53AF /* YZBetTool.m in Sources */,
 				AA32934E1FFE27B600CA77DA /* YZSfcViewController.m in Sources */,
 				AAD1206720BCFE0300D47F85 /* YZBasketBallBetViewController.m in Sources */,

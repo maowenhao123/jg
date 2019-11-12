@@ -584,13 +584,18 @@
         NSMutableString *numbers_ = [NSMutableString string];
         for (YZWinNumberBallStatus * ballStatus in numberArray) {
             if (ballStatus.type == 1) {
-                [numbers_ appendString:[NSString stringWithFormat:@",%@",ballStatus.number]];
-            }else if (ballStatus.type == 2)
-            {
-                [numbers_ appendString:[NSString stringWithFormat:@"|%@",ballStatus.number]];
+                [numbers_ appendString:[NSString stringWithFormat:@"%@,", ballStatus.number]];
             }
         }
-        [numbers_ deleteCharactersInRange:NSMakeRange(0, 1)];//删除第一个一个逗号
+        [numbers_ deleteCharactersInRange:NSMakeRange(numbers_.length - 1, 1)];//去掉最后一个逗号
+        [numbers_ appendFormat:@"|"];//加一竖
+        for (YZWinNumberBallStatus * ballStatus in numberArray) {
+            if (ballStatus.type == 2)
+            {
+                [numbers_ appendString:[NSString stringWithFormat:@"%@,",ballStatus.number]];
+            }
+        }
+        [numbers_ deleteCharactersInRange:NSMakeRange(numbers_.length - 1, 1)];//去掉最后一个逗号
         [numbers appendFormat:@";%@", numbers_];
     }
     [numbers deleteCharactersInRange:NSMakeRange(0, 1)];//删除第一个分号
