@@ -14,8 +14,9 @@
 #import "YZKy481RecentLotteryCell.h"
 #import "YZMathTool.h"
 #import "YZKy481Math.h"
+#import "YZBallBtn.h"
 
-@interface YZKy481ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZKy481PlayTypeViewDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate, YZKy481DanViewDelegate, YZKy481ChongViewDelegate>
+@interface YZKy481ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZKy481PlayTypeViewDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate, YZKy481WanNengViewDelegate, YZKy481DanViewDelegate, YZKy481ChongViewDelegate>
 {
     BOOL _panEnable;//pan手势是否激活
     CGFloat _lastTranslationY;
@@ -50,6 +51,7 @@
     [super viewDidLoad];
     self.selectedPlayTypeBtnTag = 0;
     _historyCellH = screenWidth / 12;
+    self.selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selectedky481PlayTypeBtnTag"];
     [self setupSonChilds];
     [self loadHistoryData];
 }
@@ -105,7 +107,8 @@
     //titleBtn
     YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
-    [titleBtn setTitle:@"任选一" forState:UIControlStateNormal];
+    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24"];
+    [titleBtn setTitle:playTypes[self.selectedPlayTypeBtnTag] forState:UIControlStateNormal];
 #if JG
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
 #elif ZC
@@ -142,6 +145,7 @@
     //任选二万能两码
     YZKy481WanNengView *wanNengView = [[YZKy481WanNengView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
     self.wanNengView = wanNengView;
+    wanNengView.delegate = self;
     wanNengView.hidden = YES;
     [self.view insertSubview:wanNengView belowSubview:self.bottomView];
     [self addPanGestureToView:wanNengView];
@@ -251,7 +255,8 @@
         [self.historyTableViews addObject:tableView];
         [historyScrollView addSubview:tableView];
     }
-    //设置要显示历史开奖的view
+    
+    [self setViewHiddenOrShow];
     [self switchCurrentHistoryView];
 }
 
@@ -263,28 +268,36 @@
 
 - (void)playTypeDidClickBtn:(UIButton *)btn
 {
+    //存储选中的玩法
+    [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selectedky481PlayTypeBtnTag"];
+      
     [self closeTableViewWithAnimation];//关闭tableView
     
     self.selectedPlayTypeBtnTag = btn.tag;
     [self.titleBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
     
+    [self setViewHiddenOrShow];
+}
+
+- (void)setViewHiddenOrShow
+{
     self.wanNengView.hidden = YES;
     self.danView.hidden = YES;
     self.chongView.hidden = YES;
     self.tableView.hidden = YES;
-    self.currentStatusArray = self.allStatusArray[btn.tag];
+    self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];
     NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
-    if (btn.tag == 4) {
+    if (self.selectedPlayTypeBtnTag == 4) {
         self.wanNengView.hidden = NO;
         self.wanNengView.status = self.currentStatusArray.firstObject;
         self.wanNengView.selStatusArray = selStatusArray;
-    }else if (btn.tag == 7 || btn.tag == 9)//组选4 组选12
+    }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)//组选4 组选12
     {
         self.chongView.hidden = NO;
         self.chongView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
         self.chongView.status = self.currentStatusArray.firstObject;
         self.chongView.selStatusArray = selStatusArray;
-    }else if (btn.tag == 8 || btn.tag == 10)//组选6 组选24
+    }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)//组选6 组选24
     {
         self.danView.hidden = NO;
         self.danView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
@@ -627,15 +640,7 @@
         }
         if(btn.isSelected)
         {
-            YZBallBtn *selBall = nil;
-            for(YZBallBtn *ball in statusArray_)
-            {
-                if(btn.tag == ball.tag)
-                {
-                    selBall = ball;
-                }
-            }
-            [statusArray_ removeObject:selBall];
+            [statusArray_ removeObject:btn];
         }else
         {
             [statusArray_ addObject:btn];
@@ -651,15 +656,17 @@
         }
         if(btn.isSelected)
         {
-            YZBallBtn *selBall = nil;
-            for(YZBallBtn *ball in statusArray_)
-            {
-                if(btn.tag == ball.tag)
-                {
-                    selBall = ball;
-                }
-            }
-            [statusArray_ removeObject:selBall];
+            [statusArray_ removeObject:btn];
+        }else
+        {
+            [statusArray_ addObject:btn];
+        }
+    }else if (self.selectedPlayTypeBtnTag == 4)//任选二万能
+    {
+        NSMutableArray * statusArray_ = statusArray[0];
+        if(!btn.isSelected)
+        {
+            [statusArray_ removeObject:btn];
         }else
         {
             [statusArray_ addObject:btn];

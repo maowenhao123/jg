@@ -143,11 +143,22 @@
     if ([button.currentTitle intValue] < 10) {
         for (UIButton * ballButton in ballButtons) {
             if (!YZStringIsEmpty(ballButton.currentTitle)) {
-                ballButton.selected = button.selected;
+                if (ballButton.selected != button.selected) {
+                    ballButton.selected = button.selected;
+                    if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+                    {
+                        [self.delegate ballDidClick:(YZBallBtn *)ballButton];
+                    }
+                }
             }
         }
     }else
     {
+        if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+        {
+            [self.delegate ballDidClick:(YZBallBtn *)button];
+        }
+        
         UIButton * ballButton0 = ballButtons[0];
         BOOL allSelected = YES;
         for (int i = 1; i < ballButtons.count; i++) {

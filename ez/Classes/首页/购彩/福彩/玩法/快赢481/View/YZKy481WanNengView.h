@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "YZSelectBallCellStatus.h"
+#import "YZBallBtn.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol YZKy481WanNengViewDelegate <NSObject>
+
+@optional
+- (void)ballDidClick:(YZBallBtn *)btn;
+@end
 
 @interface YZKy481WanNengView : UIView
 
 @property (nonatomic, strong) YZSelectBallCellStatus *status;//数据模型
 @property (nonatomic, assign) NSMutableArray *selStatusArray;
-- (void)reloadData;
+@property (nonatomic, weak) id<YZKy481WanNengViewDelegate> delegate;
 
 @end
 

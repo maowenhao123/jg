@@ -99,7 +99,12 @@
            CGFloat btnY =  CGRectGetMaxY(lastLabel.frame) + padding + (j / maxColums) * btnH;
            btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
            [btn addTarget:self action:@selector(playTypeBtn:) forControlEvents:UIControlEventTouchUpInside];
-           [playTypeView addSubview:btn];
+           int selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selectedky481PlayTypeBtnTag"];//没有存储，取出来默认是0
+           if(selectedPlayTypeBtnTag == tag)//有就选择相应地按钮
+           {
+               btn.selected = YES;
+           }
+            [playTypeView addSubview:btn];
             
            lastBtn = btn;
            tag++;

@@ -256,7 +256,29 @@
                 composeCount = composeCount_;
             }else
             {
-                composeCount = (composeCount_ / (ballcount - 1)) * chongcount;
+                if (ballcount > 1) {
+                    composeCount = (composeCount_ / (ballcount - 1)) * chongcount;
+                }else
+                {
+                    composeCount = composeCount_ + chongcount;
+                }
+            }
+        }
+    }else if (selectedPlayTypeBtnTag == 4)//任选二万能
+    {
+        int basesum = 6;
+        NSArray * cellStatusArray = selStatusArray[0];
+        for (YZBallBtn * ballBtn in cellStatusArray) {
+            NSString * number = ballBtn.currentTitle;
+            if (!YZStringIsEmpty(number) && number.length == 2) {
+                NSString * subNumber1 = [number substringWithRange:NSMakeRange(0, 1)];
+                NSString * subNumber2 = [number substringWithRange:NSMakeRange(1, 1)];
+                if ([subNumber1 isEqualToString:subNumber2]) {
+                    composeCount += basesum;
+                }else
+                {
+                    composeCount += basesum * 2;
+                }
             }
         }
     }
