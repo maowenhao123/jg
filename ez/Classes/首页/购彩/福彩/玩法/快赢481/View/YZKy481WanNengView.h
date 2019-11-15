@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YZKy481WanNengView : UIView
 
 @property (nonatomic, strong) YZSelectBallCellStatus *status;//数据模型
+@property (nonatomic, assign) NSMutableArray *selStatusArray;
+- (void)reloadData;
 
 @end
 

@@ -5,8 +5,6 @@
 //  Created by dahe on 2019/11/5.
 //  Copyright © 2019 9ge. All rights reserved.
 //
-#define playTypeBtnCount 11
-
 #import "YZKy481ViewController.h"
 #import "YZKy481PlayTypeView.h"
 #import "YZKy481WanNengView.h"
@@ -15,8 +13,9 @@
 #import "YZTitleButton.h"
 #import "YZKy481RecentLotteryCell.h"
 #import "YZMathTool.h"
+#import "YZKy481Math.h"
 
-@interface YZKy481ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZKy481PlayTypeViewDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate>
+@interface YZKy481ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZKy481PlayTypeViewDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate, YZKy481DanViewDelegate, YZKy481ChongViewDelegate>
 {
     BOOL _panEnable;//pan手势是否激活
     CGFloat _lastTranslationY;
@@ -40,6 +39,7 @@
 @property (nonatomic, weak) UIView *historyTopBackView;//
 @property (nonatomic, weak) UIButton *historySelBtn;
 @property (nonatomic, weak) UIScrollView *historyScrollView;//有万千百位的历史开奖的scrollView
+@property (nonatomic, strong) NSArray * playTypeCodes;
 
 @end
 
@@ -58,11 +58,11 @@
 - (void)loadHistoryData
 {
     NSDictionary *dict = @{
-                           @"cmd":@(8018),
-                           @"gameId":self.gameId,
-                           @"pageIndex":@(0),
-                           @"pageSize":@(10)
-                           };
+        @"cmd":@(8018),
+        @"gameId":self.gameId,
+        @"pageIndex":@(0),
+        @"pageSize":@(10)
+    };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         NSLog(@"%@", json);
         if(SUCCESS)
@@ -106,15 +106,15 @@
     YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
     [titleBtn setTitle:@"任选一" forState:UIControlStateNormal];
-    #if JG
-        [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
-    #elif ZC
-        [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
-    #elif CS
-        [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
-    #elif RR
-        [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
-    #endif
+#if JG
+    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
+#elif ZC
+    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
+#elif CS
+    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
+#elif RR
+    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
+#endif
     [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleBtn;
     
@@ -138,17 +138,18 @@
     [tableView setEstimatedSectionHeaderHeightAndFooterHeight];
     [self.view insertSubview:tableView belowSubview:self.bottomView];
     [self addPanGestureToView:tableView];
-
+    
     //任选二万能两码
     YZKy481WanNengView *wanNengView = [[YZKy481WanNengView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
     self.wanNengView = wanNengView;
     wanNengView.hidden = YES;
     [self.view insertSubview:wanNengView belowSubview:self.bottomView];
     [self addPanGestureToView:wanNengView];
-
+    
     //组选4 组选12
     YZKy481ChongView *chongView = [[YZKy481ChongView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
     self.chongView = chongView;
+    chongView.delegate = self;
     chongView.hidden = YES;
     [self.view insertSubview:chongView belowSubview:self.bottomView];
     [self addPanGestureToView:chongView];
@@ -156,6 +157,7 @@
     //组选6 组选24
     YZKy481DanView *danView = [[YZKy481DanView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
     self.danView = danView;
+    danView.delegate = self;
     danView.hidden = YES;
     [self.view insertSubview:danView belowSubview:self.bottomView];
     [self addPanGestureToView:danView];
@@ -204,8 +206,8 @@
         [topBtn setBackgroundImage:[UIImage imageNamed:@"button_underline"] forState:UIControlStateSelected];
         if(i == 0)
         {
-           topBtn.selected = YES;
-           self.historySelBtn = topBtn;
+            topBtn.selected = YES;
+            self.historySelBtn = topBtn;
         }
         [topBtn addTarget:self action:@selector(historyTopBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [historyTopBackView addSubview:topBtn];
@@ -271,17 +273,23 @@
     self.chongView.hidden = YES;
     self.tableView.hidden = YES;
     self.currentStatusArray = self.allStatusArray[btn.tag];
+    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
     if (btn.tag == 4) {
         self.wanNengView.hidden = NO;
         self.wanNengView.status = self.currentStatusArray.firstObject;
+        self.wanNengView.selStatusArray = selStatusArray;
     }else if (btn.tag == 7 || btn.tag == 9)//组选4 组选12
     {
         self.chongView.hidden = NO;
+        self.chongView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
         self.chongView.status = self.currentStatusArray.firstObject;
+        self.chongView.selStatusArray = selStatusArray;
     }else if (btn.tag == 8 || btn.tag == 10)//组选6 组选24
     {
         self.danView.hidden = NO;
+        self.danView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
         self.danView.status = self.currentStatusArray.firstObject;
+        self.danView.selStatusArray = selStatusArray;
     }else
     {
         self.tableView.hidden = NO;
@@ -386,26 +394,26 @@
     {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-             if(_lastTranslationY > 2)//有向下滑的趋势
-             {
-                 panView.y = endY;
-             }else if (_lastTranslationY < -2)//有向上滑的趋势
-             {
-                 panView.y = endTimeBgMaxY;
-             }else//无趋势
-             {
-                 if(panView.y < endTimeBgMaxY + self.currentHistoryView.height / 2)//tableview在endTimeBg上面了就归位
-                 {
-                     panView.y = endTimeBgMaxY;
-                 }else if(panView.y >= endTimeBgMaxY + self.currentHistoryView.height / 2)//y值中间的一半以外，下去
-                 {
-                     panView.y = endY;
-                 }else if(panView.y > self.bottomView.y)//y值大于下面一栏的y值就归位下去
-                 {
-                     panView.y = endY;
-                 }
-             }
-         }];
+            if(_lastTranslationY > 2)//有向下滑的趋势
+            {
+                panView.y = endY;
+            }else if (_lastTranslationY < -2)//有向上滑的趋势
+            {
+                panView.y = endTimeBgMaxY;
+            }else//无趋势
+            {
+                if(panView.y < endTimeBgMaxY + self.currentHistoryView.height / 2)//tableview在endTimeBg上面了就归位
+                {
+                    panView.y = endTimeBgMaxY;
+                }else if(panView.y >= endTimeBgMaxY + self.currentHistoryView.height / 2)//y值中间的一半以外，下去
+                {
+                    panView.y = endY;
+                }else if(panView.y > self.bottomView.y)//y值大于下面一栏的y值就归位下去
+                {
+                    panView.y = endY;
+                }
+            }
+        }];
     }else if (pan.state == UIGestureRecognizerStateCancelled)
     {
         [UIView animateWithDuration:animateDuration animations:^{
@@ -464,9 +472,9 @@
     {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-                             self.alphaChangeView.layer.backgroundColor = YZColor(0, 0, 0, 0).CGColor;
-                             view.y = CGRectGetMaxY(self.currentHistoryView.frame);
-                         }];
+            self.alphaChangeView.layer.backgroundColor = YZColor(0, 0, 0, 0).CGColor;
+            view.y = CGRectGetMaxY(self.currentHistoryView.frame);
+        }];
     }
 }
 
@@ -490,10 +498,32 @@
     {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-                             self.alphaChangeView.layer.backgroundColor = YZColor(0, 0, 0, 0.7).CGColor;
-                             view.y = CGRectGetMaxY(self.endTimeLabel.frame);
-                         }];
+            self.alphaChangeView.layer.backgroundColor = YZColor(0, 0, 0, 0.7).CGColor;
+            view.y = CGRectGetMaxY(self.endTimeLabel.frame);
+        }];
     }
+}
+
+#pragma  mark - 清空数据
+- (void)deleteBtnClick
+{
+    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+    for (NSMutableArray * selStatusArray_ in selStatusArray) {
+        [selStatusArray_ removeAllObjects];
+    }
+    if (self.selectedPlayTypeBtnTag == 4) {
+        self.wanNengView.selStatusArray = selStatusArray;
+    }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)//组选4 组选12
+    {
+        self.chongView.selStatusArray = selStatusArray;
+    }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)//组选6 组选24
+    {
+        self.danView.selStatusArray = selStatusArray;
+    }else
+    {
+        [self.tableView reloadData];
+    }
+    [self computeAmountMoney];
 }
 
 #pragma mark - tableview的代理数据源方法
@@ -554,22 +584,23 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(tableView != self.tableView) return;
-    NSMutableArray *cellStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag][cell.tag];
-    if(cellStatusArray.count == 0) return;
+    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag][cell.tag];
+    if(selStatusArray.count == 0) return;
     YZSelectBallCell * cell_ = (YZSelectBallCell *)cell;
-    for(YZBallBtn *ball in cellStatusArray)
+    for(YZBallBtn *ball in selStatusArray)
     {
         YZBallBtn *cellBall = cell_.ballsArray[ball.tag - 1];
         [cellBall ballChangeToRed];
     }
 }
 
+#pragma mark - 自定义协议
 - (void)ballDidClick:(YZBallBtn *)btn
 {
-    YZSelectBallCell *cell = btn.owner;
-    if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2 || self.selectedPlayTypeBtnTag == 6)
+    NSMutableArray *statusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+    if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2 || self.selectedPlayTypeBtnTag == 3 || self.selectedPlayTypeBtnTag == 5 || self.selectedPlayTypeBtnTag == 6)
     {
-        NSMutableArray *statusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+        YZSelectBallCell *cell = btn.owner;
         if(btn.isSelected)
         {
             YZBallBtn *selBall = nil;
@@ -585,6 +616,54 @@
         {
             [statusArray[cell.tag] addObject:btn];
         }
+    }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)
+    {
+        NSMutableArray * statusArray_ = [NSMutableArray array];
+        if (btn.tag > 10) {
+            statusArray_ = statusArray[0];
+        }else
+        {
+            statusArray_ = statusArray[1];
+        }
+        if(btn.isSelected)
+        {
+            YZBallBtn *selBall = nil;
+            for(YZBallBtn *ball in statusArray_)
+            {
+                if(btn.tag == ball.tag)
+                {
+                    selBall = ball;
+                }
+            }
+            [statusArray_ removeObject:selBall];
+        }else
+        {
+            [statusArray_ addObject:btn];
+        }
+    }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)
+    {
+        NSMutableArray * statusArray_ = [NSMutableArray array];
+        if (btn.tag >= 10) {
+            statusArray_ = statusArray[1];
+        }else
+        {
+            statusArray_ = statusArray[0];
+        }
+        if(btn.isSelected)
+        {
+            YZBallBtn *selBall = nil;
+            for(YZBallBtn *ball in statusArray_)
+            {
+                if(btn.tag == ball.tag)
+                {
+                    selBall = ball;
+                }
+            }
+            [statusArray_ removeObject:selBall];
+        }else
+        {
+            [statusArray_ addObject:btn];
+        }
     }
     [self computeAmountMoney];
 }
@@ -592,41 +671,8 @@
 #pragma mark - 计算注数和金额
 - (void)computeAmountMoney
 {
-    int composeCount = 0;
-    NSMutableArray *statusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
-    if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2) {
-        int count = 0;
-        int surplus = 0;
-        for (NSArray * cellStatusArray in statusArray) {
-            count += cellStatusArray.count;
-            if (self.selectedPlayTypeBtnTag == 1) {
-                surplus += [YZMathTool getCountWithN:(int)cellStatusArray.count andM:2];
-            }else if (self.selectedPlayTypeBtnTag == 2)
-            {
-                surplus += [YZMathTool getCountWithN:(int)cellStatusArray.count - 1 andM:2];
-            }
-        }
-        if (self.selectedPlayTypeBtnTag == 2) {
-            composeCount = [YZMathTool getCountWithN:count andM:(int)self.selectedPlayTypeBtnTag] - surplus;
-        }else
-        {
-            composeCount = [YZMathTool getCountWithN:count andM:(int)self.selectedPlayTypeBtnTag + 1] - surplus;
-        }
-    }else if (self.selectedPlayTypeBtnTag == 6)
-    {
-        int count = 0;
-        int multiple = 1;
-        for (NSArray * cellStatusArray in statusArray) {
-            if (cellStatusArray.count > 0) {
-                count ++;
-                multiple *= cellStatusArray.count;
-            }
-        }
-        if (count == 4) {
-            composeCount = multiple;
-        }
-    }
-    self.betCount = composeCount;
+    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+    self.betCount = [YZKy481Math getBetCountWithSelStatusArray:selStatusArray selectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
 }
 
 #pragma  mark -  数据源
@@ -722,7 +768,7 @@
     if(_allSelBallsArray == nil)
     {
         _allSelBallsArray = [NSMutableArray array];
-        for(int i = 0; i < playTypeBtnCount-1; i++)
+        for(int i = 0; i < 11; i++)
         {
             [_allSelBallsArray addObject:[NSMutableArray array]];
             for (int j = 0; j < 4; j++) {
@@ -740,6 +786,14 @@
         _historyTableViews = [NSMutableArray array];
     }
     return _historyTableViews;
+}
+
+- (NSArray *)playTypeCodes
+{
+    if (!_playTypeCodes) {
+        _playTypeCodes = @[@"05", @"06", @"07", @"06"];
+    }
+    return _playTypeCodes;
 }
 
 #pragma mark - 带“中元”的数据生成方法

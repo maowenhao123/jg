@@ -96,31 +96,31 @@
     }
     
     if (_index == 0) {
-       UIButton *btn0 = self.btns[0];
-       [btn0 setTitle:@"期" forState:UIControlStateNormal];
-       
-       UIButton *btn1 = self.btns[1];
-       if (_cellTag == KhistoryCellTagZongHe || _cellTag == KhistoryCellTagWanNeng) {
-           [btn1 setTitle:@"奖号" forState:UIControlStateNormal];
-       }else if (_cellTag == KhistoryCellTagZu)
-       {
-           [btn1 setTitle:@"类型" forState:UIControlStateNormal];
-       }else
-       {
-           [btn1 setTitle:@"012" forState:UIControlStateNormal];
-       }
-       
-       for (int i = 2; i < self.btns.count; i++) {
-           UIButton *btn =  self.btns[i];
-           if (_cellTag == KhistoryCellTagWanNeng) {
-               [btn setTitle:[NSString stringWithFormat:@"%d", i - 2] forState:UIControlStateNormal];
-           }else
-           {
-               [btn setTitle:[NSString stringWithFormat:@"%02d", i - 1] forState:UIControlStateNormal];
-           }
-           [btn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-           [btn setBackgroundImage:nil forState:UIControlStateNormal];
-       }
+        UIButton *btn0 = self.btns[0];
+        [btn0 setTitle:@"期" forState:UIControlStateNormal];
+        
+        UIButton *btn1 = self.btns[1];
+        if (_cellTag == KhistoryCellTagZongHe || _cellTag == KhistoryCellTagWanNeng) {
+            [btn1 setTitle:@"奖号" forState:UIControlStateNormal];
+        }else if (_cellTag == KhistoryCellTagZu)
+        {
+            [btn1 setTitle:@"类型" forState:UIControlStateNormal];
+        }else
+        {
+            [btn1 setTitle:@"012" forState:UIControlStateNormal];
+        }
+        
+        for (int i = 2; i < self.btns.count; i++) {
+            UIButton *btn =  self.btns[i];
+            if (_cellTag == KhistoryCellTagWanNeng) {
+                [btn setTitle:[NSString stringWithFormat:@"%d", i - 2] forState:UIControlStateNormal];
+            }else
+            {
+                [btn setTitle:[NSString stringWithFormat:@"%02d", i - 1] forState:UIControlStateNormal];
+            }
+            [btn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+            [btn setBackgroundImage:nil forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -160,7 +160,30 @@
         }
     }else
     {
-        
+        NSArray *subArr = [NSArray array];
+        if(_cellTag == KhistoryCellTagZiyou)
+        {
+            subArr = [ballArray subarrayWithRange:NSMakeRange(0, 1)];
+        }else if(_cellTag == KhistoryCellTagYang)
+        {
+            subArr = [ballArray subarrayWithRange:NSMakeRange(1, 1)];
+        }else if(_cellTag == KhistoryCellTagWa)
+        {
+            subArr = [ballArray subarrayWithRange:NSMakeRange(2, 1)];
+        }else if(_cellTag == KhistoryCellTagDie)
+        {
+            subArr = [ballArray subarrayWithRange:NSMakeRange(3, 1)];
+        }
+        if (!YZArrayIsEmpty(subArr)) {
+            int number = [subArr.firstObject intValue];
+            if (number == 0 || number == 3 || number == 6 || number == 9) {
+                [btn1 setTitle:@"0" forState:UIControlStateNormal];
+            }else if (number == 1 || number == 4 || number == 7) {
+                [btn1 setTitle:@"1" forState:UIControlStateNormal];
+            }else if (number == 2 || number == 5 || number == 8) {
+                [btn1 setTitle:@"2" forState:UIControlStateNormal];
+            }
+        }
     }
     
     //设置号码球

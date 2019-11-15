@@ -62,6 +62,10 @@
 		1DB2A59F22C20615000AFE52 /* YZCirclePlayTypePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */; };
 		1DB2A5A022C20615000AFE52 /* YZCirclePlayTypePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */; };
 		1DB2A5A122C20615000AFE52 /* YZCirclePlayTypePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */; };
+		1DB33E74237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
+		1DB33E75237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
+		1DB33E76237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
+		1DB33E77237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
 		1DB6AA7622D2EAE700B2D6EF /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */; };
 		1DB6AA7722D2EAE700B2D6EF /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */; };
 		1DB6AA7822D2EAE700B2D6EF /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */; };
@@ -3162,6 +3166,8 @@
 		1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZ11x5PlayTypeView.m; sourceTree = "<group>"; };
 		1DB2A59D22C20615000AFE52 /* YZCirclePlayTypePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCirclePlayTypePickerView.h; sourceTree = "<group>"; };
 		1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCirclePlayTypePickerView.m; sourceTree = "<group>"; };
+		1DB33E72237D429500463EEE /* YZKy481Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481Math.h; sourceTree = "<group>"; };
+		1DB33E73237D429500463EEE /* YZKy481Math.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481Math.m; sourceTree = "<group>"; };
 		1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		1DB6AA8822D31E9700B2D6EF /* YZCustomerServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCustomerServiceViewController.h; sourceTree = "<group>"; };
 		1DB6AA8922D31E9700B2D6EF /* YZCustomerServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCustomerServiceViewController.m; sourceTree = "<group>"; };
@@ -4913,6 +4919,8 @@
 		1D7BDF92237108730015CD8E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1DB33E72237D429500463EEE /* YZKy481Math.h */,
+				1DB33E73237D429500463EEE /* YZKy481Math.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -10295,6 +10303,7 @@
 				1DCA1C302327376100F2061B /* YZKsBottomBtn.m in Sources */,
 				1DCA1C312327376100F2061B /* YZSsqChartViewController.m in Sources */,
 				1DCA1C322327376100F2061B /* HDRecordView.m in Sources */,
+				1DB33E77237D429500463EEE /* YZKy481Math.m in Sources */,
 				1DCA1C332327376100F2061B /* NSObject+MJKeyValue.m in Sources */,
 				1DCA1C342327376100F2061B /* YZUnionBuyDetaiBottomView.m in Sources */,
 				1DCA1C352327376100F2061B /* HDBubbleView+Video.m in Sources */,
@@ -10964,6 +10973,7 @@
 				AA237FBF2143590C00BC47BB /* YZKsBottomBtn.m in Sources */,
 				AA237FC02143590C00BC47BB /* YZSsqChartViewController.m in Sources */,
 				AA237FC12143590C00BC47BB /* HDRecordView.m in Sources */,
+				1DB33E76237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA237FC22143590C00BC47BB /* NSObject+MJKeyValue.m in Sources */,
 				AA578894228943C5002292EA /* YZUnionBuyDetaiBottomView.m in Sources */,
 				AA237FC32143590C00BC47BB /* HDBubbleView+Video.m in Sources */,
@@ -11111,6 +11121,7 @@
 				AA74E0D91FFE0A4C003B53AF /* YZUnionBuyFollowUserCellStatusFrame.m in Sources */,
 				AA32907F1FFE1D6100CA77DA /* YZShareIncomeStatus.m in Sources */,
 				AACDC22F20FEE80400955419 /* YZCircleTableView.m in Sources */,
+				1DB33E74237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA74ECAE1FFE19A5003B53AF /* YZRechargeRecordStatus.m in Sources */,
 				AA74EAEB1FFE17DF003B53AF /* HDChatToolbarItem.m in Sources */,
 				AA3292D91FFE27B600CA77DA /* YZKsDiceAnimationView.m in Sources */,
@@ -12309,6 +12320,7 @@
 				AA3292F01FFE27B600CA77DA /* YZKsBottomBtn.m in Sources */,
 				AA3293081FFE27B600CA77DA /* YZSsqChartViewController.m in Sources */,
 				AA74EAFA1FFE17DF003B53AF /* HDRecordView.m in Sources */,
+				1DB33E75237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA74EB3C1FFE17DF003B53AF /* NSObject+MJKeyValue.m in Sources */,
 				AA74EB101FFE17DF003B53AF /* HDBubbleView+Video.m in Sources */,
 				1DE6200D22CC510200C1490E /* YZGridViewFlowLayout.m in Sources */,
@@ -13252,7 +13264,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cd768b6-a0d1-40b1-942a-27fcfe2227d0";
-				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_44;
+				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_54;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

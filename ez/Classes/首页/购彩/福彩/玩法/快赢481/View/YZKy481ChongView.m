@@ -7,7 +7,6 @@
 //
 
 #import "YZKy481ChongView.h"
-#import "YZBallBtn.h"
 
 @interface YZKy481ChongView ()<YZBallBtnDelegate>
 
@@ -94,7 +93,6 @@
         
         [self.ballButtons addObject:btn];
     }
-    
 }
 
 - (void)chongBallButtonDidClick:(UIButton *)button
@@ -105,28 +103,86 @@
     {
         button.layer.borderWidth = 0;
     }
+    if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+    {
+        [self.delegate ballDidClick:(YZBallBtn *)button];
+    }
+    
     button.selected = !button.selected;
     
     YZBallBtn * otherButton = [self viewWithTag:button.tag + 10];
     if (otherButton.selected) {
+        if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+        {
+            [self.delegate ballDidClick:otherButton];
+        }
         [otherButton ballChangeToWhite];
     }
 }
 
 - (void)ballDidClick:(YZBallBtn *)btn
 {
-    UIButton * otherButton = [self viewWithTag:btn.tag - 10];
+    if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+    {
+        [self.delegate ballDidClick:(YZBallBtn *)btn];
+    }
+    YZBallBtn * otherButton = [self viewWithTag:btn.tag - 10];
     if (otherButton.selected) {
+        if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+        {
+            [self.delegate ballDidClick:otherButton];
+        }
         otherButton.selected = NO;
         otherButton.layer.borderWidth = 1;
     }
 }
 
+#pragma mark - Setting
 - (void)setStatus:(YZSelectBallCellStatus *)status
 {
     _status = status;
     
     self.titleLabel.attributedText = _status.title;
+}
+
+- (void)setSelStatusArray:(NSMutableArray *)selStatusArray
+{
+    _selStatusArray = selStatusArray;
+    
+    [self reloadData];
+}
+
+#pragma mark - 刷新数据
+- (void)reloadData
+{
+    for (int i = 0; i < self.selStatusArray.count; i++) {
+        NSArray * cellSelStatusArray = self.selStatusArray[i];
+        NSMutableArray * selselButtonTags = [NSMutableArray array];
+        for (UIButton * selButton in cellSelStatusArray) {
+            [selselButtonTags addObject:@(selButton.tag)];
+        }
+        if (i == 1) {
+            for (YZBallBtn * button in self.ballButtons) {
+                if ([selselButtonTags containsObject:@(button.tag)]) {
+                    [button ballChangeToRed];
+                }else
+                {
+                    [button ballChangeToWhite];
+                }
+            }
+        }else if (i == 0)
+        {
+            for (UIButton * button in self.chongBallButtons) {
+                button.selected = [selselButtonTags containsObject:@(button.tag)];
+                if (button.selected) {
+                    button.layer.borderWidth = 0;
+                }else
+                {
+                    button.layer.borderWidth = 1;
+                }
+            }
+        }
+    }
 }
 
 #pragma mark - 初始化

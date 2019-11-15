@@ -31,6 +31,7 @@
 @property (nonatomic, assign) int ballsCount;//初始化几个球
 @property (nonatomic, strong) id owner;//属于谁
 @property (nonatomic, assign) NSInteger index;
+
 - (void)randomBtnClick:(YZLotteryButton *)btn;
 
 @end
