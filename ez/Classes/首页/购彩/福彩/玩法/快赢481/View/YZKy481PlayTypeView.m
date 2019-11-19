@@ -13,7 +13,6 @@
     NSDictionary *_playTypeBtnTitleDic;
 }
 
-@property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;
 @property (nonatomic, weak) UIView *playTypeView;
 
 @end
@@ -114,6 +113,18 @@
     playTypeView.bounds = CGRectMake(0, 0, playTypeViewW, playTypeViewH);
     
     self.hidden = YES;
+}
+
+- (void)setSelectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag
+{
+    _selectedPlayTypeBtnTag = selectedPlayTypeBtnTag;
+    
+    for (UIView *subView in self.playTypeView.subviews) {
+        if ([subView isKindOfClass:[UIButton class]]) {
+            UIButton * button = (UIButton *)subView;
+            button.selected = button.tag == _selectedPlayTypeBtnTag;
+        }
+    }
 }
 
 #pragma mark -  按钮点击

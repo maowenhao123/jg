@@ -909,6 +909,7 @@
     }
     self.betCount = composeCount;
 }
+
 #pragma mark - 确认按钮点击
 - (void)confirmBtnClick:(UIButton *)btn
 {
@@ -925,6 +926,7 @@
     bet.selectedPlayTypeBtnTag = _selectedPlayTypeBtnTag;
     [self.navigationController pushViewController: bet animated:YES];
 }
+
 #pragma  mark - 删除按钮点击,删除当前tableview的数据
 - (void)deleteBtnClick
 {

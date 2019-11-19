@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithFrame:(CGRect)frame selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag;
 
 @property (nonatomic, weak) id<YZKy481PlayTypeViewDelegate> delegate;
-
+@property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;
 @property (nonatomic, weak) YZTitleButton *titleBtn;
 
 - (void)show;

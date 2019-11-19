@@ -12,15 +12,16 @@
 #import "YZKy481DanView.h"
 #import "YZTitleButton.h"
 #import "YZKy481RecentLotteryCell.h"
-#import "YZMathTool.h"
 #import "YZKy481Math.h"
 #import "YZBallBtn.h"
+#import "YZCommitTool.h"
 
 @interface YZKy481ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZKy481PlayTypeViewDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate, YZKy481WanNengViewDelegate, YZKy481DanViewDelegate, YZKy481ChongViewDelegate>
 {
     BOOL _panEnable;//pan手势是否激活
     CGFloat _lastTranslationY;
     CGFloat _historyCellH;
+    NSString *_currentPlayTypeCode;//当前玩法
 }
 @property (nonatomic, weak) YZTitleButton *titleBtn;//title按钮
 @property (nonatomic, weak) YZKy481PlayTypeView * playTypeView;
@@ -167,6 +168,7 @@
     [self addPanGestureToView:danView];
     
     self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];//记录的数据源
+    _currentPlayTypeCode = _playTypeCodes[self.selectedPlayTypeBtnTag];//记录的当前玩法
     
     //历史开奖
     UIView *alphaChangeView = [[UIView alloc] init];
@@ -268,15 +270,47 @@
 
 - (void)playTypeDidClickBtn:(UIButton *)btn
 {
-    //存储选中的玩法
-    [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selectedky481PlayTypeBtnTag"];
-      
-    [self closeTableViewWithAnimation];//关闭tableView
+    NSArray *savedStatusArr = [YZStatusCacheTool getStatues];
+    //不是相同玩法,不支持混合投注,有数据则提示删除
+    if(self.selectedPlayTypeBtnTag != btn.tag && savedStatusArr.count > 0)
+    {
+        [self.playTypeView hidden];
+        [self showOtherPlayTypeAlertViewWithBtn:btn];//切换不同玩法，有数据冲突时弹出
+    }else
+    {
+        [self switchOtherPlayTypeWithBtn:btn];
+    }
+}
+
+//切换不同玩法，有数据冲突时弹出
+- (void)showOtherPlayTypeAlertViewWithBtn:(UIButton *)btn
+{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"温馨提示"  message:@"该玩法目前不支持混合投注，是否清空您之前的投注号码？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        self.playTypeView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
+    }];
+    UIAlertAction * alertAction2 = [UIAlertAction actionWithTitle:@"清空号码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [YZStatusCacheTool deleteAllStatus];//清空数据库中所有的号码数据
+        [self switchOtherPlayTypeWithBtn:btn];
+    }];
+    [alertController addAction:alertAction1];
+    [alertController addAction:alertAction2];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)switchOtherPlayTypeWithBtn:(UIButton *)btn
+{
     
-    self.selectedPlayTypeBtnTag = btn.tag;
-    [self.titleBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
-    
-    [self setViewHiddenOrShow];
+       //存储选中的玩法
+       [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selectedky481PlayTypeBtnTag"];
+         
+       [self closeTableViewWithAnimation];//关闭tableView
+       
+       self.selectedPlayTypeBtnTag = btn.tag;
+       _currentPlayTypeCode = self.playTypeCodes[btn.tag];
+       [self.titleBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
+       
+       [self setViewHiddenOrShow];
 }
 
 - (void)setViewHiddenOrShow
@@ -539,6 +573,23 @@
     [self computeAmountMoney];
 }
 
+#pragma mark - 确认按钮点击
+- (void)confirmBtnClick:(UIButton *)btn
+{
+    [YZCommitTool commitKy481BetWithBalls:self.allSelBallsArray betCount:self.betCount playType:_currentPlayTypeCode currentTitle:self.titleBtn.currentTitle selectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
+    [self deleteBtnClick];
+    [self gotoBetVc];
+}
+
+- (void)gotoBetVc
+{
+    YZBetViewController *bet = [[YZBetViewController alloc] initWithPlayType:_currentPlayTypeCode];
+    bet.gameId = self.gameId;
+    bet.selectedPlayTypeBtnTag = (int)self.selectedPlayTypeBtnTag;
+    [self.navigationController pushViewController: bet animated:YES];
+}
+
+
 #pragma mark - tableview的代理数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -798,7 +849,7 @@
 - (NSArray *)playTypeCodes
 {
     if (!_playTypeCodes) {
-        _playTypeCodes = @[@"05", @"06", @"07", @"06"];
+        _playTypeCodes = @[@"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01"];
     }
     return _playTypeCodes;
 }
