@@ -25,7 +25,6 @@
 }
 @property (nonatomic, weak) YZTitleButton *titleBtn;//title按钮
 @property (nonatomic, weak) YZKy481PlayTypeView * playTypeView;
-@property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;//选中的玩法的tag
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) YZKy481WanNengView *wanNengView;
 @property (nonatomic, weak) YZKy481ChongView *chongView;
@@ -168,7 +167,7 @@
     [self addPanGestureToView:danView];
     
     self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];//记录的数据源
-    _currentPlayTypeCode = _playTypeCodes[self.selectedPlayTypeBtnTag];//记录的当前玩法
+    _currentPlayTypeCode = self.playTypeCodes[self.selectedPlayTypeBtnTag];//记录的当前玩法
     
     //历史开奖
     UIView *alphaChangeView = [[UIView alloc] init];
@@ -320,11 +319,10 @@
     self.chongView.hidden = YES;
     self.tableView.hidden = YES;
     self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];
-    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+    NSMutableArray *selStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
     if (self.selectedPlayTypeBtnTag == 4) {
         self.wanNengView.hidden = NO;
         self.wanNengView.status = self.currentStatusArray.firstObject;
-        self.wanNengView.selStatusArray = selStatusArray;
     }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)//组选4 组选12
     {
         self.chongView.hidden = NO;
@@ -374,9 +372,9 @@
 
 - (void)switchCurrentHistoryView
 {
-    if(_selectedPlayTypeBtnTag == 4 || _selectedPlayTypeBtnTag == 7 || _selectedPlayTypeBtnTag == 8 || _selectedPlayTypeBtnTag == 9 || _selectedPlayTypeBtnTag == 10)//没有分类的
+    if(self.selectedPlayTypeBtnTag == 4 || self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 10)//没有分类的
     {
-        if (_selectedPlayTypeBtnTag == 4) {
+        if (self.selectedPlayTypeBtnTag == 4) {
             self.historyTableView.tag = KhistoryCellTagWanNeng;
             _historyCellH = screenWidth / 14;
         }else
@@ -554,12 +552,12 @@
 #pragma  mark - 清空数据
 - (void)deleteBtnClick
 {
-    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+    NSMutableArray *selStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
     for (NSMutableArray * selStatusArray_ in selStatusArray) {
         [selStatusArray_ removeAllObjects];
     }
     if (self.selectedPlayTypeBtnTag == 4) {
-        self.wanNengView.selStatusArray = selStatusArray;
+        [self.wanNengView reloadData];
     }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)//组选4 组选12
     {
         self.chongView.selStatusArray = selStatusArray;
@@ -589,6 +587,72 @@
     [self.navigationController pushViewController: bet animated:YES];
 }
 
+#pragma mark - 机选
+- (void)autoSelectedBetWithNumber:(NSInteger)number
+{
+    for (int i = 0; i < number; i++) {
+        [YZBetTool autoChooseKy481WithPlayType:_currentPlayTypeCode andSelectedPlayTypeBtnTag:(int)self.selectedPlayTypeBtnTag];
+    }
+    [self gotoBetVc];
+}
+
+#pragma  mark -  摇动机选
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    NSString * allowShake = [YZUserDefaultTool getObjectForKey:@"allowShake"];
+    if ([allowShake isEqualToString:@"0"]) return;
+    
+    //删除已选的
+    [self deleteBtnClick];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);//震动
+    
+    if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2 || self.selectedPlayTypeBtnTag == 3 || self.selectedPlayTypeBtnTag == 5 || self.selectedPlayTypeBtnTag == 6) {
+        NSInteger number = self.selectedPlayTypeBtnTag + 1;
+        if (self.selectedPlayTypeBtnTag == 6) {
+            number = 4;
+        }else if (self.selectedPlayTypeBtnTag == 3)
+        {
+            number = 2;
+        }else if (self.selectedPlayTypeBtnTag == 5)
+        {
+            number = 3;
+        }
+        for (int i = 0; i < number; i++) {
+            int random = arc4random() % 8 + 1;
+            //点击号码球
+            YZSelectBallCell *cell = (YZSelectBallCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            YZBallBtn *ball = cell.ballsArray[random - 1];
+            [ball ballClick:ball];
+        }
+        
+    }else if (self.selectedPlayTypeBtnTag == 4)
+    {
+        NSArray * ballTitles =  @[@"28", @"37", @"46", @"55", @"38", @"47", @"56", @"11", @"48", @"57", @"66", @"12", @"58", @"67", @"13", @"22", @"68", @"77", @"14", @"23", @"78", @"15", @"24", @"33", @"88", @"16", @"25", @"34", @"17", @"26", @"35", @"44", @"18", @"27", @"36", @"45"];
+        int random = arc4random() % ballTitles.count;
+        self.wanNengView.randomTitle = ballTitles[random];
+    }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 10)
+    {
+        NSInteger number = 2;
+        if (self.selectedPlayTypeBtnTag == 9) {
+            number = 3;
+        }else if (self.selectedPlayTypeBtnTag == 10)
+        {
+            number = 4;
+        }
+        NSMutableSet *randomSet = [[NSMutableSet alloc] init];
+        while (randomSet.count < number)
+        {
+            int random = arc4random() % 8 + 1;
+            [randomSet addObject:@(random)];
+        }
+        if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9) {
+            self.chongView.randomSet = randomSet;
+        }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)
+        {
+            self.danView.randomSet = randomSet;
+        }
+    }
+}
 
 #pragma mark - tableview的代理数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -648,7 +712,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(tableView != self.tableView) return;
-    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag][cell.tag];
+    NSMutableArray *selStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag][cell.tag];
     if(selStatusArray.count == 0) return;
     YZSelectBallCell * cell_ = (YZSelectBallCell *)cell;
     for(YZBallBtn *ball in selStatusArray)
@@ -661,7 +725,7 @@
 #pragma mark - 自定义协议
 - (void)ballDidClick:(YZBallBtn *)btn
 {
-    NSMutableArray *statusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+    NSMutableArray *statusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
     if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2 || self.selectedPlayTypeBtnTag == 3 || self.selectedPlayTypeBtnTag == 5 || self.selectedPlayTypeBtnTag == 6)
     {
         YZSelectBallCell *cell = btn.owner;
@@ -729,7 +793,15 @@
 #pragma mark - 计算注数和金额
 - (void)computeAmountMoney
 {
-    NSMutableArray *selStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+    NSMutableArray *selStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
+    self.selectcount = 0;
+    if (self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2) {
+         for (NSArray * cellStatusArray in selStatusArray) {
+             if (cellStatusArray.count > 0) {
+                 self.selectcount ++;
+             }
+         }
+    }
     self.betCount = [YZKy481Math getBetCountWithSelStatusArray:selStatusArray selectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
 }
 

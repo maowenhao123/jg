@@ -520,6 +520,9 @@
                 [muStr appendString:@"|"];
             }
         }
+        if ((selectedPlayTypeBtnTag == 3 && muStr.length == 4) || (selectedPlayTypeBtnTag == 5 && muStr.length == 6)) {
+            muStr = [NSMutableString stringWithString:[muStr stringByReplacingOccurrencesOfString:@"|" withString:@","]];
+        }
         [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个|
         if (selectedPlayTypeBtnTag < 3 || selectedPlayTypeBtnTag == 6)
         {
@@ -536,10 +539,20 @@
         {
             [muStr appendString:[NSString stringWithFormat:@"[%@%d注]",currentTitle,betCount]];
             if (selectedPlayTypeBtnTag == 3) {
-                betType = @"99";
+                if (betCount == 6 || betCount == 12) {
+                    betType = @"09";
+                }else
+                {
+                    betType = @"99";
+                }
             }else if (selectedPlayTypeBtnTag == 5)
             {
-                betType = @"09";
+                if (betCount == 4 || betCount == 12 || betCount == 24) {
+                    betType = @"09";
+                }else
+                {
+                    betType = @"99";
+                }
             }
         }
         
@@ -585,11 +598,11 @@
                 
                 YZBetStatus *status = [[YZBetStatus alloc] init];
                 status.labelText = attStr;
-                status.betCount = betCount;
+                status.betCount = subBetCount;
                 CGSize labelSize = [muStr sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(30)] maxSize:CGSizeMake(screenWidth - 2 * YZMargin - 18 - 5, MAXFLOAT)];
                 status.cellH = labelSize.height + 10 > 45 ? labelSize.height + 10 : 45;
                 status.playType = playTypeCode;
-                status.betType = @"99";
+                status.betType = @"09";
                 //存储一组号码数据
                 [YZStatusCacheTool saveStatus:status];
             }
@@ -600,20 +613,27 @@
         NSMutableArray * cellStatusArray1 = selStatusArray[1];//胆
         NSMutableString *muStr = [NSMutableString string];
         NSString *betType = nil;
-        if (cellStatusArray1.count > 0) {
-            [muStr appendString:[self getNumbersStringWithArray:cellStatusArray1 digit:@""]];
-            [muStr appendString:@"$"];
-        }
-        NSMutableArray *cellStatusArray0_ = [NSMutableArray array];
-        for(YZBallBtn *ball in cellStatusArray0)
+        if (betCount == 1 && selectedPlayTypeBtnTag == 8) {
+            YZBallBtn *ball00 = cellStatusArray0[0];
+            YZBallBtn *ball01 = cellStatusArray0[1];
+            [muStr appendFormat:@"%ld,%ld,%ld,%ld", ball00.tag - 10, ball00.tag - 10, ball01.tag - 10, ball01.tag - 10];
+        }else
         {
-            if (![muStr containsString:ball.currentTitle]) {
-                YZBallBtn *ball_ = [YZBallBtn button];
-                ball_.tag = ball.tag - 10;
-                [cellStatusArray0_ addObject:ball_];
+            if (cellStatusArray1.count > 0) {
+                [muStr appendString:[self getNumbersStringWithArray:cellStatusArray1 digit:@""]];
+                [muStr appendString:@"$"];
             }
+            NSMutableArray *cellStatusArray0_ = [NSMutableArray array];
+            for(YZBallBtn *ball in cellStatusArray0)
+            {
+                if (![muStr containsString:ball.currentTitle]) {
+                    YZBallBtn *ball_ = [YZBallBtn button];
+                    ball_.tag = ball.tag - 10;
+                    [cellStatusArray0_ addObject:ball_];
+                }
+            }
+            [muStr appendString:[self getNumbersStringWithArray:cellStatusArray0_ digit:@""]];
         }
-        [muStr appendString:[self getNumbersStringWithArray:cellStatusArray0_ digit:@""]];
         if (cellStatusArray1.count > 0) {
             [muStr appendString:[NSString stringWithFormat:@"[%@胆拖%d注]", currentTitle, betCount]];
             betType = @"02";
@@ -688,8 +708,19 @@
                 betType = @"00";
             }else
             {
-                [muStr appendString:[NSString stringWithFormat:@"[%@重胆拖复式%d注]", currentTitle, betCount]];
-                betType = @"08";
+                if ((cellStatusArray1.count == 1 && selectedPlayTypeBtnTag == 7) || (cellStatusArray1.count == 2 && selectedPlayTypeBtnTag == 9)) {
+                    [muStr appendString:[NSString stringWithFormat:@"[%@单复式%d注]", currentTitle, betCount]];
+                    muStr = [NSMutableString stringWithString:[muStr stringByReplacingOccurrencesOfString:@"$" withString:@"|"]];
+                    betType = @"10";
+                }else if (cellStatusArray0.count == 1)
+                {
+                    [muStr appendString:[NSString stringWithFormat:@"[%@重胆拖%d注]", currentTitle, betCount]];
+                    betType = @"08";
+                }else
+                {
+                    [muStr appendString:[NSString stringWithFormat:@"[%@重胆拖复式%d注]", currentTitle, betCount]];
+                    betType = @"11";
+                }
             }
         }else
         {

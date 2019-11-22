@@ -17,11 +17,16 @@
 /**
  11选5 获取胆拖投注的最大最小奖金
  */
-+ (NSRange)getPrize_dantuoWithTag:(int)tag danballscount:(int)danballscount tuoballscount:(int)tuoballscount betCount:(int)betCount;
++ (NSRange)get11x5Prize_dantuoWithTag:(int)tag danballscount:(int)danballscount tuoballscount:(int)tuoballscount betCount:(int)betCount;
 /**
  11选5 获取普通投注的最大最小奖金
  */
-+ (NSRange)getPrize_putongWithTag:(int)tag selectballcount:(int)selectballcount betCount:(int)betCount;
++ (NSRange)get11x5Prize_putongWithTag:(int)tag selectballcount:(int)selectballcount betCount:(int)betCount;
+
+/**
+ 快赢 获取投注的最大最小奖金
+ */
++ (NSRange)getKy481Prize_putongWithTag:(int)tag selectCount:(int)selectCount betCount:(int)betCount;
 /**
  智能追号 按照累计盈利不低于百分比进行计算
  */

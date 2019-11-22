@@ -22,8 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) YZSelectBallCellStatus *status;//数据模型
 @property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;
-@property (nonatomic, assign) NSMutableArray *selStatusArray;
+@property (nonatomic, strong) NSMutableArray *selStatusArray;
 @property (nonatomic, weak) id<YZKy481DanViewDelegate> delegate;
+@property (nonatomic, strong) NSMutableSet *randomSet;
 
 - (void)reloadData;
 

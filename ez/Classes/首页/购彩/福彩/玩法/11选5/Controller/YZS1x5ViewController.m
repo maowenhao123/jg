@@ -22,7 +22,6 @@
     NSArray *_maxSelCountArray;//至多选几个球的数组
     int _currentMinSelCount;//当前至少选几个球
     BOOL _panEnable;//pan手势是否激活
-    int _selectedPlayTypeBtnTag;//选中的玩法的tag
     CGFloat _lastTranslationY;
 }
 @property (nonatomic, weak) YZTitleButton *titleBtn;//title按钮
@@ -78,14 +77,14 @@
         [YZUserDefaultTool saveInt:1 forKey:@"havesSelected11x5PlayType"];
     }
     //设置数据源和标题
-    _selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selected11x5PlayTypeBtnTag"];
+    self.selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selected11x5PlayTypeBtnTag"];
     
-    self.currentStatusArray = self.allStatusArray[_selectedPlayTypeBtnTag];//记录的数据源
-    _currentPlayTypeCode = _playTypeCodes[_selectedPlayTypeBtnTag];//记录的当前玩法
-    _currentMinSelCount = [_minSelCountArray[_selectedPlayTypeBtnTag] intValue];//记录的当前至少选几个球
+    self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];//记录的数据源
+    _currentPlayTypeCode = _playTypeCodes[self.selectedPlayTypeBtnTag];//记录的当前玩法
+    _currentMinSelCount = [_minSelCountArray[self.selectedPlayTypeBtnTag] intValue];//记录的当前至少选几个球
     //设置记录的标题
-    NSString *title = _playTypeBtnTitles[_selectedPlayTypeBtnTag];
-    if(_selectedPlayTypeBtnTag >= 12)
+    NSString *title = _playTypeBtnTitles[self.selectedPlayTypeBtnTag];
+    if(self.selectedPlayTypeBtnTag >= 12)
     {
         title = [NSString stringWithFormat:@"%@胆拖", title];
     }
@@ -235,7 +234,7 @@
     [historyBtn addSubview:historyImageView];
     
     //设置摇一摇机选是否显示
-    if(_selectedPlayTypeBtnTag < 12 )
+    if(self.selectedPlayTypeBtnTag < 12 )
     {
         self.autoSelectedLabel.hidden = NO;
     }else
@@ -522,9 +521,9 @@
 {
     if(tableView != self.tableView1) return;
     YZSelectBallCell *cell1 = (YZSelectBallCell *)cell;
-    if(_selectedPlayTypeBtnTag <= 7 || _selectedPlayTypeBtnTag == 9 || _selectedPlayTypeBtnTag == 11)//普通投注，除去前二直选、前三直选
+    if(self.selectedPlayTypeBtnTag <= 7 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 11)//普通投注，除去前二直选、前三直选
     {
-        NSMutableArray *statusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+        NSMutableArray *statusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
         if(statusArray.count == 0) return;
         for(YZBallBtn *ball in statusArray)
         {
@@ -533,7 +532,7 @@
         }
     }else
     {
-        NSMutableArray *cellStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag][cell1.tag];
+        NSMutableArray *cellStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag][cell1.tag];
         if(cellStatusArray.count == 0) return;
         for(YZBallBtn *ball in cellStatusArray)
         {
@@ -688,7 +687,7 @@
 #pragma mark -  玩法按钮点击
 - (void)playTypeBtn:(UIButton *)btn
 {
-    if(btn.tag == _selectedPlayTypeBtnTag)
+    if(btn.tag == self.selectedPlayTypeBtnTag)
     {
         return;//一样就不动
     }
@@ -712,13 +711,13 @@
     
     //设置玩法
     _currentPlayTypeCode = _playTypeCodes[btn.tag];
-    _selectedPlayTypeBtnTag = (int)btn.tag;
+    self.selectedPlayTypeBtnTag = (int)btn.tag;
     _currentMinSelCount = [_minSelCountArray[btn.tag] intValue];
 
     //设置被选中
     for (int i = 0; i < self.titleBtns.count; i++) {
         UIButton * button = self.titleBtns[i];
-        if (i == _selectedPlayTypeBtnTag) {
+        if (i == self.selectedPlayTypeBtnTag) {
             button.selected = YES;
         }else
         {
@@ -747,7 +746,7 @@
     [self computeAmountMoney];
     
     //设置摇一摇机选是否显示
-    if(_selectedPlayTypeBtnTag < 12 )
+    if(self.selectedPlayTypeBtnTag < 12 )
     {
         self.autoSelectedLabel.hidden = NO;
     }else
@@ -773,9 +772,9 @@
 #pragma mark - YZBallBtnDelegate的代理方法,点击了ball 按钮
 - (void)ballDidClick:(YZBallBtn *)btn
 {
-    if(_selectedPlayTypeBtnTag <= 7 || _selectedPlayTypeBtnTag == 9 || _selectedPlayTypeBtnTag == 11)//普通投注，除去前二直选、前三直选,只有一个cell的
+    if(self.selectedPlayTypeBtnTag <= 7 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 11)//普通投注，除去前二直选、前三直选,只有一个cell的
     {
-        NSMutableArray *statusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+        NSMutableArray *statusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
         if(btn.isSelected)//之前是选中的就移除
         {
             //由于不重用cell，号码球的地址值不一样，遍历数组球的tag，删除球
@@ -790,7 +789,7 @@
             [statusArray removeObject:selBall];
         }else
         {
-            if(_selectedPlayTypeBtnTag == 6 && statusArray.count >= 8)//任选八不超过8个
+            if(self.selectedPlayTypeBtnTag == 6 && statusArray.count >= 8)//任选八不超过8个
             {
                 [btn ballChangeToWhite];
                 [MBProgressHUD showError:@"至多能选择8个号码"];
@@ -801,7 +800,7 @@
     }else//2个cell以上的
     {
         YZSelectBallCell *cell = btn.owner;
-        NSMutableArray *cellStatusArray = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+        NSMutableArray *cellStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
         if(btn.isSelected)
         {
             //由于不重用cell，号码球的地址值不一样，只能遍历数组球的tag，删除球
@@ -816,12 +815,12 @@
             [cellStatusArray[cell.tag] removeObject:selBall];//之前是选中的就移除
         }else
         {
-            if(_selectedPlayTypeBtnTag >= 12)//如果不是前二直选、前三直选,2个cell的
+            if(self.selectedPlayTypeBtnTag >= 12)//如果不是前二直选、前三直选,2个cell的
             {
                 if(cell.tag == 0)//第一个cell限制选球个数
                 {
                     NSMutableArray *cellStatus0 = cellStatusArray[0];
-                    int maxSelCount = [_maxSelCountArray[_selectedPlayTypeBtnTag - 12] intValue];
+                    int maxSelCount = [_maxSelCountArray[self.selectedPlayTypeBtnTag - 12] intValue];
                     if(cellStatus0.count == maxSelCount)
                     {
                         [MBProgressHUD showError:[NSString stringWithFormat:@"至多选择%d个胆码",maxSelCount]];
@@ -845,7 +844,7 @@
                     YZBallBtn *anotherBall = anotherCell.ballsArray[selBall.tag-1];
                     [anotherBall ballChangeToWhite];
                 }
-            }else if ((_selectedPlayTypeBtnTag == 8 || _selectedPlayTypeBtnTag == 10) && ([self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T64"]))
+            }else if ((self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10) && ([self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T64"]))
             {
                 for (NSMutableArray *anotherCellStatus in cellStatusArray) {
                     NSInteger index = [cellStatusArray indexOfObject:anotherCellStatus];
@@ -878,7 +877,7 @@
 - (void)computeAmountMoney
 {
     int composeCount = 0;
-    int i = _selectedPlayTypeBtnTag;
+    int i = self.selectedPlayTypeBtnTag;
     NSMutableArray *statusArr = self.allSelBallsArray[i];
     if (i == 0) {//任选一
         composeCount = (int)statusArr.count;
@@ -891,7 +890,7 @@
             composeCount = [self computeCount_2:arr0 :arr1];
         }else
         {
-            int allMinSelCount = [_maxSelCountArray[_selectedPlayTypeBtnTag - 12] intValue] + 1;//胆拖码共至少选几个
+            int allMinSelCount = [_maxSelCountArray[self.selectedPlayTypeBtnTag - 12] intValue] + 1;//胆拖码共至少选几个
             if(arr0.count >= 1 && (arr0.count + arr1.count) > allMinSelCount)
             {
                 composeCount = [YZMathTool getCountWithN:(int)arr1.count andM: (int)allMinSelCount - (int)arr0.count];
@@ -914,7 +913,7 @@
 - (void)confirmBtnClick:(UIButton *)btn
 {
     //把信息存入数据库
-    [YZCommitTool commit1x5BetWithBalls:self.allSelBallsArray betCount:self.betCount playType:_currentPlayTypeCode currentTitle:self.titleBtn.currentTitle selectedPlayTypeBtnTag:_selectedPlayTypeBtnTag];
+    [YZCommitTool commit1x5BetWithBalls:self.allSelBallsArray betCount:self.betCount playType:_currentPlayTypeCode currentTitle:self.titleBtn.currentTitle selectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
         //删除所有的
     [self deleteBtnClick];
     [self gotoBetVc];
@@ -923,19 +922,19 @@
 {
     YZBetViewController *bet = [[YZBetViewController alloc] initWithPlayType:_currentPlayTypeCode];//投注控制器
     bet.gameId = self.gameId;
-    bet.selectedPlayTypeBtnTag = _selectedPlayTypeBtnTag;
+    bet.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
     [self.navigationController pushViewController: bet animated:YES];
 }
 
 #pragma  mark - 删除按钮点击,删除当前tableview的数据
 - (void)deleteBtnClick
 {
-    if(_selectedPlayTypeBtnTag <= 7 || _selectedPlayTypeBtnTag == 9 || _selectedPlayTypeBtnTag == 11)//只有一个cell的
+    if(self.selectedPlayTypeBtnTag <= 7 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 11)//只有一个cell的
     {
-        [self.allSelBallsArray[_selectedPlayTypeBtnTag] removeAllObjects];
+        [self.allSelBallsArray[self.selectedPlayTypeBtnTag] removeAllObjects];
     }else
     {
-        for(NSMutableArray *muArr in self.allSelBallsArray[_selectedPlayTypeBtnTag])
+        for(NSMutableArray *muArr in self.allSelBallsArray[self.selectedPlayTypeBtnTag])
         {
             [muArr removeAllObjects];
         }
@@ -955,19 +954,21 @@
     }
     return arr;
 }
+
 #pragma mark - 机选
 - (void)autoSelectedBetWithNumber:(NSInteger)number
 {
     for (int i = 0; i < number; i++) {
-        [YZBetTool autoChooseS1x5WithPlayType:_currentPlayTypeCode andSelectedPlayTypeBtnTag:_selectedPlayTypeBtnTag];
+        [YZBetTool autoChoose11x5WithPlayType:_currentPlayTypeCode andSelectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
     }
     [self gotoBetVc];
 }
+
 #pragma mark - 设置要显示历史开奖的view
 - (void)switchCurrentHistoryView
 {
     //有百千万的
-    if( _selectedPlayTypeBtnTag == 8 || _selectedPlayTypeBtnTag == 10)
+    if( self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)
     {
         [self.view sendSubviewToBack:self.historyTableView];
         self.currentHistoryView = self.historyBackView;
@@ -1088,15 +1089,15 @@
     NSString * allowShake = [YZUserDefaultTool getObjectForKey:@"allowShake"];
     if ([allowShake isEqualToString:@"0"]) return;
 
-    if(_selectedPlayTypeBtnTag >= 12 ) return;
+    if(self.selectedPlayTypeBtnTag >= 12 ) return;
     //删除已选的
     [self deleteBtnClick];
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);//震动
     
-    if(_selectedPlayTypeBtnTag <= 7 || _selectedPlayTypeBtnTag == 9 || _selectedPlayTypeBtnTag == 11)//一个cell的
+    if(self.selectedPlayTypeBtnTag <= 7 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 11)//一个cell的
     {
         //随机号码
-        int minSelCount = [_minSelCountArray[_selectedPlayTypeBtnTag] intValue];
+        int minSelCount = [_minSelCountArray[self.selectedPlayTypeBtnTag] intValue];
         NSMutableSet *randomSet = [[NSMutableSet alloc] init];
         while (randomSet.count < minSelCount)
         {
@@ -1110,10 +1111,10 @@
             YZBallBtn *ball = cell.ballsArray[[number intValue]-1];
             [ball ballClick:ball];
         }
-    }else if(_selectedPlayTypeBtnTag == 8 || _selectedPlayTypeBtnTag == 10)//前三直选、前二直选
+    }else if(self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)//前三直选、前二直选
     {
         //随机号码
-        NSMutableArray *selStatus = self.allSelBallsArray[_selectedPlayTypeBtnTag];
+        NSMutableArray *selStatus = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
         NSMutableSet *randomSet = [[NSMutableSet alloc] init];
         while (randomSet.count < selStatus.count)
         {

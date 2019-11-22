@@ -76,7 +76,7 @@
         activityImageView.frame = CGRectMake(self.codeImageView.x, lastViewY, self.codeImageView.width, self.codeImageView.height);
         [self.scrollView addSubview:activityImageView];
         
-        [activityImageView sd_setImageWithURL:[NSURL URLWithString:activityModel.picAddr]];
+        [activityImageView sd_setImageWithURL:[NSURL URLWithString:activityModel.picAddr] placeholderImage:[UIImage ImageFromColor:YZGrayLineColor WithRect:activityImageView.bounds]];
     }
 }
 
@@ -107,10 +107,11 @@
 {
     _QrCodeModel = QrCodeModel;
     
+    self.codeImageView.hidden = NO;
     self.codeImageView.y = CGRectGetMaxY(self.lookBtn.frame) + 20 + (self.codeImageView.height + 20) * self.activityArray.count;
+    [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:_QrCodeModel.url] placeholderImage:[UIImage ImageFromColor:YZGrayLineColor WithRect:self.codeImageView.bounds]];
     
-    [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:_QrCodeModel.url]];
-    
+    self.vipcnButton.hidden = NO;
     NSString * promptStr = _QrCodeModel.desc;
     if (YZStringIsEmpty(promptStr)) {
         self.vipcnButton.y = CGRectGetMaxY(self.codeImageView.frame) + 10;
@@ -137,6 +138,7 @@
 - (void)setupChilds
 {
     UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight - statusBarH - navBarH)];
+    self.scrollView = scrollView;
     scrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:scrollView];
     
@@ -228,7 +230,8 @@
     CGFloat imageViewX = (screenWidth - imageViewWH) / 2;
     UIImageView *codeImageView = [[UIImageView alloc] init];
     self.codeImageView = codeImageView;
-    codeImageView.frame = CGRectMake(imageViewX, CGRectGetMaxY(codeImageView.frame) + 20, imageViewWH, imageViewWH);
+    codeImageView.frame = CGRectMake(imageViewX, CGRectGetMaxY(lookBtn.frame) + 20, imageViewWH, imageViewWH);
+    codeImageView.hidden = YES;
     [scrollView addSubview:codeImageView];
     
     UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress)];
@@ -242,6 +245,7 @@
     
     UIButton * vipcnButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.vipcnButton = vipcnButton;
+    vipcnButton.hidden = YES;
     vipcnButton.frame = CGRectMake((screenWidth - 80) / 2, CGRectGetMaxY(lookBtn.frame) + 10, 80, 30);
     [vipcnButton setTitle:@"复制公共号" forState:UIControlStateNormal];
     [vipcnButton setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
@@ -260,7 +264,7 @@
     CGFloat imageViewX = (screenWidth - imageViewWH) / 2;
     UIImageView *codeImageView = [[UIImageView alloc] init];
     self.codeImageView = codeImageView;
-    codeImageView.frame = CGRectMake(imageViewX, CGRectGetMaxY(codeImageView.frame) + 20, imageViewWH, imageViewWH);
+    codeImageView.frame = CGRectMake(imageViewX, CGRectGetMaxY(lookBtn.frame) + 20, imageViewWH, imageViewWH);
     [scrollView addSubview:codeImageView];
     
     UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress)];

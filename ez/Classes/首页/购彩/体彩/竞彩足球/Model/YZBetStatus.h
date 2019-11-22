@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface YZBetStatus : NSObject<NSCoding>
+
 @property (nonatomic, copy) NSMutableAttributedString *labelText;//显示的文字
 
 @property (nonatomic, assign) CGFloat cellH;//cell的高度
@@ -18,4 +19,5 @@
 @property (nonatomic, copy) NSString *playType;
 
 @property (nonatomic, copy) NSString *betType;
+
 @end

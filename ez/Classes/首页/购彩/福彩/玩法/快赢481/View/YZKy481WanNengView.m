@@ -179,6 +179,28 @@
     self.titleLabel.attributedText = _status.title;
 }
 
+- (void)setRandomTitle:(NSString *)randomTitle
+{
+    _randomTitle = randomTitle;
+    
+    for (NSArray * ballButtons in self.ballButtons) {
+        for (UIButton * button in ballButtons) {
+            if ([button.currentTitle isEqualToString:_randomTitle]) {
+                [self ballButtonDidClick:button];
+            }
+        }
+    }
+}
+
+- (void)reloadData
+{
+    for (NSArray * ballButtons in self.ballButtons) {
+        for (UIButton * button in ballButtons) {
+            button.selected = NO;
+        }
+    }
+}
+
 #pragma mark - 初始化
 - (NSMutableArray *)ballButtons
 {

@@ -57,36 +57,36 @@ typedef enum : NSUInteger {
 //#define childChannel @"rrcai_ios_taylor"
 //#endif
 
-//正式环境
-#define baseUrl @"http://www1.51mcp.com"
-#define shareBaseUrl @"https://cp.ez1898.com"
-#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
-
-#if JG
-#define childChannel @"ios_0001"
-//#define childChannel @"ios_taylor"
-#elif ZC
-#define childChannel @"zc_ios_0001"
-#elif CS
-#define childChannel @"zc_ios"
-#elif RR
-#define childChannel @"rrcai_ios_taylor"
-#endif
-
-////测试环境
-//#define baseUrl @"http://c.ez1898.com"
-//#define shareBaseUrl @"http://test.ez1898.com"
-//#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
+////正式环境
+//#define baseUrl @"http://www1.51mcp.com"
+//#define shareBaseUrl @"https://cp.ez1898.com"
+//#define mcpUrl [NSString stringWithFormat:@"%@/portal/gateway",baseUrl]
 //
 //#if JG
-//#define childChannel @"ios_test"
+//#define childChannel @"ios_0001"
+////#define childChannel @"ios_taylor"
 //#elif ZC
-//#define childChannel @"zhongcai_ios"
+//#define childChannel @"zc_ios_0001"
 //#elif CS
-//#define childChannel @"zhongcai_ios"
+//#define childChannel @"zc_ios"
 //#elif RR
 //#define childChannel @"rrcai_ios_taylor"
 //#endif
+
+//测试环境
+#define baseUrl @"http://c.ez1898.com"
+#define shareBaseUrl @"http://test.ez1898.com"
+#define mcpUrl [NSString stringWithFormat:@"%@/portral/gateway",baseUrl]
+
+#if JG
+#define childChannel @"ios_test"
+#elif ZC
+#define childChannel @"zhongcai_ios"
+#elif CS
+#define childChannel @"zhongcai_ios"
+#elif RR
+#define childChannel @"rrcai_ios_taylor"
+#endif
 
 ////人人彩
 //#define baseUrl @"http://api.qgmzn.com"

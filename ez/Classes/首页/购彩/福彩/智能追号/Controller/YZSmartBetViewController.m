@@ -89,49 +89,65 @@
 //获取投注信息
 - (void)getBetData
 {
+    NSRange prize;
     YZBetStatus * betStatus = [self.statusArray firstObject];
-    int danballscount = 0;
-    int tuoballscount = 0;
-    int selectballcount = 0;
-    NSString * betCodes = betStatus.labelText.string;
-    NSRange range = [betCodes rangeOfString:@"["];
-    NSString * betCode = [betCodes substringWithRange:NSMakeRange(0, range.location)];
-    BOOL dantuo = NO;
-    if ([betCode rangeOfString:@"$"].location != NSNotFound) {//是否为胆拖
-        dantuo = YES;
-        NSArray * dantuoSelectBalls = [betCode componentsSeparatedByString:@"$"];
-        for (NSString * selectBallStr in dantuoSelectBalls) {
-            int index = (int)[dantuoSelectBalls indexOfObject:selectBallStr];
-            NSArray * selectBalls = [selectBallStr componentsSeparatedByString:@","];
-            if (index == 0) {
-                danballscount = (int)selectBalls.count;
-            }else if (index == 1)
-            {
-                tuoballscount = (int)selectBalls.count;
+    if ([self.gameId isEqualToString:@"T06"]) {
+        int selectCount = 0;
+        if (self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2) {
+            for (int i = 0; i < betStatus.labelText.string.length; i++) {
+                NSString * subString = [betStatus.labelText.string substringWithRange:NSMakeRange(i, 1)];
+                if ([subString isEqualToString:@"|"]) {
+                    selectCount ++;
+                }
             }
+            selectCount ++;
         }
+        prize = [YZMathTool getKy481Prize_putongWithTag:self.selectedPlayTypeBtnTag selectCount:selectCount betCount:betStatus.betCount];
     }else
     {
-        NSArray *selectBalls = [betCode componentsSeparatedByString:@","];
-        selectballcount = (int)selectBalls.count;
-    }
-    
-    NSRange prize;
-    if(self.selectedPlayTypeBtnTag < 12)//普通投注
-    {
-        if(self.selectedPlayTypeBtnTag != 8 || self.selectedPlayTypeBtnTag != 10)
-        {
-            prize = [YZMathTool getPrize_putongWithTag:self.selectedPlayTypeBtnTag selectballcount:selectballcount betCount:betStatus.betCount];
+        int danballscount = 0;
+        int tuoballscount = 0;
+        int selectballcount = 0;
+        NSString * betCodes = betStatus.labelText.string;
+        NSRange range = [betCodes rangeOfString:@"["];
+        NSString * betCode = [betCodes substringWithRange:NSMakeRange(0, range.location)];
+        BOOL dantuo = NO;
+        if ([betCode rangeOfString:@"$"].location != NSNotFound) {//是否为胆拖
+            dantuo = YES;
+            NSArray * dantuoSelectBalls = [betCode componentsSeparatedByString:@"$"];
+            for (NSString * selectBallStr in dantuoSelectBalls) {
+                int index = (int)[dantuoSelectBalls indexOfObject:selectBallStr];
+                NSArray * selectBalls = [selectBallStr componentsSeparatedByString:@","];
+                if (index == 0) {
+                    danballscount = (int)selectBalls.count;
+                }else if (index == 1)
+                {
+                    tuoballscount = (int)selectBalls.count;
+                }
+            }
         }else
         {
-            prize = [YZMathTool getPrize_putongWithTag:self.selectedPlayTypeBtnTag selectballcount:0  betCount:betStatus.betCount];//是前二直选和前三直选,不用已选球参数
+            NSArray *selectBalls = [betCode componentsSeparatedByString:@","];
+            selectballcount = (int)selectBalls.count;
         }
-    }else//胆拖投注
-    {
-        //转换tag
-        int tag = [self dantuoTagToNormalTagWithTag:self.selectedPlayTypeBtnTag];
-        prize = [YZMathTool getPrize_dantuoWithTag:tag danballscount:danballscount tuoballscount:tuoballscount betCount:betStatus.betCount];
+        
+        if(self.selectedPlayTypeBtnTag < 12)//普通投注
+        {
+            if(self.selectedPlayTypeBtnTag != 8 || self.selectedPlayTypeBtnTag != 10)
+            {
+                prize = [YZMathTool get11x5Prize_putongWithTag:self.selectedPlayTypeBtnTag selectballcount:selectballcount betCount:betStatus.betCount];
+            }else
+            {
+                prize = [YZMathTool get11x5Prize_putongWithTag:self.selectedPlayTypeBtnTag selectballcount:0  betCount:betStatus.betCount];//是前二直选和前三直选,不用已选球参数
+            }
+        }else//胆拖投注
+        {
+            //转换tag
+            int tag = [self dantuoTagToNormalTagWithTag:self.selectedPlayTypeBtnTag];
+            prize = [YZMathTool get11x5Prize_dantuoWithTag:tag danballscount:danballscount tuoballscount:tuoballscount betCount:betStatus.betCount];
+        }
     }
+    
     //每注的钱数
     _baseMoney = betStatus.betCount * 2;
     //最大最小奖金
@@ -473,6 +489,7 @@
     }
     return YES;
 }
+
 #pragma mark - 按钮点击
 #pragma mark - 修改方案
 - (void)settingBtnClick
@@ -827,7 +844,7 @@
 - (NSArray *)profitArray
 {
     if (_profitArray == nil) {
-        _profitArray = [NSArray arrayWithObjects:@"30",@"5",@"50",@"20",@"30", nil];
+        _profitArray = @[@"30",@"5",@"50",@"20",@"30"];
     }
     return _profitArray;
 }

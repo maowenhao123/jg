@@ -155,6 +155,18 @@
     [self reloadData];
 }
 
+- (void)setRandomSet:(NSMutableSet *)randomSet
+{
+    _randomSet = randomSet;
+    
+    NSArray * randomArr = [NSArray arrayWithArray:_randomSet.allObjects];
+    for (int i = 0; i < randomArr.count; i++) {
+        int number = [randomArr[i] intValue];
+        YZBallBtn *btn = [self viewWithTag:number + 10];
+        [btn ballClick:btn];
+    }
+}
+
 #pragma mark - 刷新数据
 - (void)reloadData
 {

@@ -137,6 +137,24 @@
     }
 }
 
+- (void)setRandomSet:(NSMutableSet *)randomSet
+{
+    _randomSet = randomSet;
+    
+    NSArray * randomArr = [NSArray arrayWithArray:_randomSet.allObjects];
+    for (int i = 0; i < randomArr.count; i++) {
+        int number = [randomArr[i] intValue];
+        if (i == 0) {
+            UIButton * ballButton = [self viewWithTag:number];
+            [self chongBallButtonDidClick:ballButton];
+        }else
+        {
+            YZBallBtn *btn = [self viewWithTag:number + 10];
+            [btn ballClick:btn];
+        }
+    }
+}
+
 #pragma mark - Setting
 - (void)setStatus:(YZSelectBallCellStatus *)status
 {

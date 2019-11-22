@@ -70,7 +70,7 @@
     [navBar setBackgroundImage:[UIImage ImageFromColor:YZColor(40, 40, 40, 1) WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
     //设置颜色
     navBar.tintColor = [UIColor whiteColor];
-
+    
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
@@ -150,12 +150,12 @@
     [self setupChilds];
     [self setupPlayTypeView];
     
-     //获取当前期信息，获得截止时间
-     _remainSeconds = 0;
-     _nextOpenRemainSeconds = 0;
-     [self addSetDeadlineTimer];//倒计时
-     [self getCurrentTermData];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RefreshCountdownNotification) name:RefreshCountdownNote object:nil];
+    //获取当前期信息，获得截止时间
+    _remainSeconds = 0;
+    _nextOpenRemainSeconds = 0;
+    [self addSetDeadlineTimer];//倒计时
+    [self getCurrentTermData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RefreshCountdownNotification) name:RefreshCountdownNote object:nil];
 }
 
 - (void)RefreshCountdownNotification
@@ -271,7 +271,7 @@
     mainView.layer.shadowOpacity = 1;
     
     [self addPanGestureToView:mainView];
-
+    
     //摇一摇机选
     CGFloat autoChooseViewH = 25;
     UIImageView * autoChooseView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, autoChooseViewH)];
@@ -529,7 +529,7 @@
     NSMutableArray *statusArray = self.allSelNumbersArray[tag];
     //把信息存入数据库
     [YZCommitTool commitKsBetWithNumbers:statusArray selectedPlayTypeBtnTag:tag];
-   
+    
     if (self.betCount < 1) {
         [MBProgressHUD showError:@"请至少选择一注"];
     }
@@ -566,7 +566,7 @@
         }
         lastTranslationY = translation.y;
     }
-
+    
     if(pan.state == UIGestureRecognizerStateEnded)
     {
         [UIView beginAnimations:@"panTableview" context:nil];
@@ -667,14 +667,14 @@
         [self setPromptLabelText];
         [UIView animateWithDuration:animateDuration
                          animations:^{
-                             self.promptLabel.y = self.bottomView.y - self.promptLabel.height;
-                         }];
+            self.promptLabel.y = self.bottomView.y - self.promptLabel.height;
+        }];
     }else
     {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-                             self.promptLabel.y = self.bottomView.y;
-                         }];
+            self.promptLabel.y = self.bottomView.y;
+        }];
     }
 }
 //设置注数
@@ -694,41 +694,20 @@
     int maxPrize = (int)prize.length;
     int minProfit = minPrize - self.betCount * 2;
     int maxProfit = maxPrize - self.betCount * 2;
-    UIColor * color = YZColor(254, 210, 90, 1);
+    NSString *text = [NSString stringWithFormat:@"  若中奖：奖金%d至%d元，盈利%d至%d元",minPrize,maxPrize,minProfit,maxProfit];
     if (minPrize == maxPrize) {
-        NSString *text = [NSString stringWithFormat:@"  若中奖：奖金%d元，盈利%d元",minPrize,minProfit];
-        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text];
-        NSRange jinRange = [text rangeOfString:@"金"];
-        NSRange yuanRange = [text rangeOfString:@"元"];
-        NSRange liRange = [text rangeOfString:@"利"];
-        NSRange douRange = [text rangeOfString:@"，"];
-        NSRange subRange = NSMakeRange(douRange.location, text.length-douRange.location);
-        NSRange yuan1Range = [text rangeOfString:@"元" options:0 range:subRange];
-        
-        [attStr addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(jinRange.location+1, yuanRange.location-jinRange.location-1)];
-        [attStr addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(liRange.location+1, yuan1Range.location-liRange.location-1)];
-        self.promptLabel.attributedText = attStr;
-
-    }else
-    {
-        NSString *text = [NSString stringWithFormat:@"  若中奖：奖金%d至%d元，盈利%d至%d元",minPrize,maxPrize,minProfit,maxProfit];
-        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text];
-        NSRange jinRange = [text rangeOfString:@"金"];
-        NSRange zhiRange = [text rangeOfString:@"至"];
-        NSRange yuanRange = [text rangeOfString:@"元"];
-        NSRange liRange = [text rangeOfString:@"利"];
-        NSRange douRange = [text rangeOfString:@"，"];
-        NSRange subRange = NSMakeRange(douRange.location, text.length-douRange.location);
-        NSRange zhi1Range = [text rangeOfString:@"至" options:0 range:subRange];
-        NSRange yuan1Range = [text rangeOfString:@"元" options:0 range:subRange];
-        
-        [attStr addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(jinRange.location+1, zhiRange.location-jinRange.location-1)];
-        [attStr addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(zhiRange.location+1, yuanRange.location-zhiRange.location-1)];
-        [attStr addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(liRange.location+1, zhi1Range.location-liRange.location-1)];
-        [attStr addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(zhi1Range.location+1, yuan1Range.location-zhi1Range.location-1)];
-        
-        self.promptLabel.attributedText = attStr;
+        text = [NSString stringWithFormat:@"  若中奖：奖金%d元，盈利%d元",minPrize,minProfit];
     }
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZColor(254, 210, 90, 1) range:NSMakeRange(0, attStr.length)];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\D*"  options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators error:nil];
+    NSArray *result = [regex matchesInString:attStr.string options:0 range:NSMakeRange(0, attStr.length)];
+    for (NSTextCheckingResult *resultCheck in result) {
+        if (resultCheck.range.length > 0) {
+            [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:resultCheck.range];
+        }
+    }
+    self.promptLabel.attributedText = attStr;
 }
 #pragma mark - 摇一摇机选
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -738,7 +717,7 @@
     
     if (self.diceAnimationView.isAnimating) return;//如果当前正在进行动画 就return
     
-//    [self closeMenuBackView];
+    //    [self closeMenuBackView];
     [self closePlayTypeBackView];
     [self closeTableViewWithAnimation];
     //删除已选的
@@ -747,7 +726,7 @@
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);//震动
     
     self.diceAnimationView.hidden = NO;
- 
+    
     int tag = _selectedPlayTypeBtnTag;
     if (tag == 0) {//和值
         [self.diceAnimationView startDiceAnimationWithPlayType:tag showView:self.hezhiView];
@@ -786,9 +765,9 @@
 {
     if(_nextOpenRemainSeconds > 0) return;
     NSDictionary *dict = @{
-                           @"cmd":@(8026),
-                           @"gameId":self.gameId
-                           };
+        @"cmd":@(8026),
+        @"gameId":self.gameId
+    };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"%@",json);
         if (SUCCESS) {

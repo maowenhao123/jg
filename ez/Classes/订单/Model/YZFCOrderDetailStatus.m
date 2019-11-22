@@ -174,7 +174,7 @@
     NSString *playName = [YZTool playTypeName][gameId][playType];
     NSString *betName = [YZTool betTypeNameDict][betType];
     
-    NSString *playBetName = [NSString stringWithFormat:@"%@%@",playName,betName];
+    NSString *playBetName = [NSString stringWithFormat:@"%@%@", playName, betName];
     
     return playBetName;
 }

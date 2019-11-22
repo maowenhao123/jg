@@ -198,10 +198,13 @@
         [YZBetTool autoChooseQxc];
     }else if([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])//11选5
     {
-        [YZBetTool autoChooseS1x5WithPlayType:_playType andSelectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
+        [YZBetTool autoChoose11x5WithPlayType:_playType andSelectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
     }else if ([self.gameId isEqualToString:@"F04"])//快三
     {
         [YZBetTool autoChooseKsWithSelectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
+    }else if ([self.gameId isEqualToString:@"T06"])//快赢481
+    {
+        [YZBetTool autoChooseKy481WithPlayType:_playType andSelectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
     }
 
     [self.tableView reloadData];//刷新数据
@@ -299,7 +302,7 @@
             [confirmBtn setBackgroundImage:[UIImage ImageFromColor:YZColor(216, 216, 216, 1) WithRect:confirmBtn.bounds] forState:UIControlStateHighlighted];
             confirmBtn.layer.borderWidth = 1;
             confirmBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
-            if([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])//11选5才有智能追号
+            if([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"] || [self.gameId isEqualToString:@"T06"])//11选5 快赢481 才有智能追号
             {
                 [confirmBtn setTitle:@"智能追号" forState:UIControlStateNormal];
             }else
@@ -542,7 +545,7 @@
 }
 - (void)goSmartBet
 {
-    YZSmartBetViewController * smartBetVC = [[YZSmartBetViewController alloc]init];
+    YZSmartBetViewController * smartBetVC = [[YZSmartBetViewController alloc] init];
     smartBetVC.gameId = self.gameId;
     smartBetVC.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
     [self.navigationController pushViewController:smartBetVC animated:YES];
@@ -954,9 +957,14 @@
     }else if ([self.gameId isEqualToString:@"F04"])//快三
     {
         arr = [YZBetTool getKsTicketList];
+    }else if ([self.gameId isEqualToString:@"T06"])//快赢481
+    {
+        arr = [YZBetTool getKy481TicketList];
     }
+    NSLog(@"_ticketList:%@", arr);
     return _ticketList = arr;
 }
+
 //计算注数
 - (void)computeAmountMoney
 {

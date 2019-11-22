@@ -37,6 +37,8 @@
 @property (nonatomic, weak) UILabel * autoSelectedLabel;
 @property (nonatomic, weak) UIView *bottomView;//底部view
 @property (nonatomic, strong) NSArray *recentStatus;//近期开奖数据
+@property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;
+@property (nonatomic, assign) int selectcount;
 
 - (NSMutableArray *)sortBallsArray:(NSMutableArray *)mutableArray;//排序数组
 - (void)changeBtnState:(UIButton *)btn;

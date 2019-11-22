@@ -229,6 +229,9 @@
             {
                 if (ballcount > 2) {
                     composeCount = (composeCount_ / (ballcount - 2)) * chongcount;
+                }else if (ballcount < 2)
+                {
+                    composeCount = 0;
                 }else
                 {
                     composeCount = composeCount_ + chongcount;
@@ -258,6 +261,9 @@
             {
                 if (ballcount > 1) {
                     composeCount = (composeCount_ / (ballcount - 1)) * chongcount;
+                }else if (ballcount < 1)
+                {
+                    composeCount = 0;
                 }else
                 {
                     composeCount = composeCount_ + chongcount;

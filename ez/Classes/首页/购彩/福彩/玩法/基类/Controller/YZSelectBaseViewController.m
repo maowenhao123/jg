@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSDictionary *currentTermDict;//当前期的字典信息
 @property (nonatomic, weak) UIView *menuBackView;
 @property (nonatomic,weak) UIButton *deleteAutoSelectedBtn;
+@property (nonatomic, weak) UILabel *promptLabel;
 
 @end
 
@@ -202,9 +203,26 @@
     bottomLineView.backgroundColor = YZGrayLineColor;
     [bottomView addSubview:bottomLineView];
     
+    CGFloat maxY = bottomView.y;
+    if ([self.gameId isEqualToString:@"T06"]) {
+        //下面提示的label
+        UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, maxY - 30, screenWidth - 2 * YZMargin, 30)];
+        self.promptLabel = promptLabel;
+        promptLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
+        promptLabel.textColor = [UIColor darkGrayColor];
+        promptLabel.text = @"1323";
+        [self.view addSubview:promptLabel];
+        maxY = promptLabel.y;
+        
+        //分割线
+        UIView * promptLineView = [[UIView alloc]initWithFrame:CGRectMake(-YZMargin, 0, screenWidth, 1)];
+        promptLineView.backgroundColor = YZGrayLineColor;
+        [promptLabel addSubview:promptLineView];
+    }
+    
     //摇一摇机选
     CGFloat autoSelectedLabelH = 20;
-    UILabel * autoSelectedLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, bottomView.y - autoSelectedLabelH, screenWidth, autoSelectedLabelH)];
+    UILabel * autoSelectedLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, maxY - autoSelectedLabelH, screenWidth, autoSelectedLabelH)];
     self.autoSelectedLabel = autoSelectedLabel;
     autoSelectedLabel.backgroundColor = YZBackgroundColor;
     autoSelectedLabel.alpha = 0.6;
@@ -277,6 +295,11 @@
     [attStr addAttribute:NSForegroundColorAttributeName value:YZRedBallColor range:NSMakeRange(range2.location + 2, range3.location - range2.location - 2)];
     
     self.amountLabel.attributedText = attStr;
+    
+    if ([self.gameId isEqualToString:@"T06"])
+    {
+        [self setPromptLabelText];
+    }
 }
 
 - (void)setDeleteAutoSelectedBtnTitle
@@ -288,6 +311,32 @@
         [self.deleteAutoSelectedBtn setTitle:@"清空" forState:UIControlStateNormal];
     }
 }
+
+#pragma mark - 设置下面提示label的文字
+- (void)setPromptLabelText
+{
+    NSRange prize = [YZMathTool getKy481Prize_putongWithTag:(int)self.selectedPlayTypeBtnTag selectCount:(int)self.selectcount betCount:self.betCount];
+    
+    int minPrize = (int)prize.location;
+    int maxPrize = (int)prize.length;
+    int minProfit = minPrize - self.betCount * 2;
+    int maxProfit = maxPrize - self.betCount * 2;
+    NSString *text = [NSString stringWithFormat:@"若中奖：奖金%d至%d元，盈利%d至%d元",minPrize,maxPrize,minProfit,maxProfit];
+    if (minPrize == maxPrize) {
+        text = [NSString stringWithFormat:@"若中奖：奖金%d元，盈利%d元",minPrize,minProfit];
+    }
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(0, attStr.length)];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\D*"  options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators error:nil];
+    NSArray *result = [regex matchesInString:attStr.string options:0 range:NSMakeRange(0, attStr.length)];
+    for (NSTextCheckingResult *resultCheck in result) {
+        if (resultCheck.range.length > 0) {
+            [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor darkGrayColor] range:resultCheck.range];
+        }
+    }
+    self.promptLabel.attributedText = attStr;
+}
+
 #pragma mark - tableView的滚动
 - (void)topBtnClick:(UIButton *)btn
 {
