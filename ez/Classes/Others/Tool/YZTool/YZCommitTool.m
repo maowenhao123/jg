@@ -574,7 +574,8 @@
     }else if (selectedPlayTypeBtnTag == 4)
     {
         NSArray * cellStatusArray = selStatusArray[0];
-        for (YZBallBtn * ballBtn in cellStatusArray) {
+        for (NSInteger i = cellStatusArray.count - 1; i >= 0; i--) {
+            YZBallBtn * ballBtn = cellStatusArray[i];
             NSString * number = ballBtn.currentTitle;
             if (!YZStringIsEmpty(number) && number.length == 2) {
                 NSString * subNumber1 = [number substringWithRange:NSMakeRange(0, 1)];
@@ -595,7 +596,6 @@
                 NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:muStr];
                 [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, range.location)];
                 [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(range.location, muStr.length-range.location)];
-                
                 YZBetStatus *status = [[YZBetStatus alloc] init];
                 status.labelText = attStr;
                 status.betCount = subBetCount;

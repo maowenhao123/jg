@@ -161,8 +161,15 @@
     
     //号码球
     int maxColumns = 7;//一行显示几个
-    if (!YZStringIsEmpty(_status.icon) || !YZStringIsEmpty(_status.leftTitle)) {
+    if (!YZStringIsEmpty(_status.icon)) {
         maxColumns = 6;
+    }
+    if (!YZStringIsEmpty(_status.leftTitle)) {
+        maxColumns = 8;
+    }
+    CGFloat leftPadding = 0;
+    if (!YZStringIsEmpty(_status.leftTitle)) {
+        leftPadding = 20;
     }
     if(_status.ballReuse == NO)//不循环利用球，则删除
     {
@@ -174,8 +181,8 @@
     }
 
     CGFloat padding = 0;//球与球的边距
-    CGFloat btnW = 35;
-    CGFloat btnH = 35;
+    CGFloat btnW = 36;
+    CGFloat btnH = 36;
     if(self.ballsArray.count != _status.ballsCount)//如果相等说明已经创建，则不用再创建
     {
         NSMutableArray *ballsArray = [[NSMutableArray alloc] init];
@@ -198,14 +205,14 @@
             }
             [btn setTitleColor:btn.ballTextColor forState:UIControlStateNormal];
             CGFloat btnX = 0;
-            if (!YZStringIsEmpty(_status.icon) || !YZStringIsEmpty(_status.leftTitle))
+            if (!YZStringIsEmpty(_status.icon))
             {
-                padding = (screenWidth - maxColumns * btnW - iconTitleW) / (maxColumns + 1);
-                btnX = padding + iconTitleW + (i % maxColumns) * (btnW + padding);
+                padding = (screenWidth - leftPadding - maxColumns * btnW - iconTitleW) / (maxColumns + 1);
+                btnX = padding + leftPadding + iconTitleW + (i % maxColumns) * (btnW + padding);
             }else
             {
-                padding = (screenWidth - maxColumns * btnW ) / (maxColumns + 1);
-                btnX = padding + (i % maxColumns) * (btnW + padding);
+                padding = (screenWidth - leftPadding - maxColumns * btnW ) / (maxColumns + 1);
+                btnX = padding + leftPadding + (i % maxColumns) * (btnW + padding);
                 self.icon.frame = CGRectZero;
             }
             CGFloat btnY = 0;
@@ -214,13 +221,22 @@
             {
                 if (!YZStringIsEmpty(_status.icon) && !_status.RandomCount) {
                     btnY = 40 + padding + (i / maxColumns) * (btnH + padding);
+                }else if (!YZStringIsEmpty(_status.leftTitle))
+                {
+                    btnY = 60 + 5 + (i / maxColumns) * (btnH + padding);
                 }else
                 {
                     btnY = 30 + padding + (i / maxColumns) * (btnH + padding);
                 }
             }else
             {
-                btnY = padding + (i / maxColumns) * (btnH + padding);
+                if (!YZStringIsEmpty(_status.leftTitle))
+                {
+                    btnY = 30 + 5 + (i / maxColumns) * (btnH + padding);
+                }else
+                {
+                    btnY = padding + (i / maxColumns) * (btnH + padding);
+                }
             }
             btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
             [self addSubview:btn];
@@ -247,9 +263,14 @@
       self.leftLabel.hidden = NO;
       self.leftLabel.text = _status.leftTitle;
       CGFloat leftLabelW = 50;
-      CGFloat leftLabelH = 30;
-      UIButton * btn = self.ballsArray.firstObject;
-      self.leftLabel.frame = CGRectMake(YZMargin, btn.y, leftLabelW, leftLabelH);
+      CGFloat leftLabelH = 20;
+        if(_status.title)
+        {
+           self.leftLabel.frame = CGRectMake(YZMargin, CGRectGetMaxY(self.label.frame) + 10, leftLabelW, leftLabelH);
+        }else
+        {
+           self.leftLabel.frame = CGRectMake(YZMargin, 10, leftLabelW, leftLabelH);
+        }
     }else
     {
       self.leftLabel.text = @"";

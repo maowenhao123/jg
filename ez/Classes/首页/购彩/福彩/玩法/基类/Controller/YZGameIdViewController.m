@@ -164,7 +164,12 @@
     {
         htmlVc.web = web;
     }
-    htmlVc.title = [NSString stringWithFormat:@"%@玩法说明",[YZTool gameIdNameDict][self.gameId]];
+    if ([self.gameId isEqualToString:@"T06"]) {
+        htmlVc.title = [NSString stringWithFormat:@"%@（泳坛夺金）玩法说明", [YZTool gameIdNameDict][self.gameId]];
+    }else
+    {
+        htmlVc.title = [NSString stringWithFormat:@"%@玩法说明", [YZTool gameIdNameDict][self.gameId]];
+    }
     [self.navigationController pushViewController:htmlVc animated:YES];
 }
 

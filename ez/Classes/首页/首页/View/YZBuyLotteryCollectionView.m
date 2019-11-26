@@ -218,7 +218,7 @@
 - (void)getGameInfoDataWith:(MJRefreshGifHeader *)header
 {
     NSDictionary *dict = @{
-                           @"version":@"0.0.7",
+                           @"version":@"0.0.8",
                            };
 #if RR
     dict = @{

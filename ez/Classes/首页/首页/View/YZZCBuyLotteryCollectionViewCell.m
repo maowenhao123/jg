@@ -195,7 +195,9 @@
     
     CGFloat titleLabelY = 10 + logoWH + 5;
     self.titleLabel.frame = CGRectMake((self.width - titleSize.width) / 2, titleLabelY, titleSize.width, titleSize.height);
-    self.descriptionLabel.frame = CGRectMake((self.width - descriptionSize.width) / 2, CGRectGetMaxY(self.titleLabel.frame) + 5, descriptionSize.width, descriptionSize.height);
+    if (self.descriptionLabel.text || self.descriptionLabel.attributedText) {
+        self.descriptionLabel.frame = CGRectMake((self.width - descriptionSize.width) / 2, CGRectGetMaxY(self.titleLabel.frame) + 5, descriptionSize.width, descriptionSize.height);
+    }
     
     //角标
     self.supView.frame = CGRectZero;

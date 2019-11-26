@@ -32,40 +32,61 @@
 - (CGFloat)cellH
 {
     CGFloat padding = 0;//球与球的边距
-    CGFloat btnW = 35;
-    CGFloat btnH = 35;
+    CGFloat btnW = 36;
+    CGFloat btnH = 36;
     CGFloat cellH = 0;
     int maxColumns = 7;//一行显示几个
-    if (!YZStringIsEmpty(_icon) || !YZStringIsEmpty(_leftTitle)) {
+    if (!YZStringIsEmpty(_icon)) {
         maxColumns = 6;
+    }
+    if (!YZStringIsEmpty(_leftTitle)) {
+        maxColumns = 8;
+    }
+    CGFloat leftPadding = 0;
+    if (!YZStringIsEmpty(_leftTitle)) {
+        leftPadding = 20;
     }
     for (int i = 0; i < _ballsCount; i++) {
         CGFloat btnX = 0;
-        if (!YZStringIsEmpty(_icon) || !YZStringIsEmpty(_leftTitle))
+        if (!YZStringIsEmpty(_icon))
         {
-            padding = (screenWidth - maxColumns * btnW - iconTitleW) / (maxColumns + 1);
-            btnX = padding + iconTitleW + (i % maxColumns) * (btnW + padding);
+            padding = (screenWidth - leftPadding - maxColumns * btnW - iconTitleW) / (maxColumns + 1);
+            btnX = leftPadding + padding + iconTitleW + (i % maxColumns) * (btnW + padding);
         }else
         {
-            padding = (screenWidth - maxColumns * btnW ) / (maxColumns + 1);
-            btnX = padding + (i % maxColumns) * (btnW + padding);
+            padding = (screenWidth - leftPadding - maxColumns * btnW ) / (maxColumns + 1);
+            btnX = leftPadding + padding + (i % maxColumns) * (btnW + padding);
         }
         CGFloat btnY = 0;
         //
         if(_title)
         {
-            if (_icon && !_RandomCount) {
+            if (!YZStringIsEmpty(_icon) && !_RandomCount) {
                 btnY = 40 + padding + (i / maxColumns) * (btnH + padding);
+            }else if (!YZStringIsEmpty(_leftTitle))
+            {
+                btnY = 60 + 5 + (i / maxColumns) * (btnH + padding);
             }else
             {
                 btnY = 30 + padding + (i / maxColumns) * (btnH + padding);
             }
         }else
         {
-            btnY = padding + (i / maxColumns) * (btnH + padding);
+            if (!YZStringIsEmpty(_leftTitle))
+            {
+                btnY = 30 + 5 + (i / maxColumns) * (btnH + padding);
+            }else
+            {
+                btnY = padding + (i / maxColumns) * (btnH + padding);
+            }
         }
         CGRect rect = CGRectMake(btnX, btnY, btnW, btnH);
-        cellH = CGRectGetMaxY(rect) + padding;
+        if (padding < 10) {
+            cellH = CGRectGetMaxY(rect) + 10;
+        }else
+        {
+            cellH = CGRectGetMaxY(rect) + padding;
+        }
     }
     _cellH = cellH;
     return _cellH;

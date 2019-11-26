@@ -70,5 +70,21 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ECEFAF25-48DD-4A88-B9E5-AB1E7DC0C124"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ez/Classes/&#x9996;&#x9875;/&#x8d2d;&#x5f69;/&#x798f;&#x5f69;/&#x73a9;&#x6cd5;/&#x57fa;&#x7c7b;/Model/YZSelectBallCellStatus.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-cellH"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
