@@ -62,7 +62,6 @@
         [self getNoticeData];
         [self getGameInfoDataWith:nil];
         [self getInformationDataWith:nil];
-#if JG
         [self getQuickStakeData];
         [self getAllUnionBuyStatus];
         
@@ -71,26 +70,6 @@
         [YZTool setRefreshFooterData:footer];
         self.footer = footer;
         self.mj_footer = footer;
-#elif ZC
-        [self getQuickStakeData];
-        [self getAllUnionBuyStatus];
-        
-        //初始化底部刷新控件
-        MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
-        [YZTool setRefreshFooterData:footer];
-        self.footer = footer;
-        self.mj_footer = footer;
-#elif CS
-        [self getQuickStakeData];
-        [self getAllUnionBuyStatus];
-        
-        //初始化底部刷新控件
-        MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshViewBeginRefreshing)];
-        [YZTool setRefreshFooterData:footer];
-        self.footer = footer;
-        self.mj_footer = footer;
-#elif RR
-#endif
     }
     return self;
 }
@@ -132,11 +111,6 @@
     NSDictionary *dict = @{
                            @"version": @"0.0.5"
                            };
-#if RR
-    dict = @{
-             @"version":@"0.0.1"
-             };
-#endif
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getShortcutModules") params:dict success:^(id json) {
         YZLog(@"getShortcutModules:%@",json);
         if (SUCCESS) {
@@ -148,9 +122,6 @@
                 }
             }
             self.functions = [NSArray arrayWithArray:functions];
-#if RR
-            self.functions = [NSArray arrayWithArray:functions_mu];
-#endif
             [UIView performWithoutAnimation:^{
                 [self reloadSections:[NSIndexSet indexSetWithIndex:1]];
             }];
@@ -220,11 +191,6 @@
     NSDictionary *dict = @{
                            @"version":@"0.0.8",
                            };
-#if RR
-    dict = @{
-             @"version":@"0.0.1"
-             };
-#endif
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getGameInfoList") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self];
         [header endRefreshing];
@@ -256,10 +222,6 @@
 //获取资讯
 - (void)getInformationDataWith:(MJRefreshGifHeader *)header
 {
-#if RR
-    [self.footer endRefreshingWithNoMoreData];
-    return;
-#endif
     NSDictionary *dict = @{
                            @"pageIndex":@(self.pageIndex),
                            @"pageSize":@(10)
@@ -305,9 +267,6 @@
 {
     if (indexPath.section == 0)
     {
-#if RR
-        return CGSizeMake(self.width, bannerH + 10);
-#endif
         return CGSizeMake(self.width, bannerH);
     }else if (indexPath.section == 1)
     {
@@ -322,9 +281,6 @@
         }
     }else if (indexPath.section == 2)
     {
-#if RR
-        return CGSizeMake(self.width, 1);
-#endif
         if (!YZObjectIsEmpty(self.quickStakeGameModel) || !YZObjectIsEmpty(self.unionBuyStatus)) {
             return CGSizeMake(self.width, 115);
         }else
@@ -346,8 +302,6 @@
 #elif ZC
         return CGSizeMake(self.width / 3, cellH_zc);
 #elif CS
-        return CGSizeMake(self.width / 3, cellH_zc);
-#elif RR
         return CGSizeMake(self.width / 3, cellH_zc);
 #endif
     }else if (indexPath.section == 5){
@@ -423,11 +377,6 @@
         cell.status = self.gameInfos[indexPath.row];
         cell.index = indexPath.row;
         return cell;
-#elif RR
-        YZZCBuyLotteryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:gameInfoCellId_zc forIndexPath:indexPath];
-        cell.status = self.gameInfos[indexPath.row];
-        cell.index = indexPath.row;
-        return cell;
 #endif
     }else if (indexPath.section == 5)
     {
@@ -494,13 +443,6 @@
     }
 }
 #elif CS
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (_buyLotteryDelegate && [_buyLotteryDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
-        [_buyLotteryDelegate scrollViewDidScroll:self];
-    }
-}
-#elif RR
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (_buyLotteryDelegate && [_buyLotteryDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {

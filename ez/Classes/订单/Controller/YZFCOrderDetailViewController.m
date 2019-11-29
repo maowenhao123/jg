@@ -104,9 +104,6 @@
 {
     //分享
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"order_share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
-#if RR
-    self.navigationItem.rightBarButtonItem = nil;
-#endif
     CGFloat tableViewH = screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom];
     if (self.isScheme || [self.gameId isEqualToString:@"T53"] || [self.gameId isEqualToString:@"T54"]) {
         tableViewH = screenHeight - statusBarH - navBarH - [YZTool getSafeAreaBottom];
@@ -178,13 +175,6 @@
         //快速投注 胜负彩 四场进球不显示快速投注
         bottomButtonTitles = @[@"快速投注", @"晒单"];
     }
-#if RR
-    bottomButtonTitles = @[];
-    if (!(self.isScheme || [self.gameId isEqualToString:@"T53"] || [self.gameId isEqualToString:@"T54"])) {
-        //快速投注 胜负彩 四场进球不显示快速投注
-        bottomButtonTitles = @[@"快速投注"];
-    }
-#endif
     CGFloat bottomButtonW = screenWidth / bottomButtonTitles.count;
     for (int i = 0; i < bottomButtonTitles.count; i++) {
         YZBottomButton * bottomButton = [YZBottomButton buttonWithType:UIButtonTypeCustom];
@@ -214,8 +204,6 @@
 #elif ZC
         self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",self.order.gameId]];
 #elif CS
-        self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",self.order.gameId]];
-#elif RR
         self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",self.order.gameId]];
 #endif
     }
@@ -553,8 +541,6 @@
                 NSString * mcpStr = @"ZCmcp";
 #elif CS
                 NSString * mcpStr = @"CSmcp";
-#elif RR
-                NSString * mcpStr = @"RRmcp";
 #endif
                 NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
                 NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
@@ -708,8 +694,6 @@
     UIImage * image = [UIImage imageNamed:@"logo1"];
 #elif CS
     UIImage * image = [UIImage imageNamed:@"logo1"];
-#elif RR
-    UIImage * image = [UIImage imageNamed:@"logo1"];
 #endif
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
     shareObject.webpageUrl = json[@"url"];
@@ -720,8 +704,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
-#elif RR
-    [WXApi registerApp:WXAppIdOld withDescription:@"人人彩"];
 #endif
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {

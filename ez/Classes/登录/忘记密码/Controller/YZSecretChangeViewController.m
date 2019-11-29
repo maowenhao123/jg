@@ -54,9 +54,6 @@
         UIImageView * progressImageView = [[UIImageView alloc]init];
         if (i == 0) {
             progressImageView.image = [UIImage imageNamed:@"secretChange1_red"];
-#if RR
-            progressImageView.image = [UIImage imageNamed:@"secretChange1_blue_rr"];
-#endif
         }else if (i == 1)
         {
             progressImageView.image = [UIImage imageNamed:@"secretChange2_gray"];
@@ -103,9 +100,6 @@
             UIImageView * arrowImageView = [[UIImageView alloc]init];
             if (i == 1) {
                 arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_red"];
-#if RR
-                arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_blue_rr"];
-#endif
             }else if (i == 2)
             {
                 arrowImageView.image = [UIImage imageNamed:@"secretChange_arrow_gray"];
@@ -143,10 +137,7 @@
     [nextButton addTarget:self action:@selector(nextBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     nextButton.enabled = NO;//默认不可选
     [self.view addSubview:nextButton];
-    
-#if RR
-    return;
-#endif
+
     //联系客服按钮
     UILabel * promptLabel = [[UILabel alloc]init];
     promptLabel.text = @"客服电话";

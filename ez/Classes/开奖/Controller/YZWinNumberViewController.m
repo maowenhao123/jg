@@ -103,12 +103,6 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#if RR
-    if (indexPath.row == self.statusFrames.count - 1) {
-        return 5 * 2 + 70;
-    }
-    return 5 + 70;
-#endif
     return 70;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,8 +134,6 @@
 #elif ZC
         status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
 #elif CS
-        status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
-#elif RR
         status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
 #endif
         status.lotteryName = [YZTool gameIdNameDict][gameId];
@@ -182,10 +174,7 @@
             }
         }
     }
-#if RR
-    self.statusFrames = statusFrameArray;
-    return;
-#endif
+
     if (statusFrameArray.count > 0) {//添加竞彩足球 竞彩篮球
         YZWinNumberStatusFrame *statusFrame1 = [[YZWinNumberStatusFrame alloc] init];
         YZWinNumberStatus *status1 = [[YZWinNumberStatus alloc] init];
@@ -196,8 +185,6 @@
 #elif ZC
         status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
 #elif CS
-        status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
-#elif RR
         status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
 #endif
         status1.lotteryName = [YZTool gameIdNameDict][gameId1];
@@ -213,8 +200,6 @@
 #elif ZC
         status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
 #elif CS
-        status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
-#elif RR
         status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
 #endif
         status2.lotteryName = [YZTool gameIdNameDict][gameId2];

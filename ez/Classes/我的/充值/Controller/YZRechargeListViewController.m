@@ -77,11 +77,6 @@
     NSDictionary *dict = @{
                            @"version":@"0.0.2"
                            };
-#if RR
-    dict = @{
-             @"version":@"0.0.1"
-             };
-#endif
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getPaymentList") params:dict success:^(id json) {
         YZLog(@"getPromotionList:%@",json);
         [MBProgressHUD hideHUDForView:self.view animated:YES];

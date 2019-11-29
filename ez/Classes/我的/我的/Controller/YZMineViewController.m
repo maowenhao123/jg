@@ -454,8 +454,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
-#elif RR
-    [WXApi registerApp:WXAppIdOld withDescription:@"人人彩"];
 #endif
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {

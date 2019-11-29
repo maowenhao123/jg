@@ -98,9 +98,6 @@ typedef enum{
 #elif CS
     [titleBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
     [titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
-#elif RR
-    [titleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
 #endif
     self.navigationItem.titleView = titleBtn;
     

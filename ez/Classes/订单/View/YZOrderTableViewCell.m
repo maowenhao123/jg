@@ -32,9 +32,6 @@
     {
         cell = [[YZOrderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.backgroundColor = [UIColor whiteColor];
-#if RR
-        cell.backgroundColor = YZBackgroundColor;
-#endif
     }
     return cell;
 }
@@ -49,14 +46,6 @@
 }
 - (void)setupChilds
 {
-#if RR
-    //0.背景图片
-    UIImageView *bgImageView = [[UIImageView alloc] init];
-    bgImageView.image = [UIImage imageNamed:@"cell_bg_rr"];
-    [self.contentView addSubview:bgImageView];
-    self.bgImageView = bgImageView;
-#endif
-    
     //时间
     UILabel * timeLabel = [[UILabel alloc]init];
     self.timeLabel = timeLabel;
@@ -195,22 +184,11 @@
     }
     
     //设置frame
-#if RR
-    self.bgImageView.frame = CGRectMake(YZMargin, 0, screenWidth - 2 * YZMargin, 66);
-    self.line.hidden = YES;
-#endif
-    
     CGSize timeSize = [self.timeLabel.attributedText boundingRectWithSize:CGSizeMake(screenWidth, cellH) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.timeLabel.frame = CGRectMake(14, 0, timeSize.width, cellH);
-#if RR
-    self.timeLabel.frame = CGRectMake(YZMargin + 14, 0, timeSize.width, cellH);
-#endif
-    
+
     CGFloat logoY = (cellH - 39) / 2;
     self.logoImageView.frame = CGRectMake(CGRectGetMaxX(self.timeLabel.frame) + 15, logoY, 39, 39);
-#if RR
-    self.logoImageView.frame = CGRectMake(YZMargin + CGRectGetMaxX(self.timeLabel.frame) + 10, logoY, 39, 39);
-#endif
     
     if ([status.bonus longLongValue] > 0 && status.index != 3) {//中奖
         CGSize nameSize = [self.nameLabel.text sizeWithLabelFont:self.nameLabel.font];
@@ -232,9 +210,6 @@
     
     CGSize statusSize = [self.statusLabel.text sizeWithLabelFont:self.statusLabel.font];
     self.statusLabel.frame = CGRectMake(screenWidth - 14 - statusSize.width, 0, statusSize.width, cellH);
-#if RR
-    self.statusLabel.frame = CGRectMake(CGRectGetMaxX(self.bgImageView.frame) - 14 - statusSize.width, 0, statusSize.width, cellH);
-#endif
     self.line.frame = CGRectMake(15, cellH, screenWidth - 15, 1);
 }
 - (void)setIndex:(int)index

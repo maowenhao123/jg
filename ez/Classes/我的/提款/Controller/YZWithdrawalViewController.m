@@ -230,10 +230,6 @@
         promptLabel.frame = CGRectMake(submitBtn.x, CGRectGetMaxY(submitBtn.frame) + 10, screenWidth - 2 * submitBtn.x, promptLabelSize.height);
         [footerView addSubview:promptLabel];
 
-#if RR
-        self.tableView.tableFooterView = footerView;
-        return;
-#endif
         UILabel * callLabel = [[UILabel alloc]init];
         callLabel.text = @"5、客服热线：";
         callLabel.textColor = YZGrayTextColor;
@@ -380,8 +376,6 @@
 #elif ZC
     NSNumber * cmd = @(10920);
 #elif CS
-    NSNumber * cmd = @(10920);
-#elif RR
     NSNumber * cmd = @(10920);
 #endif
     NSDictionary *dict = [NSDictionary dictionary];

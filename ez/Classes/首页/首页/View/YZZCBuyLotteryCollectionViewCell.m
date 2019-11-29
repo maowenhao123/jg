@@ -123,9 +123,6 @@
         }else
         {
             self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",status.gameId]];
-#if RR
-            self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_rr",status.gameId]];
-#endif
         }
     }
     
@@ -224,11 +221,6 @@
     {
         self.line2.hidden = NO;
     }
-    
-#if RR
-    
-#endif
-    
 }
 
 @end

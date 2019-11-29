@@ -99,28 +99,6 @@
     [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-#elif RR
-    navBar.translucent = NO;//取消透明度
-    if (IsBangIPhone) {
-        // 设置背景
-        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_88"] forBarMetrics:UIBarMetricsDefault];
-    }else
-    {
-        // 设置背景
-        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_64"] forBarMetrics:UIBarMetricsDefault];
-    }
-    navBar.shadowImage = nil;
-    //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-    //设置颜色
-    navBar.tintColor = [UIColor whiteColor];
-    
-    // 设置标题属性
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];;
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
-    [navBar setTitleTextAttributes:textAttrs];
 #endif
 }
 
@@ -176,7 +154,6 @@
     confirmBtn.layer.masksToBounds = YES;
     confirmBtn.layer.cornerRadius = 2;
     
-#if JG
     //合买按钮
     UIButton *unionBuyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.unionBuyBtn = unionBuyBtn;
@@ -189,34 +166,6 @@
     unionBuyBtn.layer.borderWidth = 1;
     unionBuyBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
     [bottomView addSubview:unionBuyBtn];
-#elif ZC
-    //合买按钮
-    UIButton *unionBuyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.unionBuyBtn = unionBuyBtn;
-    unionBuyBtn.frame = CGRectMake(15, (bottomViewH - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
-    [unionBuyBtn setBackgroundImage:[UIImage ImageFromColor:YZColor(238, 238, 238, 1) WithRect:confirmBtn.bounds] forState:UIControlStateNormal];
-    [unionBuyBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-    [unionBuyBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-    unionBuyBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
-    [unionBuyBtn addTarget:self action:@selector(unionBuyBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    unionBuyBtn.layer.borderWidth = 1;
-    unionBuyBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
-    [bottomView addSubview:unionBuyBtn];
-#elif CS
-    //合买按钮
-    UIButton *unionBuyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.unionBuyBtn = unionBuyBtn;
-    unionBuyBtn.frame = CGRectMake(15, (bottomViewH - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
-    [unionBuyBtn setBackgroundImage:[UIImage ImageFromColor:YZColor(238, 238, 238, 1) WithRect:confirmBtn.bounds] forState:UIControlStateNormal];
-    [unionBuyBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-    [unionBuyBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-    unionBuyBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
-    [unionBuyBtn addTarget:self action:@selector(unionBuyBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    unionBuyBtn.layer.borderWidth = 1;
-    unionBuyBtn.layer.borderColor = YZColor(213, 213, 213, 1).CGColor;
-    [bottomView addSubview:unionBuyBtn];
-#elif RR
-#endif
     
     //注数和倍数和金额总数
     UILabel *amountLabel = [[UILabel alloc] init];
@@ -579,8 +528,6 @@
                 NSString * mcpStr = @"ZCmcp";
 #elif CS
                 NSString * mcpStr = @"CSmcp";
-#elif RR
-                NSString * mcpStr = @"RRmcp";
 #endif
                 NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&id=%@&channel=%@&childChannel=%@&version=%@&playType=%@&termCount=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],_playType,@(1),mcpStr];
                 NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];

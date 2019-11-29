@@ -114,8 +114,6 @@
     self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录", @"合买记录"];
 #elif CS
     self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录", @"合买记录"];
-#elif RR
-    self.btnTitles = @[@"投注记录", @"追号记录", @"中奖记录"];
 #endif
     //添加tableview
     CGFloat scrollViewH = screenHeight - statusBarH - navBarH - tabBarH - topBtnH;
@@ -433,18 +431,6 @@
         return tableView.height;
     }else
     {
-#if RR
-        NSMutableArray *orderSectionList = self.orderSectionListArray[self.currentIndex];
-        YZOrderSectionStatus *sectionStatus = orderSectionList[indexPath.section];
-        YZOrderStatus *status = sectionStatus.array[indexPath.row];
-        //当是最后一条数据时
-        if (status == sectionStatus.array.lastObject && sectionStatus != orderSectionList.lastObject) {
-            return 66;
-        }else
-        {
-            return 66 + 5;
-        }
-#endif
         return 66;
     }
 }
@@ -467,9 +453,6 @@
     
     //label
     UILabel * monthLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, screenWidth - 20, monthViewH)];
-#if RR
-    monthLabel.frame = CGRectMake(10 + YZMargin, 0, screenWidth - 20 - 2 * YZMargin, monthViewH);
-#endif
     NSMutableArray *orderSectionList = self.orderSectionListArray[self.currentIndex];
     YZOrderSectionStatus *sectionStatus = orderSectionList[section];
     monthLabel.text = sectionStatus.title;

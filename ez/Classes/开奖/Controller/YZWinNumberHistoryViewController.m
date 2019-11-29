@@ -143,12 +143,6 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#if RR
-    if (indexPath.row == self.statusFrames.count - 1) {
-        return 5 * 2 + 70;
-    }
-    return 5 + 70;
-#endif
     return 70;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -74,15 +74,7 @@
 // rgb颜色转换（16进制->10进制）
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 //app主颜色
-#if JG
 #define YZBaseColor YZColor(203, 58, 53, 1)
-#elif ZC
-#define YZBaseColor YZColor(203, 58, 53, 1)
-#elif CS
-#define YZBaseColor YZColor(203, 58, 53, 1)
-#elif RR
-#define YZBaseColor UIColorFromRGB(0x13a2db)
-#endif
 //常用黑色字体颜色
 #define YZBlackTextColor YZColor(43, 43, 43, 1)
 //常用灰色字体颜色
@@ -269,34 +261,6 @@
 #define CECClientID @"YXA6X5SX0PN_EeiNxw07luisBA"
 #define CECClientSecret @"YXA69TygCsH1sE_JTXQ8piRRBwMv2M8"
 #define CECIM @"kefuchannelimid_074140"
-
-//------------------------- 人人彩 ----------------------------
-#elif RR
-//微信
-#define WXAppIdOld @"wxdbc628a07b9c8b89"
-#define WXAppSecretOld @"312773564007871247f8966fdb449872"
-
-#define WXAppIdNew @"wxa62072532bc40982"
-#define WXAppSecretNew @"36d382b5edacbd37705aad77338f8806"
-//极光
-#define JPushId @"2fc0d62064c90883699c5c00"
-//友盟
-#define UMengId @"593a0ccb8f4a9d0555001784"
-//QQ
-#define QQAPPId @"101364405"
-#define QQAppSecret @"322be2f869571091ff5c67414d611f68"
-//新浪微博
-#define SinaAPPId @"1477364888"
-#define SinaAppSecret @"7393ae25d46932c98c3d80c62eb9aa81"
-//环信
-#define CECAppKey @"1412190919061768#kefuchannelapp74590"
-#define CECTenantId @"108989"
-#define CECClientID @"YXA60gYDMNqhEemYEud_Uvagww"
-#define CECClientSecret @"YXA6LCxLE_Z60OH0ep42cBodRz4vQho"
-#define CECIM @"kefuchannelimid_847760"
-//一键登录
-#define TYRZAPPId @"300011887762"
-#define TYRZAPPKey @"E7F678DC2555A94DE78653FE3BE916F1"
 
 #endif
 

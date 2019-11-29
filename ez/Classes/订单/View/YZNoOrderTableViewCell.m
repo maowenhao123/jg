@@ -61,18 +61,11 @@
     CGFloat scale = 0.9;
     CGFloat backImageViewW = 260 * scale;
     CGFloat backImageViewH = 77 * scale;
-#if RR
-    backImageViewW = 280;
-    backImageViewH = 140;
-#endif
     CGFloat backImageViewX = (screenWidth - backImageViewW) / 2;
     CGFloat backImageViewY = CGRectGetMaxY(promptLabel.frame) + 26;
     UIImageView * backImageView = [[UIImageView alloc]init];
     backImageView.frame = CGRectMake(backImageViewX, backImageViewY, backImageViewW, backImageViewH);
     backImageView.image = [UIImage imageNamed:@"no_order_back_icon"];
-#if RR
-    backImageView.image = [UIImage imageNamed:@"no_order_back_icon_rr"];
-#endif
     [self addSubview:backImageView];
     
     //选球的白色背景
@@ -80,10 +73,6 @@
     CGFloat ballViewH = 45 * scale;
     CGFloat ballViewX = 13 * scale;
     CGFloat ballViewY = 17 * scale;
-#if RR
-    ballViewX = (backImageView.width - ballViewW) / 2;
-    ballViewY = (backImageView.height - ballViewH) / 2;
-#endif
     UIView * ballView = [[UIView alloc]init];
     self.ballView = ballView;
     ballView.frame = CGRectMake(ballViewX, ballViewY, ballViewW, ballViewH);
@@ -94,9 +83,6 @@
     CGFloat afreshButtonW = 48 * scale;
     CGFloat afreshButtonH = 77 * scale;
     CGFloat afreshButtonY = backImageView.y + 3;
-#if RR
-    afreshButtonY = backImageView.y + backImageView.height * 0.2;
-#endif
     UIButton * afreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.afreshButton = afreshButton;
     afreshButton.frame = CGRectMake(CGRectGetMaxX(backImageView.frame) - 3, afreshButtonY, afreshButtonW, afreshButtonH);
@@ -355,8 +341,6 @@
         NSString * mcpStr = @"ZCmcp";
 #elif CS
         NSString * mcpStr = @"CSmcp";
-#elif RR 
-        NSString * mcpStr = @"RRmcp";
 #endif
         NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,@"F01",self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,@false,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];

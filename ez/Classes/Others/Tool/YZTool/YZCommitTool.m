@@ -409,7 +409,8 @@
 }
 #pragma mark - 11选5
 //提交11选5的数据
-+ (void)commit1x5BetWithBalls:(NSMutableArray *)balls betCount:(int)betCount playType:(NSString *)playTypeCode currentTitle:(NSString *)currentTitle selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag{
++ (void)commit1x5BetWithBalls:(NSMutableArray *)balls betCount:(int)betCount playType:(NSString *)playTypeCode currentTitle:(NSString *)currentTitle selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag
+{
     NSArray *waringTitles = @[@"至少选择1个号码",@"至少选择2个号码", @"至少选择3个号码", @"至少选择4个号码", @"至少选择5个号码", @"至少选择6个号码", @"至少选择7个号码", @"请选择8个号码", @"每位至少选1个号", @"至少选择2个号码", @"每位至少选1个号", @"至少选择3个号码", @"请按规则选择号码"];
     if(betCount == 0)//没有注数，就弹框警示
     {
@@ -491,7 +492,12 @@
     muArr = [self sortBallsArray:muArr];
     for(YZBallBtn *ball in muArr)
     {
-        [str appendFormat:@"%@%ld,", digit, (long)ball.tag];
+        if (YZStringIsEmpty(digit)) {
+            [str appendFormat:@"%ld,", (long)ball.tag];
+        }else
+        {
+            [str appendFormat:@"%02ld,", (long)ball.tag];
+        }
     }
     [str deleteCharactersInRange:NSMakeRange(str.length-1, 1)];//去掉最后一个逗号
     return str;

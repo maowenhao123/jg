@@ -67,8 +67,6 @@
                 NSString * scheme = @"ZCUPPay";
 #elif CS
                 NSString * scheme = @"CSUPPay";
-#elif RR
-                NSString * scheme = @"RRUPPay";
 #endif
                 [[UPPaymentControl defaultControl] startPay:tn
                                                  fromScheme:scheme

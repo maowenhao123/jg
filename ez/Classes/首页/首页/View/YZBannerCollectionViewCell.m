@@ -24,9 +24,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-#if RR
-        self.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-#endif
         [self setupChilds];
         [self getDataWith:nil];
     }
@@ -35,11 +32,6 @@
 #pragma mark - 布局视图
 - (void)setupChilds
 {
-#if RR
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, 184)];
-    bgImageView.image = [UIImage imageNamed:@"cell_bg_rr"];
-    [self addSubview:bgImageView];
-#endif
     // 设置图片
     NSString *imageName = @"banner_default_6P.jpg";
     if (iPhone6)
@@ -68,11 +60,6 @@
     UIImage * defaultImage = [UIImage imageNamed:defaultImageName];
     self.cycleScrollView.localizationImageNamesGroup = @[defaultImage];
     [self addSubview:cycleScrollView];
-    
-#if RR
-    cycleScrollView.layer.masksToBounds = YES;
-    cycleScrollView.layer.cornerRadius = 5;
-#endif
 }
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index

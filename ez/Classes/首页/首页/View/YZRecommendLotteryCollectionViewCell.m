@@ -28,20 +28,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-#if RR
-        self.backgroundColor = YZBackgroundColor;
-#endif
-#if JG
         [self setupChilds];
         [self addTimer];
-#elif ZC
-        [self setupChilds];
-        [self addTimer];
-#elif CS
-        [self setupChilds];
-        [self addTimer];
-#elif RR
-#endif
     }
     return self;
 }

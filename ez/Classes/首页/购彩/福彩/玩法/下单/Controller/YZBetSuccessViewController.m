@@ -45,9 +45,6 @@
 #pragma mark - 请求数据
 - (void)getActivityData
 {
-#if RR
-    return;
-#endif
     NSDictionary *dict = @{
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getQuickStakeInformation") params:dict success:^(id json) {
@@ -82,9 +79,6 @@
 
 - (void)getQrCodeData
 {
-#if RR
-    return;
-#endif
     NSDictionary *dict = @{
                            @"type":@"CUSTOMER_SERVICE",
                            @"timestamp":[YZDateTool getNowTimeTimestamp]
@@ -199,8 +193,6 @@
 #elif CS
         [scrollView addSubview:publishCircleBtn];
         lastView = publishCircleBtn;
-#elif RR
-        lastView = shareButton;
 #endif
     }
     
@@ -290,8 +282,6 @@
     [scrollView addSubview:vipcnButton];
     
     scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(vipcnButton.frame) + 10);
-#elif RR
-    scrollView.contentSize = CGSizeMake(screenWidth, CGRectGetMaxY(lookBtn.frame) + 10);
 #endif
     
 }
@@ -423,8 +413,6 @@
     UIImage * image = [UIImage imageNamed:@"logo1"];
 #elif CS
     UIImage * image = [UIImage imageNamed:@"logo1"];
-#elif RR
-    UIImage * image = [UIImage imageNamed:@"logo1"];
 #endif
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
     YZUser *user = [YZUserDefaultTool user];
@@ -436,8 +424,6 @@
 #elif ZC
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
-    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
-#elif RR
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
 #endif
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {

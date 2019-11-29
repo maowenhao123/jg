@@ -62,10 +62,6 @@
     //初始化界面
     [self setupZCChildViews];
     self.view.backgroundColor = [UIColor whiteColor];
-#elif RR
-    //初始化界面
-    [self setupZCChildViews];
-    self.view.backgroundColor = [UIColor whiteColor];
 #endif
 }
 - (void)back
@@ -123,10 +119,6 @@
     [switchbtn setImage:[UIImage imageNamed:@"bet_weixuanzhong"] forState:UIControlStateNormal];
     [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateSelected];
     [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateHighlighted];
-#if RR
-    [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateSelected];
-    [switchbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateHighlighted];
-#endif
     switchbtn.selected = YES;
     [switchbtn setTitle:@"自动登录" forState:UIControlStateNormal];
     [switchbtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
@@ -285,8 +277,6 @@
     logoImageView.image = [UIImage imageNamed:@"login_ad_zc"];
 #elif CS
     logoImageView.image = [UIImage imageNamed:@"login_ad_cs"];
-#elif RR
-    logoImageView.image = [UIImage imageNamed:@"login_ad_rr"];
 #endif
     [self.view addSubview:logoImageView];
     
@@ -355,13 +345,7 @@
     registerBtn.layer.cornerRadius = loginBtn.height / 2;
     registerBtn.layer.borderColor = YZBaseColor.CGColor;
     registerBtn.layer.borderWidth = 1;
-#if ZC
     [registerBtn addTarget:self action:@selector(quickLoginDidClick:) forControlEvents:UIControlEventTouchUpInside];
-#elif CS
-    [registerBtn addTarget:self action:@selector(quickLoginDidClick:) forControlEvents:UIControlEventTouchUpInside];
-#elif RR
-    [registerBtn addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];
-#endif
     [self.view addSubview:registerBtn];
     lastView = registerBtn;
     
@@ -396,13 +380,7 @@
     [defaults synchronize];
     
     //第三方登录
-#if ZC
     [self setupThirdPartyLogin];
-#elif CS
-    [self setupThirdPartyLogin];
-#elif RR
-    
-#endif
 }
 
 - (void)setupThirdPartyLogin
@@ -669,8 +647,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
-#elif RR
-    [WXApi registerApp:WXAppIdOld withDescription:@"人人彩"];
 #endif
     UMSocialPlatformType platformType;
     if (btn.tag == 101)

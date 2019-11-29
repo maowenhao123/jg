@@ -40,10 +40,6 @@
     scrollView.clipsToBounds = NO;
     scrollView.delegate = self;
     [self addSubview:scrollView];
-#if RR
-    self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = 5;
-#endif
     
     UIPageControl * pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 75, self.width, 10)];
     self.pageControl = pageControl;

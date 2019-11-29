@@ -78,28 +78,6 @@
     textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
     [navBar setTitleTextAttributes:textAttrs];
-#elif RR
-    if (IsBangIPhone) {
-        // 设置背景
-        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_88"] forBarMetrics:UIBarMetricsDefault];
-    }else
-    {
-        // 设置背景
-        [navBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_rr_64"] forBarMetrics:UIBarMetricsDefault];
-    }
-    navBar.shadowImage = nil;
-    //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-    //设置颜色
-    navBar.tintColor = [UIColor whiteColor];
-    
-    // 设置标题属性
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];;
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
-    [navBar setTitleTextAttributes:textAttrs];
-    navBar.translucent = NO;//取消透明度
 #endif
 }
 
@@ -139,18 +117,6 @@
     
     NSMutableDictionary *disabledTextAttrs = [NSMutableDictionary dictionary];
     disabledTextAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
-    disabledTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-    [barItem setTitleTextAttributes:disabledTextAttrs forState:UIControlStateHighlighted];
-#elif RR
-    UIBarButtonItem *barItem = [UIBarButtonItem appearance];
-    
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-    [barItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
-    
-    NSMutableDictionary *disabledTextAttrs = [NSMutableDictionary dictionary];
-    disabledTextAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
     disabledTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
     [barItem setTitleTextAttributes:disabledTextAttrs forState:UIControlStateHighlighted];
 #endif
@@ -218,7 +184,6 @@
     }
 #elif ZC
 #elif CS
-#elif RR
 #endif
     [navigationController setNavigationBarHidden:hiddenNavBar animated:YES];
 }

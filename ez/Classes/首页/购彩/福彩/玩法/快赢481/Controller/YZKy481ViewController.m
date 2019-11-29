@@ -6,6 +6,7 @@
 //  Copyright © 2019 9ge. All rights reserved.
 //
 #import "YZKy481ViewController.h"
+#import "YZKy481ChartViewController.h"
 #import "YZKy481PlayTypeView.h"
 #import "YZKy481WanNengView.h"
 #import "YZKy481ChongView.h"
@@ -115,8 +116,6 @@
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
 #elif CS
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
-#elif RR
-    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
 #endif
     [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleBtn;
@@ -468,6 +467,13 @@
     //设置透明度
     CGFloat layerScale = (panView.y - endTimeBgMaxY) / (endY - endTimeBgMaxY);
     self.alphaChangeView.layer.backgroundColor = YZColor(0, 0, 0, 0.7 * (1 - layerScale)).CGColor;
+}
+
+#pragma mark - 走势图页面
+- (void)trendBtnDidClick
+{
+    YZKy481ChartViewController *chartVC = [[YZKy481ChartViewController alloc] init];
+    [self.navigationController pushViewController:chartVC animated:YES];
 }
 
 #pragma mark - 近期开奖按钮点击，重写父类方法

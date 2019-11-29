@@ -89,9 +89,7 @@
 {
     //分享
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"order_share"] style:UIBarButtonItemStylePlain target:self action:@selector(share)];
-#if RR
-    self.navigationItem.rightBarButtonItem = nil;
-#endif
+    
     CGFloat tableViewH = screenHeight - statusBarH - navBarH - 40 - [YZTool getSafeAreaBottom];
     UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, tableViewH)];
     self.tableView = tableView;
@@ -420,8 +418,6 @@
     UIImage * image = [UIImage imageNamed:@"logo1"];
 #elif CS
     UIImage * image = [UIImage imageNamed:@"logo1"];
-#elif RR
-    UIImage * image = [UIImage imageNamed:@"logo1"];
 #endif
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
     shareObject.webpageUrl = json[@"url"];
@@ -432,8 +428,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
-#elif RR
-    [WXApi registerApp:WXAppIdOld withDescription:@"人人彩"];
 #endif
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {

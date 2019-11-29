@@ -224,8 +224,6 @@
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
 #elif CS
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
-#elif RR
-    self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
 #endif
     
     //两个按钮
@@ -313,8 +311,6 @@
                 [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
 #elif CS
                 [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-#elif RR
-                confirmBtn = nil;
 #endif
             }
         }else
@@ -447,9 +443,6 @@
         rightbtn.tag = i;
         [rightbtn setImage:[UIImage imageNamed:@"bet_weixuanzhong"] forState:UIControlStateNormal];
         [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong"] forState:UIControlStateSelected];
-#if RR
-        [rightbtn setImage:[UIImage imageNamed:@"bet_xuanzhong_rr"] forState:UIControlStateSelected];
-#endif
         [rightbtn.titleLabel setFont:[UIFont systemFontOfSize:YZGetFontSize(26)]];
         if(i == 0)
         {
@@ -853,8 +846,6 @@
 #elif ZC
         NSString * mcpStr = @"ZCmcp";
 #elif CS
-        NSString * mcpStr = @"CSmcp";
-#elif RR
         NSString * mcpStr = @"CSmcp";
 #endif
         NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,self.winStopBtn.selected ? @true : @false,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];

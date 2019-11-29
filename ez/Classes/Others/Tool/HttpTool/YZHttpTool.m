@@ -118,6 +118,7 @@
          }
      }];
 }
+
 - (void)postWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     // 创建请求管理对象

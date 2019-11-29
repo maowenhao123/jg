@@ -630,8 +630,6 @@
         NSString * mcpStr = @"ZCmcp";
 #elif CS
         NSString * mcpStr = @"CSmcp";
-#elif RR
-        NSString * mcpStr = @"CSmcp";
 #endif
         
         NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&smartSchemeList=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,_currentTermId,[smartSchemeListJsonStr URLEncodedString],[NSNumber numberWithInt:self.amountMoney * 100],[ticketListJsonStr URLEncodedString],@"ACCOUNT",[NSNumber numberWithInteger:self.smartBetArray.count],_currentTermId,[NSNumber numberWithBool:_winStop],@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
