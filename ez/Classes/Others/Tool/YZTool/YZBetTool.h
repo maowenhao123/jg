@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface YZBetTool : NSObject
+
 //机选11选5
-+ (void)autoChooseS1x5WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag;
++ (void)autoChoose11x5WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag;
+//快赢481
++ (void)autoChooseKy481WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag;
 //机选快三
 + (void)autoChooseKsWithSelectedPlayTypeBtnTag:(int)tag;
 //机选大乐透
@@ -46,4 +49,7 @@
 + (NSMutableArray *)getPlwTicketList;
 //获取快三的ticketList
 + (NSMutableArray *)getKsTicketList;
+//获取快赢481的ticketList
++ (NSMutableArray *)getKy481TicketList;
+
 @end

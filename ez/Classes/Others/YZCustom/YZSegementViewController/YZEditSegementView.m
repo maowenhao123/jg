@@ -87,7 +87,7 @@ NSString * const segementCollectionViewCellId = @"segementCollectionViewCellId";
     editButton.frame = CGRectMake(screenWidth - 70, 0, 70, 50);
     [editButton setTitle:@"编辑" forState:UIControlStateNormal];
     [editButton setTitle:@"完成" forState:UIControlStateSelected];
-    [editButton setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+    [editButton setTitleColor:YZBaseColor forState:UIControlStateNormal];
     editButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [editButton addTarget:self action:@selector(editButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:editButton];

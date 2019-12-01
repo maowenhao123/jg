@@ -192,7 +192,9 @@
     
     CGFloat titleLabelY = 10 + logoWH + 5;
     self.titleLabel.frame = CGRectMake((self.width - titleSize.width) / 2, titleLabelY, titleSize.width, titleSize.height);
-    self.descriptionLabel.frame = CGRectMake((self.width - descriptionSize.width) / 2, CGRectGetMaxY(self.titleLabel.frame) + 5, descriptionSize.width, descriptionSize.height);
+    if (self.descriptionLabel.text || self.descriptionLabel.attributedText) {
+        self.descriptionLabel.frame = CGRectMake((self.width - descriptionSize.width) / 2, CGRectGetMaxY(self.titleLabel.frame) + 5, descriptionSize.width, descriptionSize.height);
+    }
     
     //角标
     self.supView.frame = CGRectZero;
@@ -206,6 +208,18 @@
     {
         self.supImageView.frame = CGRectMake(CGRectGetMaxX(self.titleLabel.frame) + 1, 0, 25, 15);
         self.supImageView.centerY = self.titleLabel.centerY;
+    }
+}
+
+- (void)setIndex:(NSInteger)index
+{
+    _index = index;
+    
+    if (_index % 3 == 2) {
+        self.line2.hidden = YES;
+    }else
+    {
+        self.line2.hidden = NO;
     }
 }
 

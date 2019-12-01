@@ -15,13 +15,13 @@
 #import "YZMineViewController.h"
 #import "YZZCMineViewController.h"
 #import "YZCSMineViewController.h"
-#import "YZRRMineViewController.h"
 #import "YZLoginViewController.h"
 #import "YZNavigationController.h"
 #import "YZUpGradeView.h"
 #import "YZVoucherGuideView.h"
 #import "YZGiveVoucherView.h"
 #import "YZDateTool.h"
+#import "YZAddH5AppView.h"
 
 @interface YZTabBarViewController ()<UITabBarControllerDelegate, HChatDelegate>
 
@@ -34,8 +34,7 @@
     UITabBar * tabBar = [UITabBar appearance];
     // 设置背景
     [tabBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, tabBarH)]];
-    tabBar.tintColor = YZColor(224, 3, 12, 1);
-    
+    tabBar.tintColor = YZBaseColor;
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:YZGetFontSize(20)];
     [[UITabBarItem appearance] setTitleTextAttributes:textAttrs
@@ -50,6 +49,9 @@
     //检查升级
     [self checkUpgrade];
     
+    //添加h5的app
+    [self addH5App];
+    
     //接收注册成功返回购彩大厅的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toBuyLottey) name:@"ToBuyLottery" object:nil];
     //接收投注成功后查看投注记录的通知
@@ -62,7 +64,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getGuide) name:loginSuccessNote object:nil];
     //获取赠送彩劵
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getGiveVoucherData) name:loginSuccessNote object:nil];
-
+    
     //添加消息监控，第二个参数是执行代理方法的队列，默认是主队列
     [[HChatClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
 }
@@ -181,36 +183,6 @@
     mineVC_nav.view.tag = 5;
     
     self.viewControllers = @[buyLottery_nav, orderyVC_nav, unionBuyVC_nav, winNumberVC_nav, mineVC_nav];
-#elif RR
-    // 1.购彩
-    YZHomePageViewController *homePageVC = [[YZHomePageViewController alloc] init];
-    UITabBarItem * tabberItem1 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_buyLottery_rr"] selectedImage:[UIImage imageNamed:@"tabbar_buyLottery_selected_rr"] title:@"购彩"];
-    homePageVC.tabBarItem = tabberItem1;
-    YZNavigationController *buyLottery_nav = [[YZNavigationController alloc]initWithRootViewController:homePageVC];
-    buyLottery_nav.view.tag = 1;
-    
-    // 2.订单
-    YZOrderViewController *orderVC = [[YZOrderViewController alloc] init];
-    UITabBarItem * tabberItem2 = [self getTabberByImage:[UIImage imageNamed:@"tabber_order_rr"] selectedImage:[UIImage imageNamed:@"tabber_order_selected_rr"] title:@"订单"];
-    orderVC.tabBarItem = tabberItem2;
-    YZNavigationController *orderyVC_nav = [[YZNavigationController alloc]initWithRootViewController:orderVC];
-    orderyVC_nav.view.tag = 2;
-    
-    // 4.开奖
-    YZWinNumberViewController *winNumberVC = [[YZWinNumberViewController alloc] init];
-    UITabBarItem * tabberItem4 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_winNumber_rr"] selectedImage:[UIImage imageNamed:@"tabbar_winNumber_selected_rr"] title:@"开奖"];
-    winNumberVC.tabBarItem = tabberItem4;
-    YZNavigationController *winNumberVC_nav = [[YZNavigationController alloc]initWithRootViewController:winNumberVC];
-    winNumberVC_nav.view.tag = 4;
-    
-    // 5.我的
-    YZRRMineViewController *mineVC = [[YZRRMineViewController alloc] init];
-    UITabBarItem * tabberItem5 = [self getTabberByImage:[UIImage imageNamed:@"tabbar_mine_rr"] selectedImage:[UIImage imageNamed:@"tabbar_mine_selected_rr"] title:@"我的"];
-    mineVC.tabBarItem = tabberItem5;
-    YZNavigationController *mineVC_nav = [[YZNavigationController alloc]initWithRootViewController:mineVC];
-    mineVC_nav.view.tag = 5;
-    
-    self.viewControllers = @[buyLottery_nav, orderyVC_nav, winNumberVC_nav, mineVC_nav];
 #endif
     self.delegate = self;
 }
@@ -245,8 +217,6 @@
     self.selectedIndex = 4;
 #elif CS
     self.selectedIndex = 4;
-#elif RR
-    self.selectedIndex = 3;
 #endif
 }
 
@@ -278,8 +248,8 @@
 {
     id<HDIMessageModel> messageModel  = aMessages.firstObject;
     NSDictionary *objectDic = @{
-                                @"message":messageModel
-                                };
+        @"message":messageModel
+    };
     [[NSNotificationCenter defaultCenter] postNotificationName:@"haveNewMessageNote" object:objectDic];
     
     BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
@@ -293,7 +263,7 @@
 - (void)showNotificationWithMessage:(NSArray *)messages
 {
     HPushOptions *options = [[HChatClient sharedClient] hPushOptions];
-
+    
     NSString *messageStr = nil;
     id<HDIMessageModel> messageModel  = messages.firstObject;
     if (options.displayStyle == HPushDisplayStyleMessageSummary) {
@@ -330,7 +300,7 @@
     {
         messageStr = @"您有一条新消息";
     }
-
+    
     //发送本地推送
     if (NSClassFromString(@"UNUserNotificationCenter")) {
         UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.01 repeats:NO];
@@ -365,12 +335,13 @@
 {
     NSString * imei = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSDictionary *dict = @{
-                           @"cmd":@(8000),
-                           @"imei":imei
-                           };
+        @"cmd":@(8000),
+        @"imei":imei,
+        @"version":[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]
+    };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         //检查账号密码返回数据
-        YZLog(@"%@", json);
+        YZLog(@"shouldUpgrade%@", json);
         if(SUCCESS)
         {
             if ([json[@"shouldUpgrade"] boolValue]) {
@@ -382,7 +353,28 @@
             ShowErrorView
         }
     } failure:^(NSError *error) {
-        YZLog(@"自动登录error");
+        YZLog(@"error");
+    }];
+}
+
+#pragma mark - 添加h5app
+- (void)addH5App
+{
+    NSString * uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSDictionary *dict = @{
+        @"uuid":uuid
+    };
+    [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getLayer") params:dict success:^(id json) {
+        YZLog(@"getLayer：%@", json);
+        if(SUCCESS)
+        {
+            YZAddH5AppView * addH5AppView = [[YZAddH5AppView alloc] initWithFrame:self.view.bounds];
+            addH5AppView.layerId = [NSString stringWithFormat:@"%@", json[@"layerId"]];
+            addH5AppView.imageUrl = [NSString stringWithFormat:@"%@", json[@"url"]];
+            [self.view addSubview:addH5AppView];
+        }
+    } failure:^(NSError *error) {
+        YZLog(@"error");
     }];
 }
 
@@ -391,9 +383,9 @@
 {
     if (!UserId) return;
     NSDictionary *dict = @{
-                           @"userId":UserId,
-                           @"version":@"0.0.2"
-                           };
+        @"userId":UserId,
+        @"version":@"0.0.2"
+    };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlShare(@"/getGuide") params:dict success:^(id json) {
         YZLog(@"getGuide:%@",json);
         if (SUCCESS) {
@@ -407,8 +399,8 @@
             }
         }
     } failure:^(NSError *error)
-    {
-         YZLog(@"error = %@",error);
+     {
+        YZLog(@"error = %@",error);
     }];
 }
 
@@ -417,9 +409,9 @@
 {
     if (!UserId) return;
     NSDictionary *dict = @{
-                           @"userId":UserId,
-                           @"timestamp":[YZDateTool getNowTimeTimestamp],
-                           };
+        @"userId":UserId,
+        @"timestamp":[YZDateTool getNowTimeTimestamp],
+    };
     [[YZHttpTool shareInstance] postWithURL:BaseUrl(@"promotion/couponRedPackageList") params:dict success:^(id json) {
         YZLog(@"couponRedpackageList:%@",json);
         if (SUCCESS) {
@@ -433,8 +425,8 @@
             }
         }
     } failure:^(NSError *error)
-    {
-         YZLog(@"error = %@",error);
+     {
+        YZLog(@"error = %@",error);
     }];
 }
 

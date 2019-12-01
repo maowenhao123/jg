@@ -12,4 +12,5 @@
 
 @property (nonatomic, assign) int selectedPlayTypeBtnTag;
 @property (nonatomic,copy) NSString *gameId;
+
 @end

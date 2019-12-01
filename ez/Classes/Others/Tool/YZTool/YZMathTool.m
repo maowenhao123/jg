@@ -10,6 +10,7 @@
 #import "YZDateTool.h"
 
 @implementation YZMathTool
+
 //从n个元素中任选m个的可能
 + (int)getCountWithN:(int)n andM:(int)m
 {
@@ -37,7 +38,8 @@
     }
     return temp_sum;
 }
-+ (NSRange)getPrize_dantuoWithTag:(int)tag danballscount:(int)danballscount tuoballscount:(int)tuoballscount betCount:(int)betCount
+
++ (NSRange)get11x5Prize_dantuoWithTag:(int)tag danballscount:(int)danballscount tuoballscount:(int)tuoballscount betCount:(int)betCount
 {
     NSRange prize = NSMakeRange(0, 0);
     int maxprize = 0 ;
@@ -66,13 +68,13 @@
             }
         }
     }else if(tag == 2){
-//        int redballs_danballs = 5 - danballscount;
+        //        int redballs_danballs = 5 - danballscount;
         minprize = 78;
-//        if(redballs_danballs <= redballs_danballs){
-            maxprize = 78 * betCount;
-//        }else{
-//            maxprize = 312;
-//        }
+        //        if(redballs_danballs <= redballs_danballs){
+        maxprize = 78 * betCount;
+        //        }else{
+        //            maxprize = 312;
+        //        }
         
     }else if(tag == 3){
         minprize = 540;
@@ -109,9 +111,9 @@
     prize.length = maxprize;
     return prize;
 }
-+ (NSRange)getPrize_putongWithTag:(int)tag selectballcount:(int)selectballcount betCount:(int)betCount
+
++ (NSRange)get11x5Prize_putongWithTag:(int)tag selectballcount:(int)selectballcount betCount:(int)betCount
 {
-    NSRange prize = NSMakeRange(0, 0);
     int maxprize = 0;
     int minprize = 0;
     if(tag == 0){
@@ -181,10 +183,72 @@
         minprize = 195;
         maxprize = 195;
     }
+    NSRange prize = NSMakeRange(0, 0);
     prize.location = minprize;
     prize.length = maxprize;
     return prize;
 }
+
++ (NSRange)getKy481Prize_putongWithTag:(int)tag selectCount:(int)selectCount betCount:(int)betCount
+{
+    int int_minprize = 0;
+    int int_maxprize = 0;
+    
+    if (betCount == 0) {
+        int_minprize = 0;
+        int_maxprize = 0;
+    } else
+    {
+        if (tag == 0) {
+            int_minprize = 9;
+            int_maxprize = int_minprize * betCount;
+            if (int_maxprize >= 36) int_maxprize = 36;
+        }else if (tag == 1) {
+            int_minprize = 74;
+            if (selectCount == 2) int_maxprize = 74;
+            else if (selectCount == 3) int_maxprize = 222;
+            else if (selectCount == 4) int_maxprize = 444;
+            
+        }else if (tag == 2) {
+            
+            int_minprize = 593;
+            if (selectCount == 3) int_maxprize = 593;
+            else if (selectCount == 4) int_maxprize = 2072;
+        }else if (tag == 3) {
+            int_minprize = 74;
+            int_maxprize = 444;
+        }else if (tag == 4) {
+            int_minprize = 74;
+            int_maxprize = 444;
+        }else if (tag == 5) {
+            int_minprize = 593;
+            int_maxprize = int_minprize * betCount;
+            if (int_maxprize >= 2372) int_maxprize = 2372;
+        }else if (tag == 6) {
+            int_minprize = 4751;
+            int_maxprize = 4751;
+        }else if (tag == 7) {
+            int_minprize = 1187;
+            int_maxprize = 1187;
+        }else if (tag == 8) {
+            int_minprize = 791;
+            int_maxprize = 791;
+        }else if (tag == 9) {
+            int_minprize = 395;
+            int_maxprize = 395;
+        }else if (tag == 10) {
+            int_minprize = 197;
+            int_maxprize = 197;
+        }
+        
+    }
+    NSRange prize = NSMakeRange(0, 0);
+    prize.location = int_minprize;
+    prize.length = int_maxprize;
+    return prize;
+    return prize;
+}
+
 + (NSMutableArray *)get_yinglilvSmartBetArrayByBasemoney:(int)basemoney baseminprize:(int)baseminprize_value basemaxprize:(int)basemaxprize_value yinglilv:(int)yinglilv qihao:(int)qihao currentTermId:(NSString *)currentTermId qishu:(int)qishu firstbeishu:(int)firstbeishu currentleiji:(long)currentleiji
 {
     BOOL issureadd = false;
@@ -197,10 +261,10 @@
     int currentqihao = 0;
     
     int basecount = basemoney; //每注彩票的金额
-
+    
     long currentminprize = 0;//每次计算出来的最小奖金
     long currentmaxprize = 0;//每次计算出来的最大奖金
-
+    
     long currentminyingli = 0;
     long currentmaxyingli = 0;
     
@@ -218,7 +282,7 @@
             currentmaxprize = basemaxprize * currentbeishu;
             currentminyingli = currentminprize - leiji;
             currentmaxyingli = currentmaxprize - leiji;
-//            int temp_yinglilv = (int)((currentminyingli * 100)/(int)leiji);
+            //            int temp_yinglilv = (int)((currentminyingli * 100)/(int)leiji);
             issureadd = true;
         }else{
             currentqihao = [self getCurrentqihaoByQihao:currentqihao curentitem:i qishu:qishu];
@@ -264,7 +328,7 @@
         NSString * dateString = [NSString stringWithFormat:@"20%@",[currentTermId substringToIndex:6]];
         NSString * dateStr = [YZDateTool getChineseDateStringFromDateString:dateString format:@"yyyyMMdd"];
         smartBet.dateStr = dateStr;
-
+        
         smartBet.isTomorrow = [self isTomorrowByQihao:currentqihao curentitem:i qishu:qishu];
         smartBet.termId = [NSString stringWithFormat:@"%02d",currentqihao];
         smartBet.multiple = [NSString stringWithFormat:@"%d",currentbeishu];
@@ -289,6 +353,7 @@
     }
     return smartBetArray;
 }
+
 + (NSMutableArray *)get_changeSmartBetArrayByBasemoney:(int)basemoney baseminprize:(int)baseminprize_value basemaxprize:(int)basemaxprize_value firstqishu:(int)firstqishu firstyinglilv:(int)firstyinglilv secondyinglilv:(int)secondyinglilv qihao:(int)qihao currentTermId:(NSString *)currentTermId qishu:(int)qishu firstbeishu:(int)firstbeishu currentleiji:(long)currentleiji
 {
     BOOL issureadd = false;
@@ -412,7 +477,7 @@
         NSString * dateString = [NSString stringWithFormat:@"20%@",[currentTermId substringToIndex:6]];
         NSString * dateStr = [YZDateTool getChineseDateStringFromDateString:dateString format:@"yyyyMMdd"];
         smartBet.dateStr = dateStr;
-
+        
         smartBet.isTomorrow = [self isTomorrowByQihao:currentqihao curentitem:i qishu:qishu];
         smartBet.termId = [NSString stringWithFormat:@"%02d",currentqihao];
         smartBet.multiple = [NSString stringWithFormat:@"%d",currentbeishu];
@@ -437,6 +502,7 @@
     }
     return smartBetArray;
 }
+
 + (NSMutableArray *)get_lessSmartBetArrayByBasemoney:(int)basemoney baseminprize:(int)baseminprize_value basemaxprize:(int)basemaxprize_value qihao:(int)qihao currentTermId:(NSString *)currentTermId qishu:(int)qishu firstbeishu:(int)firstbeishu lessyingli:(int)lessyingli currentleiji:(long)currentleiji
 {
     BOOL isfirst = true;
@@ -454,7 +520,7 @@
     
     long currentminprize = 0;//每次计算出来的最小奖金
     long currentmaxprize = 0;//每次计算出来的最大奖金
-   
+    
     long currentminyingli = 0;
     long currentmaxyingli = 0;
     
@@ -572,6 +638,7 @@
     }
     return  currentQihao;
 }
+
 //是否显示明天
 + (BOOL)isTomorrowByQihao:(int)qihao curentitem:(int)curentitem qishu:(int)qishu
 {
@@ -585,11 +652,12 @@
         }
     }else
     {
-         isTomorrow = false;
+        isTomorrow = false;
     }
-
+    
     return isTomorrow;
 }
+
 + (NSMutableArray *)get_changeBeishuSmartBetArrayBySmartBetArray:(NSMutableArray *)smartBetArray itemnum:(int)itemnum beishu:(int)beishu
 {
     NSMutableArray * newSmartBetArray = [NSMutableArray arrayWithArray:smartBetArray];
@@ -650,6 +718,7 @@
     
     return newSmartBetArray;
 }
+
 + (NSRange)getKsPrizeWithTag:(int)tag selectNumbers:(NSArray *)selectNumbers
 {
     NSRange prize = NSMakeRange(0, 0);
@@ -729,4 +798,5 @@
     prize.length = maxprize;
     return prize;
 }
+
 @end

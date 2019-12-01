@@ -144,7 +144,7 @@
     UIButton * confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.confirmBtn = confirmBtn;
     confirmBtn.frame = CGRectMake(CGRectGetMaxX(lineView2.frame), CGRectGetMinY(lineView2.frame), KWidth - CGRectGetMinX(lineView2.frame), lineView2.height);
-    [confirmBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+    [confirmBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
     [confirmBtn setTitle:@"确认" forState:UIControlStateNormal];
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
     [confirmBtn addTarget:self action:@selector(confirmBtnClick:) forControlEvents:UIControlEventTouchUpInside];

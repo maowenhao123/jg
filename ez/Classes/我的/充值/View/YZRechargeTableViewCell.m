@@ -13,7 +13,6 @@
 @property (nonatomic, weak) UIImageView *rechargeLogo;
 @property (nonatomic, weak) UILabel *rechargeNameLabel;
 
-
 @end
 
 @implementation YZRechargeTableViewCell
@@ -29,6 +28,7 @@
     }
     return cell;
 }
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -37,6 +37,7 @@
     }
     return self;
 }
+
 - (void)setupChilds
 {
     //图片

@@ -15,8 +15,9 @@
 #import "YZSsqViewController.h"
 #import "YZQxcViewController.h"
 #import "YZPlwViewController.h"
-#import "YZFucaiViewController.h"
+#import "YZFucai3DViewController.h"
 #import "YZQilecaiViewController.h"
+#import "YZKy481ViewController.h"
 #import "YZSfcViewController.h"
 #import "YZScjqViewController.h"
 #import "YZKsViewController.h"
@@ -69,11 +70,16 @@ static NSDictionary * bankDicInfo;
                             @"05" :@"组合胆拖",
                             @"06" :@"跨度",
                             @"07" :@"定位",
-                            
+                            @"08" :@"重胆拖",
+                            @"09" :@"全包",
+                            @"10" :@"单复式",
+                            @"11" :@"重胆拖复式",
+                            @"99" :@"全包复式",
                             };
     }
     return betTypeNameDict;
 }
+
 + (NSDictionary *)playTypeName
 {
     if(playTypeNameDict == nil)
@@ -88,6 +94,7 @@ static NSDictionary * bankDicInfo;
                              @"T03" : @{@"01" : @"直选", @"04" : @"组选", @"02" : @"组选三", @"03" : @"组选六"},
                              @"T04" : @{@"00" : @""},
                              @"T05" : @{@"21" : @"任选一", @"22" : @"任选二", @"23" : @"任选三", @"24" : @"任选四", @"25" : @"任选五", @"26" : @"任选六", @"27" : @"任选七", @"28" : @"任选八", @"29" : @"前二组选", @"30" : @"前二直选", @"31" : @"前三组选", @"32" : @"前三直选",},
+                             @"T06" : @{@"01" : @"组选24", @"02" : @"组选12", @"03" : @"组选6", @"04" : @"组选4", @"05" : @"任选一", @"06" : @"任选二", @"07" : @"任选三", @"08" : @"直选"},
                              @"T61" : @{@"21" : @"任选一", @"22" : @"任选二", @"23" : @"任选三", @"24" : @"任选四", @"25" : @"任选五", @"26" : @"任选六", @"27" : @"任选七", @"28" : @"任选八", @"29" : @"前二组选", @"30" : @"前二直选", @"31" : @"前三组选", @"32" : @"前三直选",},
                              @"T62" : @{@"21" : @"任选一", @"22" : @"任选二", @"23" : @"任选三", @"24" : @"任选四", @"25" : @"任选五", @"26" : @"任选六", @"27" : @"任选七", @"28" : @"任选八", @"29" : @"前二组选", @"30" : @"前二直选", @"31" : @"前三组选", @"32" : @"前三直选",},
                              @"T63" : @{@"21" : @"任选一", @"22" : @"任选二", @"23" : @"任选三", @"24" : @"任选四", @"25" : @"任选五", @"26" : @"任选六", @"27" : @"任选七", @"28" : @"任选八", @"29" : @"前二组选", @"30" : @"前二直选", @"31" : @"前三组选", @"32" : @"前三直选",},
@@ -99,22 +106,36 @@ static NSDictionary * bankDicInfo;
     }
     return playTypeNameDict;
 }
-+ (NSArray *)gameIds
-{
-    if(gameIds == nil)
-    {
-        gameIds = @[@"F04",@"T05",@"T61",@"T62",@"T63",@"T64",@"T51",@"F01",@"T01",@"T03",@"T04",@"T02",@"F02",@"F03",@"T52",@"T53",@"T54"];
-    }
-    return gameIds;
-}
+
 + (NSDictionary *)gameIdNameDict
 {
     if(gameIdNameDict == nil)
     {
-        gameIdNameDict = @{@"T03":@"排列三",@"T51":@"竞彩足球",@"T52":@"竞彩篮球",@"T01":@"大乐透", @"T05":@"11选5",@"T61":@"新11选5",@"T62":@"快乐11选5",@"T63":@"幸福11选5",@"T64":@"开心11选5",@"F01":@"双色球",@"T02":@"七星彩",@"T04":@"排列五",@"F02":@"福彩3D",@"F03":@"七乐彩",@"T52":@"竞彩篮球",@"T53":@"胜负彩",@"T54":@"四场进球",@"F04":@"快三"};
+        gameIdNameDict = @{
+                            @"T03":@"排列三",
+                            @"T51":@"竞彩足球",
+                            @"T52":@"竞彩篮球",
+                            @"T01":@"大乐透",
+                            @"T05":@"11选5",
+                            @"T06":@"快赢481",
+                            @"T61":@"新11选5",
+                            @"T62":@"快乐11选5",
+                            @"T63":@"幸福11选5",
+                            @"T64":@"开心11选5",
+                            @"F01":@"双色球",
+                            @"T02":@"七星彩",
+                            @"T04":@"排列五",
+                            @"F02":@"福彩3D",
+                            @"F03":@"七乐彩",
+                            @"T52":@"竞彩篮球",
+                            @"T53":@"胜负彩",
+                            @"T54":@"四场进球",
+                            @"F04":@"快三"
+        };
     }
     return gameIdNameDict;
 }
+
 + (NSDictionary *)passWayDict
 {
     if(passWayDict == nil)
@@ -123,6 +144,7 @@ static NSDictionary * bankDicInfo;
     }
     return passWayDict;
 }
+
 + (NSDictionary *)gameDestClassDict
 {
     if(gameDestClassDict == nil)
@@ -136,10 +158,11 @@ static NSDictionary * bankDicInfo;
                               @"T62":[YZS1x5ViewController class],
                               @"T63":[YZS1x5ViewController class],
                               @"T64":[YZS1x5ViewController class],
+                              @"T06":[YZKy481ViewController class],
                               @"F01":[YZSsqViewController class],
                               @"T02":[YZQxcViewController class],
                               @"T04":[YZPlwViewController class],
-                              @"F02":[YZFucaiViewController class],
+                              @"F02":[YZFucai3DViewController class],
                               @"F03":[YZQilecaiViewController class],
                               @"T53":[YZSfcViewController class],
                               @"T54":[YZScjqViewController class],
@@ -150,6 +173,7 @@ static NSDictionary * bankDicInfo;
     }
     return gameDestClassDict;
 }
+
 + (NSDictionary *)footBallPlayTypeDic
 {
     if(footBallPlayTypeDic == nil)
@@ -165,6 +189,7 @@ static NSDictionary * bankDicInfo;
     }
     return footBallPlayTypeDic;
 }
+
 + (NSDictionary *)basketBallPlayTypeDic
 {
     if(basketBallPlayTypeDic == nil)
@@ -179,6 +204,7 @@ static NSDictionary * bankDicInfo;
     }
     return basketBallPlayTypeDic;
 }
+
 + (NSDictionary *)bBshengfenDic
 {
     if (bBshengfenDic == nil) {
@@ -199,6 +225,7 @@ static NSDictionary * bankDicInfo;
     }
     return bBshengfenDic;
 }
+
 + (NSDictionary *)getBankDicInfo
 {
     if (bankDicInfo == nil) {
@@ -231,6 +258,7 @@ static NSDictionary * bankDicInfo;
     }
     return bankDicInfo;
 }
+
 + (NSString *)getOrderStatus:(int)status
 {
     switch (status) {
@@ -254,6 +282,7 @@ static NSDictionary * bankDicInfo;
             return @"";
     }
 }
+
 + (NSString *)getTicketStatus:(int)status
 {
     switch (status) {
@@ -277,6 +306,7 @@ static NSDictionary * bankDicInfo;
             return @"";
     }
 }
+
 + (NSString *)getSchemeStatus:(int)status
 {
     switch (status) {
@@ -495,10 +525,22 @@ static NSInteger seq = 0;
         gifHeader.lastUpdatedTimeLabel.hidden= YES;//如果不隐藏这个会默认 图片在最左边不是在中间
         gifHeader.stateLabel.hidden = YES;
         NSMutableArray * images = [NSMutableArray array];
+#if JG
         for (int i = 0; i < 10; i++) {
             UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
             [images addObject:image];
         }
+#elif ZC
+        for (int i = 0; i < 10; i++) {
+            UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
+            [images addObject:image];
+        }
+#elif CS
+        for (int i = 0; i < 10; i++) {
+            UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
+            [images addObject:image];
+        }
+#endif
         [gifHeader setImages:images forState:MJRefreshStateIdle];
         [gifHeader setImages:images forState:MJRefreshStatePulling];
         [gifHeader setImages:images forState:MJRefreshStateRefreshing];

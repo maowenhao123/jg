@@ -28,10 +28,6 @@
  */
 + (NSDictionary *)playTypeName;
 /**
- 游戏id数组
- */
-+ (NSArray *)gameIds;
-/**
  获取银行信息
  */
 + (NSDictionary *)getBankDicInfo;
@@ -175,5 +171,6 @@
 + (UIImage *)imageCompressionWithImage:(UIImage *)myimage;
 #pragma mark -- json转字典
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
+
 
 @end

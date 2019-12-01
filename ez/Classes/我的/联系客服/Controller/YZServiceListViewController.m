@@ -92,15 +92,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZServiceModel *serviceModel = self.dataArray[indexPath.row];
-    NSDictionary *extendDic = [YZTool dictionaryWithJsonString:serviceModel.extendParams];
-    if (YZDictIsEmpty(extendDic)) {
-        return;
-    }
     
     if ([serviceModel.redirectType isEqualToString:@"EASEMOB"]) {
         [self goChat];
     }else if ([serviceModel.redirectType isEqualToString:@"WEIXIN"])
     {
+        NSDictionary *extendDic = [YZTool dictionaryWithJsonString:serviceModel.extendParams];
+        if (YZDictIsEmpty(extendDic)) {
+            return;
+        }
+        
         //复制账号
         UIPasteboard *pab = [UIPasteboard generalPasteboard];
         NSString *string = extendDic[@"weixin"];
@@ -109,6 +110,11 @@
         [self performSelector:@selector(skipWeixin) withObject:self afterDelay:1.0f];
     }else if ([serviceModel.redirectType isEqualToString:@"QQ"])
     {
+        NSDictionary *extendDic = [YZTool dictionaryWithJsonString:serviceModel.extendParams];
+        if (YZDictIsEmpty(extendDic)) {
+            return;
+        }
+        
         NSString *urlStr = [NSString stringWithFormat:@"%@", extendDic[@"url"]];
         NSURL * url = [NSURL URLWithString:urlStr];
         BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
@@ -121,6 +127,11 @@
         }
     }else if ([serviceModel.redirectType isEqualToString:@"TELL"])
     {
+        NSDictionary *extendDic = [YZTool dictionaryWithJsonString:serviceModel.extendParams];
+        if (YZDictIsEmpty(extendDic)) {
+            return;
+        }
+        
         NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@", extendDic[@"tellphone"]];
         UIWebView * callWebview = [[UIWebView alloc] init];
         [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];

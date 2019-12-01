@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2E333A23714F3600E8C9AC /* YZKy481WanNengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */; };
+		1D2E333B23714F3D00E8C9AC /* YZKy481WanNengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */; };
+		1D2E333C23714F3E00E8C9AC /* YZKy481WanNengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */; };
+		1D2E333D23714F3E00E8C9AC /* YZKy481WanNengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */; };
+		1D2E3340237162F300E8C9AC /* YZKy481ChongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */; };
+		1D2E3341237162F300E8C9AC /* YZKy481ChongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */; };
+		1D2E3342237162F300E8C9AC /* YZKy481ChongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */; };
+		1D2E3343237162F300E8C9AC /* YZKy481ChongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */; };
+		1D2E33462371646A00E8C9AC /* YZKy481DanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E33452371646A00E8C9AC /* YZKy481DanView.m */; };
+		1D2E33472371646A00E8C9AC /* YZKy481DanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E33452371646A00E8C9AC /* YZKy481DanView.m */; };
+		1D2E33482371646A00E8C9AC /* YZKy481DanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E33452371646A00E8C9AC /* YZKy481DanView.m */; };
+		1D2E33492371646A00E8C9AC /* YZKy481DanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E33452371646A00E8C9AC /* YZKy481DanView.m */; };
+		1D2E334C2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E334B2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m */; };
+		1D2E334D2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E334B2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m */; };
+		1D2E334E2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E334B2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m */; };
+		1D2E334F2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E334B2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m */; };
 		1D76806422DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806522DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806622DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
@@ -16,12 +32,40 @@
 		1D76807122DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
 		1D76807222DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
 		1D76807322DC5064007C1154 /* YZServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */; };
+		1D783F98238E46E900C5FC6D /* YZAddH5AppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D783F97238E46E900C5FC6D /* YZAddH5AppView.m */; };
+		1D783F99238E46E900C5FC6D /* YZAddH5AppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D783F97238E46E900C5FC6D /* YZAddH5AppView.m */; };
+		1D783F9A238E46E900C5FC6D /* YZAddH5AppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D783F97238E46E900C5FC6D /* YZAddH5AppView.m */; };
+		1D783F9B238E46E900C5FC6D /* YZAddH5AppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D783F97238E46E900C5FC6D /* YZAddH5AppView.m */; };
+		1D7BDF972371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDF982371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDF992371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDF9A2371088E0015CD8E /* YZKy481ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */; };
+		1D7BDFFC23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
+		1D7BDFFD23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
+		1D7BDFFE23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
+		1D7BDFFF23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */; };
+		1D7BE002237112580015CD8E /* YZKy481PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */; };
+		1D7BE003237112580015CD8E /* YZKy481PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */; };
+		1D7BE004237112580015CD8E /* YZKy481PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */; };
+		1D7BE005237112580015CD8E /* YZKy481PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */; };
+		1D96B6C523794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6C623794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6C723794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6C823794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
+		1D96B6CB2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
+		1D96B6CC2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
+		1D96B6CD2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
+		1D96B6CE2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
 		1DB2A59522C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59622C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59722C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59F22C20615000AFE52 /* YZCirclePlayTypePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */; };
 		1DB2A5A022C20615000AFE52 /* YZCirclePlayTypePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */; };
 		1DB2A5A122C20615000AFE52 /* YZCirclePlayTypePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */; };
+		1DB33E74237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
+		1DB33E75237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
+		1DB33E76237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
+		1DB33E77237D429500463EEE /* YZKy481Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB33E73237D429500463EEE /* YZKy481Math.m */; };
 		1DB6AA7622D2EAE700B2D6EF /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */; };
 		1DB6AA7722D2EAE700B2D6EF /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */; };
 		1DB6AA7822D2EAE700B2D6EF /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */; };
@@ -344,7 +388,7 @@
 		1DCA1A092327376100F2061B /* YZChartBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291A31FFE27B600CA77DA /* YZChartBallView.m */; };
 		1DCA1A0A2327376100F2061B /* YZBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291331FFE27B600CA77DA /* YZBetViewController.m */; };
 		1DCA1A0B2327376100F2061B /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E9211FFE17DE003B53AF /* SBJsonParser.m */; };
-		1DCA1A0C2327376100F2061B /* YZRecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */; };
+		1DCA1A0C2327376100F2061B /* YZ11x5RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m */; };
 		1DCA1A0D2327376100F2061B /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD8B4122CAFF770024CF7B /* FSActionSheet.m */; };
 		1DCA1A0E2327376100F2061B /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD8DFE22CB2BDD0024CF7B /* UIView+SDExtension.m */; };
 		1DCA1A0F2327376100F2061B /* HDAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7F91FFE17DD003B53AF /* HDAudioRecorderUtil.m */; };
@@ -407,7 +451,6 @@
 		1DCA1A4A2327376100F2061B /* YZChartChooseBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291C91FFE27B600CA77DA /* YZChartChooseBallView.m */; };
 		1DCA1A4B2327376100F2061B /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD8C0422CB00460024CF7B /* MWZoomingScrollView.m */; };
 		1DCA1A4C2327376100F2061B /* HDMessageReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7C31FFE17DD003B53AF /* HDMessageReadManager.m */; };
-		1DCA1A4D2327376100F2061B /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
 		1DCA1A4E2327376100F2061B /* HDBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E89C1FFE17DD003B53AF /* HDBubbleView.m */; };
 		1DCA1A4F2327376100F2061B /* YZOrderStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1001FFE0A86003B53AF /* YZOrderStatus.m */; };
 		1DCA1A502327376100F2061B /* YZTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291721FFE27B600CA77DA /* YZTitleButton.m */; };
@@ -591,7 +634,7 @@
 		1DCA1B032327376100F2061B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD8E3122CB2C1E0024CF7B /* UIImageView+WebCache.m */; };
 		1DCA1B042327376100F2061B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E9941FFE17DE003B53AF /* FMResultSet.m */; };
 		1DCA1B052327376100F2061B /* YZBasketBallBetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207720BE398100D47F85 /* YZBasketBallBetHeaderView.m */; };
-		1DCA1B062327376100F2061B /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
+		1DCA1B062327376100F2061B /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
 		1DCA1B072327376100F2061B /* YZFbOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1091FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m */; };
 		1DCA1B082327376100F2061B /* YZFBChoosePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */; };
 		1DCA1B092327376100F2061B /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E91A1FFE17DE003B53AF /* MJRefreshComponent.m */; };
@@ -895,7 +938,6 @@
 		1DCA1C3D2327376100F2061B /* YZStartUnionBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */; };
 		1DCA1C3E2327376100F2061B /* YZChooseVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */; };
 		1DCA1C3F2327376100F2061B /* YZMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74ECCE1FFE1AD6003B53AF /* YZMessageType.m */; };
-		1DCA1C402327376100F2061B /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
 		1DCA1C412327376100F2061B /* YZBuyLotteryCellStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292781FFE27B600CA77DA /* YZBuyLotteryCellStatus.m */; };
 		1DCA1C422327376100F2061B /* UIResponder+HRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7BF1FFE17DD003B53AF /* UIResponder+HRouter.m */; };
 		1DCA1C432327376100F2061B /* YZFBMatchDetailRecommendStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292191FFE27B600CA77DA /* YZFBMatchDetailRecommendStatus.m */; };
@@ -1010,10 +1052,6 @@
 		1DCA1CC023273F9D00F2061B /* HelpDeskLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA3A9D3821DEF58A00F9147C /* HelpDeskLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DCA1CC123273F9D00F2061B /* HyphenateLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3A9D3721DEF58A00F9147C /* HyphenateLite.framework */; };
 		1DCA1CC223273F9D00F2061B /* HyphenateLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA3A9D3721DEF58A00F9147C /* HyphenateLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1DCA1CFD2327456D00F2061B /* YZRRMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA1CFC2327456D00F2061B /* YZRRMineViewController.m */; };
-		1DCA1CFE2327456D00F2061B /* YZRRMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA1CFC2327456D00F2061B /* YZRRMineViewController.m */; };
-		1DCA1CFF2327456D00F2061B /* YZRRMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA1CFC2327456D00F2061B /* YZRRMineViewController.m */; };
-		1DCA1D002327456D00F2061B /* YZRRMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA1CFC2327456D00F2061B /* YZRRMineViewController.m */; };
 		1DD0333822C49DC3006094A2 /* YZSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0333722C49DC3006094A2 /* YZSegementView.m */; };
 		1DD0333922C49DC3006094A2 /* YZSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0333722C49DC3006094A2 /* YZSegementView.m */; };
 		1DD0333A22C49DC3006094A2 /* YZSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0333722C49DC3006094A2 /* YZSegementView.m */; };
@@ -1026,6 +1064,10 @@
 		1DD0334722C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0334622C4AD7B006094A2 /* YZCircleCommentTableView.m */; };
 		1DD0334822C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0334622C4AD7B006094A2 /* YZCircleCommentTableView.m */; };
 		1DD0334922C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0334622C4AD7B006094A2 /* YZCircleCommentTableView.m */; };
+		1DD45A8E23910CF60007C481 /* YZKy481ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD45A8D23910CF60007C481 /* YZKy481ChartViewController.m */; };
+		1DD45A8F23910CF60007C481 /* YZKy481ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD45A8D23910CF60007C481 /* YZKy481ChartViewController.m */; };
+		1DD45A9023910CF60007C481 /* YZKy481ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD45A8D23910CF60007C481 /* YZKy481ChartViewController.m */; };
+		1DD45A9123910CF60007C481 /* YZKy481ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD45A8D23910CF60007C481 /* YZKy481ChartViewController.m */; };
 		1DDDBB1422BB6E70006F8ECA /* YZEditSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */; };
 		1DDDBB1522BB6E70006F8ECA /* YZEditSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */; };
 		1DDDBB1622BB6E70006F8ECA /* YZEditSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */; };
@@ -1275,7 +1317,7 @@
 		AA237DD42143590C00BC47BB /* YZChartBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291A31FFE27B600CA77DA /* YZChartBallView.m */; };
 		AA237DD52143590C00BC47BB /* YZBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291331FFE27B600CA77DA /* YZBetViewController.m */; };
 		AA237DD62143590C00BC47BB /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E9211FFE17DE003B53AF /* SBJsonParser.m */; };
-		AA237DD72143590C00BC47BB /* YZRecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */; };
+		AA237DD72143590C00BC47BB /* YZ11x5RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m */; };
 		AA237DD82143590C00BC47BB /* HDAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7F91FFE17DD003B53AF /* HDAudioRecorderUtil.m */; };
 		AA237DD92143590C00BC47BB /* YZFunctionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E14B1FFE0AEA003B53AF /* YZFunctionStatus.m */; };
 		AA237DDB2143590C00BC47BB /* YZCircleViewAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACDC21620FEE72200955419 /* YZCircleViewAttentionViewController.m */; };
@@ -1319,7 +1361,6 @@
 		AA237E052143590C00BC47BB /* YZUpGradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA43DCAE1F4AE0F70018818E /* YZUpGradeView.m */; };
 		AA237E062143590C00BC47BB /* YZChartChooseBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291C91FFE27B600CA77DA /* YZChartChooseBallView.m */; };
 		AA237E072143590C00BC47BB /* HDMessageReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7C31FFE17DD003B53AF /* HDMessageReadManager.m */; };
-		AA237E082143590C00BC47BB /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
 		AA237E092143590C00BC47BB /* HDBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E89C1FFE17DD003B53AF /* HDBubbleView.m */; };
 		AA237E0A2143590C00BC47BB /* YZOrderStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1001FFE0A86003B53AF /* YZOrderStatus.m */; };
 		AA237E0B2143590C00BC47BB /* YZTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291721FFE27B600CA77DA /* YZTitleButton.m */; };
@@ -1470,7 +1511,7 @@
 		AA237EAF2143590C00BC47BB /* YZFBMatchDetailTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32925E1FFE27B600CA77DA /* YZFBMatchDetailTeamView.m */; };
 		AA237EB02143590C00BC47BB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E9941FFE17DE003B53AF /* FMResultSet.m */; };
 		AA237EB12143590C00BC47BB /* YZBasketBallBetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207720BE398100D47F85 /* YZBasketBallBetHeaderView.m */; };
-		AA237EB22143590C00BC47BB /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
+		AA237EB22143590C00BC47BB /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
 		AA237EB32143590C00BC47BB /* YZFbOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E1091FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m */; };
 		AA237EB42143590C00BC47BB /* YZFBChoosePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */; };
 		AA237EB52143590C00BC47BB /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E91A1FFE17DE003B53AF /* MJRefreshComponent.m */; };
@@ -1704,7 +1745,6 @@
 		AA237FC82143590C00BC47BB /* YZStartUnionBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */; };
 		AA237FC92143590C00BC47BB /* YZChooseVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */; };
 		AA237FCA2143590C00BC47BB /* YZMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74ECCE1FFE1AD6003B53AF /* YZMessageType.m */; };
-		AA237FCD2143590C00BC47BB /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
 		AA237FCE2143590C00BC47BB /* YZBuyLotteryCellStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292781FFE27B600CA77DA /* YZBuyLotteryCellStatus.m */; };
 		AA237FCF2143590C00BC47BB /* UIResponder+HRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E7BF1FFE17DD003B53AF /* UIResponder+HRouter.m */; };
 		AA237FD02143590C00BC47BB /* YZFBMatchDetailRecommendStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3292191FFE27B600CA77DA /* YZFBMatchDetailRecommendStatus.m */; };
@@ -1901,8 +1941,8 @@
 		AA3292BC1FFE27B600CA77DA /* YZConsumableVoucherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */; };
 		AA3292BD1FFE27B600CA77DA /* YZPlwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291381FFE27B600CA77DA /* YZPlwViewController.m */; };
 		AA3292BE1FFE27B600CA77DA /* YZPlwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291381FFE27B600CA77DA /* YZPlwViewController.m */; };
-		AA3292BF1FFE27B600CA77DA /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
-		AA3292C01FFE27B600CA77DA /* YZFucaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */; };
+		AA3292BF1FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
+		AA3292C01FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */; };
 		AA3292C11FFE27B600CA77DA /* YZDltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32913C1FFE27B600CA77DA /* YZDltViewController.m */; };
 		AA3292C21FFE27B600CA77DA /* YZDltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32913C1FFE27B600CA77DA /* YZDltViewController.m */; };
 		AA3292C31FFE27B600CA77DA /* YZSsqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32913D1FFE27B600CA77DA /* YZSsqViewController.m */; };
@@ -1921,8 +1961,8 @@
 		AA3292D01FFE27B600CA77DA /* YZSelectBallCellStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291491FFE27B600CA77DA /* YZSelectBallCellStatus.m */; };
 		AA3292D11FFE27B600CA77DA /* YZBetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914D1FFE27B600CA77DA /* YZBetCell.m */; };
 		AA3292D21FFE27B600CA77DA /* YZBetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914D1FFE27B600CA77DA /* YZBetCell.m */; };
-		AA3292D31FFE27B600CA77DA /* YZRecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */; };
-		AA3292D41FFE27B600CA77DA /* YZRecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */; };
+		AA3292D31FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m */; };
+		AA3292D41FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914E1FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m */; };
 		AA3292D51FFE27B600CA77DA /* YZLotteryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914F1FFE27B600CA77DA /* YZLotteryButton.m */; };
 		AA3292D61FFE27B600CA77DA /* YZLotteryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32914F1FFE27B600CA77DA /* YZLotteryButton.m */; };
 		AA3292D71FFE27B600CA77DA /* YZKsSanbutongView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291511FFE27B600CA77DA /* YZKsSanbutongView.m */; };
@@ -2021,8 +2061,6 @@
 		AA3293421FFE27B600CA77DA /* YZSfcBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291CE1FFE27B600CA77DA /* YZSfcBetViewController.m */; };
 		AA3293431FFE27B600CA77DA /* YZScjqBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */; };
 		AA3293441FFE27B600CA77DA /* YZScjqBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */; };
-		AA3293451FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
-		AA3293461FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */; };
 		AA3293471FFE27B600CA77DA /* YZFbBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */; };
 		AA3293481FFE27B600CA77DA /* YZFbBetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */; };
 		AA3293491FFE27B600CA77DA /* YZFootBallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */; };
@@ -2863,8 +2901,6 @@
 		AA74EC9D1FFE19A5003B53AF /* YZUPPayPluginRechargeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7C1FFE19A5003B53AF /* YZUPPayPluginRechargeViewController.mm */; };
 		AA74EC9E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m */; };
 		AA74EC9F1FFE19A5003B53AF /* YZBankCardRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m */; };
-		AA74ECA01FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
-		AA74ECA11FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */; };
 		AA74ECA21FFE19A5003B53AF /* YZBankRemitController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC801FFE19A5003B53AF /* YZBankRemitController.m */; };
 		AA74ECA31FFE19A5003B53AF /* YZBankRemitController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC801FFE19A5003B53AF /* YZBankRemitController.m */; };
 		AA74ECA41FFE19A5003B53AF /* YZRechargeSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74EC811FFE19A5003B53AF /* YZRechargeSuccessViewController.m */; };
@@ -3100,16 +3136,38 @@
 		18BBF3FE1E7B779900AF69E6 /* zc-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "zc-info.plist"; sourceTree = "<group>"; };
 		18BBF4041E7B78CC00AF69E6 /* zc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zc.entitlements; sourceTree = "<group>"; };
 		18BBF4061E7B7E2E00AF69E6 /* ez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ez.entitlements; sourceTree = "<group>"; };
+		1D2E333823714F3600E8C9AC /* YZKy481WanNengView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481WanNengView.h; sourceTree = "<group>"; };
+		1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481WanNengView.m; sourceTree = "<group>"; };
+		1D2E333E237162F300E8C9AC /* YZKy481ChongView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ChongView.h; sourceTree = "<group>"; };
+		1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChongView.m; sourceTree = "<group>"; };
+		1D2E33442371646A00E8C9AC /* YZKy481DanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481DanView.h; sourceTree = "<group>"; };
+		1D2E33452371646A00E8C9AC /* YZKy481DanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481DanView.m; sourceTree = "<group>"; };
+		1D2E334A2372B72B00E8C9AC /* YZKy481RecentLotteryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481RecentLotteryCell.h; sourceTree = "<group>"; };
+		1D2E334B2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481RecentLotteryCell.m; sourceTree = "<group>"; };
 		1D76806222DC4F9D007C1154 /* YZServiceListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceListViewController.h; sourceTree = "<group>"; };
 		1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceListViewController.m; sourceTree = "<group>"; };
 		1D76806A22DC505A007C1154 /* YZServiceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceModel.h; sourceTree = "<group>"; };
 		1D76806B22DC505A007C1154 /* YZServiceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceModel.m; sourceTree = "<group>"; };
 		1D76806F22DC5064007C1154 /* YZServiceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceTableViewCell.h; sourceTree = "<group>"; };
 		1D76807022DC5064007C1154 /* YZServiceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceTableViewCell.m; sourceTree = "<group>"; };
+		1D783F96238E46E900C5FC6D /* YZAddH5AppView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZAddH5AppView.h; sourceTree = "<group>"; };
+		1D783F97238E46E900C5FC6D /* YZAddH5AppView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZAddH5AppView.m; sourceTree = "<group>"; };
+		1D7BDF952371088E0015CD8E /* YZKy481ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ViewController.h; sourceTree = "<group>"; };
+		1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ViewController.m; sourceTree = "<group>"; };
+		1D7BDFFA23710F760015CD8E /* YZFbBetSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFbBetSuccessViewController.h; sourceTree = "<group>"; };
+		1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFbBetSuccessViewController.m; sourceTree = "<group>"; };
+		1D7BE000237112580015CD8E /* YZKy481PlayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481PlayTypeView.h; sourceTree = "<group>"; };
+		1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481PlayTypeView.m; sourceTree = "<group>"; };
+		1D96B6C323794D9E00F1FC63 /* YZErCodeRechargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZErCodeRechargeViewController.h; sourceTree = "<group>"; };
+		1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZErCodeRechargeViewController.m; sourceTree = "<group>"; };
+		1D96B6C92379519300F1FC63 /* YZErCodeRechargeSuccessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZErCodeRechargeSuccessView.h; sourceTree = "<group>"; };
+		1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZErCodeRechargeSuccessView.m; sourceTree = "<group>"; };
 		1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZ11x5PlayTypeView.h; sourceTree = "<group>"; };
 		1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZ11x5PlayTypeView.m; sourceTree = "<group>"; };
 		1DB2A59D22C20615000AFE52 /* YZCirclePlayTypePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCirclePlayTypePickerView.h; sourceTree = "<group>"; };
 		1DB2A59E22C20615000AFE52 /* YZCirclePlayTypePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCirclePlayTypePickerView.m; sourceTree = "<group>"; };
+		1DB33E72237D429500463EEE /* YZKy481Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481Math.h; sourceTree = "<group>"; };
+		1DB33E73237D429500463EEE /* YZKy481Math.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481Math.m; sourceTree = "<group>"; };
 		1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		1DB6AA8822D31E9700B2D6EF /* YZCustomerServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCustomerServiceViewController.h; sourceTree = "<group>"; };
 		1DB6AA8922D31E9700B2D6EF /* YZCustomerServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCustomerServiceViewController.m; sourceTree = "<group>"; };
@@ -3270,8 +3328,6 @@
 		1DBD8E4422CB2C240024CF7B /* NSImage+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+WebCache.h"; sourceTree = "<group>"; };
 		1DCA1CB92327376100F2061B /* rr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DCA1CBB23273ECD00F2061B /* rr-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "rr-Info.plist"; sourceTree = "<group>"; };
-		1DCA1CFB2327456D00F2061B /* YZRRMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZRRMineViewController.h; sourceTree = "<group>"; };
-		1DCA1CFC2327456D00F2061B /* YZRRMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZRRMineViewController.m; sourceTree = "<group>"; };
 		1DD0333622C49DC3006094A2 /* YZSegementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSegementView.h; sourceTree = "<group>"; };
 		1DD0333722C49DC3006094A2 /* YZSegementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSegementView.m; sourceTree = "<group>"; };
 		1DD0333B22C49E37006094A2 /* YZMineCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZMineCircleViewController.h; sourceTree = "<group>"; };
@@ -3280,6 +3336,8 @@
 		1DD0334122C4A478006094A2 /* YZCircleUserInfoHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCircleUserInfoHeaderView.m; sourceTree = "<group>"; };
 		1DD0334522C4AD7B006094A2 /* YZCircleCommentTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCircleCommentTableView.h; sourceTree = "<group>"; };
 		1DD0334622C4AD7B006094A2 /* YZCircleCommentTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCircleCommentTableView.m; sourceTree = "<group>"; };
+		1DD45A8C23910CF60007C481 /* YZKy481ChartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ChartViewController.h; sourceTree = "<group>"; };
+		1DD45A8D23910CF60007C481 /* YZKy481ChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChartViewController.m; sourceTree = "<group>"; };
 		1DDDBB1222BB6E70006F8ECA /* YZEditSegementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZEditSegementView.h; sourceTree = "<group>"; };
 		1DDDBB1322BB6E70006F8ECA /* YZEditSegementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZEditSegementView.m; sourceTree = "<group>"; };
 		1DDDBB1722BC6F1F006F8ECA /* YZSegementCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSegementCollectionViewCell.h; sourceTree = "<group>"; };
@@ -3501,7 +3559,7 @@
 		AA3291271FFE27B600CA77DA /* YZPlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPlsViewController.m; sourceTree = "<group>"; };
 		AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZChooseVoucherViewController.m; sourceTree = "<group>"; };
 		AA3291291FFE27B600CA77DA /* YZPlwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPlwViewController.h; sourceTree = "<group>"; };
-		AA32912A1FFE27B600CA77DA /* YZFucaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFucaiViewController.h; sourceTree = "<group>"; };
+		AA32912A1FFE27B600CA77DA /* YZFucai3DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFucai3DViewController.h; sourceTree = "<group>"; };
 		AA32912B1FFE27B600CA77DA /* YZConsumableVoucherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZConsumableVoucherViewController.h; sourceTree = "<group>"; };
 		AA32912C1FFE27B600CA77DA /* YZSsqViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSsqViewController.h; sourceTree = "<group>"; };
 		AA32912D1FFE27B600CA77DA /* YZDltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDltViewController.h; sourceTree = "<group>"; };
@@ -3516,7 +3574,7 @@
 		AA3291361FFE27B600CA77DA /* YZS1x5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZS1x5ViewController.m; sourceTree = "<group>"; };
 		AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZConsumableVoucherViewController.m; sourceTree = "<group>"; };
 		AA3291381FFE27B600CA77DA /* YZPlwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPlwViewController.m; sourceTree = "<group>"; };
-		AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFucaiViewController.m; sourceTree = "<group>"; };
+		AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFucai3DViewController.m; sourceTree = "<group>"; };
 		AA32913A1FFE27B600CA77DA /* YZChooseVoucherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZChooseVoucherViewController.h; sourceTree = "<group>"; };
 		AA32913B1FFE27B600CA77DA /* YZPlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPlsViewController.h; sourceTree = "<group>"; };
 		AA32913C1FFE27B600CA77DA /* YZDltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDltViewController.m; sourceTree = "<group>"; };
@@ -3535,7 +3593,7 @@
 		AA32914A1FFE27B600CA77DA /* YZRecentLotteryStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZRecentLotteryStatus.h; sourceTree = "<group>"; };
 		AA32914B1FFE27B600CA77DA /* YZSelectBallCellStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSelectBallCellStatus.h; sourceTree = "<group>"; };
 		AA32914D1FFE27B600CA77DA /* YZBetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBetCell.m; sourceTree = "<group>"; };
-		AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZRecentLotteryCell.m; sourceTree = "<group>"; };
+		AA32914E1FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZ11x5RecentLotteryCell.m; sourceTree = "<group>"; };
 		AA32914F1FFE27B600CA77DA /* YZLotteryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZLotteryButton.m; sourceTree = "<group>"; };
 		AA3291511FFE27B600CA77DA /* YZKsSanbutongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZKsSanbutongView.m; sourceTree = "<group>"; };
 		AA3291521FFE27B600CA77DA /* YZKsBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZKsBaseView.h; sourceTree = "<group>"; };
@@ -3573,7 +3631,7 @@
 		AA3291721FFE27B600CA77DA /* YZTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZTitleButton.m; sourceTree = "<group>"; };
 		AA3291731FFE27B600CA77DA /* YZBallBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBallBtn.m; sourceTree = "<group>"; };
 		AA3291741FFE27B600CA77DA /* YZBetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZBetCell.h; sourceTree = "<group>"; };
-		AA3291751FFE27B600CA77DA /* YZRecentLotteryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZRecentLotteryCell.h; sourceTree = "<group>"; };
+		AA3291751FFE27B600CA77DA /* YZ11x5RecentLotteryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZ11x5RecentLotteryCell.h; sourceTree = "<group>"; };
 		AA3291761FFE27B600CA77DA /* YZSelectedBetNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSelectedBetNumberView.m; sourceTree = "<group>"; };
 		AA3291771FFE27B600CA77DA /* YZSelectBallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSelectBallCell.h; sourceTree = "<group>"; };
 		AA3291781FFE27B600CA77DA /* YZLotteryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZLotteryButton.h; sourceTree = "<group>"; };
@@ -3638,7 +3696,6 @@
 		AA3291D01FFE27B600CA77DA /* YZFbBetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFbBetViewController.h; sourceTree = "<group>"; };
 		AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZScjqBetViewController.m; sourceTree = "<group>"; };
 		AA3291D21FFE27B600CA77DA /* YZSfcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSfcViewController.h; sourceTree = "<group>"; };
-		AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFbBetSuccessViewController.m; sourceTree = "<group>"; };
 		AA3291D41FFE27B600CA77DA /* YZScjqViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZScjqViewController.h; sourceTree = "<group>"; };
 		AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFbBetViewController.m; sourceTree = "<group>"; };
 		AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFootBallViewController.m; sourceTree = "<group>"; };
@@ -3647,7 +3704,6 @@
 		AA3291D91FFE27B600CA77DA /* YZSfcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSfcViewController.m; sourceTree = "<group>"; };
 		AA3291DA1FFE27B600CA77DA /* YZScjqBetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZScjqBetViewController.h; sourceTree = "<group>"; };
 		AA3291DB1FFE27B600CA77DA /* YZScjqViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZScjqViewController.m; sourceTree = "<group>"; };
-		AA3291DC1FFE27B600CA77DA /* YZFbBetSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFbBetSuccessViewController.h; sourceTree = "<group>"; };
 		AA3291DE1FFE27B600CA77DA /* YZGameIndosStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZGameIndosStatus.h; sourceTree = "<group>"; };
 		AA3291DF1FFE27B600CA77DA /* YZScjqCellStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZScjqCellStatus.h; sourceTree = "<group>"; };
 		AA3291E01FFE27B600CA77DA /* YZMatchInfosStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMatchInfosStatus.h; sourceTree = "<group>"; };
@@ -4411,7 +4467,6 @@
 		AA74EA111FFE17DE003B53AF /* YZStatusCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZStatusCacheTool.h; sourceTree = "<group>"; };
 		AA74EA121FFE17DE003B53AF /* YZStatusCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZStatusCacheTool.m; sourceTree = "<group>"; };
 		AA74EC6D1FFE19A5003B53AF /* YZRechargeRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZRechargeRecordViewController.m; sourceTree = "<group>"; };
-		AA74EC6F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZWeixinPayGuideViewController.h; sourceTree = "<group>"; };
 		AA74EC701FFE19A5003B53AF /* YZZhifubaoRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZZhifubaoRechargeViewController.m; sourceTree = "<group>"; };
 		AA74EC711FFE19A5003B53AF /* YZBankCardRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZBankCardRechargeViewController.h; sourceTree = "<group>"; };
 		AA74EC721FFE19A5003B53AF /* YZZhifubaoNewRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZZhifubaoNewRechargeViewController.h; sourceTree = "<group>"; };
@@ -4427,7 +4482,6 @@
 		AA74EC7C1FFE19A5003B53AF /* YZUPPayPluginRechargeViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YZUPPayPluginRechargeViewController.mm; sourceTree = "<group>"; };
 		AA74EC7D1FFE19A5003B53AF /* YZZhifubaoRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZZhifubaoRechargeViewController.h; sourceTree = "<group>"; };
 		AA74EC7E1FFE19A5003B53AF /* YZBankCardRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBankCardRechargeViewController.m; sourceTree = "<group>"; };
-		AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZWeixinPayGuideViewController.m; sourceTree = "<group>"; };
 		AA74EC801FFE19A5003B53AF /* YZBankRemitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBankRemitController.m; sourceTree = "<group>"; };
 		AA74EC811FFE19A5003B53AF /* YZRechargeSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZRechargeSuccessViewController.m; sourceTree = "<group>"; };
 		AA74EC821FFE19A5003B53AF /* YZPhoneCardRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPhoneCardRechargeViewController.m; sourceTree = "<group>"; };
@@ -4852,6 +4906,665 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1D7BDF912371081E0015CD8E /* 快赢481 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDF93237108730015CD8E /* Controller */,
+				1D7BDF92237108730015CD8E /* Model */,
+				1D7BDF94237108740015CD8E /* View */,
+			);
+			path = "快赢481";
+			sourceTree = "<group>";
+		};
+		1D7BDF92237108730015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DB33E72237D429500463EEE /* YZKy481Math.h */,
+				1DB33E73237D429500463EEE /* YZKy481Math.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDF93237108730015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDF952371088E0015CD8E /* YZKy481ViewController.h */,
+				1D7BDF962371088E0015CD8E /* YZKy481ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDF94237108740015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BE000237112580015CD8E /* YZKy481PlayTypeView.h */,
+				1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */,
+				1D2E333823714F3600E8C9AC /* YZKy481WanNengView.h */,
+				1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */,
+				1D2E333E237162F300E8C9AC /* YZKy481ChongView.h */,
+				1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */,
+				1D2E33442371646A00E8C9AC /* YZKy481DanView.h */,
+				1D2E33452371646A00E8C9AC /* YZKy481DanView.m */,
+				1D2E334A2372B72B00E8C9AC /* YZKy481RecentLotteryCell.h */,
+				1D2E334B2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDF9B23710AC30015CD8E /* 基类 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDF9E23710AD70015CD8E /* Controller */,
+				1D7BDF9C23710AD60015CD8E /* Model */,
+				1D7BDF9D23710AD70015CD8E /* View */,
+			);
+			path = "基类";
+			sourceTree = "<group>";
+		};
+		1D7BDF9C23710AD60015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA32914B1FFE27B600CA77DA /* YZSelectBallCellStatus.h */,
+				AA3291491FFE27B600CA77DA /* YZSelectBallCellStatus.m */,
+				AA32914A1FFE27B600CA77DA /* YZRecentLotteryStatus.h */,
+				AA3291481FFE27B600CA77DA /* YZRecentLotteryStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDF9D23710AD70015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA32917A1FFE27B600CA77DA /* YZTitleButton.h */,
+				AA3291721FFE27B600CA77DA /* YZTitleButton.m */,
+				AA3291771FFE27B600CA77DA /* YZSelectBallCell.h */,
+				AA32916F1FFE27B600CA77DA /* YZSelectBallCell.m */,
+				AA3291791FFE27B600CA77DA /* YZBallBtn.h */,
+				AA3291731FFE27B600CA77DA /* YZBallBtn.m */,
+				AA3291701FFE27B600CA77DA /* YZSelectedBetNumberView.h */,
+				AA3291761FFE27B600CA77DA /* YZSelectedBetNumberView.m */,
+				AA3291781FFE27B600CA77DA /* YZLotteryButton.h */,
+				AA32914F1FFE27B600CA77DA /* YZLotteryButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDF9E23710AD70015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32913F1FFE27B600CA77DA /* YZGameIdViewController.h */,
+				AA3291321FFE27B600CA77DA /* YZGameIdViewController.m */,
+				AA3291421FFE27B600CA77DA /* YZSelectBaseViewController.h */,
+				AA32912F1FFE27B600CA77DA /* YZSelectBaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDF9F23710B110015CD8E /* 下单 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFA123710B1D0015CD8E /* Controller */,
+				1D7BDFA223710B1D0015CD8E /* Model */,
+				1D7BDFA023710B1C0015CD8E /* View */,
+			);
+			path = "下单";
+			sourceTree = "<group>";
+		};
+		1D7BDFA023710B1C0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291741FFE27B600CA77DA /* YZBetCell.h */,
+				AA32914D1FFE27B600CA77DA /* YZBetCell.m */,
+				AA3291711FFE27B600CA77DA /* YZUnionChangeNickNameView.h */,
+				AA32917B1FFE27B600CA77DA /* YZUnionChangeNickNameView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFA123710B1D0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32913E1FFE27B600CA77DA /* YZBetViewController.h */,
+				AA3291331FFE27B600CA77DA /* YZBetViewController.m */,
+				AA32913A1FFE27B600CA77DA /* YZChooseVoucherViewController.h */,
+				AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */,
+				AA32912B1FFE27B600CA77DA /* YZConsumableVoucherViewController.h */,
+				AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */,
+				AA3291311FFE27B600CA77DA /* YZStartUnionBuyViewController.h */,
+				AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */,
+				AA3291341FFE27B600CA77DA /* YZBetSuccessViewController.h */,
+				AA3291461FFE27B600CA77DA /* YZBetSuccessViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFA223710B1D0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA4B7BBC20172C1900A6F764 /* YZQrCodeModel.h */,
+				AA4B7BBD20172C1900A6F764 /* YZQrCodeModel.m */,
+				AA3657CE21D224B9009BE71B /* YZActivityModel.h */,
+				AA3657CF21D224B9009BE71B /* YZActivityModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFA323710B920015CD8E /* 11选5 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFA823710BB20015CD8E /* Controller */,
+				1D7BDFA923710BB20015CD8E /* Model */,
+				1D7BDFA723710BB20015CD8E /* View */,
+			);
+			path = "11选5";
+			sourceTree = "<group>";
+		};
+		1D7BDFA723710BB20015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */,
+				1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */,
+				AA3291751FFE27B600CA77DA /* YZ11x5RecentLotteryCell.h */,
+				AA32914E1FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFA823710BB20015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291451FFE27B600CA77DA /* YZS1x5ViewController.h */,
+				AA3291361FFE27B600CA77DA /* YZS1x5ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFA923710BB20015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFAA23710BE10015CD8E /* 快三 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFAC23710BEC0015CD8E /* Controller */,
+				1D7BDFAB23710BEB0015CD8E /* Model */,
+				1D7BDFAD23710BEC0015CD8E /* View */,
+			);
+			path = "快三";
+			sourceTree = "<group>";
+		};
+		1D7BDFAB23710BEB0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFAC23710BEC0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291351FFE27B600CA77DA /* YZKsViewController.h */,
+				AA3291441FFE27B600CA77DA /* YZKsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFAD23710BEC0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291551FFE27B600CA77DA /* YZKsPlayTypeView.h */,
+				AA3291671FFE27B600CA77DA /* YZKsPlayTypeView.m */,
+				AA3291521FFE27B600CA77DA /* YZKsBaseView.h */,
+				AA3291621FFE27B600CA77DA /* YZKsBaseView.m */,
+				AA3291651FFE27B600CA77DA /* YZKsHezhiView.h */,
+				AA3291581FFE27B600CA77DA /* YZKsHezhiView.m */,
+				AA32916E1FFE27B600CA77DA /* YZKsErtongView.h */,
+				AA32915E1FFE27B600CA77DA /* YZKsErtongView.m */,
+				AA32915D1FFE27B600CA77DA /* YZKsErbutongView.h */,
+				AA3291691FFE27B600CA77DA /* YZKsErbutongView.m */,
+				AA32915C1FFE27B600CA77DA /* YZKsSantongView.h */,
+				AA32916C1FFE27B600CA77DA /* YZKsSantongView.m */,
+				AA3291631FFE27B600CA77DA /* YZKsSanbutongView.h */,
+				AA3291511FFE27B600CA77DA /* YZKsSanbutongView.m */,
+				AA3291601FFE27B600CA77DA /* YZKsHistoryTableView.h */,
+				AA3291541FFE27B600CA77DA /* YZKsHistoryTableView.m */,
+				AA3291591FFE27B600CA77DA /* YZKsHistoryTableViewCell.h */,
+				AA3291641FFE27B600CA77DA /* YZKsHistoryTableViewCell.m */,
+				AA32916B1FFE27B600CA77DA /* YZksHistoryWinNumberView.h */,
+				AA32915A1FFE27B600CA77DA /* YZksHistoryWinNumberView.m */,
+				AA3291611FFE27B600CA77DA /* YZKsDiceAnimationView.h */,
+				AA3291531FFE27B600CA77DA /* YZKsDiceAnimationView.m */,
+				AA3291561FFE27B600CA77DA /* YZKsDiceView.h */,
+				AA3291681FFE27B600CA77DA /* YZKsDiceView.m */,
+				AA3291661FFE27B600CA77DA /* YZKsBottomView.h */,
+				AA3291571FFE27B600CA77DA /* YZKsBottomView.m */,
+				AA32915B1FFE27B600CA77DA /* YZKsBottomBtn.h */,
+				AA32916A1FFE27B600CA77DA /* YZKsBottomBtn.m */,
+				AA32915F1FFE27B600CA77DA /* YZKsBtn.h */,
+				AA32916D1FFE27B600CA77DA /* YZKsBtn.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFAE23710CD70015CD8E /* 双色球 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFAF23710CE70015CD8E /* Controller */,
+				1D7BDFB023710CE70015CD8E /* Model */,
+				1D7BDFB123710CE70015CD8E /* View */,
+			);
+			path = "双色球";
+			sourceTree = "<group>";
+		};
+		1D7BDFAF23710CE70015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912C1FFE27B600CA77DA /* YZSsqViewController.h */,
+				AA32913D1FFE27B600CA77DA /* YZSsqViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFB023710CE70015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFB123710CE70015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFB223710CEF0015CD8E /* 大乐透 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFB323710CFB0015CD8E /* Controller */,
+				1D7BDFB423710CFC0015CD8E /* Model */,
+				1D7BDFB523710CFC0015CD8E /* View */,
+			);
+			path = "大乐透";
+			sourceTree = "<group>";
+		};
+		1D7BDFB323710CFB0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912D1FFE27B600CA77DA /* YZDltViewController.h */,
+				AA32913C1FFE27B600CA77DA /* YZDltViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFB423710CFC0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFB523710CFC0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFB623710D030015CD8E /* 排列三 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFB723710D0C0015CD8E /* Controller */,
+				1D7BDFB923710D0D0015CD8E /* Model */,
+				1D7BDFB823710D0C0015CD8E /* View */,
+			);
+			path = "排列三";
+			sourceTree = "<group>";
+		};
+		1D7BDFB723710D0C0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32913B1FFE27B600CA77DA /* YZPlsViewController.h */,
+				AA3291271FFE27B600CA77DA /* YZPlsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFB823710D0C0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFB923710D0D0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFBA23710D180015CD8E /* 排列五 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC923710D570015CD8E /* Controller */,
+				1D7BDFC723710D560015CD8E /* Model */,
+				1D7BDFC823710D560015CD8E /* View */,
+			);
+			path = "排列五";
+			sourceTree = "<group>";
+		};
+		1D7BDFBB23710D220015CD8E /* 七星彩 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC623710D510015CD8E /* Controller */,
+				1D7BDFC523710D510015CD8E /* Model */,
+				1D7BDFC423710D500015CD8E /* View */,
+			);
+			path = "七星彩";
+			sourceTree = "<group>";
+		};
+		1D7BDFBC23710D290015CD8E /* 七乐彩 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC323710D490015CD8E /* Controller */,
+				1D7BDFC123710D480015CD8E /* Model */,
+				1D7BDFC223710D480015CD8E /* View */,
+			);
+			path = "七乐彩";
+			sourceTree = "<group>";
+		};
+		1D7BDFBD23710D360015CD8E /* 福彩3D */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFC023710D420015CD8E /* Controller */,
+				1D7BDFBE23710D410015CD8E /* Model */,
+				1D7BDFBF23710D420015CD8E /* View */,
+			);
+			path = "福彩3D";
+			sourceTree = "<group>";
+		};
+		1D7BDFBE23710D410015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFBF23710D420015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC023710D420015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912A1FFE27B600CA77DA /* YZFucai3DViewController.h */,
+				AA3291391FFE27B600CA77DA /* YZFucai3DViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFC123710D480015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFC223710D480015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC323710D490015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291411FFE27B600CA77DA /* YZQilecaiViewController.h */,
+				AA3291301FFE27B600CA77DA /* YZQilecaiViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFC423710D500015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC523710D510015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFC623710D510015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32912E1FFE27B600CA77DA /* YZQxcViewController.h */,
+				AA3291431FFE27B600CA77DA /* YZQxcViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFC723710D560015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFC823710D560015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFC923710D570015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291291FFE27B600CA77DA /* YZPlwViewController.h */,
+				AA3291381FFE27B600CA77DA /* YZPlwViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFCA23710DAF0015CD8E /* 竞彩足球 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFCD23710DCE0015CD8E /* Controller */,
+				1D7BDFCF23710DCF0015CD8E /* Model */,
+				1D7BDFCE23710DCE0015CD8E /* View */,
+			);
+			path = "竞彩足球";
+			sourceTree = "<group>";
+		};
+		1D7BDFCB23710DBA0015CD8E /* 四场进球 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFD223710DE80015CD8E /* Controller */,
+				1D7BDFD023710DE80015CD8E /* Model */,
+				1D7BDFD123710DE80015CD8E /* View */,
+			);
+			path = "四场进球";
+			sourceTree = "<group>";
+		};
+		1D7BDFCC23710DC20015CD8E /* 胜负彩 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFD323710DEE0015CD8E /* Controller */,
+				1D7BDFD423710DEE0015CD8E /* Model */,
+				1D7BDFD523710DEF0015CD8E /* View */,
+			);
+			path = "胜负彩";
+			sourceTree = "<group>";
+		};
+		1D7BDFCD23710DCE0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291CD1FFE27B600CA77DA /* YZFootBallBaseViewController.h */,
+				AA3291D81FFE27B600CA77DA /* YZFootBallBaseViewController.m */,
+				AA3291CF1FFE27B600CA77DA /* YZFootBallViewController.h */,
+				AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */,
+				AA3291D01FFE27B600CA77DA /* YZFbBetViewController.h */,
+				AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFCE23710DCE0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3292001FFE27B600CA77DA /* YZFTHeaderView.h */,
+				AA3291F51FFE27B600CA77DA /* YZFTHeaderView.m */,
+				AA57888122855C51002292EA /* YZFBPlayTypeView.h */,
+				AA57888222855C51002292EA /* YZFBPlayTypeView.m */,
+				AA578886228562CF002292EA /* YZFBSiftView.h */,
+				AA578887228562CF002292EA /* YZFBSiftView.m */,
+				AA3291F81FFE27B600CA77DA /* YZFootBallCell.h */,
+				AA3292021FFE27B600CA77DA /* YZFootBallCell.m */,
+				AA3292061FFE27B600CA77DA /* YZFBChoosePlayView.h */,
+				AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */,
+				AA3292051FFE27B600CA77DA /* YZFBAllPlayView.h */,
+				AA3291FD1FFE27B600CA77DA /* YZFBAllPlayView.m */,
+				AA3291FF1FFE27B600CA77DA /* YZFBMatchDetailCellView.h */,
+				AA3291F61FFE27B600CA77DA /* YZFBMatchDetailCellView.m */,
+				AA3291FA1FFE27B600CA77DA /* YZFbBetCell.h */,
+				AA3292031FFE27B600CA77DA /* YZFbBetCell.m */,
+				AA3291FC1FFE27B600CA77DA /* YZBtnsView.h */,
+				AA3292041FFE27B600CA77DA /* YZBtnsView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFCF23710DCF0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291DE1FFE27B600CA77DA /* YZGameIndosStatus.h */,
+				AA3291EC1FFE27B600CA77DA /* YZGameIndosStatus.m */,
+				AA3291E41FFE27B600CA77DA /* YZSectionStatus.h */,
+				AA3291EE1FFE27B600CA77DA /* YZSectionStatus.m */,
+				AA3291E01FFE27B600CA77DA /* YZMatchInfosStatus.h */,
+				AA3291EA1FFE27B600CA77DA /* YZMatchInfosStatus.m */,
+				AA3291EF1FFE27B600CA77DA /* YZOddsMap.h */,
+				AA3291E31FFE27B600CA77DA /* YZOddsMap.m */,
+				AA3291E91FFE27B600CA77DA /* YZCN.h */,
+				AA3291E11FFE27B600CA77DA /* YZCN.m */,
+				AA3291E61FFE27B600CA77DA /* YZBetStatus.h */,
+				AA3291F21FFE27B600CA77DA /* YZBetStatus.m */,
+				AA3291E21FFE27B600CA77DA /* YZPlayPassWay.h */,
+				AA3291F01FFE27B600CA77DA /* YZPlayPassWay.m */,
+				AA3291E51FFE27B600CA77DA /* YZFootBallMatchRate.h */,
+				AA3291ED1FFE27B600CA77DA /* YZFootBallMatchRate.m */,
+				AA3291F11FFE27B600CA77DA /* YZFbBetCellStatus.h */,
+				AA3291E71FFE27B600CA77DA /* YZFbBetCellStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFD023710DE80015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291DF1FFE27B600CA77DA /* YZScjqCellStatus.h */,
+				AA3291EB1FFE27B600CA77DA /* YZScjqCellStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFD123710DE80015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3292011FFE27B600CA77DA /* YZScjqCell.h */,
+				AA3291F91FFE27B600CA77DA /* YZScjqCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFD223710DE80015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291D41FFE27B600CA77DA /* YZScjqViewController.h */,
+				AA3291DB1FFE27B600CA77DA /* YZScjqViewController.m */,
+				AA3291DA1FFE27B600CA77DA /* YZScjqBetViewController.h */,
+				AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFD323710DEE0015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291D21FFE27B600CA77DA /* YZSfcViewController.h */,
+				AA3291D91FFE27B600CA77DA /* YZSfcViewController.m */,
+				AA3291D71FFE27B600CA77DA /* YZSfcBetViewController.h */,
+				AA3291CE1FFE27B600CA77DA /* YZSfcBetViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFD423710DEE0015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291F31FFE27B600CA77DA /* YZSfcCellStatus.h */,
+				AA3291E81FFE27B600CA77DA /* YZSfcCellStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFD523710DEF0015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291F71FFE27B600CA77DA /* YZSfcCell.h */,
+				AA3291FE1FFE27B600CA77DA /* YZSfcCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D7BDFD623710E4D0015CD8E /* 下单成功 */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFE423710E770015CD8E /* Controller */,
+				1D7BDFF823710F260015CD8E /* Model */,
+				1D7BDFF923710F260015CD8E /* View */,
+			);
+			path = "下单成功";
+			sourceTree = "<group>";
+		};
+		1D7BDFE423710E770015CD8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D7BDFFA23710F760015CD8E /* YZFbBetSuccessViewController.h */,
+				1D7BDFFB23710F770015CD8E /* YZFbBetSuccessViewController.m */,
+			);
+			name = Controller;
+			path = ../Controller;
+			sourceTree = "<group>";
+		};
+		1D7BDFF823710F260015CD8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D7BDFF923710F260015CD8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1DBD8B2C22CAFF770024CF7B /* XLPhotoBrowser+CoderXL */ = {
 			isa = PBXGroup;
 			children = (
@@ -5116,6 +5829,91 @@
 				1DB6AA7522D2EAE700B2D6EF /* AliyunOSSiOS.framework */,
 			);
 			path = AliyunOSSiOS;
+			sourceTree = "<group>";
+		};
+		1DD45A87239109920007C481 /* 双色球 */ = {
+			isa = PBXGroup;
+			children = (
+				1DD45A88239109B60007C481 /* Controller */,
+				1DD45A89239109B70007C481 /* Model */,
+				1DD45A8A239109B70007C481 /* View */,
+			);
+			path = "双色球";
+			sourceTree = "<group>";
+		};
+		1DD45A88239109B60007C481 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA32918A1FFE27B600CA77DA /* YZSsqChartViewController.h */,
+				AA32918B1FFE27B600CA77DA /* YZSsqChartViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1DD45A89239109B70007C481 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA32918D1FFE27B600CA77DA /* YZChartColdHotStatus.h */,
+				AA32918E1FFE27B600CA77DA /* YZChartStatsStatus.h */,
+				AA32918F1FFE27B600CA77DA /* YZChartStatus.m */,
+				AA3291901FFE27B600CA77DA /* YZChartDataStatus.m */,
+				AA3291911FFE27B600CA77DA /* YZChartNumberStatsStatus.h */,
+				AA3291921FFE27B600CA77DA /* YZChartSortStatsStatus.h */,
+				AA3291931FFE27B600CA77DA /* YZChartBallStatus.m */,
+				AA3291941FFE27B600CA77DA /* YZChartStatus.h */,
+				AA3291951FFE27B600CA77DA /* YZChartStatsStatus.m */,
+				AA3291961FFE27B600CA77DA /* YZChartColdHotStatus.m */,
+				AA3291971FFE27B600CA77DA /* YZChartNumberStatsStatus.m */,
+				AA3291981FFE27B600CA77DA /* YZChartDataStatus.h */,
+				AA32919E1FFE27B600CA77DA /* YZChartBallStatus.h */,
+				AA32919F1FFE27B600CA77DA /* YZChartSortStatsStatus.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1DD45A8A239109B70007C481 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291A11FFE27B600CA77DA /* YZChartSelectedBallView.h */,
+				AA3291A21FFE27B600CA77DA /* YZChartSortButton.h */,
+				AA3291A31FFE27B600CA77DA /* YZChartBallView.m */,
+				AA3291A41FFE27B600CA77DA /* YZChartTitleView.m */,
+				AA3291B01FFE27B600CA77DA /* YZChartViewLeftTableViewCell.m */,
+				AA3291B11FFE27B600CA77DA /* YZChartViewContentTableViewCell.h */,
+				AA3291B21FFE27B600CA77DA /* YZChartBottomView.h */,
+				AA3291B31FFE27B600CA77DA /* YZChartLineView.m */,
+				AA3291B41FFE27B600CA77DA /* YZChartPlayTypeTitleButton.m */,
+				AA3291B51FFE27B600CA77DA /* YZChartSettingView.h */,
+				AA3291B61FFE27B600CA77DA /* YZChartChooseBallView.h */,
+				AA3291B71FFE27B600CA77DA /* YZChartBallView.h */,
+				AA3291B91FFE27B600CA77DA /* YZChartSsqPlaytypeView.h */,
+				AA3291BA1FFE27B600CA77DA /* YZChartSsqLotteryTableViewCell.h */,
+				AA3291BB1FFE27B600CA77DA /* YZChartColdHotTableViewCell.m */,
+				AA3291BC1FFE27B600CA77DA /* YZChartSsqLotteryTableViewCell.m */,
+				AA3291BD1FFE27B600CA77DA /* YZChartSsqPlaytypeView.m */,
+				AA3291BE1FFE27B600CA77DA /* YZChartColdHotTableViewCell.h */,
+				AA3291BF1FFE27B600CA77DA /* YZChartSortButton.m */,
+				AA3291C11FFE27B600CA77DA /* YZChartSelectedBallView.m */,
+				AA3291C21FFE27B600CA77DA /* YZChartTitleView.h */,
+				AA3291C31FFE27B600CA77DA /* YZChartSettingView.m */,
+				AA3291C41FFE27B600CA77DA /* YZChartPlayTypeTitleButton.h */,
+				AA3291C51FFE27B600CA77DA /* YZChartLineView.h */,
+				AA3291C61FFE27B600CA77DA /* YZChartBottomView.m */,
+				AA3291C71FFE27B600CA77DA /* YZChartViewContentTableViewCell.m */,
+				AA3291C81FFE27B600CA77DA /* YZChartViewLeftTableViewCell.h */,
+				AA3291C91FFE27B600CA77DA /* YZChartChooseBallView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DD45A8B23910CD50007C481 /* 快赢481 */ = {
+			isa = PBXGroup;
+			children = (
+				AA3291891FFE27B600CA77DA /* Controller */,
+				AA32918C1FFE27B600CA77DA /* Model */,
+				AA3291A01FFE27B600CA77DA /* View */,
+			);
+			path = "快赢481";
 			sourceTree = "<group>";
 		};
 		1DDDEB5522D5BB80003A9C07 /* Masonry */ = {
@@ -5969,128 +6767,20 @@
 		AA3291251FFE27B600CA77DA /* 玩法 */ = {
 			isa = PBXGroup;
 			children = (
-				AA3291261FFE27B600CA77DA /* Controller */,
-				AA3291471FFE27B600CA77DA /* Model */,
-				AA32914C1FFE27B600CA77DA /* View */,
+				1D7BDF9B23710AC30015CD8E /* 基类 */,
+				1D7BDF912371081E0015CD8E /* 快赢481 */,
+				1D7BDFA323710B920015CD8E /* 11选5 */,
+				1D7BDFAE23710CD70015CD8E /* 双色球 */,
+				1D7BDFB223710CEF0015CD8E /* 大乐透 */,
+				1D7BDFAA23710BE10015CD8E /* 快三 */,
+				1D7BDFB623710D030015CD8E /* 排列三 */,
+				1D7BDFBA23710D180015CD8E /* 排列五 */,
+				1D7BDFBB23710D220015CD8E /* 七星彩 */,
+				1D7BDFBC23710D290015CD8E /* 七乐彩 */,
+				1D7BDFBD23710D360015CD8E /* 福彩3D */,
+				1D7BDF9F23710B110015CD8E /* 下单 */,
 			);
 			path = "玩法";
-			sourceTree = "<group>";
-		};
-		AA3291261FFE27B600CA77DA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AA32913F1FFE27B600CA77DA /* YZGameIdViewController.h */,
-				AA3291321FFE27B600CA77DA /* YZGameIdViewController.m */,
-				AA3291421FFE27B600CA77DA /* YZSelectBaseViewController.h */,
-				AA32912F1FFE27B600CA77DA /* YZSelectBaseViewController.m */,
-				AA3291451FFE27B600CA77DA /* YZS1x5ViewController.h */,
-				AA3291361FFE27B600CA77DA /* YZS1x5ViewController.m */,
-				AA3291351FFE27B600CA77DA /* YZKsViewController.h */,
-				AA3291441FFE27B600CA77DA /* YZKsViewController.m */,
-				AA32912C1FFE27B600CA77DA /* YZSsqViewController.h */,
-				AA32913D1FFE27B600CA77DA /* YZSsqViewController.m */,
-				AA32912D1FFE27B600CA77DA /* YZDltViewController.h */,
-				AA32913C1FFE27B600CA77DA /* YZDltViewController.m */,
-				AA32913B1FFE27B600CA77DA /* YZPlsViewController.h */,
-				AA3291271FFE27B600CA77DA /* YZPlsViewController.m */,
-				AA3291291FFE27B600CA77DA /* YZPlwViewController.h */,
-				AA3291381FFE27B600CA77DA /* YZPlwViewController.m */,
-				AA32912E1FFE27B600CA77DA /* YZQxcViewController.h */,
-				AA3291431FFE27B600CA77DA /* YZQxcViewController.m */,
-				AA3291411FFE27B600CA77DA /* YZQilecaiViewController.h */,
-				AA3291301FFE27B600CA77DA /* YZQilecaiViewController.m */,
-				AA32912A1FFE27B600CA77DA /* YZFucaiViewController.h */,
-				AA3291391FFE27B600CA77DA /* YZFucaiViewController.m */,
-				AA32913E1FFE27B600CA77DA /* YZBetViewController.h */,
-				AA3291331FFE27B600CA77DA /* YZBetViewController.m */,
-				AA32913A1FFE27B600CA77DA /* YZChooseVoucherViewController.h */,
-				AA3291281FFE27B600CA77DA /* YZChooseVoucherViewController.m */,
-				AA32912B1FFE27B600CA77DA /* YZConsumableVoucherViewController.h */,
-				AA3291371FFE27B600CA77DA /* YZConsumableVoucherViewController.m */,
-				AA3291311FFE27B600CA77DA /* YZStartUnionBuyViewController.h */,
-				AA3291401FFE27B600CA77DA /* YZStartUnionBuyViewController.m */,
-				AA3291341FFE27B600CA77DA /* YZBetSuccessViewController.h */,
-				AA3291461FFE27B600CA77DA /* YZBetSuccessViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		AA3291471FFE27B600CA77DA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AA32914B1FFE27B600CA77DA /* YZSelectBallCellStatus.h */,
-				AA3291491FFE27B600CA77DA /* YZSelectBallCellStatus.m */,
-				AA32914A1FFE27B600CA77DA /* YZRecentLotteryStatus.h */,
-				AA3291481FFE27B600CA77DA /* YZRecentLotteryStatus.m */,
-				AA4B7BBC20172C1900A6F764 /* YZQrCodeModel.h */,
-				AA4B7BBD20172C1900A6F764 /* YZQrCodeModel.m */,
-				AA3657CE21D224B9009BE71B /* YZActivityModel.h */,
-				AA3657CF21D224B9009BE71B /* YZActivityModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AA32914C1FFE27B600CA77DA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291501FFE27B600CA77DA /* 快三 */,
-				AA32917A1FFE27B600CA77DA /* YZTitleButton.h */,
-				AA3291721FFE27B600CA77DA /* YZTitleButton.m */,
-				AA3291771FFE27B600CA77DA /* YZSelectBallCell.h */,
-				AA32916F1FFE27B600CA77DA /* YZSelectBallCell.m */,
-				AA3291791FFE27B600CA77DA /* YZBallBtn.h */,
-				AA3291731FFE27B600CA77DA /* YZBallBtn.m */,
-				AA3291751FFE27B600CA77DA /* YZRecentLotteryCell.h */,
-				AA32914E1FFE27B600CA77DA /* YZRecentLotteryCell.m */,
-				1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */,
-				1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */,
-				AA3291701FFE27B600CA77DA /* YZSelectedBetNumberView.h */,
-				AA3291761FFE27B600CA77DA /* YZSelectedBetNumberView.m */,
-				AA3291781FFE27B600CA77DA /* YZLotteryButton.h */,
-				AA32914F1FFE27B600CA77DA /* YZLotteryButton.m */,
-				AA3291741FFE27B600CA77DA /* YZBetCell.h */,
-				AA32914D1FFE27B600CA77DA /* YZBetCell.m */,
-				AA3291711FFE27B600CA77DA /* YZUnionChangeNickNameView.h */,
-				AA32917B1FFE27B600CA77DA /* YZUnionChangeNickNameView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AA3291501FFE27B600CA77DA /* 快三 */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291551FFE27B600CA77DA /* YZKsPlayTypeView.h */,
-				AA3291671FFE27B600CA77DA /* YZKsPlayTypeView.m */,
-				AA3291511FFE27B600CA77DA /* YZKsSanbutongView.m */,
-				AA3291521FFE27B600CA77DA /* YZKsBaseView.h */,
-				AA3291531FFE27B600CA77DA /* YZKsDiceAnimationView.m */,
-				AA3291541FFE27B600CA77DA /* YZKsHistoryTableView.m */,
-				AA3291561FFE27B600CA77DA /* YZKsDiceView.h */,
-				AA3291571FFE27B600CA77DA /* YZKsBottomView.m */,
-				AA3291581FFE27B600CA77DA /* YZKsHezhiView.m */,
-				AA3291591FFE27B600CA77DA /* YZKsHistoryTableViewCell.h */,
-				AA32915A1FFE27B600CA77DA /* YZksHistoryWinNumberView.m */,
-				AA32915B1FFE27B600CA77DA /* YZKsBottomBtn.h */,
-				AA32915C1FFE27B600CA77DA /* YZKsSantongView.h */,
-				AA32915D1FFE27B600CA77DA /* YZKsErbutongView.h */,
-				AA32915E1FFE27B600CA77DA /* YZKsErtongView.m */,
-				AA32915F1FFE27B600CA77DA /* YZKsBtn.h */,
-				AA3291601FFE27B600CA77DA /* YZKsHistoryTableView.h */,
-				AA3291611FFE27B600CA77DA /* YZKsDiceAnimationView.h */,
-				AA3291621FFE27B600CA77DA /* YZKsBaseView.m */,
-				AA3291631FFE27B600CA77DA /* YZKsSanbutongView.h */,
-				AA3291641FFE27B600CA77DA /* YZKsHistoryTableViewCell.m */,
-				AA3291651FFE27B600CA77DA /* YZKsHezhiView.h */,
-				AA3291661FFE27B600CA77DA /* YZKsBottomView.h */,
-				AA3291681FFE27B600CA77DA /* YZKsDiceView.m */,
-				AA3291691FFE27B600CA77DA /* YZKsErbutongView.m */,
-				AA32916A1FFE27B600CA77DA /* YZKsBottomBtn.m */,
-				AA32916B1FFE27B600CA77DA /* YZksHistoryWinNumberView.h */,
-				AA32916C1FFE27B600CA77DA /* YZKsSantongView.m */,
-				AA32916D1FFE27B600CA77DA /* YZKsBtn.m */,
-				AA32916E1FFE27B600CA77DA /* YZKsErtongView.h */,
-			);
-			path = "快三";
 			sourceTree = "<group>";
 		};
 		AA32917C1FFE27B600CA77DA /* 智能追号 */ = {
@@ -6135,9 +6825,8 @@
 		AA3291881FFE27B600CA77DA /* 统计 */ = {
 			isa = PBXGroup;
 			children = (
-				AA3291891FFE27B600CA77DA /* Controller */,
-				AA32918C1FFE27B600CA77DA /* Model */,
-				AA3291A01FFE27B600CA77DA /* View */,
+				1DD45A8B23910CD50007C481 /* 快赢481 */,
+				1DD45A87239109920007C481 /* 双色球 */,
 			);
 			path = "统计";
 			sourceTree = "<group>";
@@ -6145,8 +6834,8 @@
 		AA3291891FFE27B600CA77DA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AA32918A1FFE27B600CA77DA /* YZSsqChartViewController.h */,
-				AA32918B1FFE27B600CA77DA /* YZSsqChartViewController.m */,
+				1DD45A8C23910CF60007C481 /* YZKy481ChartViewController.h */,
+				1DD45A8D23910CF60007C481 /* YZKy481ChartViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6154,20 +6843,6 @@
 		AA32918C1FFE27B600CA77DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA32918D1FFE27B600CA77DA /* YZChartColdHotStatus.h */,
-				AA32918E1FFE27B600CA77DA /* YZChartStatsStatus.h */,
-				AA32918F1FFE27B600CA77DA /* YZChartStatus.m */,
-				AA3291901FFE27B600CA77DA /* YZChartDataStatus.m */,
-				AA3291911FFE27B600CA77DA /* YZChartNumberStatsStatus.h */,
-				AA3291921FFE27B600CA77DA /* YZChartSortStatsStatus.h */,
-				AA3291931FFE27B600CA77DA /* YZChartBallStatus.m */,
-				AA3291941FFE27B600CA77DA /* YZChartStatus.h */,
-				AA3291951FFE27B600CA77DA /* YZChartStatsStatus.m */,
-				AA3291961FFE27B600CA77DA /* YZChartColdHotStatus.m */,
-				AA3291971FFE27B600CA77DA /* YZChartNumberStatsStatus.m */,
-				AA3291981FFE27B600CA77DA /* YZChartDataStatus.h */,
-				AA32919E1FFE27B600CA77DA /* YZChartBallStatus.h */,
-				AA32919F1FFE27B600CA77DA /* YZChartSortStatsStatus.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6175,145 +6850,21 @@
 		AA3291A01FFE27B600CA77DA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AA3291A11FFE27B600CA77DA /* YZChartSelectedBallView.h */,
-				AA3291A21FFE27B600CA77DA /* YZChartSortButton.h */,
-				AA3291A31FFE27B600CA77DA /* YZChartBallView.m */,
-				AA3291A41FFE27B600CA77DA /* YZChartTitleView.m */,
-				AA3291B01FFE27B600CA77DA /* YZChartViewLeftTableViewCell.m */,
-				AA3291B11FFE27B600CA77DA /* YZChartViewContentTableViewCell.h */,
-				AA3291B21FFE27B600CA77DA /* YZChartBottomView.h */,
-				AA3291B31FFE27B600CA77DA /* YZChartLineView.m */,
-				AA3291B41FFE27B600CA77DA /* YZChartPlayTypeTitleButton.m */,
-				AA3291B51FFE27B600CA77DA /* YZChartSettingView.h */,
-				AA3291B61FFE27B600CA77DA /* YZChartChooseBallView.h */,
-				AA3291B71FFE27B600CA77DA /* YZChartBallView.h */,
-				AA3291B81FFE27B600CA77DA /* YZSsqChartView */,
-				AA3291BF1FFE27B600CA77DA /* YZChartSortButton.m */,
-				AA3291C11FFE27B600CA77DA /* YZChartSelectedBallView.m */,
-				AA3291C21FFE27B600CA77DA /* YZChartTitleView.h */,
-				AA3291C31FFE27B600CA77DA /* YZChartSettingView.m */,
-				AA3291C41FFE27B600CA77DA /* YZChartPlayTypeTitleButton.h */,
-				AA3291C51FFE27B600CA77DA /* YZChartLineView.h */,
-				AA3291C61FFE27B600CA77DA /* YZChartBottomView.m */,
-				AA3291C71FFE27B600CA77DA /* YZChartViewContentTableViewCell.m */,
-				AA3291C81FFE27B600CA77DA /* YZChartViewLeftTableViewCell.h */,
-				AA3291C91FFE27B600CA77DA /* YZChartChooseBallView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		AA3291B81FFE27B600CA77DA /* YZSsqChartView */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291B91FFE27B600CA77DA /* YZChartSsqPlaytypeView.h */,
-				AA3291BA1FFE27B600CA77DA /* YZChartSsqLotteryTableViewCell.h */,
-				AA3291BB1FFE27B600CA77DA /* YZChartColdHotTableViewCell.m */,
-				AA3291BC1FFE27B600CA77DA /* YZChartSsqLotteryTableViewCell.m */,
-				AA3291BD1FFE27B600CA77DA /* YZChartSsqPlaytypeView.m */,
-				AA3291BE1FFE27B600CA77DA /* YZChartColdHotTableViewCell.h */,
-			);
-			path = YZSsqChartView;
 			sourceTree = "<group>";
 		};
 		AA3291CA1FFE27B600CA77DA /* 体彩 */ = {
 			isa = PBXGroup;
 			children = (
+				1D7BDFCA23710DAF0015CD8E /* 竞彩足球 */,
+				1D7BDFCC23710DC20015CD8E /* 胜负彩 */,
+				1D7BDFCB23710DBA0015CD8E /* 四场进球 */,
 				AA072E8720B3F92500973E72 /* 篮球 */,
-				AA3291CB1FFE27B600CA77DA /* 足球 */,
+				1D7BDFD623710E4D0015CD8E /* 下单成功 */,
 				AA3292071FFE27B600CA77DA /* 统计 */,
 			);
 			path = "体彩";
-			sourceTree = "<group>";
-		};
-		AA3291CB1FFE27B600CA77DA /* 足球 */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291CC1FFE27B600CA77DA /* Controller */,
-				AA3291DD1FFE27B600CA77DA /* Model */,
-				AA3291F41FFE27B600CA77DA /* View */,
-			);
-			path = "足球";
-			sourceTree = "<group>";
-		};
-		AA3291CC1FFE27B600CA77DA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291CD1FFE27B600CA77DA /* YZFootBallBaseViewController.h */,
-				AA3291D81FFE27B600CA77DA /* YZFootBallBaseViewController.m */,
-				AA3291CF1FFE27B600CA77DA /* YZFootBallViewController.h */,
-				AA3291D61FFE27B600CA77DA /* YZFootBallViewController.m */,
-				AA3291D01FFE27B600CA77DA /* YZFbBetViewController.h */,
-				AA3291D51FFE27B600CA77DA /* YZFbBetViewController.m */,
-				AA3291D21FFE27B600CA77DA /* YZSfcViewController.h */,
-				AA3291D91FFE27B600CA77DA /* YZSfcViewController.m */,
-				AA3291D41FFE27B600CA77DA /* YZScjqViewController.h */,
-				AA3291DB1FFE27B600CA77DA /* YZScjqViewController.m */,
-				AA3291D71FFE27B600CA77DA /* YZSfcBetViewController.h */,
-				AA3291CE1FFE27B600CA77DA /* YZSfcBetViewController.m */,
-				AA3291DA1FFE27B600CA77DA /* YZScjqBetViewController.h */,
-				AA3291D11FFE27B600CA77DA /* YZScjqBetViewController.m */,
-				AA3291DC1FFE27B600CA77DA /* YZFbBetSuccessViewController.h */,
-				AA3291D31FFE27B600CA77DA /* YZFbBetSuccessViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		AA3291DD1FFE27B600CA77DA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AA3291DE1FFE27B600CA77DA /* YZGameIndosStatus.h */,
-				AA3291EC1FFE27B600CA77DA /* YZGameIndosStatus.m */,
-				AA3291E41FFE27B600CA77DA /* YZSectionStatus.h */,
-				AA3291EE1FFE27B600CA77DA /* YZSectionStatus.m */,
-				AA3291E01FFE27B600CA77DA /* YZMatchInfosStatus.h */,
-				AA3291EA1FFE27B600CA77DA /* YZMatchInfosStatus.m */,
-				AA3291EF1FFE27B600CA77DA /* YZOddsMap.h */,
-				AA3291E31FFE27B600CA77DA /* YZOddsMap.m */,
-				AA3291E91FFE27B600CA77DA /* YZCN.h */,
-				AA3291E11FFE27B600CA77DA /* YZCN.m */,
-				AA3291E61FFE27B600CA77DA /* YZBetStatus.h */,
-				AA3291F21FFE27B600CA77DA /* YZBetStatus.m */,
-				AA3291E21FFE27B600CA77DA /* YZPlayPassWay.h */,
-				AA3291F01FFE27B600CA77DA /* YZPlayPassWay.m */,
-				AA3291E51FFE27B600CA77DA /* YZFootBallMatchRate.h */,
-				AA3291ED1FFE27B600CA77DA /* YZFootBallMatchRate.m */,
-				AA3291F11FFE27B600CA77DA /* YZFbBetCellStatus.h */,
-				AA3291E71FFE27B600CA77DA /* YZFbBetCellStatus.m */,
-				AA3291F31FFE27B600CA77DA /* YZSfcCellStatus.h */,
-				AA3291E81FFE27B600CA77DA /* YZSfcCellStatus.m */,
-				AA3291DF1FFE27B600CA77DA /* YZScjqCellStatus.h */,
-				AA3291EB1FFE27B600CA77DA /* YZScjqCellStatus.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AA3291F41FFE27B600CA77DA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AA3292001FFE27B600CA77DA /* YZFTHeaderView.h */,
-				AA3291F51FFE27B600CA77DA /* YZFTHeaderView.m */,
-				AA57888122855C51002292EA /* YZFBPlayTypeView.h */,
-				AA57888222855C51002292EA /* YZFBPlayTypeView.m */,
-				AA578886228562CF002292EA /* YZFBSiftView.h */,
-				AA578887228562CF002292EA /* YZFBSiftView.m */,
-				AA3291F81FFE27B600CA77DA /* YZFootBallCell.h */,
-				AA3292021FFE27B600CA77DA /* YZFootBallCell.m */,
-				AA3292061FFE27B600CA77DA /* YZFBChoosePlayView.h */,
-				AA3291FB1FFE27B600CA77DA /* YZFBChoosePlayView.m */,
-				AA3292051FFE27B600CA77DA /* YZFBAllPlayView.h */,
-				AA3291FD1FFE27B600CA77DA /* YZFBAllPlayView.m */,
-				AA3291FF1FFE27B600CA77DA /* YZFBMatchDetailCellView.h */,
-				AA3291F61FFE27B600CA77DA /* YZFBMatchDetailCellView.m */,
-				AA3291FA1FFE27B600CA77DA /* YZFbBetCell.h */,
-				AA3292031FFE27B600CA77DA /* YZFbBetCell.m */,
-				AA3291F71FFE27B600CA77DA /* YZSfcCell.h */,
-				AA3291FE1FFE27B600CA77DA /* YZSfcCell.m */,
-				AA3292011FFE27B600CA77DA /* YZScjqCell.h */,
-				AA3291F91FFE27B600CA77DA /* YZScjqCell.m */,
-				AA3291FC1FFE27B600CA77DA /* YZBtnsView.h */,
-				AA3292041FFE27B600CA77DA /* YZBtnsView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		AA3292071FFE27B600CA77DA /* 统计 */ = {
@@ -6910,8 +7461,6 @@
 				AA74E1491FFE0AEA003B53AF /* YZZCMineViewController.m */,
 				AA1E552321ACE783004AA01C /* YZCSMineViewController.h */,
 				AA1E552421ACE783004AA01C /* YZCSMineViewController.m */,
-				1DCA1CFB2327456D00F2061B /* YZRRMineViewController.h */,
-				1DCA1CFC2327456D00F2061B /* YZRRMineViewController.m */,
 				AA74E1481FFE0AEA003B53AF /* YZMineSettingViewController.h */,
 				AA74E1451FFE0AEA003B53AF /* YZMineSettingViewController.m */,
 			);
@@ -8257,8 +8806,8 @@
 				AA74EC701FFE19A5003B53AF /* YZZhifubaoRechargeViewController.m */,
 				AA74EC831FFE19A5003B53AF /* YZWeixinRechargeViewController.h */,
 				AA74EC791FFE19A5003B53AF /* YZWeixinRechargeViewController.m */,
-				AA74EC6F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.h */,
-				AA74EC7F1FFE19A5003B53AF /* YZWeixinPayGuideViewController.m */,
+				1D96B6C323794D9E00F1FC63 /* YZErCodeRechargeViewController.h */,
+				1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */,
 				AA27DA09201EF1FC0068C9CA /* YZHtmlRechargeViewController.h */,
 				AA27DA0A201EF1FC0068C9CA /* YZHtmlRechargeViewController.m */,
 				AA74EC711FFE19A5003B53AF /* YZBankCardRechargeViewController.h */,
@@ -8295,6 +8844,8 @@
 				AA74EC911FFE19A5003B53AF /* YZRechargeTableViewCell.m */,
 				AA74EC8E1FFE19A5003B53AF /* YZRechargeRecordTableViewCell.h */,
 				AA74EC901FFE19A5003B53AF /* YZRechargeRecordTableViewCell.m */,
+				1D96B6C92379519300F1FC63 /* YZErCodeRechargeSuccessView.h */,
+				1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -8542,6 +9093,8 @@
 			children = (
 				AA43DCAD1F4AE0F70018818E /* YZUpGradeView.h */,
 				AA43DCAE1F4AE0F70018818E /* YZUpGradeView.m */,
+				1D783F96238E46E900C5FC6D /* YZAddH5AppView.h */,
+				1D783F97238E46E900C5FC6D /* YZAddH5AppView.m */,
 				A99D3006206E0F6900E38EAA /* YZVoucherGuideView.h */,
 				A99D3005206E0F6600E38EAA /* YZVoucherGuideView.m */,
 				A90CFE63206E0EB40094CD38 /* YZGiveVoucherView.h */,
@@ -8763,7 +9316,7 @@
 				ORGANIZATIONNAME = 9ge;
 				TargetAttributes = {
 					1DCA19AE2327376100F2061B = {
-						DevelopmentTeam = 65FQR43XBY;
+						DevelopmentTeam = W63NAXL672;
 						ProvisioningStyle = Manual;
 					};
 					AA237D892143590C00BC47BB = {
@@ -9227,13 +9780,14 @@
 				1DCA1A022327376100F2061B /* YZShareIncomeTableViewCell.m in Sources */,
 				1DCA1A032327376100F2061B /* HDEmojiEmoticons.m in Sources */,
 				1DCA1A052327376100F2061B /* YZCircleCommentTableView.m in Sources */,
+				1D7BDF9A2371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				1DCA1A062327376100F2061B /* YZChooseBirthdayTableViewCell.m in Sources */,
 				1DCA1A072327376100F2061B /* TZAssetCell.m in Sources */,
 				1DCA1A082327376100F2061B /* UIImage+GIF.m in Sources */,
 				1DCA1A092327376100F2061B /* YZChartBallView.m in Sources */,
 				1DCA1A0A2327376100F2061B /* YZBetViewController.m in Sources */,
 				1DCA1A0B2327376100F2061B /* SBJsonParser.m in Sources */,
-				1DCA1A0C2327376100F2061B /* YZRecentLotteryCell.m in Sources */,
+				1DCA1A0C2327376100F2061B /* YZ11x5RecentLotteryCell.m in Sources */,
 				1DCA1A0D2327376100F2061B /* FSActionSheet.m in Sources */,
 				1DCA1A0E2327376100F2061B /* UIView+SDExtension.m in Sources */,
 				1DCA1A0F2327376100F2061B /* HDAudioRecorderUtil.m in Sources */,
@@ -9296,7 +9850,6 @@
 				1DCA1A4A2327376100F2061B /* YZChartChooseBallView.m in Sources */,
 				1DCA1A4B2327376100F2061B /* MWZoomingScrollView.m in Sources */,
 				1DCA1A4C2327376100F2061B /* HDMessageReadManager.m in Sources */,
-				1DCA1A4D2327376100F2061B /* YZWeixinPayGuideViewController.m in Sources */,
 				1DCA1A4E2327376100F2061B /* HDBubbleView.m in Sources */,
 				1DCA1A4F2327376100F2061B /* YZOrderStatus.m in Sources */,
 				1DCA1A502327376100F2061B /* YZTitleButton.m in Sources */,
@@ -9372,6 +9925,7 @@
 				1DCA1A962327376100F2061B /* YZDecimalTextField.m in Sources */,
 				1DCA1A972327376100F2061B /* HDMessageModel.m in Sources */,
 				1DCA1A982327376100F2061B /* YZRecommendLotteryCollectionViewCell.m in Sources */,
+				1D2E333D23714F3E00E8C9AC /* YZKy481WanNengView.m in Sources */,
 				1DCA1A992327376100F2061B /* YZGiveVoucherView.m in Sources */,
 				1DCA1A9A2327376100F2061B /* YZBetStatus.m in Sources */,
 				1DCA1A9B2327376100F2061B /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -9401,9 +9955,11 @@
 				1DCA1AB32327376100F2061B /* YZKsDiceView.m in Sources */,
 				1DCA1AB42327376100F2061B /* YZKsHistoryTableViewCell.m in Sources */,
 				1DCA1AB52327376100F2061B /* YZScjqViewController.m in Sources */,
+				1D2E33492371646A00E8C9AC /* YZKy481DanView.m in Sources */,
 				1DCA1AB62327376100F2061B /* YZIntegralCountCollectionViewCell.m in Sources */,
 				1DCA1AB72327376100F2061B /* UIImageView+HighlightedWebCache.m in Sources */,
 				1DCA1AB82327376100F2061B /* YZksHistoryWinNumberView.m in Sources */,
+				1D7BDFFF23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				1DCA1AB92327376100F2061B /* YZFBMatchDetailCellView.m in Sources */,
 				1DCA1ABA2327376100F2061B /* CWStarRateView.m in Sources */,
 				1DCA1ABB2327376100F2061B /* YZIntegralCustomCountCollectionViewCell.m in Sources */,
@@ -9434,6 +9990,7 @@
 				1DCA1AD42327376100F2061B /* YZNewFeatureViewController.m in Sources */,
 				1DCA1AD52327376100F2061B /* YZBetSuccessViewController.m in Sources */,
 				1DCA1AD62327376100F2061B /* YZWithdrawalBankCardTableViewCell.m in Sources */,
+				1D2E334F2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */,
 				1DCA1AD72327376100F2061B /* UIView+FLExtension.m in Sources */,
 				1DCA1AD82327376100F2061B /* SDWebImageCodersManager.m in Sources */,
 				1DCA1AD92327376100F2061B /* HDEmotionEscape.m in Sources */,
@@ -9455,6 +10012,7 @@
 				1DCA1AE92327376100F2061B /* YZOddsCellStatus.m in Sources */,
 				1DCA1AEA2327376100F2061B /* MASViewConstraint.m in Sources */,
 				1DCA1AEB2327376100F2061B /* YZRecommendRowStatus.m in Sources */,
+				1DD45A9123910CF60007C481 /* YZKy481ChartViewController.m in Sources */,
 				1DCA1AEC2327376100F2061B /* YZ11x5PlayTypeView.m in Sources */,
 				1DCA1AED2327376100F2061B /* MJRefreshBackGifFooter.m in Sources */,
 				1DCA1AEE2327376100F2061B /* YZOrderViewController.m in Sources */,
@@ -9462,6 +10020,7 @@
 				1DCA1AF02327376100F2061B /* AFHTTPSessionManager.m in Sources */,
 				1DCA1AF12327376100F2061B /* YZUserInfo.m in Sources */,
 				1DCA1AF22327376100F2061B /* AFNetworkReachabilityManager.m in Sources */,
+				1D2E3343237162F300E8C9AC /* YZKy481ChongView.m in Sources */,
 				1DCA1AF32327376100F2061B /* YZSecretChangeViewController.m in Sources */,
 				1DCA1AF42327376100F2061B /* YZMessageStstus.m in Sources */,
 				1DCA1AF52327376100F2061B /* YZUnionBuyStatusFrame.m in Sources */,
@@ -9481,12 +10040,13 @@
 				1DCA1B032327376100F2061B /* UIImageView+WebCache.m in Sources */,
 				1DCA1B042327376100F2061B /* FMResultSet.m in Sources */,
 				1DCA1B052327376100F2061B /* YZBasketBallBetHeaderView.m in Sources */,
-				1DCA1B062327376100F2061B /* YZFucaiViewController.m in Sources */,
+				1DCA1B062327376100F2061B /* YZFucai3DViewController.m in Sources */,
 				1DCA1B072327376100F2061B /* YZFbOrderDetailTableViewCell.m in Sources */,
 				1DCA1B082327376100F2061B /* YZFBChoosePlayView.m in Sources */,
 				1DCA1B092327376100F2061B /* MJRefreshComponent.m in Sources */,
 				1DCA1B0A2327376100F2061B /* MKAnnotationView+WebCache.m in Sources */,
 				1DCA1B0B2327376100F2061B /* UIViewController+DismissKeyboard.m in Sources */,
+				1D7BE005237112580015CD8E /* YZKy481PlayTypeView.m in Sources */,
 				1DCA1B0C2327376100F2061B /* YZFBMatchDetailOddsViewController.m in Sources */,
 				1DCA1B0D2327376100F2061B /* YZIntegralDescriptionCollectionViewCell.m in Sources */,
 				1DCA1B0E2327376100F2061B /* YZFBMatchDetailTopView.m in Sources */,
@@ -9529,7 +10089,6 @@
 				1DCA1B352327376100F2061B /* YZWinNumberGradeTableViewCell.m in Sources */,
 				1DCA1B362327376100F2061B /* YZUnionBuyStatus.m in Sources */,
 				1DCA1B372327376100F2061B /* MASConstraintMaker.m in Sources */,
-				1DCA1D002327456D00F2061B /* YZRRMineViewController.m in Sources */,
 				1DCA1B382327376100F2061B /* YZAttatchedCell.m in Sources */,
 				1DCA1B392327376100F2061B /* YZFbBetCellStatus.m in Sources */,
 				1DCA1B3A2327376100F2061B /* NSBundle+TZImagePicker.m in Sources */,
@@ -9567,6 +10126,7 @@
 				1DCA1B5A2327376100F2061B /* NSObject+SBJSON.m in Sources */,
 				1DCA1B5B2327376100F2061B /* MWCaptionView.m in Sources */,
 				1DCA1B5C2327376100F2061B /* NSImage+WebCache.m in Sources */,
+				1D96B6C823794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				1DCA1B5D2327376100F2061B /* YZFootBallTool.m in Sources */,
 				1DCA1B5E2327376100F2061B /* YZHomePageFunctionItemView.m in Sources */,
 				1DCA1B5F2327376100F2061B /* YZQuickStakeGameModel.m in Sources */,
@@ -9637,6 +10197,7 @@
 				1DCA1BA22327376100F2061B /* YZBetTool.m in Sources */,
 				1DCA1BA32327376100F2061B /* YZSfcViewController.m in Sources */,
 				1DCA1BA42327376100F2061B /* UIView+MJExtension.m in Sources */,
+				1D96B6CE2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				1DCA1BA52327376100F2061B /* YZZCMineViewController.m in Sources */,
 				1DCA1BA62327376100F2061B /* YZRechargeStatus.m in Sources */,
 				1DCA1BA72327376100F2061B /* YZChoosePhoneView.m in Sources */,
@@ -9725,6 +10286,7 @@
 				1DCA1BFD2327376100F2061B /* YZUnionBuyFollowRecordViewController.m in Sources */,
 				1DCA1BFE2327376100F2061B /* YZUnionBuyComfirmPayTool.m in Sources */,
 				1DCA1BFF2327376100F2061B /* HDCDDeviceManagerBase.m in Sources */,
+				1D783F9B238E46E900C5FC6D /* YZAddH5AppView.m in Sources */,
 				1DCA1C002327376100F2061B /* YZQuickUnionBuyView.m in Sources */,
 				1DCA1C012327376100F2061B /* YZNoNetView.m in Sources */,
 				1DCA1C022327376100F2061B /* TZPhotoPreviewController.m in Sources */,
@@ -9773,6 +10335,7 @@
 				1DCA1C302327376100F2061B /* YZKsBottomBtn.m in Sources */,
 				1DCA1C312327376100F2061B /* YZSsqChartViewController.m in Sources */,
 				1DCA1C322327376100F2061B /* HDRecordView.m in Sources */,
+				1DB33E77237D429500463EEE /* YZKy481Math.m in Sources */,
 				1DCA1C332327376100F2061B /* NSObject+MJKeyValue.m in Sources */,
 				1DCA1C342327376100F2061B /* YZUnionBuyDetaiBottomView.m in Sources */,
 				1DCA1C352327376100F2061B /* HDBubbleView+Video.m in Sources */,
@@ -9786,7 +10349,6 @@
 				1DCA1C3D2327376100F2061B /* YZStartUnionBuyViewController.m in Sources */,
 				1DCA1C3E2327376100F2061B /* YZChooseVoucherViewController.m in Sources */,
 				1DCA1C3F2327376100F2061B /* YZMessageType.m in Sources */,
-				1DCA1C402327376100F2061B /* YZFbBetSuccessViewController.m in Sources */,
 				1DCA1C412327376100F2061B /* YZBuyLotteryCellStatus.m in Sources */,
 				1DCA1C422327376100F2061B /* UIResponder+HRouter.m in Sources */,
 				1DCA1C432327376100F2061B /* YZFBMatchDetailRecommendStatus.m in Sources */,
@@ -9888,13 +10450,14 @@
 				AA237DCF2143590C00BC47BB /* YZShareIncomeTableViewCell.m in Sources */,
 				AA237DD02143590C00BC47BB /* HDEmojiEmoticons.m in Sources */,
 				1DD0334922C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */,
+				1D7BDF992371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				AA237DD22143590C00BC47BB /* YZChooseBirthdayTableViewCell.m in Sources */,
 				1DE61FE822CC4F7500C1490E /* TZAssetCell.m in Sources */,
 				1DBD8E5322CB2C250024CF7B /* UIImage+GIF.m in Sources */,
 				AA237DD42143590C00BC47BB /* YZChartBallView.m in Sources */,
 				AA237DD52143590C00BC47BB /* YZBetViewController.m in Sources */,
 				AA237DD62143590C00BC47BB /* SBJsonParser.m in Sources */,
-				AA237DD72143590C00BC47BB /* YZRecentLotteryCell.m in Sources */,
+				AA237DD72143590C00BC47BB /* YZ11x5RecentLotteryCell.m in Sources */,
 				1DBD8B6022CAFF780024CF7B /* FSActionSheet.m in Sources */,
 				1DBD8E0822CB2BDE0024CF7B /* UIView+SDExtension.m in Sources */,
 				AA237DD82143590C00BC47BB /* HDAudioRecorderUtil.m in Sources */,
@@ -9957,7 +10520,6 @@
 				AA237E062143590C00BC47BB /* YZChartChooseBallView.m in Sources */,
 				1DBD8C3E22CB00470024CF7B /* MWZoomingScrollView.m in Sources */,
 				AA237E072143590C00BC47BB /* HDMessageReadManager.m in Sources */,
-				AA237E082143590C00BC47BB /* YZWeixinPayGuideViewController.m in Sources */,
 				AA237E092143590C00BC47BB /* HDBubbleView.m in Sources */,
 				AA237E0A2143590C00BC47BB /* YZOrderStatus.m in Sources */,
 				AA237E0B2143590C00BC47BB /* YZTitleButton.m in Sources */,
@@ -10033,6 +10595,7 @@
 				AA237E4B2143590C00BC47BB /* YZDecimalTextField.m in Sources */,
 				AA237E4C2143590C00BC47BB /* HDMessageModel.m in Sources */,
 				AA237E4D2143590C00BC47BB /* YZRecommendLotteryCollectionViewCell.m in Sources */,
+				1D2E333C23714F3E00E8C9AC /* YZKy481WanNengView.m in Sources */,
 				AA237E4E2143590C00BC47BB /* YZGiveVoucherView.m in Sources */,
 				AA237E4F2143590C00BC47BB /* YZBetStatus.m in Sources */,
 				AA237E502143590C00BC47BB /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -10062,9 +10625,11 @@
 				AA237E652143590C00BC47BB /* YZKsDiceView.m in Sources */,
 				AA237E662143590C00BC47BB /* YZKsHistoryTableViewCell.m in Sources */,
 				AA237E672143590C00BC47BB /* YZScjqViewController.m in Sources */,
+				1D2E33482371646A00E8C9AC /* YZKy481DanView.m in Sources */,
 				AA237E682143590C00BC47BB /* YZIntegralCountCollectionViewCell.m in Sources */,
 				1DBD8E7422CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				AA237E692143590C00BC47BB /* YZksHistoryWinNumberView.m in Sources */,
+				1D7BDFFE23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				AA237E6A2143590C00BC47BB /* YZFBMatchDetailCellView.m in Sources */,
 				AA237E6B2143590C00BC47BB /* CWStarRateView.m in Sources */,
 				AA237E6C2143590C00BC47BB /* YZIntegralCustomCountCollectionViewCell.m in Sources */,
@@ -10095,6 +10660,7 @@
 				AA237E862143590C00BC47BB /* YZNewFeatureViewController.m in Sources */,
 				AA237E872143590C00BC47BB /* YZBetSuccessViewController.m in Sources */,
 				AA237E882143590C00BC47BB /* YZWithdrawalBankCardTableViewCell.m in Sources */,
+				1D2E334E2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */,
 				AA237E892143590C00BC47BB /* UIView+FLExtension.m in Sources */,
 				1DBD8E7722CB2C250024CF7B /* SDWebImageCodersManager.m in Sources */,
 				AA237E8A2143590C00BC47BB /* HDEmotionEscape.m in Sources */,
@@ -10116,6 +10682,7 @@
 				AA237E982143590C00BC47BB /* YZOddsCellStatus.m in Sources */,
 				1DDDEB8922D5BB80003A9C07 /* MASViewConstraint.m in Sources */,
 				AA237E992143590C00BC47BB /* YZRecommendRowStatus.m in Sources */,
+				1DD45A9023910CF60007C481 /* YZKy481ChartViewController.m in Sources */,
 				1DB2A59722C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */,
 				AA237E9A2143590C00BC47BB /* MJRefreshBackGifFooter.m in Sources */,
 				AA237E9B2143590C00BC47BB /* YZOrderViewController.m in Sources */,
@@ -10123,6 +10690,7 @@
 				AA237E9D2143590C00BC47BB /* AFHTTPSessionManager.m in Sources */,
 				AA237E9E2143590C00BC47BB /* YZUserInfo.m in Sources */,
 				AA237E9F2143590C00BC47BB /* AFNetworkReachabilityManager.m in Sources */,
+				1D2E3342237162F300E8C9AC /* YZKy481ChongView.m in Sources */,
 				AA237EA02143590C00BC47BB /* YZSecretChangeViewController.m in Sources */,
 				AA237EA12143590C00BC47BB /* YZMessageStstus.m in Sources */,
 				AA237EA22143590C00BC47BB /* YZUnionBuyStatusFrame.m in Sources */,
@@ -10142,12 +10710,13 @@
 				1DBD8E8922CB2C250024CF7B /* UIImageView+WebCache.m in Sources */,
 				AA237EB02143590C00BC47BB /* FMResultSet.m in Sources */,
 				AA237EB12143590C00BC47BB /* YZBasketBallBetHeaderView.m in Sources */,
-				AA237EB22143590C00BC47BB /* YZFucaiViewController.m in Sources */,
+				AA237EB22143590C00BC47BB /* YZFucai3DViewController.m in Sources */,
 				AA237EB32143590C00BC47BB /* YZFbOrderDetailTableViewCell.m in Sources */,
 				AA237EB42143590C00BC47BB /* YZFBChoosePlayView.m in Sources */,
 				AA237EB52143590C00BC47BB /* MJRefreshComponent.m in Sources */,
 				1DBD8E8C22CB2C250024CF7B /* MKAnnotationView+WebCache.m in Sources */,
 				AA237EB62143590C00BC47BB /* UIViewController+DismissKeyboard.m in Sources */,
+				1D7BE004237112580015CD8E /* YZKy481PlayTypeView.m in Sources */,
 				AA237EB82143590C00BC47BB /* YZFBMatchDetailOddsViewController.m in Sources */,
 				AA237EB92143590C00BC47BB /* YZIntegralDescriptionCollectionViewCell.m in Sources */,
 				AA237EBB2143590C00BC47BB /* YZFBMatchDetailTopView.m in Sources */,
@@ -10190,7 +10759,6 @@
 				AA237EE02143590C00BC47BB /* YZWinNumberGradeTableViewCell.m in Sources */,
 				AA237EE12143590C00BC47BB /* YZUnionBuyStatus.m in Sources */,
 				1DDDEB7A22D5BB80003A9C07 /* MASConstraintMaker.m in Sources */,
-				1DCA1CFF2327456D00F2061B /* YZRRMineViewController.m in Sources */,
 				AA237EE22143590C00BC47BB /* YZAttatchedCell.m in Sources */,
 				AA237EE32143590C00BC47BB /* YZFbBetCellStatus.m in Sources */,
 				1DE6200922CC4F7600C1490E /* NSBundle+TZImagePicker.m in Sources */,
@@ -10228,6 +10796,7 @@
 				AA237F002143590C00BC47BB /* NSObject+SBJSON.m in Sources */,
 				1DBD8C3B22CB00470024CF7B /* MWCaptionView.m in Sources */,
 				1DBD8E7122CB2C250024CF7B /* NSImage+WebCache.m in Sources */,
+				1D96B6C723794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				AA237F012143590C00BC47BB /* YZFootBallTool.m in Sources */,
 				AA237F022143590C00BC47BB /* YZHomePageFunctionItemView.m in Sources */,
 				AA237F042143590C00BC47BB /* YZQuickStakeGameModel.m in Sources */,
@@ -10298,6 +10867,7 @@
 				AA237F3D2143590C00BC47BB /* YZBetTool.m in Sources */,
 				AA237F3E2143590C00BC47BB /* YZSfcViewController.m in Sources */,
 				AA237F3F2143590C00BC47BB /* UIView+MJExtension.m in Sources */,
+				1D96B6CD2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				AA237F402143590C00BC47BB /* YZZCMineViewController.m in Sources */,
 				AA237F412143590C00BC47BB /* YZRechargeStatus.m in Sources */,
 				AA237F422143590C00BC47BB /* YZChoosePhoneView.m in Sources */,
@@ -10386,6 +10956,7 @@
 				AA237F962143590C00BC47BB /* YZUnionBuyFollowRecordViewController.m in Sources */,
 				AA237F972143590C00BC47BB /* YZUnionBuyComfirmPayTool.m in Sources */,
 				AA237F982143590C00BC47BB /* HDCDDeviceManagerBase.m in Sources */,
+				1D783F9A238E46E900C5FC6D /* YZAddH5AppView.m in Sources */,
 				AAA65A3822A7604000DB7427 /* YZQuickUnionBuyView.m in Sources */,
 				AA237F992143590C00BC47BB /* YZNoNetView.m in Sources */,
 				1DE61FEB22CC4F7500C1490E /* TZPhotoPreviewController.m in Sources */,
@@ -10434,6 +11005,7 @@
 				AA237FBF2143590C00BC47BB /* YZKsBottomBtn.m in Sources */,
 				AA237FC02143590C00BC47BB /* YZSsqChartViewController.m in Sources */,
 				AA237FC12143590C00BC47BB /* HDRecordView.m in Sources */,
+				1DB33E76237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA237FC22143590C00BC47BB /* NSObject+MJKeyValue.m in Sources */,
 				AA578894228943C5002292EA /* YZUnionBuyDetaiBottomView.m in Sources */,
 				AA237FC32143590C00BC47BB /* HDBubbleView+Video.m in Sources */,
@@ -10447,7 +11019,6 @@
 				AA237FC82143590C00BC47BB /* YZStartUnionBuyViewController.m in Sources */,
 				AA237FC92143590C00BC47BB /* YZChooseVoucherViewController.m in Sources */,
 				AA237FCA2143590C00BC47BB /* YZMessageType.m in Sources */,
-				AA237FCD2143590C00BC47BB /* YZFbBetSuccessViewController.m in Sources */,
 				AA237FCE2143590C00BC47BB /* YZBuyLotteryCellStatus.m in Sources */,
 				AA237FCF2143590C00BC47BB /* UIResponder+HRouter.m in Sources */,
 				AA237FD02143590C00BC47BB /* YZFBMatchDetailRecommendStatus.m in Sources */,
@@ -10551,11 +11122,12 @@
 				1DD0334722C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */,
 				AA1E103220FC37DF0045FBD4 /* YZChooseBirthdayTableViewCell.m in Sources */,
 				1DE61FE622CC4F7500C1490E /* TZAssetCell.m in Sources */,
+				1D2E33462371646A00E8C9AC /* YZKy481DanView.m in Sources */,
 				1DBD8E5122CB2C250024CF7B /* UIImage+GIF.m in Sources */,
 				AA32931B1FFE27B600CA77DA /* YZChartBallView.m in Sources */,
 				AA3292B71FFE27B600CA77DA /* YZBetViewController.m in Sources */,
 				AA74EB771FFE17DF003B53AF /* SBJsonParser.m in Sources */,
-				AA3292D31FFE27B600CA77DA /* YZRecentLotteryCell.m in Sources */,
+				AA3292D31FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m in Sources */,
 				1DBD8B5E22CAFF780024CF7B /* FSActionSheet.m in Sources */,
 				1DBD8E0622CB2BDE0024CF7B /* UIView+SDExtension.m in Sources */,
 				AA74EA7D1FFE17DF003B53AF /* HDAudioRecorderUtil.m in Sources */,
@@ -10581,6 +11153,7 @@
 				AA74E0D91FFE0A4C003B53AF /* YZUnionBuyFollowUserCellStatusFrame.m in Sources */,
 				AA32907F1FFE1D6100CA77DA /* YZShareIncomeStatus.m in Sources */,
 				AACDC22F20FEE80400955419 /* YZCircleTableView.m in Sources */,
+				1DB33E74237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA74ECAE1FFE19A5003B53AF /* YZRechargeRecordStatus.m in Sources */,
 				AA74EAEB1FFE17DF003B53AF /* HDChatToolbarItem.m in Sources */,
 				AA3292D91FFE27B600CA77DA /* YZKsDiceAnimationView.m in Sources */,
@@ -10619,7 +11192,6 @@
 				AA32933F1FFE27B600CA77DA /* YZChartChooseBallView.m in Sources */,
 				1DBD8C3C22CB00470024CF7B /* MWZoomingScrollView.m in Sources */,
 				AA74EA591FFE17DE003B53AF /* HDMessageReadManager.m in Sources */,
-				AA74ECA01FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */,
 				AA74EB051FFE17DF003B53AF /* HDBubbleView.m in Sources */,
 				1DF156FF2327A04000A7B788 /* YZPosternViewController.m in Sources */,
 				AA74E12D1FFE0A86003B53AF /* YZOrderStatus.m in Sources */,
@@ -10711,6 +11283,7 @@
 				1DBD8E6322CB2C250024CF7B /* SDWebImageDownloaderOperation.m in Sources */,
 				AA74EBD31FFE17E0003B53AF /* FMDatabaseAdditions.m in Sources */,
 				AA74E13F1FFE0A86003B53AF /* YZFCOrderDetailTableViewCell.m in Sources */,
+				1D7BE002237112580015CD8E /* YZKy481PlayTypeView.m in Sources */,
 				AA74EA2D1FFE17DE003B53AF /* YZNoDataTableViewCell.m in Sources */,
 				AAD2530C20F5B55A00ACAA72 /* YZSetmealBetViewController.m in Sources */,
 				AACDC22320FEE79400955419 /* YZCircleDetailViewController.m in Sources */,
@@ -10792,6 +11365,7 @@
 				AA3290611FFE1C9C00CA77DA /* YZVoucherTableViewCell.m in Sources */,
 				AA3292DF1FFE27B600CA77DA /* YZKsHezhiView.m in Sources */,
 				AA3293591FFE27B600CA77DA /* YZMatchInfosStatus.m in Sources */,
+				1D2E333A23714F3600E8C9AC /* YZKy481WanNengView.m in Sources */,
 				1DBD8E6022CB2C250024CF7B /* SDWebImageFrame.m in Sources */,
 				AA74EB8B1FFE17E0003B53AF /* IQPreviousNextView.m in Sources */,
 				AA32907D1FFE1D6100CA77DA /* YZShareIncomeViewController.m in Sources */,
@@ -10805,8 +11379,9 @@
 				1DBD8E8722CB2C250024CF7B /* UIImageView+WebCache.m in Sources */,
 				AA74EBD91FFE17E0003B53AF /* FMResultSet.m in Sources */,
 				AAD1207820BE398100D47F85 /* YZBasketBallBetHeaderView.m in Sources */,
-				AA3292BF1FFE27B600CA77DA /* YZFucaiViewController.m in Sources */,
+				AA3292BF1FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */,
 				AA74E1311FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m in Sources */,
+				1D783F98238E46E900C5FC6D /* YZAddH5AppView.m in Sources */,
 				AA32936D1FFE27B700CA77DA /* YZFBChoosePlayView.m in Sources */,
 				AA74EB731FFE17DF003B53AF /* MJRefreshComponent.m in Sources */,
 				1DBD8E8A22CB2C250024CF7B /* MKAnnotationView+WebCache.m in Sources */,
@@ -10840,6 +11415,7 @@
 				1DF418EA22C5E6FD00D57367 /* YZCircleCommentModel.m in Sources */,
 				AA74EC981FFE19A5003B53AF /* YZRechargeBaseViewController.m in Sources */,
 				AA74E09B1FFE0A0C003B53AF /* YZGrade.m in Sources */,
+				1DD45A8E23910CF60007C481 /* YZKy481ChartViewController.m in Sources */,
 				AA74EBAB1FFE17E0003B53AF /* UIProgressView+AFNetworking.m in Sources */,
 				AA74EAF71FFE17DF003B53AF /* HDImageView.m in Sources */,
 				AA74E13D1FFE0A86003B53AF /* YZNoOrderTableViewCell.m in Sources */,
@@ -10904,6 +11480,7 @@
 				AA3293D31FFE27B700CA77DA /* YZFBMatchDetailMainView.m in Sources */,
 				AA3293411FFE27B600CA77DA /* YZSfcBetViewController.m in Sources */,
 				AA74EAFF1FFE17DF003B53AF /* HDBubbleView+Gif.m in Sources */,
+				1D2E3340237162F300E8C9AC /* YZKy481ChongView.m in Sources */,
 				AA74E0A91FFE0A0C003B53AF /* YZWinNumberBall.m in Sources */,
 				AAC40A802269A46D00075764 /* YZMessageLoginViewController.m in Sources */,
 				AA74EA631FFE17DF003B53AF /* HDChineseToPinyin.m in Sources */,
@@ -10945,6 +11522,7 @@
 				AA74E1271FFE0A86003B53AF /* YZOrder.m in Sources */,
 				AA3293631FFE27B600CA77DA /* YZPlayPassWay.m in Sources */,
 				AA92647B224B1CD200FCEFC7 /* YZInformationCollectionViewCell.m in Sources */,
+				1D96B6CB2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				1DD0334222C4A478006094A2 /* YZCircleUserInfoHeaderView.m in Sources */,
 				1DE61FFE22CC4F7600C1490E /* TZPhotoPickerController.m in Sources */,
 				1DBD8E9922CB2C250024CF7B /* SDWebImagePrefetcher.m in Sources */,
@@ -10981,6 +11559,7 @@
 				1DBD8E5722CB2C250024CF7B /* SDWebImageTransition.m in Sources */,
 				AA74EA191FFE17DE003B53AF /* UITableView+YZ.m in Sources */,
 				AA3293431FFE27B600CA77DA /* YZScjqBetViewController.m in Sources */,
+				1D96B6C523794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				AA32934B1FFE27B600CA77DA /* YZFootBallBaseViewController.m in Sources */,
 				AA74EA331FFE17DE003B53AF /* YZBottomPickerView.m in Sources */,
 				AA3293A11FFE27B700CA77DA /* YZMatchFutureStatus.m in Sources */,
@@ -11007,7 +11586,6 @@
 				1DBD8C6C22CB00470024CF7B /* PSTCollectionViewItemKey.m in Sources */,
 				AA74EA651FFE17DF003B53AF /* HDConvertToCommonEmoticonsHelper.m in Sources */,
 				AA32935D1FFE27B600CA77DA /* YZGameIndosStatus.m in Sources */,
-				1DCA1CFD2327456D00F2061B /* YZRRMineViewController.m in Sources */,
 				AA3293611FFE27B600CA77DA /* YZSectionStatus.m in Sources */,
 				AA3292D51FFE27B600CA77DA /* YZLotteryButton.m in Sources */,
 				1DD0333822C49DC3006094A2 /* YZSegementView.m in Sources */,
@@ -11016,6 +11594,7 @@
 				AA3293111FFE27B600CA77DA /* YZChartColdHotStatus.m in Sources */,
 				1DBD8DF722CB2BD70024CF7B /* TAAnimatedDotView.m in Sources */,
 				AA32938D1FFE27B700CA77DA /* YZOverUnderStatus.m in Sources */,
+				1D2E334C2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */,
 				AA67A1B41FAC150100B3611B /* YZNavigationController.m in Sources */,
 				1DBD8CA922CB29B60024CF7B /* YZAddImageManage.m in Sources */,
 				AA27DA0F2020180F0068C9CA /* YZHomePageFunctionModel.m in Sources */,
@@ -11115,8 +11694,8 @@
 				AA3292C51FFE27B600CA77DA /* YZStartUnionBuyViewController.m in Sources */,
 				AA3292AF1FFE27B600CA77DA /* YZChooseVoucherViewController.m in Sources */,
 				AA74ECD91FFE1AD6003B53AF /* YZMessageType.m in Sources */,
-				AA3293451FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */,
 				AA3293DB1FFE27B700CA77DA /* YZBuyLotteryCellStatus.m in Sources */,
+				1D7BDF972371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				AA74EA511FFE17DE003B53AF /* UIResponder+HRouter.m in Sources */,
 				AA3293851FFE27B700CA77DA /* YZFBMatchDetailRecommendStatus.m in Sources */,
 				AA32910C1FFE21D400CA77DA /* YZWeixin.m in Sources */,
@@ -11124,6 +11703,7 @@
 				1DBD8E8422CB2C250024CF7B /* SDWebImageCompat.m in Sources */,
 				AA57888322855C51002292EA /* YZFBPlayTypeView.m in Sources */,
 				1DDDEB6F22D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				1D7BDFFC23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				AA74E08D1FFE0A0C003B53AF /* YZWinNumberFBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11217,13 +11797,14 @@
 				AAE55C74207EF8B000A29844 /* YZIntegralCouponsCollectionViewCell.m in Sources */,
 				AA3292DC1FFE27B600CA77DA /* YZKsHistoryTableView.m in Sources */,
 				AA3290821FFE1D6100CA77DA /* YZShareIncomeTableViewCell.m in Sources */,
+				1D7BDF982371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				AA74EA621FFE17DE003B53AF /* HDEmojiEmoticons.m in Sources */,
 				1DD0334822C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */,
 				AA32931C1FFE27B600CA77DA /* YZChartBallView.m in Sources */,
 				AA3292B81FFE27B600CA77DA /* YZBetViewController.m in Sources */,
 				AA74EB781FFE17DF003B53AF /* SBJsonParser.m in Sources */,
 				1DBD8E5222CB2C250024CF7B /* UIImage+GIF.m in Sources */,
-				AA3292D41FFE27B600CA77DA /* YZRecentLotteryCell.m in Sources */,
+				AA3292D41FFE27B600CA77DA /* YZ11x5RecentLotteryCell.m in Sources */,
 				AA74EA7E1FFE17DF003B53AF /* HDAudioRecorderUtil.m in Sources */,
 				AA74E1D11FFE0AEA003B53AF /* YZFunctionStatus.m in Sources */,
 				1DBD8B5F22CAFF780024CF7B /* FSActionSheet.m in Sources */,
@@ -11288,7 +11869,6 @@
 				AA3293401FFE27B600CA77DA /* YZChartChooseBallView.m in Sources */,
 				1DBD8C3D22CB00470024CF7B /* MWZoomingScrollView.m in Sources */,
 				AA74EA5A1FFE17DE003B53AF /* HDMessageReadManager.m in Sources */,
-				AA74ECA11FFE19A5003B53AF /* YZWeixinPayGuideViewController.m in Sources */,
 				AA74EB061FFE17DF003B53AF /* HDBubbleView.m in Sources */,
 				AA74E12E1FFE0A86003B53AF /* YZOrderStatus.m in Sources */,
 				AA3292F81FFE27B600CA77DA /* YZTitleButton.m in Sources */,
@@ -11362,6 +11942,7 @@
 				AA74EA4E1FFE17DE003B53AF /* NSString+Valid.m in Sources */,
 				AA74EA421FFE17DE003B53AF /* YZAliPayOrder.m in Sources */,
 				AA32932A1FFE27B600CA77DA /* YZChartViewLeftTableViewCell.m in Sources */,
+				1D2E333B23714F3D00E8C9AC /* YZKy481WanNengView.m in Sources */,
 				AA3292C41FFE27B600CA77DA /* YZSsqViewController.m in Sources */,
 				AA74EB461FFE17DF003B53AF /* NSObject+MJCoding.m in Sources */,
 				AA3293321FFE27B600CA77DA /* YZChartSsqLotteryTableViewCell.m in Sources */,
@@ -11391,9 +11972,11 @@
 				AA3293B81FFE27B700CA77DA /* YZFBMatchDetailRecommendView.m in Sources */,
 				1DBD8C7322CB00470024CF7B /* PSTGridLayoutRow.m in Sources */,
 				1DBD8C5B22CB00470024CF7B /* PSTCollectionViewCell.m in Sources */,
+				1D2E33472371646A00E8C9AC /* YZKy481DanView.m in Sources */,
 				AA3292EC1FFE27B600CA77DA /* YZKsDiceView.m in Sources */,
 				AA3292E81FFE27B600CA77DA /* YZKsHistoryTableViewCell.m in Sources */,
 				AA3293501FFE27B600CA77DA /* YZScjqViewController.m in Sources */,
+				1D7BDFFD23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				AAE55C78207EF8B000A29844 /* YZIntegralCountCollectionViewCell.m in Sources */,
 				AA3292E21FFE27B600CA77DA /* YZksHistoryWinNumberView.m in Sources */,
 				1DBD8E7322CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -11424,6 +12007,7 @@
 				AA32911B1FFE21D400CA77DA /* YZSecretChangeThreeViewController.m in Sources */,
 				1DF418E622C5AD6000D57367 /* YZCircleMineCommentModel.m in Sources */,
 				AA3293E01FFE27B700CA77DA /* YZRespPromotionStatus.m in Sources */,
+				1D2E334D2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */,
 				AA3293BC1FFE27B700CA77DA /* YZFBMatchDetailOddsRightContentTableViewCell.m in Sources */,
 				AA74EA281FFE17DE003B53AF /* YZNewFeatureViewController.m in Sources */,
 				AAD2530920F5B50600ACAA72 /* YZSetmealRecordViewController.m in Sources */,
@@ -11445,6 +12029,7 @@
 				AA32931E1FFE27B600CA77DA /* YZChartTitleView.m in Sources */,
 				AA3292F61FFE27B600CA77DA /* YZSelectBallCell.m in Sources */,
 				1DDDEB8B22D5BB80003A9C07 /* MASViewAttribute.m in Sources */,
+				1DD45A8F23910CF60007C481 /* YZKy481ChartViewController.m in Sources */,
 				AA32937C1FFE27B700CA77DA /* YZFBMatchDetailViewController.m in Sources */,
 				1DB2A59622C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */,
 				AA74EAF21FFE17DF003B53AF /* HDFacialView.m in Sources */,
@@ -11452,6 +12037,7 @@
 				AA3293841FFE27B700CA77DA /* YZRecommendRowStatus.m in Sources */,
 				AA74EB5A1FFE17DF003B53AF /* MJRefreshBackGifFooter.m in Sources */,
 				AA74E11C1FFE0A86003B53AF /* YZOrderViewController.m in Sources */,
+				1D2E3341237162F300E8C9AC /* YZKy481ChongView.m in Sources */,
 				AA32939E1FFE27B700CA77DA /* YZFBMatchDetailStandingsStatus.m in Sources */,
 				AA74EBA21FFE17E0003B53AF /* AFHTTPSessionManager.m in Sources */,
 				AA3291131FFE21D400CA77DA /* YZUserInfo.m in Sources */,
@@ -11473,10 +12059,11 @@
 				AA3293C81FFE27B700CA77DA /* YZFBMatchDetailTeamView.m in Sources */,
 				1DBD8E8822CB2C250024CF7B /* UIImageView+WebCache.m in Sources */,
 				AA74EBDA1FFE17E0003B53AF /* FMResultSet.m in Sources */,
-				AA3292C01FFE27B600CA77DA /* YZFucaiViewController.m in Sources */,
+				AA3292C01FFE27B600CA77DA /* YZFucai3DViewController.m in Sources */,
 				1DDDEB7022D5BB80003A9C07 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				AA74E1321FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m in Sources */,
 				AA32936E1FFE27B700CA77DA /* YZFBChoosePlayView.m in Sources */,
+				1D7BE003237112580015CD8E /* YZKy481PlayTypeView.m in Sources */,
 				AA74EB741FFE17DF003B53AF /* MJRefreshComponent.m in Sources */,
 				AA74EA501FFE17DE003B53AF /* UIViewController+DismissKeyboard.m in Sources */,
 				1DBD8E8B22CB2C250024CF7B /* MKAnnotationView+WebCache.m in Sources */,
@@ -11519,7 +12106,6 @@
 				AACDC21020FEE68D00955419 /* YZCircleViewController.m in Sources */,
 				AA74E0921FFE0A0C003B53AF /* YZWinNumberDetailViewController.m in Sources */,
 				AA74E1261FFE0A86003B53AF /* YZScheme.m in Sources */,
-				1DCA1CFE2327456D00F2061B /* YZRRMineViewController.m in Sources */,
 				1DF418F922C5FCC600D57367 /* UILabel+YZ.m in Sources */,
 				AA74EC951FFE19A5003B53AF /* YZZhifubaoRechargeViewController.m in Sources */,
 				AA32939C1FFE27B700CA77DA /* YZRoundStatus.m in Sources */,
@@ -11557,6 +12143,7 @@
 				AA74E1CB1FFE0AEA003B53AF /* YZMineSettingViewController.m in Sources */,
 				AAD1207920BE398100D47F85 /* YZBasketBallBetHeaderView.m in Sources */,
 				1DBD8B2522C9EC5D0024CF7B /* YZCircleCommentListTableViewCell.m in Sources */,
+				1D96B6C623794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
 				AA74EB761FFE17DF003B53AF /* NSObject+SBJSON.m in Sources */,
 				AA74EC4A1FFE17E0003B53AF /* YZFootBallTool.m in Sources */,
 				1DBD8C3A22CB00470024CF7B /* MWCaptionView.m in Sources */,
@@ -11627,6 +12214,7 @@
 				AA74EB801FFE17E0003B53AF /* NSString+SBJSON.m in Sources */,
 				AA74EBA41FFE17E0003B53AF /* AFURLSessionManager.m in Sources */,
 				1DBD8C7C22CB00470024CF7B /* SDWebImageDecoder.m in Sources */,
+				1D96B6CC2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */,
 				AA74EC581FFE17E0003B53AF /* YZBetTool.m in Sources */,
 				AA32934E1FFE27B600CA77DA /* YZSfcViewController.m in Sources */,
 				AAD1206720BCFE0300D47F85 /* YZBasketBallBetViewController.m in Sources */,
@@ -11715,6 +12303,7 @@
 				AA74EB861FFE17E0003B53AF /* IQTitleBarButtonItem.m in Sources */,
 				AA74EB501FFE17DF003B53AF /* UIScrollView+MJRefresh.m in Sources */,
 				AA74EB481FFE17DF003B53AF /* MJMethod.m in Sources */,
+				1D783F99238E46E900C5FC6D /* YZAddH5AppView.m in Sources */,
 				AA3293521FFE27B600CA77DA /* YZCN.m in Sources */,
 				AA74E0941FFE0A0C003B53AF /* YZWinNumberViewController.m in Sources */,
 				AA74E0D41FFE0A4C003B53AF /* YZUnionBuyFollowRecordViewController.m in Sources */,
@@ -11763,6 +12352,7 @@
 				AA3292F01FFE27B600CA77DA /* YZKsBottomBtn.m in Sources */,
 				AA3293081FFE27B600CA77DA /* YZSsqChartViewController.m in Sources */,
 				AA74EAFA1FFE17DF003B53AF /* HDRecordView.m in Sources */,
+				1DB33E75237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA74EB3C1FFE17DF003B53AF /* NSObject+MJKeyValue.m in Sources */,
 				AA74EB101FFE17DF003B53AF /* HDBubbleView+Video.m in Sources */,
 				1DE6200D22CC510200C1490E /* YZGridViewFlowLayout.m in Sources */,
@@ -11777,7 +12367,6 @@
 				AA3292C61FFE27B600CA77DA /* YZStartUnionBuyViewController.m in Sources */,
 				AA3292B01FFE27B600CA77DA /* YZChooseVoucherViewController.m in Sources */,
 				AA74ECDA1FFE1AD6003B53AF /* YZMessageType.m in Sources */,
-				AA3293461FFE27B600CA77DA /* YZFbBetSuccessViewController.m in Sources */,
 				AA3293DC1FFE27B700CA77DA /* YZBuyLotteryCellStatus.m in Sources */,
 				AA74EA521FFE17DE003B53AF /* UIResponder+HRouter.m in Sources */,
 				AA3293861FFE27B700CA77DA /* YZFBMatchDetailRecommendStatus.m in Sources */,
@@ -11819,11 +12408,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mao wenhao (XZPLR55U48)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 65FQR43XBY;
+				DEVELOPMENT_TEAM = W63NAXL672;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -11874,10 +12463,10 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rrc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = rr_dev_38;
+				PROVISIONING_PROFILE_SPECIFIER = rrc_adHoc_2;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -11895,11 +12484,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sheila Savannah (W63NAXL672)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 65FQR43XBY;
+				DEVELOPMENT_TEAM = W63NAXL672;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -11947,10 +12536,10 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rrc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = rr_adHoc_38;
+				PROVISIONING_PROFILE_SPECIFIER = rr_adhoc_3;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -11967,11 +12556,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/ez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sheila Savannah (W63NAXL672)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 65FQR43XBY;
+				DEVELOPMENT_TEAM = W63NAXL672;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -12019,10 +12608,10 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rrc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.rr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = rr_adHoc_38;
+				PROVISIONING_PROFILE_SPECIFIER = rr_adhoc_3;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -12491,13 +13080,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-6";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mao wenhao (XZPLR55U48)";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -12551,6 +13141,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
+				MARKETING_VERSION = 1.9.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
@@ -12570,13 +13161,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-6";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -12627,6 +13219,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
+				MARKETING_VERSION = 1.9.4;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
@@ -12645,13 +13238,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-6";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -12702,12 +13296,13 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
+				MARKETING_VERSION = 1.9.4;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cd768b6-a0d1-40b1-942a-27fcfe2227d0";
-				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_38;
+				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_57;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

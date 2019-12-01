@@ -43,7 +43,7 @@
     }
     UIImage * placeholderImage = [UIImage imageNamed:imageName];
     //轮播图
-    SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, screenWidth, self.height) delegate:self placeholderImage:placeholderImage];
+    SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.width, 180) delegate:self placeholderImage:placeholderImage];
     self.cycleScrollView = cycleScrollView;
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色

@@ -29,8 +29,6 @@
     NSArray*textArray = @[@"收款人：北京中彩迅达科技有限公司",@"开户行：中国建设银行股份有限责任公司北京远洋支行", @"账号：1100 1028 9000 5301 7458"];
 #elif CS
     NSArray*textArray = @[@"收款人：北京中彩迅达科技有限公司",@"开户行：中国建设银行股份有限责任公司北京远洋支行", @"账号：1100 1028 9000 5301 7458"];
-#elif RR
-    NSArray*textArray = @[@"收款人：北京中彩迅达科技有限公司",@"开户行：中国建设银行股份有限责任公司北京远洋支行", @"账号：1100 1028 9000 5301 7458"];
 #endif
     // 三行文字、下面两行文字 2条红色虚线
     for(int i = 0;i < 3;i++)
@@ -51,14 +49,26 @@
     }
 
     UILabel *promptLabel = [[UILabel alloc] init];
-    promptLabel.textColor = YZGrayTextColor;
     promptLabel.numberOfLines = 0;
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、ATM机暂时不支持汇款到对公账号；\n2、仅支持网银转账、银行柜台汇款，工作日9:00-16:00汇款当天到账，16:00后次日到账。周末及节假日顺延至下一工作日处理；\n3、汇款后请尽量保留相关凭证，以便需要时与客服核实确认；\n4、建议3000元以上充值使用银行汇款，小额充值尽量使用在线充值方式。\n5、充值金额不可提现，奖金可以提现。"];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:5];
-    [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
-    promptLabel.attributedText = attStr;
+    if (!YZStringIsEmpty(self.intro))
+    {
+        NSDictionary *optoins = @{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType};
+        NSData *data = [self.intro dataUsingEncoding:NSUnicodeStringEncoding];
+        NSError * error;
+        NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:&error];
+        if (!error) {
+            promptLabel.attributedText = attributeString;
+        }
+    }else
+    {
+        promptLabel.textColor = YZGrayTextColor;
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"温馨提示：\n1、ATM机暂时不支持汇款到对公账号；\n2、仅支持网银转账、银行柜台汇款，工作日9:00-16:00汇款当天到账，16:00后次日到账。周末及节假日顺延至下一工作日处理；\n3、汇款后请尽量保留相关凭证，以便需要时与客服核实确认；\n4、建议3000元以上充值使用银行汇款，小额充值尽量使用在线充值方式。\n5、充值金额不可提现，奖金可以提现。"];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:5];
+        [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
+        promptLabel.attributedText = attStr;
+    }
     CGFloat labelY = CGRectGetMaxY(backView.frame) + 10;
     CGFloat labelW = screenWidth - 2 * YZMargin;
     CGSize labelSize = [promptLabel.attributedText boundingRectWithSize:CGSizeMake(labelW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
@@ -69,7 +79,7 @@
     if (!YZStringIsEmpty(self.detailUrl)) {
         UIButton * rechargeExplainBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [rechargeExplainBtn setTitle:@"充值说明（点击查看）" forState:UIControlStateNormal];
-        [rechargeExplainBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        [rechargeExplainBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
         rechargeExplainBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         [rechargeExplainBtn addTarget:self action:@selector(rechargeExplainBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
         CGSize rechargeExplainBtnSize = [rechargeExplainBtn.currentTitle sizeWithLabelFont:rechargeExplainBtn.titleLabel.font];
@@ -84,12 +94,4 @@
     [self.navigationController pushViewController:updataActivityVC animated:YES];
 }
 
-- (void)kefuClick
-{
-    UIWebView *callWebview =[[UIWebView alloc] init];
-    NSString *telUrl = @"tel://4007001898";
-    NSURL *telURL =[NSURL URLWithString:telUrl];
-    [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
-    [self.view addSubview:callWebview];
-}
 @end

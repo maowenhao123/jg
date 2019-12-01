@@ -12,11 +12,12 @@
 #import "YZCommitTool.h"
 
 @implementation YZBetTool
+
 #pragma  mark - 机选号码
-+ (void)autoChooseS1x5WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag//11选5
++ (void)autoChoose11x5WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag//11选5
 {
-    NSArray * minSelCountArray = [[NSArray alloc] initWithObjects:@"1",@"2", @"3", @"4", @"5", @"6", @"7", @"8",  @"1", @"2", @"1", @"3", @"22", @"23", @"24", @"25", @"26", @"27", @"29", @"31", @"",nil];
-    NSArray * playTypeBtnTitles = [[NSArray alloc] initWithObjects:@"任选一",@"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八",  @"前二直选", @"前二组选", @"前三直选", @"前三组选", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"前二组选", @"前三组选", @"",nil];
+    NSArray * minSelCountArray = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8",  @"1", @"2", @"1", @"3", @"22", @"23", @"24", @"25", @"26", @"27", @"29", @"31"];
+    NSArray * playTypeBtnTitles = @[@"任选一",@"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八",  @"前二直选", @"前二组选", @"前三直选", @"前三组选", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"前二组选", @"前三组选"];
     if(tag >= 12) return;
     //随机号码
     int minSelCount = [minSelCountArray[tag] intValue];
@@ -27,7 +28,7 @@
     {
         minSelCount = 3;
     }
-    NSMutableSet *randomSet = [[NSMutableSet alloc] init];
+    NSMutableSet *randomSet = [NSMutableSet set];
     while (randomSet.count < minSelCount)
     {
         int random = arc4random() % 11 + 1;
@@ -88,6 +89,108 @@
     }
     return mutableArray;
 }
+
++ (void)autoChooseKy481WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag//快赢481
+{
+    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24"];
+    
+    NSMutableString *muStr = [NSMutableString string];
+    int betCount = 1;
+    if (tag == 0 || tag == 1 || tag == 2 || tag == 6) {
+        int number = tag + 1;
+        if (tag == 6) {
+            number = 4;
+        }
+        for (int i = 0; i < number; i++) {
+            int random = arc4random() % 8 + 1;
+            [muStr appendFormat:@"%d|", random];
+        }
+        while (muStr.length < 8) {
+            [muStr appendFormat:@"_|"];
+        }
+    }else if (tag == 3 || tag == 4 || tag == 5)
+    {
+        int number = 2;
+        if (tag == 5) {
+            number = 3;
+        }
+        for (int i = 0; i < number; i++) {
+            int random = arc4random() % 8 + 1;
+            [muStr appendFormat:@"%d,", random];
+        }
+    }else if (tag == 7 || tag == 8 || tag == 9 || tag == 10)
+    {
+        NSMutableSet *randomSet = [NSMutableSet set];
+        while (randomSet.count < 5)
+        {
+            int random = arc4random() % 8 + 1;
+            [randomSet addObject:@(random)];
+        }
+        NSMutableArray *muArr = [[NSMutableArray alloc] initWithArray:[randomSet allObjects]];
+        int number1 = [muArr[0] intValue];
+        int number2 = [muArr[1] intValue];
+        int number3 = [muArr[2] intValue];
+        int number4 = [muArr[3] intValue];
+        if (tag == 7) {
+            [muStr appendFormat:@"%d,%d,%d,%d,", number1, number2, number1, number1];
+        }else if (tag == 8)
+        {
+            [muStr appendFormat:@"%d,%d,%d,%d,", number1, number1, number2, number2];
+        }else if (tag == 9)
+        {
+            [muStr appendFormat:@"%d,%d,%d,%d,", number1, number2, number3, number3];
+        }else if (tag == 10)
+        {
+            [muStr appendFormat:@"%d,%d,%d,%d,", number1, number2, number3, number4];
+        }
+    }
+    [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个符号
+    if (tag == 3 || tag == 4 || tag == 5) {
+        NSArray * numberArr = [muStr componentsSeparatedByString:@","];
+        NSSet * numberSet = [NSSet setWithArray:numberArr];
+        NSInteger sameCount = numberArr.count - numberSet.count;
+        if (tag == 5) {
+            if (sameCount == 0) {
+                betCount = 24;
+            }else if (sameCount == 1)
+            {
+                betCount = 12;
+            }else if (sameCount == 1)
+            {
+                betCount = 4;
+            }
+        }else if (tag == 3 || tag == 4)
+        {
+            if (sameCount == 0) {
+                betCount = 12;
+            }else if (sameCount == 1)
+            {
+                betCount = 6;
+            }
+        }
+        [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", playTypes[tag], betCount]];
+    }else
+    {
+        [muStr appendString:[NSString stringWithFormat:@"[%@单式1注]", playTypes[tag]]];
+    }
+    
+    //拼接完字符串后加颜色
+    NSRange range = [muStr rangeOfString:@"["];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:muStr];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, range.location)];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(range.location, muStr.length-range.location)];
+    
+    YZBetStatus *status = [[YZBetStatus alloc] init];
+    status.labelText = attStr;
+    status.betCount = betCount;
+    status.betType = @"00";
+    CGSize labelSize = [muStr sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(30)] maxSize:CGSizeMake(screenWidth - 2 * YZMargin - 18 - 5, MAXFLOAT)];
+    status.cellH = labelSize.height + 10 > 45 ? labelSize.height + 10 : 45;
+    status.playType = playType;
+    //存储一组号码数据
+    [YZStatusCacheTool saveStatus:status];
+}
+
 + (void)autoChooseKsWithSelectedPlayTypeBtnTag:(int)tag//机选快三
 {
     NSMutableArray * selectedButttonTags = [NSMutableArray array];
@@ -137,7 +240,7 @@
     }
     //把信息存入数据库
     [YZCommitTool commitKsBetWithNumbers:selectedButttonTags selectedPlayTypeBtnTag:tag];
-
+    
 }
 + (void)autoChooseDlt//机选大乐透
 {
@@ -445,6 +548,7 @@
 {
     [self autoChoosefc];
 }
+
 + (NSMutableArray *)getS1x5TicketList
 {
     NSMutableArray *arr = [NSMutableArray array];
@@ -496,6 +600,7 @@
     }
     return arr;
 }
+
 + (NSMutableArray *)getFcTicketList
 {
     NSMutableArray *arr = [NSMutableArray array];
@@ -635,6 +740,7 @@
     }
     return arr;
 }
+
 + (NSMutableArray *)getSsqTicketList
 {
     NSMutableArray *arr = [NSMutableArray array];
@@ -691,6 +797,7 @@
     }
     return arr;
 }
+
 + (NSMutableArray *)getQlcTicketList
 {
     NSMutableArray *arr = [NSMutableArray array];
@@ -750,6 +857,7 @@
     }
     return arr;
 }
+
 + (NSMutableArray *)getDltTicketListWithZhuijia:(BOOL)zhuijia
 {
     NSString *playType = zhuijia ? @"05" : @"00";
@@ -809,14 +917,17 @@
     }
     return arr;
 }
+
 + (NSMutableArray *)getQxcTicketList
 {
     return [self getDltTicketListWithZhuijia:NO];
 }
+
 + (NSMutableArray *)getPlwTicketList
 {
     return [self getDltTicketListWithZhuijia:NO];
 }
+
 + (NSMutableArray *)getKsTicketList
 {
     //把不同玩法的投注放在不同的statuesSet_里
@@ -886,8 +997,72 @@
                 
             }
         }
-
+        
     }
     return arr;
 }
+
+//获取快赢481的ticketList
++ (NSMutableArray *)getKy481TicketList
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    NSMutableArray *danshiArr = [NSMutableArray array];
+    NSString *danPlayType = nil;
+    for(YZBetStatus *status in [YZStatusCacheTool getStatues])
+    {
+        NSString *temp = [status.labelText string];
+        NSRange range = [temp rangeOfString:@"["];
+        NSString *temp1 = [temp substringWithRange:NSMakeRange(0, range.location)];//取出没有备注信息的号码
+        if([status.playType isEqualToString:@"00"])//说明号码是单式
+        {
+            [danshiArr addObject:temp1];
+            danPlayType = status.playType;
+        }else//说明号码是复式
+        {
+            NSDictionary *dict = nil;
+            if([temp1 rangeOfString:@"$"].location != NSNotFound)//有美元符号,是胆拖
+            {
+                dict = @{@"numbers":temp1,
+                         @"betType":status.betType,
+                         @"playType":status.playType};
+            }else//无美元符号，是普通复式
+            {
+                dict = @{@"numbers":temp1,
+                         @"betType":status.betType,
+                         @"playType":status.playType};
+            }
+            [arr addObject:dict];
+        }
+    }
+    while(danshiArr.count >= 5)//5个单式组成一组字符串
+    {
+        NSArray *fiveArr = [danshiArr subarrayWithRange:NSMakeRange(0, 5)];
+        NSMutableString *fiveStr = [NSMutableString string];
+        [danshiArr removeObjectsInRange:NSMakeRange(0, 5)];
+        for(NSString *str in fiveArr)
+        {
+            [fiveStr appendString:[NSString stringWithFormat:@"%@;",str]];
+        }
+        [fiveStr deleteCharactersInRange:NSMakeRange(fiveStr.length - 1, 1)];//删除最后一个分号
+        NSDictionary *dict = @{@"numbers":fiveStr,
+                               @"betType":@"00",
+                               @"playType":danPlayType};
+        [arr addObject:dict];
+    }
+    if(danshiArr.count > 0 && danshiArr.count < 5)//剩余不足5个通通放一个字符串里
+    {
+        NSMutableString *fiveStr = [NSMutableString string];
+        for(NSString *str in danshiArr)
+        {
+            [fiveStr appendString:[NSString stringWithFormat:@"%@;",str]];
+        }
+        [fiveStr deleteCharactersInRange:NSMakeRange(fiveStr.length - 1, 1)];//删除最后一个分号
+        NSDictionary *dict = @{@"numbers":fiveStr,
+                               @"betType":@"00",
+                               @"playType":danPlayType};
+        [arr addObject:dict];
+    }
+    return arr;
+}
+
 @end

@@ -78,14 +78,26 @@
     [self.view addSubview:rechargeBtn];
     //温馨提示
     UILabel *tishi = [[UILabel alloc] init];
-    tishi.textColor = YZGrayTextColor;
     tishi.numberOfLines = 0;
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString: @"温馨提示：\n1、使用彩金卡充值免手续费；\n2、使用彩金卡充值的金额不能提现"];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:5];
-    [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
-    tishi.attributedText = attStr;
+    if (!YZStringIsEmpty(self.intro))
+    {
+        NSDictionary *optoins = @{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType};
+        NSData *data = [self.intro dataUsingEncoding:NSUnicodeStringEncoding];
+        NSError * error;
+        NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:&error];
+        if (!error) {
+            tishi.attributedText = attributeString;
+        }
+    }else
+    {
+        tishi.textColor = YZGrayTextColor;
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString: @"温馨提示：\n1、使用彩金卡充值免手续费；\n2、使用彩金卡充值的金额不能提现"];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:5];
+        [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attStr.length)];
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:YZGetFontSize(22)] range:NSMakeRange(0, attStr.length)];
+        tishi.attributedText = attStr;
+    }
     CGFloat tishiW = screenWidth - 2 * YZMargin;
     CGSize tishiSize = [tishi.attributedText boundingRectWithSize:CGSizeMake(tishiW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     CGFloat tishiY = CGRectGetMaxY(rechargeBtn.frame) + 10;
@@ -96,7 +108,7 @@
     if (!YZStringIsEmpty(self.detailUrl)) {
         UIButton * rechargeExplainBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [rechargeExplainBtn setTitle:@"充值说明（点击查看）" forState:UIControlStateNormal];
-        [rechargeExplainBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+        [rechargeExplainBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
         rechargeExplainBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         [rechargeExplainBtn addTarget:self action:@selector(rechargeExplainBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
         CGSize rechargeExplainBtnSize = [rechargeExplainBtn.currentTitle sizeWithLabelFont:rechargeExplainBtn.titleLabel.font];

@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "YZBallBtn.h"
+
 @interface YZCommitTool : NSObject
+
 #pragma mark - 排列三
 //排三普通
 + (void)commitPisNormalBetWithBaiBalls:(NSMutableArray *)baiBalls shiBalls:(NSMutableArray *)shiBalls geBalls:(NSMutableArray *)geBalls betCount:(int)betCount playType:(NSString *)playTypeCode;
@@ -32,6 +34,9 @@
 #pragma mark - 11选5
 //提交11选5的数据
 + (void)commit1x5BetWithBalls:(NSMutableArray *)balls betCount:(int)betCount playType:(NSString *)playTypeCode currentTitle:(NSString *)currentTitle selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag;
+#pragma mark - 快赢481
++ (void)commitKy481BetWithBalls:(NSMutableArray *)balls betCount:(int)betCount playType:(NSString *)playTypeCode currentTitle:(NSString *)currentTitle selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag;
 #pragma mark - 快三
 + (void)commitKsBetWithNumbers:(NSMutableArray *)numbers selectedPlayTypeBtnTag:(NSInteger)tag;
+
 @end

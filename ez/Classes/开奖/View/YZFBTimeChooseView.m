@@ -57,8 +57,8 @@
         dateBtn.backgroundColor = [UIColor whiteColor];
         [dateBtn setTitle:self.dates[index] forState:UIControlStateNormal];
         [dateBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-        [dateBtn setTitleColor:YZRedTextColor forState:UIControlStateSelected];
-        [dateBtn setTitleColor:YZRedTextColor forState:UIControlStateHighlighted];
+        [dateBtn setTitleColor:YZBaseColor forState:UIControlStateSelected];
+        [dateBtn setTitleColor:YZBaseColor forState:UIControlStateHighlighted];
         dateBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
         [dateBtn addTarget:self action:@selector(dateBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [contentView addSubview:dateBtn];

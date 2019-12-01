@@ -335,8 +335,6 @@
     self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", _circleModel.extInfo.gameId]];
 #elif CS
     self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", _circleModel.extInfo.gameId]];
-#elif RR
-    self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", _circleModel.extInfo.gameId]];
 #endif
     self.detailLabel.attributedText = _circleModel.detailAttStr;
     [self.praiseButton setTitle:[NSString stringWithFormat:@"%@", _circleModel.likeNumber] forState:UIControlStateNormal];

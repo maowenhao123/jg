@@ -147,7 +147,6 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     YZWinNumberDetailViewController * winNumberDetailVC = [[YZWinNumberDetailViewController alloc]init];
     YZWinNumberStatusFrame * statusFrame = self.statusFrames[indexPath.row];
     winNumberDetailVC.gameId = statusFrame.status.gameId;

@@ -69,11 +69,11 @@
     [self addSubview:backImageView];
     
     //选球的白色背景
-    CGFloat ballViewX = 13 * scale;
-    CGFloat ballViewY = 17 * scale;
     CGFloat ballViewW = 227 * scale;
     CGFloat ballViewH = 45 * scale;
-        UIView * ballView = [[UIView alloc]init];
+    CGFloat ballViewX = 13 * scale;
+    CGFloat ballViewY = 17 * scale;
+    UIView * ballView = [[UIView alloc]init];
     self.ballView = ballView;
     ballView.frame = CGRectMake(ballViewX, ballViewY, ballViewW, ballViewH);
     ballView.layer.masksToBounds = YES;
@@ -82,9 +82,10 @@
     //换一注
     CGFloat afreshButtonW = 48 * scale;
     CGFloat afreshButtonH = 77 * scale;
+    CGFloat afreshButtonY = backImageView.y + 3;
     UIButton * afreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.afreshButton = afreshButton;
-    afreshButton.frame = CGRectMake(CGRectGetMaxX(backImageView.frame) - 3, backImageView.y + 3, afreshButtonW, afreshButtonH);
+    afreshButton.frame = CGRectMake(CGRectGetMaxX(backImageView.frame) - 3, afreshButtonY, afreshButtonW, afreshButtonH);
     [afreshButton setImage:[UIImage imageNamed:@"no_order_afresh_up"] forState:UIControlStateNormal];
     [afreshButton setImage:[UIImage imageNamed:@"no_order_afresh_down"] forState:UIControlStateHighlighted];
     [afreshButton setImage:[UIImage imageNamed:@"no_order_afresh_down"] forState:UIControlStateSelected];
@@ -340,8 +341,6 @@
         NSString * mcpStr = @"ZCmcp";
 #elif CS
         NSString * mcpStr = @"CSmcp";
-#elif RR 
-        NSString * mcpStr = @"RRmcp";
 #endif
         NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,@"F01",self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,@false,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];

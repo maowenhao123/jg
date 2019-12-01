@@ -87,7 +87,12 @@
         [self.webView goBack];
     }else
     {
-        [self.navigationController popViewControllerAnimated:YES];
+        if (self.navigationController.viewControllers.count == 1) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 #pragma  mark - 加载HTML文件

@@ -34,10 +34,6 @@
     // 设置背景
     [navBar setBackgroundImage:[UIImage ImageFromColor:YZBaseColor WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
 }
-
-#elif ZC
-#elif CS
-#elif RR
 #endif
 - (void)viewDidLoad
 {
@@ -49,8 +45,6 @@
     self.navigationItem.title = @"中彩啦";
 #elif CS
     self.navigationItem.title = @"财多多";
-#elif RR
-    self.navigationItem.title = @"人人彩";
 #endif
     [self setupChilds];
     [self getMessageCount];
@@ -76,8 +70,6 @@
     self.navigationItem.rightBarButtonItems = @[self.messageBarButtonItem, serviceBarButtonItem];
 #elif CS
     self.navigationItem.rightBarButtonItems = @[self.messageBarButtonItem, serviceBarButtonItem];
-#elif RR
-    self.navigationItem.rightBarButtonItem = self.messageBarButtonItem;
 #endif
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -88,7 +80,7 @@
     self.buyLotteryCollectionView = buyLotteryCollectionView;
     buyLotteryCollectionView.buyLotteryDelegate = self;
     [self.view addSubview:buyLotteryCollectionView];
-    
+
     //初始化头部刷新控件
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshViewBeginRefreshing)];
     [YZTool setRefreshHeaderGif:header];
@@ -118,9 +110,6 @@
     }
     YZServiceListViewController * contactServiceVC = [[YZServiceListViewController alloc]init];
     [self.navigationController pushViewController:contactServiceVC animated:YES];
-    
-//    YZCustomerServiceViewController * contactServiceVC = [[YZCustomerServiceViewController alloc]init];
-//    [self.navigationController pushViewController:contactServiceVC animated:YES];
 }
 
 - (void)headerRefreshViewBeginRefreshing
@@ -146,8 +135,6 @@
 #elif ZC
             UIImage * message_bar = [UIImage imageNamed:@"black_message_bar"];
 #elif CS
-            UIImage * message_bar = [UIImage imageNamed:@"black_message_bar"];
-#elif RR
             UIImage * message_bar = [UIImage imageNamed:@"black_message_bar"];
 #endif
             if (countUnReadMessage > 0) {//有消息

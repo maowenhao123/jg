@@ -65,8 +65,8 @@
         button.frame = CGRectMake(0, i * buttonH, menuViewW, buttonH);
         [button setTitle:self.titleArray[i] forState:UIControlStateNormal];
         [button setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-        [button setTitleColor:YZRedTextColor forState:UIControlStateSelected];
-        [button setTitleColor:YZRedTextColor forState:UIControlStateHighlighted];
+        [button setTitleColor:YZBaseColor forState:UIControlStateSelected];
+        [button setTitleColor:YZBaseColor forState:UIControlStateHighlighted];
         button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
         [button addTarget:self action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
         [menuView addSubview:button];

@@ -507,7 +507,7 @@
             }
             NSMutableAttributedString * betCodeAttStr = [[NSMutableAttributedString alloc]initWithString:betCodeStr];
             if ([winNumberPlayType isEqualToString:betType] && [winNumberResults isEqualToString:odd]) {//如果中间,变为红色
-                [betCodeAttStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, betCodeAttStr.length)];
+                [betCodeAttStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(0, betCodeAttStr.length)];
             }else
             {
                 [betCodeAttStr addAttribute:NSForegroundColorAttributeName value:YZBlackTextColor range:NSMakeRange(0, betCodeAttStr.length)];

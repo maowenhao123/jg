@@ -67,15 +67,15 @@
         UILabel * progressLabel = [[UILabel alloc]init];
         if (i == 0) {
             progressLabel.text = @"验证信息";
-            progressLabel.textColor = YZRedTextColor;
+            progressLabel.textColor = YZBaseColor;
         }else if (i == 1)
         {
             progressLabel.text = @"验证手机号";
-            progressLabel.textColor = YZGrayTextColor;
+            progressLabel.textColor = YZBaseColor;
         }else if (i == 2)
         {
             progressLabel.text = @"重置密码";
-            progressLabel.textColor = YZGrayTextColor;
+            progressLabel.textColor = YZBaseColor;
         }
         progressLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
         [progressView addSubview:progressLabel];
@@ -137,7 +137,7 @@
     [nextButton addTarget:self action:@selector(nextBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     nextButton.enabled = NO;//默认不可选
     [self.view addSubview:nextButton];
-    
+
     //联系客服按钮
     UILabel * promptLabel = [[UILabel alloc]init];
     promptLabel.text = @"客服电话";

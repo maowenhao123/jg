@@ -11,12 +11,14 @@
 
 @interface YZWinNumberTableViewCell ()
 
+@property (nonatomic, weak) UIImageView *bgImageView;
 @property (nonatomic, weak) UIImageView *lotteryImageView;
 @property (nonatomic, weak) UILabel *lotteryNameLabel;
 @property (nonatomic, weak) UILabel *lotteryPeriodLabel;
 @property (nonatomic, weak) UILabel *lotteryTimeLabel;
 @property (nonatomic, weak) UILabel *lotteryDetailLabel;
 @property (nonatomic, weak) UIView *lotteryNumberView;
+@property (nonatomic, weak) UIImageView * accessory;
 
 @end
 
@@ -30,6 +32,8 @@
     if(cell == nil)
     {
         cell = [[YZWinNumberTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor whiteColor];
     }
     return cell;
 }
@@ -42,6 +46,7 @@
     }
     return self;
 }
+
 - (void)setupChildViews
 {
     //1.彩票图片
@@ -94,12 +99,10 @@
     [self addSubview:line];
     
     //accessory
-    CGFloat accessoryW = 8;
-    CGFloat accessoryH = 11;
     UIImageView * accessory = [[UIImageView alloc]init];
-    accessory.frame = CGRectMake(screenWidth - YZMargin - accessoryW, (70 - accessoryH) / 2, accessoryW, accessoryH);
     accessory.image = [UIImage imageNamed:@"accessory_dray"];
     [self addSubview:accessory];
+    self.accessory = accessory;
 }
 - (void)setStatusFrame:(YZWinNumberStatusFrame *)statusFrame
 {
@@ -110,7 +113,7 @@
     
     //设置frame
     [self settingFrame];
-    
+
     if ([_statusFrame.status.gameId isEqualToString:@"T51"] || [_statusFrame.status.gameId isEqualToString:@"T52"]) {//竞彩足球没有号码球 名称下移
         self.lotteryDetailLabel.hidden = NO;
         self.lotteryNumberView.hidden = YES;
@@ -142,6 +145,8 @@
     
     //查看比赛结果
     self.lotteryDetailLabel.frame = self.statusFrame.detailF;
+    
+    self.accessory.frame = self.statusFrame.accessoryF;
 }
 #pragma  mark - 设置数据
 - (void)settingData

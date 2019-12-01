@@ -133,7 +133,7 @@
     UIButton * logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     logoutBtn.frame = CGRectMake(20, 10 + 3 * YZCellH + 40, screenWidth - 2 * 20, 40);
     [logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [logoutBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+    [logoutBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
     logoutBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     logoutBtn.layer.masksToBounds = YES;
     logoutBtn.layer.cornerRadius = logoutBtn.height / 2;

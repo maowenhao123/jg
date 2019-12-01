@@ -14,6 +14,7 @@
 {
     _status = status;
     
+    _bgImageViewF = CGRectMake(YZMargin, 5, screenWidth - 2 * YZMargin, 70);
     //设置彩票图片的frame
     CGFloat imageX = YZMargin;
     CGFloat imageY = (70 - 39) / 2;
@@ -29,7 +30,7 @@
     _nameF = CGRectMake(nameX, nameY, nameW, 20);
     
     //设置彩票期数的frame
-    CGFloat periodX = CGRectGetMaxX(_nameF) + 5;
+    CGFloat periodX = CGRectGetMaxX(_nameF) + 10;
     CGSize periodSize = [status.lotteryPeriod sizeWithLabelFont:YZLotteryPeriodFont];
     CGFloat periodW = periodSize.width;
     CGFloat periodY = nameY;
@@ -56,6 +57,10 @@
     CGFloat numberViewH = 20;
     _numberViewF = CGRectMake(numberViewX, numberViewY, numberViewW, numberViewH);
 
+    CGFloat accessoryW = 8;
+    CGFloat accessoryH = 11;
+    _accessoryF = CGRectMake(screenWidth - YZMargin - accessoryW, (70 - accessoryH) / 2, accessoryW, accessoryH);
+    
     _cellH = CGRectGetMaxY(_detailF) + 5;
     
 }

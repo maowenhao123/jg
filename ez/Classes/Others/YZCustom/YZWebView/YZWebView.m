@@ -48,7 +48,7 @@
 {
     UIView *progressView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 2.5)];
     self.progressView = progressView;
-    progressView.backgroundColor = YZColor(224, 3, 12, 1);
+    progressView.backgroundColor = YZBaseColor;
     [self addSubview:progressView];
     
     [self addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];

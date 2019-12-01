@@ -136,7 +136,7 @@
     UILabel * balanceLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(balancePromptLabel.frame) + 10, 0, screenWidth - CGRectGetMaxX(balancePromptLabel.frame) - 20, balanceView.height)];
     self.balanceLabel = balanceLabel;
     balanceLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-    balanceLabel.textColor = YZRedTextColor;
+    balanceLabel.textColor = YZBaseColor;
     balanceLabel.textAlignment = NSTextAlignmentRight;
     [balanceView addSubview:balanceLabel];
     
@@ -160,7 +160,7 @@
     withdrawalTF.borderStyle = UITextBorderStyleNone;
     withdrawalTF.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     withdrawalTF.textColor = YZBlackTextColor;
-    withdrawalTF.placeholder = @"至少3元";
+    withdrawalTF.placeholder = @"请输入提款金额";
     [withdrawalView addSubview:withdrawalTF];
     
     headerView.frame = CGRectMake(0, 0, screenHeight, CGRectGetMaxY(withdrawalView.frame) + 10);
@@ -355,10 +355,10 @@
         [MBProgressHUD showError:@"可提款金额不足"];
         return;
     }
-    if (withDrawalMoney < 3) {
-        [MBProgressHUD showError:@"提款金额不能小于3元"];
-        return;
-    }
+//    if (withDrawalMoney < 3) {
+//        [MBProgressHUD showError:@"提款金额不能小于3元"];
+//        return;
+//    }
     
     //输入登录密码
     YZWithdrawalPasswordView * passwordView = [[YZWithdrawalPasswordView alloc] initWithFrame:self.view.bounds];
@@ -376,8 +376,6 @@
 #elif ZC
     NSNumber * cmd = @(10920);
 #elif CS
-    NSNumber * cmd = @(10920);
-#elif RR
     NSNumber * cmd = @(10920);
 #endif
     NSDictionary *dict = [NSDictionary dictionary];

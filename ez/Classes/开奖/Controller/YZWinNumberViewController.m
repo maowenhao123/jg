@@ -107,7 +107,6 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     YZWinNumberStatusFrame * statusFrame = self.statusFrames[indexPath.row];
     
     if ([statusFrame.status.gameId isEqualToString:@"T51"] || [statusFrame.status.gameId isEqualToString:@"T52"]) {//竞彩足球
@@ -125,7 +124,7 @@
 - (void)setStatusFrames
 {
     NSMutableArray *statusFrameArray = [NSMutableArray array];
-    NSMutableArray *muArr = [[YZTool gameIds] mutableCopy];
+    NSMutableArray *muArr = [[YZTool gameIdNameDict].allKeys mutableCopy];
     for(int i = 0;i < muArr.count;i++)
     {
         NSString *gameId = muArr[i];
@@ -136,11 +135,9 @@
         status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
 #elif CS
         status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
-#elif RR
-        status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
 #endif
         status.lotteryName = [YZTool gameIdNameDict][gameId];
-        for(int j = 0;j < self.termList.count;j++)
+        for(int j = 0; j < self.termList.count;j++)
         {
             NSString *aGameId = self.termList[j][@"gameId"];
             if([aGameId isEqualToString:gameId])
@@ -177,6 +174,7 @@
             }
         }
     }
+
     if (statusFrameArray.count > 0) {//添加竞彩足球 竞彩篮球
         YZWinNumberStatusFrame *statusFrame1 = [[YZWinNumberStatusFrame alloc] init];
         YZWinNumberStatus *status1 = [[YZWinNumberStatus alloc] init];
@@ -187,8 +185,6 @@
 #elif ZC
         status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
 #elif CS
-        status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
-#elif RR
         status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
 #endif
         status1.lotteryName = [YZTool gameIdNameDict][gameId1];
@@ -204,8 +200,6 @@
 #elif ZC
         status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
 #elif CS
-        status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
-#elif RR
         status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
 #endif
         status2.lotteryName = [YZTool gameIdNameDict][gameId2];

@@ -622,8 +622,6 @@
                 NSString * mcpStr = @"ZCmcp";
 #elif CS
                 NSString * mcpStr = @"CSmcp";
-#elif RR
-                NSString * mcpStr = @"RRmcp";
 #endif
                 NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&multiple=%@&amount=%@&number=%@&payType=%@&id=%@&channel=%@&childChannel=%@&version=%@&playType=%@&betType=%@&remark=%@",UserId,@"T52",multiple,amount,[number URLEncodedString],@"ACCOUNT",@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],_playType,[self getBetType],mcpStr];
                 NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];

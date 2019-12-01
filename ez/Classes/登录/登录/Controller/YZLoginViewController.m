@@ -62,10 +62,6 @@
     //初始化界面
     [self setupZCChildViews];
     self.view.backgroundColor = [UIColor whiteColor];
-#elif RR
-    //初始化界面
-    [self setupZCChildViews];
-    self.view.backgroundColor = [UIColor whiteColor];
 #endif
 }
 - (void)back
@@ -281,8 +277,6 @@
     logoImageView.image = [UIImage imageNamed:@"login_ad_zc"];
 #elif CS
     logoImageView.image = [UIImage imageNamed:@"login_ad_cs"];
-#elif RR
-    logoImageView.image = [UIImage imageNamed:@"login_ad_rr"];
 #endif
     [self.view addSubview:logoImageView];
     
@@ -345,7 +339,7 @@
     UIButton * registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     registerBtn.frame = CGRectMake(loginBtn.x, CGRectGetMaxY(loginBtn.frame) + 20, screenWidth - 2 * loginBtn.x, 40);
     [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [registerBtn setTitleColor:YZRedTextColor forState:UIControlStateNormal];
+    [registerBtn setTitleColor:YZBaseColor forState:UIControlStateNormal];
     registerBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
     registerBtn.layer.masksToBounds = YES;
     registerBtn.layer.cornerRadius = loginBtn.height / 2;
@@ -386,13 +380,7 @@
     [defaults synchronize];
     
     //第三方登录
-#if ZC
     [self setupThirdPartyLogin];
-#elif CS
-    [self setupThirdPartyLogin];
-#elif RR
-    
-#endif
 }
 
 - (void)setupThirdPartyLogin
@@ -659,8 +647,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #elif CS
     [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
-#elif RR
-    [WXApi registerApp:WXAppIdOld withDescription:@"人人彩"];
 #endif
     UMSocialPlatformType platformType;
     if (btn.tag == 101)
