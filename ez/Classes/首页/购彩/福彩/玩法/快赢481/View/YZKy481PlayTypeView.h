@@ -26,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) YZTitleButton *titleBtn;
 
 - (void)show;
-
 - (void)hidden;
 
 @end

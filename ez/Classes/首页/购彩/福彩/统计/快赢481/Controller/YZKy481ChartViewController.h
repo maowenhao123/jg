@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YZKy481ChartViewController : YZBaseViewController
 
+@property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;
+
 @end
 
 NS_ASSUME_NONNULL_END

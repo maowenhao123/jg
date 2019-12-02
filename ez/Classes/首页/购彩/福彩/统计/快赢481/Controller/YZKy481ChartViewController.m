@@ -10,16 +10,20 @@
 #import "YZLoadHtmlFileController.h"
 #import "YZChartPlayTypeTitleButton.h"
 #import "YZKy481ChartRenTableView.h"
+#import "YZKy481ChartZhiTableView.h"
+#import "YZKy481ChartZuTableView.h"
 #import "YZKy481ChartYongTableView.h"
 #import "YZChartSettingView.h"
+#import "YZKy481ChartPlayTypeView.h"
 #import "Ky481ChartHeader.h"
 #import "YZDateTool.h"
 
-@interface YZKy481ChartViewController ()<UIScrollViewDelegate, YZChartSettingViewDelegate>
+@interface YZKy481ChartViewController ()<UIScrollViewDelegate, YZChartSettingViewDelegate, YZKy481ChartPlayTypeViewDelegate>
 {
     NSInteger _remainSeconds;//本期截止倒计时剩余秒数
     NSInteger _nextOpenRemainSeconds;//下期开奖倒计时剩余秒数
 }
+@property (nonatomic, weak) YZKy481ChartPlayTypeView * playTypeView;
 @property (nonatomic, weak) YZChartSettingView *settingView;//设置
 @property (nonatomic, weak) YZChartPlayTypeTitleButton *titleBtn;
 @property (nonatomic,weak) UIScrollView *topBackScrollView;
@@ -28,6 +32,8 @@
 @property (nonatomic, weak) UIView *topBtnLine;
 @property (nonatomic, weak) UIScrollView *mainScrollView;
 @property (nonatomic,weak) YZKy481ChartRenTableView *renTableView;
+@property (nonatomic,weak) YZKy481ChartZhiTableView *zhiTableView;
+@property (nonatomic,weak) YZKy481ChartZuTableView *zuTableView;
 @property (nonatomic, weak) UILabel * timelabel;
 @property (nonatomic, assign) int currentIndex;
 
@@ -69,9 +75,9 @@
 {
     if(_nextOpenRemainSeconds > 0) return;
     NSDictionary *dict = @{
-                           @"cmd":@(8026),
-                           @"gameId":@"T06"
-                           };
+        @"cmd":@(8026),
+        @"gameId":@"T06"
+    };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"%@",json);
         self.currentTermDict = json;
@@ -139,9 +145,9 @@
 - (void)getTrendDataByTermId:(NSString *)termId
 {
     NSDictionary *dict = @{
-                           @"gameId":@"T06",
-                           @"issueId":termId
-                           };
+        @"gameId":@"T06",
+        @"issueId":termId
+    };
     [[YZHttpTool shareInstance] postWithURL:[NSString stringWithFormat:@"%@%@",baseUrl,@"/misstrend/getMissNumber"] params:dict success:^(id json) {
         YZLog(@"%@", json);
         if (SUCCESS) {
@@ -186,7 +192,14 @@
     [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleBtn;
     
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithIcon:@"chart_setting" highIcon:@"chart_setting" target:self action:@selector(setting)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithIcon:@"chart_setting" highIcon:@"chart_setting" target:self action:@selector(setting)];
+    
+    //选择玩法类型
+    YZKy481ChartPlayTypeView * playTypeView = [[YZKy481ChartPlayTypeView alloc] initWithFrame:KEY_WINDOW.bounds selectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
+    self.playTypeView = playTypeView;
+    playTypeView.titleBtn = titleBtn;
+    playTypeView.delegate = self;
+    [KEY_WINDOW addSubview:playTypeView];
     
     //顶部的view
     UIScrollView *topBackScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, topBtnH)];
@@ -230,13 +243,36 @@
     mainScrollView.bounces = NO;
     mainScrollView.pagingEnabled = YES;
     [self.view addSubview:mainScrollView];
-
+    
     for(int i = 0; i < topBtnTitles.count; i++)
     {
         if (i == 0) {
+            //任选
             YZKy481ChartRenTableView *renTableView = [[YZKy481ChartRenTableView alloc] initWithFrame:CGRectMake(mainScrollView.width * i, 0, mainScrollView.width, scrollViewH)];
             self.renTableView = renTableView;
+            renTableView.hidden = YES;
             [mainScrollView addSubview:renTableView];
+            
+            //直选
+            YZKy481ChartZhiTableView *zhiTableView = [[YZKy481ChartZhiTableView alloc] initWithFrame:CGRectMake(mainScrollView.width * i, 0, mainScrollView.width, scrollViewH)];
+            self.zhiTableView = zhiTableView;
+            zhiTableView.hidden = YES;
+            [mainScrollView addSubview:zhiTableView];
+            
+            YZKy481ChartZuTableView *zuTableView = [[YZKy481ChartZuTableView alloc] initWithFrame:CGRectMake(mainScrollView.width * i, 0, mainScrollView.width, scrollViewH)];
+            self.zuTableView = zuTableView;
+            zuTableView.hidden = YES;
+            [mainScrollView addSubview:zuTableView];
+            
+            if (self.selectedPlayTypeBtnTag < 6) {
+                renTableView.hidden = NO;
+            }else if (self.selectedPlayTypeBtnTag == 6)
+            {
+                zhiTableView.hidden = NO;
+            }else if (self.selectedPlayTypeBtnTag > 6)
+            {
+                zuTableView.hidden = NO;
+            }
         }else
         {
             YZKy481ChartYongTableView *yongTableView = [[YZKy481ChartYongTableView alloc] initWithFrame:CGRectMake(mainScrollView.width * i, 0, mainScrollView.width, scrollViewH)];
@@ -269,7 +305,27 @@
 //选择玩法
 - (void)titleBtnClick:(YZChartPlayTypeTitleButton *)button
 {
-    
+    [self.playTypeView show];
+}
+
+- (void)playTypeDidClickBtn:(UIButton *)btn
+{
+    if (btn.tag == 0) {
+        self.renTableView.hidden = NO;
+        self.zhiTableView.hidden = YES;
+        self.zuTableView.hidden = YES;
+    }else if (btn.tag == 1)
+    {
+        self.renTableView.hidden = YES;
+        self.zhiTableView.hidden = NO;
+        self.zuTableView.hidden = YES;
+    }else if (btn.tag == 2)
+    {
+        self.renTableView.hidden = YES;
+        self.zhiTableView.hidden = YES;
+        self.zuTableView.hidden = NO;
+    }
+    [self.titleBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
 }
 
 - (void)setting
@@ -281,16 +337,17 @@
 
 - (void)settingGotoHelpVC
 {
-    YZLoadHtmlFileController * webVC = [[YZLoadHtmlFileController alloc]initWithFileName:@"chart_help_F01_T01.html"];
-#if JG
-    webVC.title = @"九歌彩票";
-#elif ZC
-    webVC.title = @"中彩啦";
-#elif CS
-    webVC.title = @"中彩啦";
-#endif
+    YZLoadHtmlFileController * webVC = [[YZLoadHtmlFileController alloc] initWithFileName:@"chart_help_F01_T01.html"];
+    #if JG
+        webVC.title = @"九歌彩票";
+    #elif ZC
+        webVC.title = @"中彩啦";
+    #elif CS
+        webVC.title = @"中彩啦";
+    #endif
     [self.navigationController pushViewController:webVC animated:YES];
 }
+
 - (void)settingConfirm
 {
     [self setSettingData];
@@ -333,8 +390,8 @@
     //红线动画
     [UIView animateWithDuration:animateDuration
                      animations:^{
-                         self.topBtnLine.center = CGPointMake(btn.center.x, self.topBtnLine.center.y);
-                     }];
+        self.topBtnLine.center = CGPointMake(btn.center.x, self.topBtnLine.center.y);
+    }];
     self.currentIndex = (int)btn.tag;
 }
 

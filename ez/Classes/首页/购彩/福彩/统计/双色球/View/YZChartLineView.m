@@ -21,7 +21,7 @@
 
 - (void)drawRect:(CGRect)rect {
     
-    CGContextRef ctx=UIGraphicsGetCurrentContext();
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
     //连线
     NSMutableArray * points = [NSMutableArray array];
     for (int i = 0; i < _statusArray.count; i++) {
