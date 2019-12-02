@@ -62,7 +62,7 @@ typedef enum : NSUInteger {
 #define childChannel @"ios_0001"
 //#define childChannel @"ios_taylor"
 #elif ZC
-#define childChannel @"zc_ios_0002"
+#define childChannel @"zc_ios_0001"
 #elif CS
 #define childChannel @"zc_ios"
 #endif
