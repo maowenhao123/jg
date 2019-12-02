@@ -42,7 +42,6 @@
 @property (nonatomic, assign) BOOL openPlaytypeView;
 @property (nonatomic, weak) YZChartPlayTypeTitleButton *titleBtn;
 @property (nonatomic, strong) UIBarButtonItem * rightBarButtonItem;
-@property (nonatomic, weak) YZChartSettingView *settingView;//设置
 @property (nonatomic, weak) UIView *ballTitleView;
 @property (nonatomic, strong) NSMutableArray *ballTitleLabels;
 @property (nonatomic, weak) UIView *lotteryView;//开奖视图
@@ -169,12 +168,6 @@
     }
     [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleBtn;
-    
-    //设置
-    YZChartSettingView * settingView = [[YZChartSettingView alloc] init];
-    self.settingView = settingView;
-    settingView.owner = self;
-    [self.view addSubview:settingView];
     
     //标题
     NSArray * titleArray = @[@"开奖",@"红球走势",@"蓝球走势",@"红球冷热",@"蓝球冷热"];

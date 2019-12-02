@@ -138,7 +138,7 @@
         termId = @"";
     }
     UIButton *btn0 =  self.btns[0];
-    [btn0 setTitle:[NSString stringWithFormat:@"%@期",termId] forState:UIControlStateNormal];
+    [btn0 setTitle:[NSString stringWithFormat:@"%@期", termId] forState:UIControlStateNormal];
     
     //奖号
     UIButton *btn1 =  self.btns[1];

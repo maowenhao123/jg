@@ -13,6 +13,7 @@
 #import "YZBuyLotteryCollectionView.h"
 #import "YZCustomerServiceViewController.h"
 #import "YZServiceListViewController.h"
+#import "YZKy481ChartViewController.h"
 
 @interface YZHomePageViewController ()<YZBuyLotteryCollectionViewDelegate>
 
@@ -90,6 +91,10 @@
 
 - (void)messageBarDidClick
 {
+    YZKy481ChartViewController *chartVC = [[YZKy481ChartViewController alloc] init];
+    [self.navigationController pushViewController:chartVC animated:YES];
+    return;
+    
     if (!UserId) {
         YZLoginViewController *login = [[YZLoginViewController alloc] init];
         YZNavigationController *nav = [[YZNavigationController alloc] initWithRootViewController:login];

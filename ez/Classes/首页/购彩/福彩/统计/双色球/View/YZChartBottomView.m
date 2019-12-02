@@ -47,7 +47,7 @@
     //时间label
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, confirmBtn.x - 5 * 2, self.height)];
     self.label = label;
-    label.text = @"•未能获取彩期";
+    label.text = @"未能获取彩期";
     label.textColor = YZBlackTextColor;
     label.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     [self addSubview:label];
