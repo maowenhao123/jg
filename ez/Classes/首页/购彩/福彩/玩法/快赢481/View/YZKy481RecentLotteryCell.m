@@ -150,7 +150,19 @@
     {
         NSSet *ballSet = [NSSet setWithArray:ballArray];
         if (ballSet.count == 2) {
-            [btn1 setTitle:@"组6" forState:UIControlStateNormal];
+            NSString * firstCharacter = [NSString stringWithFormat:@"%@", ballArray.firstObject];
+            NSInteger sameCount = 0;
+            for (NSString * number in ballArray) {
+                if ([number integerValue] == [firstCharacter integerValue]) {//相同的个数
+                    sameCount ++;
+                }
+            }
+            if (sameCount == 2) {
+                [btn1 setTitle:@"组6" forState:UIControlStateNormal];
+            }else
+            {
+                [btn1 setTitle:@"组4" forState:UIControlStateNormal];
+            }
         }else if (ballSet.count == 3)
         {
             [btn1 setTitle:@"组12" forState:UIControlStateNormal];

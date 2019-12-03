@@ -662,6 +662,8 @@
     //清空选中号码
     [self deleteBtnClick];
 }
+
+#pragma mark - 走势图引导
 - (void)addGuideView
 {
     BOOL haveShow = [YZUserDefaultTool getIntForKey:@"ssq_trend_guideHaveShow"];
@@ -712,7 +714,7 @@
                      }];
 }
 
-#pragma mark -  摇动震动
+#pragma mark - 摇动震动
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     NSString * allowShake = [YZUserDefaultTool getObjectForKey:@"allowShake"];

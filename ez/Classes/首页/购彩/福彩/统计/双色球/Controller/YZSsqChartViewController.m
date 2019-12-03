@@ -51,7 +51,7 @@
 @property (nonatomic, weak) UITableView *lotteryTableView;//开奖tableview
 @property (nonatomic, weak) UITableView *leftTableView;
 @property (nonatomic, weak) UITableView * rightTableView;//走势tableview
-@property (nonatomic, weak) YZChartLineView * lineView;//分割线
+@property (nonatomic, weak) YZChartLineView * lineView;//线
 @property (nonatomic, weak) UIScrollView *buttomScrollView;
 @property (nonatomic, weak) UITableView *coldHotTableView;//冷热tableview
 @property (nonatomic, strong) NSMutableArray *coldHotSortButtons;//冷热排序

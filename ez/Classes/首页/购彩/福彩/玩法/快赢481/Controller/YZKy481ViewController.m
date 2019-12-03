@@ -42,6 +42,7 @@
 @property (nonatomic, weak) UIButton *historySelBtn;
 @property (nonatomic, weak) UIScrollView *historyScrollView;//有万千百位的历史开奖的scrollView
 @property (nonatomic, strong) NSArray * playTypeCodes;
+@property (nonatomic, weak) UIView *guideView;
 
 @end
 
@@ -55,6 +56,7 @@
     self.selectedPlayTypeBtnTag = [YZUserDefaultTool getIntForKey:@"selectedky481PlayTypeBtnTag"];
     [self setupSonChilds];
     [self loadHistoryData];
+    [self addGuideView];
 }
 
 #pragma mark - 请求历史开奖数据
@@ -343,6 +345,57 @@
     [self switchCurrentHistoryView];
 }
 
+#pragma mark - 走势图引导
+- (void)addGuideView
+{
+    BOOL haveShow = [YZUserDefaultTool getIntForKey:@"ky481_trend_guideHaveShow"];
+    if (haveShow) {
+        return;
+    }
+    //guide
+    UIView * guideView = [[UIView alloc] initWithFrame:KEY_WINDOW.bounds];
+    self.guideView = guideView;
+    [KEY_WINDOW addSubview:guideView];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeGuideView)];
+    [guideView addGestureRecognizer:tap];
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, guideView.width, guideView.height)];
+    //小圆
+    CGPoint center = CGPointMake(screenWidth - 32, statusBarH + 21);
+    UIBezierPath *circlePath = [UIBezierPath bezierPath];
+    [circlePath moveToPoint:center];
+    [circlePath addArcWithCenter:center radius:18 startAngle:0 endAngle:2 * M_PI clockwise:YES];
+    [circlePath closePath];
+    
+    [path appendPath:circlePath];
+    [path setUsesEvenOddFillRule:YES];
+    
+    CAShapeLayer *fillLayer = [CAShapeLayer layer];
+    fillLayer.path = path.CGPath;
+    fillLayer.fillRule = kCAFillRuleEvenOdd;
+    fillLayer.fillColor = YZColor(0, 0, 0, 0.6).CGColor;
+    
+    [guideView.layer addSublayer:fillLayer];
+    
+    CGFloat guideImageViewX = screenWidth - 246 - 26;
+    UIImageView * guideImageView = [[UIImageView alloc] initWithFrame:CGRectMake(guideImageViewX, statusBarH + 44, 246, 406)];
+    guideImageView.image = [UIImage imageNamed:@"trend_guide"];
+    [guideView addSubview:guideImageView];
+    
+    [YZUserDefaultTool saveInt:1 forKey:@"ky481_trend_guideHaveShow"];
+}
+- (void)removeGuideView
+{
+    [UIView animateWithDuration:animateDuration
+                     animations:^{
+                         self.guideView.alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.guideView removeFromSuperview];
+                     }];
+}
+
 #pragma mark - 历史开奖
 - (void)historyTopBtnClick:(UIButton *)btn
 {
@@ -473,6 +526,7 @@
 - (void)trendBtnDidClick
 {
     YZKy481ChartViewController *chartVC = [[YZKy481ChartViewController alloc] init];
+    chartVC.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
     [self.navigationController pushViewController:chartVC animated:YES];
 }
 

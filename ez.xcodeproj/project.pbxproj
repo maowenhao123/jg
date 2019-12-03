@@ -31,6 +31,12 @@
 		1D5029E823950609006613E1 /* YZKy481ChartRenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029E723950608006613E1 /* YZKy481ChartRenTableViewCell.m */; };
 		1D5029E923950609006613E1 /* YZKy481ChartRenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029E723950608006613E1 /* YZKy481ChartRenTableViewCell.m */; };
 		1D5029EA23950609006613E1 /* YZKy481ChartRenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029E723950608006613E1 /* YZKy481ChartRenTableViewCell.m */; };
+		1D5029ED239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029EC239603DC006613E1 /* YZKy481ChartZuTableViewCell.m */; };
+		1D5029EE239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029EC239603DC006613E1 /* YZKy481ChartZuTableViewCell.m */; };
+		1D5029EF239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029EC239603DC006613E1 /* YZKy481ChartZuTableViewCell.m */; };
+		1D5029F223960DB2006613E1 /* YZKy481ChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */; };
+		1D5029F323960DB2006613E1 /* YZKy481ChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */; };
+		1D5029F423960DB2006613E1 /* YZKy481ChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */; };
 		1D76806422DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806522DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806622DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
@@ -2397,6 +2403,10 @@
 		1D5029E2239505F7006613E1 /* YZKy481ChartRenTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChartRenTableView.m; sourceTree = "<group>"; };
 		1D5029E623950608006613E1 /* YZKy481ChartRenTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ChartRenTableViewCell.h; sourceTree = "<group>"; };
 		1D5029E723950608006613E1 /* YZKy481ChartRenTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChartRenTableViewCell.m; sourceTree = "<group>"; };
+		1D5029EB239603DC006613E1 /* YZKy481ChartZuTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ChartZuTableViewCell.h; sourceTree = "<group>"; };
+		1D5029EC239603DC006613E1 /* YZKy481ChartZuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChartZuTableViewCell.m; sourceTree = "<group>"; };
+		1D5029F023960DB2006613E1 /* YZKy481ChartLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ChartLineView.h; sourceTree = "<group>"; };
+		1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChartLineView.m; sourceTree = "<group>"; };
 		1D76806222DC4F9D007C1154 /* YZServiceListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceListViewController.h; sourceTree = "<group>"; };
 		1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceListViewController.m; sourceTree = "<group>"; };
 		1D76806A22DC505A007C1154 /* YZServiceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceModel.h; sourceTree = "<group>"; };
@@ -6068,10 +6078,14 @@
 				AAC06BE123953F9D00FFCA9D /* YZKy481ChartZhiTableViewCell.m */,
 				AAC06BEA239547E000FFCA9D /* YZKy481ChartZuTableView.h */,
 				AAC06BEB239547E000FFCA9D /* YZKy481ChartZuTableView.m */,
+				1D5029EB239603DC006613E1 /* YZKy481ChartZuTableViewCell.h */,
+				1D5029EC239603DC006613E1 /* YZKy481ChartZuTableViewCell.m */,
 				1D5029D02394DD1C006613E1 /* YZKy481ChartYongTableView.h */,
 				1D5029D12394DD1C006613E1 /* YZKy481ChartYongTableView.m */,
 				1D5029D52394DE49006613E1 /* YZKy481ChartYongTableViewCell.h */,
 				1D5029D62394DE49006613E1 /* YZKy481ChartYongTableViewCell.m */,
+				1D5029F023960DB2006613E1 /* YZKy481ChartLineView.h */,
+				1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -8935,6 +8949,7 @@
 				1DDDEB8322D5BB80003A9C07 /* View+MASAdditions.m in Sources */,
 				AA237DE92143590C00BC47BB /* YZUnionBuyFollowUserCellStatusFrame.m in Sources */,
 				AA237DEA2143590C00BC47BB /* YZShareIncomeStatus.m in Sources */,
+				1D5029F423960DB2006613E1 /* YZKy481ChartLineView.m in Sources */,
 				AA237DEB2143590C00BC47BB /* YZCircleTableView.m in Sources */,
 				AA237DEC2143590C00BC47BB /* YZRechargeRecordStatus.m in Sources */,
 				AA237DED2143590C00BC47BB /* HDChatToolbarItem.m in Sources */,
@@ -9089,6 +9104,7 @@
 				AA237E6B2143590C00BC47BB /* CWStarRateView.m in Sources */,
 				AA237E6C2143590C00BC47BB /* YZIntegralCustomCountCollectionViewCell.m in Sources */,
 				AA237E6D2143590C00BC47BB /* AFImageDownloader.m in Sources */,
+				1D5029EF239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */,
 				1DBD8E9822CB2C250024CF7B /* SDWebImageCoderHelper.m in Sources */,
 				AA237E6E2143590C00BC47BB /* YZFBMatchDetailStandingsTitleTableViewCell.m in Sources */,
 				1DE61FDF22CC4F7500C1490E /* TZLocationManager.m in Sources */,
@@ -9513,6 +9529,7 @@
 				1DBD8E0322CB2BDE0024CF7B /* SDCollectionViewCell.m in Sources */,
 				AA3291101FFE21D400CA77DA /* YZWeixinStatus.m in Sources */,
 				AA32932B1FFE27B600CA77DA /* YZChartLineView.m in Sources */,
+				1D5029F223960DB2006613E1 /* YZKy481ChartLineView.m in Sources */,
 				1DBD8E9322CB2C250024CF7B /* UIButton+WebCache.m in Sources */,
 				AA74EAED1FFE17DF003B53AF /* HDChatBarMoreView.m in Sources */,
 				AA74EA851FFE17DF003B53AF /* HDCDDeviceManager+ProximitySensor.m in Sources */,
@@ -10159,6 +10176,7 @@
 				1DE61FEC22CC4F7500C1490E /* TZPhotoPreviewCell.m in Sources */,
 				AAA65A3B22A899EC00DB7427 /* YZBuyLotteryCollectionReusableView.m in Sources */,
 				AA74EB691FFE17DF003B53AF /* MJRefreshGifHeader.m in Sources */,
+				1D5029ED239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */,
 				AA3292C51FFE27B600CA77DA /* YZStartUnionBuyViewController.m in Sources */,
 				AA3292AF1FFE27B600CA77DA /* YZChooseVoucherViewController.m in Sources */,
 				AA74ECD91FFE1AD6003B53AF /* YZMessageType.m in Sources */,
@@ -10298,6 +10316,7 @@
 				AA74EB5E1FFE17DF003B53AF /* MJRefreshBackNormalFooter.m in Sources */,
 				AA74ECC01FFE1A6A003B53AF /* YZMoneyDetailViewController.m in Sources */,
 				AA74E0DA1FFE0A4C003B53AF /* YZUnionBuyFollowUserCellStatusFrame.m in Sources */,
+				1D5029F323960DB2006613E1 /* YZKy481ChartLineView.m in Sources */,
 				1DE61FFF22CC4F7600C1490E /* TZPhotoPickerController.m in Sources */,
 				AA3290801FFE1D6100CA77DA /* YZShareIncomeStatus.m in Sources */,
 				AA74ECAF1FFE19A5003B53AF /* YZRechargeRecordStatus.m in Sources */,
@@ -10452,6 +10471,7 @@
 				AA3292E21FFE27B600CA77DA /* YZksHistoryWinNumberView.m in Sources */,
 				1DBD8E7322CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				AA32936A1FFE27B600CA77DA /* YZFBMatchDetailCellView.m in Sources */,
+				1D5029EE239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */,
 				AA74EA6E1FFE17DF003B53AF /* CWStarRateView.m in Sources */,
 				1DDDEB7622D5BB80003A9C07 /* MASCompositeConstraint.m in Sources */,
 				AAE55C7A207EF8B000A29844 /* YZIntegralCustomCountCollectionViewCell.m in Sources */,

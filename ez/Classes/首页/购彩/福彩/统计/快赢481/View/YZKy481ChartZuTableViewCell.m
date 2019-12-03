@@ -1,14 +1,14 @@
 //
-//  YZKy481ChartZhiTableViewCell.m
+//  YZKy481ChartZuTableViewCell.m
 //  ez
 //
-//  Created by 毛文豪 on 2019/12/2.
+//  Created by dahe on 2019/12/3.
 //  Copyright © 2019 9ge. All rights reserved.
 //
 
-#import "YZKy481ChartZhiTableViewCell.h"
+#import "YZKy481ChartZuTableViewCell.h"
 
-@interface YZKy481ChartZhiTableViewCell ()
+@interface YZKy481ChartZuTableViewCell ()
 
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, weak) UILabel * noDataLabel;
@@ -16,15 +16,15 @@
 @end
 
 
-@implementation YZKy481ChartZhiTableViewCell
+@implementation YZKy481ChartZuTableViewCell
 
-+ (YZKy481ChartZhiTableViewCell *)cellWithTableView:(UITableView *)tableView
++ (YZKy481ChartZuTableViewCell *)cellWithTableView:(UITableView *)tableView
 {
-    static NSString *ID = @"YZKy481ChartZhiTableViewCellId";
-    YZKy481ChartZhiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    static NSString *ID = @"YZKy481ChartZuTableViewCellId";
+    YZKy481ChartZuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if(cell == nil)
     {
-        cell = [[YZKy481ChartZhiTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[YZKy481ChartZuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return  cell;
@@ -42,7 +42,7 @@
 
 - (void)setupChilds
 {
-    NSArray * labelTexts = @[@"形态", @"和值", @"跨度", @"奇偶比", @"大小比"];
+    NSArray * labelTexts = @[@"组4", @"组6", @"组12", @"组24", @"和值", @"跨度"];
     CGFloat labelW = (screenWidth - LeftLabelW1 - LeftLabelW2) / labelTexts.count;
     for(int i = 0; i < 2 + labelTexts.count; i++)
     {
@@ -69,9 +69,11 @@
 - (void)setDataStatus:(YZChartDataStatus *)dataStatus
 {
     _dataStatus = dataStatus;
-    
+     
+    NSArray * zuArray = @[@"组4", @"组6", @"组12", @"组24"];
     for (int i = 0; i < self.buttons.count; i++) {
         UIButton * button = self.buttons[i];
+        [button setTitleColor:YZChartLightGrayColor forState:UIControlStateNormal];
         if (i == 0) {
             [button setTitle:[NSString stringWithFormat:@"%@期", _dataStatus.issue] forState:UIControlStateNormal];
         }else if (i == 1)
@@ -81,60 +83,30 @@
                 winNumberStr = [NSString stringWithFormat:@"%@%@", winNumberStr, number];
             }
             [button setTitle:winNumberStr forState:UIControlStateNormal];
-        }else if (i == 2)
-        {
-            NSSet *winNumberSet = [NSSet setWithArray:_dataStatus.winNumber];
-            if (winNumberSet.count == 2) {
-                NSString * firstCharacter = [NSString stringWithFormat:@"%@", _dataStatus.winNumber.firstObject];
-                NSInteger sameCount = 0;
-                for (NSString * number in _dataStatus.winNumber) {
-                    if ([number integerValue] == [firstCharacter integerValue]) {//相同的个数
-                        sameCount ++;
-                    }
-                }
-                if (sameCount == 2) {
-                    [button setTitle:@"组6" forState:UIControlStateNormal];
-                }else
-                {
-                    [button setTitle:@"组4" forState:UIControlStateNormal];
-                }
-            }else if (winNumberSet.count == 3)
-            {
-                [button setTitle:@"组12" forState:UIControlStateNormal];
-            }else if (winNumberSet.count == 4)
-            {
-                [button setTitle:@"组24" forState:UIControlStateNormal];
-            }
-        }else if (i == 3)
+        }else if (i == 6)
         {
             NSArray * hezhi = _dataStatus.missNumber[@"hezhi"];
             [button setTitle:[NSString stringWithFormat:@"%@", hezhi.firstObject] forState:UIControlStateNormal];
-        }else if (i == 4)
+        }else if (i == 7)
         {
             NSArray * kuadu = _dataStatus.missNumber[@"kuadu"];
             [button setTitle:[NSString stringWithFormat:@"%@", kuadu.firstObject] forState:UIControlStateNormal];
-        }else if (i == 5)
+        }else
         {
-            NSInteger jishuCount = 0;
-            for (NSString * number in _dataStatus.winNumber) {
-                if ([number integerValue] % 2 != 0) {//奇数
-                    jishuCount ++;
+            NSArray * zuxuan = _dataStatus.missNumber[@"zuxuan"];
+            if (zuxuan.count > i - 2) {
+                NSString * missCharacter = [NSString stringWithFormat:@"%@", zuxuan[i - 2]];
+                if ([missCharacter integerValue] == 0) {
+                    [button setTitle:zuArray[i - 2] forState:UIControlStateNormal];
+                    [button setTitleColor:YZBaseColor forState:UIControlStateNormal];
+                }else
+                {
+                    [button setTitle:missCharacter forState:UIControlStateNormal];
                 }
             }
-            NSInteger oushuCount = _dataStatus.winNumber.count - jishuCount;
-            [button setTitle:[NSString stringWithFormat:@"%ld:%ld", jishuCount, oushuCount] forState:UIControlStateNormal];
-        }else if (i == 6)
-        {
-            NSInteger dashuCount = 0;
-            for (NSString * number in _dataStatus.winNumber) {
-                if ([number integerValue] > 4) {//大数
-                    dashuCount ++;
-                }
-            }
-            NSInteger xiaoshuCount = _dataStatus.winNumber.count - dashuCount;
-            [button setTitle:[NSString stringWithFormat:@"%ld:%ld", dashuCount, xiaoshuCount] forState:UIControlStateNormal];
         }
     }
+    
 }
 
 #pragma mark - 初始化
@@ -145,6 +117,5 @@
     }
     return _buttons;
 }
-
 
 @end

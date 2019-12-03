@@ -58,20 +58,22 @@
 {
     UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, CellH2)];
     headerView.backgroundColor = YZChartBackgroundColor;
-    for(int i = 0; i < 10; i++)
+    NSArray * labelTexts = @[@"形态", @"和值", @"跨度", @"奇偶比", @"大小比"];
+    CGFloat labelW = (screenWidth - LeftLabelW1 - LeftLabelW2) / labelTexts.count;
+    for(int i = 0; i < 2 + labelTexts.count; i++)
     {
         UILabel *label = [[UILabel alloc] init];
         if (i == 0) {
-            label.frame = CGRectMake(0, 0, LeftLabelW2, CellH1);
+            label.frame = CGRectMake(0, 0, LeftLabelW2, CellH2);
             label.text = @"期次";
         }else if (i == 1)
         {
-            label.frame = CGRectMake(LeftLabelW2, 0, LeftLabelW1, CellH1);
+            label.frame = CGRectMake(LeftLabelW2, 0, LeftLabelW1, CellH2);
             label.text = @"奖号";
         }else
         {
-            label.frame = CGRectMake(LeftLabelW1 + LeftLabelW2 + CellH1 * (i - 2), 0, CellH1, CellH1);
-            label.text = [NSString stringWithFormat:@"%02d", i - 1];
+            label.frame = CGRectMake(LeftLabelW1 + LeftLabelW2 + labelW * (i - 2), 0, labelW, CellH2);
+            label.text = labelTexts[i - 2];
         }
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
@@ -85,12 +87,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CellH1;
+    return CellH2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return CellH1;
+    return CellH2;
 }
 
 @end

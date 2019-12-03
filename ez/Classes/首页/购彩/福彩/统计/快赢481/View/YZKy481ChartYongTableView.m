@@ -7,8 +7,11 @@
 //
 
 #import "YZKy481ChartYongTableView.h"
+#import "YZKy481ChartLineView.h"
 
 @interface YZKy481ChartYongTableView ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, weak) YZKy481ChartLineView * lineView;//线
 
 @end
 
@@ -23,6 +26,11 @@
         self.dataSource = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self setEstimatedSectionHeaderHeightAndFooterHeight];
+        
+        YZKy481ChartLineView * lineView = [[YZKy481ChartLineView alloc] init];
+        self.lineView = lineView;
+        lineView.backgroundColor = [UIColor clearColor];
+        [self addSubview:lineView];
     }
     return self;
 }
@@ -32,6 +40,15 @@
     _dataArray = dataArray;
     
     [self reloadData];
+    
+    self.lineView.hidden = YES;
+    NSString * showLineStr = [YZTool getChartSettingByTitle:@"折线"];
+    if ([showLineStr isEqualToString:@"显示折线"]) {
+        self.lineView.hidden = NO;
+    }
+    self.lineView.chartCellTag = self.chartCellTag;
+    self.lineView.frame = CGRectMake(LeftLabelW2, CellH2, screenWidth, CellH2 * _dataArray.count);
+    self.lineView.statusArray = _dataArray;
 }
 
 #pragma mark - Table view data source

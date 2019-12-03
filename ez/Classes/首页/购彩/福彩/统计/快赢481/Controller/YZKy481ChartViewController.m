@@ -66,6 +66,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupChilds];
+    waitingView_loadingData
     [self getCurrentTermData];
 }
 
@@ -80,26 +81,34 @@
     };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"%@",json);
-        self.currentTermDict = json;
-        NSArray *termList = json[@"game"][@"termList"];
-        if(termList.count)//当前期次正在销售
-        {
-            NSString * endTime = [json[@"game"][@"termList"] lastObject][@"endTime"];
-            NSString * nextOpenTime = [json[@"game"][@"termList"] lastObject][@"nextOpenTime"];
-            NSString * sysTime = json[@"sysTime"];
-            //彩种截止时间
-            NSDateComponents *deltaDate = [YZDateTool getDeltaDateFromDateString:sysTime fromFormat:@"yyyy-MM-dd HH:mm:ss" toDateString:endTime ToFormat:@"yyyy-MM-dd HH:mm:ss"];
-            NSDateComponents *nextOpenDeltaDate = [YZDateTool getDeltaDateFromDateString:sysTime fromFormat:@"yyyy-MM-dd HH:mm:ss" toDateString:nextOpenTime ToFormat:@"yyyy-MM-dd HH:mm:ss"];
-            _remainSeconds = deltaDate.day * 24 * 60 * 60 + deltaDate.hour * 60 * 60 + deltaDate.minute * 60 + deltaDate.second;
-            _nextOpenRemainSeconds = nextOpenDeltaDate.day * 24 * 60 * 60 + nextOpenDeltaDate.hour * 60 * 60 + nextOpenDeltaDate.minute * 60 + nextOpenDeltaDate.second;
-            NSString *termId = [json[@"game"][@"termList"] lastObject][@"termId"];
-            [self getTrendDataByTermId:termId];
+        if (SUCCESS) {
+            self.currentTermDict = json;
+            NSArray *termList = json[@"game"][@"termList"];
+            if(termList.count)//当前期次正在销售
+            {
+                NSString * endTime = [json[@"game"][@"termList"] lastObject][@"endTime"];
+                NSString * nextOpenTime = [json[@"game"][@"termList"] lastObject][@"nextOpenTime"];
+                NSString * sysTime = json[@"sysTime"];
+                //彩种截止时间
+                NSDateComponents *deltaDate = [YZDateTool getDeltaDateFromDateString:sysTime fromFormat:@"yyyy-MM-dd HH:mm:ss" toDateString:endTime ToFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSDateComponents *nextOpenDeltaDate = [YZDateTool getDeltaDateFromDateString:sysTime fromFormat:@"yyyy-MM-dd HH:mm:ss" toDateString:nextOpenTime ToFormat:@"yyyy-MM-dd HH:mm:ss"];
+                _remainSeconds = deltaDate.day * 24 * 60 * 60 + deltaDate.hour * 60 * 60 + deltaDate.minute * 60 + deltaDate.second;
+                _nextOpenRemainSeconds = nextOpenDeltaDate.day * 24 * 60 * 60 + nextOpenDeltaDate.hour * 60 * 60 + nextOpenDeltaDate.minute * 60 + nextOpenDeltaDate.second;
+                NSString *termId = [json[@"game"][@"termList"] lastObject][@"termId"];
+                [self getTrendDataByTermId:termId];
+            }else
+            {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                self.timelabel.text = @"当前期已截止销售";
+            }
         }else
         {
-            self.timelabel.text = @"当前期已截止销售";
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            ShowErrorView
         }
     } failure:^(NSError *error) {
         YZLog(@"getCurrentTermData - error = %@",error);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 //设置时间label
@@ -118,22 +127,22 @@
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]init];
     NSDateComponents *deltaDate = [YZDateTool getDateComponentsBySeconds:_remainSeconds];
     NSDateComponents *nextOpenDeltaDate = [YZDateTool getDateComponentsBySeconds:_nextOpenRemainSeconds];
-    //截取期数
-    termId = [termId substringFromIndex:termId.length - 3];
-    nextTermId = [nextTermId substringFromIndex:nextTermId.length - 3];
+//    //截取期数
+//    termId = [termId substringFromIndex:termId.length - 3];
+//    nextTermId = [nextTermId substringFromIndex:nextTermId.length - 3];
     
     if(_remainSeconds > 0)//当前期正在销售
     {
         NSString * deltaTime;
         deltaTime = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)deltaDate.hour,(long)deltaDate.minute, (long)deltaDate.second];
         attStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"距%@期截止:%@",termId,deltaTime]];
-        [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(8, attStr.length - 8)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(13, attStr.length - 13)];
     }else if (_remainSeconds <= 0 && _nextOpenRemainSeconds > 0)//当前期已截止销售,下期还未开始
     {
         NSString * deltaTime;
         deltaTime = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)nextOpenDeltaDate.hour,(long)nextOpenDeltaDate.minute, (long)nextOpenDeltaDate.second];
         attStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"距%@期开始:%@",nextTermId,deltaTime]];
-        [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(8, attStr.length - 8)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(13, attStr.length - 13)];
     }else//为0的时候，重新刷新数据
     {
         attStr = [[NSMutableAttributedString alloc]initWithString:@"获取新期次中..."];
@@ -150,11 +159,16 @@
     };
     [[YZHttpTool shareInstance] postWithURL:[NSString stringWithFormat:@"%@%@",baseUrl,@"/misstrend/getMissNumber"] params:dict success:^(id json) {
         YZLog(@"%@", json);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (SUCCESS) {
             [self setTrendDataByJson:json];
+        }else
+        {
+            ShowErrorView
         }
     } failure:^(NSError *error) {
         YZLog(@"getMissNumber - error = %@",error);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
@@ -266,12 +280,15 @@
             
             if (self.selectedPlayTypeBtnTag < 6) {
                 renTableView.hidden = NO;
+                [titleBtn setTitle:@"任选" forState:UIControlStateNormal];
             }else if (self.selectedPlayTypeBtnTag == 6)
             {
                 zhiTableView.hidden = NO;
+                [titleBtn setTitle:@"直选" forState:UIControlStateNormal];
             }else if (self.selectedPlayTypeBtnTag > 6)
             {
                 zuTableView.hidden = NO;
+                [titleBtn setTitle:@"组选" forState:UIControlStateNormal];
             }
         }else
         {
@@ -363,6 +380,8 @@
     self.dataArray = dataArray;
     
     self.renTableView.dataArray = dataArray;
+    self.zhiTableView.dataArray = dataArray;
+    self.zuTableView.dataArray = dataArray;
     for (UIView * subView in self.mainScrollView.subviews) {
         if ([subView isKindOfClass:[YZKy481ChartYongTableView class]]) {
             YZKy481ChartYongTableView *yongTableView = (YZKy481ChartYongTableView *)subView;
