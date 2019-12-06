@@ -11,9 +11,9 @@
 
 #import "YZChartStatus.h"
 
-#define topBtnH 42
+#define topBtnH 35
 #define LeftLabelW1 60
-#define LeftLabelW2 90
+#define LeftLabelW2 80
 #define CellH1 (screenWidth - LeftLabelW1 - LeftLabelW2) / 8
 #define CellH2 (screenWidth - LeftLabelW2) / 8
 

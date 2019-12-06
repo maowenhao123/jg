@@ -1,21 +1,22 @@
 //
-//  YZKy481ChartYongTableView.m
+//  YZ11x5ChartTableView.m
 //  ez
 //
-//  Created by dahe on 2019/12/2.
+//  Created by dahe on 2019/12/6.
 //  Copyright © 2019 9ge. All rights reserved.
 //
 
-#import "YZKy481ChartYongTableView.h"
-#import "YZKy481ChartLineView.h"
+#import "YZ11x5ChartTableView.h"
+#import "YZYZ11x5ChartTableViewCell.h"
+#import "YZ11x5ChartLineView.h"
 
-@interface YZKy481ChartYongTableView ()<UITableViewDelegate, UITableViewDataSource>
+@interface YZ11x5ChartTableView ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) YZKy481ChartLineView * lineView;//线
+@property (nonatomic, weak) YZ11x5ChartLineView * lineView;//线
 
 @end
 
-@implementation YZKy481ChartYongTableView
+@implementation YZ11x5ChartTableView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -27,7 +28,7 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self setEstimatedSectionHeaderHeightAndFooterHeight];
         
-        YZKy481ChartLineView * lineView = [[YZKy481ChartLineView alloc] init];
+        YZ11x5ChartLineView * lineView = [[YZ11x5ChartLineView alloc] init];
         self.lineView = lineView;
         lineView.backgroundColor = [UIColor clearColor];
         [self addSubview:lineView];
@@ -42,13 +43,15 @@
     [self reloadData];
     
     self.lineView.hidden = YES;
-    NSString * showLineStr = [YZTool getChartSettingByTitle:@"折线"];
-    if ([showLineStr isEqualToString:@"显示折线"]) {
-        self.lineView.hidden = NO;
+    if (self.chartCellTag != KChartCellTagAll) {
+        NSString * showLineStr = [YZTool getChartSettingByTitle:@"折线"];
+        if ([showLineStr isEqualToString:@"显示折线"]) {
+            self.lineView.hidden = NO;
+        }
+        self.lineView.chartCellTag = self.chartCellTag;
+        self.lineView.frame = CGRectMake(LeftLabelW, CellH, screenWidth, CellH * _dataArray.count);
+        self.lineView.statusArray = _dataArray;
     }
-    self.lineView.chartCellTag = self.chartCellTag;
-    self.lineView.frame = CGRectMake(LeftLabelW2, CellH2, screenWidth, CellH2 * _dataArray.count);
-    self.lineView.statusArray = _dataArray;
 }
 
 #pragma mark - Table view data source
@@ -64,7 +67,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YZKy481ChartYongTableViewCell * cell = [YZKy481ChartYongTableViewCell cellWithTableView:tableView];
+    YZYZ11x5ChartTableViewCell * cell = [YZYZ11x5ChartTableViewCell cellWithTableView:tableView];
     if(indexPath.row % 2 != 0)
     {
         cell.backgroundColor = YZChartBackgroundColor;
@@ -93,17 +96,33 @@
             cell.chartStatisticsTag = KChartCellTagMaxSeries;
         }
         YZChartSortStatsStatus *stats;
-        if (termCount == 30) {
-            stats = self.stats.renxuan.stat30;
-        }else if (termCount == 50)
+        if (self.chartCellTag == KChartCellTagAll) {
+            if (termCount == 30) {
+                stats = self.stats.renxuan.stat30;
+            }else if (termCount == 50)
+            {
+                stats = self.stats.renxuan.stat50;
+            }else if (termCount == 100)
+            {
+                stats = self.stats.renxuan.stat100;
+            }else if (termCount == 200)
+            {
+                stats = self.stats.renxuan.stat200;
+            }
+        }else
         {
-            stats = self.stats.renxuan.stat50;
-        }else if (termCount == 100)
-        {
-            stats = self.stats.renxuan.stat100;
-        }else if (termCount == 200)
-        {
-            stats = self.stats.renxuan.stat200;
+            if (termCount == 30) {
+                stats = self.stats.qian3_zhixuan.stat30;
+            }else if (termCount == 50)
+            {
+                stats = self.stats.qian3_zhixuan.stat50;
+            }else if (termCount == 100)
+            {
+                stats = self.stats.qian3_zhixuan.stat100;
+            }else if (termCount == 200)
+            {
+                stats = self.stats.qian3_zhixuan.stat200;
+            }
         }
         cell.status = stats;
     }
@@ -112,23 +131,22 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, CellH2)];
+    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, CellH)];
     headerView.backgroundColor = YZChartBackgroundColor;
-    for(int i = 0; i < 9; i++)
+    for(int i = 0; i < 12; i++)
     {
         UILabel *label = [[UILabel alloc] init];
         if (i == 0) {
-            label.frame = CGRectMake(0, 0, LeftLabelW2, CellH2);
+            label.frame = CGRectMake(0, 0, LeftLabelW, CellH);
             label.text = @"期次";
-            label.textColor = YZChartTitleColor;
         }else
         {
-            label.frame = CGRectMake(LeftLabelW2 + CellH2 * (i - 1), 0, CellH2, CellH2);
+            label.frame = CGRectMake(LeftLabelW + CellH * (i - 1), 0, CellH, CellH);
             label.text = [NSString stringWithFormat:@"%02d", i];
-            label.textColor = YZChartTitleColor;
         }
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+        label.textColor = YZChartTitleColor;
         label.layer.borderColor = [UIColor lightGrayColor].CGColor;
         label.layer.borderWidth = 0.25;
         [headerView addSubview:label];
@@ -138,12 +156,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CellH2;
+    return CellH;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return CellH2;
+    return CellH;
 }
+
 
 @end

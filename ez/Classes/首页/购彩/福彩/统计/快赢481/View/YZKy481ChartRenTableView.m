@@ -76,7 +76,7 @@
         }
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
-        label.textColor = YZChartGrayColor;
+        label.textColor = YZChartTitleColor;
         label.layer.borderColor = [UIColor lightGrayColor].CGColor;
         label.layer.borderWidth = 0.25;
         [headerView addSubview:label];

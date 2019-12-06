@@ -526,6 +526,7 @@
 - (void)trendBtnDidClick
 {
     YZKy481ChartViewController *chartVC = [[YZKy481ChartViewController alloc] init];
+    chartVC.gameId = self.gameId;
     chartVC.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
     [self.navigationController pushViewController:chartVC animated:YES];
 }
@@ -779,6 +780,14 @@
     {
         YZBallBtn *cellBall = cell_.ballsArray[ball.tag - 1];
         [cellBall ballChangeToRed];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView != self.tableView)
+    {
+        [self trendBtnDidClick];
     }
 }
 

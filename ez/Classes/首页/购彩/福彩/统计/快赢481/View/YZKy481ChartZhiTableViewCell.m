@@ -49,15 +49,17 @@
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         if (i == 0) {
             button.frame = CGRectMake(0, 0, LeftLabelW2, CellH2);
+            [button setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
         }else if (i == 1)
         {
             button.frame = CGRectMake(LeftLabelW2, 0, LeftLabelW1, CellH2);
+            [button setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
         }else
         {
             button.frame = CGRectMake(LeftLabelW1 + LeftLabelW2 + labelW * (i - 2), 0, labelW, CellH2);
+            [button setTitleColor:YZChartLightGrayColor forState:UIControlStateNormal];
         }
         button.adjustsImageWhenHighlighted = NO;
-        [button setTitleColor:YZChartLightGrayColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
         button.layer.borderColor = [UIColor lightGrayColor].CGColor;
         button.layer.borderWidth = 0.25;
@@ -73,7 +75,9 @@
     for (int i = 0; i < self.buttons.count; i++) {
         UIButton * button = self.buttons[i];
         if (i == 0) {
-            [button setTitle:[NSString stringWithFormat:@"%@期", _dataStatus.issue] forState:UIControlStateNormal];
+            NSString * issue = [NSString stringWithFormat:@"%@", _dataStatus.issue];
+            issue = [issue substringWithRange:NSMakeRange(2, issue.length - 2)];
+            [button setTitle:[NSString stringWithFormat:@"%@期", issue] forState:UIControlStateNormal];
         }else if (i == 1)
         {
             NSString * winNumberStr = [NSString string];//获奖号码

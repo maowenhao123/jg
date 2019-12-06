@@ -1,14 +1,14 @@
 //
-//  YZKy481ChartYongTableViewCell.m
+//  YZYZ11x5ChartTableViewCell.m
 //  ez
 //
-//  Created by dahe on 2019/12/2.
+//  Created by dahe on 2019/12/6.
 //  Copyright © 2019 9ge. All rights reserved.
 //
 
-#import "YZKy481ChartYongTableViewCell.h"
+#import "YZYZ11x5ChartTableViewCell.h"
 
-@interface YZKy481ChartYongTableViewCell ()
+@interface YZYZ11x5ChartTableViewCell ()
 
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, weak) UILabel * noDataLabel;
@@ -16,15 +16,15 @@
 @end
 
 
-@implementation YZKy481ChartYongTableViewCell
+@implementation YZYZ11x5ChartTableViewCell
 
-+ (YZKy481ChartYongTableViewCell *)cellWithTableView:(UITableView *)tableView
++ (YZYZ11x5ChartTableViewCell *)cellWithTableView:(UITableView *)tableView
 {
-    static NSString *ID = @"YZKy481ChartYongTableViewCellId";
-    YZKy481ChartYongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    static NSString *ID = @"YZYZ11x5ChartTableViewCellId";
+    YZYZ11x5ChartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if(cell == nil)
     {
-        cell = [[YZKy481ChartYongTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[YZYZ11x5ChartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return  cell;
@@ -42,33 +42,24 @@
 
 - (void)setupChilds
 {
-    for(int i = 0; i < 9; i++)
+    for(int i = 0; i < 12; i++)
     {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         if (i == 0) {
-            button.frame = CGRectMake(0, 0, LeftLabelW2, CellH2);
+            button.frame = CGRectMake(0, 0, LeftLabelW, CellH);
             [button setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
         }else
         {
-            button.frame = CGRectMake(LeftLabelW2 + (i - 1) * CellH2, 0, CellH2, CellH2);
+            button.frame = CGRectMake(LeftLabelW + CellH * (i - 1), 0, CellH, CellH);
             [button setTitleColor:YZChartLightGrayColor forState:UIControlStateNormal];
         }
         button.adjustsImageWhenHighlighted = NO;
         button.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
         button.layer.borderColor = [UIColor lightGrayColor].CGColor;
         button.layer.borderWidth = 0.25;
-        [self addSubview:button];
+        [self.contentView addSubview:button];
         [self.buttons addObject:button];
     }
-    
-    UILabel * noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(LeftLabelW2, 0, screenWidth - LeftLabelW2, CellH2)];
-    self.noDataLabel = noDataLabel;
-    noDataLabel.text = @"等待开奖";
-    noDataLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
-    noDataLabel.textAlignment = NSTextAlignmentCenter;
-    noDataLabel.textColor = YZChartLightGrayColor;
-    noDataLabel.hidden = YES;
-    [self addSubview:noDataLabel];
 }
 
 //设置数据
@@ -102,17 +93,17 @@
     }
     
     NSArray * missArray = [NSArray array];
-    if (self.chartCellTag == KChartCellTagZiyou) {
-        missArray = [statisticsArray subarrayWithRange:NSMakeRange(0, 8)];
-    }else if (self.chartCellTag == KChartCellTagYang)
+    if (self.chartCellTag == KChartCellTagAll) {
+         missArray = statisticsArray;
+    }else if (self.chartCellTag == KChartCellTagWan)
     {
-        missArray = [statisticsArray subarrayWithRange:NSMakeRange(8, 8)];
-    }else if (self.chartCellTag == KChartCellTagWa)
+        missArray = [statisticsArray subarrayWithRange:NSMakeRange(0, 11)];
+    }else if (self.chartCellTag == KChartCellTagQian)
     {
-        missArray = [statisticsArray subarrayWithRange:NSMakeRange(16, 8)];
-    }else if (self.chartCellTag == KChartCellTagDie)
+        missArray = [statisticsArray subarrayWithRange:NSMakeRange(11, 11)];
+    }else if (self.chartCellTag == KChartCellTagBai)
     {
-        missArray = [statisticsArray subarrayWithRange:NSMakeRange(24, 8)];
+        missArray = [statisticsArray subarrayWithRange:NSMakeRange(22, 11)];
     }
     
     for (int i = 0; i < missArray.count; i++) {
@@ -140,35 +131,25 @@
     _dataStatus = dataStatus;
     
     UIButton * button0 = self.buttons[0];
-    [button0 setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
     NSString * issue = [NSString stringWithFormat:@"%@", _dataStatus.issue];
-    issue = [issue substringWithRange:NSMakeRange(2, issue.length - 2)];
+    issue = [issue substringWithRange:NSMakeRange(issue.length - 2, 2)];
     [button0 setTitle:[NSString stringWithFormat:@"%@期", issue] forState:UIControlStateNormal];
     
-    NSArray * renxuanMissArray = _dataStatus.missNumber[@"renxuan"];
     NSArray * missArray = [NSArray array];
-    if (self.chartCellTag == KChartCellTagZiyou) {
-        missArray = [renxuanMissArray subarrayWithRange:NSMakeRange(0, 8)];
-    }else if (self.chartCellTag == KChartCellTagYang)
+    NSArray * zhixuanMissArray = _dataStatus.missNumber[@"qian3_zhixuan"];
+    if (self.chartCellTag == KChartCellTagAll) {
+        missArray = _dataStatus.missNumber[@"renxuan"];
+    }else if (self.chartCellTag == KChartCellTagWan)
     {
-        missArray = [renxuanMissArray subarrayWithRange:NSMakeRange(8, 8)];
-    }else if (self.chartCellTag == KChartCellTagWa)
+        missArray = [zhixuanMissArray subarrayWithRange:NSMakeRange(0, 11)];
+    }else if (self.chartCellTag == KChartCellTagQian)
     {
-        missArray = [renxuanMissArray subarrayWithRange:NSMakeRange(16, 8)];
-    }else if (self.chartCellTag == KChartCellTagDie)
+        missArray = [zhixuanMissArray subarrayWithRange:NSMakeRange(11, 11)];
+    }else if (self.chartCellTag == KChartCellTagBai)
     {
-        missArray = [renxuanMissArray subarrayWithRange:NSMakeRange(24, 8)];
+        missArray = [zhixuanMissArray subarrayWithRange:NSMakeRange(22, 11)];
     }
     
-    self.noDataLabel.hidden = YES;
-    if (8 != missArray.count) {//数据错误
-        for (int i = 1; i < self.buttons.count; i++) {
-            UIButton * button = self.buttons[i];
-            button.hidden = YES;
-        }
-        self.noDataLabel.hidden = NO;
-        return;
-    }
     for (int i = 0; i < missArray.count; i++) {
         UIButton * button = self.buttons[i + 1];
         button.hidden = NO;
@@ -176,7 +157,16 @@
         if ([miss intValue] == 0) {//
             [button setTitle:[NSString stringWithFormat:@"%02d", i + 1] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [button setBackgroundImage:[UIImage imageNamed:@"chart_blueBg"] forState:UIControlStateNormal];
+            if (self.chartCellTag == KChartCellTagQian)
+            {
+                [button setBackgroundImage:[UIImage imageNamed:@"greenBg"] forState:UIControlStateNormal];
+            }else if (self.chartCellTag == KChartCellTagBai)
+            {
+                [button setBackgroundImage:[UIImage imageNamed:@"blueBg"] forState:UIControlStateNormal];
+            }else
+            {
+                [button setBackgroundImage:[UIImage imageNamed:@"redBg"] forState:UIControlStateNormal];
+            }
         }else
         {
             NSString * yilouStr = [YZTool getChartSettingByTitle:@"遗漏"];

@@ -67,10 +67,7 @@
     BOOL isKs = [self.gameId isEqualToString:@"F04"];
     BOOL isKy = [self.gameId isEqualToString:@"T06"];
     NSArray *titleArray = [NSArray array];
-    if(isS1x5)//11选5
-    {
-        titleArray = @[@"购物车", @"近期开奖", @"玩法说明"];
-    }else if (isSsq || isDlt || isKy)//大乐透 双色球 快赢
+    if (isS1x5 || isSsq || isDlt || isKy)//大乐透 双色球 快赢
     {
         titleArray = @[@"走势图", @"购物车", @"近期开奖", @"玩法说明"];
     }else if (isKs)//快三

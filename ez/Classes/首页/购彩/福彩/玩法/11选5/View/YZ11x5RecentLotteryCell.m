@@ -39,8 +39,6 @@
 - (void)setupChilds
 {
     int btnCount = 12;
-//    CGFloat btnW = 22 + 3;
-//    CGFloat btnH = 22 + 3;
     CGFloat btn1W = screenWidth - (btnCount - 1) * btnWH;
     for(int i = 0;i < btnCount;i++)
     {
@@ -77,7 +75,7 @@
     }
     UIButton *btn =  self.btns[0];
     [btn setTitle:[NSString stringWithFormat:@"%@期",termId] forState:UIControlStateNormal];
-    [btn setTitleColor:UIColorFromRGB(0xFF825A5A) forState:UIControlStateNormal];
+    [btn setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
 
     //设置号码球
     NSArray *ballArray = [_status.winNumber componentsSeparatedByString:@","];
@@ -121,6 +119,7 @@
         }
     }
 }
+
 - (NSMutableArray *)btns
 {
     if(_btns == nil)

@@ -1,8 +1,8 @@
 //
-//  YZKy481ChartViewController.h
+//  YZ11x5ChartViewController.h
 //  ez
 //
-//  Created by dahe on 2019/11/29.
+//  Created by dahe on 2019/12/6.
 //  Copyright © 2019 9ge. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZKy481ChartViewController : YZBaseChartViewController
+@interface YZ11x5ChartViewController : YZBaseChartViewController
 
 @end
 

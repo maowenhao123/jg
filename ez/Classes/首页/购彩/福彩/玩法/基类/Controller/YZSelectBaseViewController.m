@@ -210,7 +210,8 @@
         self.promptLabel = promptLabel;
         promptLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         promptLabel.textColor = [UIColor darkGrayColor];
-        promptLabel.text = @"1323";
+        promptLabel.backgroundColor = YZBackgroundColor;
+        promptLabel.alpha = 0.6;
         [self.view addSubview:promptLabel];
         maxY = promptLabel.y;
         

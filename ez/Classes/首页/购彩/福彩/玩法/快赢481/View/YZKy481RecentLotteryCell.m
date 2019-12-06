@@ -45,7 +45,7 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         if(i == 0 || i == 1)
         {
-            [btn setTitleColor:UIColorFromRGB(0xFF825A5A) forState:UIControlStateNormal];
+            [btn setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
         }else
         {
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -118,7 +118,7 @@
             {
                 [btn setTitle:[NSString stringWithFormat:@"%02d", i - 1] forState:UIControlStateNormal];
             }
-            [btn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
+            [btn setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
             [btn setBackgroundImage:nil forState:UIControlStateNormal];
         }
     }

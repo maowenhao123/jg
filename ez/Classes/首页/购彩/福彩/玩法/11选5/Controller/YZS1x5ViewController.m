@@ -8,11 +8,12 @@
 #define playTypeBtnCount 21
 
 #import "YZS1x5ViewController.h"
+#import "YZ11x5ChartViewController.h"
 #import "YZTitleButton.h"
 #import "YZ11x5RecentLotteryCell.h"
 #import "YZCommitTool.h"
 
-@interface YZS1x5ViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate,YZSelectBallCellDelegate,YZBallBtnDelegate>
+@interface YZS1x5ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate>
 {
     BOOL _openTitleMenu;//是否打开菜单
     NSString *_currentPlayTypeCode;//当前玩法
@@ -424,6 +425,15 @@
     }
 }
 
+#pragma mark - 走势图页面
+- (void)trendBtnDidClick
+{
+    YZ11x5ChartViewController *chartVC = [[YZ11x5ChartViewController alloc] init];
+    chartVC.gameId = self.gameId;
+    chartVC.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
+    [self.navigationController pushViewController:chartVC animated:YES];
+}
+
 #pragma mark - tableview的代理数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -496,13 +506,12 @@
             btn.titleLabel.font = [UIFont systemFontOfSize:13];
             btn.layer.borderColor = [UIColor lightGrayColor].CGColor;
             btn.layer.borderWidth = 0.25;
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
             CGFloat btnX = 0;
             if(i == 0){
                 btnX = 0;
                 btn.frame = CGRectMake(btnX, 0, btn1W, btnWH);
                 [btn setTitle:@"期" forState:UIControlStateNormal];
-                [btn setTitleColor:UIColorFromRGB(0xFF825A5A) forState:UIControlStateNormal];
             }else{
                 btnX = btn1W + (i-1) * btnWH;
                 btn.frame = CGRectMake(btnX, 0, btnWH, btnWH);
@@ -537,6 +546,14 @@
             YZBallBtn *cellBall = cell1.ballsArray[ball.tag-1];
             [cellBall ballChangeToRed];
         }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView != self.tableView1)
+    {
+        [self trendBtnDidClick];
     }
 }
 
@@ -875,7 +892,7 @@
 - (void)computeAmountMoney
 {
     int composeCount = 0;
-    int i = self.selectedPlayTypeBtnTag;
+    NSInteger i = self.selectedPlayTypeBtnTag;
     NSMutableArray *statusArr = self.allSelBallsArray[i];
     if (i == 0) {//任选一
         composeCount = (int)statusArr.count;
@@ -966,7 +983,7 @@
 - (void)switchCurrentHistoryView
 {
     //有百千万的
-    if( self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)
+    if(self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)
     {
         [self.view sendSubviewToBack:self.historyTableView];
         self.currentHistoryView = self.historyBackView;

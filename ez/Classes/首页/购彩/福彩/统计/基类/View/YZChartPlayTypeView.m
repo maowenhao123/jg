@@ -1,26 +1,28 @@
 //
-//  YZKy481ChartPlayTypeView.m
+//  YZChartPlayTypeView.m
 //  ez
 //
 //  Created by 毛文豪 on 2019/12/2.
 //  Copyright © 2019 9ge. All rights reserved.
 //
 
-#import "YZKy481ChartPlayTypeView.h"
+#import "YZChartPlayTypeView.h"
 
-@interface YZKy481ChartPlayTypeView ()<UIGestureRecognizerDelegate>
+@interface YZChartPlayTypeView ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) UIView *playTypeView;
+@property (nonatomic, copy) NSString *gameId;
 @property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;
 
 @end
 
-@implementation YZKy481ChartPlayTypeView
+@implementation YZChartPlayTypeView
 
-- (instancetype)initWithFrame:(CGRect)frame selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag
+- (instancetype)initWithFrame:(CGRect)frame gameId:(NSString *)gameId selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.gameId = gameId;
         self.selectedPlayTypeBtnTag = selectedPlayTypeBtnTag;
         [self setupSonChilds];
     }
@@ -43,8 +45,14 @@
     playTypeView.clipsToBounds = YES;
     [self addSubview:playTypeView];
     
-    NSArray * playTypeBtnTitles = @[@"任选", @"直选", @"组选"];
-    for (int i = 0; i < 3; i++) {
+    NSArray * playTypeBtnTitles = [NSArray array];
+    if ([self.gameId isEqualToString:@"T06"]) {
+        playTypeBtnTitles = @[@"任选", @"直选", @"组选"];
+    }else if ([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])
+    {
+        playTypeBtnTitles = @[@"任选一", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八", @"前二直选", @"前二组选", @"前三直选", @"前三组选"];
+    }
+    for (int i = 0; i < playTypeBtnTitles.count; i++) {
         UIButton * playTypeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         playTypeButton.tag = i;
         playTypeButton.frame = CGRectMake(0, 40 * i, playTypeViewW, 40);
@@ -53,17 +61,31 @@
         [playTypeButton setTitle:playTypeBtnTitles[i] forState:UIControlStateNormal];
         playTypeButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         [playTypeButton addTarget:self action:@selector(playTypeBtn:) forControlEvents:UIControlEventTouchUpInside];
-        if (self.selectedPlayTypeBtnTag < 6 && i == 0) {
-            playTypeButton.selected = YES;
-        }else if (self.selectedPlayTypeBtnTag == 6 && i == 1)
+        if ([self.gameId isEqualToString:@"T06"]) {
+            if (self.selectedPlayTypeBtnTag < 6 && i == 0) {
+                playTypeButton.selected = YES;
+            }else if (self.selectedPlayTypeBtnTag == 6 && i == 1)
+            {
+                playTypeButton.selected = YES;
+            }else if (self.selectedPlayTypeBtnTag > 6 && i == 2)
+            {
+                playTypeButton.selected = YES;
+            }else
+            {
+                playTypeButton.selected = NO;
+            }
+        }else if ([self.gameId isEqualToString:@"T05"])
         {
-            playTypeButton.selected = YES;
-        }else if (self.selectedPlayTypeBtnTag > 6 && i == 2)
-        {
-            playTypeButton.selected = YES;
-        }else
-        {
-            playTypeButton.selected = NO;
+            NSInteger index = self.selectedPlayTypeBtnTag;
+            if (index > 12) {
+                index = index - 11;
+            }
+            if (self.selectedPlayTypeBtnTag == index) {
+                playTypeButton.selected = YES;
+            }else
+            {
+                playTypeButton.selected = NO;
+            }
         }
         [playTypeView addSubview:playTypeButton];
     }
@@ -96,7 +118,12 @@
     self.playTypeView.height = 0;
     [UIView animateWithDuration:animateDuration animations:^{
         self.titleBtn.imageView.transform = CGAffineTransformMakeRotation(-M_PI);
-        self.playTypeView.height = 120;
+        if ([self.gameId isEqualToString:@"T06"]) {
+            self.playTypeView.height = 40 * 3;
+        }else if ([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])
+        {
+            self.playTypeView.height = 40 * 12;
+        }
     }];
 }
 
