@@ -168,7 +168,7 @@
     [registerbtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
     [registerbtn setTitle:@"注册" forState:UIControlStateNormal];
     registerbtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
-    [registerbtn addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];
+    [registerbtn addTarget:self action:@selector(quickLoginDidClick:) forControlEvents:UIControlEventTouchUpInside];
     registerbtn.layer.masksToBounds = YES;
     registerbtn.layer.cornerRadius = 3;
     registerbtn.layer.borderWidth = 0.8;
@@ -483,19 +483,19 @@
 #pragma mark - 点击注册按钮
 -(void)quickLoginDidClick:(UIButton *)button
 {
-    UACustomModel *model = [[UACustomModel alloc]init];
+    UACustomModel *model = [[UACustomModel alloc] init];
+    model.currentVC = self;//必传
     model.navReturnImg = [UIImage imageNamed:@"black_back_bar"];
     model.navColor = [UIColor whiteColor];
     model.navText = [[NSAttributedString alloc]initWithString:@"一键登录" attributes:@{NSForegroundColorAttributeName:YZBlackTextColor,NSFontAttributeName:[UIFont boldSystemFontOfSize:17]}];
-    [TYRZUILogin customUIWithParams:model customViews:^(UIView *customAreaView) {
-
-    }];
-    waitingView
-    [TYRZUILogin getAuthorizationWithController:self timeout:8000 complete:^(id sender) {
+    [UASDKLogin.shareLogin getAuthorizationWithModel:model complete:^(NSDictionary * _Nonnull sender) {
         NSLog(@"%@", sender);
         NSString *resultCode = sender[@"resultCode"];
         if ([resultCode isEqualToString:@"103000"]) {
             [self quickLoginWithToken:sender[@"token"]];
+        }else if ([resultCode isEqualToString:@"200087"])
+        {
+            
         }else//失败去注册页面
         {
             [MBProgressHUD hideHUDForView:self.view];

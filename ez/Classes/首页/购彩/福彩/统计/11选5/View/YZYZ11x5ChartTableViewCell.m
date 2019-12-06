@@ -133,6 +133,7 @@
     UIButton * button0 = self.buttons[0];
     NSString * issue = [NSString stringWithFormat:@"%@", _dataStatus.issue];
     issue = [issue substringWithRange:NSMakeRange(issue.length - 2, 2)];
+    [button0 setTitleColor:YZChartTitleColor forState:UIControlStateNormal];
     [button0 setTitle:[NSString stringWithFormat:@"%@期", issue] forState:UIControlStateNormal];
     
     NSArray * missArray = [NSArray array];

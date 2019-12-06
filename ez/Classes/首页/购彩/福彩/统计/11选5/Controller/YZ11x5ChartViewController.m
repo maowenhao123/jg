@@ -30,8 +30,14 @@
     
     NSArray * playTypeBtnTitles = @[@"任选一", @"任选二", @"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八", @"前二直选", @"前二组选", @"前三直选", @"前三组选"];
     NSInteger index = self.selectedPlayTypeBtnTag;
-    if (index > 12) {
+    if (index > 11 && index < 18) {
         index = index - 11;
+    }else if (index == 18)
+    {
+        index = 9;
+    }else if (index == 19)
+    {
+        index = 11;
     }
     [self.titleBtn setTitle:playTypeBtnTitles[index] forState:UIControlStateNormal];
     

@@ -44,7 +44,7 @@
     [YZStatusCacheTool deleteAllStatus];//删除数据
     
     //注册一键登录
-//    [TYRZUILogin initializeWithAppId:TYRZAPPId appKey:TYRZAPPKey];
+    [UASDKLogin.shareLogin registerAppId:TYRZAPPId AppKey:TYRZAPPKey];
 
 #if JG
     //删除userId，以重新登录

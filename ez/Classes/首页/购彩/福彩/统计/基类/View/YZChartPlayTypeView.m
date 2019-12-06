@@ -74,13 +74,19 @@
             {
                 playTypeButton.selected = NO;
             }
-        }else if ([self.gameId isEqualToString:@"T05"])
+        }else if ([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])
         {
             NSInteger index = self.selectedPlayTypeBtnTag;
-            if (index > 12) {
+            if (index > 11 && index < 18) {
                 index = index - 11;
+            }else if (index == 18)
+            {
+                index = 9;
+            }else if (index == 19)
+            {
+                index = 11;
             }
-            if (self.selectedPlayTypeBtnTag == index) {
+            if (i == index) {
                 playTypeButton.selected = YES;
             }else
             {
