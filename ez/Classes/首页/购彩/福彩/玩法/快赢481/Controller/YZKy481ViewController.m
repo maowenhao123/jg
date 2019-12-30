@@ -11,6 +11,8 @@
 #import "YZKy481WanNengView.h"
 #import "YZKy481ChongView.h"
 #import "YZKy481DanView.h"
+#import "YZKy481BaView.h"
+#import "YZChongDanView.h"
 #import "YZTitleButton.h"
 #import "YZKy481RecentLotteryCell.h"
 #import "YZKy481Math.h"
@@ -30,6 +32,8 @@
 @property (nonatomic, weak) YZKy481WanNengView *wanNengView;
 @property (nonatomic, weak) YZKy481ChongView *chongView;
 @property (nonatomic, weak) YZKy481DanView *danView;
+@property (nonatomic, weak) YZKy481BaView *baView;
+@property (nonatomic, weak) YZChongDanView *chongDanView;
 @property (nonatomic, strong) NSMutableArray *allStatusArray;//所有的数据
 @property (nonatomic, strong) NSMutableArray *currentStatusArray;//当前tableview的数据
 @property (nonatomic, strong) NSMutableArray *allSelBallsArray;//所有选中的球对象数组
@@ -110,7 +114,7 @@
     //titleBtn
     YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
-    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24"];
+    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一全包", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
     [titleBtn setTitle:playTypes[self.selectedPlayTypeBtnTag] forState:UIControlStateNormal];
 #if JG
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
@@ -131,7 +135,7 @@
     
     //玩法
     CGFloat tableViewY = CGRectGetMaxY(self.endTimeLabel.frame);
-    CGFloat tableViewH = self.bottomView.y - CGRectGetMaxY(self.endTimeLabel.frame);
+    CGFloat tableViewH = self.tableView1.height;
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
     self.tableView = tableView;
     tableView.backgroundColor = YZBackgroundColor;
@@ -166,6 +170,20 @@
     danView.hidden = YES;
     [self.view insertSubview:danView belowSubview:self.bottomView];
     [self addPanGestureToView:danView];
+    
+    //八个号码
+    YZKy481BaView *baView = [[YZKy481BaView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
+    self.baView = baView;
+    baView.hidden = YES;
+    [self.view insertSubview:baView belowSubview:self.bottomView];
+    [self addPanGestureToView:baView];
+    
+    //重号单号
+    YZChongDanView *chongDanView = [[YZChongDanView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
+    self.chongDanView = chongDanView;
+    chongDanView.hidden = YES;
+    [self.view insertSubview:chongDanView belowSubview:self.bottomView];
+    [self addPanGestureToView:chongDanView];
     
     self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];//记录的数据源
     _currentPlayTypeCode = self.playTypeCodes[self.selectedPlayTypeBtnTag];//记录的当前玩法
@@ -300,17 +318,16 @@
 
 - (void)switchOtherPlayTypeWithBtn:(UIButton *)btn
 {
+    //存储选中的玩法
+    [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selectedky481PlayTypeBtnTag"];
     
-       //存储选中的玩法
-       [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selectedky481PlayTypeBtnTag"];
-         
-       [self closeTableViewWithAnimation];//关闭tableView
-       
-       self.selectedPlayTypeBtnTag = btn.tag;
-       _currentPlayTypeCode = self.playTypeCodes[btn.tag];
-       [self.titleBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
-       
-       [self setViewHiddenOrShow];
+    [self closeTableViewWithAnimation];//关闭tableView
+    
+    self.selectedPlayTypeBtnTag = btn.tag;
+    _currentPlayTypeCode = self.playTypeCodes[btn.tag];
+    [self.titleBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
+    
+    [self setViewHiddenOrShow];
 }
 
 - (void)setViewHiddenOrShow
@@ -318,10 +335,16 @@
     self.wanNengView.hidden = YES;
     self.danView.hidden = YES;
     self.chongView.hidden = YES;
+    self.baView.hidden = YES;
+    self.chongDanView.hidden = YES;
     self.tableView.hidden = YES;
     self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];
     NSMutableArray *selStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
-    if (self.selectedPlayTypeBtnTag == 4) {
+    if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2 || self.selectedPlayTypeBtnTag == 3 || self.selectedPlayTypeBtnTag == 5 || self.selectedPlayTypeBtnTag == 6) {
+        self.tableView.hidden = NO;
+        [self.tableView reloadData];
+    }else if (self.selectedPlayTypeBtnTag == 4)//万能
+    {
         self.wanNengView.hidden = NO;
         self.wanNengView.status = self.currentStatusArray.firstObject;
     }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)//组选4 组选12
@@ -336,10 +359,15 @@
         self.danView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
         self.danView.status = self.currentStatusArray.firstObject;
         self.danView.selStatusArray = selStatusArray;
-    }else
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
     {
-        self.tableView.hidden = NO;
-        [self.tableView reloadData];
+        self.baView.hidden = NO;
+        self.baView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
+        self.baView.status = self.currentStatusArray.firstObject;
+    }else if (self.selectedPlayTypeBtnTag == 12)
+    {
+        self.chongDanView.hidden = NO;
+        self.chongDanView.status = self.currentStatusArray.firstObject;
     }
     [self computeAmountMoney];
     [self switchCurrentHistoryView];
@@ -389,11 +417,11 @@
 {
     [UIView animateWithDuration:animateDuration
                      animations:^{
-                         self.guideView.alpha = 0;
-                     }
+        self.guideView.alpha = 0;
+    }
                      completion:^(BOOL finished) {
-                         [self.guideView removeFromSuperview];
-                     }];
+        [self.guideView removeFromSuperview];
+    }];
 }
 
 #pragma mark - 历史开奖
@@ -457,7 +485,10 @@
 {
     if(!_panEnable) return;
     UIView * panView;
-    if (self.selectedPlayTypeBtnTag == 4) {
+    if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2 || self.selectedPlayTypeBtnTag == 3 || self.selectedPlayTypeBtnTag == 5 || self.selectedPlayTypeBtnTag == 6) {
+        panView = self.tableView;
+    }else if (self.selectedPlayTypeBtnTag == 4)//万能
+    {
         panView = self.wanNengView;
     }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)//组选4 组选12
     {
@@ -465,9 +496,12 @@
     }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)//组选6 组选24
     {
         panView = self.danView;
-    }else
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
     {
-        panView = self.tableView;
+        panView = self.baView;
+    }else if (self.selectedPlayTypeBtnTag == 12)
+    {
+        panView = self.chongDanView;
     }
     CGFloat endTimeBgMaxY = CGRectGetMaxY(self.endTimeLabel.frame);
     CGPoint translation = [pan translationInView:panView];
@@ -865,11 +899,11 @@
     NSMutableArray *selStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
     self.selectcount = 0;
     if (self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2) {
-         for (NSArray * cellStatusArray in selStatusArray) {
-             if (cellStatusArray.count > 0) {
-                 self.selectcount ++;
-             }
-         }
+        for (NSArray * cellStatusArray in selStatusArray) {
+            if (cellStatusArray.count > 0) {
+                self.selectcount ++;
+            }
+        }
     }
     self.betCount = [YZKy481Math getBetCountWithSelStatusArray:selStatusArray selectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
 }
@@ -958,6 +992,66 @@
         YZSelectBallCellStatus *status10 = [self setupStatusWithTitle:@"开奖号码与所选号码相同即中197元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
         [playTypeBalls10 addObject:status10];
         [_allStatusArray addObject:playTypeBalls10];
+        
+        //三不重
+        NSMutableArray * playTypeBalls11 = [NSMutableArray array];
+        YZSelectBallCellStatus *status11 = [self setupStatusWithTitle:@"任选三项，猜中前三位或后三位即中49元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls11 addObject:status11];
+        [_allStatusArray addObject:playTypeBalls11];
+        
+        //二带一单式
+        NSMutableArray * playTypeBalls12 = [NSMutableArray array];
+        YZSelectBallCellStatus *status12 = [self setupStatusWithTitle:@"任选两项，猜中前三位或后三位即中98元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls12 addObject:status12];
+        [_allStatusArray addObject:playTypeBalls12];
+        
+        //二带一包单
+        NSMutableArray * playTypeBalls13 = [NSMutableArray array];
+        YZSelectBallCellStatus *status13 = [self setupStatusWithTitle:@"任选一对，全包投注，猜中即中98元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls13 addObject:status13];
+        [_allStatusArray addObject:playTypeBalls13];
+        
+        //二带一包对
+        NSMutableArray * playTypeBalls14 = [NSMutableArray array];
+        YZSelectBallCellStatus *status14 = [self setupStatusWithTitle:@"任选一对，包对投注，猜中即中98元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls14 addObject:status14];
+        [_allStatusArray addObject:playTypeBalls14];
+        
+        //二带一全包
+        NSMutableArray * playTypeBalls15 = [NSMutableArray array];
+        YZSelectBallCellStatus *status15 = [self setupStatusWithTitle:@"任选两项，猜中前三位或后三位即中98元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls15 addObject:status15];
+        [_allStatusArray addObject:playTypeBalls15];
+        
+        //包2
+        NSMutableArray * playTypeBalls16 = [NSMutableArray array];
+        YZSelectBallCellStatus *status16 = [self setupStatusWithTitle:@"任选两项，猜中前三位或后三位即中49元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls16 addObject:status16];
+        [_allStatusArray addObject:playTypeBalls16];
+        
+        //包3
+        NSMutableArray * playTypeBalls17 = [NSMutableArray array];
+        YZSelectBallCellStatus *status17 = [self setupStatusWithTitle:@"任选三项，猜中前三位或后三位即中49元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls17 addObject:status17];
+        [_allStatusArray addObject:playTypeBalls17];
+        
+        //豹子
+        NSMutableArray * playTypeBalls18 = [NSMutableArray array];
+        YZSelectBallCellStatus *status18 = [self setupStatusWithTitle:@"至少任选一项，猜中即中163元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls18 addObject:status18];
+        [_allStatusArray addObject:playTypeBalls18];
+        
+        //形态
+        NSMutableArray * playTypeBalls19 = [NSMutableArray array];
+        YZSelectBallCellStatus *status19 = [self setupStatusWithTitle:@"组4形态单注奖金固定为21元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls19 addObject:status19];
+        [_allStatusArray addObject:playTypeBalls19];
+        
+        //拖拉机
+        NSMutableArray * playTypeBalls20 = [NSMutableArray array];
+        YZSelectBallCellStatus *status20 = [self setupStatusWithTitle:@"猜中前三位或后三位按照大小且相连的顺序排列即中26元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
+        [playTypeBalls20 addObject:status20];
+        [_allStatusArray addObject:playTypeBalls20];
     }
     return  _allStatusArray;
 }
@@ -967,7 +1061,7 @@
     if(_allSelBallsArray == nil)
     {
         _allSelBallsArray = [NSMutableArray array];
-        for(int i = 0; i < 11; i++)
+        for(int i = 0; i < 21; i++)
         {
             [_allSelBallsArray addObject:[NSMutableArray array]];
             for (int j = 0; j < 4; j++) {
@@ -990,7 +1084,7 @@
 - (NSArray *)playTypeCodes
 {
     if (!_playTypeCodes) {
-        _playTypeCodes = @[@"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01"];
+        _playTypeCodes = @[@"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01", @"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01", @"02", @"01"];
     }
     return _playTypeCodes;
 }
@@ -1002,9 +1096,14 @@
     if(!YZStringIsEmpty(title))
     {
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:title];
-        NSRange zhongRange = [[attStr string] rangeOfString:@"即中"];
-        NSRange yuanRange = [[attStr string] rangeOfString:@"元"];
-        [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(zhongRange.location+2, yuanRange.location-zhongRange.location-2)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(0, attStr.length)];
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\D*"  options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators error:nil];
+        NSArray *result = [regex matchesInString:attStr.string options:0 range:NSMakeRange(0, attStr.length)];
+        for (NSTextCheckingResult *resultCheck in result) {
+            if (resultCheck.range.length > 0) {
+                [attStr addAttribute:NSForegroundColorAttributeName value:YZBlackTextColor range:resultCheck.range];
+            }
+        }
         status.title = attStr;
     }
     status.ballsCount = ballsCount;

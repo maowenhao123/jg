@@ -10,39 +10,22 @@
 
 @interface YZKy481WanNengView ()
 
-@property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, strong) NSMutableArray *ballButtons;
 
 @end
 
 @implementation YZKy481WanNengView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = YZBackgroundColor;
-        [self setupSonChilds];
-    }
-    return self;
-}
-
 #pragma mark - 布局子视图
-- (void)setupSonChilds
+- (void)setupChildViews
 {
-    //标题文字
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, 10, screenWidth - 2 * YZMargin, 20)];
-    self.titleLabel = titleLabel;
-    titleLabel.textColor = YZBlackTextColor;
-    titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
-    [self addSubview:titleLabel];
-    
+    [super setupChildViews];
     //号码
     CGFloat padding = 1.5;
     CGFloat allballButtonW = screenWidth - 2 * YZMargin;
     CGFloat ballButtonW = (allballButtonW  - 9 * padding) / 10;
     CGFloat ballButtonH = ballButtonW * 1.2;
-    UIView * allBallView = [[UIView alloc] initWithFrame:CGRectMake(YZMargin, CGRectGetMaxY(titleLabel.frame) + 10, screenWidth - 2 * YZMargin, ballButtonH * 5 + padding * 4)];
+    UIView * allBallView = [[UIView alloc] initWithFrame:CGRectMake(YZMargin, CGRectGetMaxY(self.titleLabel.frame) + 10, screenWidth - 2 * YZMargin, ballButtonH * 5 + padding * 4)];
     allBallView.backgroundColor = [UIColor whiteColor];
     [self addSubview:allBallView];
     
@@ -172,13 +155,7 @@
     }
 }
 
-- (void)setStatus:(YZSelectBallCellStatus *)status
-{
-    _status = status;
-    
-    self.titleLabel.attributedText = _status.title;
-}
-
+#pragma mark - Setting
 - (void)setRandomTitle:(NSString *)randomTitle
 {
     _randomTitle = randomTitle;

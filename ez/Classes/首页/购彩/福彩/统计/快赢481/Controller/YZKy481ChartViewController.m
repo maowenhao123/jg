@@ -152,6 +152,7 @@
     
     self.renTableView.dataArray = self.dataArray;
     self.zhiTableView.dataArray = self.dataArray;
+    self.zuTableView.stats = self.chartStatus.stats;
     self.zuTableView.dataArray = self.dataArray;
     for (UIView * subView in self.mainScrollView.subviews) {
         if ([subView isKindOfClass:[YZKy481ChartYongTableView class]]) {

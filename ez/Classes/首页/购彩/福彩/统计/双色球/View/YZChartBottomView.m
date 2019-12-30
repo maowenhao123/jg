@@ -36,7 +36,7 @@
     self.button = confirmBtn;
     CGFloat confirmBtnH = 30;
     CGFloat confirmBtnW = 75;
-    confirmBtn.frame = CGRectMake(screenWidth - confirmBtnW - 15, (self.height - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
+    confirmBtn.frame = CGRectMake(screenWidth - confirmBtnW - YZMargin, (self.height - confirmBtnH) / 2, confirmBtnW, confirmBtnH);
     [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
     [confirmBtn addTarget:self action:@selector(confirmBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -45,7 +45,7 @@
     [self addSubview:confirmBtn];
     
     //时间label
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, confirmBtn.x - 5 * 2, self.height)];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, 0, confirmBtn.x - 5 * 2, self.height)];
     self.label = label;
     label.text = @"未能获取彩期";
     label.textColor = YZBlackTextColor;
@@ -73,7 +73,7 @@
     {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-                             self.label.x = 5;
+                             self.label.x = YZMargin;
                              self.label.textAlignment = NSTextAlignmentLeft;
                              self.button.alpha = 1;
                          }];

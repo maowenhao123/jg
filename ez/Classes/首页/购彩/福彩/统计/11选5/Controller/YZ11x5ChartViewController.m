@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSMutableArray *topBtns;
 @property (nonatomic, weak) UIButton *selectedBtn;
 @property (nonatomic, weak) UIScrollView *mainScrollView;
+@property (nonatomic, strong) NSMutableArray *weiTableViews;
 
 @end
 
@@ -79,7 +80,7 @@
         UIButton *topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         topBtn.tag = i;
         [topBtn setTitle:topBtnTitles[i] forState:UIControlStateNormal];
-        topBtn.frame = CGRectMake(5 + i * topBtnW, 0, topBtnW, topBtnH);
+        topBtn.frame = CGRectMake(i * topBtnW, 0, topBtnW, topBtnH);
         topBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         topBtn.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         [topBtn setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
@@ -117,32 +118,18 @@
             weiTableView.chartCellTag = KChartCellTagBai;
         }
         [mainScrollView addSubview:weiTableView];
+        
+        [self.weiTableViews addObject:weiTableView];
     }
     
-    if(self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)
-    {
-        allView.hidden = YES;
-        weiView.hidden = NO;
-    }else//没有千百万的
-    {
-        allView.hidden = NO;
-        weiView.hidden = YES;
-    }
+    [self setView];
 }
 
 - (void)playTypeDidClickBtn:(UIButton *)btn
 {
     [self.titleBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
-    
-    if(btn.tag == 8 || btn.tag == 10)
-    {
-        self.allView.hidden = YES;
-        self.weiView.hidden = NO;
-    }else//没有千百万的
-    {
-        self.allView.hidden = NO;
-        self.weiView.hidden = YES;
-    }
+    self.selectedPlayTypeBtnTag = btn.tag;
+    [self setView];
 }
 
 - (void)setSettingData
@@ -151,12 +138,46 @@
     
     self.allTableView.stats = self.chartStatus.stats;
     self.allTableView.dataArray = self.dataArray;
-    for (UIView * subView in self.mainScrollView.subviews) {
-        if ([subView isKindOfClass:[YZ11x5ChartTableView class]]) {
-            YZ11x5ChartTableView *weiTableView = (YZ11x5ChartTableView *)subView;
-            weiTableView.stats = self.chartStatus.stats;
-            weiTableView.dataArray = self.dataArray;
+    for (YZ11x5ChartTableView *weiTableView in self.weiTableViews) {
+        weiTableView.stats = self.chartStatus.stats;
+        weiTableView.dataArray = self.dataArray;
+    }
+}
+
+- (void)setView
+{
+    if(self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)
+    {
+        self.allView.hidden = YES;
+        self.weiView.hidden = NO;
+        int showTabCount = 1;
+        if (self.selectedPlayTypeBtnTag == 1) {
+            showTabCount = 1;
+        }else if (self.selectedPlayTypeBtnTag == 8)
+        {
+            showTabCount = 2;
+        }else if (self.selectedPlayTypeBtnTag == 10)
+        {
+            showTabCount = 3;
         }
+        CGFloat topBtnW = self.topBackScrollView.width / showTabCount;
+        for(int i = 0; i < self.topBtns.count; i++)
+        {
+            UIButton *topBtn = self.topBtns[i];
+            if (i >= showTabCount) {
+                topBtn.hidden = YES;
+            }else
+            {
+                topBtn.hidden = NO;
+                topBtn.frame = CGRectMake(i * topBtnW, 0, topBtnW, topBtnH);
+            }
+        }
+        self.mainScrollView.contentSize = CGSizeMake(screenWidth * showTabCount, self.mainScrollView.height);
+        [self topBtnClick:self.topBtns.firstObject];
+    }else
+    {
+        self.allView.hidden = NO;
+        self.weiView.hidden = YES;
     }
 }
 
@@ -197,5 +218,14 @@
     }
     return _topBtns;
 }
+
+- (NSMutableArray *)weiTableViews
+{
+    if (_weiTableViews == nil) {
+        _weiTableViews = [NSMutableArray array];
+    }
+    return _weiTableViews;
+}
+
 
 @end

@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) YZChartDataStatus * dataStatus;
 
+@property (nonatomic, assign) KChartStatisticsTag chartStatisticsTag;
+@property (nonatomic, strong) YZChartSortStatsStatus * status;
+
 @end
 
 NS_ASSUME_NONNULL_END

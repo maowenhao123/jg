@@ -6,9 +6,7 @@
 //  Copyright © 2019 9ge. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "YZSelectBallCellStatus.h"
-#import "YZBallBtn.h"
+#import "YZKy481BaseView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol YZKy481WanNengViewDelegate <NSObject>
@@ -17,9 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)ballDidClick:(YZBallBtn *)btn;
 @end
 
-@interface YZKy481WanNengView : UIView
+@interface YZKy481WanNengView : YZKy481BaseView
 
-@property (nonatomic, strong) YZSelectBallCellStatus *status;//数据模型
 @property (nonatomic, copy) NSString * randomTitle;
 @property (nonatomic, weak) id<YZKy481WanNengViewDelegate> delegate;
 

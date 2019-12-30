@@ -28,6 +28,7 @@
                                 @"任选": @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包"],
                                 @"直选": @[@"直选"],
                                 @"组选": @[@"组选4", @"组选6", @"组选12", @"组选24"],
+                                @"283": @[@"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一全包", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"]
                                 };
         [self setupSonChilds];
     }
@@ -59,9 +60,10 @@
     UIButton *lastBtn;
     UILabel *lastLabel;
     int tag = 0;
-    for(int i = 0; i < _playTypeBtnTitleDic.allKeys.count; i++)
+    NSArray *playTypeBtnTitles = @[@"任选", @"直选", @"组选", @"283"];
+    for(int i = 0; i < playTypeBtnTitles.count; i++)
     {
-        NSString * key = _playTypeBtnTitleDic.allKeys[i];
+        NSString * key = playTypeBtnTitles[i];
         NSArray * value = _playTypeBtnTitleDic[key];
         
         UILabel *label = [[UILabel alloc] init];

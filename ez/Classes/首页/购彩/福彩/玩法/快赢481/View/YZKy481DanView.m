@@ -10,7 +10,6 @@
 
 @interface YZKy481DanView ()<YZBallBtnDelegate>
 
-@property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, strong) NSMutableArray *ballButtons;
 @property (nonatomic, strong) NSMutableArray *danBallButtons;
 
@@ -18,28 +17,13 @@
 
 @implementation YZKy481DanView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = YZBackgroundColor;
-        [self setupSonChilds];
-    }
-    return self;
-}
-
 #pragma mark - 布局子视图
-- (void)setupSonChilds
+- (void)setupChildViews
 {
-    //标题文字
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, 10, screenWidth - 2 * YZMargin, 20)];
-    self.titleLabel = titleLabel;
-    titleLabel.textColor = YZBlackTextColor;
-    titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
-    [self addSubview:titleLabel];
+    [super setupChildViews];
     
     //选号
-    UILabel *xuanTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, CGRectGetMaxY(titleLabel.frame) + 10, 50, 30)];
+    UILabel *xuanTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, CGRectGetMaxY(self.titleLabel.frame) + 10, 50, 30)];
     xuanTitleLabel.text = @"选号";
     xuanTitleLabel.textColor = YZBlackTextColor;
     xuanTitleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(26)];
@@ -141,13 +125,6 @@
 }
 
 #pragma mark - Setting
-- (void)setStatus:(YZSelectBallCellStatus *)status
-{
-    _status = status;
-    
-    self.titleLabel.attributedText = _status.title;
-}
-
 - (void)setSelStatusArray:(NSMutableArray *)selStatusArray
 {
     _selStatusArray = selStatusArray;

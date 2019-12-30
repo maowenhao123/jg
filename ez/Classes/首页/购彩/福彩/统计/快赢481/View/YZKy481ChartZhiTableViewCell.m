@@ -11,7 +11,6 @@
 @interface YZKy481ChartZhiTableViewCell ()
 
 @property (nonatomic, strong) NSMutableArray *buttons;
-@property (nonatomic, weak) UILabel * noDataLabel;
 
 @end
 

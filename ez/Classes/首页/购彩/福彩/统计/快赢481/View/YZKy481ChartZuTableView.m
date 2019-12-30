@@ -37,7 +37,12 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    NSString * tongjiStr = [YZTool getChartSettingByTitle:@"统计"];
+    NSInteger tongjiCount = 0;
+    if ([tongjiStr isEqualToString:@"显示统计"]) {//显示统计
+        tongjiCount = 4;
+    }
+    return self.dataArray.count > 0 ? (self.dataArray.count + tongjiCount) : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -50,7 +55,40 @@
     {
         cell.backgroundColor = [UIColor whiteColor];
     }
-    cell.dataStatus = self.dataArray[indexPath.row];
+    NSString * termCountStr = [YZTool getChartSettingByTitle:@"期数"];
+    int termCount = [[termCountStr substringWithRange:NSMakeRange(1, termCountStr.length - 2)] intValue];
+    if (indexPath.row < self.dataArray.count) {
+        cell.dataStatus = self.dataArray[indexPath.row];
+    }else
+    {
+        if (indexPath.row == self.dataArray.count)
+        {
+            cell.chartStatisticsTag = KChartCellTagCount;
+        }else if (indexPath.row == self.dataArray.count + 1)
+        {
+            cell.chartStatisticsTag = KChartCellTagAvgMiss;
+        }else if (indexPath.row == self.dataArray.count + 2)
+        {
+            cell.chartStatisticsTag = KChartCellTagMaxMiss;
+        }else if (indexPath.row == self.dataArray.count + 3)
+        {
+            cell.chartStatisticsTag = KChartCellTagMaxSeries;
+        }
+        YZChartSortStatsStatus *stats;
+        if (termCount == 30) {
+            stats = self.stats.zuxuan.stat30;
+        }else if (termCount == 50)
+        {
+            stats = self.stats.zuxuan.stat50;
+        }else if (termCount == 100)
+        {
+            stats = self.stats.zuxuan.stat100;
+        }else if (termCount == 200)
+        {
+            stats = self.stats.zuxuan.stat200;
+        }
+        cell.status = stats;
+    }
     return cell;
 }
 

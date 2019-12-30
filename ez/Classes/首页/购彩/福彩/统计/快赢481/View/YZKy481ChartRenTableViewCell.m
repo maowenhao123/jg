@@ -11,7 +11,6 @@
 @interface YZKy481ChartRenTableViewCell ()
 
 @property (nonatomic, strong) NSMutableArray *buttons;
-@property (nonatomic, weak) UILabel * noDataLabel;
 
 @end
 

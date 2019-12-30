@@ -12,7 +12,7 @@
 #import "YZLoadHtmlFileController.h"
 #import "YZBetViewController.h"
 #import "YZChartSsqPlaytypeView.h"
-#import "YZChartPlayTypeTitleButton.h"
+#import "YZTitleButton.h"
 #import "YZChartSettingView.h"
 #import "YZChartTitleView.h"
 #import "YZChartLineView.h"
@@ -40,8 +40,8 @@
 }
 
 @property (nonatomic, assign) BOOL openPlaytypeView;
-@property (nonatomic, weak) YZChartPlayTypeTitleButton *titleBtn;
-@property (nonatomic, strong) UIBarButtonItem * rightBarButtonItem;
+@property (nonatomic, weak) YZTitleButton *titleBtn;
+@property (nonatomic, copy) NSArray * rightBarButtonItems;
 @property (nonatomic, weak) UIView *ballTitleView;
 @property (nonatomic, strong) NSMutableArray *ballTitleLabels;
 @property (nonatomic, weak) UIView *lotteryView;//开奖视图
@@ -144,12 +144,21 @@
     //bar
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"chart_back" highIcon:@"chart_back" target:self action:@selector(back)];
     
-    self.rightBarButtonItem = [UIBarButtonItem itemWithIcon:@"chart_setting" highIcon:@"chart_setting" target:self action:@selector(setting)];
-    self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
+    UIBarButtonItem * settingBar = [UIBarButtonItem itemWithIcon:@"chart_setting" highIcon:@"chart_setting" target:self action:@selector(setting)];
+    UIBarButtonItem * refreshBar = [UIBarButtonItem itemWithIcon:@"chart_refresh" highIcon:@"chart_refresh" target:self action:@selector(refreshData)];
+    self.rightBarButtonItems = @[settingBar, refreshBar];
+    self.navigationItem.rightBarButtonItems = self.rightBarButtonItems;
+    
     //title
-    YZChartPlayTypeTitleButton *titleBtn = [[YZChartPlayTypeTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 30)];
+    YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
-    [titleBtn setImage:[UIImage imageNamed:@"chart_down_arrow"] forState:UIControlStateNormal];
+#if JG
+    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
+#elif ZC
+    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
+#elif CS
+    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
+#endif
     if (self.isDlt) {
         if (self.isDantuo) {
             [titleBtn setTitle:@"大乐透胆拖" forState:UIControlStateNormal];
@@ -180,7 +189,7 @@
     
     CGFloat bottomViewH = 45;
     CGFloat selectedBallH = 30;
-    CGFloat ballViewH = 30;
+    CGFloat ballViewH = 35;
     CGFloat viewY = CGRectGetMaxY(titleView.frame);
     CGFloat viewH = screenHeight - statusBarH - navBarH - viewY - bottomViewH - ballViewH - selectedBallH - [YZTool getSafeAreaBottom];
     //开奖
@@ -424,6 +433,17 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (void)refreshData
+{
+    if (!YZDictIsEmpty(self.currentTermDict)) {
+        NSDictionary *json = self.currentTermDict;
+        NSString *termId = [json[@"game"][@"termList"] lastObject][@"termId"];
+        [self getTrendDataByTermId:termId];
+    }else
+    {
+        [self getCurrentTermData];
+    }
+}
 - (void)setting
 {
     NSArray * titleArray = [NSArray array];
@@ -439,7 +459,7 @@
     YZChartSettingView * settingView = [[YZChartSettingView alloc] initWithTitleArray:titleArray];
     settingView.delegate = self;
 }
-- (void)titleBtnClick:(YZChartPlayTypeTitleButton *)button
+- (void)titleBtnClick:(YZTitleButton *)button
 {
     self.openPlaytypeView = !self.openPlaytypeView;
     [self setTitleButtonImageView];
@@ -482,16 +502,16 @@
 - (void)setSettingBar
 {
     if (_currentIndex == 0) {
-        self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
+        self.navigationItem.rightBarButtonItems = self.rightBarButtonItems;
     }else if (_currentIndex == 1)
     {
-        self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
+        self.navigationItem.rightBarButtonItems = self.rightBarButtonItems;
     }else if (_currentIndex == 2)
     {
-        self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
+        self.navigationItem.rightBarButtonItems = self.rightBarButtonItems;
     }else
     {
-        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItems = @[self.rightBarButtonItems.lastObject];
     }
 }
 //设置视图的显示和隐藏
@@ -788,9 +808,9 @@
 {
     if(_nextOpenRemainSeconds > 0) return;
     NSDictionary *dict = @{
-                           @"cmd":@(8026),
-                           @"gameId":self.gameId
-                           };
+        @"cmd":@(8026),
+        @"gameId":self.gameId
+    };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         YZLog(@"%@",json);
         self.currentTermDict = json;
@@ -858,9 +878,9 @@
 - (void)getTrendDataByTermId:(NSString *)termId
 {
     NSDictionary *dict = @{
-                           @"gameId":self.gameId,
-                           @"issueId":termId
-                           };
+        @"gameId":self.gameId,
+        @"issueId":termId
+    };
     [[YZHttpTool shareInstance] postWithURL:[NSString stringWithFormat:@"%@%@",baseUrl,@"/misstrend/getMissNumber"] params:dict success:^(id json) {
         if (SUCCESS) {
             [self setTrendDataByJson:json];

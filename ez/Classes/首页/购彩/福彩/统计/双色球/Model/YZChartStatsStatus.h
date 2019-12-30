@@ -14,6 +14,7 @@
 @property (nonatomic, strong) YZChartNumberStatsStatus * redstat;//红球统计
 @property (nonatomic, strong) YZChartNumberStatsStatus * bluestat;//蓝球统计
 @property (nonatomic, strong) YZChartNumberStatsStatus * renxuan;//任选统计
+@property (nonatomic, strong) YZChartNumberStatsStatus * zuxuan;//组选统计
 @property (nonatomic, strong) YZChartNumberStatsStatus * qian3_zhixuan;//11选5 直选
 
 @end

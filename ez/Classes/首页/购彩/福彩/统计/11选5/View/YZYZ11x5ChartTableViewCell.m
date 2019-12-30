@@ -60,6 +60,15 @@
         [self.contentView addSubview:button];
         [self.buttons addObject:button];
     }
+    
+    UILabel * noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(LeftLabelW, 0, screenWidth - LeftLabelW, CellH)];
+    self.noDataLabel = noDataLabel;
+    noDataLabel.text = @"等待开奖";
+    noDataLabel.font = [UIFont systemFontOfSize:YZGetFontSize(24)];
+    noDataLabel.textAlignment = NSTextAlignmentCenter;
+    noDataLabel.textColor = YZChartLightGrayColor;
+    noDataLabel.hidden = YES;
+    [self addSubview:noDataLabel];
 }
 
 //设置数据
@@ -149,6 +158,16 @@
     }else if (self.chartCellTag == KChartCellTagBai)
     {
         missArray = [zhixuanMissArray subarrayWithRange:NSMakeRange(22, 11)];
+    }
+    
+    self.noDataLabel.hidden = YES;
+    if (11 != missArray.count) {//数据错误
+        for (int i = 1; i < self.buttons.count; i++) {
+            UIButton * button = self.buttons[i];
+            button.hidden = YES;
+        }
+        self.noDataLabel.hidden = NO;
+        return;
     }
     
     for (int i = 0; i < missArray.count; i++) {

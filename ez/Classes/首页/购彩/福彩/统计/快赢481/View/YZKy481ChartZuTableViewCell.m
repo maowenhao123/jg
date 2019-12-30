@@ -11,7 +11,6 @@
 @interface YZKy481ChartZuTableViewCell ()
 
 @property (nonatomic, strong) NSMutableArray *buttons;
-@property (nonatomic, weak) UILabel * noDataLabel;
 
 @end
 
@@ -66,6 +65,62 @@
         [self.buttons addObject:button];
     }
 }
+
+//设置数据
+- (void)setStatus:(YZChartSortStatsStatus *)status
+{
+    _status = status;
+    
+    UIButton * button0 = self.buttons[0];
+    NSArray * statisticsArray = [NSArray array];
+    if (self.chartStatisticsTag == KChartCellTagCount)
+    {
+        [button0 setTitleColor:YZColor(97, 0, 135, 1) forState:UIControlStateNormal];
+        [button0 setTitle:@"出现次数" forState:UIControlStateNormal];
+        statisticsArray = _status.count;
+    }else if (self.chartStatisticsTag == KChartCellTagAvgMiss)
+    {
+        [button0 setTitleColor:YZColor(47, 100, 0, 1) forState:UIControlStateNormal];
+        [button0 setTitle:@"平均遗漏" forState:UIControlStateNormal];
+        statisticsArray = _status.avgMiss;
+    }else if (self.chartStatisticsTag == KChartCellTagMaxMiss)
+    {
+        [button0 setTitleColor:YZColor(108, 18, 0, 1) forState:UIControlStateNormal];
+        [button0 setTitle:@"最大遗漏" forState:UIControlStateNormal];
+        statisticsArray = _status.maxMiss;
+    }else if (self.chartStatisticsTag == KChartCellTagMaxSeries)
+    {
+        [button0 setTitleColor:YZColor(1, 97, 146, 1) forState:UIControlStateNormal];
+        [button0 setTitle:@"最大连出" forState:UIControlStateNormal];
+        statisticsArray = _status.maxSeries;
+    }
+    
+    NSArray * missArray = [NSArray arrayWithArray:statisticsArray];
+    for (int i = 1; i < self.buttons.count; i++) {
+        UIButton * button = self.buttons[i];
+        if (i > 1 && i < 6) {
+            [button setTitle:[NSString stringWithFormat:@"%@", missArray[i - 2]] forState:UIControlStateNormal];
+        }else
+        {
+            [button setTitle:@"" forState:UIControlStateNormal];
+        }
+        if (self.chartStatisticsTag == KChartCellTagCount)
+        {
+            [button setTitleColor:YZColor(97, 0, 135, 1) forState:UIControlStateNormal];
+        }else if (self.chartStatisticsTag == KChartCellTagAvgMiss)
+        {
+            [button setTitleColor:YZColor(47, 100, 0, 1) forState:UIControlStateNormal];
+        }else if (self.chartStatisticsTag == KChartCellTagMaxMiss)
+        {
+            [button setTitleColor:YZColor(108, 18, 0, 1) forState:UIControlStateNormal];
+        }else if (self.chartStatisticsTag == KChartCellTagMaxSeries)
+        {
+            [button setTitleColor:YZColor(1, 97, 146, 1) forState:UIControlStateNormal];
+        }
+        [button setBackgroundImage:nil forState:UIControlStateNormal];
+    }
+}
+
 
 - (void)setDataStatus:(YZChartDataStatus *)dataStatus
 {

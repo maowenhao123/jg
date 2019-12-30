@@ -70,6 +70,12 @@
 		1D96B6CB2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
 		1D96B6CC2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
 		1D96B6CD2379519300F1FC63 /* YZErCodeRechargeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */; };
+		1D9B499F23B991F80017DB2A /* YZKy481BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B499E23B991F80017DB2A /* YZKy481BaseView.m */; };
+		1D9B49A023B991F80017DB2A /* YZKy481BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B499E23B991F80017DB2A /* YZKy481BaseView.m */; };
+		1D9B49A123B991F80017DB2A /* YZKy481BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B499E23B991F80017DB2A /* YZKy481BaseView.m */; };
+		1D9B49A923B99D290017DB2A /* YZChongDanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B49A823B99D290017DB2A /* YZChongDanView.m */; };
+		1D9B49AA23B99D290017DB2A /* YZChongDanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B49A823B99D290017DB2A /* YZChongDanView.m */; };
+		1D9B49AB23B99D290017DB2A /* YZChongDanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B49A823B99D290017DB2A /* YZChongDanView.m */; };
 		1DB2A59522C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59622C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
 		1DB2A59722C1F660000AFE52 /* YZ11x5PlayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */; };
@@ -478,6 +484,9 @@
 		1DF96F9222BB57E000AD8858 /* YZCommunityCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF96F9122BB57E000AD8858 /* YZCommunityCircleViewController.m */; };
 		1DF96F9322BB57E000AD8858 /* YZCommunityCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF96F9122BB57E000AD8858 /* YZCommunityCircleViewController.m */; };
 		1DF96F9422BB57E000AD8858 /* YZCommunityCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF96F9122BB57E000AD8858 /* YZCommunityCircleViewController.m */; };
+		1DFAFA4223B5EDBF00A8D0C4 /* YZKy481BaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFAFA4123B5EDBF00A8D0C4 /* YZKy481BaView.m */; };
+		1DFAFA4323B5EDBF00A8D0C4 /* YZKy481BaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFAFA4123B5EDBF00A8D0C4 /* YZKy481BaView.m */; };
+		1DFAFA4423B5EDBF00A8D0C4 /* YZKy481BaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFAFA4123B5EDBF00A8D0C4 /* YZKy481BaView.m */; };
 		A90CFE65206E0EB60094CD38 /* YZGiveVoucherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A90CFE62206E0EB20094CD38 /* YZGiveVoucherTableViewCell.m */; };
 		A90CFE66206E0EB60094CD38 /* YZGiveVoucherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A90CFE62206E0EB20094CD38 /* YZGiveVoucherTableViewCell.m */; };
 		A90CFE69206E0F030094CD38 /* YZGiveVoucherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A90CFE67206E0F010094CD38 /* YZGiveVoucherModel.m */; };
@@ -2442,6 +2451,10 @@
 		1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZErCodeRechargeViewController.m; sourceTree = "<group>"; };
 		1D96B6C92379519300F1FC63 /* YZErCodeRechargeSuccessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZErCodeRechargeSuccessView.h; sourceTree = "<group>"; };
 		1D96B6CA2379519300F1FC63 /* YZErCodeRechargeSuccessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZErCodeRechargeSuccessView.m; sourceTree = "<group>"; };
+		1D9B499D23B991F80017DB2A /* YZKy481BaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481BaseView.h; sourceTree = "<group>"; };
+		1D9B499E23B991F80017DB2A /* YZKy481BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481BaseView.m; sourceTree = "<group>"; };
+		1D9B49A723B99D290017DB2A /* YZChongDanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZChongDanView.h; sourceTree = "<group>"; };
+		1D9B49A823B99D290017DB2A /* YZChongDanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZChongDanView.m; sourceTree = "<group>"; };
 		1DB2A59322C1F660000AFE52 /* YZ11x5PlayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZ11x5PlayTypeView.h; sourceTree = "<group>"; };
 		1DB2A59422C1F660000AFE52 /* YZ11x5PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZ11x5PlayTypeView.m; sourceTree = "<group>"; };
 		1DB2A59D22C20615000AFE52 /* YZCirclePlayTypePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCirclePlayTypePickerView.h; sourceTree = "<group>"; };
@@ -2724,6 +2737,8 @@
 		1DF96F8C22BB312D00AD8858 /* YZCircleCommunityCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCircleCommunityCollectionViewCell.m; sourceTree = "<group>"; };
 		1DF96F9022BB57E000AD8858 /* YZCommunityCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZCommunityCircleViewController.h; sourceTree = "<group>"; };
 		1DF96F9122BB57E000AD8858 /* YZCommunityCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZCommunityCircleViewController.m; sourceTree = "<group>"; };
+		1DFAFA4023B5EDBF00A8D0C4 /* YZKy481BaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481BaView.h; sourceTree = "<group>"; };
+		1DFAFA4123B5EDBF00A8D0C4 /* YZKy481BaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481BaView.m; sourceTree = "<group>"; };
 		A90CFE62206E0EB20094CD38 /* YZGiveVoucherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZGiveVoucherTableViewCell.m; sourceTree = "<group>"; };
 		A90CFE63206E0EB40094CD38 /* YZGiveVoucherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZGiveVoucherView.h; sourceTree = "<group>"; };
 		A90CFE64206E0EB60094CD38 /* YZGiveVoucherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZGiveVoucherTableViewCell.h; sourceTree = "<group>"; };
@@ -4180,12 +4195,18 @@
 			children = (
 				1D7BE000237112580015CD8E /* YZKy481PlayTypeView.h */,
 				1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */,
+				1D9B499D23B991F80017DB2A /* YZKy481BaseView.h */,
+				1D9B499E23B991F80017DB2A /* YZKy481BaseView.m */,
 				1D2E333823714F3600E8C9AC /* YZKy481WanNengView.h */,
 				1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */,
 				1D2E333E237162F300E8C9AC /* YZKy481ChongView.h */,
 				1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */,
 				1D2E33442371646A00E8C9AC /* YZKy481DanView.h */,
 				1D2E33452371646A00E8C9AC /* YZKy481DanView.m */,
+				1DFAFA4023B5EDBF00A8D0C4 /* YZKy481BaView.h */,
+				1DFAFA4123B5EDBF00A8D0C4 /* YZKy481BaView.m */,
+				1D9B49A723B99D290017DB2A /* YZChongDanView.h */,
+				1D9B49A823B99D290017DB2A /* YZChongDanView.m */,
 				1D2E334A2372B72B00E8C9AC /* YZKy481RecentLotteryCell.h */,
 				1D2E334B2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m */,
 			);
@@ -8659,7 +8680,7 @@
 					};
 					CE58B9481DE58BF80033B300 = {
 						DevelopmentTeam = 65FQR43XBY;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -9322,6 +9343,7 @@
 				AA237ED42143590C00BC47BB /* UIBarButtonItem+YZ.m in Sources */,
 				1DF418EC22C5E6FD00D57367 /* YZCircleCommentModel.m in Sources */,
 				AA237ED52143590C00BC47BB /* YZRechargeBaseViewController.m in Sources */,
+				1D9B49A123B991F80017DB2A /* YZKy481BaseView.m in Sources */,
 				AA237ED62143590C00BC47BB /* YZGrade.m in Sources */,
 				AA237ED72143590C00BC47BB /* UIProgressView+AFNetworking.m in Sources */,
 				AA237ED82143590C00BC47BB /* HDImageView.m in Sources */,
@@ -9445,6 +9467,7 @@
 				AA237F3B2143590C00BC47BB /* NSString+SBJSON.m in Sources */,
 				1DBD8C7D22CB00470024CF7B /* SDWebImageDecoder.m in Sources */,
 				AA237F3C2143590C00BC47BB /* AFURLSessionManager.m in Sources */,
+				1DFAFA4423B5EDBF00A8D0C4 /* YZKy481BaView.m in Sources */,
 				AA237F3D2143590C00BC47BB /* YZBetTool.m in Sources */,
 				AA237F3E2143590C00BC47BB /* YZSfcViewController.m in Sources */,
 				AA237F3F2143590C00BC47BB /* UIView+MJExtension.m in Sources */,
@@ -9590,6 +9613,7 @@
 				1DB33E76237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA237FC22143590C00BC47BB /* NSObject+MJKeyValue.m in Sources */,
 				AA578894228943C5002292EA /* YZUnionBuyDetaiBottomView.m in Sources */,
+				1D9B49AB23B99D290017DB2A /* YZChongDanView.m in Sources */,
 				AA237FC32143590C00BC47BB /* HDBubbleView+Video.m in Sources */,
 				AA237FC42143590C00BC47BB /* YZWinNumberStatusFrame.m in Sources */,
 				AA237FC62143590C00BC47BB /* YZWinNumberBallStatus.m in Sources */,
@@ -9815,6 +9839,7 @@
 				AA3293F71FFE27B700CA77DA /* YZCycleScrollViewCollectionViewCell.m in Sources */,
 				AA74EBAD1FFE17E0003B53AF /* UIRefreshControl+AFNetworking.m in Sources */,
 				1DBD8C6022CB00470024CF7B /* PSTCollectionViewData.m in Sources */,
+				1DFAFA4223B5EDBF00A8D0C4 /* YZKy481BaView.m in Sources */,
 				AA74EA671FFE17DF003B53AF /* HDUserModel.m in Sources */,
 				AA3292CF1FFE27B600CA77DA /* YZSelectBallCellStatus.m in Sources */,
 				AA3292E51FFE27B600CA77DA /* YZKsBaseView.m in Sources */,
@@ -10176,6 +10201,7 @@
 				AA74E0E91FFE0A4C003B53AF /* YZCircleChart.m in Sources */,
 				AA74E1191FFE0A86003B53AF /* YZFCOrderDetailViewController.m in Sources */,
 				AA74EA811FFE17DF003B53AF /* HDCDDeviceManager+Remind.m in Sources */,
+				1D9B49A923B99D290017DB2A /* YZChongDanView.m in Sources */,
 				AA74EA5F1FFE17DE003B53AF /* HDEmotionManager.m in Sources */,
 				1DBD8C6C22CB00470024CF7B /* PSTCollectionViewItemKey.m in Sources */,
 				AA74EA651FFE17DF003B53AF /* HDConvertToCommonEmoticonsHelper.m in Sources */,
@@ -10267,6 +10293,7 @@
 				1DDDEB5222D5B1F3003A9C07 /* YZShareProfitsViewController.m in Sources */,
 				AA74EAFD1FFE17DF003B53AF /* HDBubbleView+Voice.m in Sources */,
 				AA74EB111FFE17DF003B53AF /* HDBubbleView+Evaluate.m in Sources */,
+				1D9B499F23B991F80017DB2A /* YZKy481BaseView.m in Sources */,
 				AA74EC051FFE17E0003B53AF /* UIImage+RSKImageCropper.m in Sources */,
 				AAD1206620BCFE0300D47F85 /* YZBasketBallBetViewController.m in Sources */,
 				1D76806C22DC505A007C1154 /* YZServiceModel.m in Sources */,
@@ -10699,6 +10726,7 @@
 				AA74EAF01FFE17DF003B53AF /* HDChatToolbar.m in Sources */,
 				AA74EA1C1FFE17DE003B53AF /* UIBarButtonItem+YZ.m in Sources */,
 				AA74EC991FFE19A5003B53AF /* YZRechargeBaseViewController.m in Sources */,
+				1D9B49A023B991F80017DB2A /* YZKy481BaseView.m in Sources */,
 				AA74E09C1FFE0A0C003B53AF /* YZGrade.m in Sources */,
 				AA74EBAC1FFE17E0003B53AF /* UIProgressView+AFNetworking.m in Sources */,
 				1DE61FE722CC4F7500C1490E /* TZAssetCell.m in Sources */,
@@ -10822,6 +10850,7 @@
 				AA32937E1FFE27B700CA77DA /* YZFBMatchDetailIntegralStatus.m in Sources */,
 				1DE6201222CC511900C1490E /* YZAddImageCollectionViewCell.m in Sources */,
 				AA74EB661FFE17DF003B53AF /* MJRefreshNormalHeader.m in Sources */,
+				1DFAFA4323B5EDBF00A8D0C4 /* YZKy481BaView.m in Sources */,
 				AA74EB801FFE17E0003B53AF /* NSString+SBJSON.m in Sources */,
 				AA74EBA41FFE17E0003B53AF /* AFURLSessionManager.m in Sources */,
 				1DBD8C7C22CB00470024CF7B /* SDWebImageDecoder.m in Sources */,
@@ -10967,6 +10996,7 @@
 				1DB33E75237D429500463EEE /* YZKy481Math.m in Sources */,
 				AA74EB3C1FFE17DF003B53AF /* NSObject+MJKeyValue.m in Sources */,
 				AA74EB101FFE17DF003B53AF /* HDBubbleView+Video.m in Sources */,
+				1D9B49AA23B99D290017DB2A /* YZChongDanView.m in Sources */,
 				1DE6200D22CC510200C1490E /* YZGridViewFlowLayout.m in Sources */,
 				AA578893228943C5002292EA /* YZUnionBuyDetaiBottomView.m in Sources */,
 				AACDC21820FEE72200955419 /* YZCircleViewAttentionViewController.m in Sources */,
@@ -11477,8 +11507,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mao wenhao (XZPLR55U48)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
@@ -11539,7 +11569,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4ae371d6-63b1-4a38-a3e2-ca3e8af21008";
-				PROVISIONING_PROFILE_SPECIFIER = zc_dev_588;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -11557,9 +11587,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
@@ -11617,7 +11647,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8520864a-34db-4c77-88b4-1bdbb12b15e7";
-				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_58;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

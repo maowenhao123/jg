@@ -81,6 +81,7 @@
             {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 self.timelabel.text = @"当前期已截止销售";
+                [self getTrendDataByTermId:@""];
             }
         }else
         {
@@ -112,13 +113,13 @@
     if(_remainSeconds > 0)//当前期正在销售
     {
         NSString * deltaTime;
-        deltaTime = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)deltaDate.hour,(long)deltaDate.minute, (long)deltaDate.second];
+        deltaTime = [NSString stringWithFormat:@"%02ld:%02ld", (long)deltaDate.minute, (long)deltaDate.second];
         attStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"距%@期截止:%@",termId,deltaTime]];
         [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(13, attStr.length - 13)];
     }else if (_remainSeconds <= 0 && _nextOpenRemainSeconds > 0)//当前期已截止销售,下期还未开始
     {
         NSString * deltaTime;
-        deltaTime = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)nextOpenDeltaDate.hour,(long)nextOpenDeltaDate.minute, (long)nextOpenDeltaDate.second];
+        deltaTime = [NSString stringWithFormat:@"%02ld:%02ld", (long)nextOpenDeltaDate.minute, (long)nextOpenDeltaDate.second];
         attStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"距%@期开始:%@",nextTermId,deltaTime]];
         [attStr addAttribute:NSForegroundColorAttributeName value:YZBaseColor range:NSMakeRange(13, attStr.length - 13)];
     }else//为0的时候，重新刷新数据
@@ -224,14 +225,13 @@
 
 - (void)refreshData
 {
+    NSString *termId = @"";
     if (!YZDictIsEmpty(self.currentTermDict)) {
         NSDictionary *json = self.currentTermDict;
-        NSString *termId = [json[@"game"][@"termList"] lastObject][@"termId"];
-        [self getTrendDataByTermId:termId];
-    }else
-    {
-        [self getCurrentTermData];
+        termId = [json[@"game"][@"termList"] lastObject][@"termId"];
     }
+    waitingView
+    [self getTrendDataByTermId:termId];
 }
 
 - (void)setting

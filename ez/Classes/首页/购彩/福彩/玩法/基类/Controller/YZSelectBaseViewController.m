@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = YZBackgroundColor;
     [self setupChilds];
     //让本控制器支持摇动感应
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
@@ -116,8 +117,13 @@
     self.scrollView = scrollView;
     scrollView.delegate = self;
     
+    CGFloat autoSelectedLabelH = 20;
+    CGFloat promptLabelH = 30;
     CGFloat bottomViewH = 49 + [YZTool getSafeAreaBottom];
-    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - CGRectGetMaxY(endTimeLabel.frame) - bottomViewH - backViewH;
+    CGFloat scrollViewH = screenHeight - statusBarH - navBarH - CGRectGetMaxY(endTimeLabel.frame) - bottomViewH - autoSelectedLabelH - backViewH;
+    if ([self.gameId isEqualToString:@"T06"]) {
+        scrollViewH = screenHeight - statusBarH - navBarH - CGRectGetMaxY(endTimeLabel.frame) - bottomViewH - autoSelectedLabelH - promptLabelH;
+    }
     scrollView.frame = CGRectMake(0, CGRectGetMaxY(backView.frame), screenWidth, scrollViewH);
     [self.view addSubview:scrollView];
     //设置属性
@@ -129,12 +135,10 @@
     //添加2个tableview
     for(int i = 0;i < 2;i++)
     {
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth * i, 0, screenWidth, scrollViewH) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth * i, 0, screenWidth, scrollViewH)];
         tableView.tag = i;
         tableView.backgroundColor = YZBackgroundColor;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        tableView.showsVerticalScrollIndicator = NO;
-        tableView.delaysContentTouches = NO;
         if(i == 0)
         {
             self.currentTableView = tableView;
@@ -206,12 +210,11 @@
     CGFloat maxY = bottomView.y;
     if ([self.gameId isEqualToString:@"T06"]) {
         //下面提示的label
-        UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, maxY - 30, screenWidth - 2 * YZMargin, 30)];
+        UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(YZMargin, maxY - 30, screenWidth - 2 * YZMargin, promptLabelH)];
         self.promptLabel = promptLabel;
         promptLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
         promptLabel.textColor = [UIColor darkGrayColor];
         promptLabel.backgroundColor = YZBackgroundColor;
-        promptLabel.alpha = 0.6;
         [self.view addSubview:promptLabel];
         maxY = promptLabel.y;
         
@@ -222,11 +225,9 @@
     }
     
     //摇一摇机选
-    CGFloat autoSelectedLabelH = 20;
     UILabel * autoSelectedLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, maxY - autoSelectedLabelH, screenWidth, autoSelectedLabelH)];
     self.autoSelectedLabel = autoSelectedLabel;
     autoSelectedLabel.backgroundColor = YZBackgroundColor;
-    autoSelectedLabel.alpha = 0.6;
     autoSelectedLabel.textColor = YZBlackTextColor;
     autoSelectedLabel.text = @"摇一摇机选";
     autoSelectedLabel.textAlignment = NSTextAlignmentCenter;

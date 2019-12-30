@@ -15,7 +15,6 @@
 
 @end
 
-
 @implementation YZKy481ChartYongTableViewCell
 
 + (YZKy481ChartYongTableViewCell *)cellWithTableView:(UITableView *)tableView

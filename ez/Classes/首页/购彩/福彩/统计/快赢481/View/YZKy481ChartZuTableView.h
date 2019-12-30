@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YZKy481ChartZuTableView : UITableView
 
 @property (nonatomic, strong) NSArray * dataArray;
+@property (nonatomic, strong) YZChartStatsStatus * stats;
 
 @end
 
