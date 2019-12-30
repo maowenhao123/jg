@@ -9,18 +9,10 @@
 #import "YZKy481BaseView.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@protocol YZKy481WanNengViewDelegate <NSObject>
-
-@optional
-- (void)ballDidClick:(YZBallBtn *)btn;
-@end
 
 @interface YZKy481WanNengView : YZKy481BaseView
 
 @property (nonatomic, copy) NSString * randomTitle;
-@property (nonatomic, weak) id<YZKy481WanNengViewDelegate> delegate;
-
-- (void)reloadData;
 
 @end
 

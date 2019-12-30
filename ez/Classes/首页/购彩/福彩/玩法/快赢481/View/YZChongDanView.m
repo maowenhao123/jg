@@ -43,7 +43,7 @@
         CGFloat buttonW = (screenWidth - CGRectGetMaxX(titleLabel.frame) - 5 * buttonPadding) / 4;
         for (int j = 0; j < 8; j++) {
             UIButton * numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            numberButton.tag = i * 10 + j;
+            numberButton.tag = 100 + i * 10 + j;
             numberButton.frame = CGRectMake(CGRectGetMaxX(titleLabel.frame) + buttonPadding + (buttonW + buttonPadding) * (j % 4), maxY + (buttonH + buttonPadding) * (j / 4), buttonW, buttonH);
             [numberButton setTitle:[NSString stringWithFormat:@"%d", j + 1] forState:UIControlStateNormal];
             [numberButton setTitleColor:YZBaseColor forState:UIControlStateNormal];
@@ -58,7 +58,12 @@
             numberButton.layer.borderColor = YZGrayLineColor.CGColor;
             [numberButton addTarget:self action:@selector(numberButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:numberButton];
-            
+            if (i == 0) {
+                [self.chongBallButtons addObject:numberButton];
+            }else if (i == 1)
+            {
+                [self.danBallButtons addObject:numberButton];
+            }
             if (j == 7) {
                 maxY = CGRectGetMaxY(numberButton.frame);
             }
@@ -75,8 +80,28 @@
     {
         button.layer.borderWidth = 1;
     }
+    if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+    {
+        [self.delegate ballDidClick:button];
+    }
+    
+    YZBallBtn * otherButton;
+    if (button.tag >= 110) {
+        otherButton = [self viewWithTag:button.tag - 10];
+    }else
+    {
+        otherButton = [self viewWithTag:button.tag + 10];
+    }
+    if (otherButton.selected) {
+        otherButton.selected = NO;
+        otherButton.layer.borderWidth = 1;
+        
+        if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+        {
+            [self.delegate ballDidClick:otherButton];
+        }
+    }
 }
-
 
 #pragma mark - 初始化
 - (NSMutableArray *)chongBallButtons

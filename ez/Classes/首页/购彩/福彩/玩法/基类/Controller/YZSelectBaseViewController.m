@@ -11,6 +11,7 @@
 #import "YZBallBtn.h"
 #import "YZSelectedBetNumberView.h"
 #import "YZDateTool.h"
+#import "YZKy481Math.h"
 
 @interface YZSelectBaseViewController ()<UIScrollViewDelegate, UIGestureRecognizerDelegate, YZSelectedBetNumberViewDelegate>
 {
@@ -317,7 +318,7 @@
 #pragma mark - 设置下面提示label的文字
 - (void)setPromptLabelText
 {
-    NSRange prize = [YZMathTool getKy481Prize_putongWithTag:(int)self.selectedPlayTypeBtnTag selectCount:(int)self.selectcount betCount:self.betCount];
+    NSRange prize = [YZKy481Math getKy481Prize_putongWithTag:(int)self.selectedPlayTypeBtnTag selectCount:(int)self.selectcount betCount:self.betCount];
     
     int minPrize = (int)prize.location;
     int maxPrize = (int)prize.length;

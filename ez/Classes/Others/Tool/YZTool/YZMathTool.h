@@ -22,11 +22,6 @@
  11选5 获取普通投注的最大最小奖金
  */
 + (NSRange)get11x5Prize_putongWithTag:(int)tag selectballcount:(int)selectballcount betCount:(int)betCount;
-
-/**
- 快赢 获取投注的最大最小奖金
- */
-+ (NSRange)getKy481Prize_putongWithTag:(int)tag selectCount:(int)selectCount betCount:(int)betCount;
 /**
  智能追号 按照累计盈利不低于百分比进行计算
  */
@@ -47,4 +42,5 @@
  快三 计算奖金
  */
 + (NSRange)getKsPrizeWithTag:(int)tag selectNumbers:(NSArray *)selectNumbers;
+
 @end

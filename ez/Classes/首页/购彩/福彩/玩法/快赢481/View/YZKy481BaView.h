@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YZKy481BaView : YZKy481BaseView
 
+@property (nonatomic, strong) NSMutableArray *selStatusArray;
+
 @end
 
 NS_ASSUME_NONNULL_END

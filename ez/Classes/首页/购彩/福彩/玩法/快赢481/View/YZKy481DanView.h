@@ -10,20 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol YZKy481DanViewDelegate <NSObject>
-
-@optional
-- (void)ballDidClick:(YZBallBtn *)btn;
-
-@end
-
 @interface YZKy481DanView : YZKy481BaseView
 
 @property (nonatomic, strong) NSMutableArray *selStatusArray;
-@property (nonatomic, weak) id<YZKy481DanViewDelegate> delegate;
 @property (nonatomic, strong) NSMutableSet *randomSet;
-
-- (void)reloadData;
 
 @end
 

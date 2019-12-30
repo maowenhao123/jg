@@ -55,6 +55,10 @@
     {
         button.layer.borderWidth = 1;
     }
+    if([self.delegate respondsToSelector:@selector(ballDidClick:)])
+    {
+        [self.delegate ballDidClick:button];
+    }
 }
 
 #pragma mark - Setting
@@ -102,6 +106,31 @@
             {
                 [numberButton setTitle:[NSString stringWithFormat:@"豹子%d", i + 1] forState:UIControlStateNormal];
             }
+        }
+    }
+}
+
+- (void)setSelStatusArray:(NSMutableArray *)selStatusArray
+{
+    _selStatusArray = selStatusArray;
+    
+    [self reloadData];
+}
+
+- (void)reloadData
+{
+    NSArray * cellSelStatusArray = self.selStatusArray.firstObject;
+    NSMutableArray * selselButtonTags = [NSMutableArray array];
+    for (UIButton * selButton in cellSelStatusArray) {
+        [selselButtonTags addObject:@(selButton.tag)];
+    }
+    for (UIButton * button in self.numberButtons) {
+        button.selected = [selselButtonTags containsObject:@(button.tag)];
+        if (button.selected) {
+            button.layer.borderWidth = 0;
+        }else
+        {
+            button.layer.borderWidth = 1;
         }
     }
 }

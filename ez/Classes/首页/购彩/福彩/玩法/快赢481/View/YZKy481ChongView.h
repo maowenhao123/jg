@@ -10,20 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol YZKy481ChongViewDelegate <NSObject>
-
-@optional
-- (void)ballDidClick:(YZBallBtn *)btn;
-@end
-
 @interface YZKy481ChongView : YZKy481BaseView
 
 @property (nonatomic, strong) NSMutableArray *selStatusArray;
-@property (nonatomic, weak) id<YZKy481ChongViewDelegate> delegate;
-
 @property (nonatomic, strong) NSMutableSet *randomSet;
-
-- (void)reloadData;
 
 @end
 

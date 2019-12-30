@@ -110,7 +110,7 @@
         }
     }
     
-    if([self.delegate  respondsToSelector:@selector(ballDidClick:)])
+    if([self.delegate respondsToSelector:@selector(ballDidClick:)])
     {
         [self.delegate ballDidClick:(YZBallBtn *)button];
     }

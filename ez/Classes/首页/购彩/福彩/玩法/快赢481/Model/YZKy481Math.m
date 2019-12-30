@@ -8,6 +8,7 @@
 
 #import "YZKy481Math.h"
 #import "YZBallBtn.h"
+#import "YZMathTool.h"
 
 @implementation YZKy481Math
 
@@ -287,6 +288,66 @@
                 }
             }
         }
+    }else if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17 || selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20)
+    {
+        NSInteger count1 = 0;
+        for (NSArray * cellStatusArray in selStatusArray) {
+            NSInteger index = [selStatusArray indexOfObject:cellStatusArray];
+            if (index == 0) {
+                count1 = cellStatusArray.count;
+            }
+        }
+        if (selectedPlayTypeBtnTag == 11) {
+            composeCount = [YZMathTool getCountWithN:(int)count1 andM:3];
+        }else if (selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14)
+        {
+            composeCount = count1 * 7;
+        }else if (selectedPlayTypeBtnTag == 15)
+        {
+            composeCount = count1 * (14 + (14 - 2 * (count1 - 1))) / 2;
+        }else if (selectedPlayTypeBtnTag == 16)
+        {
+            if (count1 == 0 || count1 == 1) {
+                composeCount = 0;
+            }else if (count1 == 2)
+            {
+                composeCount = 8;
+            }else if (count1 == 3)
+            {
+                composeCount = 21;
+            }else
+            {
+                composeCount = 7 * (1 + (count1 - 1)) * (count1 - 1) / 2;
+            }
+        }else if (selectedPlayTypeBtnTag == 17)
+        {
+            if (count1 == 0 || count1 == 1 || count1 == 2) {
+                composeCount = 0;
+            }else if (count1 == 3)
+            {
+                composeCount = 7;
+            }else
+            {
+                composeCount = 16 + (count1 - 4) * 6;
+            }
+        }else if (selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20)
+        {
+            composeCount = count1;
+        }
+    }else if (selectedPlayTypeBtnTag == 12)
+    {
+        NSInteger count1 = 0;
+        NSInteger count2 = 0;
+        for (NSArray * cellStatusArray in selStatusArray) {
+            NSInteger index = [selStatusArray indexOfObject:cellStatusArray];
+            if (index == 0) {
+                count1 = cellStatusArray.count;
+            }else if (index == 1)
+            {
+                count2 = cellStatusArray.count;
+            }
+        }
+        composeCount = count1 * count2;
     }
     return (int)composeCount;
 }
@@ -364,5 +425,103 @@
     return resultSet;
 }
 
++ (NSRange)getKy481Prize_putongWithTag:(int)tag selectCount:(int)selectCount betCount:(int)betCount
+{
+    int int_minprize = 0;
+    int int_maxprize = 0;
+    
+    if (betCount == 0) {
+        int_minprize = 0;
+        int_maxprize = 0;
+    } else
+    {
+        if (tag == 0) {
+            int_minprize = 9;
+            int_maxprize = int_minprize * betCount;
+            if (int_maxprize >= 36) int_maxprize = 36;
+        }else if (tag == 1) {
+            int_minprize = 74;
+            if (selectCount == 2) int_maxprize = 74;
+            else if (selectCount == 3) int_maxprize = 222;
+            else if (selectCount == 4) int_maxprize = 444;
+            
+        }else if (tag == 2) {
+            
+            int_minprize = 593;
+            if (selectCount == 3) int_maxprize = 593;
+            else if (selectCount == 4) int_maxprize = 2072;
+        }else if (tag == 3) {
+            int_minprize = 74;
+            int_maxprize = 444;
+        }else if (tag == 4) {
+            int_minprize = 74;
+            int_maxprize = 444;
+        }else if (tag == 5) {
+            int_minprize = 593;
+            int_maxprize = int_minprize * betCount;
+            if (int_maxprize >= 2372) int_maxprize = 2372;
+        }else if (tag == 6) {
+            int_minprize = 4751;
+            int_maxprize = 4751;
+        }else if (tag == 7) {
+            int_minprize = 1187;
+            int_maxprize = 1187;
+        }else if (tag == 8) {
+            int_minprize = 791;
+            int_maxprize = 791;
+        }else if (tag == 9) {
+            int_minprize = 395;
+            int_maxprize = 395;
+        }else if (tag == 10) {
+            int_minprize = 197;
+            int_maxprize = 197;
+        }else if (tag == 11)
+        {
+            int_minprize = 49;
+            int_maxprize = 98;
+        }else if (tag == 12)
+        {
+            int_minprize = 98;
+            int_maxprize = 98;
+        }else if (tag == 13)
+        {
+            int_minprize = 98;
+            int_maxprize = 196;
+        }else if (tag == 14)
+        {
+            int_minprize = 98;
+            int_maxprize = 98;
+        }else if (tag == 15)
+        {
+            int_minprize = 98;
+            int_maxprize = 196;
+        }else if (tag == 16)
+        {
+            int_minprize = 49;
+            int_maxprize = 98;
+        }else if (tag == 17)
+        {
+            int_minprize = 49;
+            int_maxprize = 98;
+        }else if (tag == 18)
+        {
+            int_minprize = 163;
+            int_maxprize = 163;
+        }else if (tag == 19)
+        {
+            int_minprize = 49;
+            int_maxprize = 98;
+        }else if (tag == 20)
+        {
+            int_minprize = 26;
+            int_maxprize = 26;
+        }
+    }
+    NSRange prize = NSMakeRange(0, 0);
+    prize.location = int_minprize;
+    prize.length = int_maxprize;
+    return prize;
+    return prize;
+}
 
 @end

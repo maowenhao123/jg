@@ -189,65 +189,6 @@
     return prize;
 }
 
-+ (NSRange)getKy481Prize_putongWithTag:(int)tag selectCount:(int)selectCount betCount:(int)betCount
-{
-    int int_minprize = 0;
-    int int_maxprize = 0;
-    
-    if (betCount == 0) {
-        int_minprize = 0;
-        int_maxprize = 0;
-    } else
-    {
-        if (tag == 0) {
-            int_minprize = 9;
-            int_maxprize = int_minprize * betCount;
-            if (int_maxprize >= 36) int_maxprize = 36;
-        }else if (tag == 1) {
-            int_minprize = 74;
-            if (selectCount == 2) int_maxprize = 74;
-            else if (selectCount == 3) int_maxprize = 222;
-            else if (selectCount == 4) int_maxprize = 444;
-            
-        }else if (tag == 2) {
-            
-            int_minprize = 593;
-            if (selectCount == 3) int_maxprize = 593;
-            else if (selectCount == 4) int_maxprize = 2072;
-        }else if (tag == 3) {
-            int_minprize = 74;
-            int_maxprize = 444;
-        }else if (tag == 4) {
-            int_minprize = 74;
-            int_maxprize = 444;
-        }else if (tag == 5) {
-            int_minprize = 593;
-            int_maxprize = int_minprize * betCount;
-            if (int_maxprize >= 2372) int_maxprize = 2372;
-        }else if (tag == 6) {
-            int_minprize = 4751;
-            int_maxprize = 4751;
-        }else if (tag == 7) {
-            int_minprize = 1187;
-            int_maxprize = 1187;
-        }else if (tag == 8) {
-            int_minprize = 791;
-            int_maxprize = 791;
-        }else if (tag == 9) {
-            int_minprize = 395;
-            int_maxprize = 395;
-        }else if (tag == 10) {
-            int_minprize = 197;
-            int_maxprize = 197;
-        }
-        
-    }
-    NSRange prize = NSMakeRange(0, 0);
-    prize.location = int_minprize;
-    prize.length = int_maxprize;
-    return prize;
-    return prize;
-}
 
 + (NSMutableArray *)get_yinglilvSmartBetArrayByBasemoney:(int)basemoney baseminprize:(int)baseminprize_value basemaxprize:(int)basemaxprize_value yinglilv:(int)yinglilv qihao:(int)qihao currentTermId:(NSString *)currentTermId qishu:(int)qishu firstbeishu:(int)firstbeishu currentleiji:(long)currentleiji
 {

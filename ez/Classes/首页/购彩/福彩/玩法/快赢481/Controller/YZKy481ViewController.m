@@ -19,7 +19,7 @@
 #import "YZBallBtn.h"
 #import "YZCommitTool.h"
 
-@interface YZKy481ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZKy481PlayTypeViewDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate, YZKy481WanNengViewDelegate, YZKy481DanViewDelegate, YZKy481ChongViewDelegate>
+@interface YZKy481ViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, YZKy481PlayTypeViewDelegate, YZSelectBallCellDelegate, YZBallBtnDelegate, YZKy481ViewDelegate>
 {
     BOOL _panEnable;//pan手势是否激活
     CGFloat _lastTranslationY;
@@ -175,6 +175,7 @@
     YZKy481BaView *baView = [[YZKy481BaView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
     self.baView = baView;
     baView.hidden = YES;
+    baView.delegate = self;
     [self.view insertSubview:baView belowSubview:self.bottomView];
     [self addPanGestureToView:baView];
     
@@ -182,6 +183,7 @@
     YZChongDanView *chongDanView = [[YZChongDanView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
     self.chongDanView = chongDanView;
     chongDanView.hidden = YES;
+    chongDanView.delegate = self;
     [self.view insertSubview:chongDanView belowSubview:self.bottomView];
     [self addPanGestureToView:chongDanView];
     
@@ -364,6 +366,7 @@
         self.baView.hidden = NO;
         self.baView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
         self.baView.status = self.currentStatusArray.firstObject;
+        self.baView.selStatusArray = selStatusArray;
     }else if (self.selectedPlayTypeBtnTag == 12)
     {
         self.chongDanView.hidden = NO;
@@ -651,7 +654,11 @@
     for (NSMutableArray * selStatusArray_ in selStatusArray) {
         [selStatusArray_ removeAllObjects];
     }
-    if (self.selectedPlayTypeBtnTag == 4) {
+    if (self.selectedPlayTypeBtnTag == 0 || self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2 || self.selectedPlayTypeBtnTag == 3 || self.selectedPlayTypeBtnTag == 5 || self.selectedPlayTypeBtnTag == 6) {
+        self.tableView.hidden = NO;
+        [self.tableView reloadData];
+    }else if (self.selectedPlayTypeBtnTag == 4)
+    {
         [self.wanNengView reloadData];
     }else if (self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 9)//组选4 组选12
     {
@@ -659,9 +666,12 @@
     }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)//组选6 组选24
     {
         self.danView.selStatusArray = selStatusArray;
-    }else
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
     {
-        [self.tableView reloadData];
+        self.baView.selStatusArray = selStatusArray;
+    }else if (self.selectedPlayTypeBtnTag == 12)
+    {
+        [self.chongDanView reloadData];
     }
     [self computeAmountMoney];
 }
@@ -889,6 +899,32 @@
         {
             [statusArray_ addObject:btn];
         }
+    }else if (self.selectedPlayTypeBtnTag == 12)
+    {
+        NSMutableArray * statusArray_ = [NSMutableArray array];
+        if (btn.tag >= 110) {
+            statusArray_ = statusArray[1];
+        }else
+        {
+            statusArray_ = statusArray[0];
+        }
+        if(btn.isSelected)
+        {
+            [statusArray_ addObject:btn];
+        }else
+        {
+            [statusArray_ removeObject:btn];
+        }
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
+    {
+        NSMutableArray * statusArray_ = statusArray[0];
+        if(btn.isSelected)
+        {
+            [statusArray_ addObject:btn];
+        }else
+        {
+            [statusArray_ removeObject:btn];
+        }
     }
     [self computeAmountMoney];
 }
@@ -897,7 +933,6 @@
 - (void)computeAmountMoney
 {
     NSMutableArray *selStatusArray = self.allSelBallsArray[self.selectedPlayTypeBtnTag];
-    self.selectcount = 0;
     if (self.selectedPlayTypeBtnTag == 1 || self.selectedPlayTypeBtnTag == 2) {
         for (NSArray * cellStatusArray in selStatusArray) {
             if (cellStatusArray.count > 0) {

@@ -22,6 +22,7 @@
 #import "YZBetTool.h"
 #import "JSON.h"
 #import "YZDateTool.h"
+#import "YZKy481Math.h"
 
 @interface YZSmartBetViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate,YZSmartBetSettingViewDelegate>
 {
@@ -102,7 +103,7 @@
             }
             selectCount ++;
         }
-        prize = [YZMathTool getKy481Prize_putongWithTag:self.selectedPlayTypeBtnTag selectCount:selectCount betCount:betStatus.betCount];
+        prize = [YZKy481Math getKy481Prize_putongWithTag:self.selectedPlayTypeBtnTag selectCount:selectCount betCount:betStatus.betCount];
     }else
     {
         int danballscount = 0;

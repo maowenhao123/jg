@@ -12,14 +12,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol YZKy481ViewDelegate <NSObject>
+
+@optional
+- (void)ballDidClick:(UIButton *)btn;
+
+@end
+
 @interface YZKy481BaseView : UIView
 
 @property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, strong) YZSelectBallCellStatus *status;//数据模型
 @property (nonatomic, assign) NSInteger selectedPlayTypeBtnTag;
+@property (nonatomic, weak) id<YZKy481ViewDelegate> delegate;
 
 - (void)setupChildViews;
 - (void)setSelectedPlayTypeBtnTagWith:(NSInteger)selectedPlayTypeBtnTag;
+- (void)reloadData;
 
 @end
 
