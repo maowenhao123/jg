@@ -92,7 +92,7 @@
 
 + (void)autoChooseKy481WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag//快赢481
 {
-    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24"];
+    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一包号", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
     
     NSMutableString *muStr = [NSMutableString string];
     int betCount = 1;
@@ -143,6 +143,53 @@
         {
             [muStr appendFormat:@"%d,%d,%d,%d,", number1, number2, number3, number4];
         }
+    }else if (tag == 11 || tag == 13 || tag == 14 || tag == 15 || tag == 16 || tag == 17 || tag == 18)
+    {
+        int minCount = 0;
+        if (tag == 11 || tag == 17) {
+            minCount = 3;
+        }else if (tag == 13 || tag == 14 || tag == 15 || tag == 18)
+        {
+            minCount = 1;
+        }else if (tag == 16)
+        {
+            minCount = 2;
+        }
+        NSMutableSet *randomSet = [NSMutableSet set];
+        while (randomSet.count < minCount)
+        {
+            int random = arc4random() % 8 + 1;
+            [randomSet addObject:@(random)];
+        }
+        NSMutableArray *muArr = [[NSMutableArray alloc] initWithArray:[randomSet allObjects]];
+        muArr = [self sortNumberArray:muArr];
+        for (NSNumber * number in muArr) {
+            [muStr appendFormat:@"%@,", number];
+        }
+    }else if (tag == 12)
+    {
+        NSMutableSet *randomSet = [NSMutableSet set];
+        while (randomSet.count < 2)
+        {
+            int random = arc4random() % 8 + 1;
+            [randomSet addObject:@(random)];
+        }
+        NSMutableArray *muArr = [[NSMutableArray alloc] initWithArray:[randomSet allObjects]];
+        int number1 = [muArr[0] intValue];
+        int number2 = [muArr[1] intValue];
+        [muStr appendFormat:@"%d,%d,%d,", number1, number1, number2];
+    }else if (tag == 19)
+    {
+        int random = arc4random() % 2 + 1;
+        if (random == 1) {
+            [muStr appendString:@"4,"];
+        }else if (random == 2)
+        {
+            [muStr appendString:@"6,"];
+        }
+    }else if (tag == 20)
+    {
+        [muStr appendString:@"1,"];
     }
     [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个符号
     if (tag == 3 || tag == 4 || tag == 5) {
@@ -169,6 +216,23 @@
             }
         }
         [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", playTypes[tag], betCount]];
+    }else if (tag == 12 || tag == 13 || tag == 14 || tag == 15)
+    {
+        if (tag == 13 || tag == 14) {
+            betCount = 7;
+        }else if (tag == 15)
+        {
+            betCount = 14;
+        }
+        [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", playTypes[tag], betCount]];
+    }else if (tag == 16)
+    {
+        betCount = 8;
+        [muStr appendString:[NSString stringWithFormat:@"[%@单式%d注]", playTypes[tag], betCount]];
+    }else if (tag == 17)
+    {
+        betCount = 7;
+        [muStr appendString:[NSString stringWithFormat:@"[%@单式%d注]", playTypes[tag], betCount]];
     }else
     {
         [muStr appendString:[NSString stringWithFormat:@"[%@单式1注]", playTypes[tag]]];
@@ -183,7 +247,18 @@
     YZBetStatus *status = [[YZBetStatus alloc] init];
     status.labelText = attStr;
     status.betCount = betCount;
-    status.betType = @"00";
+    if (tag == 13) {
+        status.betType = @"12";
+    }else if (tag == 14)
+    {
+        status.betType = @"13";
+    }else if (tag == 15)
+    {
+        status.betType = @"14";
+    }else
+    {
+        status.betType = @"00";
+    }
     CGSize labelSize = [muStr sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(30)] maxSize:CGSizeMake(screenWidth - 2 * YZMargin - 18 - 5, MAXFLOAT)];
     status.cellH = labelSize.height + 10 > 45 ? labelSize.height + 10 : 45;
     status.playType = playType;

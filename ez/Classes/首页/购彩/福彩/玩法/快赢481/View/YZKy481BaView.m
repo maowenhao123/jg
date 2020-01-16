@@ -11,6 +11,7 @@
 @interface YZKy481BaView ()
 
 @property (nonatomic, strong) NSMutableArray *numberButtons;
+@property (nonatomic, weak) UIButton * allSelectedButton;
 
 @end
 
@@ -24,7 +25,8 @@
     CGFloat buttonW = 110;
     CGFloat buttonH = 36;
     CGFloat buttonPadding = (screenWidth - 2 * buttonW) / 3;
-    for (int i = 0; i < 8; i++) {
+    CGFloat maxY = 0;
+    for (int i = 1; i < 9; i++) {
         UIButton * numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
         numberButton.tag = i;
         numberButton.frame = CGRectMake(buttonPadding + (buttonW + buttonPadding) * (i % 2), CGRectGetMaxY(self.titleLabel.frame) + 20 + (buttonH + buttonH) * (i / 2), buttonW, buttonH);
@@ -43,11 +45,44 @@
         [self addSubview:numberButton];
         
         [self.numberButtons addObject:numberButton];
+        
+        maxY = CGRectGetMaxY(numberButton.frame);
     }
+    
+    CGFloat allSelectedButtonW = 160;
+    CGFloat allSelectedButtonH = buttonH;
+    UIButton *allSelectedButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.allSelectedButton = allSelectedButton;
+    allSelectedButton.frame = CGRectMake((screenWidth - allSelectedButtonW) / 2, maxY + buttonH, allSelectedButtonW, allSelectedButtonH);
+    [allSelectedButton setTitle:@"豹子全包" forState:UIControlStateNormal];
+    [allSelectedButton setTitleColor:YZBaseColor forState:UIControlStateNormal];
+    [allSelectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [allSelectedButton setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [allSelectedButton setBackgroundImage:[UIImage ImageFromColor:YZBaseColor] forState:UIControlStateSelected];
+    allSelectedButton.adjustsImageWhenHighlighted = NO;
+    allSelectedButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(34)];
+    allSelectedButton.layer.masksToBounds = YES;
+    allSelectedButton.layer.cornerRadius = 5;
+    allSelectedButton.layer.borderWidth = 1;
+    allSelectedButton.layer.borderColor = YZGrayLineColor.CGColor;
+    allSelectedButton.hidden = YES;
+    [allSelectedButton addTarget:self action:@selector(allSelectedButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:allSelectedButton];
 }
 
 - (void)numberButtonDidClick:(UIButton *)button
 {
+    int selectdCount = 0;
+    for (UIButton * numberButton in self.numberButtons) {
+        if (numberButton.selected) {
+            selectdCount ++;
+        }
+    }
+    if (self.selectedPlayTypeBtnTag == 11 && selectdCount >= 5) {
+        [MBProgressHUD showError:@"至多选择五个号码"];
+        return;
+    }
+    
     button.selected = !button.selected;
     if (button.selected) {
         button.layer.borderWidth = 0;
@@ -55,9 +90,20 @@
     {
         button.layer.borderWidth = 1;
     }
+    
     if([self.delegate respondsToSelector:@selector(ballDidClick:)])
     {
         [self.delegate ballDidClick:button];
+    }
+}
+
+- (void)allSelectedButtonDidClick:(UIButton *)button
+{
+    button.selected = !button.selected;
+    for (UIButton * numberButton in self.numberButtons) {
+        if (numberButton.selected != button.selected) {
+            [self numberButtonDidClick:numberButton];
+        }
     }
 }
 
@@ -108,6 +154,7 @@
             }
         }
     }
+    self.allSelectedButton.hidden = selectedPlayTypeBtnTag != 18;
 }
 
 - (void)setSelStatusArray:(NSMutableArray *)selStatusArray

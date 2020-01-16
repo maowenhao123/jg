@@ -114,7 +114,7 @@
     //titleBtn
     YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
-    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一全包", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
+    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一包号", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
     [titleBtn setTitle:playTypes[self.selectedPlayTypeBtnTag] forState:UIControlStateNormal];
 #if JG
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
@@ -1052,7 +1052,7 @@
         [playTypeBalls14 addObject:status14];
         [_allStatusArray addObject:playTypeBalls14];
         
-        //二带一全包
+        //二带一包号
         NSMutableArray * playTypeBalls15 = [NSMutableArray array];
         YZSelectBallCellStatus *status15 = [self setupStatusWithTitle:@"任选两项，猜中前三位或后三位即中98元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
         [playTypeBalls15 addObject:status15];
@@ -1119,7 +1119,7 @@
 - (NSArray *)playTypeCodes
 {
     if (!_playTypeCodes) {
-        _playTypeCodes = @[@"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01", @"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01", @"02", @"01"];
+        _playTypeCodes = @[@"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01", @"12", @"09", @"09", @"09", @"09", @"10", @"11", @"15", @"16", @"13"];
     }
     return _playTypeCodes;
 }

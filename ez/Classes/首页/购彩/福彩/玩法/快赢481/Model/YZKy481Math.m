@@ -304,7 +304,7 @@
             composeCount = count1 * 7;
         }else if (selectedPlayTypeBtnTag == 15)
         {
-            composeCount = count1 * (14 + (14 - 2 * (count1 - 1))) / 2;
+            composeCount = count1 * 14;
         }else if (selectedPlayTypeBtnTag == 16)
         {
             if (count1 == 0 || count1 == 1) {
@@ -312,12 +312,9 @@
             }else if (count1 == 2)
             {
                 composeCount = 8;
-            }else if (count1 == 3)
-            {
-                composeCount = 21;
             }else
             {
-                composeCount = 7 * (1 + (count1 - 1)) * (count1 - 1) / 2;
+                composeCount = [YZMathTool getCountWithN:(int)count1 andM:2] * 8;
             }
         }else if (selectedPlayTypeBtnTag == 17)
         {
@@ -328,7 +325,7 @@
                 composeCount = 7;
             }else
             {
-                composeCount = 16 + (count1 - 4) * 6;
+                composeCount = [YZMathTool getCountWithN:(int)count1 andM:3] * 7;
             }
         }else if (selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20)
         {

@@ -103,6 +103,19 @@
     }
 }
 
+#pragma mark - 刷新数据
+- (void)reloadData
+{
+    for (UIButton * button in self.chongBallButtons) {
+        button.selected = NO;
+        button.layer.borderWidth = 1;
+    }
+    for (UIButton * button in self.danBallButtons) {
+        button.selected = NO;
+        button.layer.borderWidth = 1;
+    }
+}
+
 #pragma mark - 初始化
 - (NSMutableArray *)chongBallButtons
 {

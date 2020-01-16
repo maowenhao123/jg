@@ -505,10 +505,15 @@
 #pragma mark - 快赢481
 + (void)commitKy481BetWithBalls:(NSMutableArray *)balls betCount:(int)betCount playType:(NSString *)playTypeCode currentTitle:(NSString *)currentTitle selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag
 {
-    NSArray *waringTitles = @[@"至少选择一位数字", @"至少选择两位数字", @"至少选择三位数字", @"每位至少选择一个号码", @"至少选择一组数字", @"每位至少选择一个号码", @"每位至少选择一个号码", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择1注"];
+    NSArray *waringTitles = @[@"至少选择一位数字", @"至少选择两位数字", @"至少选择三位数字", @"每位至少选择一个号码", @"至少选择一组数字", @"每位至少选择一个号码", @"每位至少选择一个号码", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择三个号码"];
     if(betCount == 0)//没有注数，就弹框警示
     {
-        [MBProgressHUD showError:waringTitles[selectedPlayTypeBtnTag]];
+        if (waringTitles.count < selectedPlayTypeBtnTag) {
+            [MBProgressHUD showError:waringTitles[selectedPlayTypeBtnTag]];
+        }else
+        {
+            [MBProgressHUD showError:@"至少选择1注"];
+        }
         return;
     }
     
@@ -740,6 +745,143 @@
                 betType = @"01";
             }
         }
+        //拼接完字符串后加颜色
+        NSRange range = [muStr rangeOfString:@"["];
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:muStr];
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, range.location)];
+        [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(range.location, muStr.length-range.location)];
+        
+        YZBetStatus *status = [[YZBetStatus alloc] init];
+        status.labelText = attStr;
+        status.betCount = betCount;
+        CGSize labelSize = [muStr sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(30)] maxSize:CGSizeMake(screenWidth - 2 * YZMargin - 18 - 5, MAXFLOAT)];
+        status.cellH = labelSize.height + 10 > 45 ? labelSize.height + 10 : 45;
+        status.playType = playTypeCode;
+        status.betType = betType;
+        //存储一组号码数据
+        [YZStatusCacheTool saveStatus:status];
+    }else if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 12 || selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17 || selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20)
+    {
+        NSMutableString *muStr = [NSMutableString string];
+        NSString *betType = @"";
+        NSInteger minBetCount = 0;
+        if (selectedPlayTypeBtnTag == 11) {
+            betType = @"12";
+            minBetCount = 1;
+        }else if (selectedPlayTypeBtnTag == 12 || selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15)
+        {
+            betType = @"09";
+        }else if (selectedPlayTypeBtnTag == 16)
+        {
+            betType = @"10";
+            minBetCount = 8;
+        }else if (selectedPlayTypeBtnTag == 17)
+        {
+            betType = @"11";
+            minBetCount = 7;
+        }else if (selectedPlayTypeBtnTag == 18)
+        {
+            betType = @"15";
+            minBetCount = 1;
+        }else if (selectedPlayTypeBtnTag == 19)
+        {
+            betType = @"16";
+            minBetCount = 1;
+        }else if (selectedPlayTypeBtnTag == 20)
+        {
+            betType = @"13";
+            minBetCount = 1;
+        }
+        NSMutableArray * cellStatusArray = selStatusArray.firstObject;
+        if (selectedPlayTypeBtnTag == 12) {
+            if (betCount == 1) {
+                for (NSMutableArray * cellStatusArray in selStatusArray) {
+                    NSInteger index = [selStatusArray indexOfObject:cellStatusArray];
+                    if (cellStatusArray.count > 0) {
+                        YZBallBtn *ball = cellStatusArray.firstObject;
+                        if (index == 0) {
+                            [muStr appendFormat:@"%ld,%ld,", ball.tag - 99, ball.tag - 99];
+                        }else if (index == 1)
+                        {
+                            [muStr appendFormat:@"%ld", ball.tag - 109];
+                        }
+                    }
+                }
+            }else
+            {
+                for (NSMutableArray * cellStatusArray in selStatusArray) {
+                    if (cellStatusArray.count > 0) {
+                        NSInteger index = [selStatusArray indexOfObject:cellStatusArray];
+                        NSArray * muArr = [self sortBallsArray:cellStatusArray];
+                        for(YZBallBtn *ball in muArr)
+                        {
+                            if (index == 0) {
+                                [muStr appendFormat:@"%ld,", (long)ball.tag - 99];
+                            }else if (index == 1)
+                            {
+                                [muStr appendFormat:@"%ld,", (long)ball.tag - 109];
+                            }
+                        }
+                        [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个逗号
+                        [muStr appendString:@"|"];
+                    }
+                }
+                [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个|
+            }
+        }else if (selectedPlayTypeBtnTag == 19)
+        {
+            NSMutableArray * muArr = [self sortBallsArray:cellStatusArray];
+            for(YZBallBtn *ball in muArr)
+            {
+                if (ball.tag == 1) {
+                    [muStr appendFormat:@"%d,", 4];
+                }else if (ball.tag == 2)
+                {
+                    [muStr appendFormat:@"%d,", 6];
+                }
+            }
+            [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个逗号
+        }else
+        {
+            if (cellStatusArray.count > 0) {
+                [muStr appendString:[self getNumbersStringWithArray:cellStatusArray digit:@""]];
+            }
+        }
+        if (selectedPlayTypeBtnTag == 12)
+        {
+            if (betCount == 1) {
+                [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
+                betType = @"00";
+            }else
+            {
+                [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", [currentTitle stringByReplacingOccurrencesOfString:@"单式" withString:@"单复式"], betCount]];
+                betType = @"10";
+            }
+        }else if (selectedPlayTypeBtnTag == 13)
+        {
+            [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
+            betType = @"12";
+        }else if (selectedPlayTypeBtnTag == 14)
+        {
+            [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
+            betType = @"13";
+        }else if (selectedPlayTypeBtnTag == 15)
+        {
+            [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
+            betType = @"14";
+        }else
+        {
+            if(betCount == minBetCount)
+            {
+                [muStr appendString:[NSString stringWithFormat:@"[%@单式1注]", currentTitle]];
+                betType = @"00";
+            }else
+            {
+                [muStr appendString:[NSString stringWithFormat:@"[%@复式%d注]", currentTitle, betCount]];
+                betType = @"01";
+            }
+        }
+        
         //拼接完字符串后加颜色
         NSRange range = [muStr rangeOfString:@"["];
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:muStr];
