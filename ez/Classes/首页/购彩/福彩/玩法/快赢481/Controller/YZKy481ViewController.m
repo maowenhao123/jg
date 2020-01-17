@@ -13,6 +13,7 @@
 #import "YZKy481DanView.h"
 #import "YZKy481BaView.h"
 #import "YZChongDanView.h"
+#import "YZSanBuChongDanView.h"
 #import "YZTitleButton.h"
 #import "YZKy481RecentLotteryCell.h"
 #import "YZKy481Math.h"
@@ -33,6 +34,7 @@
 @property (nonatomic, weak) YZKy481ChongView *chongView;
 @property (nonatomic, weak) YZKy481DanView *danView;
 @property (nonatomic, weak) YZKy481BaView *baView;
+@property (nonatomic, weak) YZSanBuChongDanView *sanBuChongDanView;
 @property (nonatomic, weak) YZChongDanView *chongDanView;
 @property (nonatomic, strong) NSMutableArray *allStatusArray;//所有的数据
 @property (nonatomic, strong) NSMutableArray *currentStatusArray;//当前tableview的数据
@@ -114,7 +116,7 @@
     //titleBtn
     YZTitleButton *titleBtn = [[YZTitleButton alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
     self.titleBtn = titleBtn;
-    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一包号", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
+    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"三不重胆拖", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一包号", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
     [titleBtn setTitle:playTypes[self.selectedPlayTypeBtnTag] forState:UIControlStateNormal];
 #if JG
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
@@ -178,6 +180,14 @@
     baView.delegate = self;
     [self.view insertSubview:baView belowSubview:self.bottomView];
     [self addPanGestureToView:baView];
+    
+    //三不重胆拖
+    YZSanBuChongDanView *sanBuChongDanView = [[YZSanBuChongDanView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
+    self.sanBuChongDanView = sanBuChongDanView;
+    sanBuChongDanView.hidden = YES;
+    sanBuChongDanView.delegate = self;
+    [self.view insertSubview:sanBuChongDanView belowSubview:self.bottomView];
+    [self addPanGestureToView:sanBuChongDanView];
     
     //重号单号
     YZChongDanView *chongDanView = [[YZChongDanView alloc] initWithFrame:CGRectMake(0, tableViewY, screenWidth, tableViewH)];
@@ -285,6 +295,7 @@
 #pragma mark -  标题按钮点击
 - (void)titleBtnClick:(YZTitleButton *)btn
 {
+    [self closeTableViewWithAnimation];
     [self.playTypeView show];
 }
 
@@ -323,7 +334,6 @@
     //存储选中的玩法
     [YZUserDefaultTool saveInt:(int)btn.tag forKey:@"selectedky481PlayTypeBtnTag"];
     
-    [self closeTableViewWithAnimation];//关闭tableView
     
     self.selectedPlayTypeBtnTag = btn.tag;
     _currentPlayTypeCode = self.playTypeCodes[btn.tag];
@@ -338,6 +348,7 @@
     self.danView.hidden = YES;
     self.chongView.hidden = YES;
     self.baView.hidden = YES;
+    self.sanBuChongDanView.hidden = YES;
     self.chongDanView.hidden = YES;
     self.tableView.hidden = YES;
     self.currentStatusArray = self.allStatusArray[self.selectedPlayTypeBtnTag];
@@ -361,13 +372,17 @@
         self.danView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
         self.danView.status = self.currentStatusArray.firstObject;
         self.danView.selStatusArray = selStatusArray;
-    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20 || self.selectedPlayTypeBtnTag == 21)
     {
         self.baView.hidden = NO;
         self.baView.selectedPlayTypeBtnTag = self.selectedPlayTypeBtnTag;
         self.baView.status = self.currentStatusArray.firstObject;
         self.baView.selStatusArray = selStatusArray;
     }else if (self.selectedPlayTypeBtnTag == 12)
+    {
+        self.sanBuChongDanView.hidden = NO;
+        self.sanBuChongDanView.status = self.currentStatusArray.firstObject;
+    }else if (self.selectedPlayTypeBtnTag == 13)
     {
         self.chongDanView.hidden = NO;
         self.chongDanView.status = self.currentStatusArray.firstObject;
@@ -455,15 +470,18 @@
 
 - (void)switchCurrentHistoryView
 {
-    if(self.selectedPlayTypeBtnTag == 4 || self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 10)//没有分类的
+    _historyCellH = screenWidth / 12;
+    if(self.selectedPlayTypeBtnTag == 4 || self.selectedPlayTypeBtnTag == 7 || self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 9 || self.selectedPlayTypeBtnTag == 10 || self.selectedPlayTypeBtnTag > 10)//没有分类的
     {
-        if (self.selectedPlayTypeBtnTag == 4) {
+        if (self.selectedPlayTypeBtnTag > 10) {
+            self.historyTableView.tag = KhistoryCellTag283;
+        }else if (self.selectedPlayTypeBtnTag == 4)
+        {
             self.historyTableView.tag = KhistoryCellTagWanNeng;
             _historyCellH = screenWidth / 14;
         }else
         {
             self.historyTableView.tag = KhistoryCellTagZu;
-            _historyCellH = screenWidth / 12;
         }
         self.historyTableView.height = _historyCellH * (self.recentStatus.count + 1);
         [self.view sendSubviewToBack:self.historyBackView];
@@ -473,7 +491,6 @@
     {
         [self.view sendSubviewToBack:self.historyTableView];
         self.currentHistoryView = self.historyBackView;
-        _historyCellH = screenWidth / 12;
     }
 }
 
@@ -499,10 +516,13 @@
     }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)//组选6 组选24
     {
         panView = self.danView;
-    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20 || self.selectedPlayTypeBtnTag == 21)
     {
         panView = self.baView;
     }else if (self.selectedPlayTypeBtnTag == 12)
+    {
+        panView = self.sanBuChongDanView;
+    }else if (self.selectedPlayTypeBtnTag == 13)
     {
         panView = self.chongDanView;
     }
@@ -666,10 +686,13 @@
     }else if (self.selectedPlayTypeBtnTag == 8 || self.selectedPlayTypeBtnTag == 10)//组选6 组选24
     {
         self.danView.selStatusArray = selStatusArray;
-    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20 || self.selectedPlayTypeBtnTag == 21)
     {
         self.baView.selStatusArray = selStatusArray;
     }else if (self.selectedPlayTypeBtnTag == 12)
+    {
+        [self.sanBuChongDanView reloadData];
+    }else if (self.selectedPlayTypeBtnTag == 13)
     {
         [self.chongDanView reloadData];
     }
@@ -899,7 +922,7 @@
         {
             [statusArray_ addObject:btn];
         }
-    }else if (self.selectedPlayTypeBtnTag == 12)
+    }else if (self.selectedPlayTypeBtnTag == 12 || self.selectedPlayTypeBtnTag == 13)
     {
         NSMutableArray * statusArray_ = [NSMutableArray array];
         if (btn.tag >= 110) {
@@ -915,7 +938,7 @@
         {
             [statusArray_ removeObject:btn];
         }
-    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 13 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20)
+    }else if (self.selectedPlayTypeBtnTag == 11 || self.selectedPlayTypeBtnTag == 14 || self.selectedPlayTypeBtnTag == 15 || self.selectedPlayTypeBtnTag == 16 || self.selectedPlayTypeBtnTag == 17 || self.selectedPlayTypeBtnTag == 18 || self.selectedPlayTypeBtnTag == 19 || self.selectedPlayTypeBtnTag == 20 || self.selectedPlayTypeBtnTag == 21)
     {
         NSMutableArray * statusArray_ = statusArray[0];
         if(btn.isSelected)
@@ -1034,6 +1057,9 @@
         [playTypeBalls11 addObject:status11];
         [_allStatusArray addObject:playTypeBalls11];
         
+        //三不重胆拖
+        [_allStatusArray addObject:playTypeBalls11];
+        
         //二带一单式
         NSMutableArray * playTypeBalls12 = [NSMutableArray array];
         YZSelectBallCellStatus *status12 = [self setupStatusWithTitle:@"任选两项，猜中前三位或后三位即中98元" ballsCount:8 leftTitle:@"" icon:@"" startNumber:@"1"];
@@ -1096,7 +1122,7 @@
     if(_allSelBallsArray == nil)
     {
         _allSelBallsArray = [NSMutableArray array];
-        for(int i = 0; i < 21; i++)
+        for(int i = 0; i < 22; i++)
         {
             [_allSelBallsArray addObject:[NSMutableArray array]];
             for (int j = 0; j < 4; j++) {
@@ -1119,7 +1145,7 @@
 - (NSArray *)playTypeCodes
 {
     if (!_playTypeCodes) {
-        _playTypeCodes = @[@"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01", @"12", @"09", @"09", @"09", @"09", @"10", @"11", @"15", @"16", @"13"];
+        _playTypeCodes = @[@"05", @"06", @"07", @"06", @"06", @"07", @"08", @"04", @"03", @"02", @"01", @"12", @"12", @"09", @"09", @"09", @"09", @"10", @"11", @"15", @"16", @"13"];
     }
     return _playTypeCodes;
 }

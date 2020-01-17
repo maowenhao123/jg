@@ -61,7 +61,7 @@
 
 //tabBar的高度
 //#else
-#define tabBarH ([[UIApplication sharedApplication] statusBarFrame].size.height > 20 ? 88:49)
+#define tabBarH ([[UIApplication sharedApplication] statusBarFrame].size.height > 20 ? 83 : 49)
 
 //默认cell高度
 #define YZCellH 45

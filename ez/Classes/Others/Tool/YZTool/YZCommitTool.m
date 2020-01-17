@@ -508,7 +508,7 @@
     NSArray *waringTitles = @[@"至少选择一位数字", @"至少选择两位数字", @"至少选择三位数字", @"每位至少选择一个号码", @"至少选择一组数字", @"每位至少选择一个号码", @"每位至少选择一个号码", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择三个号码"];
     if(betCount == 0)//没有注数，就弹框警示
     {
-        if (waringTitles.count < selectedPlayTypeBtnTag) {
+        if (waringTitles.count > selectedPlayTypeBtnTag) {
             [MBProgressHUD showError:waringTitles[selectedPlayTypeBtnTag]];
         }else
         {
@@ -760,7 +760,7 @@
         status.betType = betType;
         //存储一组号码数据
         [YZStatusCacheTool saveStatus:status];
-    }else if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 12 || selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17 || selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20)
+    }else if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 12 || selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17 || selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20 || selectedPlayTypeBtnTag == 21)
     {
         NSMutableString *muStr = [NSMutableString string];
         NSString *betType = @"";
@@ -768,32 +768,32 @@
         if (selectedPlayTypeBtnTag == 11) {
             betType = @"12";
             minBetCount = 1;
-        }else if (selectedPlayTypeBtnTag == 12 || selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15)
+        }else if (selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16)
         {
             betType = @"09";
-        }else if (selectedPlayTypeBtnTag == 16)
+        }else if (selectedPlayTypeBtnTag == 17)
         {
             betType = @"10";
             minBetCount = 8;
-        }else if (selectedPlayTypeBtnTag == 17)
+        }else if (selectedPlayTypeBtnTag == 18)
         {
             betType = @"11";
             minBetCount = 7;
-        }else if (selectedPlayTypeBtnTag == 18)
+        }else if (selectedPlayTypeBtnTag == 19)
         {
             betType = @"15";
             minBetCount = 1;
-        }else if (selectedPlayTypeBtnTag == 19)
+        }else if (selectedPlayTypeBtnTag == 20)
         {
             betType = @"16";
             minBetCount = 1;
-        }else if (selectedPlayTypeBtnTag == 20)
+        }else if (selectedPlayTypeBtnTag == 21)
         {
             betType = @"13";
             minBetCount = 1;
         }
         NSMutableArray * cellStatusArray = selStatusArray.firstObject;
-        if (selectedPlayTypeBtnTag == 12) {
+        if (selectedPlayTypeBtnTag == 12 || selectedPlayTypeBtnTag == 13) {
             if (betCount == 1) {
                 for (NSMutableArray * cellStatusArray in selStatusArray) {
                     NSInteger index = [selStatusArray indexOfObject:cellStatusArray];
@@ -823,24 +823,31 @@
                             }
                         }
                         [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个逗号
-                        [muStr appendString:@"|"];
+                        if (selectedPlayTypeBtnTag == 12) {
+                            [muStr appendString:@"$"];
+                        }else if (selectedPlayTypeBtnTag == 13)
+                        {
+                            [muStr appendString:@"|"];
+                        }
                     }
                 }
                 [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个|
             }
-        }else if (selectedPlayTypeBtnTag == 19)
+        }else if (selectedPlayTypeBtnTag == 20)
         {
-            NSMutableArray * muArr = [self sortBallsArray:cellStatusArray];
-            for(YZBallBtn *ball in muArr)
-            {
-                if (ball.tag == 1) {
-                    [muStr appendFormat:@"%d,", 4];
-                }else if (ball.tag == 2)
+            if (cellStatusArray.count > 0) {
+                NSMutableArray * muArr = [self sortBallsArray:cellStatusArray];
+                for(YZBallBtn *ball in muArr)
                 {
-                    [muStr appendFormat:@"%d,", 6];
+                    if (ball.tag == 1) {
+                        [muStr appendFormat:@"%d,", 4];
+                    }else if (ball.tag == 2)
+                    {
+                        [muStr appendFormat:@"%d,", 6];
+                    }
                 }
+                [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个逗号
             }
-            [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个逗号
         }else
         {
             if (cellStatusArray.count > 0) {
@@ -848,6 +855,10 @@
             }
         }
         if (selectedPlayTypeBtnTag == 12)
+        {
+            [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
+            betType = @"02";
+        }else if (selectedPlayTypeBtnTag == 13)
         {
             if (betCount == 1) {
                 [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
@@ -857,15 +868,15 @@
                 [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", [currentTitle stringByReplacingOccurrencesOfString:@"单式" withString:@"单复式"], betCount]];
                 betType = @"10";
             }
-        }else if (selectedPlayTypeBtnTag == 13)
-        {
-            [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
-            betType = @"12";
         }else if (selectedPlayTypeBtnTag == 14)
         {
             [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
-            betType = @"13";
+            betType = @"12";
         }else if (selectedPlayTypeBtnTag == 15)
+        {
+            [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
+            betType = @"13";
+        }else if (selectedPlayTypeBtnTag == 16)
         {
             [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", currentTitle, betCount]];
             betType = @"14";

@@ -14,6 +14,7 @@ typedef enum {
     KhistoryCellTagDie = 5,
     KhistoryCellTagWanNeng = 6,
     KhistoryCellTagZu = 7,
+    KhistoryCellTag283 = 8,
 }KhistoryCellTag;
 
 #import <UIKit/UIKit.h>

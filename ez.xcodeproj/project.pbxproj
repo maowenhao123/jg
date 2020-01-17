@@ -64,6 +64,9 @@
 		1D84EB02239A2440006A8B63 /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D84EAFE239A2440006A8B63 /* TYRZResource.bundle */; };
 		1D84EB03239A2440006A8B63 /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D84EAFE239A2440006A8B63 /* TYRZResource.bundle */; };
 		1D84EB04239A2440006A8B63 /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D84EAFE239A2440006A8B63 /* TYRZResource.bundle */; };
+		1D8C226823D15F8400907863 /* YZSanBuChongDanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C226723D15F8400907863 /* YZSanBuChongDanView.m */; };
+		1D8C226923D15F8400907863 /* YZSanBuChongDanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C226723D15F8400907863 /* YZSanBuChongDanView.m */; };
+		1D8C226A23D15F8400907863 /* YZSanBuChongDanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C226723D15F8400907863 /* YZSanBuChongDanView.m */; };
 		1D96B6C523794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
 		1D96B6C623794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
 		1D96B6C723794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */; };
@@ -2447,6 +2450,8 @@
 		1D7BE001237112580015CD8E /* YZKy481PlayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481PlayTypeView.m; sourceTree = "<group>"; };
 		1D84EAFD239A2440006A8B63 /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
 		1D84EAFE239A2440006A8B63 /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
+		1D8C226623D15F8400907863 /* YZSanBuChongDanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSanBuChongDanView.h; sourceTree = "<group>"; };
+		1D8C226723D15F8400907863 /* YZSanBuChongDanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSanBuChongDanView.m; sourceTree = "<group>"; };
 		1D96B6C323794D9E00F1FC63 /* YZErCodeRechargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZErCodeRechargeViewController.h; sourceTree = "<group>"; };
 		1D96B6C423794D9E00F1FC63 /* YZErCodeRechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZErCodeRechargeViewController.m; sourceTree = "<group>"; };
 		1D96B6C92379519300F1FC63 /* YZErCodeRechargeSuccessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZErCodeRechargeSuccessView.h; sourceTree = "<group>"; };
@@ -4205,6 +4210,8 @@
 				1D2E33452371646A00E8C9AC /* YZKy481DanView.m */,
 				1DFAFA4023B5EDBF00A8D0C4 /* YZKy481BaView.h */,
 				1DFAFA4123B5EDBF00A8D0C4 /* YZKy481BaView.m */,
+				1D8C226623D15F8400907863 /* YZSanBuChongDanView.h */,
+				1D8C226723D15F8400907863 /* YZSanBuChongDanView.m */,
 				1D9B49A723B99D290017DB2A /* YZChongDanView.h */,
 				1D9B49A823B99D290017DB2A /* YZChongDanView.m */,
 				1D2E334A2372B72B00E8C9AC /* YZKy481RecentLotteryCell.h */,
@@ -8679,8 +8686,7 @@
 						};
 					};
 					CE58B9481DE58BF80033B300 = {
-						DevelopmentTeam = 65FQR43XBY;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -9340,6 +9346,7 @@
 				AA237ED22143590C00BC47BB /* YZShareView.m in Sources */,
 				AA237ED32143590C00BC47BB /* HDChatToolbar.m in Sources */,
 				1DE61FFD22CC4F7600C1490E /* TZProgressView.m in Sources */,
+				1D8C226A23D15F8400907863 /* YZSanBuChongDanView.m in Sources */,
 				AA237ED42143590C00BC47BB /* UIBarButtonItem+YZ.m in Sources */,
 				1DF418EC22C5E6FD00D57367 /* YZCircleCommentModel.m in Sources */,
 				AA237ED52143590C00BC47BB /* YZRechargeBaseViewController.m in Sources */,
@@ -10156,6 +10163,7 @@
 				AA74EC571FFE17E0003B53AF /* YZBetTool.m in Sources */,
 				AA32934D1FFE27B600CA77DA /* YZSfcViewController.m in Sources */,
 				AA74EB571FFE17DF003B53AF /* UIView+MJExtension.m in Sources */,
+				1D8C226823D15F8400907863 /* YZSanBuChongDanView.m in Sources */,
 				AA74E1CE1FFE0AEA003B53AF /* YZZCMineViewController.m in Sources */,
 				AA74ECAC1FFE19A5003B53AF /* YZRechargeStatus.m in Sources */,
 				AA1E102420F8A02B0045FBD4 /* YZChoosePhoneView.m in Sources */,
@@ -10723,6 +10731,7 @@
 				AA74ECD61FFE1AD6003B53AF /* YZMessageDetailStatus.m in Sources */,
 				AA74ECA91FFE19A5003B53AF /* YZBonusCardRechargeViewController.m in Sources */,
 				AA74E13C1FFE0A86003B53AF /* YZShareView.m in Sources */,
+				1D8C226923D15F8400907863 /* YZSanBuChongDanView.m in Sources */,
 				AA74EAF01FFE17DF003B53AF /* HDChatToolbar.m in Sources */,
 				AA74EA1C1FFE17DE003B53AF /* UIBarButtonItem+YZ.m in Sources */,
 				AA74EC991FFE19A5003B53AF /* YZRechargeBaseViewController.m in Sources */,
@@ -11506,12 +11515,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 65FQR43XBY;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -11587,9 +11596,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
@@ -11647,7 +11656,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8520864a-34db-4c77-88b4-1bdbb12b15e7";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = zc_adhoc_577;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

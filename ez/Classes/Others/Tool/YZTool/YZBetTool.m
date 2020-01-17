@@ -92,7 +92,7 @@
 
 + (void)autoChooseKy481WithPlayType:(NSString *)playType andSelectedPlayTypeBtnTag:(int)tag//快赢481
 {
-    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一包号", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
+    NSArray * playTypes = @[@"任选一", @"任选二", @"任选三", @"任选二全包", @"任选二万能两码", @"任选三全包", @"直选", @"组选4", @"组选6", @"组选12", @"组选24", @"三不重", @"三不重", @"二带一单式", @"二带一包单", @"二带一包对", @"二带一包号", @"包2", @"包3", @"豹子", @"形态", @"拖拉机"];
     
     NSMutableString *muStr = [NSMutableString string];
     int betCount = 1;
@@ -143,15 +143,15 @@
         {
             [muStr appendFormat:@"%d,%d,%d,%d,", number1, number2, number3, number4];
         }
-    }else if (tag == 11 || tag == 13 || tag == 14 || tag == 15 || tag == 16 || tag == 17 || tag == 18)
+    }else if (tag == 11 || tag == 12 || tag == 14 || tag == 15 || tag == 16 || tag == 17 || tag == 18 || tag == 19)
     {
         int minCount = 0;
-        if (tag == 11 || tag == 17) {
+        if (tag == 11 || tag == 12 || tag == 18) {
             minCount = 3;
-        }else if (tag == 13 || tag == 14 || tag == 15 || tag == 18)
+        }else if (tag == 14 || tag == 15 || tag == 16 || tag == 19)
         {
             minCount = 1;
-        }else if (tag == 16)
+        }else if (tag == 17)
         {
             minCount = 2;
         }
@@ -166,7 +166,7 @@
         for (NSNumber * number in muArr) {
             [muStr appendFormat:@"%@,", number];
         }
-    }else if (tag == 12)
+    }else if (tag == 13)
     {
         NSMutableSet *randomSet = [NSMutableSet set];
         while (randomSet.count < 2)
@@ -178,7 +178,7 @@
         int number1 = [muArr[0] intValue];
         int number2 = [muArr[1] intValue];
         [muStr appendFormat:@"%d,%d,%d,", number1, number1, number2];
-    }else if (tag == 19)
+    }else if (tag == 20)
     {
         int random = arc4random() % 2 + 1;
         if (random == 1) {
@@ -187,7 +187,7 @@
         {
             [muStr appendString:@"6,"];
         }
-    }else if (tag == 20)
+    }else if (tag == 21)
     {
         [muStr appendString:@"1,"];
     }
@@ -216,20 +216,20 @@
             }
         }
         [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", playTypes[tag], betCount]];
-    }else if (tag == 12 || tag == 13 || tag == 14 || tag == 15)
+    }else if (tag == 13 || tag == 14 || tag == 15 || tag == 16)
     {
-        if (tag == 13 || tag == 14) {
+        if (tag == 14 || tag == 15) {
             betCount = 7;
-        }else if (tag == 15)
+        }else if (tag == 16)
         {
             betCount = 14;
         }
         [muStr appendString:[NSString stringWithFormat:@"[%@%d注]", playTypes[tag], betCount]];
-    }else if (tag == 16)
+    }else if (tag == 17)
     {
         betCount = 8;
         [muStr appendString:[NSString stringWithFormat:@"[%@单式%d注]", playTypes[tag], betCount]];
-    }else if (tag == 17)
+    }else if (tag == 18)
     {
         betCount = 7;
         [muStr appendString:[NSString stringWithFormat:@"[%@单式%d注]", playTypes[tag], betCount]];
@@ -247,12 +247,12 @@
     YZBetStatus *status = [[YZBetStatus alloc] init];
     status.labelText = attStr;
     status.betCount = betCount;
-    if (tag == 13) {
+    if (tag == 14) {
         status.betType = @"12";
-    }else if (tag == 14)
+    }else if (tag == 15)
     {
         status.betType = @"13";
-    }else if (tag == 15)
+    }else if (tag == 16)
     {
         status.betType = @"14";
     }else

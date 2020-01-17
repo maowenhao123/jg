@@ -288,7 +288,7 @@
                 }
             }
         }
-    }else if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17 || selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20)
+    }else if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17 || selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20 || selectedPlayTypeBtnTag == 21)
     {
         NSInteger count1 = 0;
         for (NSArray * cellStatusArray in selStatusArray) {
@@ -299,13 +299,13 @@
         }
         if (selectedPlayTypeBtnTag == 11) {
             composeCount = [YZMathTool getCountWithN:(int)count1 andM:3];
-        }else if (selectedPlayTypeBtnTag == 13 || selectedPlayTypeBtnTag == 14)
+        }else if (selectedPlayTypeBtnTag == 14 || selectedPlayTypeBtnTag == 15)
         {
             composeCount = count1 * 7;
-        }else if (selectedPlayTypeBtnTag == 15)
+        }else if (selectedPlayTypeBtnTag == 16)
         {
             composeCount = count1 * 14;
-        }else if (selectedPlayTypeBtnTag == 16)
+        }else if (selectedPlayTypeBtnTag == 17)
         {
             if (count1 == 0 || count1 == 1) {
                 composeCount = 0;
@@ -316,7 +316,7 @@
             {
                 composeCount = [YZMathTool getCountWithN:(int)count1 andM:2] * 8;
             }
-        }else if (selectedPlayTypeBtnTag == 17)
+        }else if (selectedPlayTypeBtnTag == 18)
         {
             if (count1 == 0 || count1 == 1 || count1 == 2) {
                 composeCount = 0;
@@ -327,11 +327,11 @@
             {
                 composeCount = [YZMathTool getCountWithN:(int)count1 andM:3] * 7;
             }
-        }else if (selectedPlayTypeBtnTag == 18 || selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20)
+        }else if (selectedPlayTypeBtnTag == 19 || selectedPlayTypeBtnTag == 20 || selectedPlayTypeBtnTag == 21)
         {
             composeCount = count1;
         }
-    }else if (selectedPlayTypeBtnTag == 12)
+    }else if (selectedPlayTypeBtnTag == 12 || selectedPlayTypeBtnTag == 13)
     {
         NSInteger count1 = 0;
         NSInteger count2 = 0;
@@ -344,7 +344,19 @@
                 count2 = cellStatusArray.count;
             }
         }
-        composeCount = count1 * count2;
+        if (selectedPlayTypeBtnTag == 12) {
+            if (count1 + count2 > 3) {
+                if (count1 == 1) {
+                    composeCount = [YZMathTool getCountWithN:(int)count2 andM:2];
+                }else if (count1 == 2)
+                {
+                    composeCount = count2 * (count2 - 1);
+                }
+            }
+        }else if (selectedPlayTypeBtnTag == 13)
+        {
+            composeCount = count1 * count2;
+        }
     }
     return (int)composeCount;
 }
@@ -478,37 +490,45 @@
             int_maxprize = 98;
         }else if (tag == 12)
         {
+            int_minprize = 49;
+            int_maxprize = 98;
+        }else if (tag == 13)
+        {
             int_minprize = 98;
             int_maxprize = 98;
         }else if (tag == 13)
         {
             int_minprize = 98;
-            int_maxprize = 196;
+            int_maxprize = 98;
         }else if (tag == 14)
         {
             int_minprize = 98;
-            int_maxprize = 98;
+            int_maxprize = 196;
         }else if (tag == 15)
         {
             int_minprize = 98;
-            int_maxprize = 196;
+            int_maxprize = 98;
         }else if (tag == 16)
         {
-            int_minprize = 49;
-            int_maxprize = 98;
+            int_minprize = 98;
+            int_maxprize = 196;
         }else if (tag == 17)
         {
             int_minprize = 49;
             int_maxprize = 98;
         }else if (tag == 18)
         {
+            int_minprize = 49;
+            int_maxprize = 98;
+        }else if (tag == 19)
+        {
             int_minprize = 163;
             int_maxprize = 163;
-        }else if (tag == 19)
+        }else if (tag == 20)
         {
             int_minprize = 49;
             int_maxprize = 98;
-        }else if (tag == 20)
+        }else if (tag == 21)
         {
             int_minprize = 26;
             int_maxprize = 26;

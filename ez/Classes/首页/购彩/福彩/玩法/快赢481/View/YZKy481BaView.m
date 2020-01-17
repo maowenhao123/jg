@@ -116,7 +116,7 @@
         CGFloat buttonH = 36;
         CGFloat buttonPadding = (screenWidth - 2 * buttonW) / 3;
         numberButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(34)];
-        if (selectedPlayTypeBtnTag == 19) {
+        if (selectedPlayTypeBtnTag == 20) {
             numberButton.hidden = i > 1;
             if (i < 2) {
                 numberButton.frame = CGRectMake(buttonPadding + (buttonW + buttonPadding) * (i % 2), CGRectGetMaxY(self.titleLabel.frame) + 20 + (buttonH + buttonH) * (i / 2), buttonW, buttonH);
@@ -128,7 +128,7 @@
                 [numberButton setTitle:@"组6形态(6)" forState:UIControlStateNormal];
             }
             numberButton.titleLabel.font = [UIFont systemFontOfSize:YZGetFontSize(30)];
-        }else if (selectedPlayTypeBtnTag == 20)
+        }else if (selectedPlayTypeBtnTag == 21)
         {
             numberButton.hidden = i > 0;
             if (i < 1) {
@@ -140,21 +140,21 @@
         {
             numberButton.hidden = NO;
             numberButton.frame = CGRectMake(buttonPadding + (buttonW + buttonPadding) * (i % 2), CGRectGetMaxY(self.titleLabel.frame) + 20 + (buttonH + buttonH) * (i / 2), buttonW, buttonH);
-            if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 15 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17) {
+            if (selectedPlayTypeBtnTag == 11 || selectedPlayTypeBtnTag == 16 || selectedPlayTypeBtnTag == 17 || selectedPlayTypeBtnTag == 18) {
                 [numberButton setTitle:[NSString stringWithFormat:@"%d", i + 1] forState:UIControlStateNormal];
-            }else if (selectedPlayTypeBtnTag == 13)
-            {
-                [numberButton setTitle:[NSString stringWithFormat:@"%d%dX", i + 1, i + 1] forState:UIControlStateNormal];
             }else if (selectedPlayTypeBtnTag == 14)
             {
+                [numberButton setTitle:[NSString stringWithFormat:@"%d%dX", i + 1, i + 1] forState:UIControlStateNormal];
+            }else if (selectedPlayTypeBtnTag == 15)
+            {
                 [numberButton setTitle:[NSString stringWithFormat:@"%dXX", i + 1] forState:UIControlStateNormal];
-            }else if (selectedPlayTypeBtnTag == 18)
+            }else if (selectedPlayTypeBtnTag == 19)
             {
                 [numberButton setTitle:[NSString stringWithFormat:@"豹子%d", i + 1] forState:UIControlStateNormal];
             }
         }
     }
-    self.allSelectedButton.hidden = selectedPlayTypeBtnTag != 18;
+    self.allSelectedButton.hidden = selectedPlayTypeBtnTag != 19;
 }
 
 - (void)setSelStatusArray:(NSMutableArray *)selStatusArray
