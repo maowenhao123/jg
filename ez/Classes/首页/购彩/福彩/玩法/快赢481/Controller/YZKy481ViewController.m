@@ -702,6 +702,18 @@
 #pragma mark - 确认按钮点击
 - (void)confirmBtnClick:(UIButton *)btn
 {
+    NSArray *waringTitles = @[@"至少选择一位数字", @"至少选择两位数字", @"至少选择三位数字", @"每位至少选择一个号码", @"至少选择一组数字", @"每位至少选择一个号码", @"每位至少选择一个号码", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择三个号码"];
+    if(self.betCount == 0)//没有注数，就弹框警示
+    {
+        if (waringTitles.count > self.selectedPlayTypeBtnTag) {
+            [MBProgressHUD showError:waringTitles[self.selectedPlayTypeBtnTag]];
+        }else
+        {
+            [MBProgressHUD showError:@"至少选择1注"];
+        }
+        return;
+    }
+    
     [YZCommitTool commitKy481BetWithBalls:self.allSelBallsArray betCount:self.betCount playType:_currentPlayTypeCode currentTitle:self.titleBtn.currentTitle selectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
     [self deleteBtnClick];
     [self gotoBetVc];

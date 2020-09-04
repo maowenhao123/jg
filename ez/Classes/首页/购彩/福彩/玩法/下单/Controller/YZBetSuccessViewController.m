@@ -7,6 +7,7 @@
 //
 
 #import "YZBetSuccessViewController.h"
+#import "YZGameIdViewController.h"
 #import "YZPublishUnionBuyCircleViewController.h"
 #import "YZLoadHtmlFileController.h"
 #import "YZTabBarViewController.h"
@@ -197,10 +198,17 @@
     }
     
     //继续投注
+    YZBottomButton * backBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
+    backBtn.y = CGRectGetMaxY(lastView.frame) + 20;
+    [backBtn setTitle:@"返回首页" forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:backBtn];
+    
+    //继续投注
     YZBottomButton * againBtn = [YZBottomButton buttonWithType:UIButtonTypeCustom];
-    againBtn.y = CGRectGetMaxY(lastView.frame) + 20;
+    againBtn.y = CGRectGetMaxY(backBtn.frame) + 20;
     [againBtn setTitle:@"继续投注" forState:UIControlStateNormal];
-    [againBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [againBtn addTarget:self action:@selector(again) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:againBtn];
     
     //查看投注记录
@@ -296,13 +304,22 @@
 - (void)back
 {
     if (self.isDismissVC) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }else
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
+}
+
+- (void)again
+{
+    UIViewController * targetViewController = nil;
+    for (UIViewController * viewController in self.navigationController.viewControllers) {
+        if ([viewController isKindOfClass:[YZGameIdViewController class]]) {
+            targetViewController = viewController;
+        }
+    }
+    [self.navigationController popToViewController:targetViewController animated:YES];
 }
 
 - (void)longPress

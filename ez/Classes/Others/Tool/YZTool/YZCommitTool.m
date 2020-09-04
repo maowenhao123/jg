@@ -504,19 +504,7 @@
 }
 #pragma mark - 快赢481
 + (void)commitKy481BetWithBalls:(NSMutableArray *)balls betCount:(int)betCount playType:(NSString *)playTypeCode currentTitle:(NSString *)currentTitle selectedPlayTypeBtnTag:(NSInteger)selectedPlayTypeBtnTag
-{
-    NSArray *waringTitles = @[@"至少选择一位数字", @"至少选择两位数字", @"至少选择三位数字", @"每位至少选择一个号码", @"至少选择一组数字", @"每位至少选择一个号码", @"每位至少选择一个号码", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择1注", @"至少选择三个号码"];
-    if(betCount == 0)//没有注数，就弹框警示
-    {
-        if (waringTitles.count > selectedPlayTypeBtnTag) {
-            [MBProgressHUD showError:waringTitles[selectedPlayTypeBtnTag]];
-        }else
-        {
-            [MBProgressHUD showError:@"至少选择1注"];
-        }
-        return;
-    }
-    
+{    
     NSMutableArray *selStatusArray = balls[selectedPlayTypeBtnTag];
     if (selectedPlayTypeBtnTag == 0 || selectedPlayTypeBtnTag == 1 || selectedPlayTypeBtnTag == 2 || selectedPlayTypeBtnTag == 3 || selectedPlayTypeBtnTag == 5 || selectedPlayTypeBtnTag == 6) {
         NSMutableString *muStr = [NSMutableString string];

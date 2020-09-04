@@ -72,6 +72,7 @@
     self.line2 = line2;
     line2.backgroundColor = YZGrayTextColor;
     [self addSubview:line2];
+    
     //投注
     UIView *betView = [[UIView alloc]init];
     self.betView = betView;
@@ -88,15 +89,19 @@
     line.backgroundColor = YZGrayTextColor;
     [self addSubview:line];
 }
+
 #pragma mark - 设置数据
 - (void)setStatus:(YZFBOrderStatus *)status
 {
     _status = status;
+    
     self.line0.frame = CGRectMake(0, 0, lineWidth, status.cellH);
+    
     //球队
     self.teamMessageLabel.frame = CGRectMake(0, 0, screenWidth * 0.5, status.cellH);
     self.teamMessageLabel.attributedText = status.teamMessage;
     self.line1.frame = CGRectMake(CGRectGetMaxX(self.teamMessageLabel.frame) - lineWidth, 0, lineWidth, status.cellH);
+   
     //赛果
     for (UIView * subview in self.resultsView.subviews) {//先删除之前的label
         if ([subview isKindOfClass:[UILabel class]]) {
@@ -106,25 +111,21 @@
     
     UILabel * lastResultsLabel;
     for (int i = 0; i < status.betArray.count; i++) {
-        UILabel * resultsLabel = [[UILabel alloc]init];
-        if (status.betArray.count == status.resultsArray.count) {//有开奖
-            resultsLabel.text = status.resultsArray[i];
+        CGFloat labelH = [_status.labelHArray[i] floatValue];
+        UILabel * resultsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lastResultsLabel.frame), screenWidth * 0.2, labelH)];
+        if (i < status.resultsArray.count) {//有开奖
+            resultsLabel.attributedText = status.resultsArray[i];
         }else
         {
-            resultsLabel.text = nil;
+            resultsLabel.attributedText = nil;
         }
         resultsLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
         resultsLabel.textColor = YZBlackTextColor;
-        resultsLabel.textAlignment = NSTextAlignmentCenter;
         resultsLabel.numberOfLines = 0;
-        NSAttributedString * codeAttStr = status.betArray[i];
-        CGSize size = [codeAttStr boundingRectWithSize:CGSizeMake(screenWidth * 0.3, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-        CGFloat resultsLabelH = status.betArray.count == 1 ? 55 : size.height + 2 * 5;//当只有一条数据时，为cellH
-        resultsLabel.frame = CGRectMake(0, CGRectGetMaxY(lastResultsLabel.frame), screenWidth * 0.2, resultsLabelH);
         [self.resultsView addSubview:resultsLabel];
         lastResultsLabel = resultsLabel;
         if (i != status.betArray.count - 1) {
-            UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, resultsLabelH - lineWidth, screenWidth * 0.2, lineWidth)];
+            UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, labelH - lineWidth, screenWidth * 0.2, lineWidth)];
             line.backgroundColor = YZGrayTextColor;
             [resultsLabel addSubview:line];
         }
@@ -141,19 +142,16 @@
     
     UILabel * lastBetLabel;
     for (int i = 0; i < status.betArray.count; i++) {
-        UILabel * betLabel = [[UILabel alloc]init];
+        CGFloat labelH = [_status.labelHArray[i] floatValue];
+        UILabel * betLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lastBetLabel.frame), screenWidth * 0.3, labelH)];
         betLabel.textColor = YZBlackTextColor;
         betLabel.attributedText = status.betArray[i];
         betLabel.font = [UIFont systemFontOfSize:YZGetFontSize(22)];
-        betLabel.textAlignment = NSTextAlignmentCenter;
         betLabel.numberOfLines = 0;
-        CGSize size = [status.betArray[i] boundingRectWithSize:CGSizeMake(screenWidth * 0.3, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-        CGFloat betLabelH = status.betArray.count == 1 ? 55 : size.height + 2 * 5;//当只有一条数据时，为cellH
-        betLabel.frame = CGRectMake(0, CGRectGetMaxY(lastBetLabel.frame), screenWidth * 0.3, betLabelH);
         [self.betView addSubview:betLabel];
         lastBetLabel = betLabel;
         if (i != status.betArray.count - 1) {
-            UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, betLabelH - lineWidth, screenWidth * 0.3, lineWidth)];
+            UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, labelH - lineWidth, screenWidth * 0.3, lineWidth)];
             line.backgroundColor = YZGrayTextColor;
             [betLabel addSubview:line];
         }
@@ -162,7 +160,5 @@
     self.line3.frame = CGRectMake(screenWidth - lineWidth, 0, lineWidth, status.cellH);
     self.line.frame = CGRectMake(0, status.cellH - lineWidth, screenWidth, lineWidth);
 }
-
-
 
 @end

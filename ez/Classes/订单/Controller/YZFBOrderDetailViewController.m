@@ -11,7 +11,6 @@
 #import "YZFBOrderDetailViewController.h"
 #import "YZFBTicketDetailViewController.h"
 #import "YZFbOrderDetailTableViewCell.h"
-#import "YZBbOrderDetailTableViewCell.h"
 #import "YZFBOrderStatus.h"
 #import "YZOrder.h"
 #import "YZShareView.h"
@@ -181,28 +180,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([_order.gameId isEqualToString:@"T51"]) {
-        YZFbOrderDetailTableViewCell * cell = [YZFbOrderDetailTableViewCell cellWithTableView:tableView];
-        cell.status = self.dataArray[indexPath.row];
-        return cell;
-    }else if ([_order.gameId isEqualToString:@"T52"])
-    {
-        YZBbOrderDetailTableViewCell * cell = [YZBbOrderDetailTableViewCell cellWithTableView:tableView];
-        cell.status = self.dataArray[indexPath.row];
-        return cell;
-    }
-    return nil;
+    YZFbOrderDetailTableViewCell * cell = [YZFbOrderDetailTableViewCell cellWithTableView:tableView];
+    cell.status = self.dataArray[indexPath.row];
+    return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YZFBOrderStatus * status = self.dataArray[indexPath.row];
-    if ([_order.gameId isEqualToString:@"T51"]) {
-        return status.cellH;
-    }else if ([_order.gameId isEqualToString:@"T52"])
-    {
-        return status.bBCellH;
-    }
-    return 0;
+    return status.cellH;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

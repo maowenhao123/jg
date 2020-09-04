@@ -526,8 +526,8 @@
             int_maxprize = 163;
         }else if (tag == 20)
         {
-            int_minprize = 49;
-            int_maxprize = 98;
+            int_minprize = 21;
+            int_maxprize = 28;
         }else if (tag == 21)
         {
             int_minprize = 26;

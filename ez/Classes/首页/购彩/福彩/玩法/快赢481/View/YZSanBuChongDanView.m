@@ -29,7 +29,7 @@
             titleLabel.attributedText = [self getAttributedStringWithBlackText:@"胆码" grayText:@"（至少选1个，最多选2个）"];
         }else if (i == 1)
         {
-            titleLabel.attributedText = [self getAttributedStringWithBlackText:@"拖码" grayText:@"（拖码、胆码之和至少3个）"];
+            titleLabel.attributedText = [self getAttributedStringWithBlackText:@"拖码" grayText:@"（拖码、胆码之和大于3个）"];
         }
         titleLabel.frame = CGRectMake(YZMargin, maxY + 10, screenWidth - 2 * YZMargin, 20);
         [self addSubview:titleLabel];

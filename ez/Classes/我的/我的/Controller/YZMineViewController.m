@@ -23,7 +23,6 @@
 #import "YZMessageViewController.h"
 #import "YZLoadHtmlFileController.h"
 #import "YZShareProfitsViewController.h"
-#import "YZCustomerServiceViewController.h"
 #import "YZChatViewController.h"
 #import "YZWeChatPublicViewController.h"
 #import "YZShareView.h"

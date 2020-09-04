@@ -394,6 +394,15 @@
 		1DDDEB8A22D5BB80003A9C07 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */; };
 		1DDDEB8B22D5BB80003A9C07 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */; };
 		1DDDEB8C22D5BB80003A9C07 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */; };
+		1DE3D8742501D40B001A1E9A /* YZShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D8732501D40B001A1E9A /* YZShopModel.m */; };
+		1DE3D8752501D40B001A1E9A /* YZShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D8732501D40B001A1E9A /* YZShopModel.m */; };
+		1DE3D8762501D40B001A1E9A /* YZShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D8732501D40B001A1E9A /* YZShopModel.m */; };
+		1DE3D8792501D42D001A1E9A /* YZShopInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D8782501D42D001A1E9A /* YZShopInfoViewController.m */; };
+		1DE3D87A2501D42D001A1E9A /* YZShopInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D8782501D42D001A1E9A /* YZShopInfoViewController.m */; };
+		1DE3D87B2501D42D001A1E9A /* YZShopInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D8782501D42D001A1E9A /* YZShopInfoViewController.m */; };
+		1DE3D87E2501D4BC001A1E9A /* YZShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D87D2501D4BC001A1E9A /* YZShareTool.m */; };
+		1DE3D87F2501D4BC001A1E9A /* YZShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D87D2501D4BC001A1E9A /* YZShareTool.m */; };
+		1DE3D8802501D4BC001A1E9A /* YZShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3D87D2501D4BC001A1E9A /* YZShareTool.m */; };
 		1DE61FB622CB84BB00C1490E /* YZPublishLotteryCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE61FB522CB84BA00C1490E /* YZPublishLotteryCircleViewController.m */; };
 		1DE61FB722CB84BB00C1490E /* YZPublishLotteryCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE61FB522CB84BA00C1490E /* YZPublishLotteryCircleViewController.m */; };
 		1DE61FB822CB84BB00C1490E /* YZPublishLotteryCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE61FB522CB84BA00C1490E /* YZPublishLotteryCircleViewController.m */; };
@@ -573,7 +582,6 @@
 		AA237DB32143590C00BC47BB /* YZIntegralCouponsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE55C63207EF8AF00A29844 /* YZIntegralCouponsModel.m */; };
 		AA237DB42143590C00BC47BB /* YZIntegralConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE55C5F207EF8AF00A29844 /* YZIntegralConversionViewController.m */; };
 		AA237DB52143590C00BC47BB /* YZRegisterResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3290E31FFE21D400CA77DA /* YZRegisterResultViewController.m */; };
-		AA237DB62143590C00BC47BB /* YZBbOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207F20BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m */; };
 		AA237DB72143590C00BC47BB /* YZPublishCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACDC21E20FEE77A00955419 /* YZPublishCircleViewController.m */; };
 		AA237DB82143590C00BC47BB /* YZSupView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA32928C1FFE27B600CA77DA /* YZSupView.m */; };
 		AA237DB92143590C00BC47BB /* YZSettingPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA74E24F1FFE0C41003B53AF /* YZSettingPassWordViewController.m */; };
@@ -2303,8 +2311,6 @@
 		AAD1207920BE398100D47F85 /* YZBasketBallBetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207720BE398100D47F85 /* YZBasketBallBetHeaderView.m */; };
 		AAD1207C20BE399100D47F85 /* YZBasketBallBetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207B20BE399100D47F85 /* YZBasketBallBetTableViewCell.m */; };
 		AAD1207D20BE399200D47F85 /* YZBasketBallBetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207B20BE399100D47F85 /* YZBasketBallBetTableViewCell.m */; };
-		AAD1208020BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207F20BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m */; };
-		AAD1208120BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD1207F20BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m */; };
 		AAD252F820F5996D00ACAA72 /* YZSchemeSetmealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD252F720F5996D00ACAA72 /* YZSchemeSetmealViewController.m */; };
 		AAD252F920F5996D00ACAA72 /* YZSchemeSetmealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD252F720F5996D00ACAA72 /* YZSchemeSetmealViewController.m */; };
 		AAD252FC20F59AC300ACAA72 /* YZSchemeSetmealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD252FB20F59AC300ACAA72 /* YZSchemeSetmealModel.m */; };
@@ -2681,6 +2687,12 @@
 		1DDDEB6C22D5BB80003A9C07 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		1DDDEB6D22D5BB80003A9C07 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
 		1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		1DE3D8722501D40B001A1E9A /* YZShopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZShopModel.h; sourceTree = "<group>"; };
+		1DE3D8732501D40B001A1E9A /* YZShopModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZShopModel.m; sourceTree = "<group>"; };
+		1DE3D8772501D42D001A1E9A /* YZShopInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZShopInfoViewController.h; sourceTree = "<group>"; };
+		1DE3D8782501D42D001A1E9A /* YZShopInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZShopInfoViewController.m; sourceTree = "<group>"; };
+		1DE3D87C2501D4BC001A1E9A /* YZShareTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZShareTool.h; sourceTree = "<group>"; };
+		1DE3D87D2501D4BC001A1E9A /* YZShareTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZShareTool.m; sourceTree = "<group>"; };
 		1DE61FB422CB84BA00C1490E /* YZPublishLotteryCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZPublishLotteryCircleViewController.h; sourceTree = "<group>"; };
 		1DE61FB522CB84BA00C1490E /* YZPublishLotteryCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZPublishLotteryCircleViewController.m; sourceTree = "<group>"; };
 		1DE61FBA22CC4EBC00C1490E /* YZAddMultipleImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZAddMultipleImageView.h; sourceTree = "<group>"; };
@@ -3895,8 +3907,6 @@
 		AAD1207720BE398100D47F85 /* YZBasketBallBetHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZBasketBallBetHeaderView.m; sourceTree = "<group>"; };
 		AAD1207A20BE399100D47F85 /* YZBasketBallBetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZBasketBallBetTableViewCell.h; sourceTree = "<group>"; };
 		AAD1207B20BE399100D47F85 /* YZBasketBallBetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZBasketBallBetTableViewCell.m; sourceTree = "<group>"; };
-		AAD1207E20BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZBbOrderDetailTableViewCell.h; sourceTree = "<group>"; };
-		AAD1207F20BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZBbOrderDetailTableViewCell.m; sourceTree = "<group>"; };
 		AAD252F620F5996D00ACAA72 /* YZSchemeSetmealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSchemeSetmealViewController.h; sourceTree = "<group>"; };
 		AAD252F720F5996D00ACAA72 /* YZSchemeSetmealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZSchemeSetmealViewController.m; sourceTree = "<group>"; };
 		AAD252FA20F59AC300ACAA72 /* YZSchemeSetmealModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZSchemeSetmealModel.h; sourceTree = "<group>"; };
@@ -5290,6 +5300,41 @@
 				1DDDEB6E22D5BB80003A9C07 /* MASViewAttribute.m */,
 			);
 			path = Masonry;
+			sourceTree = "<group>";
+		};
+		1DE3D86E2501D3DC001A1E9A /* 店铺信息 */ = {
+			isa = PBXGroup;
+			children = (
+				1DE3D8712501D3F9001A1E9A /* Controller */,
+				1DE3D8702501D3F2001A1E9A /* Model */,
+				1DE3D86F2501D3E9001A1E9A /* View */,
+			);
+			path = "店铺信息";
+			sourceTree = "<group>";
+		};
+		1DE3D86F2501D3E9001A1E9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DE3D8702501D3F2001A1E9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DE3D8722501D40B001A1E9A /* YZShopModel.h */,
+				1DE3D8732501D40B001A1E9A /* YZShopModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1DE3D8712501D3F9001A1E9A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1DE3D8772501D42D001A1E9A /* YZShopInfoViewController.h */,
+				1DE3D8782501D42D001A1E9A /* YZShopInfoViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		1DE61FB922CC4EA200C1490E /* DRAddMultipleImageView */ = {
@@ -6776,8 +6821,6 @@
 				AA74E1181FFE0A86003B53AF /* YZFCOrderDetailTableViewCell.m */,
 				AA74E1121FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.h */,
 				AA74E1091FFE0A86003B53AF /* YZFbOrderDetailTableViewCell.m */,
-				AAD1207E20BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.h */,
-				AAD1207F20BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m */,
 				AA74E10A1FFE0A86003B53AF /* YZSchemeDetailTableViewCell.h */,
 				AA74E1111FFE0A86003B53AF /* YZSchemeDetailTableViewCell.m */,
 				AA74E1131FFE0A86003B53AF /* YZFBTicketDetailTableViewCell.h */,
@@ -6798,6 +6841,7 @@
 				AA74EC6B1FFE19A5003B53AF /* 充值 */,
 				AA74E24C1FFE0C41003B53AF /* 提款 */,
 				AA3290531FFE1C9C00CA77DA /* 彩券 */,
+				1DE3D86E2501D3DC001A1E9A /* 店铺信息 */,
 				AA74ECB51FFE1A6A003B53AF /* 资金明细 */,
 				AA32906F1FFE1D6100CA77DA /* 分享收益 */,
 				AA74ECC51FFE1AD6003B53AF /* 消息 */,
@@ -8094,6 +8138,8 @@
 				AA74E9FF1FFE17DE003B53AF /* YZMathTool.m */,
 				AA74E9FB1FFE17DE003B53AF /* YZBetTool.h */,
 				AA74EA001FFE17DE003B53AF /* YZBetTool.m */,
+				1DE3D87C2501D4BC001A1E9A /* YZShareTool.h */,
+				1DE3D87D2501D4BC001A1E9A /* YZShareTool.m */,
 			);
 			path = YZTool;
 			sourceTree = "<group>";
@@ -9012,7 +9058,6 @@
 				AA237DB32143590C00BC47BB /* YZIntegralCouponsModel.m in Sources */,
 				AA237DB42143590C00BC47BB /* YZIntegralConversionViewController.m in Sources */,
 				AA237DB52143590C00BC47BB /* YZRegisterResultViewController.m in Sources */,
-				AA237DB62143590C00BC47BB /* YZBbOrderDetailTableViewCell.m in Sources */,
 				AA237DB72143590C00BC47BB /* YZPublishCircleViewController.m in Sources */,
 				AA237DB82143590C00BC47BB /* YZSupView.m in Sources */,
 				AA237DB92143590C00BC47BB /* YZSettingPassWordViewController.m in Sources */,
@@ -9406,8 +9451,10 @@
 				1DBD8C3B22CB00470024CF7B /* MWCaptionView.m in Sources */,
 				1DBD8E7122CB2C250024CF7B /* NSImage+WebCache.m in Sources */,
 				1D96B6C723794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
+				1DE3D8802501D4BC001A1E9A /* YZShareTool.m in Sources */,
 				AA237F012143590C00BC47BB /* YZFootBallTool.m in Sources */,
 				AA237F022143590C00BC47BB /* YZHomePageFunctionItemView.m in Sources */,
+				1DE3D87B2501D42D001A1E9A /* YZShopInfoViewController.m in Sources */,
 				AA237F042143590C00BC47BB /* YZQuickStakeGameModel.m in Sources */,
 				AA237F052143590C00BC47BB /* YZChooseBirthdayView.m in Sources */,
 				AA92649A224B5C7600FCEFC7 /* YZInformationH5ViewController.m in Sources */,
@@ -9615,6 +9662,7 @@
 				1DDDEB8022D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */,
 				AA237FBE2143590C00BC47BB /* IQUITextFieldView+Additions.m in Sources */,
 				AA237FBF2143590C00BC47BB /* YZKsBottomBtn.m in Sources */,
+				1DE3D8762501D40B001A1E9A /* YZShopModel.m in Sources */,
 				AA237FC02143590C00BC47BB /* YZSsqChartViewController.m in Sources */,
 				AA237FC12143590C00BC47BB /* HDRecordView.m in Sources */,
 				1DB33E76237D429500463EEE /* YZKy481Math.m in Sources */,
@@ -9657,6 +9705,7 @@
 				AA3292B31FFE27B600CA77DA /* YZQilecaiViewController.m in Sources */,
 				AA9264A3224C666A00FCEFC7 /* YZBottomButton.m in Sources */,
 				1DE61FE022CC4F7500C1490E /* UIView+Layout.m in Sources */,
+				1DE3D8792501D42D001A1E9A /* YZShopInfoViewController.m in Sources */,
 				AA578888228562CF002292EA /* YZFBSiftView.m in Sources */,
 				AA3292CD1FFE27B600CA77DA /* YZRecentLotteryStatus.m in Sources */,
 				AA74EB9F1FFE17E0003B53AF /* AFURLResponseSerialization.m in Sources */,
@@ -9703,7 +9752,6 @@
 				AAE55C71207EF8B000A29844 /* YZIntegralCouponsModel.m in Sources */,
 				AAE55C6F207EF8B000A29844 /* YZIntegralConversionViewController.m in Sources */,
 				AA3291081FFE21D400CA77DA /* YZRegisterResultViewController.m in Sources */,
-				AAD1208020BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m in Sources */,
 				AACDC21F20FEE77A00955419 /* YZPublishCircleViewController.m in Sources */,
 				AA3293EF1FFE27B700CA77DA /* YZSupView.m in Sources */,
 				AA74E25C1FFE0C41003B53AF /* YZSettingPassWordViewController.m in Sources */,
@@ -9963,6 +10011,7 @@
 				AA74EB791FFE17DF003B53AF /* SBJSON.m in Sources */,
 				AA3293671FFE27B600CA77DA /* YZFTHeaderView.m in Sources */,
 				AA32931D1FFE27B600CA77DA /* YZChartTitleView.m in Sources */,
+				1DE3D87E2501D4BC001A1E9A /* YZShareTool.m in Sources */,
 				AAC06BEC239547E000FFCA9D /* YZKy481ChartZuTableView.m in Sources */,
 				AA3292F51FFE27B600CA77DA /* YZSelectBallCell.m in Sources */,
 				1DE61FF822CC4F7600C1490E /* TZGifPhotoPreviewController.m in Sources */,
@@ -10152,6 +10201,7 @@
 				AA3293C91FFE27B700CA77DA /* YZFBMatchDetailStandingsView.m in Sources */,
 				AA74EC5F1FFE17E0003B53AF /* YZHttpTool.m in Sources */,
 				AA74EBBF1FFE17E0003B53AF /* MBProgressHUD+MJ.m in Sources */,
+				1DE3D8742501D40B001A1E9A /* YZShopModel.m in Sources */,
 				1DF418FD22C600A200D57367 /* YZCircleCommentListView.m in Sources */,
 				1DB6AA8A22D31E9700B2D6EF /* YZCustomerServiceViewController.m in Sources */,
 				AA926489224B54E400FCEFC7 /* YZInformationDetailViewController.m in Sources */,
@@ -10561,7 +10611,6 @@
 				AA74E0A61FFE0A0C003B53AF /* YZWinNumberTableViewCell.m in Sources */,
 				AA74EA4C1FFE17DE003B53AF /* NSDate+Category.m in Sources */,
 				AA32936C1FFE27B600CA77DA /* YZScjqCell.m in Sources */,
-				AAD1208120BF9FF900D47F85 /* YZBbOrderDetailTableViewCell.m in Sources */,
 				1DBD8E5E22CB2C250024CF7B /* UIImage+MultiFormat.m in Sources */,
 				AA74EC621FFE17E0003B53AF /* UIViewController+YZNoNetController.m in Sources */,
 				AA74EB4E1FFE17DF003B53AF /* NSObject+MJMember.m in Sources */,
@@ -10791,8 +10840,10 @@
 				AAD1207920BE398100D47F85 /* YZBasketBallBetHeaderView.m in Sources */,
 				1DBD8B2522C9EC5D0024CF7B /* YZCircleCommentListTableViewCell.m in Sources */,
 				1D96B6C623794D9E00F1FC63 /* YZErCodeRechargeViewController.m in Sources */,
+				1DE3D87F2501D4BC001A1E9A /* YZShareTool.m in Sources */,
 				AA74EB761FFE17DF003B53AF /* NSObject+SBJSON.m in Sources */,
 				AA74EC4A1FFE17E0003B53AF /* YZFootBallTool.m in Sources */,
+				1DE3D87A2501D42D001A1E9A /* YZShopInfoViewController.m in Sources */,
 				1DBD8C3A22CB00470024CF7B /* MWCaptionView.m in Sources */,
 				1DBD8E7022CB2C250024CF7B /* NSImage+WebCache.m in Sources */,
 				AA27DA18202193EE0068C9CA /* YZHomePageFunctionItemView.m in Sources */,
@@ -11000,6 +11051,7 @@
 				AA32908C1FFE1D9E00CA77DA /* YZWeChatPublicViewController.m in Sources */,
 				AA74EB961FFE17E0003B53AF /* IQUITextFieldView+Additions.m in Sources */,
 				AA3292F01FFE27B600CA77DA /* YZKsBottomBtn.m in Sources */,
+				1DE3D8752501D40B001A1E9A /* YZShopModel.m in Sources */,
 				AA3293081FFE27B600CA77DA /* YZSsqChartViewController.m in Sources */,
 				AA74EAFA1FFE17DF003B53AF /* HDRecordView.m in Sources */,
 				1DB33E75237D429500463EEE /* YZKy481Math.m in Sources */,

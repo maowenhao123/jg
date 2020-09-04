@@ -78,10 +78,6 @@
             selectdCount ++;
         }
     }
-    if (self.selectedPlayTypeBtnTag == 11 && selectdCount >= 5) {
-        [MBProgressHUD showError:@"至多选择五个号码"];
-        return;
-    }
     
     button.selected = !button.selected;
     if (button.selected) {
