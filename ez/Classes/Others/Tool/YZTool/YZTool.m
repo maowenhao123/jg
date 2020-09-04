@@ -538,11 +538,6 @@ static NSInteger seq = 0;
             UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
             [images addObject:image];
         }
-#elif CS
-        for (int i = 0; i < 10; i++) {
-            UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"RefreshGifHeader%d",i+1]];
-            [images addObject:image];
-        }
 #endif
         [gifHeader setImages:images forState:MJRefreshStateIdle];
         [gifHeader setImages:images forState:MJRefreshStatePulling];

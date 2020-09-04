@@ -607,28 +607,7 @@
         YZLog(@"getCurrentTermData - json = %@",json);
         if(SUCCESS)
         {
-            if(!Jump)//不跳
-            {
-                [self comfirmPay];//支付
-            }else //跳转网页
-            {
-                [MBProgressHUD hideHUDForView:self.view];
-                NSNumber *multiple = [NSNumber numberWithInt:[self.adjustNumberView.textField.text intValue]];//投多少倍
-                NSNumber *amount = [NSNumber numberWithInt:(int)_amountMoney * 100];
-                NSString *number = [self getNumbers];
-#if JG
-                NSString * mcpStr = @"EZmcp";
-#elif ZC
-                NSString * mcpStr = @"ZCmcp";
-#elif CS
-                NSString * mcpStr = @"CSmcp";
-#endif
-                NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&multiple=%@&amount=%@&number=%@&payType=%@&id=%@&channel=%@&childChannel=%@&version=%@&playType=%@&betType=%@&remark=%@",UserId,@"T52",multiple,amount,[number URLEncodedString],@"ACCOUNT",@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],_playType,[self getBetType],mcpStr];
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
-                YZLog(@"url = %@",url);
-                
-                [[UIApplication sharedApplication] openURL:url];
-            }
+            [self comfirmPay];//支付
         }else
         {
             ShowErrorView

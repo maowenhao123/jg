@@ -51,8 +51,6 @@
     self.navigationItem.title = @"九歌彩票";
 #elif ZC
     self.navigationItem.title = @"中彩啦";
-#elif CS
-    self.navigationItem.title = @"财多多";
 #endif
     [self setupChilds];
     [self getShopInfo];

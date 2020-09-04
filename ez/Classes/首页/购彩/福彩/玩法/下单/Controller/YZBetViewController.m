@@ -206,7 +206,7 @@
     {
         [YZBetTool autoChooseKy481WithPlayType:_playType andSelectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
     }
-
+    
     [self.tableView reloadData];//刷新数据
 }
 - (void)refreshViewBeginRefreshing
@@ -221,8 +221,6 @@
 #if JG
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"back_btn_flat" highIcon:@"back_btn_flat" target:self action:@selector(back)];
 #elif ZC
-    self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
-#elif CS
     self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithIcon:@"black_back_bar" highIcon:@"black_back_bar" target:self action:@selector(back)];
 #endif
     
@@ -248,7 +246,7 @@
             [btn setTitle:@"自选号码" forState:UIControlStateNormal];
         }else if(i == 1)
         {
-
+            
             [btn addTarget:self action:@selector(autoChoose) forControlEvents:UIControlEventTouchUpInside];
             [btn setTitle:@"机选一注" forState:UIControlStateNormal];
         }
@@ -305,13 +303,7 @@
                 [confirmBtn setTitle:@"智能追号" forState:UIControlStateNormal];
             }else
             {
-#if JG
                 [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-#elif ZC
-                [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-#elif CS
-                [confirmBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-#endif
             }
         }else
         {
@@ -413,7 +405,7 @@
                 [btn addTarget:self action:@selector(termBtn:) forControlEvents:UIControlEventTouchUpInside];
             }
             [multipleTextField addSubview:btn];
-
+            
             //投注俩字
             UILabel *betLabel = [[UILabel alloc] init];
             betLabel.font = [UIFont systemFontOfSize:YZGetFontSize(28)];
@@ -473,7 +465,7 @@
             self.zhuijiaBtn = nil;
         }
     }
-
+    
     //tableView
     UITableView *tableView = [[UITableView alloc] init];
     self.tableView = tableView;
@@ -570,7 +562,7 @@
     unionbuyModel.amount = amount;
     unionbuyModel.ticketList = ticketList;
     unionbuyModel.gameId = self.gameId;
-
+    
     YZStartUnionBuyViewController * startUnionBuyVC = [[YZStartUnionBuyViewController alloc] initWithGameId:self.gameId amountMoney:(NSInteger)self.amountMoney unionbuyModel:unionbuyModel];
     [self.navigationController pushViewController:startUnionBuyVC animated:YES];
 }
@@ -584,7 +576,7 @@
 }
 - (void)multipleBtn:(UIButton *)btn
 {
-   int multiple = [self.multipleTextField.text intValue];
+    int multiple = [self.multipleTextField.text intValue];
     if(btn.tag == 0 && multiple != 1)//是减小按钮
     {
         multiple--;
@@ -633,9 +625,9 @@
     if (self.multipleBackView.y != multipleBackViewY) {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-                             self.multipleBackView.y -= 31;
-                             self.tableView.height -= 31;
-                         }
+            self.multipleBackView.y -= 31;
+            self.tableView.height -= 31;
+        }
          ];
     }
 }
@@ -646,9 +638,9 @@
     if (self.multipleBackView.y == multipleBackViewY) {
         [UIView animateWithDuration:animateDuration
                          animations:^{
-                             self.multipleBackView.y += 31;
-                             self.tableView.height += 31;
-                         }
+            self.multipleBackView.y += 31;
+            self.tableView.height += 31;
+        }
          ];
     }
 }
@@ -697,9 +689,9 @@
     }
     waitingView;
     NSDictionary *dict = @{
-                           @"cmd":@(8006),
-                           @"userId":UserId
-                           };
+        @"cmd":@(8006),
+        @"userId":UserId
+    };
     [[YZHttpTool shareInstance] requestTarget:self PostWithParams:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self.view];
         if (SUCCESS) {
@@ -726,11 +718,11 @@
 {
     NSDictionary * orderDic = @{@"money":@(self.amountMoney * 100),
                                 @"game":self.gameId
-                                };
+    };
     NSDictionary *dict = @{
-                           @"userId":UserId,
-                           @"order":orderDic,
-                           };
+        @"userId":UserId,
+        @"order":orderDic,
+    };
     [[YZHttpTool shareInstance] requestTarget:self PostWithURL:BaseUrlCoupon(@"/getConsumableList") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (SUCCESS) {;
@@ -746,7 +738,7 @@
             [self showComfirmPayAlertView];
         }
     }failure:^(NSError *error)
-    {
+     {
         [self showComfirmPayAlertView];
     }];
 }
@@ -797,9 +789,9 @@
 {
     [MBProgressHUD showMessage:text_gettingCurrentTerm toView:self.view];
     NSDictionary *dict = @{
-                           @"cmd":@(8026),
-                           @"gameId":self.gameId
-                           };
+        @"cmd":@(8026),
+        @"gameId":self.gameId
+    };
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self.view];
         if(SUCCESS)
@@ -815,7 +807,7 @@
             }else
             {
                 self.currentTermId = [termList lastObject][@"termId"];
-                [self isJump:Jump];
+                [self comfirmPay];//支付
             }
         }else
         {
@@ -827,33 +819,7 @@
         YZLog(@"getCurrentTermData - error = %@",error);
     }];
 }
-- (void)isJump:(BOOL)jump
-{
-    if(!jump)//不跳
-    {
-        [self comfirmPay];//支付
-    }else //跳转网页
-    {
-        [MBProgressHUD hideHUDForView:self.view];
-        NSNumber *multiple = [NSNumber numberWithInt:[self.multipleTextField.text intValue]];//投多少倍
-        NSNumber *amount = [NSNumber numberWithInt:(int)self.amountMoney * 100];
-        NSNumber *termCount = [NSNumber numberWithInt:[self.termTextField.text intValue]];//追期数
-        NSMutableArray *ticketList = self.ticketList;
-        NSString *ticketListJsonStr = [ticketList JSONRepresentation];
-        YZLog(@"ticketListJsonStr = %@",ticketListJsonStr);
-#if JG
-        NSString * mcpStr = @"EZmcp";
-#elif ZC
-        NSString * mcpStr = @"ZCmcp";
-#elif CS
-        NSString * mcpStr = @"CSmcp";
-#endif
-        NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,self.winStopBtn.selected ? @true : @false,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
-        YZLog(@"url:%@",url);
-        [[UIApplication sharedApplication] openURL:url];
-    }
-}
+
 #pragma  mark - 确认支付
 - (void)comfirmPay//支付接口
 {
@@ -864,31 +830,31 @@
     NSDictionary * dict = [NSDictionary dictionary];
     if ([termCount intValue] == 1) {//普通投注
         dict = @{
-                 @"cmd":@(8052),
-                 @"userId":UserId,
-                 @"gameId":self.gameId,
-                 @"termId":self.currentTermId,
-                 @"multiple":multiple,
-                 @"amount":amount,
-                 @"ticketList":ticketList,
-                 @"payType":@"ACCOUNT",
-                 @"startTermId":self.currentTermId,
-                 };
+            @"cmd":@(8052),
+            @"userId":UserId,
+            @"gameId":self.gameId,
+            @"termId":self.currentTermId,
+            @"multiple":multiple,
+            @"amount":amount,
+            @"ticketList":ticketList,
+            @"payType":@"ACCOUNT",
+            @"startTermId":self.currentTermId,
+        };
     }else//追号投注
     {
         dict = @{
-                 @"cmd":@(8050),
-                 @"userId":UserId,
-                 @"gameId":self.gameId,
-                 @"termId":self.currentTermId,
-                 @"multiple":multiple,
-                 @"amount":amount,
-                 @"ticketList":ticketList,
-                 @"payType":@"ACCOUNT",
-                 @"termCount":termCount,
-                 @"startTermId":self.currentTermId,
-                 @"winStop":self.winStopBtn.selected ? @true : @false,
-                 };
+            @"cmd":@(8050),
+            @"userId":UserId,
+            @"gameId":self.gameId,
+            @"termId":self.currentTermId,
+            @"multiple":multiple,
+            @"amount":amount,
+            @"ticketList":ticketList,
+            @"payType":@"ACCOUNT",
+            @"termCount":termCount,
+            @"startTermId":self.currentTermId,
+            @"winStop":self.winStopBtn.selected ? @true : @false,
+        };
     }
     [MBProgressHUD showMessage:text_paying toView:self.view];
     [[YZHttpTool shareInstance] postWithParams:dict success:^(id json) {
@@ -901,7 +867,7 @@
             betSuccessVc.isDismissVC = self.isDismissVC;
             //跳转
             [self.navigationController pushViewController:betSuccessVc animated:YES];
-
+            
             //删除数据库中得所有号码球数据
             [YZStatusCacheTool deleteAllStatus];
             [self.tableView reloadData];
@@ -966,7 +932,7 @@
     }
     NSString *multiple = self.multipleTextField.text;
     NSString *term = self.termTextField.text;
-
+    
     if([self.multipleTextField.text isEqualToString:@""])
     {
         multiple = @"1";
@@ -1001,7 +967,7 @@
         term = @"1";
     }
     NSString *str = [NSString stringWithFormat:@"共 %.2f 元\n%d 注 %@ 倍 %@ 期",_amountMoney,betCount,multiple,term];
-
+    
     NSRange range1 = [str rangeOfString:@"共"];
     NSRange range2 = [str rangeOfString:@"元"];
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:str];

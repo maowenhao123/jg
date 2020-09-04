@@ -301,8 +301,6 @@
         return CGSizeMake(self.width / 2, cellH);
 #elif ZC
         return CGSizeMake(self.width / 3, cellH_zc);
-#elif CS
-        return CGSizeMake(self.width / 3, cellH_zc);
 #endif
     }else if (indexPath.section == 5){
         return CGSizeMake(self.width, informationCell);
@@ -372,11 +370,6 @@
         cell.status = self.gameInfos[indexPath.row];
         cell.index = indexPath.row;
         return cell;
-#elif CS
-        YZZCBuyLotteryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:gameInfoCellId_zc forIndexPath:indexPath];
-        cell.status = self.gameInfos[indexPath.row];
-        cell.index = indexPath.row;
-        return cell;
 #endif
     }else if (indexPath.section == 5)
     {
@@ -438,13 +431,6 @@
 #elif ZC
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {    
-    if (_buyLotteryDelegate && [_buyLotteryDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
-        [_buyLotteryDelegate scrollViewDidScroll:self];
-    }
-}
-#elif CS
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
     if (_buyLotteryDelegate && [_buyLotteryDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [_buyLotteryDelegate scrollViewDidScroll:self];
     }

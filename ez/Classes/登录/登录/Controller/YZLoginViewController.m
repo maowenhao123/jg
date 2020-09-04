@@ -58,10 +58,6 @@
     //初始化界面
     [self setupZCChildViews];
     self.view.backgroundColor = [UIColor whiteColor];
-#elif CS
-    //初始化界面
-    [self setupZCChildViews];
-    self.view.backgroundColor = [UIColor whiteColor];
 #endif
 }
 - (void)back
@@ -275,8 +271,6 @@
     logoImageView.frame = CGRectMake((screenWidth - logoImageViewW) / 2, statusBarH + 50, logoImageViewW, logoImageViewH);
 #if ZC
     logoImageView.image = [UIImage imageNamed:@"login_ad_zc"];
-#elif CS
-    logoImageView.image = [UIImage imageNamed:@"login_ad_cs"];
 #endif
     [self.view addSubview:logoImageView];
     
@@ -645,8 +639,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
 #elif ZC
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
-#elif CS
-    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
 #endif
     UMSocialPlatformType platformType;
     if (btn.tag == 101)

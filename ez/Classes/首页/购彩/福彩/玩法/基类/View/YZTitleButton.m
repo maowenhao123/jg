@@ -30,9 +30,6 @@
 #elif ZC
         [self setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
         self.titleLabel.font = [UIFont systemFontOfSize:17];
-#elif CS
-        [self setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
-        self.titleLabel.font = [UIFont systemFontOfSize:17];
 #endif
 
     }

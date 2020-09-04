@@ -55,8 +55,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
 #elif ZC
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
-#elif CS
-    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
 #endif
     //极光注册
     [JPUSHService setLogOFF];

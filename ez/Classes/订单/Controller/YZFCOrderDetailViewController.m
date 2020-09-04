@@ -203,8 +203,6 @@
         self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@",self.order.gameId]];
 #elif ZC
         self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",self.order.gameId]];
-#elif CS
-        self.logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",self.order.gameId]];
 #endif
     }
     
@@ -523,31 +521,7 @@
                 return;
             }
             self.currentTermId = [termList lastObject][@"termId"];
-            if(!Jump)//不跳
-            {
-                [self comfirmPay];//支付
-            }else //跳转网页
-            {
-                [MBProgressHUD hideHUDForView:self.view];
-                NSNumber *multiple = self.order.multiple;//投多少倍
-                NSNumber *amount = self.order.amount;
-                NSNumber *termCount = @(1);//追期数
-                NSMutableArray *ticketList = self.ticketList;
-                NSString *ticketListJsonStr = [ticketList JSONRepresentation];
-                YZLog(@"ticketListJsonStr = %@",ticketListJsonStr);
-#if JG
-                NSString * mcpStr = @"EZmcp";
-#elif ZC
-                NSString * mcpStr = @"ZCmcp";
-#elif CS
-                NSString * mcpStr = @"CSmcp";
-#endif
-                NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
-                YZLog(@"url = %@",url);
-                
-                [[UIApplication sharedApplication] openURL:url];
-            }
+            [self comfirmPay];//支付
         }else
         {
             ShowErrorView
@@ -692,8 +666,6 @@
     UIImage * image = [UIImage imageNamed:@"logo"];
 #elif ZC
     UIImage * image = [UIImage imageNamed:@"logo1"];
-#elif CS
-    UIImage * image = [UIImage imageNamed:@"logo1"];
 #endif
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
     shareObject.webpageUrl = json[@"url"];
@@ -702,8 +674,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
 #elif ZC
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
-#elif CS
-    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
 #endif
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {

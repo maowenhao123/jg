@@ -367,8 +367,6 @@
     UIImage *thumImage = [UIImage imageNamed:@"logo"];
 #elif ZC
     UIImage *thumImage = [UIImage imageNamed:@"logo1"];
-#elif CS
-    UIImage *thumImage = [UIImage imageNamed:@"logo1"];
 #endif
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.json[@"seoTitle"] descr:self.json[@"seoDesc"] thumImage:thumImage];
     shareObject.webpageUrl = self.json[@"url"];
@@ -377,8 +375,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
 #elif ZC
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
-#elif CS
-    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
 #endif
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {

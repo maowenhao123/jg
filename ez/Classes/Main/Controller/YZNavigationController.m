@@ -63,21 +63,6 @@
     textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
     [navBar setTitleTextAttributes:textAttrs];
-#elif CS
-    // 设置背景
-    [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
-    navBar.shadowImage = nil;
-    //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
-    //设置颜色
-    navBar.tintColor = YZBlackTextColor;
-    
-    // 设置标题属性
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
-    [navBar setTitleTextAttributes:textAttrs];
 #endif
 }
 
@@ -96,18 +81,6 @@
     highlighteTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
     [barItem setTitleTextAttributes:highlighteTextAttrs forState:UIControlStateHighlighted];
 #elif ZC
-    UIBarButtonItem *barItem = [UIBarButtonItem appearance];
-    
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-    [barItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
-    
-    NSMutableDictionary *disabledTextAttrs = [NSMutableDictionary dictionary];
-    disabledTextAttrs[NSForegroundColorAttributeName] = YZBlackTextColor;
-    disabledTextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-    [barItem setTitleTextAttributes:disabledTextAttrs forState:UIControlStateHighlighted];
-#elif CS
     UIBarButtonItem *barItem = [UIBarButtonItem appearance];
     
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
@@ -177,13 +150,12 @@
 #pragma mark - UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZHomePageViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZRRHomePageViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZCSMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZRRMineViewController") class]]  || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZUserCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZMineCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZFBMatchDetailViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZShopInfoViewController") class]];
+    BOOL hiddenNavBar = [viewController isKindOfClass:[NSClassFromString(@"YZHomePageViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZRRHomePageViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZZCMineViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZRRMineViewController") class]]  || [viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZUserCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZMineCircleViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZFBMatchDetailViewController") class]] || [viewController isKindOfClass:[NSClassFromString(@"YZShopInfoViewController") class]];
 #if JG
     if ([viewController isKindOfClass:[NSClassFromString(@"YZLoginViewController") class]]) {
         hiddenNavBar = NO;
     }
 #elif ZC
-#elif CS
 #endif
     [navigationController setNavigationBarHidden:hiddenNavBar animated:YES];
 }

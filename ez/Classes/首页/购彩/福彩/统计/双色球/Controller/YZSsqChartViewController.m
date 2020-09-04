@@ -106,12 +106,6 @@
     navBar.tintColor = YZBlackTextColor;
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-#elif CS
-    // 设置背景
-    [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
-    navBar.tintColor = YZBlackTextColor;
-    //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 #endif
     [navBar setShadowImage:nil];
     //销毁定时器
@@ -155,8 +149,6 @@
 #if JG
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
 #elif ZC
-    [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
-#elif CS
     [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
 #endif
     if (self.isDlt) {
@@ -675,8 +667,6 @@
 #if JG
     webVC.title = @"九歌彩票";
 #elif ZC
-    webVC.title = @"中彩啦";
-#elif CS
     webVC.title = @"中彩啦";
 #endif
     [self.navigationController pushViewController:webVC animated:YES];

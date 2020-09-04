@@ -375,8 +375,6 @@
     NSNumber * cmd = @(10910);
 #elif ZC
     NSNumber * cmd = @(10920);
-#elif CS
-    NSNumber * cmd = @(10920);
 #endif
     NSDictionary *dict = [NSDictionary dictionary];
     if (type == 1) {//密码验证

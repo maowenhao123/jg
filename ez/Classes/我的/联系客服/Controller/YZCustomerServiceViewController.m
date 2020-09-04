@@ -222,8 +222,6 @@
         NSString *urlStr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web", @"4007001898"];
 #elif ZC
         NSString *urlStr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web", @"1843013161"];
-#elif CS
-        NSString *urlStr = [NSString stringWithFormat:@"mqq://im/chat?chat_type=wpa&uin=%@&version=1&src_type=web", @"1843013161"];
 #endif
         NSURL *url = [NSURL URLWithString:urlStr];
         UIWebView *webView = [UIWebView new];
@@ -281,9 +279,6 @@
         [_titleAttStrings addObject:attString2];
         [_titleAttStrings addObject:attString3];
         [_titleAttStrings addObject:attString4];
-#elif CS
-        [_titleAttStrings addObject:attString1];
-        [_titleAttStrings addObject:attString3];
 #endif
     }
     return _titleAttStrings;
@@ -295,8 +290,6 @@
         _subTities = @[@"点击发起咨询", @"点击发起聊天", @"点击拨打电话"];
 #elif ZC
         _subTities = @[@"点击发起咨询", @"点击发起聊天", @"点击复制微信号", @"点击拨打电话"];
-#elif CS
-        _subTities = @[@"点击发起咨询", @"点击拨打电话"];
 #endif
     }
     return _subTities;
@@ -308,8 +301,6 @@
         _logos = @[@"contact_customerService_chat", @"contact_customerService_qq", @"contact_customerService_phone"];
 #elif ZC
         _logos = @[@"contact_customerService_chat", @"contact_customerService_qq", @"contact_customerService_weixin", @"contact_customerService_phone"];
-#elif CS
-        _logos = @[@"contact_customerService_chat", @"contact_customerService_phone"];
 #endif
     }
     return _logos;

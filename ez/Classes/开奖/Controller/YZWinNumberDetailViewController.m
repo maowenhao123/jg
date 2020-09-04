@@ -149,9 +149,6 @@
 #elif ZC
     //设置图片
     UIImage *lotteryImage = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",term.gameId]];
-#elif CS
-    //设置图片
-    UIImage *lotteryImage = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc",term.gameId]];
 #endif
     self.lotteryImageView.image = lotteryImage;
     

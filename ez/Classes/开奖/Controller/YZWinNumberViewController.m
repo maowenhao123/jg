@@ -133,8 +133,6 @@
         status.lotteryImage = [NSString stringWithFormat:@"icon_%@",gameId];
 #elif ZC
         status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
-#elif CS
-        status.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId];
 #endif
         status.lotteryName = [YZTool gameIdNameDict][gameId];
         for(int j = 0; j < self.termList.count;j++)
@@ -184,8 +182,6 @@
         status1.lotteryImage = [NSString stringWithFormat:@"icon_%@",gameId1];
 #elif ZC
         status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
-#elif CS
-        status1.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId1];
 #endif
         status1.lotteryName = [YZTool gameIdNameDict][gameId1];
         statusFrame1.status = status1;
@@ -198,8 +194,6 @@
 #if JG
         status2.lotteryImage = [NSString stringWithFormat:@"icon_%@",gameId2];
 #elif ZC
-        status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
-#elif CS
         status2.lotteryImage = [NSString stringWithFormat:@"icon_%@_zc",gameId2];
 #endif
         status2.lotteryName = [YZTool gameIdNameDict][gameId2];

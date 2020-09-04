@@ -130,19 +130,13 @@
             }
             NSString *currentTermId = [termList lastObject][@"termId"];
             _param.termId = currentTermId;
-            if(!Jump)//不跳
+            [MBProgressHUD showMessage:text_paying toView:nil];
+            if(self.isParticipateUnionBuy)//参与合买
             {
-                [MBProgressHUD showMessage:text_paying toView:nil];
-                if(self.isParticipateUnionBuy)//参与合买
-                {
-                    [self comfirmPaticipateUnionBuy];
-                }else if(self.isStartUnionBuy)//发起合买
-                {
-                    [self comfirmStartUnionBuy];
-                }
-            }else //跳转网页
+                [self comfirmPaticipateUnionBuy];
+            }else if(self.isStartUnionBuy)//发起合买
             {
-                [MBProgressHUD hideHUD];
+                [self comfirmStartUnionBuy];
             }
         }else
         {

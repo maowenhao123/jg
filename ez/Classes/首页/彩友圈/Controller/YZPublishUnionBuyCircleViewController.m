@@ -164,8 +164,6 @@
     logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", self.unionbuyModel.gameId]];
 #elif ZC
     logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", self.unionbuyModel.gameId]];
-#elif CS
-    logoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@_zc", self.unionbuyModel.gameId]];
 #endif
     [lotteryView addSubview:logoImageView];
     

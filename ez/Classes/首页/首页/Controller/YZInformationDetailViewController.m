@@ -63,8 +63,6 @@
             image = [UIImage imageNamed:@"logo"];
 #elif ZC
             image = [UIImage imageNamed:@"logo1"];
-#elif CS
-            image = [UIImage imageNamed:@"logo1"];
 #endif
         }
         UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.informationModel.title descr:self.informationModel.intro thumImage:image];
@@ -73,8 +71,6 @@
 #if JG
         [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
 #elif ZC
-        [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
-#elif CS
         [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
 #endif
         //调用分享接口

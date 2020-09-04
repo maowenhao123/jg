@@ -184,8 +184,6 @@
         [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
     #elif ZC
         [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
-    #elif CS
-        [self.titleBtn setImage:[UIImage imageNamed:@"down_arrow_black"] forState:UIControlStateNormal];
     #endif
     [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleBtn;
@@ -247,8 +245,6 @@
     #if JG
         webVC.title = @"九歌彩票";
     #elif ZC
-        webVC.title = @"中彩啦";
-    #elif CS
         webVC.title = @"中彩啦";
     #endif
     [self.navigationController pushViewController:webVC animated:YES];

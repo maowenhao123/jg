@@ -233,7 +233,8 @@
         if(SUCCESS)
         {
             if (self.isJC) {
-                [self isJump:Jump];
+                [MBProgressHUD showMessage:text_paying toView:self.view];
+                [self comfirmPayJC];//竞彩支付
             }else
             {
                 NSArray *termList = json[@"game"][@"termList"];
@@ -243,7 +244,14 @@
                     return;
                 }
                 self.currentTermId = [termList lastObject][@"termId"];
-                [self isJump:Jump];
+                [MBProgressHUD showMessage:text_paying toView:self.view];
+                if (self.isSFC)//胜负彩
+                {
+                    [self comfirmPaySFC];
+                }else
+                {
+                    [self comfirmPay];//支付
+                }
             }
         }else
         {
@@ -255,64 +263,7 @@
         YZLog(@"getCurrentTermData - error = %@",error);
     }];
 }
-- (void)isJump:(BOOL)jump
-{
-    if(!jump)//不跳
-    {
-        [MBProgressHUD showMessage:text_paying toView:self.view];
-        if (self.isJC) {
-            [self comfirmPayJC];//竞彩支付
-        }else if (self.isSFC)//胜负彩
-        {
-            [self comfirmPaySFC];
-        }else
-        {
-            [self comfirmPay];//支付
-        }
-    }else //跳转网页
-    {
-#if JG
-        NSString * mcpStr = @"EZmcp";
-#elif ZC
-        NSString * mcpStr = @"ZCmcp";
-#elif CS
-        NSString * mcpStr = @"CSmcp";
-#endif
-        if (self.isJC) {
-            [MBProgressHUD hideHUDForView:self.view];
-            NSNumber *multiple = [NSNumber numberWithInt:self.multiple];//投多少倍
-            NSNumber *amount = [NSNumber numberWithInt:(int)self.amountMoney * 100];
-            NSString *number = self.numbers;
-            NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&multiple=%@&amount=%@&number=%@&payType=%@&id=%@&channel=%@&childChannel=%@&version=%@&playType=%@&betType=%@&remark=%@",UserId,self.gameId,multiple,amount,[number URLEncodedString],@"ACCOUNT",@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],self.playType,self.betType,mcpStr];
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
-            YZLog(@"url = %@",url);
-            
-            [[UIApplication sharedApplication] openURL:url];
-        }else if (self.isSFC)
-        {
-            [MBProgressHUD hideHUDForView:self.view];
-            NSNumber *multiple = [NSNumber numberWithInt:self.multiple];//投多少倍
-            NSNumber *amount = [NSNumber numberWithInt:(int)self.amountMoney * 100];
-            NSMutableArray *ticketList = self.ticketList;
-            NSString *ticketListJsonStr = [ticketList JSONRepresentation];
-            YZLog(@"ticketListJsonStr = %@",ticketListJsonStr);
-            NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&id=%@&channel=%@&childChannel=%@&version=%@&playType=%@&termCount=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],_playType,@(1),mcpStr];
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
-            [[UIApplication sharedApplication] openURL:url];
-        }else
-        {
-            [MBProgressHUD hideHUDForView:self.view];
-            NSNumber *multiple = [NSNumber numberWithInt:self.multiple];//投多少倍
-            NSNumber *amount = [NSNumber numberWithInt:(int)self.amountMoney * 100];
-            NSMutableArray *ticketList = self.ticketList;
-            NSString *ticketListJsonStr = [ticketList JSONRepresentation];
-            YZLog(@"ticketListJsonStr = %@",ticketListJsonStr);
-            NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",@1,self.currentTermId,@false,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
-            [[UIApplication sharedApplication] openURL:url];
-        }
-    }
-}
+
 #pragma  mark - 确认支付
 - (void)comfirmPay//支付接口
 {

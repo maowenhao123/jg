@@ -239,30 +239,5 @@
 #define TYRZAPPId @"300011887762"
 #define TYRZAPPKey @"E7F678DC2555A94DE78653FE3BE916F1"
 
-//------------------------- 财多多 ----------------------------
-#elif CS
-//微信
-#define WXAppIdOld @"wxdbc628a07b9c8b89"
-#define WXAppSecretOld @"312773564007871247f8966fdb449872"
-
-#define WXAppIdNew @"wxa62072532bc40982"
-#define WXAppSecretNew @"36d382b5edacbd37705aad77338f8806"
-//极光
-#define JPushId @"2f029f90fb3d9172bc916604"
-//友盟
-#define UMengId @"5bfcfd4db465f504b200009c"
-//QQ
-#define QQAPPId @"1108002026"
-#define QQAppSecret @"rEoiraeTfKJzSfmU"
-//新浪微博
-#define SinaAPPId @"1477364888"
-#define SinaAppSecret @"7393ae25d46932c98c3d80c62eb9aa81"
-//环信
-#define CECAppKey @"1409181129068592#kefuchannelapp61058"
-#define CECTenantId @"89904"
-#define CECClientID @"YXA6X5SX0PN_EeiNxw07luisBA"
-#define CECClientSecret @"YXA69TygCsH1sE_JTXQ8piRRBwMv2M8"
-#define CECIM @"kefuchannelimid_074140"
-
 #endif
 

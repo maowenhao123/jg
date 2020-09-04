@@ -29,13 +29,10 @@ typedef enum : NSUInteger {
     ChooseNumberByLuckyNumber = 3,
 } ChooseNumberType;
 
-#define Jump  [json[@"status"] isEqualToNumber:@(1)]  //1跳0不跳
 #if JG
 #define mainChannel @"local"
 #elif ZC
 #define mainChannel @"zhongcai"
-#elif CS
-#define mainChannel @"caidd"
 #endif
 
 #define jumpURLStr @"http://html5.51mcp.com/ios/confirm.jsp"
@@ -49,8 +46,6 @@ typedef enum : NSUInteger {
 //#define childChannel @"taylor"
 //#elif ZC
 //#define childChannel @"zc_taylor"
-//#elif CS
-//#define childChannel @"caidd_ios_taylor"
 //#endif
 
 //正式环境
@@ -63,8 +58,6 @@ typedef enum : NSUInteger {
 //#define childChannel @"ios_taylor"
 #elif ZC
 #define childChannel @"zc_ios_0001"
-#elif CS
-#define childChannel @"zc_ios"
 #endif
 
 ////测试环境
@@ -75,8 +68,6 @@ typedef enum : NSUInteger {
 //#if JG
 //#define childChannel @"ios_test"
 //#elif ZC
-//#define childChannel @"zhongcai_ios"
-//#elif CS
 //#define childChannel @"zhongcai_ios"
 //#endif
 

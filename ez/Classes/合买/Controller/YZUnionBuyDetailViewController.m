@@ -841,8 +841,6 @@
     UIImage * image = [UIImage imageNamed:@"logo"];
 #elif ZC
     UIImage * image = [UIImage imageNamed:@"logo1"];
-#elif CS
-    UIImage * image = [UIImage imageNamed:@"logo1"];
 #endif
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:image];
     YZUser *user = [YZUserDefaultTool user];
@@ -853,8 +851,6 @@
     [WXApi registerApp:WXAppIdOld withDescription:@"九歌彩票"];
 #elif ZC
     [WXApi registerApp:WXAppIdOld withDescription:@"中彩啦"];
-#elif CS
-    [WXApi registerApp:WXAppIdOld withDescription:@"财多多"];
 #endif
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {

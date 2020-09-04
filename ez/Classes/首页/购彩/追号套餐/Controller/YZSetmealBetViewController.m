@@ -84,7 +84,7 @@
                 self.currentTermId = [termList lastObject][@"termId"];
             }
             if (isPay) {
-                [self isJump:Jump];
+                [self comfirmPay];//支付
             }else
             {
                 [self getChasePlanData];
@@ -515,8 +515,6 @@
         NSString * mcpStr = @"EZmcp";
 #elif ZC
         NSString * mcpStr = @"ZCmcp";
-#elif CS
-        NSString * mcpStr = @"CSmcp";
 #endif
         NSString *param = [NSString stringWithFormat:@"userId=%@&gameId=%@&termId=%@&multiple=%@&amount=%@&ticketList=%@&payType=%@&termCount=%@&startTermId=%@&winStop=%@&id=%@&channel=%@&childChannel=%@&version=%@&remark=%@",UserId,self.gameId,self.currentTermId,multiple,amount,[ticketListJsonStr URLEncodedString],@"ACCOUNT",termCount,self.currentTermId,@false,@"1407305392008",mainChannel,childChannel,[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],mcpStr];
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@",jumpURLStr,param]];
