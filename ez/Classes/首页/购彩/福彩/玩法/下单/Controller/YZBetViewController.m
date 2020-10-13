@@ -196,6 +196,9 @@
     }else if([self.gameId isEqualToString:@"T02"])//七星彩
     {
         [YZBetTool autoChooseQxc];
+    }else if([self.gameId isEqualToString:@"T12"])//七星彩
+    {
+        [YZBetTool autoChooseNewQxc];
     }else if([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])//11选5
     {
         [YZBetTool autoChoose11x5WithPlayType:_playType andSelectedPlayTypeBtnTag:self.selectedPlayTypeBtnTag];
@@ -906,6 +909,9 @@
     {
         arr = [YZBetTool getPlwTicketList];
     }else if ([self.gameId isEqualToString:@"T02"])//七星彩
+    {
+        arr = [YZBetTool getQxcTicketList];
+    }else if ([self.gameId isEqualToString:@"T12"])//七星彩
     {
         arr = [YZBetTool getQxcTicketList];
     }else if ([self.gameId isEqualToString:@"T05"] || [self.gameId isEqualToString:@"T61"] || [self.gameId isEqualToString:@"T62"] || [self.gameId isEqualToString:@"T63"] || [self.gameId isEqualToString:@"T64"])//11选5

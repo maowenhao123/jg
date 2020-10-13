@@ -168,6 +168,7 @@
         
         //开奖号码
         NSString *winNumberStr = [self.termList[i][@"winNumber"] stringByReplacingOccurrencesOfString:@"|" withString:@","];
+        winNumberStr = [winNumberStr stringByReplacingOccurrencesOfString:@"#" withString:@","];
         NSArray *winNumbers = [winNumberStr componentsSeparatedByString:@","];
         NSMutableArray * lotteryNumberInfos = [NSMutableArray array];
         for (int j = 0; j < winNumbers.count; j++) {
@@ -221,7 +222,7 @@
     }else if([gameId isEqualToString:@"F01"])
     {
         blueBallCount = 1;
-    }else if([gameId isEqualToString:@"F03"])
+    }else if([gameId isEqualToString:@"F03"] || [gameId isEqualToString:@"T12"])
     {
         blueBallCount = 1;
     }else

@@ -611,7 +611,7 @@
     }else if([gameId isEqualToString:@"F01"])
     {
         blueBallCount = 1;
-    }else if([gameId isEqualToString:@"F03"])
+    }else if([gameId isEqualToString:@"F03"] || [gameId isEqualToString:@"T12"])
     {
         blueBallCount = 1;
     }else

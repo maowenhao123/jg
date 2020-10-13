@@ -26,6 +26,7 @@
 + (void)autoChooseSsq;
 //机选七星彩
 + (void)autoChooseQxc;
++ (void)autoChooseNewQxc;
 //机选排列五
 + (void)autoChoosePlw;
 //机选排列三

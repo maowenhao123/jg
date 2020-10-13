@@ -189,7 +189,7 @@
 - (void)getGameInfoDataWith:(MJRefreshGifHeader *)header
 {
     NSDictionary *dict = @{
-                           @"version":@"0.0.8",
+                           @"version":@"0.0.9",
                            };
     [[YZHttpTool shareInstance] postWithURL:BaseUrlSalesManager(@"/getGameInfoList") params:dict success:^(id json) {
         [MBProgressHUD hideHUDForView:self];

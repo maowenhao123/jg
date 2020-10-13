@@ -22,6 +22,7 @@
 #import "YZScjqViewController.h"
 #import "YZKsViewController.h"
 #import "YZSchemeSetmealViewController.h"
+#import "YZNewQxcViewController.h"
 #import "JPUSHService.h"
 #import "YZValidateTool.h"
 
@@ -94,6 +95,7 @@ static NSDictionary * bankDicInfo;
             @"F04" : @{@"01" : @"三不同",@"02" : @"二同单选",@"03" : @"三同单选",@"04" : @"和值",@"05" : @"二不同",@"06" : @"二同复选",@"07" : @"三同通选",@"08" : @"三连通选"},
             @"T01" : @{@"00" : @"", @"05" : @"追加"},
             @"T02" : @{@"00" : @""},
+            @"T12" : @{@"00" : @""},
             @"T03" : @{@"01" : @"直选", @"04" : @"组选", @"02" : @"组选三", @"03" : @"组选六"},
             @"T04" : @{@"00" : @""},
             @"T05" : @{@"21" : @"任选一", @"22" : @"任选二", @"23" : @"任选三", @"24" : @"任选四", @"25" : @"任选五", @"26" : @"任选六", @"27" : @"任选七", @"28" : @"任选八", @"29" : @"前二组选", @"30" : @"前二直选", @"31" : @"前三组选", @"32" : @"前三直选",},
@@ -127,6 +129,7 @@ static NSDictionary * bankDicInfo;
             @"T64":@"开心11选5",
             @"F01":@"双色球",
             @"T02":@"七星彩",
+            @"T12":@"7星彩",
             @"T04":@"排列五",
             @"F02":@"福彩3D",
             @"F03":@"七乐彩",
@@ -164,6 +167,7 @@ static NSDictionary * bankDicInfo;
             @"T06":[YZKy481ViewController class],
             @"F01":[YZSsqViewController class],
             @"T02":[YZQxcViewController class],
+            @"T12":[YZNewQxcViewController class],
             @"T04":[YZPlwViewController class],
             @"F02":[YZFucai3DViewController class],
             @"F03":[YZQilecaiViewController class],

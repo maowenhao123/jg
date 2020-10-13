@@ -146,6 +146,7 @@
                 status.lotteryNumber = self.termList[j][@"winNumber"];
                 //开奖号码
                 NSString *winNumberStr = [self.termList[j][@"winNumber"] stringByReplacingOccurrencesOfString:@"|" withString:@","];
+                winNumberStr = [winNumberStr stringByReplacingOccurrencesOfString:@"#" withString:@","];
                 NSArray *winNumbers = [winNumberStr componentsSeparatedByString:@","];
                 NSMutableArray * lotteryNumberInfos = [NSMutableArray array];
                 for (int k = 0; k < winNumbers.count; k++) {
@@ -228,7 +229,7 @@
     }else if([gameId isEqualToString:@"F01"])
     {
         blueBallCount = 1;
-    }else if([gameId isEqualToString:@"F03"])
+    }else if([gameId isEqualToString:@"F03"] || [gameId isEqualToString:@"T12"])
     {
         blueBallCount = 1;
     }else

@@ -27,6 +27,8 @@
 		1D5029EE239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029EC239603DC006613E1 /* YZKy481ChartZuTableViewCell.m */; };
 		1D5029F223960DB2006613E1 /* YZKy481ChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */; };
 		1D5029F323960DB2006613E1 /* YZKy481ChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */; };
+		1D6D6B8A253536F100A38AAC /* YZNewQxcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D6B89253536F100A38AAC /* YZNewQxcViewController.m */; };
+		1D6D6B8B253536F100A38AAC /* YZNewQxcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D6B89253536F100A38AAC /* YZNewQxcViewController.m */; };
 		1D76806422DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806522DC4F9D007C1154 /* YZServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */; };
 		1D76806C22DC505A007C1154 /* YZServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76806B22DC505A007C1154 /* YZServiceModel.m */; };
@@ -1642,6 +1644,8 @@
 		1D5029EC239603DC006613E1 /* YZKy481ChartZuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChartZuTableViewCell.m; sourceTree = "<group>"; };
 		1D5029F023960DB2006613E1 /* YZKy481ChartLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ChartLineView.h; sourceTree = "<group>"; };
 		1D5029F123960DB2006613E1 /* YZKy481ChartLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481ChartLineView.m; sourceTree = "<group>"; };
+		1D6D6B88253536F100A38AAC /* YZNewQxcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZNewQxcViewController.h; sourceTree = "<group>"; };
+		1D6D6B89253536F100A38AAC /* YZNewQxcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZNewQxcViewController.m; sourceTree = "<group>"; };
 		1D76806222DC4F9D007C1154 /* YZServiceListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceListViewController.h; sourceTree = "<group>"; };
 		1D76806322DC4F9D007C1154 /* YZServiceListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZServiceListViewController.m; sourceTree = "<group>"; };
 		1D76806A22DC505A007C1154 /* YZServiceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZServiceModel.h; sourceTree = "<group>"; };
@@ -3775,6 +3779,8 @@
 			children = (
 				AA32912E1FFE27B600CA77DA /* YZQxcViewController.h */,
 				AA3291431FFE27B600CA77DA /* YZQxcViewController.m */,
+				1D6D6B88253536F100A38AAC /* YZNewQxcViewController.h */,
+				1D6D6B89253536F100A38AAC /* YZNewQxcViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -7846,6 +7852,7 @@
 						};
 					};
 					CE58B9481DE58BF80033B300 = {
+						DevelopmentTeam = 65FQR43XBY;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -8527,6 +8534,7 @@
 				1D5029E823950609006613E1 /* YZKy481ChartRenTableViewCell.m in Sources */,
 				1DBD8E4522CB2C250024CF7B /* SDWebImageCoder.m in Sources */,
 				AA74EA131FFE17DE003B53AF /* NSString+YZ.m in Sources */,
+				1D6D6B8A253536F100A38AAC /* YZNewQxcViewController.m in Sources */,
 				AA74EC5B1FFE17E0003B53AF /* YZUserDefaultTool.m in Sources */,
 				1DBD8C6F22CB00470024CF7B /* PSTCollectionView.m in Sources */,
 				1DE61FEF22CC4F7600C1490E /* TZImageManager.m in Sources */,
@@ -9026,6 +9034,7 @@
 				A99D300C206E0F9000E38EAA /* YZGuideModel.m in Sources */,
 				1DCD87A42399ED92006D9269 /* YZ11x5ChartTableView.m in Sources */,
 				CE58B9AD1DE58BF80033B300 /* main.m in Sources */,
+				1D6D6B8B253536F100A38AAC /* YZNewQxcViewController.m in Sources */,
 				AA74EB3A1FFE17DF003B53AF /* MJMember.m in Sources */,
 				AA32910B1FFE21D400CA77DA /* YZLoginViewController.m in Sources */,
 				AA32930A1FFE27B600CA77DA /* YZChartStatus.m in Sources */,
@@ -9674,12 +9683,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.9.4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9737,7 +9746,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4ae371d6-63b1-4a38-a3e2-ca3e8af21008";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = zccp_dev_61;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -9755,7 +9764,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.9.4;
@@ -9815,7 +9824,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8520864a-34db-4c77-88b4-1bdbb12b15e7";
-				PROVISIONING_PROFILE_SPECIFIER = zc_adhoc_577;
+				PROVISIONING_PROFILE_SPECIFIER = zccp_adHoc_61;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -9832,7 +9841,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ez/zc.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.9.4;
@@ -9892,7 +9901,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cd768b6-a0d1-40b1-942a-27fcfe2227d0";
-				PROVISIONING_PROFILE_SPECIFIER = zc_adHoc_58;
+				PROVISIONING_PROFILE_SPECIFIER = zccp_adHoc_61;
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

@@ -29,7 +29,11 @@
         [muStr appendString:[NSString stringWithFormat:@"%@ [%@]\n",str,playBetName]];
         muStr = [[muStr stringByReplacingOccurrencesOfString:@"," withString:@" "] mutableCopy];
         muStr = [[muStr stringByReplacingOccurrencesOfString:@"|" withString:@" | "] mutableCopy];
-                
+        if ([_order.gameId isEqualToString:@"T12"])
+        {
+            muStr = [[muStr stringByReplacingOccurrencesOfString:@"#" withString:@" # "] mutableCopy];
+        }
+        
         NSMutableAttributedString *attStr_ = [[NSMutableAttributedString alloc] initWithString:muStr];
         //中奖号码变色
         if (_order.winNumber.length > 0) {//开奖后

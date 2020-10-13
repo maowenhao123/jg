@@ -493,6 +493,41 @@
     //存储一组号码数据
     [YZStatusCacheTool saveStatus:status];
 }
++ (void)autoChooseNewQxc//机选七星彩
+{
+    NSMutableString *muStr = [NSMutableString string];
+    NSString *lastBetStr = @"";
+    while (muStr.length < 14) {
+        int random = 0;
+        if (muStr.length < 12) {
+            random = arc4random() % 10;
+        }else
+        {
+            random = arc4random() % 15;
+            lastBetStr = [NSString stringWithFormat:@"%d", random];
+        }
+        if (muStr.length < 10) {
+            [muStr appendFormat:@"%d|", random];
+        }else
+        {
+            [muStr appendFormat:@"%d#", random];
+        }
+    }
+    if (muStr.length > 0) {
+        [muStr deleteCharactersInRange:NSMakeRange(muStr.length-1, 1)];//去掉最后一个逗号
+    }
+    [muStr appendString:@"[单式1注]"];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:muStr];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZRedTextColor range:NSMakeRange(0, 11)];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZBlueBallColor range:NSMakeRange(11, lastBetStr.length + 1)];
+    [attStr addAttribute:NSForegroundColorAttributeName value:YZGrayTextColor range:NSMakeRange(12 + lastBetStr.length, 6)];
+    YZBetStatus *status = [[YZBetStatus alloc] init];
+    status.labelText = attStr;
+    status.betCount = 1;
+    CGSize labelSize = [muStr sizeWithFont:[UIFont systemFontOfSize:YZGetFontSize(30)] maxSize:CGSizeMake(screenWidth - 2 * YZMargin -  5 - 18, MAXFLOAT)];
+    status.cellH = labelSize.height + 10 > 45 ? labelSize.height + 10 : 45;
+    [YZStatusCacheTool saveStatus:status];
+}
 + (void)autoChoosePlw//机选排列五
 {
     NSMutableSet *wanSet = [NSMutableSet set];
