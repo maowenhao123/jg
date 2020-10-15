@@ -15,53 +15,5 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5544D392-E2ED-4B2E-8A50-6723BDBB940B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ez/Classes/Others/Tool/YZTool/YZBetTool.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "976"
-            endingLineNumber = "976"
-            landmarkName = "+getDltTicketListWithZhuijia:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5544D392-E2ED-4B2E-8A50-6723BDBB940B - 5dd619534a74a56c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[YZBetTool getDltTicketListWithZhuijia:]"
-                  moduleName = "zc"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dahe/haha/jg/ez/Classes/Others/Tool/YZTool/YZBetTool.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "976"
-                  endingLineNumber = "976"
-                  offsetFromSymbolStart = "292">
-               </Location>
-               <Location
-                  uuid = "5544D392-E2ED-4B2E-8A50-6723BDBB940B - 5dd619534a74a56c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[YZBetTool getDltTicketListWithZhuijia:]"
-                  moduleName = "zc"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dahe/haha/jg/ez/Classes/Others/Tool/YZTool/YZBetTool.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "976"
-                  endingLineNumber = "976"
-                  offsetFromSymbolStart = "324">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

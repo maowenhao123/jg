@@ -350,7 +350,7 @@
                     composeCount = [YZMathTool getCountWithN:(int)count2 andM:2];
                 }else if (count1 == 2)
                 {
-                    composeCount = count2 * (count2 - 1);
+                    composeCount = count2;
                 }
             }
         }else if (selectedPlayTypeBtnTag == 13)

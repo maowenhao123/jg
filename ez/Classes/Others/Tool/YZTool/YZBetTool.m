@@ -981,7 +981,7 @@
         if([temp rangeOfString:@"单式"].location != NSNotFound)//说明号码是单式
         {
             [danshiArr addObject:temp1];
-        }else if([temp rangeOfString:@"复式"].location != NSNotFound)//说明号码是复式
+        }else if([temp rangeOfString:@"复式"].location != NSNotFound || [temp rangeOfString:@"全复"].location != NSNotFound) //说明号码是复式
         {
             NSDictionary *dict = @{@"numbers":temp1,
                                    @"betType":@"01",

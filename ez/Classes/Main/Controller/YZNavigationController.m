@@ -53,7 +53,12 @@
     [navBar setBackgroundImage:[UIImage ImageFromColor:[UIColor whiteColor] WithRect:CGRectMake(0, 0, screenWidth, statusBarH + navBarH)] forBarMetrics:UIBarMetricsDefault];
     navBar.shadowImage = nil;
     //设置状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    if (@available(iOS 13.0, *)) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+    } else
+    {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    }
     
     //设置颜色
     navBar.tintColor = YZBlackTextColor;
@@ -110,6 +115,7 @@
     }
     [super pushViewController:viewController animated:animated];
 }
+
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated
 {
     UIViewController *vc = [super popViewControllerAnimated:animated];

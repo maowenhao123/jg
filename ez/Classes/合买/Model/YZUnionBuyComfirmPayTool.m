@@ -107,7 +107,7 @@
 }
 - (void)gotoRecharge
 {
-    YZRechargeListViewController *rechargeVc = [[YZRechargeListViewController alloc] init];
+    YZRechargeListViewController *rechargeVc = [[YZRechargeListViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.sourceController.navigationController pushViewController:rechargeVc animated:YES];
 }
 //获取当前期信息

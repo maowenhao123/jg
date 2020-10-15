@@ -100,7 +100,7 @@
             [self.viewController presentViewController:nav animated:YES completion:nil];
             return;
         }
-        YZRechargeListViewController * rechargeVC = [[YZRechargeListViewController alloc] init];
+        YZRechargeListViewController * rechargeVC = [[YZRechargeListViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [self.viewController.navigationController pushViewController:rechargeVC animated:YES];
     }else if ([self.functionModel.type isEqualToString:@"COUPON"])//彩券
     {

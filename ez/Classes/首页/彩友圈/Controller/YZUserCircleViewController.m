@@ -36,7 +36,12 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    if (@available(iOS 13.0, *)) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+    } else
+    {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    }
 }
 
 - (void)viewDidLoad
@@ -193,7 +198,12 @@
             [self.attentionButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }else
         {
-            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            if (@available(iOS 13.0, *)) {
+                [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+            } else
+            {
+                [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            }
             [self.backButon setImage:[UIImage imageNamed:@"black_back_bar"] forState:UIControlStateNormal];
             [self.attentionButon setTitleColor:YZBlackTextColor forState:UIControlStateNormal];
         }

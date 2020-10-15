@@ -212,7 +212,7 @@
 }
 - (void)gotoRecharge
 {
-    YZRechargeListViewController *rechargeVc = [[YZRechargeListViewController alloc] init];
+    YZRechargeListViewController *rechargeVc = [[YZRechargeListViewController alloc] initWithStyle:UITableViewStyleGrouped];
     rechargeVc.isOrderPay = YES;
     [self.navigationController pushViewController:rechargeVc animated:YES];
 }

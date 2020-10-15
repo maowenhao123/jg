@@ -171,15 +171,15 @@
      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          if (failure) {
              failure(error);
-             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-             NSInteger statusCode = response.statusCode;
-             YZLog(@"error:%ld",statusCode);
-             if ([self checkNetState]) {
-                 [MBProgressHUD showError:@"加载失败，请稍后再试"];
-             }else
-             {
-                 [MBProgressHUD showError:@"亲~~~网络不给力..."];
-             }
+//             NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+//             NSInteger statusCode = response.statusCode;
+//             YZLog(@"error:%ld",statusCode);
+//             if ([self checkNetState]) {
+//                 [MBProgressHUD showError:@"加载失败，请稍后再试"];
+//             }else
+//             {
+//                 [MBProgressHUD showError:@"亲~~~网络不给力..."];
+//             }
          }
      }];
 }

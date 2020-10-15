@@ -338,6 +338,9 @@
         [winNumberView addSubview:line];
         
         winNumber = [winNumber stringByReplacingOccurrencesOfString:@"|" withString:@","];
+        if ([self.gameId isEqualToString:@"T12"]) {
+            winNumber = [winNumber stringByReplacingOccurrencesOfString:@"#" withString:@","];
+        }
         NSArray *winNumberArr = [winNumber componentsSeparatedByString:@","];
 
         CGFloat padding = YZMargin;//最左边球里边框的间距
@@ -498,7 +501,7 @@
 }
 - (void)gotoRecharge
 {
-    YZRechargeListViewController *rechargeVc = [[YZRechargeListViewController alloc] init];
+    YZRechargeListViewController *rechargeVc = [[YZRechargeListViewController alloc] initWithStyle:UITableViewStyleGrouped];
     rechargeVc.isOrderPay = YES;
     [self.navigationController pushViewController:rechargeVc animated:YES];
 }

@@ -153,6 +153,9 @@
     }else if ([self.gameId isEqualToString:@"F04"])
     {
         web = [NSString stringWithFormat:@"%@%@", baseH5Url, @"/helper/kuaisan.html"];
+    }else if ([self.gameId isEqualToString:@"T12"])
+    {
+        web = [NSString stringWithFormat:@"%@%@", baseH5Url, @"/helper/qixingcai2.html"];
     }
     YZLoadHtmlFileController *htmlVc = [[YZLoadHtmlFileController alloc] init];
     if (YZStringIsEmpty(web)) {

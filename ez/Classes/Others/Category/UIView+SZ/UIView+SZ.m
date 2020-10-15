@@ -5,10 +5,38 @@
 //  Copyright (c) 2014年 jf. All rights reserved.
 //
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
 #import "UIView+SZ.h"
 
-
 @implementation UIView (SZ)
+
+//适配xcode12tablecell问题
++ (void)load
+{
+    Method originalMethod = class_getInstanceMethod([self class], @selector(addSubview:));
+    Method swizzledMethod = class_getInstanceMethod([self class], @selector(addSubviewS:));
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+}
+
+- (void)addSubviewS:(UIView *)view
+{
+    if ([self isKindOfClass:[UITableViewCell class]]) {
+        //cell自己添加contentView不可以更改
+        if([view isKindOfClass:[NSClassFromString(@"UITableViewCellContentView") class]]){
+            [self addSubviewS:view];
+        }else
+        {
+            //如果是cell自己添加view则改用它的contentView添加
+            UITableViewCell *cell = (UITableViewCell *)self;
+            [cell.contentView addSubview:view];
+            
+        }
+    }else
+    {
+        [self addSubviewS:view];
+    }
+}
+
 - (void)setX:(CGFloat)x
 {
     CGRect frame = self.frame;
