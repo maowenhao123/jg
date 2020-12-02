@@ -7,6 +7,7 @@
 //
 #import "YZHomePageViewController.h"
 #import "YZGameIdViewController.h"
+#import "YZWinViewController.h"
 #import "YZMessageViewController.h"
 #import "YZLoginViewController.h"
 #import "YZNavigationController.h"
@@ -239,6 +240,9 @@
 
 - (void)goShopInfo
 {
+    [self.navigationController pushViewController:[[YZWinViewController alloc] init] animated:YES];
+    return;
+    
     if(!UserId)
     {
         YZLoginViewController *login = [[YZLoginViewController alloc] init];

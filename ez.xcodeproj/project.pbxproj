@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0797C42577651200E07E3B /* YZWinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797B92577651200E07E3B /* YZWinViewController.m */; };
+		1D0797C52577651200E07E3B /* YZWinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797B92577651200E07E3B /* YZWinViewController.m */; };
+		1D0797C62577651200E07E3B /* YZWinListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797BB2577651200E07E3B /* YZWinListViewController.m */; };
+		1D0797C72577651200E07E3B /* YZWinListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797BB2577651200E07E3B /* YZWinListViewController.m */; };
+		1D0797C82577651200E07E3B /* YZWinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797BD2577651200E07E3B /* YZWinModel.m */; };
+		1D0797C92577651200E07E3B /* YZWinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797BD2577651200E07E3B /* YZWinModel.m */; };
+		1D0797CA2577651200E07E3B /* YZWinRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797C22577651200E07E3B /* YZWinRankingTableViewCell.m */; };
+		1D0797CB2577651200E07E3B /* YZWinRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797C22577651200E07E3B /* YZWinRankingTableViewCell.m */; };
+		1D0797CC2577651200E07E3B /* YZWinLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797C32577651200E07E3B /* YZWinLiveTableViewCell.m */; };
+		1D0797CD2577651200E07E3B /* YZWinLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797C32577651200E07E3B /* YZWinLiveTableViewCell.m */; };
+		1D0797E12577659B00E07E3B /* UIButton+SGPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D22577659B00E07E3B /* UIButton+SGPagingView.m */; };
+		1D0797E22577659B00E07E3B /* UIButton+SGPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D22577659B00E07E3B /* UIButton+SGPagingView.m */; };
+		1D0797E32577659B00E07E3B /* UIView+SGPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D32577659B00E07E3B /* UIView+SGPagingView.m */; };
+		1D0797E42577659B00E07E3B /* UIView+SGPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D32577659B00E07E3B /* UIView+SGPagingView.m */; };
+		1D0797E52577659B00E07E3B /* SGPageContentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D52577659B00E07E3B /* SGPageContentScrollView.m */; };
+		1D0797E62577659B00E07E3B /* SGPageContentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D52577659B00E07E3B /* SGPageContentScrollView.m */; };
+		1D0797E72577659C00E07E3B /* SGPageContentCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D82577659B00E07E3B /* SGPageContentCollectionView.m */; };
+		1D0797E82577659C00E07E3B /* SGPageContentCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797D82577659B00E07E3B /* SGPageContentCollectionView.m */; };
+		1D0797E92577659C00E07E3B /* SGPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797DA2577659B00E07E3B /* SGPageTitleView.m */; };
+		1D0797EA2577659C00E07E3B /* SGPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797DA2577659B00E07E3B /* SGPageTitleView.m */; };
+		1D0797EB2577659C00E07E3B /* SGPageTitleViewConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797DB2577659B00E07E3B /* SGPageTitleViewConfigure.m */; };
+		1D0797EC2577659C00E07E3B /* SGPageTitleViewConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797DB2577659B00E07E3B /* SGPageTitleViewConfigure.m */; };
+		1D0797ED2577659C00E07E3B /* SGPagingViewPopGestureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797DE2577659B00E07E3B /* SGPagingViewPopGestureVC.m */; };
+		1D0797EE2577659C00E07E3B /* SGPagingViewPopGestureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0797DE2577659B00E07E3B /* SGPagingViewPopGestureVC.m */; };
 		1D2E333A23714F3600E8C9AC /* YZKy481WanNengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */; };
 		1D2E333B23714F3D00E8C9AC /* YZKy481WanNengView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */; };
 		1D2E3340237162F300E8C9AC /* YZKy481ChongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E333F237162F300E8C9AC /* YZKy481ChongView.m */; };
@@ -1623,6 +1647,31 @@
 		18BBF3FE1E7B779900AF69E6 /* zc-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "zc-info.plist"; sourceTree = "<group>"; };
 		18BBF4041E7B78CC00AF69E6 /* zc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zc.entitlements; sourceTree = "<group>"; };
 		18BBF4061E7B7E2E00AF69E6 /* ez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ez.entitlements; sourceTree = "<group>"; };
+		1D0797B82577651200E07E3B /* YZWinListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZWinListViewController.h; sourceTree = "<group>"; };
+		1D0797B92577651200E07E3B /* YZWinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZWinViewController.m; sourceTree = "<group>"; };
+		1D0797BA2577651200E07E3B /* YZWinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZWinViewController.h; sourceTree = "<group>"; };
+		1D0797BB2577651200E07E3B /* YZWinListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZWinListViewController.m; sourceTree = "<group>"; };
+		1D0797BD2577651200E07E3B /* YZWinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZWinModel.m; sourceTree = "<group>"; };
+		1D0797BE2577651200E07E3B /* YZWinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZWinModel.h; sourceTree = "<group>"; };
+		1D0797C02577651200E07E3B /* YZWinRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZWinRankingTableViewCell.h; sourceTree = "<group>"; };
+		1D0797C12577651200E07E3B /* YZWinLiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZWinLiveTableViewCell.h; sourceTree = "<group>"; };
+		1D0797C22577651200E07E3B /* YZWinRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZWinRankingTableViewCell.m; sourceTree = "<group>"; };
+		1D0797C32577651200E07E3B /* YZWinLiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZWinLiveTableViewCell.m; sourceTree = "<group>"; };
+		1D0797D02577659B00E07E3B /* UIButton+SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SGPagingView.h"; sourceTree = "<group>"; };
+		1D0797D12577659B00E07E3B /* UIView+SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGPagingView.h"; sourceTree = "<group>"; };
+		1D0797D22577659B00E07E3B /* UIButton+SGPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SGPagingView.m"; sourceTree = "<group>"; };
+		1D0797D32577659B00E07E3B /* UIView+SGPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGPagingView.m"; sourceTree = "<group>"; };
+		1D0797D52577659B00E07E3B /* SGPageContentScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageContentScrollView.m; sourceTree = "<group>"; };
+		1D0797D62577659B00E07E3B /* SGPageContentCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageContentCollectionView.h; sourceTree = "<group>"; };
+		1D0797D72577659B00E07E3B /* SGPageContentScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageContentScrollView.h; sourceTree = "<group>"; };
+		1D0797D82577659B00E07E3B /* SGPageContentCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageContentCollectionView.m; sourceTree = "<group>"; };
+		1D0797DA2577659B00E07E3B /* SGPageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageTitleView.m; sourceTree = "<group>"; };
+		1D0797DB2577659B00E07E3B /* SGPageTitleViewConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageTitleViewConfigure.m; sourceTree = "<group>"; };
+		1D0797DC2577659B00E07E3B /* SGPageTitleViewConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageTitleViewConfigure.h; sourceTree = "<group>"; };
+		1D0797DD2577659B00E07E3B /* SGPageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageTitleView.h; sourceTree = "<group>"; };
+		1D0797DE2577659B00E07E3B /* SGPagingViewPopGestureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPagingViewPopGestureVC.m; sourceTree = "<group>"; };
+		1D0797DF2577659B00E07E3B /* SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPagingView.h; sourceTree = "<group>"; };
+		1D0797E02577659B00E07E3B /* SGPagingViewPopGestureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPagingViewPopGestureVC.h; sourceTree = "<group>"; };
 		1D2E333823714F3600E8C9AC /* YZKy481WanNengView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481WanNengView.h; sourceTree = "<group>"; };
 		1D2E333923714F3600E8C9AC /* YZKy481WanNengView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKy481WanNengView.m; sourceTree = "<group>"; };
 		1D2E333E237162F300E8C9AC /* YZKy481ChongView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKy481ChongView.h; sourceTree = "<group>"; };
@@ -3306,6 +3355,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D0797B62577651200E07E3B /* 中奖专区 */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797B72577651200E07E3B /* Controller */,
+				1D0797BC2577651200E07E3B /* Model */,
+				1D0797BF2577651200E07E3B /* View */,
+			);
+			path = "中奖专区";
+			sourceTree = "<group>";
+		};
+		1D0797B72577651200E07E3B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797BA2577651200E07E3B /* YZWinViewController.h */,
+				1D0797B92577651200E07E3B /* YZWinViewController.m */,
+				1D0797B82577651200E07E3B /* YZWinListViewController.h */,
+				1D0797BB2577651200E07E3B /* YZWinListViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D0797BC2577651200E07E3B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797BD2577651200E07E3B /* YZWinModel.m */,
+				1D0797BE2577651200E07E3B /* YZWinModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D0797BF2577651200E07E3B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797C12577651200E07E3B /* YZWinLiveTableViewCell.h */,
+				1D0797C32577651200E07E3B /* YZWinLiveTableViewCell.m */,
+				1D0797C02577651200E07E3B /* YZWinRankingTableViewCell.h */,
+				1D0797C22577651200E07E3B /* YZWinRankingTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D0797CE2577659B00E07E3B /* SGPagingView */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797CF2577659B00E07E3B /* Category */,
+				1D0797D42577659B00E07E3B /* SGPageContent */,
+				1D0797D92577659B00E07E3B /* SGPageTitle */,
+				1D0797DE2577659B00E07E3B /* SGPagingViewPopGestureVC.m */,
+				1D0797DF2577659B00E07E3B /* SGPagingView.h */,
+				1D0797E02577659B00E07E3B /* SGPagingViewPopGestureVC.h */,
+			);
+			path = SGPagingView;
+			sourceTree = "<group>";
+		};
+		1D0797CF2577659B00E07E3B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797D02577659B00E07E3B /* UIButton+SGPagingView.h */,
+				1D0797D12577659B00E07E3B /* UIView+SGPagingView.h */,
+				1D0797D22577659B00E07E3B /* UIButton+SGPagingView.m */,
+				1D0797D32577659B00E07E3B /* UIView+SGPagingView.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		1D0797D42577659B00E07E3B /* SGPageContent */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797D52577659B00E07E3B /* SGPageContentScrollView.m */,
+				1D0797D62577659B00E07E3B /* SGPageContentCollectionView.h */,
+				1D0797D72577659B00E07E3B /* SGPageContentScrollView.h */,
+				1D0797D82577659B00E07E3B /* SGPageContentCollectionView.m */,
+			);
+			path = SGPageContent;
+			sourceTree = "<group>";
+		};
+		1D0797D92577659B00E07E3B /* SGPageTitle */ = {
+			isa = PBXGroup;
+			children = (
+				1D0797DA2577659B00E07E3B /* SGPageTitleView.m */,
+				1D0797DB2577659B00E07E3B /* SGPageTitleViewConfigure.m */,
+				1D0797DC2577659B00E07E3B /* SGPageTitleViewConfigure.h */,
+				1D0797DD2577659B00E07E3B /* SGPageTitleView.h */,
+			);
+			path = SGPageTitle;
+			sourceTree = "<group>";
+		};
 		1D76806822DC5040007C1154 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -5690,6 +5826,7 @@
 		AA3292961FFE27B600CA77DA /* 功能 */ = {
 			isa = PBXGroup;
 			children = (
+				1D0797B62577651200E07E3B /* 中奖专区 */,
 				AAE55C5D207EF8AF00A29844 /* 积分兑换 */,
 				AA32929F1FFE27B600CA77DA /* 预测资讯 */,
 			);
@@ -6747,6 +6884,7 @@
 		AA74E8B01FFE17DD003B53AF /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1D0797CE2577659B00E07E3B /* SGPagingView */,
 				1DDDEB5522D5BB80003A9C07 /* Masonry */,
 				1DE61FBF22CC4F6200C1490E /* TZImagePickerController */,
 				1DBD8E0922CB2C020024CF7B /* SDWebImage */,
@@ -8105,6 +8243,7 @@
 				AAE55C71207EF8B000A29844 /* YZIntegralCouponsModel.m in Sources */,
 				AAE55C6F207EF8B000A29844 /* YZIntegralConversionViewController.m in Sources */,
 				AA3291081FFE21D400CA77DA /* YZRegisterResultViewController.m in Sources */,
+				1D0797E52577659B00E07E3B /* SGPageContentScrollView.m in Sources */,
 				AACDC21F20FEE77A00955419 /* YZPublishCircleViewController.m in Sources */,
 				AA3293EF1FFE27B700CA77DA /* YZSupView.m in Sources */,
 				AA74E25C1FFE0C41003B53AF /* YZSettingPassWordViewController.m in Sources */,
@@ -8172,6 +8311,7 @@
 				AA32907F1FFE1D6100CA77DA /* YZShareIncomeStatus.m in Sources */,
 				AACDC22F20FEE80400955419 /* YZCircleTableView.m in Sources */,
 				1DB33E74237D429500463EEE /* YZKy481Math.m in Sources */,
+				1D0797E32577659B00E07E3B /* UIView+SGPagingView.m in Sources */,
 				AA74ECAE1FFE19A5003B53AF /* YZRechargeRecordStatus.m in Sources */,
 				AA74EAEB1FFE17DF003B53AF /* HDChatToolbarItem.m in Sources */,
 				AA3292D91FFE27B600CA77DA /* YZKsDiceAnimationView.m in Sources */,
@@ -8281,6 +8421,7 @@
 				AA74EA411FFE17DE003B53AF /* YZAliPayOrder.m in Sources */,
 				1DBD8C6322CB00470024CF7B /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				AA3293291FFE27B600CA77DA /* YZChartViewLeftTableViewCell.m in Sources */,
+				1D0797C62577651200E07E3B /* YZWinListViewController.m in Sources */,
 				AA3292C31FFE27B600CA77DA /* YZSsqViewController.m in Sources */,
 				AA74EB451FFE17DF003B53AF /* NSObject+MJCoding.m in Sources */,
 				AA3293311FFE27B600CA77DA /* YZChartSsqLotteryTableViewCell.m in Sources */,
@@ -8317,6 +8458,8 @@
 				AA3292EB1FFE27B600CA77DA /* YZKsDiceView.m in Sources */,
 				AA3292E71FFE27B600CA77DA /* YZKsHistoryTableViewCell.m in Sources */,
 				AA32934F1FFE27B600CA77DA /* YZScjqViewController.m in Sources */,
+				1D0797C42577651200E07E3B /* YZWinViewController.m in Sources */,
+				1D0797E12577659B00E07E3B /* UIButton+SGPagingView.m in Sources */,
 				AAE55C77207EF8B000A29844 /* YZIntegralCountCollectionViewCell.m in Sources */,
 				1DBD8E7222CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				AA3292E11FFE27B600CA77DA /* YZksHistoryWinNumberView.m in Sources */,
@@ -8333,6 +8476,7 @@
 				AA67A0CB1FAC150100B3611B /* main.m in Sources */,
 				AA74EB391FFE17DF003B53AF /* MJMember.m in Sources */,
 				AA32910A1FFE21D400CA77DA /* YZLoginViewController.m in Sources */,
+				1D0797E72577659C00E07E3B /* SGPageContentCollectionView.m in Sources */,
 				AA3293091FFE27B600CA77DA /* YZChartStatus.m in Sources */,
 				AA3290C51FFE20A800CA77DA /* YZPhoneBindingViewController.m in Sources */,
 				1DE6201122CC511900C1490E /* YZAddImageCollectionViewCell.m in Sources */,
@@ -8365,6 +8509,7 @@
 				AA3293671FFE27B600CA77DA /* YZFTHeaderView.m in Sources */,
 				AA32931D1FFE27B600CA77DA /* YZChartTitleView.m in Sources */,
 				1DE3D87E2501D4BC001A1E9A /* YZShareTool.m in Sources */,
+				1D0797CA2577651200E07E3B /* YZWinRankingTableViewCell.m in Sources */,
 				AAC06BEC239547E000FFCA9D /* YZKy481ChartZuTableView.m in Sources */,
 				AA3292F51FFE27B600CA77DA /* YZSelectBallCell.m in Sources */,
 				1DE61FF822CC4F7600C1490E /* TZGifPhotoPreviewController.m in Sources */,
@@ -8552,6 +8697,7 @@
 				1DD0334222C4A478006094A2 /* YZCircleUserInfoHeaderView.m in Sources */,
 				1DE61FFE22CC4F7600C1490E /* TZPhotoPickerController.m in Sources */,
 				1DBD8E9922CB2C250024CF7B /* SDWebImagePrefetcher.m in Sources */,
+				1D0797C82577651200E07E3B /* YZWinModel.m in Sources */,
 				AA3293C91FFE27B700CA77DA /* YZFBMatchDetailStandingsView.m in Sources */,
 				AA74EC5F1FFE17E0003B53AF /* YZHttpTool.m in Sources */,
 				AA74EBBF1FFE17E0003B53AF /* MBProgressHUD+MJ.m in Sources */,
@@ -8606,6 +8752,7 @@
 				AA32942C200357DE00CA77DA /* YZChangePhoneCardNoViewController.m in Sources */,
 				AA74E0991FFE0A0C003B53AF /* YZTerm.m in Sources */,
 				1DDDBB1422BB6E70006F8ECA /* YZEditSegementView.m in Sources */,
+				1D0797EB2577659C00E07E3B /* SGPageTitleViewConfigure.m in Sources */,
 				1DBD8B6122CAFF780024CF7B /* FSActionSheetCell.m in Sources */,
 				AAD1207C20BE399100D47F85 /* YZBasketBallBetTableViewCell.m in Sources */,
 				1DCD87952399E3F5006D9269 /* YZBaseChartViewController.m in Sources */,
@@ -8627,6 +8774,7 @@
 				AA32938D1FFE27B700CA77DA /* YZOverUnderStatus.m in Sources */,
 				1D2E334C2372B72B00E8C9AC /* YZKy481RecentLotteryCell.m in Sources */,
 				AA67A1B41FAC150100B3611B /* YZNavigationController.m in Sources */,
+				1D0797ED2577659C00E07E3B /* SGPagingViewPopGestureVC.m in Sources */,
 				1DBD8CA922CB29B60024CF7B /* YZAddImageManage.m in Sources */,
 				AA27DA0F2020180F0068C9CA /* YZHomePageFunctionModel.m in Sources */,
 				1DD0333D22C49E37006094A2 /* YZMineCircleViewController.m in Sources */,
@@ -8676,6 +8824,8 @@
 				AA74EB411FFE17DF003B53AF /* MJConst.m in Sources */,
 				AA3292BD1FFE27B600CA77DA /* YZPlwViewController.m in Sources */,
 				AA74E25E1FFE0C41003B53AF /* YZWithdrawalRecordViewController.m in Sources */,
+				1D0797CC2577651200E07E3B /* YZWinLiveTableViewCell.m in Sources */,
+				1D0797E92577659C00E07E3B /* SGPageTitleView.m in Sources */,
 				AA74EB6D1FFE17DF003B53AF /* MJRefreshHeader.m in Sources */,
 				1DBD8E8D22CB2C250024CF7B /* UIView+WebCache.m in Sources */,
 				AA3293AD1FFE27B700CA77DA /* YZFBMatchDetailIntegralContentTableViewCell.m in Sources */,
@@ -8833,6 +8983,7 @@
 				AAE55C74207EF8B000A29844 /* YZIntegralCouponsCollectionViewCell.m in Sources */,
 				AA3292DC1FFE27B600CA77DA /* YZKsHistoryTableView.m in Sources */,
 				AA3290821FFE1D6100CA77DA /* YZShareIncomeTableViewCell.m in Sources */,
+				1D0797E22577659B00E07E3B /* UIButton+SGPagingView.m in Sources */,
 				1D7BDF982371088E0015CD8E /* YZKy481ViewController.m in Sources */,
 				AA74EA621FFE17DE003B53AF /* HDEmojiEmoticons.m in Sources */,
 				1DD0334822C4AD7B006094A2 /* YZCircleCommentTableView.m in Sources */,
@@ -8913,6 +9064,7 @@
 				A90CFE6A206E0F030094CD38 /* YZGiveVoucherModel.m in Sources */,
 				1DBD8E8222CB2C250024CF7B /* UIImage+WebP.m in Sources */,
 				AA74ECC21FFE1A6A003B53AF /* YZMoneyDetail.m in Sources */,
+				1D0797EE2577659C00E07E3B /* SGPagingViewPopGestureVC.m in Sources */,
 				AA072E9620B407B300973E72 /* YZBasketBallHeaderView.m in Sources */,
 				AA74E0DC1FFE0A4C003B53AF /* YZStartUnionbuyModel.m in Sources */,
 				AA1E103320FC37DF0045FBD4 /* YZChooseBirthdayTableViewCell.m in Sources */,
@@ -8923,6 +9075,7 @@
 				AA3293701FFE27B700CA77DA /* YZFBAllPlayView.m in Sources */,
 				AA74E0E01FFE0A4C003B53AF /* YZUnionBuyRecord.m in Sources */,
 				AA74EB0A1FFE17DF003B53AF /* HDBubbleView+Track.m in Sources */,
+				1D0797E82577659C00E07E3B /* SGPageContentCollectionView.m in Sources */,
 				1DBD8E4922CB2C250024CF7B /* SDWebImageImageIOCoder.m in Sources */,
 				AA74EA361FFE17DE003B53AF /* ZWXWechatPayOrder.m in Sources */,
 				AA74EB021FFE17DF003B53AF /* HDBubbleView+File.m in Sources */,
@@ -8960,6 +9113,7 @@
 				AA1E102920F8A03E0045FBD4 /* YZChooseLuckyNumberView.m in Sources */,
 				AA74E0EC1FFE0A4C003B53AF /* UICountingLabel.m in Sources */,
 				AA74EB7E1FFE17E0003B53AF /* SBJsonWriter.m in Sources */,
+				1D0797C92577651200E07E3B /* YZWinModel.m in Sources */,
 				AA74EB921FFE17E0003B53AF /* IQNSArray+Sort.m in Sources */,
 				AA74E0A61FFE0A0C003B53AF /* YZWinNumberTableViewCell.m in Sources */,
 				AA74EA4C1FFE17DE003B53AF /* NSDate+Category.m in Sources */,
@@ -9001,12 +9155,14 @@
 				AA3293961FFE27B700CA77DA /* YZOverUnderCellStatus.m in Sources */,
 				1D5029E923950609006613E1 /* YZKy481ChartRenTableViewCell.m in Sources */,
 				AA74EBD41FFE17E0003B53AF /* FMDatabaseAdditions.m in Sources */,
+				1D0797CD2577651200E07E3B /* YZWinLiveTableViewCell.m in Sources */,
 				1DDDEB7F22D5BB80003A9C07 /* NSArray+MASAdditions.m in Sources */,
 				AA74E1401FFE0A86003B53AF /* YZFCOrderDetailTableViewCell.m in Sources */,
 				AA74EA2E1FFE17DE003B53AF /* YZNoDataTableViewCell.m in Sources */,
 				1DE61FE422CC4F7500C1490E /* TZVideoPlayerController.m in Sources */,
 				AA3290C21FFE20A800CA77DA /* YZNamePhoneBindingViewController.m in Sources */,
 				AA74EBB21FFE17E0003B53AF /* UIImageView+AFNetworking.m in Sources */,
+				1D0797EC2577659C00E07E3B /* SGPageTitleViewConfigure.m in Sources */,
 				AA3293361FFE27B600CA77DA /* YZChartSortButton.m in Sources */,
 				AA3293B81FFE27B700CA77DA /* YZFBMatchDetailRecommendView.m in Sources */,
 				1DBD8C7322CB00470024CF7B /* PSTGridLayoutRow.m in Sources */,
@@ -9018,6 +9174,7 @@
 				1D7BDFFD23710F770015CD8E /* YZFbBetSuccessViewController.m in Sources */,
 				AAE55C78207EF8B000A29844 /* YZIntegralCountCollectionViewCell.m in Sources */,
 				AA3292E21FFE27B600CA77DA /* YZksHistoryWinNumberView.m in Sources */,
+				1D0797E42577659B00E07E3B /* UIView+SGPagingView.m in Sources */,
 				1DBD8E7322CB2C250024CF7B /* UIImageView+HighlightedWebCache.m in Sources */,
 				AA32936A1FFE27B600CA77DA /* YZFBMatchDetailCellView.m in Sources */,
 				1D5029EE239603DD006613E1 /* YZKy481ChartZuTableViewCell.m in Sources */,
@@ -9034,6 +9191,7 @@
 				A99D300C206E0F9000E38EAA /* YZGuideModel.m in Sources */,
 				1DCD87A42399ED92006D9269 /* YZ11x5ChartTableView.m in Sources */,
 				CE58B9AD1DE58BF80033B300 /* main.m in Sources */,
+				1D0797EA2577659C00E07E3B /* SGPageTitleView.m in Sources */,
 				1D6D6B8B253536F100A38AAC /* YZNewQxcViewController.m in Sources */,
 				AA74EB3A1FFE17DF003B53AF /* MJMember.m in Sources */,
 				AA32910B1FFE21D400CA77DA /* YZLoginViewController.m in Sources */,
@@ -9203,6 +9361,7 @@
 				AA27DA18202193EE0068C9CA /* YZHomePageFunctionItemView.m in Sources */,
 				AA0268CE20108E060069647F /* YZQuickStakeGameModel.m in Sources */,
 				AA926499224B5C7600FCEFC7 /* YZInformationH5ViewController.m in Sources */,
+				1D0797C72577651200E07E3B /* YZWinListViewController.m in Sources */,
 				AA74EB5C1FFE17DF003B53AF /* MJRefreshBackStateFooter.m in Sources */,
 				AA3293C01FFE27B700CA77DA /* YZFBMatchDetailOddsTitleTableViewCell.m in Sources */,
 				AA32933C1FFE27B600CA77DA /* YZChartBottomView.m in Sources */,
@@ -9225,6 +9384,8 @@
 				AACDC22420FEE79400955419 /* YZCircleDetailViewController.m in Sources */,
 				AA74EB621FFE17DF003B53AF /* MJRefreshAutoGifFooter.m in Sources */,
 				AA74EB9C1FFE17E0003B53AF /* IQUIViewController+Additions.m in Sources */,
+				1D0797C52577651200E07E3B /* YZWinViewController.m in Sources */,
+				1D0797E62577659B00E07E3B /* SGPageContentScrollView.m in Sources */,
 				AA3294292003558F00CA77DA /* YZChangePhonePassWordViewController.m in Sources */,
 				AA74E1221FFE0A86003B53AF /* YZFBTicketDetailViewController.m in Sources */,
 				AA3293D61FFE27B700CA77DA /* YZHomePageViewController.m in Sources */,
@@ -9404,6 +9565,7 @@
 				AA32908C1FFE1D9E00CA77DA /* YZWeChatPublicViewController.m in Sources */,
 				AA74EB961FFE17E0003B53AF /* IQUITextFieldView+Additions.m in Sources */,
 				AA3292F01FFE27B600CA77DA /* YZKsBottomBtn.m in Sources */,
+				1D0797CB2577651200E07E3B /* YZWinRankingTableViewCell.m in Sources */,
 				1DE3D8752501D40B001A1E9A /* YZShopModel.m in Sources */,
 				AA3293081FFE27B600CA77DA /* YZSsqChartViewController.m in Sources */,
 				AA74EAFA1FFE17DF003B53AF /* HDRecordView.m in Sources */,
@@ -9686,7 +9848,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.9.4;
+				CURRENT_PROJECT_VERSION = 1.9.5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -9740,7 +9902,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
-				MARKETING_VERSION = 1.9.4;
+				MARKETING_VERSION = 1.9.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
@@ -9751,7 +9913,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "arm64 armv7s armv7";
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9767,7 +9929,7 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.9.4;
+				CURRENT_PROJECT_VERSION = 1.9.5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -9818,7 +9980,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
-				MARKETING_VERSION = 1.9.4;
+				MARKETING_VERSION = 1.9.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
@@ -9828,7 +9990,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "arm64 armv7s armv7";
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -9844,7 +10006,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zhong Cai Xun Da technology co., LTD (65FQR43XBY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.9.4;
+				CURRENT_PROJECT_VERSION = 1.9.5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 65FQR43XBY;
 				ENABLE_BITCODE = NO;
@@ -9895,7 +10057,7 @@
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/ez/Classes/Others/SDK/IM/HelpDeskDynamicSDK/HelpDeskUI/HDUIKit/3rdparty/DeviceHelper/HDVoiceConvert/opencore-amrnb",
 				);
-				MARKETING_VERSION = 1.9.4;
+				MARKETING_VERSION = 1.9.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lottery.zccp;
@@ -9905,7 +10067,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ez/Classes/Others/Tool/YZFootBallTool/ez-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "arm64 armv7s armv7";
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "ad hoc distribution";
@@ -9943,7 +10105,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -10010,7 +10172,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -10050,7 +10212,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

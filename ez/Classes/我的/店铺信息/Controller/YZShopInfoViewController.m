@@ -33,17 +33,29 @@
 
 @implementation YZShopInfoViewController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (@available(iOS 13.0, *)) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+    } else
+    {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = YZColor(249, 96, 66, 1);
     [self setupChilds];
     [self getShopInfo];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - 请求数据
@@ -474,7 +486,7 @@
     UIImage *img = [self createNonInterpolatedUIImageFormCIImage:image withSize:screenWidth];
     UIGraphicsBeginImageContext(img.size);
     [img drawInRect:CGRectMake(0, 0, img.size.width, img.size.height)];
-    UIImage *centerImg = [UIImage imageNamed:@"logo"];
+    UIImage *centerImg = [UIImage imageNamed:@"logo1"];
     CGFloat centerW = img.size.width * 0.25;
     CGFloat centerH = centerW;
     CGFloat centerX = (img.size.width-centerW)*0.5;
